@@ -1,0 +1,264 @@
+<?php
+class PopularTours extends \Elementor\Widget_Base {
+
+    /**
+	 * Get widget name.
+	 *
+	 * Retrieve  widget name.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return string Widget name.
+	 */
+	public function get_name() {
+		return 'tf-popular-tours';
+	}
+
+	/**
+	 * Get widget title.
+	 *
+	 * Retrieve  widget title.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return string Widget title.
+	 */
+	public function get_title() {
+		return esc_html__( 'Popular Tours', 'travelfic' );
+	}
+
+	/**
+	 * Get widget icon.
+	 *
+	 * Retrieve  widget icon.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return string Widget icon.
+	 */
+	public function get_icon() {
+		return 'eicon-posts-ticker';
+	}
+
+	/**
+	 * Get custom help URL.
+	 *
+	 * Retrieve a URL where the user can get more information about the widget.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return string Widget help URL.
+	 */
+	public function get_custom_help_url() {
+		return 'https://developers.elementor.com/docs/widgets/';
+	}
+
+	/**
+	 * Get widget categories.
+	 *
+	 * Retrieve the list of categories the widget belongs to.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return array Widget categories.
+	 */
+	public function get_categories() {
+		return [ 'travelfic' ];
+	}
+
+
+	/**
+	 * Get widget keywords.
+	 *
+	 * Retrieve the list of keywords the widget belongs to.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @return array Widget keywords.
+	 */
+	public function get_keywords() {
+		return [ 'travelfic', 'popular', 'tours' ];
+	}
+
+	/**
+	 * Register widget controls.
+	 *
+	 * Add input fields to allow the user to customize the widget settings.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
+	protected function register_controls() {
+
+		$this->start_controls_section(
+			'popular_tours',
+			[
+				'label' => esc_html__( 'Popular Tours', 'travelfic' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'tf_post_type',
+			[
+				'label' => esc_html__( 'Post Type', 'travelfic' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'tf_tours',
+				'options' => [
+					'post'  => esc_html__( 'Post', 'travelfic' ),
+					'tf_tours' => esc_html__( 'Tours', 'travelfic' )
+				],
+			]
+		);
+		
+		// Order by.
+        $this->add_control(
+            'post_order_by',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Order by', 'travelfic' ),
+                'default' => 'date',
+                'options' => [
+                    'date'          => __( 'Date', 'travelfic' ),
+                    'title'         => __( 'Title', 'travelfic' ),
+                    'modified'      => __( 'Modified date', 'travelfic' ),
+                    'comment_count' => __( 'Comment count', 'travelfic' ),
+                    'rand'          => __( 'Random', 'travelfic' ),
+                ],
+            ]
+        );
+        // Order
+        $this->add_control(
+            'post_order',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Order', 'travelfic' ),
+                'default' => 'DESC',
+                'options' => [
+                    'DESC'          => __( 'Descending', 'travelfic' ),
+                    'ASC'         => __( 'Ascending', 'travelfic' ),
+                ],
+            ]
+        );
+
+		$this->end_controls_section();
+
+	}
+
+	protected function render() {
+	$settings = $this->get_settings_for_display(); 
+
+		$args = array(
+			'post_type'   => $settings['tf_post_type']
+		);
+
+		// Display posts in category.
+        if ( ! empty( $settings['post_category'] ) ) {
+            $args['category_name'] = $settings['post_category'];
+        }
+
+		// Items per page
+        if ( ! empty( $settings['post_items'] ) ) {
+            $args['posts_per_page'] = $settings['post_items'];
+        }
+
+		// Items Order By
+        if ( ! empty( $settings['post_order_by'] ) ) {
+            $args['orderby'] = $settings['post_order_by'];
+        }
+
+        // Items Order
+        if ( ! empty( $settings['post_order'] ) ) {
+            $args['order'] = $settings['post_order'];
+        }
+
+		$query = new \WP_Query( $args );
+	
+	?>
+
+		<div class="tft-popular-tour-wrapper">
+            <div class="tft-popular-tour-items tft-popular-tour-selector">
+
+			<?php if( $query->have_posts() ) : ?>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+                <div class="tft-popular-single-item">
+                    <div class="tft-popular-single-item-inner">
+                        <div class="tft-popular-thumbnail">
+
+							<a id="post-<?php the_ID(); ?>" 
+							<?php post_class('single-blog'); ?> href="<?php echo esc_url( get_permalink() ); ?>">
+								<?php the_post_thumbnail( 'blog-thumb' ); ?>
+							</a>
+
+                            <div class="tft-ratings">
+                                <span> 4.6 <i class="fas fa-star"></i> </span>
+                            </div>
+                        </div>
+                        <div class="tft-popular-item-info">
+                            <h3><?php the_title() ?></h3>
+                            <div class="tft-popular-sub-info">
+                                <p><i class="fas fa-location-arrow"></i> London, UK</p>
+                                <p><i class="fas fa-calendar-alt"></i> 5 Days 6 Nights</p>
+                            </div>
+                            <div class="tft-popular-item-price">
+                                <h3>$220 <span>from</span> </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+				<?php endwhile; ?>
+			<?php endif; ?>
+
+            </div>
+
+
+			<script>
+
+			(function ($) {
+            "use strict";
+            $(document).ready(function () {
+				$('.tft-popular-tour-selector').slick({
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					arrows: true,
+					centerMode: true,
+					dots: false,
+					pauseOnHover:true,
+					autoplay: true,
+					autoplaySpeed: 7000,
+					speed: 500,
+					responsive: [
+						{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 1
+						}
+						},
+						{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1
+						}
+						},
+						{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+						}
+					]
+				});
+            });
+        	}(jQuery)); 
+
+			</script>
+        </div>
+    <?php
+	}
+}
