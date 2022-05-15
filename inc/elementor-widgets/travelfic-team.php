@@ -214,7 +214,7 @@ class TeamMembers extends \Elementor\Widget_Base
 				<div class="tft-team-members tf-flex tft-f-cg-40 tft-f-rw-40 tft-f-sb">
 					<?php foreach ($settings['members_list'] as $item) : ?>
 						<div class="tft-single-member tft-card-default">
-							<div class="team-members-inner tf-flex tft-f-cg-20 align-center">
+							<div class="team-members-inner tf-flex align-center">
 								<div class="member_img">
 									<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
 								</div>
