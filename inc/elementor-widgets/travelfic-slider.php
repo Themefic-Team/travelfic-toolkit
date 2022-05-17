@@ -165,6 +165,14 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 				'default' => '1',
 			]
 		);
+        $this->add_control(
+            'slider_search_code', [
+                'label' => __( 'Search Shortcode', 'travelfic' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label_block' => true,
+            ]
+        );
+
 		$this->end_controls_section();
 
 	}
@@ -202,11 +210,15 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                     <span></span>
                 </div>
             </div>
-			
+			 
 			<?php if( $settings['search_box_switcher'] == 'yes' ) : ?>
+
 			<div class="tft-search-box">
                 <div class="tft-search-box-inner">
-                    <form class="tft-search-box-form" action="#" method="get">
+
+                    <?php echo $settings['slider_search_code']; ?>
+
+                    <!-- <form class="tft-search-box-form" action="#" method="get">
                         <div class="tft-search-box-container tft-container-flex">
                             <div class="tft-search-box-field">
                                 <label for="search-destinations">Destinations</label>
@@ -215,7 +227,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                                     <option value="Dhaka,Bangladesh">Dhaka,Bangladesh</option>
                                     <option value="Jakarta,Indonesia">Jakarta,Indonesia</option>
                                 </select>
-                            </div>
+                            </div> 
                             <div class="tft-search-box-field">
                                 <label for="check-in">Check In</label>
                                 <input type="date" id="check-in" name="checkin">
@@ -226,12 +238,13 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                                 <input type="text" name="price-range" id="price-range" value="$500 - $10,000">
                             </div>
                             <div class="tft-search-box-field">
-                                <div class="slider-button tft-bttn border-rds-4">
+                                <div class="slider-button tft-bttn-primary border-rds-4">
 								<input id="submit" type="submit" value="Booking Now" class="tft-custom-bttn" />
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
+
                 </div>
             </div>
 			<?php endif; ?>

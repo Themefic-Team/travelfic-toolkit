@@ -188,10 +188,29 @@ class PopularTours extends \Elementor\Widget_Base {
 
 		<div class="tft-popular-tour-wrapper">
             <div class="tft-popular-tour-items tft-popular-tour-selector">
-				
+			
+			
 			<?php if( $query->have_posts() ) : ?>
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				<?php 
+				/**
+				 * Review query
+				 */
+				$args = array( 
+					'post_id' => get_the_ID(  ),
+					'status'  => 'approve',
+					'type'    => 'comment',
+				);
+				$comments_query = new WP_Comment_Query( $args ); 
+				$comments = $comments_query->comments;
 
+				
+
+				/**
+				 * Show/hide sections
+				 */
+				$disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+			?>
 				
 
                 <div class="tft-popular-single-item">
@@ -202,30 +221,44 @@ class PopularTours extends \Elementor\Widget_Base {
 							<?php post_class('single-blog'); ?> href="<?php echo esc_url( get_permalink() ); ?>">
 								<?php the_post_thumbnail( 'blog-thumb' ); ?>
 							</a>
+                            
 
-                            <!-- <div class="tft-ratings">
-                                <span> 
-									
-								</span>
-                            </div> -->
+							<?php if($comments && !$disable_review_sec == '1') { ?>
+								<div class="tft-ratings">
+									<span> 
+										<i class="fas fa-star"></i> 
+										<span><?php echo tf_total_avg_rating($comments); ?></span>
+										(<?php tf_based_on_text(count($comments)); ?>)
+									</span>
+								</div>
+								
+							<?php  } ?>
+							
                         </div>
                         <div class="tft-popular-item-info">
 							<a href="<?php echo esc_url( get_permalink() ); ?>">
 								<h3><?php the_title() ?></h3>
 							</a>
                             <div class="tft-popular-sub-info">
-                            <p>
-								<i class="fas fa-location-arrow"></i> 
+								<p>
+									<i class="fas fa-location-arrow"></i> 
+									<?php 
+										echo get_post_meta(get_the_ID(), "tf_tours_option", true)['text_location'];
+									?>
+								</p>
 								<?php 
-									echo get_post_meta(get_the_ID(), "tf_tours_option", true)['text_location'];
+								if( get_post_meta(get_the_ID(), "tf_tours_option", true)['duration'] != '' ){ ?>
+									<p>
+										<i class="fas fa-calendar-alt"></i> 
+										<?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['duration']; ?>
+									</p>
+								<?php }
 								?>
-							</p>
-                                <p><i class="fas fa-calendar-alt"></i> 5 Days 6 Nights</p>
                             </div>
                             <div class="tft-popular-item-price">
-                                <h3><?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price']; ?> <span>from</span> </h3>
+                                <h3><span>from </span><?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price']; ?> </h3>
                             </div>
-
+							
                         </div>
                     </div>
                 </div>
