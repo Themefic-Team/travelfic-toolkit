@@ -173,14 +173,26 @@ class PopularTours extends \Elementor\Widget_Base {
         }
 
 		$query = new \WP_Query( $args );
+
+		// //Comments for review
+		// $disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+		// $argss = array( 
+		// 	'status'  => 'approve',
+		// 	'type'    => 'comment',
+		// );
+		// $comments_query = new WP_Comment_Query( $argss ); 
+		// $comments = $comments_query->comments;
+
 	
 	?>
 
 		<div class="tft-popular-tour-wrapper">
             <div class="tft-popular-tour-items tft-popular-tour-selector">
-
+				
 			<?php if( $query->have_posts() ) : ?>
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+
+				
 
                 <div class="tft-popular-single-item">
                     <div class="tft-popular-single-item-inner">
@@ -191,19 +203,29 @@ class PopularTours extends \Elementor\Widget_Base {
 								<?php the_post_thumbnail( 'blog-thumb' ); ?>
 							</a>
 
-                            <div class="tft-ratings">
-                                <span> 4.6 <i class="fas fa-star"></i> </span>
-                            </div>
+                            <!-- <div class="tft-ratings">
+                                <span> 
+									
+								</span>
+                            </div> -->
                         </div>
                         <div class="tft-popular-item-info">
-                            <h3><?php the_title() ?></h3>
+							<a href="<?php echo esc_url( get_permalink() ); ?>">
+								<h3><?php the_title() ?></h3>
+							</a>
                             <div class="tft-popular-sub-info">
-                                <p><i class="fas fa-location-arrow"></i> London, UK</p>
+                            <p>
+								<i class="fas fa-location-arrow"></i> 
+								<?php 
+									echo get_post_meta(get_the_ID(), "tf_tours_option", true)['text_location'];
+								?>
+							</p>
                                 <p><i class="fas fa-calendar-alt"></i> 5 Days 6 Nights</p>
                             </div>
                             <div class="tft-popular-item-price">
-                                <h3>$220 <span>from</span> </h3>
+                                <h3><?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price']; ?> <span>from</span> </h3>
                             </div>
+
                         </div>
                     </div>
                 </div>

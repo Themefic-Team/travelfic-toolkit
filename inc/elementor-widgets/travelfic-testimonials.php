@@ -97,15 +97,6 @@ class Testimonials extends \Elementor\Widget_Base {
 			]
 		);
 
-        $this->add_control(
-			'tf_testimonials_section_title',
-			[
-				'label' => esc_html__( 'Section Title', 'travelfic' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'label_block' => true,
-			]
-		);
-
 		$repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'person_image', [
@@ -185,9 +176,6 @@ class Testimonials extends \Elementor\Widget_Base {
     <?php if( $settings['testimonials_section'] ) : ?>
         
         <div class="tft-testimonials-wrapper">
-            <div class="tft-section-header">
-                <h2 class="title section-title"> <?php echo esc_html( $settings['tf_testimonials_section_title'] ) ?> </h2>
-            </div>
             <div class="tft-testimonials-selector tft-slide-default">
                 <?php 
 
@@ -231,23 +219,24 @@ class Testimonials extends \Elementor\Widget_Base {
                 infinite: true,
                 cssEase: 'linear',
                 arrows: true,
+                
                 responsive: [
-                {
-                breakpoint: 991,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
+                    {
+                    breakpoint: 991,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: false
+                        }
+                    }, 
+                    {
+                    breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
                     }
-                },
-                {
-                breakpoint: 767,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
                
                 ]
                 });

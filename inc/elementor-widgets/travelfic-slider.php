@@ -178,14 +178,14 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                 <div class="tft-hero-slider-selector">
                     <?php foreach( $settings['hero_slider_list'] as $team ) : ?>
                         <div class="tft-hero-single-item">
-                            <div class="tft-slider-bg-img" style="background-image: url(<?php echo $team['slider_image']['url']?>); height: 920px">
+                            <div class="tft-slider-bg-img" style="background-image: url(<?php echo $team['slider_image']['url']?>);">
                                 <div class="tft-container tft-hero-single-item-inner">
                                     <div class=" slider-inner-info">
                                         <div class="tft-slider-title">
                                             <h1 class="tft-title title-large"> <?php echo $team['slider_title']?> </h1>
                                         </div>
                                         <div class="slider-button">
-                                            <a class="bttn tft-bttn" href="<?php echo $team['slider_bttn_url']?>">
+                                            <a class="bttn tft-bttn-primary" href="<?php echo $team['slider_bttn_url']?>">
                                                 <div class="tft-custom-bttn">
                                                     <span><?php echo $team['slider_bttn_txt']?></span>
                                                 </div>
