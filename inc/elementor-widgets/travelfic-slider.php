@@ -172,10 +172,31 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                 'label_block' => true,
             ]
         );
-
 		$this->end_controls_section();
 
+
+        $this->start_controls_section(
+            'my_section',
+            [
+                'label' => esc_html__( 'Slider Control', 'travelfic' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+			'slider_height',
+			[
+				'label' => esc_html__( 'Slider Height(px)', 'travelfic' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'default' => 900,
+			]
+		);
+        
+        $this->end_controls_section();
+
 	}
+
+	
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
@@ -186,7 +207,9 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                 <div class="tft-hero-slider-selector">
                     <?php foreach( $settings['hero_slider_list'] as $team ) : ?>
                         <div class="tft-hero-single-item">
-                            <div class="tft-slider-bg-img" style="background-image: url(<?php echo $team['slider_image']['url']?>);">
+                            <div class="tft-slider-bg-img" style="background-image: url(<?php echo $team['slider_image']['url']?>);height: <?php echo $settings['slider_height'] ?>px;
+
+                            ">
                                 <div class="tft-container tft-hero-single-item-inner">
                                     <div class=" slider-inner-info">
                                         <div class="tft-slider-title">
