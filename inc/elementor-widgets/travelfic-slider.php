@@ -24,7 +24,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Hero Slider', 'travelfic' );
+		return esc_html__( 'TFT Hero Slider', 'travelfic' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'travelfic', 'slider', 'hero' ];
+		return [ 'travelfic', 'slider', 'hero', 'tft' ];
 	}
 
 	/**

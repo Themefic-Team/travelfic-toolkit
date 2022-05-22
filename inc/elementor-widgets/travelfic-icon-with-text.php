@@ -24,7 +24,7 @@ class IconWithText extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Icon With Text', 'travelfic' );
+		return esc_html__( 'TFT Icon With Text', 'travelfic' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class IconWithText extends \Elementor\Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'travelfic', 'icon', 'icon with text' ];
+		return [ 'travelfic', 'icon', 'icon with text', 'tft' ];
 	}
 
 	/**
@@ -165,22 +165,23 @@ class IconWithText extends \Elementor\Widget_Base {
     <?php if( $settings['icon_text_list'] ) : ?>
         <div class="tft-icon-text-wrapper">
             <div class="tft-icon-text-items tf-flex">
-            <?php foreach( $settings['icon_text_list'] as $team ) : ?>
-
+            <?php foreach( $settings['icon_text_list'] as $item ) : ?>
+				
                 <div class="tft-icon-text-single" 
-				<?php if($team['active_gap'] == 'no'):?>
-					style="margin-bottom:<?php echo $settings['items_gap'] ?>px;"
-					<?php else : ?>
+				
+				<?php if($item['active_gap'] == 'yes'):?>
 					style="margin-top:<?php echo $settings['items_gap'] ?>px;"
+					<?php else : ?>
+					style="margin-bottom:<?php echo $settings['items_gap'] ?>px;"
 				<?php endif?>
 
 				>
                     <div class="tft-icon-text-single-inner tft-center">
                         <div class="icon_outter">
-                            <img src="<? echo $team['box_icon']['url'] ?> " alt="">
+                            <img src="<? echo $item['box_icon']['url'] ?> " alt="">
                         </div>
-                        <h3> <?php echo $team['box_title']; ?></h3>
-                        <p> <?php echo $team['box_details']; ?></p>
+                        <h3> <?php echo $item['box_title']; ?></h3>
+                        <p> <?php echo $item['box_details']; ?></p>
                     </div>
                 </div>
                 <?php endforeach ?>

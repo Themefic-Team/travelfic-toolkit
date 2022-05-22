@@ -37,7 +37,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-map-pin';
+		return 'eicon-heading';
 	}
 
 	/**

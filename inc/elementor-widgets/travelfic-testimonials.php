@@ -24,7 +24,7 @@ class Testimonials extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Testimonials', 'travelfic' );
+		return esc_html__( 'TFT Testimonials', 'travelfic' );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class Testimonials extends \Elementor\Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-testimonial';
+		return 'eicon-testimonial-carousel';
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Testimonials extends \Elementor\Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'travelfic', 'reveiw', 'testimonials' ];
+		return [ 'travelfic', 'reveiw', 'testimonials', 'tft' ];
 	}
 
 	/**

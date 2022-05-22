@@ -24,7 +24,7 @@ class Destinaions extends \Elementor\Widget_Base{
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__( 'Tour Destinations', 'travelfic' );
+        return esc_html__( 'TFT Tour Destinations', 'travelfic' );
     }
 
     /**
@@ -76,7 +76,7 @@ class Destinaions extends \Elementor\Widget_Base{
      * @return array Widget keywords.
      */
     public function get_keywords() {
-        return ['travelfic', 'destinaions', 'tours'];
+        return ['travelfic', 'destinaions', 'tours', 'tft'];
     }
 
     /**
@@ -171,44 +171,45 @@ class Destinaions extends \Elementor\Widget_Base{
             if ( $cat->category_parent == 0 ) {
                 $category_id = $cat->term_id;
                 $meta = get_term_meta( $cat->term_id, 'tour_destination', true );
-                $cat_image = $meta['image']['url'];?>
+                $cat_image = $meta['image']['url'];
+            ?>
 
-        <div class="tft-single-destination tft-col">
-            <div class="tft-destination-thumbnail tft-thumbnail">
-                <a href="<?php echo get_term_link( $cat->slug, 'tour_destination' ); ?>"><img src="<?php echo $cat_image; ?>" alt=""></a>
-            </div>
-            <div class="tft-destination-title">
-                <a href="#"><?php echo '<a href="' . get_term_link( $cat->slug, 'tour_destination' ) . '">' . $cat->name . '</a>'; ?></a>
-            </div>
+            <div class="tft-single-destination tft-col">
+                <div class="tft-destination-thumbnail tft-thumbnail">
+                    <a href="<?php echo get_term_link( $cat->slug, 'tour_destination' ); ?>"><img src="<?php echo $cat_image; ?>" alt=""></a>
+                </div>
+                <div class="tft-destination-title">
+                    <a href="#"><?php echo '<a href="' . get_term_link( $cat->slug, 'tour_destination' ) . '">' . $cat->name . '</a>'; ?></a>
+                </div>
 
-            <div class="tft-destination-details">
                 <div class="tft-destination-details">
-                    <ul>
-                    <?php
-					$args2 = array(
-						'taxonomy'     => $taxonomy,
-						'child_of'     => 0,
-						'parent'       => $category_id,
-						'orderby'      => $orderby,
-						'show_count'   => $show_count,
-						'pad_counts'   => $pad_counts,
-						'hierarchical' => $hierarchical,
-						'title_li'     => $title,
-						'hide_empty'   => $empty,
-                	);
-					$sub_cats = get_categories( $args2 );
-					if ( $sub_cats ) {
-						foreach ( $sub_cats as $sub_category ) { ?>
-							<li><a href="<?php echo get_term_link( $sub_category->slug, 'tour_destination' ); ?>"><?php echo $sub_category->name; ?></a></li>
-						<?php } 
-					}?>
-                    </ul>
+                    <div class="tft-destination-details">
+                        <ul>
+                        <?php
+                        $args2 = array(
+                            'taxonomy'     => $taxonomy,
+                            'child_of'     => 0,
+                            'parent'       => $category_id,
+                            'orderby'      => $orderby,
+                            'show_count'   => $show_count,
+                            'pad_counts'   => $pad_counts,
+                            'hierarchical' => $hierarchical,
+                            'title_li'     => $title,
+                            'hide_empty'   => $empty,
+                        );
+                        $sub_cats = get_categories( $args2 );
+                        if ( $sub_cats ) {
+                            foreach ( $sub_cats as $sub_category ) { ?>
+                                <li><a href="<?php echo get_term_link( $sub_category->slug, 'tour_destination' ); ?>"><?php echo $sub_category->name; ?></a></li>
+                            <?php } 
+                        }?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <?php }
-        }
-        ?>
+        <?php } else{
+            
+        } } ?>
 
     </div>
 

@@ -24,7 +24,7 @@ class LatestNews extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Latest News', 'travelfic' );
+		return esc_html__( 'TFT Latest News', 'travelfic' );
 	}
 
 	/**
@@ -106,7 +106,7 @@ class LatestNews extends \Elementor\Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'travelfic', 'blog', 'latest' ];
+		return [ 'travelfic', 'blog', 'latest', 'tft' ];
 	}
 
 	/**

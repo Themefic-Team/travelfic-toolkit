@@ -27,7 +27,7 @@ class TeamMembers extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('Team Members', 'travelfic');
+		return esc_html__('TFT Team Members', 'travelfic');
 	}
 
 	/**
@@ -83,7 +83,7 @@ class TeamMembers extends \Elementor\Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['travelfic', 'team', 'member'];
+		return ['travelfic', 'team', 'member', 'tft'];
 	}
 
 	/**
