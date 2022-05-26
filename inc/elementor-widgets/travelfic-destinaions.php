@@ -171,7 +171,12 @@ class Destinaions extends \Elementor\Widget_Base{
             if ( $cat->category_parent == 0 ) {
                 $category_id = $cat->term_id;
                 $meta = get_term_meta( $cat->term_id, 'tour_destination', true );
-                $cat_image = $meta['image']['url'];
+                if(isset($meta['image']['url'])){
+                    $cat_image = $meta['image']['url'];
+                } else{
+                    $cat_image = '';
+                }
+                
             ?>
 
             <div class="tft-single-destination tft-col">
