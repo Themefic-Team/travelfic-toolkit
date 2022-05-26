@@ -205,20 +205,20 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             
             <div class="hero--slider-wrapper">
                 <div class="tft-hero-slider-selector">
-                    <?php foreach( $settings['hero_slider_list'] as $team ) : ?>
+                    <?php foreach( $settings['hero_slider_list'] as $item ) : ?>
                         <div class="tft-hero-single-item">
-                            <div class="tft-slider-bg-img" style="background-image: url(<?php echo $team['slider_image']['url']?>);height: <?php echo $settings['slider_height'] ?>px;
+                            <div class="tft-slider-bg-img" style="background-image: url(<?php echo $item['slider_image']['url']?>);height: <?php echo $settings['slider_height'] ?>px;
 
                             ">
                                 <div class="tft-container tft-hero-single-item-inner">
                                     <div class=" slider-inner-info">
                                         <div class="tft-slider-title">
-                                            <h1 class="tft-title title-large"> <?php echo $team['slider_title']?> </h1>
+                                            <h1 class="tft-title title-large"> <?php echo $item['slider_title']?> </h1>
                                         </div>
                                         <div class="slider-button">
-                                            <a class="bttn tft-bttn-primary" href="<?php echo $team['slider_bttn_url']?>">
+                                            <a class="bttn tft-bttn-primary" href="<?php echo $item['slider_bttn_url']?>">
                                                 <div class="tft-custom-bttn">
-                                                    <span><?php echo $team['slider_bttn_txt']?></span>
+                                                    <span><?php echo $item['slider_bttn_txt']?></span>
                                                 </div>
                                             </a>
                                         </div>
@@ -240,33 +240,6 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                 <div class="tft-search-box-inner">
 
                     <?php echo $settings['slider_search_code']; ?>
-
-                    <!-- <form class="tft-search-box-form" action="#" method="get">
-                        <div class="tft-search-box-container tft-container-flex">
-                            <div class="tft-search-box-field">
-                                <label for="search-destinations">Destinations</label>
-                                <select name="search-destinations" id="destinations">
-                                    <option value="Paris,France">Paris,France</option>
-                                    <option value="Dhaka,Bangladesh">Dhaka,Bangladesh</option>
-                                    <option value="Jakarta,Indonesia">Jakarta,Indonesia</option>
-                                </select>
-                            </div> 
-                            <div class="tft-search-box-field">
-                                <label for="check-in">Check In</label>
-                                <input type="date" id="check-in" name="checkin">
-                            </div>
-
-                            <div class="tft-search-box-field">
-                                <label for="price-range">Price Range</label>
-                                <input type="text" name="price-range" id="price-range" value="$500 - $10,000">
-                            </div>
-                            <div class="tft-search-box-field">
-                                <div class="slider-button tft-bttn-primary border-rds-4">
-								<input id="submit" type="submit" value="Booking Now" class="tft-custom-bttn" />
-                                </div>
-                            </div>
-                        </div>
-                    </form> -->
 
                 </div>
             </div>
