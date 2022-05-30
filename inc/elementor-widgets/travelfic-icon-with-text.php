@@ -114,6 +114,7 @@ class IconWithText extends \Elementor\Widget_Base {
             'box_title', [
                 'label' => esc_html__( 'Title', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => __( 'Add Your Heading Text Here', 'travelfic' ),
                 'label_block' => true,
             ]
         );
@@ -121,6 +122,7 @@ class IconWithText extends \Elementor\Widget_Base {
             'box_details', [
                 'label' => esc_html__( 'Descriptions', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'travelfic' ),
                 'label_block' => true,
             ]
         );

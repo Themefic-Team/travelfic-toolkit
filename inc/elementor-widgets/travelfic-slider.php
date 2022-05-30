@@ -169,6 +169,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             'slider_search_code', [
                 'label' => __( 'Search Shortcode', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => __( 'Add Shortcode Here', 'travelfic' ),
                 'label_block' => true,
             ]
         );

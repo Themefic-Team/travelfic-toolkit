@@ -114,6 +114,7 @@ class Testimonials extends \Elementor\Widget_Base {
             'person_name', [
                 'label' => esc_html__( 'Name', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'John Doe', 'travelfic' ),
                 'label_block' => true,
             ]
         );
@@ -121,6 +122,7 @@ class Testimonials extends \Elementor\Widget_Base {
             'designation', [
                 'label' => esc_html__( 'Designation', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'CEO', 'travelfic' ),
                 'label_block' => true,
             ]
         );
