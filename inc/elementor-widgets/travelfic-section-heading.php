@@ -24,7 +24,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Tf Heading', 'travelfic' );
+		return esc_html__( 'Tft Heading', 'travelfic' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'travelfic', 'title', 'header' ];
+		return [ 'travelfic', 'title', 'header', 'tft' ];
 	}
 
 	/**
