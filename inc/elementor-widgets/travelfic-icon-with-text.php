@@ -114,7 +114,7 @@ class IconWithText extends \Elementor\Widget_Base {
             'box_title', [
                 'label' => esc_html__( 'Title', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => __( 'Add Your Heading Text Here', 'travelfic' ),
+				'default' => __( 'Your Heading Text Here', 'travelfic' ),
                 'label_block' => true,
             ]
         );
