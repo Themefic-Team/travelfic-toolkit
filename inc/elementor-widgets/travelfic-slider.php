@@ -114,6 +114,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             'slider_title', [
                 'label' => __( 'Slider Title', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Tittle Goes Here', 'travelfic' ),
                 'label_block' => true,
             ]
         );
@@ -161,7 +162,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 			[
 				'label'   => __( 'Enable Search Box?', 'travelfic' ),
 				'type'    => \Elementor\Controls_Manager::SWITCHER,
-				'description' =>  __( 'Please Turn OFF the', 'travelfic' ),
+				'description' =>  __( 'Turn On to active the Searchbox', 'travelfic' ),
 				'default' => '1',
 			]
 		);
@@ -170,6 +171,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                 'label' => __( 'Search Shortcode', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
 				'placeholder' => __( 'Add Shortcode Here', 'travelfic' ),
+				'default' => esc_html__( '[tf_search_form type="tour"]', 'travelfic' ),
                 'label_block' => true,
             ]
         );
