@@ -114,7 +114,17 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             'slider_title', [
                 'label' => __( 'Slider Title', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Tittle Goes Here', 'travelfic' ),
+				'default' => esc_html__( 'It’s Time To
+				Explore The World', 'travelfic' ),
+                'label_block' => true,
+            ]
+        );
+
+		$repeater->add_control(
+            'slider_subtitle', [
+                'label' => __( 'Slider Subtitle', 'travelfic' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'A There are many variatio of passage of Lorem for a Ipsum available  Lorem for a Ipsum available dummy lorem text.', 'travelfic' ),
                 'label_block' => true,
             ]
         );
@@ -123,7 +133,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             'slider_bttn_txt', [
                 'label' => __( 'Slider Text', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Click here', 'travelfic' ),
+				'default' => esc_html__( 'Explore Now', 'travelfic' ),
                 'label_block' => true,
             ]
         );
@@ -171,7 +181,6 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                 'label' => __( 'Search Shortcode', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
 				'placeholder' => __( '[tf_search_form type="tour"]', 'travelfic' ),
-				'default' => esc_html__( "[tf_search_form type='tour']", 'travelfic' ),
 				'description' =>  __( "[tf_search_form type='tour']", 'travelfic' ),
                 'label_block' => true,
             ]
@@ -218,6 +227,15 @@ class TravelFicSlider extends \Elementor\Widget_Base {
                                     <div class=" slider-inner-info">
                                         <div class="tft-slider-title">
                                             <h1 class="tft-title title-large"> <?php echo $item['slider_title']?> </h1>
+											
+												<?php 
+													if(  $item['slider_subtitle'] != '' ){ ?>
+													<div class="tft-sub-title">
+														<p> <?php echo $item['slider_subtitle']?> </p>
+													</div>
+													<?php }
+												?>
+												
                                         </div>
                                         <div class="slider-button">
                                             <a class="bttn tft-bttn-primary" href="<?php echo $item['slider_bttn_url']?>">
