@@ -177,7 +177,7 @@ class Testimonials extends \Elementor\Widget_Base {
     
     <?php if( $settings['testimonials_section'] ) : ?>
         
-        <div class="tft-testimonials-wrapper">
+        <div class="tft-testimonials-wrapper tft-customizer-typography">
             <div class="tft-testimonials-selector tft-slide-default">
                 <?php 
 

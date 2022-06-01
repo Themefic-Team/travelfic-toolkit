@@ -165,7 +165,7 @@ class IconWithText extends \Elementor\Widget_Base {
 	$settings = $this->get_settings_for_display(); ?>
 
     <?php if( $settings['icon_text_list'] ) : ?>
-        <div class="tft-icon-text-wrapper">
+        <div class="tft-icon-text-wrapper tft-customizer-typography">
             <div class="tft-icon-text-items tf-flex">
             <?php foreach( $settings['icon_text_list'] as $item ) : ?>
 				

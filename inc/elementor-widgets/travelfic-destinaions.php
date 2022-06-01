@@ -163,7 +163,7 @@ class Destinaions extends \Elementor\Widget_Base{
 
         ?>
 
-	<div class="tft-destination-wrapper">
+	<div class="tft-destination-wrapper tft-customizer-typography">
     	<div class="tft-destination tft-row">
         <?php
 

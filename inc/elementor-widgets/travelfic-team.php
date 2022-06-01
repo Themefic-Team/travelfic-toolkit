@@ -210,7 +210,7 @@ class TeamMembers extends \Elementor\Widget_Base
 
 
 		<?php if ($settings['members_list']) : ?>
-			<div class="tft_team_wrapper">
+			<div class="tft_team_wrapper tft-customizer-typography">
 				<div class="tft-team-members tf-flex tft-f-cg-40 tft-f-rw-40 tft-f-sb">
 					<?php foreach ($settings['members_list'] as $item) : ?>
 						<div class="tft-single-member tft-card-default">

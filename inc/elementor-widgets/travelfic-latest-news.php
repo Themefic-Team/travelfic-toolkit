@@ -211,7 +211,7 @@ class LatestNews extends \Elementor\Widget_Base {
 	
 	?>
 
-		<div class="tft-popular-tour-wrapper">
+		<div class="tft-popular-tour-wrapper tft-customizer-typography">
             <div class="tft-latest-posts">
                 <div class="tft-latest-post-items tf-flex">
 					

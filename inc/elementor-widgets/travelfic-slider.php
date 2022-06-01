@@ -216,7 +216,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 		if ( $settings['hero_slider_list'] ) { ?>
             <!-- Slider Hero section -->
             
-            <div class="hero--slider-wrapper">
+            <div class="hero--slider-wrapper tft-customizer-typography">
                 <div class="tft-hero-slider-selector">
                     <?php foreach( $settings['hero_slider_list'] as $item ) : ?>
                         <div class="tft-hero-single-item">

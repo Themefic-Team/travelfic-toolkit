@@ -186,7 +186,7 @@ class PopularTours extends \Elementor\Widget_Base {
 	
 	?>
 
-		<div class="tft-popular-tour-wrapper">
+		<div class="tft-popular-tour-wrapper tft-customizer-typography">
             <div class="tft-popular-tour-items tft-popular-tour-selector">
 			
 			
