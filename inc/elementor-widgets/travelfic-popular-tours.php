@@ -240,18 +240,22 @@ class PopularTours extends \Elementor\Widget_Base {
 								<h3><?php the_title() ?></h3>
 							</a>
                             <div class="tft-popular-sub-info">
-								<p>
-									<i class="fas fa-location-arrow"></i> 
-									<?php 
-										echo get_post_meta(get_the_ID(), "tf_tours_option", true)['text_location'];
-									?>
-								</p>
+								<div class="tft-popular-tour-address">
+									<p>
+										<i class="fas fa-location-arrow"></i> 
+										<?php 
+											echo get_post_meta(get_the_ID(), "tf_tours_option", true)['text_location'];
+										?>
+									</p>
+								</div>
 								<?php 
 								if( get_post_meta(get_the_ID(), "tf_tours_option", true)['duration'] != '' ){ ?>
-									<p>
-										<i class="fas fa-calendar-alt"></i> 
-										<?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['duration']; ?>
-									</p>
+									<div class="tft-popular-tour-duration">
+										<p>
+											<i class="fas fa-calendar-alt"></i> 
+											<?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['duration']; ?>
+										</p>
+									</div>
 								<?php }
 								?>
                             </div>
