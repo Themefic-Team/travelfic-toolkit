@@ -260,7 +260,7 @@ class PopularTours extends \Elementor\Widget_Base {
 								?>
                             </div>
                             <div class="tft-popular-item-price">
-                                <h3><span>from </span><?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price']; ?> </h3>
+                                <h3><span>from </span>$<?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price']; ?> </h3>
                             </div>
 							
                         </div>
