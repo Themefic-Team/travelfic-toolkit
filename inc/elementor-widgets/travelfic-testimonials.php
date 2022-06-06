@@ -213,7 +213,7 @@ class Testimonials extends \Elementor\Widget_Base {
             $(document).ready(function () {
             $('.tft-testimonials-selector').slick({
                 slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 6000,  
                 speed: 500,  
