@@ -130,6 +130,7 @@ class Testimonials extends \Elementor\Widget_Base {
             'testimonials_review', [
                 'label' => __( 'Review Details', 'travelfic' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore'
             ]
         );
         $repeater->add_control(
