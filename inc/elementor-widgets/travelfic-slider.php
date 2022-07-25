@@ -217,7 +217,8 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             <!-- Slider Hero section -->
             
             <div class="hero--slider-wrapper tft-customizer-typography">
-                <div class="tft-hero-slider-selector">
+				<?php $rand_number = rand(); ?>
+                <div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo $rand_number ?>">
                     <?php foreach( $settings['hero_slider_list'] as $item ) : ?>
                         <div class="tft-hero-single-item">
                             <div class="tft-slider-bg-img" style="background-image: url(<?php echo $item['slider_image']['url']?>);height: <?php echo $settings['slider_height'] ?>px;
@@ -273,7 +274,7 @@ class TravelFicSlider extends \Elementor\Widget_Base {
             "use strict";
             $(document).ready(function () {
             //Your Code Inside 
-            $('.tft-hero-slider-selector').slick({
+            $('.tft-hero-slider-selector-<?php echo $rand_number ?>').slick({
                 dots: false,
                 infinite: true,
                 slidesToShow: 1,
