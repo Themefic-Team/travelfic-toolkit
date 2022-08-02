@@ -260,7 +260,29 @@ class PopularTours extends \Elementor\Widget_Base {
 								?>
                             </div>
                             <div class="tft-popular-item-price">
-                                <h3><span>from </span>$<?php echo get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price']; ?> </h3>
+								<?php 
+									$coustom_rule_pricing = get_post_meta(get_the_ID(), "tf_tours_option", true);
+									$pricing_rule = !empty( $coustom_rule_pricing['pricing'] ) ? $coustom_rule_pricing['pricing'] : '';
+								?>
+                                <h3>
+									<?php 
+									
+										if( $pricing_rule == 'person'  ){
+											$adult_pricing = get_post_meta(get_the_ID(), "tf_tours_option", true)['adult_price'];
+											echo '<span> from </span>'.get_woocommerce_currency_symbol().esc_html( $adult_pricing );
+										}else{
+											$group_pricing = get_post_meta(get_the_ID(), "tf_tours_option", true)['group_price'];
+											echo get_woocommerce_currency_symbol().esc_html( $group_pricing  );
+										}
+									?>
+								</h3>
+								<?php 
+									
+									
+								?>
+								<?php 
+								
+								?>
                             </div>
 							
                         </div>

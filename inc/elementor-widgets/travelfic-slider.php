@@ -204,8 +204,40 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 				'default' => 900,
 			]
 		);
-        
         $this->end_controls_section();
+
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Slider Style', 'travelfic' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'slider_title',
+				'selector' => '{{WRAPPER}} .tft-slider-title h1',
+				'label' => esc_html('Title Style', 'travelfic')
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'slider_sub_title',
+				'selector' => '{{WRAPPER}} .tft-sub-title p',
+				'label' => esc_html('Subtitle Style', 'travelfic')
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'slider_button_style',
+				'selector' => '{{WRAPPER}} .slider-button a',
+				'label' => esc_html('Slider Button Style', 'travelfic')
+			]
+		);
 
 	}
 
@@ -270,49 +302,79 @@ class TravelFicSlider extends \Elementor\Widget_Base {
 
         <script>
         // Home Slider
-        (function ($) {
+        	(function ($) {
             "use strict";
-            $(document).ready(function () {
-            //Your Code Inside 
-            $('.tft-hero-slider-selector-<?php echo $rand_number ?>').slick({
-                dots: false,
-                infinite: true,
-                slidesToShow: 1,
-                arrows: true,
-                fade: true,
-                speed: 500,
-                infinite: true,
-                cssEase: 'ease-in-out',
-                touchThreshold: 100,
-                autoplay: false,
-                autoplaySpeed: 2000
-                });
-            });
-            
-            // Counter Number
-            var $tfSliderHero = $('.tft-hero-slider-selector');
-            if ($tfSliderHero.length) {
-            var currentSlide;
-            var sliderCounter = document.createElement('div');
-            sliderCounter.classList.add('slider__counter');
-            var updateSliderCounter = function(slick) {
-                currentSlide = slick.slickCurrentSlide() + 1;
-                currentSlide = ('0000'+currentSlide).match(/\d{2}$/);
-                $(sliderCounter).text(currentSlide)
-            };
-            $tfSliderHero.on('init', function(event, slick) {
-                $tfSliderHero.append(sliderCounter);
-                updateSliderCounter(slick);
-            });
-            $tfSliderHero.on('afterChange', function(event, slick, currentSlide) {
-                updateSliderCounter(slick, currentSlide);
-            });
-            $tfSliderHero.slick();
+				$(document).ready(function () {
+				//Your Code Inside 
+				$('.tft-hero-slider-selector-<?php echo $rand_number ?>').slick({
+					dots: false,
+					infinite: true,
+					slidesToShow: 1,
+					arrows: true,
+					fade: true,
+					speed: 500,
+					infinite: true,
+					cssEase: 'ease-in-out',
+					touchThreshold: 100,
+					autoplay: false,
+					autoplaySpeed: 2000
+					});
+				});
+				
+				// Counter Number
+				var $tfSliderHero = $('.tft-hero-slider-selector-<?php echo $rand_number ?>');
+				console.log($tfSliderHero);
 
-        }
-        }(jQuery)); 
+				if ($tfSliderHero.length) {
+					var currentSlide;
+					var sliderCounter = document.createElement('div');
+					sliderCounter.classList.add('slider__counter');
+					var updateSliderCounter = function(slick) {
+						currentSlide = slick.slickCurrentSlide() + 1;
+						currentSlide = ('0000'+currentSlide).match(/\d{2}$/);
+						$(sliderCounter).text(currentSlide)
+					};
+					$tfSliderHero.on('init', function(event, slick) {
+						$tfSliderHero.append(sliderCounter);
+						updateSliderCounter(slick);
+					});
+					$tfSliderHero.on('afterChange', function(event, slick, currentSlide) {
+						updateSliderCounter(slick, currentSlide);
+					});
+					$tfSliderHero.slick();
+
+				}
+			}(jQuery)); 
         
         </script>
     <?php }
+	?>
+	<style>
+		<?php echo $rand_number; ?> .slider__counter {
+			position: absolute;
+			top: 90%;
+			left: 29%;
+			width: 115px;
+			text-align: right;
+			font-size: 24px;
+			color: $color-orange;
+			font-family: $font-inter;
+			font-weight: 500;
+		}
+		
+		<?php echo $rand_number; ?> .slider__counter::before {
+			content: "";
+			width: 100%;
+			height: 2px;
+			background: rgba(255, 255, 255, 0.5);
+			position: absolute;
+			left: -38px;
+			bottom: 10px;
+		}
+	</style>
+
+
+	<?php
+
 	}
 }
