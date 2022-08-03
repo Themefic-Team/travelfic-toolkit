@@ -208,12 +208,14 @@ class LatestNews extends \Elementor\Widget_Base {
         }
 
 		$query = new \WP_Query( $args );
+
+		$items_count = $settings['post_items'];
 	
 	?>
 
 		<div class="tft-popular-tour-wrapper tft-customizer-typography">
             <div class="tft-latest-posts">
-                <div class="tft-latest-post-items tf-flex">
+                <div id="items-count-<?php echo $items_count; ?>" class="tft-latest-post-items">
 					
 				<?php if( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post(); ?>

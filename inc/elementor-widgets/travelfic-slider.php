@@ -349,31 +349,11 @@ class TravelFicSlider extends \Elementor\Widget_Base {
         </script>
     <?php }
 	?>
-	<style>
-		<?php echo $rand_number; ?> .slider__counter {
-			position: absolute;
-			top: 90%;
-			left: 29%;
-			width: 115px;
-			text-align: right;
-			font-size: 24px;
-			color: $color-orange;
-			font-family: $font-inter;
-			font-weight: 500;
-		}
-		
-		<?php echo $rand_number; ?> .slider__counter::before {
-			content: "";
-			width: 100%;
-			height: 2px;
-			background: rgba(255, 255, 255, 0.5);
-			position: absolute;
-			left: -38px;
-			bottom: 10px;
-		}
-	</style>
 
-
+	<?php 
+		do_action( 'slider_style', $rand_number );
+	?>
+	
 	<?php
 
 	}
