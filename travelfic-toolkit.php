@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Travelfic Toolkit
- * Plugin URI: https://psdtowpservice.com/plugins
+ * Plugin URI: https://themefic.com/
  * Description: Toolkit for travelfic Theme which containing widgets and some extra functions.
- * Author: AWEB-Squad
+ * Author: Themefic
  * Text Domain: travelfic
  * Domain Path: /lang/
- * Author URI: https://themeforest.net/user/aweb-squad
+ * Author URI: https://themefic.com/
  * Version: 1.0.0
  */
 
