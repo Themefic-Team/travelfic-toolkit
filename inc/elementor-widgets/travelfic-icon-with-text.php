@@ -180,7 +180,7 @@ class IconWithText extends \Elementor\Widget_Base {
 				>
                     <div class="tft-icon-text-single-inner tft-center">
                         <div class="icon_outter">
-                            <img src="<? echo $item['box_icon']['url'] ?> " alt="">
+                            <img src="<?php echo $item['box_icon']['url'] ?> " alt="">
                         </div>
                         <h3> <?php echo $item['box_title']; ?></h3>
                         <p> <?php echo $item['box_details']; ?></p>
