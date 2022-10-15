@@ -114,6 +114,7 @@ final class Travelfic_Elementor_Extensions {
 
         // Include Widget files
         require_once( __DIR__ . '/elementor-widgets/travelfic-slider.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-testimonials.php' );
@@ -125,6 +126,7 @@ final class Travelfic_Elementor_Extensions {
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Testimonials() );
