@@ -85,6 +85,15 @@ final class Travelfic_Elementor_Extensions {
         
         // Add Plugin actions
         add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+
+        add_action( 'wp_enqueue_scripts', [ $this, 'elementor_assets_dependencies' ] );
+    }
+
+    function elementor_assets_dependencies() {
+
+        /* Styles */
+        wp_register_style( 'travelfic-slider-hero', SHEETSCELL_PLUGIN_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), SHEETSCELL_PLUGIN_VERSION, 'all' );
+    
     }
 
     /**
@@ -95,7 +104,7 @@ final class Travelfic_Elementor_Extensions {
        $elements_manager->add_category(
            'travelfic',
            [
-               'title' => __( 'Travelfic Addons', 'travelfic' ),
+               'title' => __( 'Travelfic Addons', 'travelfic-toolkit' ),
                'icon' => 'fa fa-plug',
            ]
        );
@@ -113,27 +122,27 @@ final class Travelfic_Elementor_Extensions {
     public function init_widgets() {
 
         // Include Widget files
-        require_once( __DIR__ . '/elementor-widgets/travelfic-slider.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-testimonials.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-popular-tours.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-destinaions.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-slider-hero.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-testimonials.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-popular-tours.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-destinaions.php' );
+        // require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
 
 
         // Register widget
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Testimonials() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \PopularTours() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Destinaions() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelficSliderHero() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Testimonials() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \PopularTours() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Destinaions() );
+        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
 
     }
 
