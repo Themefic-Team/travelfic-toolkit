@@ -13,7 +13,7 @@ class IconWithText extends \Elementor\Widget_Base {
 	public function get_name() {
 		return 'tf-icon-with-text';
 	}
-
+	
 	/**
 	 * Get widget title.
 	 *
@@ -24,7 +24,7 @@ class IconWithText extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'TFT Icon With Text', 'travelfic' );
+		return esc_html__( 'TFT Icon With Text', 'travelfic-toolkit' );
 	}
 
 	/**
@@ -79,6 +79,11 @@ class IconWithText extends \Elementor\Widget_Base {
 		return [ 'travelfic', 'icon', 'icon with text', 'tft' ];
 	}
 
+	public function get_style_depends()
+	{
+		return ['travelfic-icon-text'];
+	}
+
 	/**
 	 * Register oEmbed widget controls.
 	 *
@@ -92,7 +97,7 @@ class IconWithText extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'icon_with_text',
 			[
-				'label' => esc_html__( 'Slider Items', 'travelfic' ),
+				'label' => esc_html__( 'Items', 'travelfic-toolkit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -100,7 +105,7 @@ class IconWithText extends \Elementor\Widget_Base {
 		$repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'box_icon', [
-                'label' => esc_html__( 'Icon', 'travelfic' ),
+                'label' => esc_html__( 'Icon', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -112,15 +117,15 @@ class IconWithText extends \Elementor\Widget_Base {
         );
         $repeater->add_control(
             'box_title', [
-                'label' => esc_html__( 'Title', 'travelfic' ),
+                'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => __( 'Your Heading Text Here', 'travelfic' ),
+				'default' => __( 'Your Heading Text Here', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
         $repeater->add_control(
             'box_details', [
-                'label' => esc_html__( 'Descriptions', 'travelfic' ),
+                'label' => esc_html__( 'Descriptions', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'travelfic' ),
                 'label_block' => true,
@@ -129,10 +134,10 @@ class IconWithText extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'active_gap',
 			[
-				'label' => esc_html__( 'Active Gap Item', 'travelfic' ),
+				'label' => esc_html__( 'Active Gap Item', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'travelfic' ),
-				'label_off' => esc_html__( 'No', 'travelfic' ),
+				'label_on' => esc_html__( 'Yes', 'travelfic-toolkit' ),
+				'label_off' => esc_html__( 'No', 'travelfic-toolkit' ),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
@@ -141,7 +146,7 @@ class IconWithText extends \Elementor\Widget_Base {
 		$this->add_control(
 			'icon_text_list',
 			[
-				'label' => esc_html__( 'Repeater List', 'travelfic' ),
+				'label' => esc_html__( 'Repeater List', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'title_field' => '{{{ box_title }}}',
@@ -151,13 +156,52 @@ class IconWithText extends \Elementor\Widget_Base {
 		$this->add_control(
 			'items_gap',
 			[
-				'label' => esc_html__( 'Item Gap', 'travelfic' ),
+				'label' => esc_html__( 'Middle item gap', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
 				'default' => 70,
 			]
 		);
 
 		$this->end_controls_section();
+
+
+		// Style Section
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__('Item Content Typo', 'travelfic-toolkit'),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'icon-text_title',
+				'selector' => '{{WRAPPER}} .tft-icon-text-wrapper .tft-title',
+				'label' => esc_html__('Title Style', 'travelfic-toolkit')
+			]
+		);
+		$this->add_control(
+			'title_color',
+			[
+				'label' => __('Title Color', 'travelfic-toolkit'),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#000',
+				'selectors' => [
+					'{{WRAPPER}} .tft-icon-text-wrapper .tft-title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'icon-text_details',
+				'selector' => '{{WRAPPER}} .tft-icon-text-wrapper .tft-details',
+				'label' => esc_html__('Title Style', 'travelfic-toolkit')
+			]
+		);
 
 	}
 
@@ -182,8 +226,8 @@ class IconWithText extends \Elementor\Widget_Base {
                         <div class="icon_outter">
                             <img src="<?php echo $item['box_icon']['url'] ?> " alt="">
                         </div>
-                        <h3> <?php echo $item['box_title']; ?></h3>
-                        <p> <?php echo $item['box_details']; ?></p>
+                        <h3 class="tft-title"> <?php echo $item['box_title']; ?></h3>
+                        <p class="tft-details"> <?php echo $item['box_details']; ?></p>
                     </div>
                 </div>
                 <?php endforeach ?>

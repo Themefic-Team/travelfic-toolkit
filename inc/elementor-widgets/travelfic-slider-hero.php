@@ -99,6 +99,24 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 	 * @since 1.0.0
 	 * @access protected
 	 */
+
+	public function tf_search_types() {
+		$types = array(
+			'all'   => __( 'All', 'tourfic' ),
+			'hotel' => __( 'Hotel', 'tourfic' ),
+			'tour'  => __( 'Tour', 'tourfic' ),
+		);
+
+		if ( function_exists('is_tf_pro') && is_tf_pro() ) {
+			$types['booking']   = __( 'Booking.com', 'tourfic' );
+			$types['tp-flight'] = __( 'TravelPayouts Flight', 'tourfic' );
+			$types['tp-hotel']  = __( 'TravelPayouts Hotel', 'tourfic' );
+		}
+
+		return $types;
+	}
+
+
 	protected function register_controls()
 	{
 
@@ -193,16 +211,28 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 				'default' => '1',
 			]
 		);
+		
 		$this->add_control(
-			'slider_search_code',
+			'type',
 			[
-				'label' => esc_html__('Search Shortcode', 'travelfic-toolkit'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__('[tf_search_form type="tour"]', 'travelfic-toolkit'),
-				'description' =>  esc_html__("Add the search shortcode", 'travelfic-toolkit'),
-				'label_block' => true,
+				'type'     => \Elementor\Controls_Manager::SELECT2,
+				'label'    => esc_html__( 'Type', 'tourfic' ),
+				'multiple' => true,
+				'options'  => $this->tf_search_types(),
+				'default'  => [ 'all' ],
 			]
 		);
+
+		// $this->add_control(
+		// 	'slider_search_code',
+		// 	[
+		// 		'label' => esc_html__('Search Shortcode', 'travelfic-toolkit'),
+		// 		'type' => \Elementor\Controls_Manager::TEXT,
+		// 		'placeholder' => esc_html__('[tf_search_form type="tour"]', 'travelfic-toolkit'),
+		// 		'description' =>  esc_html__("Add the search shortcode", 'travelfic-toolkit'),
+		// 		'label_block' => true,
+		// 	]
+		// );
 		$this->end_controls_section();
 
 
@@ -575,7 +605,10 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 
 	protected function render()
 	{
-		$settings = $this->get_settings_for_display(); ?>
+		$settings = $this->get_settings_for_display();
+		$type_arr           = !is_array($settings['type']) ? array($settings['type']): $settings['type'];
+        $type               = $settings['type'] ? implode( ',', $type_arr ) : implode( ',', [ 'all' ] );
+		?>
 		<style>
 			.tft-hero-slider-selector .tft-hero-single-item::before {
 				background: rgb(0 0 0 / <?php echo $settings['slider_opacity'] ?>%);
@@ -624,7 +657,8 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 			<?php if ($settings['search_box_switcher'] == 'yes') : ?>
 				<div class="tft-search-box">
 					<div class="tft-search-box-inner">
-						<?php echo sanitize_text_field($settings['slider_search_code']); ?>
+						<?php //echo sanitize_text_field($settings['slider_search_code']); ?>
+						<?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ]' );  ?>
 					</div>
 				</div>
 			<?php endif; ?>

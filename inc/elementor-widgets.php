@@ -97,6 +97,8 @@ final class Travelfic_Elementor_Extensions
 
         /* Styles */
         wp_register_style('travelfic-slider-hero', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
+        wp_register_style('travelfic-icon-text', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-icon-text.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
+
     }
 
     /**
