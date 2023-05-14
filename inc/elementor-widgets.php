@@ -10,7 +10,7 @@ final class Travelfic_Elementor_Extensions
      * @access private
      * @static
      *
-     * @var Elementor_Test_Extension The single instance of the class.
+     * @var Elementor_Travelfic_Extension The single instance of the class.
      */
     private static $_instance = null;
 
@@ -24,11 +24,10 @@ final class Travelfic_Elementor_Extensions
      * @access public
      * @static
      *
-     * @return Elementor_Test_Extension An instance of the class.
+     * @return Elementor_Travelfic_Extension An instance of the class.
      */
     public static function instance()
     {
-
         if (is_null(self::$_instance)) {
             self::$_instance = new self();
         }
@@ -129,8 +128,9 @@ final class Travelfic_Elementor_Extensions
 
         // Include Widget files
         require_once(__DIR__ . '/elementor-widgets/travelfic-slider-hero.php');
+        require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
+        
         // require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
-        // require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-testimonials.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
@@ -141,8 +141,9 @@ final class Travelfic_Elementor_Extensions
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \TravelficSliderHero());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
+
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
-        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Testimonials() );
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
