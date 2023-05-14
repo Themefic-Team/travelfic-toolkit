@@ -1,5 +1,6 @@
 <?php
-final class Travelfic_Elementor_Extensions {
+final class Travelfic_Elementor_Extensions
+{
 
     /**
      * Instance
@@ -25,9 +26,10 @@ final class Travelfic_Elementor_Extensions {
      *
      * @return Elementor_Test_Extension An instance of the class.
      */
-    public static function instance() {
+    public static function instance()
+    {
 
-        if ( is_null( self::$_instance ) ) {
+        if (is_null(self::$_instance)) {
             self::$_instance = new self();
         }
         return self::$_instance;
@@ -40,11 +42,11 @@ final class Travelfic_Elementor_Extensions {
      *
      * @access public
      */
-    public function __construct() {
+    public function __construct()
+    {
 
-        add_action( 'init', [ $this, 'i18n' ] );
-        add_action( 'plugins_loaded', [ $this, 'init' ] );
-
+        add_action('init', [$this, 'i18n']);
+        add_action('plugins_loaded', [$this, 'init']);
     }
 
     /**
@@ -58,8 +60,9 @@ final class Travelfic_Elementor_Extensions {
      *
      * @access public
      */
-    public function i18n() {
-        load_plugin_textdomain( 'travelfic' );
+    public function i18n()
+    {
+        load_plugin_textdomain('travelfic');
     }
 
     /**
@@ -75,39 +78,41 @@ final class Travelfic_Elementor_Extensions {
      *
      * @access public
      */
-    public function init() {
+    public function init()
+    {
 
         // Check if Elementor installed and activated
-        if ( ! did_action( 'elementor/loaded' ) ) {            
+        if (!did_action('elementor/loaded')) {
             return;
         }
-        add_action( 'elementor/elements/categories_registered', array( $this, 'add_elementor_category' ) );
-        
-        // Add Plugin actions
-        add_action( 'elementor/widgets/widgets_registered', [ $this, 'init_widgets' ] );
+        add_action('elementor/elements/categories_registered', array($this, 'add_elementor_category'));
 
-        add_action( 'wp_enqueue_scripts', [ $this, 'elementor_assets_dependencies' ] );
+        // Add Plugin actions
+        add_action('elementor/widgets/widgets_registered', [$this, 'init_widgets']);
+
+        add_action('wp_enqueue_scripts', [$this, 'elementor_assets_dependencies']);
     }
 
-    function elementor_assets_dependencies() {
+    function elementor_assets_dependencies()
+    {
 
         /* Styles */
-        wp_register_style( 'travelfic-slider-hero', SHEETSCELL_PLUGIN_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), SHEETSCELL_PLUGIN_VERSION, 'all' );
-    
+        wp_register_style('travelfic-slider-hero', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
     }
 
     /**
      * Add the Category for Theme Widgets.
      */
-    function add_elementor_category( $elements_manager ) {
+    function add_elementor_category($elements_manager)
+    {
 
-       $elements_manager->add_category(
-           'travelfic',
-           [
-               'title' => __( 'Travelfic Addons', 'travelfic-toolkit' ),
-               'icon' => 'fa fa-plug',
-           ]
-       );
+        $elements_manager->add_category(
+            'travelfic',
+            [
+                'title' => __('Travelfic Addons', 'travelfic-toolkit'),
+                'icon' => 'fa fa-plug',
+            ]
+        );
     }
 
     /**
@@ -119,10 +124,11 @@ final class Travelfic_Elementor_Extensions {
      *
      * @access public
      */
-    public function init_widgets() {
+    public function init_widgets()
+    {
 
         // Include Widget files
-        require_once( __DIR__ . '/elementor-widgets/travelfic-slider-hero.php' );
+        require_once(__DIR__ . '/elementor-widgets/travelfic-slider-hero.php');
         // require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
@@ -134,7 +140,7 @@ final class Travelfic_Elementor_Extensions {
 
 
         // Register widget
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelficSliderHero() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \TravelficSliderHero());
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
@@ -145,7 +151,6 @@ final class Travelfic_Elementor_Extensions {
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
 
     }
-
 }
 
 Travelfic_Elementor_Extensions::instance();
