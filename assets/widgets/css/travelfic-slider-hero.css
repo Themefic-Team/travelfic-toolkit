@@ -82,7 +82,7 @@
 }
 
 .tft-hero-slider-selector button.slick-arrow {
-  background: #F15D30;
+  background: #f15d30;
   height: 45px;
   width: 45px;
   border-radius: 2px;
@@ -101,7 +101,7 @@
 
 .tft-hero-slider-selector .slick-prev:hover:before,
 .tft-hero-slider-selector .slick-next:hover:before {
-  color: #F15D30;
+  color: #f15d30;
 }
 
 .tft-search-box {
@@ -113,7 +113,7 @@
 }
 
 .tft-search-box input:focus {
-  color: #F15D30;
+  color: #f15d30;
 }
 
 .tft-search-box .tft-search-box-inner {
@@ -135,7 +135,7 @@
 .tft-search-box input,
 .tft-search-box select {
   font-size: 18px;
-  color: #F15D30;
+  color: #f15d30;
   font-weight: 600;
   line-height: 1.3em;
   border: none;
@@ -152,15 +152,16 @@
   outline: none;
 }
 
-.tft-search-box input[type=date]::-webkit-calendar-picker-indicator {
+.tft-search-box input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   border-radius: 4px;
   margin-right: 2px;
-  filter: invert(41%) sepia(99%) saturate(1595%) hue-rotate(342deg) brightness(98%) contrast(94%);
+  filter: invert(41%) sepia(99%) saturate(1595%) hue-rotate(342deg)
+    brightness(98%) contrast(94%);
 }
 
 .tft-search-box .tf_button {
-  background-color: #F15D30;
+  background-color: #f15d30;
   border: none;
   cursor: pointer;
 }
@@ -179,7 +180,7 @@
   padding: 20px 0px;
 }
 
-.tft-search-box .tft-tour-serach-fields-wrap>div {
+.tft-search-box .tft-tour-serach-fields-wrap > div {
   border: none;
   display: flex;
   flex-direction: column;
@@ -214,7 +215,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #A79997;
+  color: #a79997;
 }
 
 .tft-search-box .tf_input-inner input {
@@ -237,7 +238,7 @@
   width: 115px;
   text-align: right;
   font-size: 24px;
-  color: #F15D30;
+  color: #f15d30;
   font-weight: 500;
 }
 
@@ -296,11 +297,14 @@
     align-items: stretch;
   }
 
-  .travelfic-tour-search-form .tf_booking-widget .tf_homepage-booking>div {
+  .travelfic-tour-search-form .tf_booking-widget .tf_homepage-booking > div {
     width: 100%;
   }
 
-  .travelfic-tour-search-form .tf_booking-widget .tf_homepage-booking>div:nth-child(2) {
+  .travelfic-tour-search-form
+    .tf_booking-widget
+    .tf_homepage-booking
+    > div:nth-child(2) {
     width: 100% !important;
   }
 }
