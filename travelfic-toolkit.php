@@ -48,6 +48,7 @@ final class Travelfic_Toolkit
 	private function include_elementor_widgets()
 	{
 		require_once(dirname(__FILE__) . '/inc/elementor-widgets.php');
+		require_once(dirname(__FILE__) . '/inc/functions.php');
 	}
 }
 
