@@ -117,9 +117,8 @@ class PopularTours extends \Elementor\Widget_Base
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'tf_tours',
 				'options' => [
-					'post' => esc_html__('Post', 'travelfic-toolkit'),
 					'tf_tours' => esc_html__('Tours', 'travelfic-toolkit')
-				],
+				]
 			]
 		);
 
@@ -131,11 +130,11 @@ class PopularTours extends \Elementor\Widget_Base
 				'label' => esc_html__('Order by', 'travelfic-toolkit'),
 				'default' => 'date',
 				'options' => [
-					'date' => esc_html__('Date', 'travelfic'),
-					'title' => esc_html__('Title', 'travelfic'),
-					'modified' => esc_html__('Modified date', 'travelfic'),
-					'comment_count' => esc_html__('Comment count', 'travelfic'),
-					'rand' => esc_html__('Random', 'travelfic'),
+					'date' => esc_html__('Date', 'travelfic-toolkit'),
+					'title' => esc_html__('Title', 'travelfic-toolkit'),
+					'modified' => esc_html__('Modified date', 'travelfic-toolkit'),
+					'comment_count' => esc_html__('Comment count', 'travelfic-toolkit'),
+					'rand' => esc_html__('Random', 'travelfic-toolkit'),
 				],
 			]
 		);
@@ -148,12 +147,106 @@ class PopularTours extends \Elementor\Widget_Base
 				'default' => 'DESC',
 				'options' => [
 					'DESC' => esc_html__('Descending', 'travelfic-toolkit'),
-					'ASC' => esc_html__('Ascending', 'travelfic-toolkit'),
+					'ASC' => esc_html__('Ascending', 'travelfic-toolkit')
 				],
 			]
 		);
-
 		$this->end_controls_section();
+
+		// Style Section
+        $this->start_controls_section(
+            'popular_tour_style_section',
+            [
+                'label' => esc_html__( 'Item List', 'travelfic-toolkit' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_responsive_control(
+            'popular_tour_item_card_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+		$this->add_control(
+            'popular_title_head',
+            [
+                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_tour_item_title',
+                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
+            ]
+        );
+		$this->add_control(
+            'popular_tour_item_title_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+		$this->add_control(
+            'popular_meta_heading',
+            [
+                'label'     => esc_html__( 'Meta Style', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_tour_item_meta',
+                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content',
+            ]
+        );
+		$this->add_control(
+            'popular_tour_item_meta_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'popular_icon_head',
+            [
+                'label'     => esc_html__( 'Icon Style', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->add_control(
+            'popular_tour_item_icon_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D30',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
 
 	}
 
@@ -166,26 +259,26 @@ class PopularTours extends \Elementor\Widget_Base
 		);
 
 		// Display posts in category.
-		if (!empty($settings['post_category'])) {
+		if ( !empty( $settings['post_category'] ) ) {
 			$args['category_name'] = $settings['post_category'];
 		}
 
 		// Items per page
-		if (!empty($settings['post_items'])) {
+		if ( !empty( $settings['post_items'] ) ) {
 			$args['posts_per_page'] = $settings['post_items'];
 		}
 
 		// Items Order By
-		if (!empty($settings['post_order_by'])) {
+		if ( !empty( $settings['post_order_by'] ) ) {
 			$args['orderby'] = $settings['post_order_by'];
 		}
 
 		// Items Order
-		if (!empty($settings['post_order'])) {
-			$args['order'] = $settings['post_order'];
+		if ( !empty( $settings['post_order'] ) ) {
+    		$args['order'] = $settings['post_order'];
 		}
 
-		$query = new \WP_Query($args);
+		$query = new \WP_Query ( $args );
 
 		?>
 
@@ -199,13 +292,13 @@ class PopularTours extends \Elementor\Widget_Base
 						// Review Query 
 						$args = array(
 							'post_id' => get_the_ID(),
-							'status' => 'approve',
-							'type' => 'comment',
+							'status'  => 'approve',
+							'type'    => 'comment',
 						);
-						$comments_query = new WP_Comment_Query($args);
+						$comments_query = new WP_Comment_Query( $args );
 						$comments = $comments_query->comments;
 
-						$option_meta = travelfic_get_meta('tf_tours_opt');
+						$option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
 
 						$disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
 						?>
@@ -233,14 +326,14 @@ class PopularTours extends \Elementor\Widget_Base
 
 								</div>
 								<div class="tft-popular-item-info">
-									<a href="<?php echo esc_url(get_permalink()); ?>">
-										<h3>
+									<a href="<?php echo esc_url( get_permalink() ); ?>">
+										<h3 class="tft-title">
 											<?php the_title() ?>
 										</h3>
 									</a>
 									<div class="tft-popular-sub-info">
 										<div class="tft-popular-tour-address">
-											<p>
+											<p class="tft-content">
 												<i class="fas fa-location-arrow"></i>
 												<?php 
 													if( isset( $option_meta['text_location'] ) ){
@@ -252,7 +345,7 @@ class PopularTours extends \Elementor\Widget_Base
 										<?php
 										if ( $option_meta['duration'] != '') { ?>
 											<div class="tft-popular-tour-duration">
-												<p>
+												<p class="tft-content">
 													<i class="fas fa-calendar-alt"></i>
 													<?php echo esc_html( $option_meta['duration'] );?>
 												</p>
@@ -266,16 +359,18 @@ class PopularTours extends \Elementor\Widget_Base
 											$adult_pricing = !empty( $option_meta['adult_price'] ) ? $option_meta['adult_price'] : '';
 											$group_pricing = !empty( $option_meta['group_price'] ) ? $option_meta['group_price'] : '';
 										?>
-										<h3>
+										<p>
 											<?php
 												if ( $pricing_rule == 'person' ) {
-													echo '<span> from </span>' . get_woocommerce_currency_symbol() . esc_html( $adult_pricing );
+													if( ! empty( $adult_pricing ) ){ ?>
+														<span class="tft-content"> <?php echo esc_html__( 'from ', 'travelfic-toolkit') ?> </span>
+														<?php echo get_woocommerce_currency_symbol(). esc_html( $adult_pricing ); ?>
+													<?php }
 												} else {
-													$group_pricing = get_post_meta( get_the_ID(), "tf_tours_opt", true )['group_price'];
 													echo get_woocommerce_currency_symbol() . esc_html( $group_pricing );
 												}
 											?>
-										</h3>
+										</p>
 									</div>
 
 								</div>
@@ -284,12 +379,9 @@ class PopularTours extends \Elementor\Widget_Base
 
 					<?php endwhile; ?>
 				<?php endif; ?>
-
 			</div>
 
-
 			<script>
-
 				(function ($) {
 					"use strict";
 					$(document).ready(function () {
@@ -303,7 +395,10 @@ class PopularTours extends \Elementor\Widget_Base
 							pauseOnHover: true,
 							autoplay: true,
 							autoplaySpeed: 7000,
-							speed: 500,
+							arrows: true,
+            				prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+            				nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+							speed: 700,
 							responsive: [
 								{
 									breakpoint: 1024,

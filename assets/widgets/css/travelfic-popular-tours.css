@@ -1,4 +1,4 @@
-.tft-popular-tour-selector {
+  .tft-popular-tour-selector {
     /* the parent */
   }
   .tft-popular-tour-selector .slick-slide {
@@ -31,9 +31,6 @@
     font-size: 16px;
     transition: 0.3s;
   }
-  .tft-popular-tour-selector .slick-arrow i {
-    color: #fff !important;
-  }
   .tft-popular-tour-selector .slick-arrow:hover {
     opacity: 0.7;
   }
@@ -60,9 +57,9 @@
   .tft-popular-tour-items .tft-popular-item-info {
     padding: 15px 20px;
   }
-  .tft-popular-tour-items .tft-popular-item-info h3 {
+  .tft-popular-tour-items .tft-popular-item-info p {
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 28px;
     margin-top: 5px;
   }
   .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p {
@@ -104,8 +101,9 @@
     width: 100%;
   }
   .tft-popular-tour-items i {
-    color: #fff;
+    color: #F15D30;
   }
+  
   .tft-popular-tour-items .tft-popular-item-price span {
     font-size: 14px;
     font-weight: 400;
@@ -113,4 +111,22 @@
   .tft-popular-tour-items .tft-popular-item-price h3 {
     font-weight: 500;
     font-size: 24px;
+  }
+  .tft-popular-tour-wrapper .slick-prev:before, .tft-popular-tour-wrapper .slick-next:before{
+    display: none;
+  }
+
+
+  @media (max-width: 991px) {
+    .tft-popular-tour-wrapper {
+      width: 90%;
+      margin: auto;
+    }
+    .tft-popular-tour-selector .slick-current.slick-active.slick-center {
+      transform: scale(1);
+      transition: all 0.3s ease;
+    }
+    .tft-popular-tour-selector .slick-slide {
+      margin: 0 10px !important;
+    }
   }
