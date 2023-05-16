@@ -255,6 +255,9 @@
 .tf-booking-forms-wrapper {
   margin-top: 16px;
 }
+.tft-hero-slider-selector .slick-prev:before, .tft-hero-slider-selector .slick-next:before{
+  display: none;
+}
 
 @media only screen and (max-width: 767px) {
   .tft-search-box {

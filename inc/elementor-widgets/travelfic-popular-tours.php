@@ -13,7 +13,7 @@ class PopularTours extends \Elementor\Widget_Base
 	 */
 	public function get_name()
 	{
-		return 'tf-popular-tours';
+		return 'tft-popular-tours';
 	}
 
 	/**

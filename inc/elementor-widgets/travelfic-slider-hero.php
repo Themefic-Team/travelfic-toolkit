@@ -13,7 +13,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
      * @return string Widget name.
      */
     public function get_name() {
-        return 'tf-slider-hero';
+        return 'tft-slider-hero';
     }
 
     /**
@@ -237,7 +237,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             [
                 'label'   => esc_html__( 'Slider Opacity(%)', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
-                'default' => 35,
+                'default' => 20,
             ],
         );
         $this->end_controls_section();
@@ -636,16 +636,20 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 											<?php }?>
 										</div>
 										<div class="slider-button">
-											<a class="bttn tft-bttn-primary" href="<?php echo $item['slider_bttn_url'] ?>">
-												<div class="tft-custom-bttn">
-													<span>
-														<?php
-														if ( !empty( $item['slider_bttn_txt'] ) ) {
-															echo esc_html( $item['slider_bttn_txt'] );
-														}?>
-													</span>
-												</div>
-											</a>
+                                            <?php 
+                                                if ( !empty( $item['slider_bttn_url'] ) ) { ?>
+                                                    <a class="bttn tft-bttn-primary" href="<?php echo $item['slider_bttn_url'] ?>">
+                                                        <div class="tft-custom-bttn">
+                                                            <span>
+                                                                <?php
+                                                                if ( !empty( $item['slider_bttn_txt'] ) ) {
+                                                                    echo esc_html( $item['slider_bttn_txt'] );
+                                                                }?>
+                                                            </span>
+                                                        </div>
+                                                    </a>
+                                                <?php }
+                                            ?>
 										</div>
 									</div>
 								</div>
@@ -674,16 +678,16 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 							dots: false,
 							infinite: true,
 							slidesToShow: 1,
-							arrows: true,
 							fade: true,
 							speed: 500,
 							infinite: true,
 							cssEase: 'ease-in-out',
 							touchThreshold: 100,
 							autoplay: false,
-							autoplaySpeed: 2000,
-							nextArrow: '<button class="slick-next slick-arrow"> </button>',
-							prevArrow: '<button class="slick-prev slick-arrow"> </button>'
+                            arrows: true,
+            	            prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+            	            nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+							autoplaySpeed: 2000
 						});
 					});
 
