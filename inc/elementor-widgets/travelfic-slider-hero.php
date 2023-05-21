@@ -739,8 +739,8 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 						$tfSliderHero.on('afterChange', function(event, slick, currentSlide) {
 							updateSliderCounter(slick, currentSlide);
 						});
-						$tfSliderHero.slick();
-
+						//$tfSliderHero.slick();
+                        
 					}
 				}(jQuery));
 			</script>

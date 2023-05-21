@@ -44,7 +44,7 @@ final class Travelfic_Toolkit
 	}
 	function travelfic_toolkit_scripts_equeue() {
 		// Enqueue the script
-		wp_enqueue_script( 'widgets-scripts', plugin_dir_url( __FILE__ ) . 'assets/widgets/js/widgets.js', array( 'jquery' ), TRAVELFIC_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'widgets-scripts', TRAVELFIC_PLUGIN_URL . 'assets/widgets/js/widgets.js', array( 'jquery' ), TRAVELFIC_PLUGIN_VERSION, true );
 	}
 	/**
 	 * Include Elementor Widgets
