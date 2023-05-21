@@ -101,6 +101,7 @@ final class Travelfic_Elementor_Extensions
         wp_register_style('travelfic-popular-tours', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-popular-tours.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
         wp_register_style('travelfic-testimonials', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-testimonials.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
         wp_register_style('travelfic-latest-news', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
+        wp_register_style('travelfic-team', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
     }
 
     /**
@@ -137,10 +138,9 @@ final class Travelfic_Elementor_Extensions
         require_once( __DIR__ . '/elementor-widgets/travelfic-testimonials.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
-
+        require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
 
         // require_once( __DIR__ . '/elementor-widgets/travelfic-destinaions.php' );
-        // require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
 
 
@@ -151,10 +151,9 @@ final class Travelfic_Elementor_Extensions
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Testimonials() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
-
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
         
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Destinaions() );
-        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
 
     }

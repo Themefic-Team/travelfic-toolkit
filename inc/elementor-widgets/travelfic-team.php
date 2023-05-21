@@ -71,6 +71,9 @@ class TeamMembers extends \Elementor\Widget_Base
 	{
 		return ['travelfic'];
 	}
+	public function get_style_depends() {
+        return ['travelfic-team'];
+    }
 
 	/**
 	 * Get widget keywords.
@@ -219,9 +222,9 @@ class TeamMembers extends \Elementor\Widget_Base
 									<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
 								</div>
 								<div class="member-details">
-									<h3> <?php echo esc_html($item['member_name']); ?> </h3>
-									<p><?php echo esc_html($item['member_designation']); ?></p>
-									<p><?php echo esc_html($item['member_details']); ?></p>
+									<h3 class="tft-title"> <?php echo esc_html($item['member_name']); ?> </h3>
+									<p class="tft-subtitle"><?php echo esc_html($item['member_designation']); ?></p>
+									<p class="tft-content"><?php echo esc_html($item['member_details']); ?></p>
 
 									<div class="social-media">
 									<?php if( $item['member_social_fb'] !== '') {?>										<a href="<?php echo esc_url($item['member_social_fb']); ?>"> <i class="fab fa-facebook-f"></i> </a>
