@@ -184,6 +184,15 @@ class IconWithText extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'icon_text_card',
+            [
+                'label'     => esc_html__( 'Card Style', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+
         $this->add_responsive_control(
             'item_card_padding',
             [
@@ -247,28 +256,6 @@ class IconWithText extends \Elementor\Widget_Base {
             ]
         );
         $this->add_control(
-            'icon_color',
-            [
-                'label'     => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon i' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'icon_color_hover',
-            [
-                'label'     => esc_html__( 'Icon Color Hover', 'plugin-domain' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single:hover .tft-icon i' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
             'icon_outter_width',
             [
                 'label'     => esc_html__( 'Icon outter Width', 'travelfic-toolkit' ),
@@ -305,6 +292,28 @@ class IconWithText extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .icon_outter' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'icon_color',
+            [
+                'label'     => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon i' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'icon_color_hover',
+            [
+                'label'     => esc_html__( 'Icon Color Hover', 'plugin-domain' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single:hover .tft-icon i' => 'color: {{VALUE}};',
                 ],
             ]
         );

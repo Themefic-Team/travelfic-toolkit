@@ -30,6 +30,7 @@ final class Travelfic_Toolkit
 		define('TRAVELFIC_PLUGIN_VERSION', '1.0.1');
 
 		add_action('plugins_loaded', array($this, 'travelfic_toolkit_loaded_action'), 10, 2);
+		add_action( 'wp_enqueue_scripts', array($this, 'travelfic_toolkit_scripts_equeue'), 10, 2 );
 		$this->include_elementor_widgets();
 	}
 
@@ -41,7 +42,10 @@ final class Travelfic_Toolkit
 		// Internationalization
 		load_plugin_textdomain('travelfic-toolkit', false, dirname(plugin_basename(__FILE__)) . '/lang/');
 	}
-
+	function travelfic_toolkit_scripts_equeue() {
+		// Enqueue the script
+		wp_enqueue_script( 'widgets-scripts', plugin_dir_url( __FILE__ ) . 'assets/widgets/js/widgets.js', array( 'jquery' ), TRAVELFIC_PLUGIN_VERSION, true );
+	}
 	/**
 	 * Include Elementor Widgets
 	 */
