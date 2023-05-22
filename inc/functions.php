@@ -10,4 +10,3 @@ if( ! function_exists('travelfic_get_meta') ){
         return $data;
     }
 }
-

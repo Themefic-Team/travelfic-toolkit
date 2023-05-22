@@ -55,20 +55,17 @@
 .tft-team-members .tft-single-member .member_img {
   min-height: auto;
   line-height: 0;
-  flex-basis: calc(50% - 26px);
+  flex-basis: calc(50% - 0px);
 }
 
 .tft-team-members .tft-single-member .member_img img {
   height: auto;
   object-fit: cover;
+  border-radius: 8px;
 }
-
-.tft-team-members .tft-single-member .team-members-inner {
-  gap: 20px;
-}
-
-.member-details {
-  flex-basis: calc(50% - 26px);
+.tft-team-members .tft-single-member  .member-details {
+  flex-basis: calc(50% - 0px);
+  padding: 8px 16px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -87,8 +84,7 @@
     min-height: auto;
     min-width: 100%;
     line-height: 0;
-    flex-basis: 100%;
-    margin-bottom: 20px;
+    flex-basis: 100%; 
   }
 
   .tft-team-members .tft-single-member .member_img img {
@@ -112,7 +108,7 @@
 .tft-team-members .tft-single-member .member_img {
   flex-basis: calc(40% - 8px);
 }
-.tft_team_wrapper .tft-single-member .member-details h3{
+.tft_team_wrapper .tft-single-member .member-details .tft-title{
   margin-bottom: 8px;
 }
 }
