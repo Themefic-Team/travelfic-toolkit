@@ -102,6 +102,7 @@ final class Travelfic_Elementor_Extensions
         wp_register_style('travelfic-testimonials', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-testimonials.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
         wp_register_style('travelfic-latest-news', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
         wp_register_style('travelfic-team', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
+        wp_register_style('travelfic-tour-destination', TRAVELFIC_PLUGIN_URL . 'assets/widgets/css/travelfic-destination.css', array(), TRAVELFIC_PLUGIN_VERSION, 'all');
     }
 
     /**
@@ -139,10 +140,9 @@ final class Travelfic_Elementor_Extensions
         require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-destination.php' );
 
-        // require_once( __DIR__ . '/elementor-widgets/travelfic-destinaions.php' );
         // require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
-
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \TravelficSliderHero());
@@ -152,8 +152,8 @@ final class Travelfic_Elementor_Extensions
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
-        
-        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Destinaions() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Destinaions() );
+
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
 
     }

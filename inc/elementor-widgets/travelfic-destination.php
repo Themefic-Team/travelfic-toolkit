@@ -79,6 +79,10 @@ class Destinaions extends \Elementor\Widget_Base{
         return ['travelfic', 'destinaions', 'tours', 'tft'];
     }
 
+    public function get_style_depends(){
+        return ['travelfic-tour-destination'];
+    }
+
     /**
      * Register widget controls.
      *
@@ -170,9 +174,9 @@ class Destinaions extends \Elementor\Widget_Base{
         foreach ( $all_categories as $cat ) {
             if ( $cat->category_parent == 0 ) {
                 $category_id = $cat->term_id;
-                $meta = get_term_meta( $cat->term_id, 'tour_destination', true );
-                if(isset($meta['image']['url'])){
-                    $cat_image = $meta['image']['url'];
+                $meta = get_term_meta( $cat->term_id, 'tf_tour_destination', true );
+                if(isset($meta['image'])){
+                    $cat_image = $meta['image'];
                 } else{
                     $cat_image = '';
                 }
