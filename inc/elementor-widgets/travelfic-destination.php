@@ -1,5 +1,5 @@
 <?php
-class Destinaions extends \Elementor\Widget_Base{
+class TourDestinaions extends \Elementor\Widget_Base{
 
     /**
      * Get widget name.
@@ -11,7 +11,7 @@ class Destinaions extends \Elementor\Widget_Base{
      * @return string Widget name.
      */
     public function get_name() {
-        return 'tf-destinations-tours';
+        return 'tff-destinations-tours';
     }
 
     /**
@@ -24,7 +24,7 @@ class Destinaions extends \Elementor\Widget_Base{
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__( 'TFT Tour Destinations', 'travelfic' );
+        return esc_html__( 'TFT Tour Destinations', 'travelfic-toolkit' );
     }
 
     /**
@@ -92,49 +92,164 @@ class Destinaions extends \Elementor\Widget_Base{
      * @access protected
      */
     protected function register_controls() {
+        
         $this->start_controls_section(
             'tour_destination',
             [
-                'label' => esc_html__( 'Destinations', 'travelfic' ),
+                'label' => esc_html__( 'Tour Destinations', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
-        // Order
+        // Tour
+        $categories = get_categories( array(
+            'taxonomy'   => 'tour_destination',
+            'hide_empty' => true,
+        ) );
+        $category_options = array();
+        foreach ( $categories as $category ) {
+            $category_options[$category->term_id] = $category->name;
+        }
+        // Tour
         $this->add_control(
             'categories_id',
             [
-                'label'       => esc_html__( 'Destinaions ID', 'travelfic' ),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( ' ', 'travelfic' ),
-                'placeholder' => esc_html__( '10, 14', 'travelfic' ),
-                'description' => esc_html( 'Separet ID by comma(,)' ),
+                'label' => __( 'Select Tour Destinations', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::SELECT2,
+                'options' => $category_options,
+                'default' => '',
+                'multiple' => true,
+                'label_block' => true,
                 'separator'   => 'after',
             ]
         );
 
-        // Order
+        $this->add_control(
+            'post_per_page',
+            [
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'label'       => esc_html__( 'Item Limit', 'travelfic-toolkit' ),
+                'placeholder' => esc_html__( 'Post Per Page', 'travelfic-toolkit' ),
+                'default'     => 4,
+            ]
+        );
+
+        // 
         $this->add_control(
             'cat_order',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'label'   => __( 'Order', 'travelfic' ),
+                'label'   => __( 'Order', 'travelfic-toolkit' ),
                 'default' => 'DESC',
                 'options' => [
-                    'DESC' => __( 'Descending', 'travelfic' ),
-                    'ASC'  => __( 'Ascending', 'travelfic' ),
+                    'DESC' => __( 'Descending', 'travelfic-toolkit' ),
+                    'ASC'  => __( 'Ascending', 'travelfic-toolkit' ),
                 ],
             ]
         );
         $this->end_controls_section();
 
+        // Style
+        $this->start_controls_section(
+            'tour_destination_style',
+            [
+                'label' => esc_html__( 'Style', 'travelfic-toolkit' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_responsive_control(
+            'tour_destination_image_border_radius',
+            [
+                'label'      => esc_html__( 'Image Radius', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_header',
+            [
+                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_title',
+                'label'    => esc_html__( 'Destination List', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a',
+            ]
+        );
+        $this->add_control(
+            'tour_destination_title_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_title_color_hover',
+            [
+                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D30',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_sub_list',
+                'label'    => esc_html__( 'Destination Sub List', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a',
+            ]
+        );
+        $this->add_control(
+            'tour_destination_sub_list_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_sub_list_color_hover',
+            [
+                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D30',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+
     }
 
+   
     protected function render() {
         $settings = $this->get_settings_for_display();
 
         if ( !empty( $settings['cat_order'] ) ) {
             $order = $settings['cat_order'];
+        }
+        if ( !empty( $settings['post_per_page'] ) ) {
+            $post_per_page = $settings['post_per_page'];
         }
         if ( !empty( $settings['categories_id'] ) ) {
             $cat_ids = $settings['categories_id'];
@@ -142,6 +257,7 @@ class Destinaions extends \Elementor\Widget_Base{
         } else {
             $cat_ids = $settings['categories_id'];
         }
+
 
         $taxonomy = 'tour_destination';
         $show_count = 0;
@@ -152,10 +268,11 @@ class Destinaions extends \Elementor\Widget_Base{
         $empty = 0;
         $included = $cat_ids;
 
-        $args = array(
+       $args = array(
             'taxonomy'     => $taxonomy,
             'orderby'      => $orderby,
             'order'        => $order,
+            'number'=> $post_per_page,
             'show_count'   => $show_count,
             'pad_counts'   => $pad_counts,
             'hierarchical' => $hierarchical,
@@ -164,7 +281,6 @@ class Destinaions extends \Elementor\Widget_Base{
             'hide_empty'   => $empty,
         );
         $all_categories = get_categories( $args );
-
         ?>
 
 	<div class="tft-destination-wrapper tft-customizer-typography">
@@ -180,7 +296,6 @@ class Destinaions extends \Elementor\Widget_Base{
                 } else{
                     $cat_image = '';
                 }
-                
             ?>
 
             <div class="tft-single-destination tft-col">
@@ -188,7 +303,7 @@ class Destinaions extends \Elementor\Widget_Base{
                     <a href="<?php echo get_term_link( $cat->slug, 'tour_destination' ); ?>"><img src="<?php echo $cat_image; ?>" alt=""></a>
                 </div>
                 <div class="tft-destination-title">
-                    <a href="#"><?php echo '<a href="' . get_term_link( $cat->slug, 'tour_destination' ) . '">' . $cat->name . '</a>'; ?></a>
+                    <?php echo '<a href="' . get_term_link( $cat->slug, 'tour_destination' ) . '">' . $cat->name . '</a>'; ?>
                 </div>
 
                 <div class="tft-destination-details">
@@ -208,9 +323,9 @@ class Destinaions extends \Elementor\Widget_Base{
                         );
                         $sub_cats = get_categories( $args2 );
                         if ( $sub_cats ) {
-                            foreach ( $sub_cats as $sub_category ) { ?>
+                            foreach ( $sub_cats as $sub_category ) {?>
                                 <li><a href="<?php echo get_term_link( $sub_category->slug, 'tour_destination' ); ?>"><?php echo $sub_category->name; ?></a></li>
-                            <?php } 
+                            <?php }
                         }?>
                         </ul>
                     </div>

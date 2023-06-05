@@ -2,9 +2,13 @@
     color: #1D2A3B;
   }
   .tft-destination-wrapper .tft-destination {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 20px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tft-destination-wrapper .tft-destination .tft-single-destination{
+    flex-basis: calc(25% - 20px);
   }
   .tft-destination-wrapper .tft-destination-title a {
     font-size: 24px;
@@ -12,16 +16,17 @@
     margin: 6px 0px;
     display: block;
   }
-  .tft-destination-wrapper .tft-destination-details {
+  .tft-destination-wrapper .tft-destination-details ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-  }
-  .tft-destination-wrapper .tft-destination-details ul {
-    max-width: 50%;
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+  .tft-destination-wrapper .tft-destination-details ul li {
+    flex-basis: 50%;
   }
   .tft-destination-wrapper .tft-destination-details ul li a {
     font-size: 16px;
@@ -31,11 +36,11 @@
     color: #F15D30;
   }
   .tft-destination-wrapper .tft-destination-title {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .tft-destination-wrapper .tft-destination-thumbnail {
     height: 275px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
   .tft-destination-wrapper .tft-destination-thumbnail img {
     height: 275px;
@@ -45,4 +50,32 @@
   }
   .tft-destination-wrapper .tft-destination-thumbnail a {
     display: block;
+  }
+
+  @media (min-width:768px) and (max-width:1024px) {
+    .tft-destination-wrapper .tft-destination {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tft-destination-wrapper .tft-destination .tft-single-destination{
+      flex-basis: calc( 50% - 20px );
+    }
+  }
+  @media (min-width:561px) and (max-width:767px) {
+    .tft-destination-wrapper .tft-destination {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tft-destination-wrapper .tft-destination .tft-single-destination{
+      flex-basis: calc( 50% - 20px );
+    }
+  }
+  @media (max-width:560px) {
+    .tft-destination-wrapper .tft-destination {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tft-destination-wrapper .tft-destination .tft-single-destination{
+      flex-basis: 100% ;
+    }
   }

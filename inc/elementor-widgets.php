@@ -152,7 +152,7 @@ final class Travelfic_Elementor_Extensions
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Destinaions() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TourDestinaions() );
 
         // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
 
