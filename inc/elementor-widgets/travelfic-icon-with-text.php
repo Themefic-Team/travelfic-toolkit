@@ -404,9 +404,15 @@ class IconWithText extends \Elementor\Widget_Base {
 
     protected function render() {
         $settings = $this->get_settings_for_display();?>
+
+        <?php
+           $iconGradientOne = $settings['icon_color_outter_gradient_1'];
+           $iconGradientTwo = $settings['icon_color_outter_gradient_2'];
+        ?>
+
 		<?php if ( $settings['icon_text_list'] ): ?>
 			<div class="tft-icon-text-wrapper tft-customizer-typography">
-				<div class="tft-icon-text-items tf-flex">
+				<div class="tft-icon-text-items tft-flex">
 					<?php foreach ( $settings['icon_text_list'] as $item ): ?>
  
 						<div class="tft-icon-text-single" <?php if ( $item['active_gap'] == 'yes' ): ?>
@@ -414,7 +420,7 @@ class IconWithText extends \Elementor\Widget_Base {
 								style="margin-bottom:<?php echo esc_html( $settings['items_gap'] ); ?>px;" <?php endif?>>
 							<div class="tft-icon-text-single-inner tft-center">
 								<div class="icon_outter"
-									style="background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, <?php echo $settings['icon_color_outter_gradient_2']; ?> 6.09%, <?php echo $settings['icon_color_outter_gradient_1']; ?> 100%);">
+									style="background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, <?php echo $iconGradientOne; ?> 6.09%, <?php echo $iconGradientTwo; ?> 100%);">
 									<?php
 										if ( !empty( $item['box_image']['url'] ) ) : ?>
 										<img src="<?php echo esc_url( $item['box_image']['url'] ); ?> " alt="">

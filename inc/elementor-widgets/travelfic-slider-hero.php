@@ -546,6 +546,19 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'separator' => 'after',
             ]
         );
+
+        $this->add_responsive_control(
+            'slider_search_button_padding_',
+            [
+                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
