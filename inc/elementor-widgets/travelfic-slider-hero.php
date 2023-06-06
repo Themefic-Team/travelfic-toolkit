@@ -734,7 +734,6 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 
 					// Counter Number
 					var $tfSliderHero = $('.tft-hero-slider-selector-<?php echo $rand_number ?>');
-					console.log($tfSliderHero);
 
 					if ($tfSliderHero.length) {
 						var currentSlide;
