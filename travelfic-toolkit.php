@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+define( 'TRAVELFIC_URL', plugin_dir_url( __FILE__ ) );
+
 /**
  * Include file from plugin if it is not available in theme
  * include( get_theme_file_path( 'includes/headers/breadcrumbs.php' ) );
@@ -49,3 +51,19 @@ function travelfic_toolkit_plugin_loaded_action() {
  */
 require_once( dirname( __FILE__ ) . '/inc/elementor-widgets.php' );
 
+
+/**
+ *	Customizer Settings
+ */
+require_once( dirname( __FILE__ ) . '/inc/customizer-settings.php' );
+
+
+function enqueue_customizer_scripts() {
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/css/style.css');
+}
+add_action( 'customize_controls_enqueue_scripts', 'enqueue_customizer_scripts' );
+
+function enqueue_customizer_preview_scripts() {
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/css/style.css');
+}
+add_action( 'customize_preview_init', 'enqueue_customizer_preview_scripts' );

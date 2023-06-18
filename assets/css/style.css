@@ -1,0 +1,28 @@
+.image-select-container {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.image-select-container li {
+    display: block;
+    margin-right: 10px;
+}
+
+.image-select-container li img {
+    width: 100% !important;
+    height: auto;
+    cursor: pointer;
+}
+
+.image-select-container li label input {
+    display: none;
+}
+.image-select-container li label img{
+    cursor:pointer;
+    border:3px solid transparent;
+}
+.image-select-container li label > input:checked + img{
+    border-color: #607085;
+    border-radius:5px;
+}
