@@ -57,6 +57,11 @@ require_once( dirname( __FILE__ ) . '/inc/elementor-widgets.php' );
  */
 require_once( dirname( __FILE__ ) . '/inc/customizer-settings.php' );
 
+/**
+ *	Customizer Apply
+ */
+require_once( dirname( __FILE__ ) . '/inc/customizer-apply.php' );
+
 
 function enqueue_customizer_scripts() {
     wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/css/style.css');
