@@ -65,6 +65,7 @@ require_once( dirname( __FILE__ ) . '/inc/customizer-apply.php' );
 
 function enqueue_customizer_scripts() {
     wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/css/style.css');
+	wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_URL . 'assets/js/customizer.js', array( 'jquery', 'customize-controls' ), '1.0', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'enqueue_customizer_scripts' );
 

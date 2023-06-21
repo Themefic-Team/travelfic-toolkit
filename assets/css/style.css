@@ -1,3 +1,4 @@
+/* Customizer Image Select */
 .image-select-container {
     list-style: none;
     margin: 0;
@@ -8,13 +9,11 @@
     display: block;
     margin-right: 10px;
 }
-
 .image-select-container li img {
     width: 100% !important;
     height: auto;
     cursor: pointer;
 }
-
 .image-select-container li label input {
     display: none;
 }
@@ -25,4 +24,14 @@
 .image-select-container li label > input:checked + img{
     border-color: #607085;
     border-radius:5px;
+}
+
+/* Customizer Section Title */
+.travelfic-customize-control-title {
+    background: #ddd;
+    display: block;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #50575e;
 }

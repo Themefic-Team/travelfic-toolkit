@@ -15,7 +15,7 @@
 function travelfic_toolkit_customize_register($wp_customize) {
     $travelfic_toolkit_prefix = "travelfic_customizer_settings_";
 
-    class JH_Image_Select_Control extends WP_Customize_Control {
+    class Travelfic_Image_Select_Control extends WP_Customize_Control {
         public $type = 'image_select';
     
         public function render_content() {
@@ -37,19 +37,59 @@ function travelfic_toolkit_customize_register($wp_customize) {
         }
     }
 
+    // Section Heading
+    class Travelfic_Sec_Section_Control extends WP_Customize_Control {
+        public $type = 'sec_section';
+    
+        public function render_content() {
+        ?>
+            <span class="travelfic-customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <?php
+        }
+    }
+
     // Add a setting for header image
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
-        'default'           => 'design2',
+        'default'           => 'design1',
         'sanitize_callback' => 'sanitize_text_field',
+        "transport" => "refresh",
     ));
 
     // Add a control for header image
-    $wp_customize->add_control(new JH_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_select', array(
-        'label'    => __('Header Design Option', 'your-textdomain'),
+    $wp_customize->add_control(new Travelfic_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_select', array(
+        'label'    => __('Header Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_header', // Specify the existing section ID or create a new section
         'choices'  => array(
             'design1' => TRAVELFIC_URL.'assets/img/header-1.png',
             'design2' => TRAVELFIC_URL.'assets/img/header-1.png',
+        ),
+        'priority' => 10,
+    )));
+
+    // Sticky Settings Title
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_sticky_section_opt', array(
+        'default'           => 'sections',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(new Travelfic_Sec_Section_Control($wp_customize, $travelfic_toolkit_prefix . 'header_sticky_section_opt', array(
+        'label'    => __('Sticky Settings', 'travelfic'),
+        'section'  => 'travelfic_customizer_header',
+        'priority' => 11,
+    )));
+
+    // Menu Settings Title
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_section_opt', array(
+        'default'           => 'sections',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(new Travelfic_Sec_Section_Control($wp_customize, $travelfic_toolkit_prefix . 'header_section_opt', array(
+        'label'    => __('Menu Settings', 'travelfic'),
+        'section'  => 'travelfic_customizer_header',
+        'priority' => 19,
+        'sec'  => array(
+            'sections' => 'Menu Settings',
         ),
     )));
 
@@ -120,17 +160,17 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     // Add a setting for footer image
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_design_select', array(
-        'default'           => 'design2',
+        'default'           => 'design1',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
     // Add a control for footer image
-    $wp_customize->add_control(new JH_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_design_select', array(
-        'label'    => __('Footer Design Option', 'your-textdomain'),
+    $wp_customize->add_control(new Travelfic_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_design_select', array(
+        'label'    => __('Footer Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_footer', // Specify the existing section ID or create a new section
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/img/header-1.png',
-            'design2' => TRAVELFIC_URL.'assets/img/header-1.png',
+            'design1' => TRAVELFIC_URL.'assets/img/footer-1.png',
+            'design2' => TRAVELFIC_URL.'assets/img/footer-1.png',
         ),
     )));
 
