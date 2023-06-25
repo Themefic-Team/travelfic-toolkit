@@ -30,8 +30,9 @@
 .travelfic-customize-control-title {
     background: #ddd;
     display: block;
-    padding: 10px;
+    padding: 12px 30px;
     font-size: 15px;
     font-weight: 700;
     color: #50575e;
+    margin: 0px -30px;
 }

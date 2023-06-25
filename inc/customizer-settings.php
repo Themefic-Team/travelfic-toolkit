@@ -15,6 +15,8 @@
 function travelfic_toolkit_customize_register($wp_customize) {
     $travelfic_toolkit_prefix = "travelfic_customizer_settings_";
 
+
+    // Image Select Class
     class Travelfic_Image_Select_Control extends WP_Customize_Control {
         public $type = 'image_select';
     
@@ -37,7 +39,29 @@ function travelfic_toolkit_customize_register($wp_customize) {
         }
     }
 
-    // Section Heading
+    // Tab Select Class
+    class Travelfic_Tab_Select_Control extends WP_Customize_Control {
+        public $type = 'tab_select';
+    
+        public function render_content() {
+            $tab_options = $this->choices;
+            $value = $this->value();
+            ?>
+                <ul class="tab-select-container">
+                <?php foreach ( $tab_options as $key => $label ) : ?>
+                    <li>
+                    <label>
+                        <input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $value, $key ); ?>/>
+                        <?php echo esc_html($label); ?>
+                    </label>
+                    </li>
+                <?php endforeach; ?>
+                </ul>
+            <?php
+        }
+    }
+
+    // Section Heading Class
     class Travelfic_Sec_Section_Control extends WP_Customize_Control {
         public $type = 'sec_section';
     
@@ -47,6 +71,28 @@ function travelfic_toolkit_customize_register($wp_customize) {
         <?php
         }
     }
+
+    /* Header Tab Selection */
+
+    // Add a setting for header image
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_tab_select', array(
+        'default'           => 'settings',
+        'sanitize_callback' => 'sanitize_text_field',
+        "transport" => "refresh",
+    ));
+
+    // Add a control for header image
+    $wp_customize->add_control(new Travelfic_Tab_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_tab_select', array(
+        'label'    => __('Header Design Option', 'travelfic'),
+        'section'  => 'travelfic_customizer_header', // Specify the existing section ID or create a new section
+        'choices'  => array(
+            'settings' => 'Settings',
+            'design' => 'Design',
+        ),
+        'priority' => 10,
+    )));
+
+    /* Header Tab Selection */
 
     // Add a setting for header image
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
