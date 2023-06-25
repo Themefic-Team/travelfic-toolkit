@@ -1,5 +1,6 @@
 /* Customizer Image Select */
-.image-select-container {
+.image-select-container ,
+.tab-select-container {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -24,6 +25,37 @@
 .image-select-container li label > input:checked + img{
     border-color: #607085;
     border-radius:5px;
+}
+
+/* Customizer Tab Selection */
+.tab-select-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -15px;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding: 0;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin-bottom: 0;
+}
+.tab-select-container li {
+    display: inline-block;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: center;
+    margin: 0px;
+}
+.tab-select-container li label{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.tab-select-container li label input {
+    display: none;
+}
+.tab-select-container li label input[type="radio"]:checked{
+    border-bottom: 3px solid #0284C7;
 }
 
 /* Customizer Section Title */
