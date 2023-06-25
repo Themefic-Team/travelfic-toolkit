@@ -139,6 +139,19 @@ function travelfic_toolkit_customize_register($wp_customize) {
         ),
     )));
 
+    //menu Font Size
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_font_size", [
+        "transport" => "refresh",
+        "sanitize_callback" => "absint",
+        "default" => '18'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "menu_font_size", [
+        "label" => __("Menu Font Size", "travelfic"),
+        'priority' => 20,
+        "section" => "travelfic_customizer_header",
+        "type" => "number",
+    ]);
+
     //menu Color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_color", [
         "transport" => "refresh",
@@ -163,6 +176,19 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'priority' => 20,
         "section" => "travelfic_customizer_header",
         "type" => "color",
+    ]);
+
+    //Submenu Font Size
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "submenu_font_size", [
+        "transport" => "refresh",
+        "sanitize_callback" => "absint",
+        "default" => '18'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "submenu_font_size", [
+        "label" => __("Submenu Font Size", "travelfic"),
+        'priority' => 20,
+        "section" => "travelfic_customizer_header",
+        "type" => "number",
     ]);
 
     //Submenu Background Color
