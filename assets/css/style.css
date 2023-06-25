@@ -43,18 +43,24 @@
 .tab-select-container li {
     display: inline-block;
     width: 50%;
-    padding: 10px 20px;
+    padding: 0px;
     text-align: center;
     margin: 0px;
 }
 .tab-select-container li label{
     text-transform: uppercase;
     font-weight: 600;
+    display: block;
+}
+.tab-select-container li label span{
+    display: block;
+    width: 100%;
+    line-height: 40px;
 }
 .tab-select-container li label input {
     display: none;
 }
-.tab-select-container li label input[type="radio"]:checked{
+.tab-select-container li label > input:checked + span{
     border-bottom: 3px solid #0284C7;
 }
 

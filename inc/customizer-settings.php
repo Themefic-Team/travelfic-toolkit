@@ -52,7 +52,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
                     <li>
                     <label>
                         <input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $value, $key ); ?>/>
-                        <?php echo esc_html($label); ?>
+                        <span><?php echo esc_html($label); ?></span>
                     </label>
                     </li>
                 <?php endforeach; ?>
