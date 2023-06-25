@@ -28,8 +28,10 @@ function travelfic_kit_customizer_style()
 $travelfic_kit_pre = 'travelfic_customizer_settings_';
 $travelfic_menu_color = get_theme_mod($travelfic_kit_pre.'menu_color', '#222');
 $travelfic_menu_font_size = get_theme_mod($travelfic_kit_pre.'menu_font_size', '18');
+$travelfic_menu_line_height = get_theme_mod($travelfic_kit_pre.'menu_line_height', '18');
 $travelfic_menu_color_hover = get_theme_mod($travelfic_kit_pre.'menu_hover_color', '#F15D30');
 $travelfic_submenu_font_size = get_theme_mod($travelfic_kit_pre.'submenu_font_size', '18');
+$travelfic_submenu_line_height = get_theme_mod($travelfic_kit_pre.'submenu_line_height', '18');
 $travelfic_submenu_bg = get_theme_mod($travelfic_kit_pre.'submenu_bg', '#fff');
 $travelfic_submenu_text = get_theme_mod($travelfic_kit_pre.'submenu_text_color', '#222');
 $travelfic_submenu_hover = get_theme_mod($travelfic_kit_pre.'submenu_text_hover_color', '#F15D30');
@@ -39,6 +41,7 @@ $travelfic_submenu_hover = get_theme_mod($travelfic_kit_pre.'submenu_text_hover_
     .tft-site-header .tft-site-navigation > ul > li a {
         color: <?php echo !empty($travelfic_menu_color) ? esc_attr( $travelfic_menu_color ) : '#222'; ?>;
         font-size: <?php echo !empty($travelfic_menu_font_size) ? esc_attr( $travelfic_menu_font_size ).'px !important' : '18px !important'; ?>;
+        line-height: <?php echo !empty($travelfic_menu_line_height) ? esc_attr( $travelfic_menu_line_height ).'px !important' : '18px !important'; ?>;
     }
     .tft-site-header .tft-site-navigation > ul > li:hover > a {
         color: <?php echo !empty($travelfic_menu_color_hover) ? esc_attr( $travelfic_menu_color_hover ). ' !important' : '#F15D30 !important'; ?>;
@@ -49,6 +52,7 @@ $travelfic_submenu_hover = get_theme_mod($travelfic_kit_pre.'submenu_text_hover_
     .tft-site-navigation ul.sub-menu li a{
         color: <?php echo !empty($travelfic_submenu_text) ? esc_attr( $travelfic_submenu_text ).' !important' : '#222 !important'; ?>;
         font-size: <?php echo !empty($travelfic_submenu_font_size) ? esc_attr( $travelfic_submenu_font_size ).'px !important' : '18px !important'; ?>;
+        line-height: <?php echo !empty($travelfic_submenu_line_height) ? esc_attr( $travelfic_submenu_line_height ).'px !important' : '18px !important'; ?>;
     }
     .tft-site-navigation ul.sub-menu > li:hover > a{
         color: <?php echo !empty($travelfic_submenu_hover) ? esc_attr( $travelfic_submenu_hover ).' !important' : '#F15D30 !important'; ?>;

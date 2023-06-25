@@ -152,6 +152,19 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "number",
     ]);
 
+    //Menu Line Height
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_line_height", [
+        "transport" => "refresh",
+        "sanitize_callback" => "absint",
+        "default" => '18'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "menu_line_height", [
+        "label" => __("Submenu Line Height", "travelfic"),
+        'priority' => 20,
+        "section" => "travelfic_customizer_header",
+        "type" => "number",
+    ]);
+
     //menu Color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_color", [
         "transport" => "refresh",
@@ -186,6 +199,19 @@ function travelfic_toolkit_customize_register($wp_customize) {
     ]);
     $wp_customize->add_control($travelfic_toolkit_prefix . "submenu_font_size", [
         "label" => __("Submenu Font Size", "travelfic"),
+        'priority' => 20,
+        "section" => "travelfic_customizer_header",
+        "type" => "number",
+    ]);
+
+    //Submenu Line Height
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "submenu_line_height", [
+        "transport" => "refresh",
+        "sanitize_callback" => "absint",
+        "default" => '18'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "submenu_line_height", [
+        "label" => __("Submenu Line Height", "travelfic"),
         'priority' => 20,
         "section" => "travelfic_customizer_header",
         "type" => "number",
