@@ -20,7 +20,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     require_once( dirname( __FILE__ ) . '/customizer/customizer-class.php' );
 
 
-    /* Header Tab Selection */
+    /* Header Tab Selection Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_tab_select', array(
         'default'           => 'settings',
         'sanitize_callback' => 'sanitize_text_field',
@@ -37,16 +37,16 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'priority' => 10,
     )));
 
-    /* Header Tab Selection */
+    /* Header Tab Selection End*/
 
-    // Add a setting for header image
+
+    /* Header Image Selection Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
         'default'           => 'design1',
         'sanitize_callback' => 'sanitize_text_field',
         "transport" => "refresh",
     ));
 
-    // Add a control for header image
     $wp_customize->add_control(new Travelfic_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_select', array(
         'label'    => __('Header Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
@@ -57,7 +57,9 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'priority' => 10,
     )));
 
-    // Sticky Settings Title
+    /* Header Image Selection End*/
+
+    /* Header Sticky Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_sticky_section_opt', array(
         'default'           => 'sections',
         'sanitize_callback' => 'sanitize_text_field',
@@ -68,8 +70,9 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'section'  => 'travelfic_customizer_header',
         'priority' => 11,
     )));
+    /* Header Sticky Section Title End*/
 
-    // Menu Settings Title
+    /* Header Menu Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_section_opt', array(
         'default'           => 'sections',
         'sanitize_callback' => 'sanitize_text_field',
@@ -84,11 +87,13 @@ function travelfic_toolkit_customize_register($wp_customize) {
         ),
     )));
 
-    // Add a setting for Menu typography
+    /* Header Menu Section Title End*/
+
+    /* Header Menu Typography Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix .'header_menu_typo', array(
         'default'           => array(
             'font-size'      => '18',
-            'line-height'      => '18',
+            'line-height'      => '24',
             'text-transform' => 'capitalize',
         )
     ));
@@ -101,7 +106,9 @@ function travelfic_toolkit_customize_register($wp_customize) {
             'priority' => 20,
         )
     ));
+    /* Header Menu Typography End */
 
+    /* Header Menu Color Start */
     //menu Color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_color", [
         "transport" => "refresh",
@@ -128,12 +135,13 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "color",
     ]);
 
+    /* Header Menu Color End */
 
-    // Add a setting for Submenu typography
+    /* Header SubMenu Typography Start */
     $wp_customize->add_setting($travelfic_toolkit_prefix .'header_submenu_typo', array(
         'default'           => array(
             'font-size'      => '18',
-            'line-height'      => '18',
+            'line-height'      => '24',
             'text-transform' => 'capitalize',
         )
     ));
@@ -146,6 +154,10 @@ function travelfic_toolkit_customize_register($wp_customize) {
             'priority' => 20,
         )
     ));
+
+    /* Header SubMenu Typography End */
+
+    /* Header SubMenu Colors Start */
 
     //Submenu Background Color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "submenu_bg", [
@@ -186,21 +198,24 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "color",
     ]);
 
-    // Add a setting for footer image
+    /* Header SubMenu Colors End */
+
+    /* Footer Selection Start */
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_design_select', array(
         'default'           => 'design1',
         'sanitize_callback' => 'sanitize_text_field',
     ));
 
-    // Add a control for footer image
     $wp_customize->add_control(new Travelfic_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_design_select', array(
         'label'    => __('Footer Design Option', 'travelfic'),
-        'section'  => 'travelfic_customizer_footer', // Specify the existing section ID or create a new section
+        'section'  => 'travelfic_customizer_footer',
         'choices'  => array(
             'design1' => TRAVELFIC_URL.'assets/img/footer-1.png',
             'design2' => TRAVELFIC_URL.'assets/img/footer-1.png',
         ),
     )));
+
+    /* Footer Selection End */
 
 }
 

@@ -87,6 +87,7 @@
       }
   });
 
+  // Typography Trigger
 
   wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
     ready: function () {
@@ -118,7 +119,7 @@
 
         return value;
     }
-});
+  });
 
 })(jQuery);
   
