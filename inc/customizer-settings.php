@@ -84,7 +84,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
         ),
     )));
 
-    // Add a setting for typography
+    // Add a setting for Menu typography
     $wp_customize->add_setting($travelfic_toolkit_prefix .'header_menu_typo', array(
         'default'           => array(
             'font-size'      => '18',
@@ -96,7 +96,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
         $wp_customize,
         $travelfic_toolkit_prefix .'header_menu_typo',
         array(
-            'label'   => __('Menu Typography', 'mytheme'),
+            'label'   => __('Menu Typography', 'travelfic'),
             'section' => 'travelfic_customizer_header',
             'priority' => 20,
         )
@@ -128,31 +128,24 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "color",
     ]);
 
-    //Submenu Font Size
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "submenu_font_size", [
-        "transport" => "refresh",
-        "sanitize_callback" => "absint",
-        "default" => '18'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "submenu_font_size", [
-        "label" => __("Submenu Font Size", "travelfic"),
-        'priority' => 20,
-        "section" => "travelfic_customizer_header",
-        "type" => "number",
-    ]);
 
-    //Submenu Line Height
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "submenu_line_height", [
-        "transport" => "refresh",
-        "sanitize_callback" => "absint",
-        "default" => '18'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "submenu_line_height", [
-        "label" => __("Submenu Line Height", "travelfic"),
-        'priority' => 20,
-        "section" => "travelfic_customizer_header",
-        "type" => "number",
-    ]);
+    // Add a setting for Submenu typography
+    $wp_customize->add_setting($travelfic_toolkit_prefix .'header_submenu_typo', array(
+        'default'           => array(
+            'font-size'      => '18',
+            'line-height'      => '18',
+            'text-transform' => 'capitalize',
+        )
+    ));
+    $wp_customize->add_control(new Travelfic_typography_Control(
+        $wp_customize,
+        $travelfic_toolkit_prefix .'header_submenu_typo',
+        array(
+            'label'   => __('Submenu Typography', 'travelfic'),
+            'section' => 'travelfic_customizer_header',
+            'priority' => 20,
+        )
+    ));
 
     //Submenu Background Color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "submenu_bg", [
