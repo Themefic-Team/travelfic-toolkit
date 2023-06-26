@@ -95,7 +95,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
             'font-size'      => '18',
             'line-height'      => '24',
             'text-transform' => 'capitalize',
-        )
+        ),
+        'sanitize_callback' => 'travelfic_sanitize_typography'
     ));
     $wp_customize->add_control(new Travelfic_typography_Control(
         $wp_customize,
@@ -143,7 +144,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
             'font-size'      => '18',
             'line-height'      => '24',
             'text-transform' => 'capitalize',
-        )
+        ),
+        'sanitize_callback' => 'travelfic_sanitize_typography'
     ));
     $wp_customize->add_control(new Travelfic_typography_Control(
         $wp_customize,
@@ -216,6 +218,21 @@ function travelfic_toolkit_customize_register($wp_customize) {
     )));
 
     /* Footer Selection End */
+
+    /* Typography Sanitization Start */
+
+    function travelfic_sanitize_typography($value) {
+        $sanitized_value = array();
+
+        $sanitized_value['line-height'] = sanitize_text_field($value['line-height']);
+        $sanitized_value['font-size'] = sanitize_text_field($value['font-size']);
+        $sanitized_value['text-transform'] = sanitize_text_field($value['text-transform']);
+    
+        return $sanitized_value;
+    }
+
+    /* Typography Sanitization End */
+
 
 }
 
