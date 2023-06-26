@@ -224,6 +224,26 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Header SubMenu Colors End */
 
+
+    /* Footer Tab Selection Start*/
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_tab_select', array(
+        'default'           => 'settings',
+        'sanitize_callback' => 'sanitize_text_field',
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(new Travelfic_Tab_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_tab_select', array(
+        'label'    => __('Footer Design Option', 'travelfic'),
+        'section'  => 'travelfic_customizer_footer',
+        'choices'  => array(
+            'settings' => 'Settings',
+            'design' => 'Design',
+        ),
+        'priority' => 10,
+    )));
+
+    /* Footer Tab Selection End*/
+
     /* Footer Selection Start */
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_design_select', array(
         'default'           => 'design1',
