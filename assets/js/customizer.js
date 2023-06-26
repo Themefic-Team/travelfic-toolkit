@@ -87,5 +87,38 @@
       }
   });
 
+
+  wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
+    ready: function () {
+        var control = this;
+
+        control.container.on('change', 'input, select', function () {
+            control.settings.default['value'] = control.getValue();
+            control.setting.set(control.getValue());
+        });
+    },
+
+    getValue: function () {
+        var control = this,
+            value = {};
+
+        control.container.find('input, select').each(function () {
+            var input = $(this),
+                settingId = input.data('customize-setting-link'),
+                inputValue = '';
+
+            if ('SELECT' === input.prop('tagName')) {
+                inputValue = input.find('option:selected').val();
+            } else {
+                inputValue = input.val();
+            }
+
+            value[settingId] = inputValue;
+        });
+
+        return value;
+    }
+});
+
 })(jQuery);
   

@@ -16,75 +16,20 @@ function travelfic_toolkit_customize_register($wp_customize) {
     $travelfic_toolkit_prefix = "travelfic_customizer_settings_";
 
 
-    // Image Select Class
-    class Travelfic_Image_Select_Control extends WP_Customize_Control {
-        public $type = 'image_select';
-    
-        public function render_content() {
-            $image_options = $this->choices;
-            $value = $this->value();
-            ?>
-            <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-                <ul class="image-select-container">
-                <?php foreach ( $image_options as $key => $image_url ) : ?>
-                    <li>
-                    <label>
-                        <input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $value, $key ); ?>/>
-                        <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $key ); ?>"/>
-                    </label>
-                    </li>
-                <?php endforeach; ?>
-                </ul>
-            <?php
-        }
-    }
+    // Customizer Class Include
+    require_once( dirname( __FILE__ ) . '/customizer/customizer-class.php' );
 
-    // Tab Select Class
-    class Travelfic_Tab_Select_Control extends WP_Customize_Control {
-        public $type = 'tab_select';
-    
-        public function render_content() {
-            $tab_options = $this->choices;
-            $value = $this->value();
-            ?>
-                <ul class="tab-select-container">
-                <?php foreach ( $tab_options as $key => $label ) : ?>
-                    <li>
-                    <label>
-                        <input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $value, $key ); ?>/>
-                        <span><?php echo esc_html($label); ?></span>
-                    </label>
-                    </li>
-                <?php endforeach; ?>
-                </ul>
-            <?php
-        }
-    }
-
-    // Section Heading Class
-    class Travelfic_Sec_Section_Control extends WP_Customize_Control {
-        public $type = 'sec_section';
-    
-        public function render_content() {
-        ?>
-            <span class="travelfic-customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-        <?php
-        }
-    }
 
     /* Header Tab Selection */
-
-    // Add a setting for header image
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_tab_select', array(
         'default'           => 'settings',
         'sanitize_callback' => 'sanitize_text_field',
         "transport" => "refresh",
     ));
 
-    // Add a control for header image
     $wp_customize->add_control(new Travelfic_Tab_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_tab_select', array(
         'label'    => __('Header Design Option', 'travelfic'),
-        'section'  => 'travelfic_customizer_header', // Specify the existing section ID or create a new section
+        'section'  => 'travelfic_customizer_header',
         'choices'  => array(
             'settings' => 'Settings',
             'design' => 'Design',
@@ -104,7 +49,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     // Add a control for header image
     $wp_customize->add_control(new Travelfic_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_select', array(
         'label'    => __('Header Design Option', 'travelfic'),
-        'section'  => 'travelfic_customizer_header', // Specify the existing section ID or create a new section
+        'section'  => 'travelfic_customizer_header',
         'choices'  => array(
             'design1' => TRAVELFIC_URL.'assets/img/header-1.png',
             'design2' => TRAVELFIC_URL.'assets/img/header-1.png',
@@ -139,31 +84,23 @@ function travelfic_toolkit_customize_register($wp_customize) {
         ),
     )));
 
-    //menu Font Size
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_font_size", [
-        "transport" => "refresh",
-        "sanitize_callback" => "absint",
-        "default" => '18'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "menu_font_size", [
-        "label" => __("Menu Font Size", "travelfic"),
-        'priority' => 20,
-        "section" => "travelfic_customizer_header",
-        "type" => "number",
-    ]);
-
-    //Menu Line Height
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_line_height", [
-        "transport" => "refresh",
-        "sanitize_callback" => "absint",
-        "default" => '18'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "menu_line_height", [
-        "label" => __("Submenu Line Height", "travelfic"),
-        'priority' => 20,
-        "section" => "travelfic_customizer_header",
-        "type" => "number",
-    ]);
+    // Add a setting for typography
+    $wp_customize->add_setting($travelfic_toolkit_prefix .'header_menu_typo', array(
+        'default'           => array(
+            'font-size'      => '18',
+            'line-height'      => '18',
+            'text-transform' => 'capitalize',
+        )
+    ));
+    $wp_customize->add_control(new Travelfic_typography_Control(
+        $wp_customize,
+        $travelfic_toolkit_prefix .'header_menu_typo',
+        array(
+            'label'   => __('Menu Typography', 'mytheme'),
+            'section' => 'travelfic_customizer_header',
+            'priority' => 20,
+        )
+    ));
 
     //menu Color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "menu_color", [

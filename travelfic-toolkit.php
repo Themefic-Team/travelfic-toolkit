@@ -60,7 +60,7 @@ require_once( dirname( __FILE__ ) . '/inc/customizer-settings.php' );
 /**
  *	Customizer Apply
  */
-require_once( dirname( __FILE__ ) . '/inc/customizer-apply.php' );
+require_once( dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php' );
 
 
 function enqueue_customizer_scripts() {

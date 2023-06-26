@@ -27,8 +27,17 @@ function travelfic_kit_customizer_style()
 {
 $travelfic_kit_pre = 'travelfic_customizer_settings_';
 $travelfic_menu_color = get_theme_mod($travelfic_kit_pre.'menu_color', '#222');
-$travelfic_menu_font_size = get_theme_mod($travelfic_kit_pre.'menu_font_size', '18');
-$travelfic_menu_line_height = get_theme_mod($travelfic_kit_pre.'menu_line_height', '18');
+
+$menu_typo_values = get_theme_mod($travelfic_kit_pre . 'header_menu_typo', array(
+    'line-height' => '18',
+    'font-size' => '18',
+    'text-transform' => 'none',
+));
+
+$travelfic_menu_line_height = $menu_typo_values['line-height'];
+$travelfic_menu_font_size = $menu_typo_values['font-size'];
+$travelfic_menu_texttransform = $menu_typo_values['text-transform'];
+
 $travelfic_menu_color_hover = get_theme_mod($travelfic_kit_pre.'menu_hover_color', '#F15D30');
 $travelfic_submenu_font_size = get_theme_mod($travelfic_kit_pre.'submenu_font_size', '18');
 $travelfic_submenu_line_height = get_theme_mod($travelfic_kit_pre.'submenu_line_height', '18');
