@@ -39,8 +39,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Header Tab Selection End*/
 
-
     /* Header Image Selection Start*/
+    
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
         'default'           => 'design1',
         'sanitize_callback' => 'sanitize_text_field',
@@ -58,6 +58,28 @@ function travelfic_toolkit_customize_register($wp_customize) {
     )));
 
     /* Header Image Selection End*/
+
+    
+    /* Header Layout Selection Start*/
+
+    $wp_customize->add_setting( $travelfic_toolkit_prefix .'header_width', array(
+        'sanitize_callback' => 'travelfic_sanitize_select',
+        'default' => 'default',
+      ) );
+      
+      $wp_customize->add_control( $travelfic_toolkit_prefix .'header_width', array(
+        'type' => 'select',
+        'section' => 'travelfic_customizer_header',
+        'label' => __( 'Header Template Width' ),
+        'description' => __( 'This is a Header Template Width.' ),
+        'choices' => array(
+          'default' => __( 'Default' ),
+          'full' => __( 'Full Width' ),
+        ),
+        'priority' => 10,
+      ) );
+
+    /* Header Layout Selection End*/
 
     /* Header Sticky Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_sticky_section_opt', array(
@@ -219,6 +241,27 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Footer Selection End */
 
+    /* Footer Layout Selection Start*/
+
+    $wp_customize->add_setting( $travelfic_toolkit_prefix .'footer_width', array(
+        'sanitize_callback' => 'travelfic_sanitize_select',
+        'default' => 'default',
+      ) );
+      
+      $wp_customize->add_control( $travelfic_toolkit_prefix .'footer_width', array(
+        'type' => 'select',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __( 'Footer Template Width' ),
+        'description' => __( 'This is a Footer Template Width.' ),
+        'choices' => array(
+          'default' => __( 'Default' ),
+          'full' => __( 'Full Width' ),
+        ),
+        'priority' => 10,
+      ) );
+
+    /* Footer Layout Selection End*/
+
     /* Typography Sanitization Start */
 
     function travelfic_sanitize_typography($value) {
@@ -233,6 +276,15 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Typography Sanitization End */
 
+    /* Template Width Sanitization Start */
+
+    function travelfic_sanitize_select( $input, $setting ) {
+        $input = sanitize_key( $input );
+        $choices = $setting->manager->get_control( $setting->id )->choices;
+        return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
+    }
+
+    /* Template Width Sanitization End */
 
 }
 
