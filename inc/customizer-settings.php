@@ -51,8 +51,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Header Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/img/header-1.png',
-            'design2' => TRAVELFIC_URL.'assets/img/header-1.png',
+            'design1' => TRAVELFIC_URL.'assets/admin/img/header-1.png',
+            'design2' => TRAVELFIC_URL.'assets/admin/img/header-1.png',
         ),
         'priority' => 10,
     )));
@@ -245,6 +245,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Footer Tab Selection End*/
 
     /* Footer Selection Start */
+
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_design_select', array(
         'default'           => 'design1',
         'sanitize_callback' => 'sanitize_text_field',
@@ -254,8 +255,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Footer Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_footer',
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/img/footer-1.png',
-            'design2' => TRAVELFIC_URL.'assets/img/footer-1.png',
+            'design1' => TRAVELFIC_URL.'assets/admin/img/footer-1.png',
+            'design2' => TRAVELFIC_URL.'assets/admin/img/footer-1.png',
         ),
     )));
 

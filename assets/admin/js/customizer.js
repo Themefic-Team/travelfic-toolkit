@@ -55,6 +55,35 @@
       });
     });
 
+
+    // Footer Builder Tabs
+
+    wp.customize('travelfic_customizer_settings_footer_tab_select', function (value) {
+      function tab_toggleFields(value) {
+        
+        if ('design' === value) {
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_text_color"] ').show();
+          
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_width"], li[id*="customize-control-travelfic_customizer_settings_footer_design_select"] ').hide();
+          
+        } else {
+      
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_width"], li[id*="customize-control-travelfic_customizer_settings_footer_design_select"] ').show();
+          
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_text_color"] ').hide();
+        }
+      }
+      
+      // Toggle the fields on initial load
+      tab_toggleFields(value.get());
+  
+      // Toggle the fields when the option value changes
+      value.bind(function (newVal) {
+        tab_toggleFields(newVal);
+      });
+    });
+
+
     // Image Select Input Bind
     wp.customize.controlConstructor['image_select'] = wp.customize.Control.extend({
         ready: function() {
@@ -64,7 +93,6 @@
             this.container.on( 'change', 'input:radio', function() {
                 value = jQuery( this ).val();
                 control.setting.set( value );
-                // refresh the preview
                 wp.customize.previewer.refresh();
             });
         }
@@ -78,14 +106,12 @@
           this.container.on( 'change', 'input:radio', function() {
               value = jQuery( this ).val();
               control.setting.set( value );
-              // refresh the preview
               wp.customize.previewer.refresh();
           });
       }
   });
 
-  // Typography Trigger
-
+  // Typography Trigger & Input Bind
   wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
     ready: function () {
         var control = this;

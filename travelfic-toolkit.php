@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Travelfic Toolkit
- * Plugin URI: https://psdtowpservice.com/plugins
+ * Plugin URI: https://themefic.com/
  * Description: Toolkit for travelfic Theme which containing widgets and some extra functions.
- * Author: AWEB-Squad
+ * Author: themefic
  * Text Domain: travelfic
  * Domain Path: /lang/
- * Author URI: https://themeforest.net/user/aweb-squad
+ * Author URI: https://themefic.com
  * Version: 1.0.0
  */
 
@@ -64,12 +64,12 @@ require_once( dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php' );
 
 
 function enqueue_customizer_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/css/style.css');
-	wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_URL . 'assets/js/customizer.js', array( 'jquery', 'customize-controls' ), '1.0', true );
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/admin/css/style.css');
+	wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_URL . 'assets/admin/js/customizer.js', array( 'jquery', 'customize-controls' ), '1.0', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'enqueue_customizer_scripts' );
 
 function enqueue_customizer_preview_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/css/style.css');
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_URL . 'assets/admin/css/style.css');
 }
 add_action( 'customize_preview_init', 'enqueue_customizer_preview_scripts' );
