@@ -23,7 +23,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Header Tab Selection Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_tab_select', array(
         'default'           => 'settings',
-        'sanitize_callback' => 'sanitize_text_field',
+        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
         "transport" => "refresh",
     ));
 
@@ -43,7 +43,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
         'default'           => 'design1',
-        'sanitize_callback' => 'sanitize_text_field',
+        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
         "transport" => "refresh",
     ));
 
@@ -51,8 +51,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Header Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/admin/img/header-1.png',
-            'design2' => TRAVELFIC_URL.'assets/admin/img/header-1.png',
+            'design1' => TRAVELFIC_URL.'assets/admin/img/header-1.png'
         ),
         'priority' => 10,
     )));
@@ -228,7 +227,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Footer Tab Selection Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_tab_select', array(
         'default'           => 'settings',
-        'sanitize_callback' => 'sanitize_text_field',
+        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
         "transport" => "refresh",
     ));
 
@@ -248,15 +247,14 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_design_select', array(
         'default'           => 'design1',
-        'sanitize_callback' => 'sanitize_text_field',
+        "sanitize_callback" => "travelfic_kit_sanitize_radio",
     ));
 
     $wp_customize->add_control(new Travelfic_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_design_select', array(
         'label'    => __('Footer Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_footer',
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/admin/img/footer-1.png',
-            'design2' => TRAVELFIC_URL.'assets/admin/img/footer-1.png',
+            'design1' => TRAVELFIC_URL.'assets/admin/img/footer-1.png'
         ),
     )));
 
@@ -309,8 +307,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
     function travelfic_sanitize_typography($value) {
         $sanitized_value = array();
 
-        $sanitized_value['line-height'] = sanitize_text_field($value['line-height']);
-        $sanitized_value['font-size'] = sanitize_text_field($value['font-size']);
+        $sanitized_value['line-height'] = absint($value['line-height']);
+        $sanitized_value['font-size'] = absint($value['font-size']);
         $sanitized_value['text-transform'] = sanitize_text_field($value['text-transform']);
     
         return $sanitized_value;
@@ -328,6 +326,23 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Template Width Sanitization End */
 
+    
+    /* Travelfic Radio Sanitization Start */
+
+    function travelfic_kit_sanitize_radio( $input, $setting ){
+
+        //input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
+        $input = sanitize_key($input);
+
+        //get the list of possible radio box options 
+        $choices = $setting->manager->get_control( $setting->id )->choices;
+                          
+        //return input if valid or return default option
+        return ( array_key_exists( $input, $choices ) ? $input : $setting->default );                
+          
+    }
+
+    /* Travelfic Radio Sanitization End */
 }
 
 add_action("customize_register", "travelfic_toolkit_customize_register");
