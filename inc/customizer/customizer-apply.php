@@ -50,6 +50,21 @@ function travelfic_toolkit_footer_tftcontainer_callback($travelfic_tftcontainer)
     }
 }
 
+
+// Travelfic Page tft-container Controller
+
+add_filter('travelfic_page_tftcontainer', 'travelfic_toolkit_page_tftcontainer_callback', 11);
+function travelfic_toolkit_page_tftcontainer_callback($travelfic_tftcontainer){
+    $travelfic_prefix = 'travelfic_customizer_settings_';
+    $travelfic_page_width = get_theme_mod($travelfic_prefix.'page_width', 'default');
+
+    if($travelfic_page_width=="default"){
+        return $travelfic_tftcontainer;
+    }else{
+        return 'travelfic-kit-container'; 
+    }
+}
+
 // travelfic Customizer Options
 function travelfic_kit_customizer_style()
 {

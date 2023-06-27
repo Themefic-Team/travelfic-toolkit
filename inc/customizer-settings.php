@@ -283,6 +283,27 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Footer Layout Selection End*/
 
+    /* Page Layout Selection Start*/
+
+    $wp_customize->add_setting( $travelfic_toolkit_prefix .'page_width', array(
+        'sanitize_callback' => 'travelfic_sanitize_select',
+        'default' => 'default',
+    ) );
+    
+    $wp_customize->add_control( $travelfic_toolkit_prefix .'page_width', array(
+        'type' => 'select',
+        'section' => 'travelfic_customizer_page',
+        'label' => __( 'Page Template Width' ),
+        'description' => __( 'This is a Page Template Width.' ),
+        'choices' => array(
+        'default' => __( 'Default' ),
+        'full' => __( 'Full Width' ),
+        ),
+        'priority' => 10,
+    ) );
+
+    /* Page Layout Selection End*/
+
     /* Typography Sanitization Start */
 
     function travelfic_sanitize_typography($value) {
