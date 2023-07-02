@@ -21,10 +21,16 @@ define( 'TRAVELFIC_URL', plugin_dir_url( __FILE__ ) );
  * Include file from plugin if it is not available in theme
  */
 function travelfic_kit_settings() {
-    $theme = wp_get_theme();
-	if ($theme->get('Name') !== 'Travelfic') {
-		add_action( 'admin_notices', 'is_travelfic_active' );
+	$theme_folder = wp_get_theme('travelfic');
+	if ($theme_folder->exists()) {
+		$theme = wp_get_theme();
+		if ($theme->get('Name') !== 'Travelfic') {
+			add_action( 'admin_notices', 'is_travelfic_active' );
+		}
+	}else{
+		add_action( 'admin_notices', 'is_travelfic_install' );
 	}
+	
 }
 add_action( 'admin_init', 'travelfic_kit_settings' );
 
@@ -100,6 +106,21 @@ function travelfic_front_page_script(){
 
 if( !function_exists('is_travelfic_active') ){
 	function is_travelfic_active() {
+	?>	
+		<div id="message" class="error">
+			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' ); ?></p>
+				<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php _e( 'Active Now', 'travelfic' ); ?></a></p>
+		</div>
+	<?php
+	}	
+}
+
+/**
+ *	Admin Notice If Travelfic Not Exits
+ */
+
+if( !function_exists('is_travelfic_install') ){
+	function is_travelfic_install() {
 	?>	
 		<div id="message" class="error">
 			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' ); ?></p>
