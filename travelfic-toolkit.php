@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'TRAVELFIC_URL', plugin_dir_url( __FILE__ ) );
-
+define( 'TRAVELFIC_VERSION', '1.0.1' );
 /**
  * Include file from plugin if it is not available in theme
  */
@@ -57,13 +57,6 @@ function travelfic_toolkit_plugin_loaded_action() {
 	load_plugin_textdomain( 'travelfic', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
 }
 
-
-/**
- *	Elementor Widgets
- */
-require_once( dirname( __FILE__ ) . '/inc/elementor-widgets.php' );
-
-
 /**
  *	Customizer Settings
  */
@@ -73,6 +66,15 @@ require_once( dirname( __FILE__ ) . '/inc/customizer-settings.php' );
  *	Customizer Apply
  */
 require_once( dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php' );
+
+/**
+ * Elementor Widgets
+ */
+require_once( dirname( __FILE__ ) . '/inc/elementor-widgets.php');
+/**
+ * Plugin Functions
+ */
+require_once( dirname( __FILE__ ) . '/inc/functions.php');
 
 /**
  *	Admin & Customizer Enqueue

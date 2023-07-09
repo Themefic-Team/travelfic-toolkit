@@ -1,0 +1,149 @@
+.tft-latest-posts .tft-latest-post-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .tft-latest-posts .tft-col-item:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .tft-latest-posts .tft-col-item:nth-child(4) {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .tft-latest-posts .tft-post-single-item:nth-child(2) {
+    height: 260px;
+  }
+  .tft-latest-posts .tft-post-single-item:nth-child(3) {
+    height: 260px;
+  }
+  .tft-latest-posts .tft-post-single-item:nth-child(2) img {
+    height: 260px;
+  }
+  .tft-latest-posts .tft-post-single-item:nth-child(2) .tft-post-thumbnail a {
+    height: 260px;
+  }
+  .tft-latest-posts .tft-post-single-item:nth-child(3) img {
+    height: 260px;
+  }
+  .tft-latest-posts .tft-post-single-item:nth-child(3) .tft-post-thumbnail a {
+    height: 260px;
+  }
+  .tft-latest-posts .tft-post-content-wrap {
+    position: absolute;
+    bottom: 20px;
+    z-index: 999;
+    padding: 0px 30px;
+  }
+  .tft-latest-posts .tft-post-content-wrap .tft-meta-wrap .tft-meta {
+    margin-bottom: 10px;
+  }
+  .tft-latest-posts .tft-post-content-wrap p {
+    color: #fff;
+  }
+  .tft-latest-posts .tft-post-content-wrap .tft-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .tft-latest-posts .tft-post-thumbnail {
+    position: relative;
+  }
+  .tft-latest-posts .tft-post-thumbnail a {
+    display: block;
+    margin: 0px;
+    position: relative;
+    height: 540px;
+  }
+  .tft-latest-posts .tft-post-thumbnail img {
+    width: 100%;
+    object-fit: cover;
+    height: 540px;
+  }
+  .tft-latest-posts .tft-post-thumbnail a:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    border-radius: 10px;
+  }
+  #items-count-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 20px;
+  }
+  #items-count-2 .tft-post-single-item:nth-child(2) {
+    height: auto;
+  }
+  #items-count-2 .tft-post-single-item:nth-child(2) .tft-post-thumbnail a {
+    height: 540px;
+  }
+  #items-count-2 .tft-post-single-item:nth-child(2) img {
+    height: 540px;
+  }
+  
+  #items-count-3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 20px;
+  }
+  
+ 
+  @media (max-width:767px) {
+    .tft-latest-posts .tft-latest-post-items {
+        display: block;
+      }
+      .tft-latest-posts .tft-post-single-item {
+        margin: 20px 0px;
+      }
+      .tft-latest-posts .tft-post-content-wrap {
+        padding: 20px 20px;
+      }
+      .tft-latest-posts .tft-post-content-wrap {
+        bottom: 0px;
+      }
+      .tft-latest-posts .tft-post-thumbnail img {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-thumbnail a {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-single-item:nth-child(2) {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-single-item:nth-child(2) img {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-single-item:nth-child(2) .tft-post-thumbnail a {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-single-item:nth-child(3) {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-single-item:nth-child(3) img {
+        height: 362px;
+      }
+      .tft-latest-posts .tft-post-single-item:nth-child(3) .tft-post-thumbnail a {
+        height: 362px;
+      }
+      #items-count-3 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 20px;
+      }
+      #items-count-2 {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 20px;
+      }
+  }

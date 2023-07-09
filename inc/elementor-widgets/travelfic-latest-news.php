@@ -11,7 +11,7 @@ class LatestNews extends \Elementor\Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tf-latest-news';
+		return 'tft-latest-news';
 	}
 
 	/**
@@ -24,7 +24,7 @@ class LatestNews extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Latest News', 'travelfic' );
+		return esc_html__( 'TFT Latest News', 'travelfic-toolkit' );
 	}
 
 	/**
@@ -91,7 +91,9 @@ class LatestNews extends \Elementor\Widget_Base {
 			   }
 			}
 		}
+
 	   return $options;
+	   
 	}
 
 	
@@ -106,9 +108,12 @@ class LatestNews extends \Elementor\Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'travelfic', 'blog', 'latest' ];
+		return [ 'travelfic', 'blog', 'latest', 'tft' ];
 	}
-
+	public function get_style_depends()
+	{
+		return ['travelfic-latest-news'];
+	}
 	/**
 	 * Register widget controls.
 	 *
@@ -122,7 +127,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'blog_news',
 			[
-				'label' => esc_html__( 'Blog News', 'travelfic' ),
+				'label' => esc_html__( 'Blog News', 'travelfic-toolkit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -130,9 +135,10 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'post_category',
             [
-                'type'      => \Elementor\Controls_Manager::SELECT,
-                'label'     => __( 'Category', 'travelfic' ),
+                'type'     => \Elementor\Controls_Manager::SELECT2,
+                'label'     => esc_html__( 'Category', 'travelfic-toolkit' ),
                 'options'   => $this->grid_get_all_post_type_categories( 'post' ),
+				'multiple' => true,
             ]
         );
 		// posts items per page
@@ -140,8 +146,8 @@ class LatestNews extends \Elementor\Widget_Base {
             'post_items',
             [
                 'type'        => \Elementor\Controls_Manager::NUMBER,
-                'label'       => __( 'Items', 'travelfic' ),
-                'placeholder' => __( 'How many items?', 'travelfic' ),
+                'label'       => esc_html__( 'Items', 'travelfic-toolkit' ),
+                'placeholder' => esc_html__( 'How many items?', 'travelfic-toolkit' ),
                 'default'     => 4,
             ]
         );
@@ -151,14 +157,14 @@ class LatestNews extends \Elementor\Widget_Base {
             'post_order_by',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'label'   => __( 'Order by', 'travelfic' ),
+                'label'   => __( 'Order by', 'travelfic-toolkit' ),
                 'default' => 'date',
                 'options' => [
-                    'date'          => __( 'Date', 'travelfic' ),
-                    'title'         => __( 'Title', 'travelfic' ),
-                    'modified'      => __( 'Modified date', 'travelfic' ),
-                    'comment_count' => __( 'Comment count', 'travelfic' ),
-                    'rand'          => __( 'Random', 'travelfic' ),
+                    'date'          => esc_html__( 'Date', 'travelfic-toolkit' ),
+                    'title'         => esc_html__( 'Title', 'travelfic-toolkit' ),
+                    'modified'      => esc_html__( 'Modified date', 'travelfic-toolkit' ),
+                    'comment_count' => esc_html__( 'Comment count', 'travelfic-toolkit' ),
+                    'rand'          => esc_html__( 'Random', 'travelfic-toolkit' ),
                 ],
             ]
         );
@@ -167,17 +173,197 @@ class LatestNews extends \Elementor\Widget_Base {
             'post_order',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'label'   => __( 'Order', 'travelfic' ),
+                'label'   => esc_html__( 'Order', 'travelfic-toolkit' ),
                 'default' => 'DESC',
                 'options' => [
-                    'DESC'          => __( 'Descending', 'travelfic' ),
-                    'ASC'         => __( 'Ascending', 'travelfic' ),
+                    'DESC'        => esc_html__( 'Descending', 'travelfic-toolkit' ),
+                    'ASC'         => esc_html__( 'Ascending', 'travelfic-toolkit' ),
+                ],
+            ]
+        );
+		$this->end_controls_section();
+
+		// Style
+		$this->start_controls_section(
+            'news_style_section',
+            [
+                'label' => esc_html__( 'News List', 'travelfic-toolkit' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+		$this->add_responsive_control(
+            'news_item_card_padding',
+            [
+                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
-		$this->end_controls_section();
+		$this->add_control(
+            'news_card_radius',
+            [
+                'label'   => esc_html__( 'Border Radius', 'travelfic-toolkit' ),
+                'type'    => \Elementor\Controls_Manager::NUMBER,
+                'default' => 10,
+            ],
+        );
 
+		$this->add_control(
+            'news_card_gradient',
+            [
+                'label'     => esc_html__( 'Card Gradient', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->start_controls_tabs( 'news_hover_style' );
+
+        // Normal state tab
+        $this->start_controls_tab(
+            'search_button_normal',
+            [
+                'label' => esc_html__( 'Normal', 'travelfic-toolkit' ),
+            ]
+        );
+
+        $this->add_control(
+            'news_item_card_gradient_1',
+            [
+                'label'     => esc_html__( 'Background Gradient 1', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B'
+            ]
+        );
+
+		$this->add_control(
+            'news_item_card_gradient_2',
+            [
+                'label'     => esc_html__( 'Background Gradient 2', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1d2a3b00'
+            ]
+        );
+        $this->end_controls_tab();
+
+        // Hover state tab
+        $this->start_controls_tab(
+            'search_button_hover',
+            [
+                'label' => esc_html__( 'Hover', 'travelfic-toolkit' ),
+            ]
+        );
+
+        $this->add_control(
+            'news_item_card_gradient_1_hover',
+            [
+                'label'     => esc_html__( 'Background Gradient 1', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D30'
+            ]
+        );
+
+		$this->add_control(
+            'news_item_card_gradient_2_hover',
+            [
+                'label'     => esc_html__( 'Background Gradient 2', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#eb390300'
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+
+		$this->add_control(
+            'news_title_head',
+            [
+                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'news_title_typo',
+                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-title',
+            ]
+        );
+		$this->add_control(
+            'news_title_typo_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+		$this->add_control(
+            'news_meta_head',
+            [
+                'label'     => esc_html__( 'Meta', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'news_meta_typo',
+                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-meta-wrap .tft-meta',
+            ]
+        );
+		$this->add_control(
+            'news_meta_typo_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-meta-wrap .tft-meta' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+		$this->add_control(
+            'news_hover_head',
+            [
+                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->add_control(
+            'news_title_typo_color_hover',
+            [
+                'label'     => esc_html__( 'Titile', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-latest-posts .tft-post-thumbnail a:hover  .tft-title' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+		$this->add_control(
+            'news_meta_typo_color_hover',
+            [
+                'label'     => esc_html__( 'Meta', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-latest-posts .tft-post-thumbnail a:hover .tft-meta' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+		
 	}
 
 	protected function render() {
@@ -207,13 +393,26 @@ class LatestNews extends \Elementor\Widget_Base {
             $args['order'] = $settings['post_order'];
         }
 
-		$query = new \WP_Query( $args );
-	
+		$query = new \WP_Query ( $args );
+		$items_count = $settings['post_items'];
+		
 	?>
 
-		<div class="tft-popular-tour-wrapper">
+		<style>
+			.tft-latest-posts .tft-post-thumbnail a::before {
+				background: linear-gradient(360deg, <?php echo esc_html( $settings['news_item_card_gradient_1'] ); ?> -9.6%, <?php echo esc_html( $settings['news_item_card_gradient_2'] ); ?> 109.78%);
+			}
+			.tft-latest-posts .tft-post-thumbnail a:hover::before  {
+				background: linear-gradient(360deg, <?php echo esc_html( $settings['news_item_card_gradient_1_hover'] ); ?> -9.6%, <?php echo esc_html( $settings['news_item_card_gradient_2_hover'] ); ?> 109.78%);
+			}
+			.tft-latest-posts .tft-post-thumbnail img{
+				border-radius: <?php echo esc_html( $settings['news_card_radius'] ); ?>px;
+			}
+		</style>
+
+		<div class="tft-latest-posts-wrapper tft-customizer-typography">
             <div class="tft-latest-posts">
-                <div class="tft-latest-post-items tf-flex">
+                <div id="items-count-<?php echo $items_count; ?>" class="tft-latest-post-items">
 					
 				<?php if( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
@@ -225,10 +424,10 @@ class LatestNews extends \Elementor\Widget_Base {
 									<?php the_post_thumbnail( 'blog-thumb' ); ?>
 										<div class="tft-post-content-wrap">
 												<div class="tft-meta-wrap">
-													<p><i class="fas fa-clock"></i> Dec 01, 2021 </p>
+													<p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
 												</div>
 											<div class="tft-post-titile">
-												<h3><?php the_title(); ?></h3>
+												<h3 class="tft-title"><?php the_title(); ?></h3>
 											</div>
 										</div>
 									</a>
@@ -242,7 +441,6 @@ class LatestNews extends \Elementor\Widget_Base {
                 </div>
             </div>
         </div>
-
 
     <?php
 	}
