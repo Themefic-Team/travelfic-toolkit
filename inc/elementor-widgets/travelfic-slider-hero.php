@@ -208,7 +208,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             'type',
             [
                 'type'     => \Elementor\Controls_Manager::SELECT2,
-                'label'    => esc_html__( 'Type', 'tourfic' ),
+                'label'    => esc_html__( 'Type', 'travelfic-toolkit' ),
                 'multiple' => true,
                 'options'  => $this->tf_search_types(),
                 'default'  => ['all'],

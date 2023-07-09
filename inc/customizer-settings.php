@@ -51,7 +51,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Header Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/admin/img/header-1.png'
+            'design1' => TRAVELFIC_TOOLKIT_URL.'assets/admin/img/header-1.png'
         ),
         'priority' => 10,
     )));
@@ -254,7 +254,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Footer Design Option', 'travelfic'),
         'section'  => 'travelfic_customizer_footer',
         'choices'  => array(
-            'design1' => TRAVELFIC_URL.'assets/admin/img/footer-1.png'
+            'design1' => TRAVELFIC_TOOLKIT_URL.'assets/admin/img/footer-1.png'
         ),
     )));
 
