@@ -390,6 +390,17 @@ class IconWithText extends \Elementor\Widget_Base {
             ]
         );
         $this->add_control(
+            'content_color',
+            [
+                'label'     => esc_html__( 'Content Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single .tft-details' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
             'content_color_hover',
             [
                 'label'     => esc_html__( 'Content Color Hover', 'travelfic-toolkit' ),
