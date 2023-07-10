@@ -507,6 +507,17 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_responsive_control(
+            'slider_search_button_padding_',
+            [
+                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->add_control(
             'slider_search_input',
@@ -544,18 +555,6 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'label'     => esc_html__( 'Button', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-            ]
-        );
-
-        $this->add_responsive_control(
-            'slider_search_button_padding_',
-            [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
             ]
         );
 
