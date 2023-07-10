@@ -131,13 +131,13 @@ final class Travelfic_Elementor_Extensions {
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \TravelficSliderHero());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_IconWithText() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \PopularTours() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Testimonials() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \LatestNews() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_LatestNews() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \SectionHeading() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TourDestinaions() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TourDestinaions() );
 
     }
 }

@@ -1,5 +1,5 @@
 <?php
-class TourDestinaions extends \Elementor\Widget_Base{
+class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
 
     /**
      * Get widget name.
@@ -11,7 +11,7 @@ class TourDestinaions extends \Elementor\Widget_Base{
      * @return string Widget name.
      */
     public function get_name() {
-        return 'tff-destinations-tours';
+        return 'tft-destinations-tours';
     }
 
     /**
@@ -96,7 +96,7 @@ class TourDestinaions extends \Elementor\Widget_Base{
         $this->start_controls_section(
             'tour_destination',
             [
-                'label' => esc_html__( 'Tour Destinations', 'travelfic-toolkit' ),
+                'label' => __( 'Tour Destinations', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -128,8 +128,8 @@ class TourDestinaions extends \Elementor\Widget_Base{
             'post_per_page',
             [
                 'type'        => \Elementor\Controls_Manager::NUMBER,
-                'label'       => esc_html__( 'Item Limit', 'travelfic-toolkit' ),
-                'placeholder' => esc_html__( 'Post Per Page', 'travelfic-toolkit' ),
+                'label'       => __( 'Item Limit', 'travelfic-toolkit' ),
+                'placeholder' => __( 'Post Per Page', 'travelfic-toolkit' ),
                 'default'     => 4,
             ]
         );
@@ -153,14 +153,14 @@ class TourDestinaions extends \Elementor\Widget_Base{
         $this->start_controls_section(
             'tour_destination_style',
             [
-                'label' => esc_html__( 'Style', 'travelfic-toolkit' ),
+                'label' => __( 'Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_responsive_control(
             'tour_destination_image_border_radius',
             [
-                'label'      => esc_html__( 'Image Radius', 'travelfic-toolkit' ),
+                'label'      => __( 'Image Radius', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -171,7 +171,7 @@ class TourDestinaions extends \Elementor\Widget_Base{
         $this->add_control(
             'tour_destination_header',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -181,14 +181,14 @@ class TourDestinaions extends \Elementor\Widget_Base{
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_title',
-                'label'    => esc_html__( 'Destination List', 'travelfic-toolkit' ),
+                'label'    => __( 'Destination List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a',
             ]
         );
         $this->add_control(
             'tour_destination_title_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -199,7 +199,7 @@ class TourDestinaions extends \Elementor\Widget_Base{
         $this->add_control(
             'tour_destination_title_color_hover',
             [
-                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -211,14 +211,14 @@ class TourDestinaions extends \Elementor\Widget_Base{
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sub_list',
-                'label'    => esc_html__( 'Destination Sub List', 'travelfic-toolkit' ),
+                'label'    => __( 'Destination Sub List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a',
             ]
         );
         $this->add_control(
             'tour_destination_sub_list_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -229,7 +229,7 @@ class TourDestinaions extends \Elementor\Widget_Base{
         $this->add_control(
             'tour_destination_sub_list_color_hover',
             [
-                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -300,10 +300,10 @@ class TourDestinaions extends \Elementor\Widget_Base{
 
             <div class="tft-single-destination tft-col">
                 <div class="tft-destination-thumbnail tft-thumbnail">
-                    <a href="<?php echo get_term_link( $cat->slug, 'tour_destination' ); ?>"><img src="<?php echo $cat_image; ?>" alt=""></a>
+                    <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt=""></a>
                 </div>
                 <div class="tft-destination-title">
-                    <?php echo '<a href="' . get_term_link( $cat->slug, 'tour_destination' ) . '">' . $cat->name . '</a>'; ?>
+                    <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'tour_destination' )) . '">' . esc_html($cat->name) . '</a>'; ?>
                 </div>
 
                 <div class="tft-destination-details">
@@ -324,7 +324,7 @@ class TourDestinaions extends \Elementor\Widget_Base{
                         $sub_cats = get_categories( $args2 );
                         if ( $sub_cats ) {
                             foreach ( $sub_cats as $sub_category ) {?>
-                                <li><a href="<?php echo get_term_link( $sub_category->slug, 'tour_destination' ); ?>"><?php echo $sub_category->name; ?></a></li>
+                                <li><a href="<?php echo esc_url(get_term_link( $sub_category->slug, 'tour_destination' )); ?>"><?php echo esc_html( $sub_category->name ); ?></a></li>
                             <?php }
                         }?>
                         </ul>

@@ -1,5 +1,5 @@
 <?php
-class IconWithText extends \Elementor\Widget_Base {
+class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base {
 
     /**
      * Get widget name.
@@ -96,7 +96,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'icon_with_text',
             [
-                'label' => esc_html__( 'Items', 'travelfic-toolkit' ),
+                'label' => __( 'Items', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -104,7 +104,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $repeater->add_control(
             'box_image',
             [
-                'label'   => esc_html__( 'Image', 'travelfic-toolkit' ),
+                'label'   => __( 'Image', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -117,7 +117,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $repeater->add_control(
             'box_icon',
             [
-                'label'   => esc_html__( 'Icon', 'travelfic-toolkit' ),
+                'label'   => __( 'Icon', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value'   => 'fas fa-star',
@@ -128,28 +128,28 @@ class IconWithText extends \Elementor\Widget_Base {
         $repeater->add_control(
             'box_title',
             [
-                'label'       => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'       => __( 'Title', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Your Heading Text Here', 'travelfic-toolkit' ),
+                'default'     => __( 'Your Heading Text Here', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
         $repeater->add_control(
             'box_details',
             [
-                'label'       => esc_html__( 'Descriptions', 'travelfic-toolkit' ),
+                'label'       => __( 'Descriptions', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXTAREA,
-                'default'     => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'travelfic-toolkit' ),
+                'default'     => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
         $repeater->add_control(
             'active_gap',
             [
-                'label'        => esc_html__( 'Active Gap Item', 'travelfic-toolkit' ),
+                'label'        => __( 'Active Gap Item', 'travelfic-toolkit' ),
                 'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'travelfic-toolkit' ),
-                'label_off'    => esc_html__( 'No', 'travelfic-toolkit' ),
+                'label_on'     => __( 'Yes', 'travelfic-toolkit' ),
+                'label_off'    => __( 'No', 'travelfic-toolkit' ),
                 'return_value' => 'yes',
                 'default'      => 'no',
             ]
@@ -157,7 +157,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_text_list',
             [
-                'label'       => esc_html__( 'Repeater List', 'travelfic-toolkit' ),
+                'label'       => __( 'Repeater List', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ box_title }}}',
@@ -167,7 +167,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'items_gap',
             [
-                'label'   => esc_html__( 'Middle item gap', 'travelfic-toolkit' ),
+                'label'   => __( 'Middle item gap', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 70,
             ]
@@ -179,7 +179,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'icon_text_style_section',
             [
-                'label' => esc_html__( 'Item List', 'travelfic-toolkit' ),
+                'label' => __( 'Item List', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -187,7 +187,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_text_card',
             [
-                'label'     => esc_html__( 'Card Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Card Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -196,7 +196,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'item_card_padding',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%' ],
                 'default' => [
@@ -215,7 +215,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'list_card_bg_color',
             [
-                'label'     => esc_html__( 'List Background', 'travelfic-toolkit' ),
+                'label'     => __( 'List Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -226,7 +226,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'list_card_bg_color_hover',
             [
-                'label'     => esc_html__( 'List Background Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'List Background Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -238,7 +238,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_id',
             [
-                'label'     => esc_html__( 'Icon Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -246,7 +246,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_size',
             [
-                'label'     => esc_html__( 'Icon Size', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Size', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -266,7 +266,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_outter_width',
             [
-                'label'     => esc_html__( 'Icon outter Width', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon outter Width', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -286,7 +286,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_outter_height',
             [
-                'label'     => esc_html__( 'Icon outter height', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon outter height', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -306,7 +306,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -317,7 +317,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color_hover',
             [
-                'label'     => esc_html__( 'Icon Color Hover', 'plugin-domain' ),
+                'label'     => __( 'Icon Color Hover', 'plugin-domain' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -329,7 +329,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'icon_color_outter_gradient_1',
             [
-                'label'   => esc_html__( 'Icon Outter Gradient 1', 'travelfic-toolkit' ),
+                'label'   => __( 'Icon Outter Gradient 1', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FF4E18',
             ]
@@ -346,7 +346,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'heading_id',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -356,13 +356,13 @@ class IconWithText extends \Elementor\Widget_Base {
             [
                 'name'     => 'icon-text_title',
                 'selector' => '{{WRAPPER}} .tft-icon-text-wrapper .tft-title',
-                'label'    => esc_html__( 'Title Style', 'travelfic-toolkit' ),
+                'label'    => __( 'Title Style', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
             'title_color',
             [
-                'label'     => esc_html__( 'Title Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3BCC',
                 'selectors' => [
@@ -373,7 +373,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'title_color_hover',
             [
-                'label'     => esc_html__( 'Title Color Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Color Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -384,7 +384,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'content_id',
             [
-                'label'     => esc_html__( 'Content', 'travelfic-toolkit' ),
+                'label'     => __( 'Content', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -394,13 +394,13 @@ class IconWithText extends \Elementor\Widget_Base {
             [
                 'name'     => 'icon-text_content',
                 'selector' => '{{WRAPPER}} .tft-icon-text-wrapper .tft-details',
-                'label'    => esc_html__( 'Content Style', 'travelfic-toolkit' ),
+                'label'    => __( 'Content Style', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
             'content_color',
             [
-                'label'     => esc_html__( 'Content Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Content Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3BCC',
                 'selectors' => [
@@ -411,7 +411,7 @@ class IconWithText extends \Elementor\Widget_Base {
         $this->add_control(
             'content_color_hover',
             [
-                'label'     => esc_html__( 'Content Color Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Content Color Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [

@@ -1,5 +1,5 @@
 <?php
-class LatestNews extends \Elementor\Widget_Base {
+class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 
     /**
 	 * Get widget name.
@@ -127,7 +127,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'blog_news',
 			[
-				'label' => esc_html__( 'Blog News', 'travelfic-toolkit' ),
+				'label' => __( 'Blog News', 'travelfic-toolkit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -136,7 +136,7 @@ class LatestNews extends \Elementor\Widget_Base {
             'post_category',
             [
                 'type'     => \Elementor\Controls_Manager::SELECT2,
-                'label'     => esc_html__( 'Category', 'travelfic-toolkit' ),
+                'label'     => __( 'Category', 'travelfic-toolkit' ),
                 'options'   => $this->grid_get_all_post_type_categories( 'post' ),
 				'multiple' => true,
             ]
@@ -146,8 +146,8 @@ class LatestNews extends \Elementor\Widget_Base {
             'post_items',
             [
                 'type'        => \Elementor\Controls_Manager::NUMBER,
-                'label'       => esc_html__( 'Items', 'travelfic-toolkit' ),
-                'placeholder' => esc_html__( 'How many items?', 'travelfic-toolkit' ),
+                'label'       => __( 'Items', 'travelfic-toolkit' ),
+                'placeholder' => __( 'How many items?', 'travelfic-toolkit' ),
                 'default'     => 4,
             ]
         );
@@ -160,11 +160,11 @@ class LatestNews extends \Elementor\Widget_Base {
                 'label'   => __( 'Order by', 'travelfic-toolkit' ),
                 'default' => 'date',
                 'options' => [
-                    'date'          => esc_html__( 'Date', 'travelfic-toolkit' ),
-                    'title'         => esc_html__( 'Title', 'travelfic-toolkit' ),
-                    'modified'      => esc_html__( 'Modified date', 'travelfic-toolkit' ),
-                    'comment_count' => esc_html__( 'Comment count', 'travelfic-toolkit' ),
-                    'rand'          => esc_html__( 'Random', 'travelfic-toolkit' ),
+                    'date'          => __( 'Date', 'travelfic-toolkit' ),
+                    'title'         => __( 'Title', 'travelfic-toolkit' ),
+                    'modified'      => __( 'Modified date', 'travelfic-toolkit' ),
+                    'comment_count' => __( 'Comment count', 'travelfic-toolkit' ),
+                    'rand'          => __( 'Random', 'travelfic-toolkit' ),
                 ],
             ]
         );
@@ -173,11 +173,11 @@ class LatestNews extends \Elementor\Widget_Base {
             'post_order',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'label'   => esc_html__( 'Order', 'travelfic-toolkit' ),
+                'label'   => __( 'Order', 'travelfic-toolkit' ),
                 'default' => 'DESC',
                 'options' => [
-                    'DESC'        => esc_html__( 'Descending', 'travelfic-toolkit' ),
-                    'ASC'         => esc_html__( 'Ascending', 'travelfic-toolkit' ),
+                    'DESC'        => __( 'Descending', 'travelfic-toolkit' ),
+                    'ASC'         => __( 'Ascending', 'travelfic-toolkit' ),
                 ],
             ]
         );
@@ -187,14 +187,14 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->start_controls_section(
             'news_style_section',
             [
-                'label' => esc_html__( 'News List', 'travelfic-toolkit' ),
+                'label' => __( 'News List', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_responsive_control(
             'news_item_card_padding',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -206,7 +206,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_card_radius',
             [
-                'label'   => esc_html__( 'Border Radius', 'travelfic-toolkit' ),
+                'label'   => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 10,
             ],
@@ -215,7 +215,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_card_gradient',
             [
-                'label'     => esc_html__( 'Card Gradient', 'travelfic-toolkit' ),
+                'label'     => __( 'Card Gradient', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -226,14 +226,14 @@ class LatestNews extends \Elementor\Widget_Base {
         $this->start_controls_tab(
             'search_button_normal',
             [
-                'label' => esc_html__( 'Normal', 'travelfic-toolkit' ),
+                'label' => __( 'Normal', 'travelfic-toolkit' ),
             ]
         );
 
         $this->add_control(
             'news_item_card_gradient_1',
             [
-                'label'     => esc_html__( 'Background Gradient 1', 'travelfic-toolkit' ),
+                'label'     => __( 'Background Gradient 1', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B'
             ]
@@ -242,7 +242,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_item_card_gradient_2',
             [
-                'label'     => esc_html__( 'Background Gradient 2', 'travelfic-toolkit' ),
+                'label'     => __( 'Background Gradient 2', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1d2a3b00'
             ]
@@ -253,14 +253,14 @@ class LatestNews extends \Elementor\Widget_Base {
         $this->start_controls_tab(
             'search_button_hover',
             [
-                'label' => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label' => __( 'Hover', 'travelfic-toolkit' ),
             ]
         );
 
         $this->add_control(
             'news_item_card_gradient_1_hover',
             [
-                'label'     => esc_html__( 'Background Gradient 1', 'travelfic-toolkit' ),
+                'label'     => __( 'Background Gradient 1', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30'
             ]
@@ -269,7 +269,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_item_card_gradient_2_hover',
             [
-                'label'     => esc_html__( 'Background Gradient 2', 'travelfic-toolkit' ),
+                'label'     => __( 'Background Gradient 2', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#eb390300'
             ]
@@ -281,7 +281,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_title_head',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -290,14 +290,14 @@ class LatestNews extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'news_title_typo',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-title',
             ]
         );
 		$this->add_control(
             'news_title_typo_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -308,7 +308,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_meta_head',
             [
-                'label'     => esc_html__( 'Meta', 'travelfic-toolkit' ),
+                'label'     => __( 'Meta', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -317,14 +317,14 @@ class LatestNews extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'news_meta_typo',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-meta-wrap .tft-meta',
             ]
         );
 		$this->add_control(
             'news_meta_typo_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -336,7 +336,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_hover_head',
             [
-                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -344,7 +344,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_title_typo_color_hover',
             [
-                'label'     => esc_html__( 'Titile', 'travelfic-toolkit' ),
+                'label'     => __( 'Titile', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -355,7 +355,7 @@ class LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_meta_typo_color_hover',
             [
-                'label'     => esc_html__( 'Meta', 'travelfic-toolkit' ),
+                'label'     => __( 'Meta', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
