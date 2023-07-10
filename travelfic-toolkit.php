@@ -54,7 +54,7 @@ add_filter( 'theme_file_path', 'travelfic_get_theme_filepath', 10, 2 );
 add_action( 'plugins_loaded', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
 
 function travelfic_toolkit_plugin_loaded_action() {
-    load_plugin_textdomain( 'travelfic', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+    load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 }
 
 /**
@@ -110,8 +110,8 @@ if ( !function_exists( 'is_travelfic_active' ) ) {
     function is_travelfic_active() {
         ?>
 		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-				<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php _e( 'Active Now', 'travelfic' );?></a></p>
+			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
+				<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php _e( 'Active Now', 'travelfic-toolkit' );?></a></p>
 		</div>
 	<?php
 }
@@ -125,8 +125,8 @@ if ( !function_exists( 'is_travelfic_install' ) ) {
     function is_travelfic_install() {
         ?>
 		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"><?php _e( 'Install Now', 'travelfic' );?></a></p>
+			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
+			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"><?php _e( 'Install Now', 'travelfic-toolkit' );?></a></p>
 		</div>
 	<?php
 }

@@ -87,13 +87,13 @@ final class Travelfic_Elementor_Extensions {
 
     function elementor_assets_dependencies() {
         /* Styles */
-        wp_register_style( 'travelfic-slider-hero', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-icon-text', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-icon-text.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-popular-tours', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-popular-tours.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-testimonials', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-testimonials.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-latest-news', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-team', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-tour-destination', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-destination.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-slider-hero', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-icon-text', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-icon-text.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-popular-tours', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-popular-tours.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-testimonials', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-testimonials.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-latest-news', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-team', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-tour-destination', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-destination.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
     }
 
     /**

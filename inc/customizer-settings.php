@@ -31,8 +31,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Header Design Option', 'travelfic-toolkit'),
         'section'  => 'travelfic_customizer_header',
         'choices'  => array(
-            'settings' => 'Settings',
-            'design' => 'Design',
+            'settings' => __( 'Settings', 'travelfic-toolkit'),
+            'design' => __( 'Design', 'travelfic-toolkit'),
         ),
         'priority' => 10,
     )));
@@ -104,7 +104,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'section'  => 'travelfic_customizer_header',
         'priority' => 19,
         'sec'  => array(
-            'sections' => 'Menu Settings',
+            'sections' => __('Menu Settings', 'travelfic-toolkit'),
         ),
     )));
 
@@ -235,8 +235,8 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Footer Design Option', 'travelfic-toolkit'),
         'section'  => 'travelfic_customizer_footer',
         'choices'  => array(
-            'settings' => 'Settings',
-            'design' => 'Design',
+            'settings' => __('Settings', 'travelfic-toolkit'),
+            'design' => __('Design', 'travelfic-toolkit'),
         ),
         'priority' => 10,
     )));

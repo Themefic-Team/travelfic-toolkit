@@ -99,25 +99,25 @@ class Travelfic_typography_Control extends WP_Customize_Control {
     private function generate_fields($lineHeight, $fontSize, $textTransform) {
         $fields = array(
             'font-size' => array(
-                'label' => 'Font Size (PX)',
+                'label' => __('Font Size (PX)', 'travelfic-toolkit'),
                 'type' => 'text',
-                'value' => $fontSize, // Pass the font-size value
+                'value' => esc_html( $fontSize ), // Pass the font-size value
             ),
             'line-height' => array(
-                'label' => 'Line Height (PX)',
+                'label' => __('Line Height (PX)', 'travelfic-toolkit'),
                 'type' => 'text',
-                'value' => $lineHeight, // Pass the line-height value
+                'value' => esc_html( $lineHeight ), // Pass the line-height value
             ),
             'text-transform' => array(
-                'label' => 'Text Transform',
+                'label' => __('Text Transform', 'travelfic-toolkit'),
                 'type' => 'select',
                 'options' => array(
-                    'none' => 'None',
-                    'capitalize' => 'Capitalize',
-                    'uppercase' => 'Uppercase',
-                    'lowercase' => 'Lowercase',
+                    'none' => __('None', 'travelfic-toolkit'),
+                    'capitalize' => __('Capitalize', 'travelfic-toolkit'),
+                    'uppercase' => __('Uppercase', 'travelfic-toolkit'),
+                    'lowercase' => __('Lowercase', 'travelfic-toolkit'),
                 ),
-                'value' => $textTransform, // Pass the text-transform value
+                'value' => esc_html( $textTransform ), // Pass the text-transform value
             ),
         );
 
