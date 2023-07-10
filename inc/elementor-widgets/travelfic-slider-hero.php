@@ -283,7 +283,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_subtitle',
             [
-                'label'     => esc_html__( 'Subtitle', 'travelfic-toolkit' ),
+                'label'     => esc_html__( 'Sub title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -310,7 +310,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_nav_style',
             [
-                'label'     => esc_html__( 'Nav', 'travelfic-toolkit' ),
+                'label'     => esc_html__( 'Navigation ', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
