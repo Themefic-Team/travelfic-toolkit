@@ -223,7 +223,7 @@ class Testimonials extends \Elementor\Widget_Base {
                 ],
                 'default'   => [
                     'unit' => 'px',
-                    'size' => 28,
+                    'size' => 10,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-testimonials-selector .testimonial-header' => 'padding-bottom: {{SIZE}}{{UNIT}};',
@@ -479,6 +479,51 @@ class Testimonials extends \Elementor\Widget_Base {
                 }?>
             </div>
     </div>
+    <script>
+        // Testimonials 
+        (function ($) {
+            "use strict";
+            $(document).ready(function () {
+
+                $(".tft-testimonials-selector").slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 6000,
+                    speed: 700,
+                    dots: false,
+                    pauseOnHover: true,
+                    infinite: true,
+                    cssEase: "linear",
+                    arrows: true,
+                    prevArrow:
+                        "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                    nextArrow:
+                        "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+                    responsive: [
+                        {
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: false,
+                        },
+                        },
+                        {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        },
+                        },
+                    ],
+                    });
+
+            });
+        }(jQuery)); 
+
+        </script>
     <?php endif; 
     }
 }

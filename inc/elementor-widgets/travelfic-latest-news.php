@@ -375,7 +375,7 @@ class LatestNews extends \Elementor\Widget_Base {
 
 		// Display posts in category.
         if ( ! empty( $settings['post_category'] ) ) {
-            $args['category_name'] = $settings['post_category'];
+            $args['category_name'] = implode( ',', $settings['post_category'] ) ;
         }
 
 		// Items per page

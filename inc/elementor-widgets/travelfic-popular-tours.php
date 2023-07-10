@@ -128,7 +128,7 @@ class PopularTours extends \Elementor\Widget_Base
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'label' => esc_html__('Order by', 'travelfic-toolkit'),
-				'default' => 'date',
+				'default' => 'comment_count',
 				'options' => [
 					'date' => esc_html__('Date', 'travelfic-toolkit'),
 					'title' => esc_html__('Title', 'travelfic-toolkit'),
@@ -138,6 +138,18 @@ class PopularTours extends \Elementor\Widget_Base
 				],
 			]
 		);
+
+		
+		$this->add_control(
+			'post_items',
+			[
+				'label' => esc_html__('Item Per page', 'travelfic-toolkit'),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => '6',
+				'placeholder' => '3',
+			]
+		);
+
 		// Order
 		$this->add_control(
 			'post_order',

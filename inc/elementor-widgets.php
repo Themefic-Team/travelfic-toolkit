@@ -129,8 +129,6 @@ final class Travelfic_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-destination.php' );
 
-        // require_once( __DIR__ . '/elementor-widgets/travelfic-hero-slider.php' );
-
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \TravelficSliderHero());
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \IconWithText() );
@@ -141,7 +139,6 @@ final class Travelfic_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TeamMembers() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TourDestinaions() );
 
-        // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \TravelFicSlider2() );
     }
 }
 
