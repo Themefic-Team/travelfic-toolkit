@@ -223,7 +223,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
+        
         $this->add_control(
             'slider_height',
             [
@@ -532,7 +532,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             [
                 'name'     => 'slider_search_input_style',
                 'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tf_homepage-booking input, .tf_homepage-booking ::placeholder, .tft-search-box .tf_input-inner *',
+                'selector' => '{{WRAPPER}} .tft-search-box .tf_input-inner div, .tf_homepage-booking input, .tf_homepage-booking ::placeholder, .tft-search-box .tf_input-inner',
             ]
         );
         $this->add_control(
@@ -542,9 +542,9 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_input-inner div' => 'color: {{VALUE}} !important',
-                    '{{WRAPPER}} .tft-search-box .tf_input-inner *'   => 'color: {{VALUE}} !important',
-                    '{{WRAPPER}} .tf_homepage-booking ::placeholder'  => 'color: {{VALUE}} !important',
+                    '{{WRAPPER}} .tft-search-box .tf_input-inner div' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-search-box .tf_input-inner' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tf_homepage-booking ::placeholder' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -566,6 +566,54 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'selector' => '{{WRAPPER}} .tft-search-box .tf_button',
             ]
         );
+        $this->add_control(
+            'search_button_border_width',
+            [
+                'label' => __( 'Border Width', 'your-textdomain' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_button_border_color',
+            [
+                'label' => __( 'Border Color', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_button_border_radius',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'top' => '0',
+                    'right' => '0',
+                    'bottom' => '0',
+                    'left' => '0',
+                    'unit' => 'px',
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]
+        );
 
         $this->start_controls_tabs( 'button_search_button' );
 
@@ -583,7 +631,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-search-box .tf_button' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -616,7 +664,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -636,6 +684,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
+
     }
 
     protected function render() {

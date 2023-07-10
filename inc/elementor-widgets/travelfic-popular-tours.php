@@ -227,7 +227,33 @@ class PopularTours extends \Elementor\Widget_Base
                 ],
             ]
         );
-
+		$this->add_control(
+            'popular_tour_price',
+            [
+                'label'     => esc_html__( 'Price', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_tour_price_typo',
+                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-pricing',
+            ]
+        );
+		$this->add_control(
+            'popular_tour_price_color',
+            [
+                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-popular-tour-items .tft-pricing' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
 		$this->add_control(
             'popular_icon_head',
             [
@@ -316,7 +342,7 @@ class PopularTours extends \Elementor\Widget_Base
 											<span>
 												<i class="fas fa-star"></i>
 												<span>
-													<?php echo tf_total_avg_rating($comments); ?>
+													<?php echo esc_html(tf_total_avg_rating($comments)); ?>
 												</span>
 												( <?php tf_based_on_text(count($comments)); ?>)
 											</span>
@@ -359,18 +385,18 @@ class PopularTours extends \Elementor\Widget_Base
 											$adult_pricing = !empty( $option_meta['adult_price'] ) ? $option_meta['adult_price'] : '';
 											$group_pricing = !empty( $option_meta['group_price'] ) ? $option_meta['group_price'] : '';
 										?>
-										<p>
+										<div class="tft-pricing-info">
 											<?php
 												if ( $pricing_rule == 'person' ) {
 													if( ! empty( $adult_pricing ) ){ ?>
 														<span class="tft-content"> <?php echo esc_html__( 'from ', 'travelfic-toolkit') ?> </span>
-														<?php echo get_woocommerce_currency_symbol(). esc_html( $adult_pricing ); ?>
+														<span class="tft-pricing"><?php echo get_woocommerce_currency_symbol(). esc_html( $adult_pricing ); ?></span>
 													<?php }
-												} else {
-													echo get_woocommerce_currency_symbol() . esc_html( $group_pricing );
-												}
+												} else { ?>
+													<span class="tft-pricing"> <?php echo get_woocommerce_currency_symbol() . esc_html( $group_pricing ); ?> </span> 
+												<?php }
 											?>
-										</p>
+										</div>
 									</div>
 
 								</div>
@@ -382,6 +408,54 @@ class PopularTours extends \Elementor\Widget_Base
 			</div>
 			
 		</div>
+
+		<script>
+		//Popular Tours
+		;(function ($) {
+			"use strict";
+			$(document).ready(function () {
+			$(".tft-popular-tour-selector").slick({
+				infinite: true,
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				arrows: true,
+				centerMode: true,
+				dots: false,
+				pauseOnHover: true,
+				autoplay: true,
+				autoplaySpeed: 7000,
+				arrows: true,
+				prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+				nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+				speed: 700,
+				responsive: [{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 1,
+						},
+					},
+					{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1,
+						},
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+						},
+					},
+				],
+			});
+			});
+		}(jQuery));
+			
+		</script>
+
 		<?php
 	}
 }

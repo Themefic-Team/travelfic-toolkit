@@ -198,7 +198,15 @@ class IconWithText extends \Elementor\Widget_Base {
             [
                 'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
+                'size_units' => [ 'px', 'em', '%' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 80,
+                    'right' => 0,
+                    'bottom' => 40,
+                    'left' => 0,
+                    'isLinked' => false,
+                ],
                 'selectors'  => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -356,7 +364,7 @@ class IconWithText extends \Elementor\Widget_Base {
             [
                 'label'     => esc_html__( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#000',
+                'default'   => '#1D2A3BCC',
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-title' => 'color: {{VALUE}}',
                 ],
@@ -367,7 +375,7 @@ class IconWithText extends \Elementor\Widget_Base {
             [
                 'label'     => esc_html__( 'Title Color Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#000',
+                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single:hover .tft-title' => 'color: {{VALUE}}',
                 ],
@@ -394,7 +402,7 @@ class IconWithText extends \Elementor\Widget_Base {
             [
                 'label'     => esc_html__( 'Content Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
+                'default'   => '#1D2A3BCC',
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single .tft-details' => 'color: {{VALUE}}',
                 ],

@@ -104,7 +104,7 @@
     color: #F15D30;
   }
   
-  .tft-popular-tour-items .tft-popular-item-price span {
+  .tft-popular-tour-items .tft-popular-item-price .tft-meta-table {
     font-size: 14px;
     font-weight: 400;
   }
@@ -115,7 +115,9 @@
   .tft-popular-tour-wrapper .slick-prev:before, .tft-popular-tour-wrapper .slick-next:before{
     display: none;
   }
-
+  .tft-pricing-info {
+    font-size: 24px;
+  }
 
   @media (max-width: 991px) {
     .tft-popular-tour-wrapper {
