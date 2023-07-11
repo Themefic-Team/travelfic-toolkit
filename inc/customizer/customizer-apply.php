@@ -66,7 +66,7 @@ function travelfic_toolkit_page_tftcontainer_callback($travelfic_tftcontainer){
 }
 
 // travelfic Customizer Options
-function travelfic_kit_customizer_style()
+function travelfic_toolkit_customizer_style()
 {
 $travelfic_kit_pre = 'travelfic_customizer_settings_';
 $travelfic_menu_color = get_theme_mod($travelfic_kit_pre.'menu_color', '#222');
@@ -122,4 +122,4 @@ $travelfic_submenu_hover = get_theme_mod($travelfic_kit_pre.'submenu_text_hover_
 
 <?php
 }
-add_action('wp_head', 'travelfic_kit_customizer_style');
+add_action('wp_head', 'travelfic_toolkit_customizer_style');

@@ -1,5 +1,5 @@
 <?php
-final class Travelfic_Elementor_Extensions {
+final class Travelfic_Toolkit_Elementor_Extensions {
 
     /**
      * Instance
@@ -142,4 +142,4 @@ final class Travelfic_Elementor_Extensions {
     }
 }
 
-Travelfic_Elementor_Extensions::instance();
+Travelfic_Toolkit_Elementor_Extensions::instance();
