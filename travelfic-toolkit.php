@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Travelfic Toolkit
  * Plugin URI: https://themefic.com/
- * Description: Toolkit for travelfic Theme which containing widgets and some extra functions.
+ * Description: Travelfic Toolkit allows you to add extra functionality to the Travelfic WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel area etc. This toolkit improves the overall design and performance of your hotel or travel booking website developed using the Travelfic theme.
  * Author: themefic
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
