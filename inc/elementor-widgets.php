@@ -56,7 +56,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      * @access public
      */
     public function i18n() {
-        load_plugin_textdomain('travelfic-toolkit');
+        load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
     }
 
     /**
