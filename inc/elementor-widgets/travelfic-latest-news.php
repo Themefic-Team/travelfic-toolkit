@@ -112,7 +112,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 	}
 	public function get_style_depends()
 	{
-		return ['travelfic-latest-news'];
+		return ['travelfic-toolkit-latest-news'];
 	}
 	/**
 	 * Register widget controls.

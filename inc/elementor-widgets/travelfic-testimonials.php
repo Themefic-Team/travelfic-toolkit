@@ -79,7 +79,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         return ['travelfic', 'reveiw', 'testimonials', 'tft'];
     }
     public function get_style_depends() {
-        return ['travelfic-testimonials'];
+        return ['travelfic-toolkit-testimonials'];
     }
 
     /**

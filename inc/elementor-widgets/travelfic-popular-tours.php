@@ -89,7 +89,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 
 	public function get_style_depends()
 	{
-		return ['travelfic-popular-tours'];
+		return ['travelfic-toolkit-popular-tours'];
 	}
 	/**
 	 * Register widget controls.

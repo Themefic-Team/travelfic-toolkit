@@ -72,7 +72,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		return ['travelfic'];
 	}
 	public function get_style_depends() {
-        return ['travelfic-team'];
+        return ['travelfic-toolkit-team'];
     }
 
 	/**

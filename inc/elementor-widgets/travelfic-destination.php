@@ -80,7 +80,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
     }
 
     public function get_style_depends(){
-        return ['travelfic-tour-destination'];
+        return ['travelfic-toolkit-tour-destination'];
     }
 
     /**

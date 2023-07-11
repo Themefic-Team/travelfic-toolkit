@@ -80,7 +80,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return ['travelfic-icon-text'];
+        return ['travelfic-toolkit-icon-text'];
     }
 
     /**
