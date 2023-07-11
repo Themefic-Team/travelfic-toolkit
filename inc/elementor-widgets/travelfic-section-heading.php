@@ -1,5 +1,5 @@
 <?php
-class SectionHeading extends \Elementor\Widget_Base {
+class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base {
 
     /**
 	 * Get widget name.
@@ -92,7 +92,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_heading',
 			[
-				'label' => esc_html__( 'TFT Heading', 'travelfic-toolkit' ),
+				'label' => __( 'TFT Heading', 'travelfic-toolkit' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -100,30 +100,30 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->add_control(
 			'tf_heading',
 			[
-				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
+				'label' => __( 'Title', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'label_block' => true,
-				'default' => esc_html__( 'Subscribe to ', 'travelfic-toolkit' )
+				'default' => __( 'Subscribe to ', 'travelfic-toolkit' )
 			]
 		);
 
 		$this->add_control(
 			'tf_heading_details',
 			[
-				'label' => esc_html__( 'Content', 'travelfic-toolkit' ),
+				'label' => __( 'Content', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label_block' => true,
-				'default' => esc_html( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'travelfic-toolkit' )
+				'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'travelfic-toolkit' )
 			]
 		);
 
 		$this->add_control(
 			'title_suffix',
 			[
-				'label' => esc_html__( 'Show Suffix', 'travelfic-toolkit' ),
+				'label' => __( 'Show Suffix', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Show', 'travelfic-toolkit' ),
-				'label_off' => esc_html__( 'Hide', 'travelfic-toolkit' ),
+				'label_on' => __( 'Show', 'travelfic-toolkit' ),
+				'label_off' => __( 'Hide', 'travelfic-toolkit' ),
 				'return_value' => 'yes',
 				'default' => 'yes',
 			]
@@ -131,7 +131,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->add_control(
 			'suffix_title',
 			[
-				'label' => esc_html__( 'Title Suffix', 'travelfic-toolkit' ),
+				'label' => __( 'Title Suffix', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => 'Our Newsletter',
 				'label_block' => true,
@@ -141,19 +141,19 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->add_control(
 			'text_align',
 			[
-				'label' => esc_html__( 'Alignment', 'travelfic-toolkit' ),
+				'label' => __( 'Alignment', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'travelfic-toolkit' ),
+						'title' => __( 'Left', 'travelfic-toolkit' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'travelfic-toolkit' ),
+						'title' => __( 'Center', 'travelfic-toolkit' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'travelfic-toolkit' ),
+						'title' => __( 'Right', 'travelfic-toolkit' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],
@@ -168,14 +168,14 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->start_controls_section(
             'tft_heading_style_section',
             [
-                'label' => esc_html__( 'Heading Style', 'travelfic-toolkit' ),
+                'label' => __( 'Heading Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
             'tft_section_head',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -184,14 +184,14 @@ class SectionHeading extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_section_title_typo',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-section-head .section-title',
             ]
         );
 		$this->add_control(
 			'title_color',
 			[
-				'label' => esc_html__( 'Title Color', 'travelfic-toolkit' ),
+				'label' => __( 'Title Color', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .tft-section-head .section-title' => 'color: {{VALUE}}',
@@ -201,7 +201,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->add_control(
             'tft_section_content',
             [
-                'label'     => esc_html__( 'Content', 'travelfic-toolkit' ),
+                'label'     => __( 'Content', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -210,14 +210,14 @@ class SectionHeading extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_section_content_typo',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-section-head .subtitle',
             ]
         );
 		$this->add_control(
 			'section_content_color',
 			[
-				'label' => esc_html__( 'Color', 'travelfic-toolkit' ),
+				'label' => __( 'Color', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .tft-section-head .subtitle' => 'color: {{VALUE}}',
@@ -227,7 +227,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->add_responsive_control(
             'spacing_margin',
             [
-                'label'      => esc_html__( 'Margin', 'travelfic-toolkit' ),
+                'label'      => __( 'Margin', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -238,7 +238,7 @@ class SectionHeading extends \Elementor\Widget_Base {
 		$this->add_control(
             'tft_section_suffix_head',
             [
-                'label'     => esc_html__( 'Suffix', 'travelfic-toolkit' ),
+                'label'     => __( 'Suffix', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -247,14 +247,14 @@ class SectionHeading extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'suffix_typo',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-section-head .section-title-suffix',
             ]
         );
 		$this->add_control(
 			'suffix_title_color',
 			[
-				'label' => esc_html__( 'Title Suffix Color', 'travelfic-toolkit' ),
+				'label' => __( 'Title Suffix Color', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#F15D30',
 				'selectors' => [

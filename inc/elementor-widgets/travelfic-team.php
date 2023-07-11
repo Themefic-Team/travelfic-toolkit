@@ -1,5 +1,5 @@
 <?php
-class TeamMembers extends \Elementor\Widget_Base
+class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 {
 
 	/**
@@ -125,7 +125,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_name',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__('Member Name', 'travelfic-toolkit'),
+				'label' => __('Member Name', 'travelfic-toolkit'),
 				'default' => 'John Doe'
 			]
 		);
@@ -133,7 +133,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_designation',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__('Member Designation', 'travelfic-toolkit'),
+				'label' => __('Member Designation', 'travelfic-toolkit'),
 				'default' => 'CEO'
 			]
 		);
@@ -141,7 +141,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_details',
 			[
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'label' => esc_html__('Member Details', 'travelfic-toolkit'),
+				'label' => __('Member Details', 'travelfic-toolkit'),
 				'default' => 'A There are many variatio of passage of Lorem for a Ipsum available '
 			]
 		);
@@ -154,7 +154,7 @@ class TeamMembers extends \Elementor\Widget_Base
 		$repeater->add_control(
 			'more_options',
 			[
-				'label' => esc_html__( 'Social Media', 'travelfic-toolkit' ),
+				'label' => __( 'Social Media', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -164,7 +164,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_social_fb',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__('Facebook', 'travelfic-toolkit'),
+				'label' => __('Facebook', 'travelfic-toolkit'),
 				'default' => '#'
 			]
 		);
@@ -172,7 +172,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_social_ld',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__('Linkedin', 'travelfic-toolkit'),
+				'label' => __('Linkedin', 'travelfic-toolkit'),
 				'default' => '#'
 			]
 		);
@@ -180,7 +180,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_social_tw',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__('Twitter', 'travelfic-toolkit'),
+				'label' => __('Twitter', 'travelfic-toolkit'),
 				'default' => '#'
 			]
 		);
@@ -188,7 +188,7 @@ class TeamMembers extends \Elementor\Widget_Base
 			'member_social_insta',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__('Twitter', 'travelfic-toolkit'),
+				'label' => __('Twitter', 'travelfic-toolkit'),
 				'default' => '#'
 			]
 		);
@@ -208,14 +208,14 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->start_controls_section(
             'team_style_section',
             [
-                'label' => esc_html__( 'Item List', 'travelfic-toolkit' ),
+                'label' => __( 'Item List', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_control(
             'team_card_head',
             [
-                'label'     => esc_html__( 'Card Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Card Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -223,7 +223,7 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->add_responsive_control(
             'team_card_padding',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -234,7 +234,7 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
             'team_card_border_radius',
             [
-                'label'     => esc_html__( 'Border Radius', 'travelfic-toolkit' ),
+                'label'     => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -254,7 +254,7 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
             'team_card_title',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -264,13 +264,13 @@ class TeamMembers extends \Elementor\Widget_Base
             [
                 'name'     => 'icon-team_card_title_typo',
                 'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
 		$this->add_control(
             'team_card_title_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -281,7 +281,7 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
             'team_card_subtitle',
             [
-                'label'     => esc_html__( 'Sub Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Sub Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -291,13 +291,13 @@ class TeamMembers extends \Elementor\Widget_Base
             [
                 'name'     => 'icon-team_card_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
 		$this->add_control(
             'team_card_subtitle_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -308,7 +308,7 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
             'team_card_content',
             [
-                'label'     => esc_html__( 'Content', 'travelfic-toolkit' ),
+                'label'     => __( 'Content', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -318,13 +318,13 @@ class TeamMembers extends \Elementor\Widget_Base
             [
                 'name'     => 'team_card_content_typo',
                 'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
 		$this->add_control(
             'team_card_content_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -337,14 +337,14 @@ class TeamMembers extends \Elementor\Widget_Base
 		$this->start_controls_section(
             'team_icon',
             [
-                'label' => esc_html__( 'Social Icons', 'travelfic-toolkit' ),
+                'label' => __( 'Social Icons', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'team_icon_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -355,7 +355,7 @@ class TeamMembers extends \Elementor\Widget_Base
         $this->add_control(
             'team_icon_color_bg',
             [
-                'label'     => esc_html__( 'Color Background', 'travelfic-toolkit' ),
+                'label'     => __( 'Color Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [

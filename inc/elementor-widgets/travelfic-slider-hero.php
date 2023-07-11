@@ -1,5 +1,5 @@
 <?php
-class TravelficSliderHero extends \Elementor\Widget_Base
+class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
 {
 
@@ -96,15 +96,15 @@ class TravelficSliderHero extends \Elementor\Widget_Base
 
     public function tf_search_types() {
         $types = array(
-            'all'   => esc_html__( 'All', 'travelfic-toolkit' ),
-            'hotel' => esc_html__( 'Hotel', 'travelfic-toolkit' ),
-            'tour'  => esc_html__( 'Tour', 'travelfic-toolkit' ),
+            'all'   => __( 'All', 'travelfic-toolkit' ),
+            'hotel' => __( 'Hotel', 'travelfic-toolkit' ),
+            'tour'  => __( 'Tour', 'travelfic-toolkit' ),
         );
 
         if ( function_exists( 'is_tf_pro' ) && is_tf_pro() ) {
-            $types['booking'] = esc_html__( 'Booking.com', 'travelfic-toolkit' );
-            $types['tp-flight'] = esc_html__( 'TravelPayouts Flight', 'travelfic-toolkit' );
-            $types['tp-hotel'] = esc_html__( 'TravelPayouts Hotel', 'travelfic-toolkit' );
+            $types['booking'] = __( 'Booking.com', 'travelfic-toolkit' );
+            $types['tp-flight'] = __( 'TravelPayouts Flight', 'travelfic-toolkit' );
+            $types['tp-hotel'] = __( 'TravelPayouts Hotel', 'travelfic-toolkit' );
         }
 
         return $types;
@@ -115,7 +115,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'hero_slider',
             [
-                'label' => esc_html__( 'Slider Items', 'travelfic-toolkit' ),
+                'label' => __( 'Slider Items', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -124,7 +124,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $repeater->add_control(
             'slider_image',
             [
-                'label'   => esc_html__( 'Slider Image', 'travelfic-toolkit' ),
+                'label'   => __( 'Slider Image', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -137,9 +137,9 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $repeater->add_control(
             'slider_title',
             [
-                'label'       => esc_html__( 'Slider Title', 'travelfic-toolkit' ),
+                'label'       => __( 'Slider Title', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'It is Time To Explore The World', 'travelfic-toolkit' ),
+                'default'     => __( 'It is Time To Explore The World', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
@@ -147,9 +147,9 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $repeater->add_control(
             'slider_subtitle',
             [
-                'label'       => esc_html__( 'Slider Subtitle', 'travelfic-toolkit' ),
+                'label'       => __( 'Slider Subtitle', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'A There are many variatio of passage of Lorem for a Ipsum available  Lorem for a Ipsum available dummy lorem text.', 'travelfic-toolkit' ),
+                'default'     => __( 'A There are many variatio of passage of Lorem for a Ipsum available  Lorem for a Ipsum available dummy lorem text.', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
@@ -157,9 +157,9 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $repeater->add_control(
             'slider_bttn_txt',
             [
-                'label'       => esc_html__( 'Slider Text', 'travelfic-toolkit' ),
+                'label'       => __( 'Slider Text', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Explore Now', 'travelfic-toolkit' ),
+                'default'     => __( 'Explore Now', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
@@ -167,9 +167,9 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $repeater->add_control(
             'slider_bttn_url',
             [
-                'label'       => esc_html__( 'Button URL', 'travelfic-toolkit' ),
+                'label'       => __( 'Button URL', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( '#', 'travelfic-toolkit' ),
+                'default'     => __( '#', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
@@ -177,7 +177,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'hero_slider_list',
             [
-                'label'       => esc_html__( 'Repeater List', 'travelfic-toolkit' ),
+                'label'       => __( 'Repeater List', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ slider_title }}}',
@@ -189,7 +189,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'tf_serach_box',
             [
-                'label' => esc_html__( 'Search Box', 'travelfic-toolkit' ),
+                'label' => __( 'Search Box', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -197,9 +197,9 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'search_box_switcher',
             [
-                'label'       => esc_html__( 'Enable Search Box?', 'travelfic-toolkit' ),
+                'label'       => __( 'Enable Search Box?', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'description' => esc_html__( 'Turn On to active the Searchbox', 'travelfic-toolkit' ),
+                'description' => __( 'Turn On to active the Searchbox', 'travelfic-toolkit' ),
                 'default'     => '1',
             ]
         );
@@ -208,7 +208,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             'type',
             [
                 'type'     => \Elementor\Controls_Manager::SELECT2,
-                'label'    => esc_html__( 'Type', 'travelfic-toolkit' ),
+                'label'    => __( 'Type', 'travelfic-toolkit' ),
                 'multiple' => true,
                 'options'  => $this->tf_search_types(),
                 'default'  => ['all'],
@@ -219,7 +219,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'slider_settings',
             [
-                'label' => esc_html__( 'Slider Control', 'travelfic-toolkit' ),
+                'label' => __( 'Slider Control', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -227,7 +227,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_height',
             [
-                'label'   => esc_html__( 'Slider Height(px)', 'travelfic-toolkit' ),
+                'label'   => __( 'Slider Height(px)', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 900,
             ],
@@ -235,7 +235,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_opacity',
             [
-                'label'   => esc_html__( 'Slider Opacity(%)', 'travelfic-toolkit' ),
+                'label'   => __( 'Slider Opacity(%)', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 20,
             ],
@@ -246,7 +246,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'hero_style_section',
             [
-                'label' => esc_html__( 'Slider Style', 'travelfic-toolkit' ),
+                'label' => __( 'Slider Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -254,7 +254,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_title',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -265,14 +265,14 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             [
                 'name'     => 'slider_title',
                 'selector' => '{{WRAPPER}} .tft-slider-title .tft-title',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => esc_html__( 'Title Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -283,7 +283,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_subtitle',
             [
-                'label'     => esc_html__( 'Sub title', 'travelfic-toolkit' ),
+                'label'     => __( 'Sub title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -293,13 +293,13 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             [
                 'name'     => 'slider_sub_title',
                 'selector' => '{{WRAPPER}} .tft-sub-title p',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
             'sub_title_color',
             [
-                'label'     => esc_html__( 'Subtitle Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Subtitle Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -310,7 +310,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_nav_style',
             [
-                'label'     => esc_html__( 'Navigation ', 'travelfic-toolkit' ),
+                'label'     => __( 'Navigation ', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -318,7 +318,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_nav',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -331,7 +331,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_buttons_style',
             [
-                'label'     => esc_html__( 'Button Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -339,7 +339,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'slider_button_margin_',
             [
-                'label'      => esc_html__( 'Margin', 'travelfic-toolkit' ),
+                'label'      => __( 'Margin', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -350,7 +350,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'slider_button_padding_',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -364,7 +364,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_tab(
             'button_normal_',
             [
-                'label' => esc_html__( 'Normal', 'travelfic-toolkit' ),
+                'label' => __( 'Normal', 'travelfic-toolkit' ),
             ]
         );
         $this->add_group_control(
@@ -378,7 +378,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'button_text_color',
             [
-                'label'     => esc_html__( 'Text Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Text Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -389,7 +389,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'button_background_color',
             [
-                'label'     => esc_html__( 'Background Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Background Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -404,14 +404,14 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_tab(
             'button_hover',
             [
-                'label' => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label' => __( 'Hover', 'travelfic-toolkit' ),
             ]
         );
 
         $this->add_control(
             'button_hover_color',
             [
-                'label'     => esc_html__( 'Text Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Text Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -423,7 +423,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'button_background_hover_color',
             [
-                'label'     => esc_html__( 'Background Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Background Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#D83B0B',
                 'selectors' => [
@@ -442,7 +442,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'slider_serach_style',
             [
-                'label' => esc_html__( 'Serach Style', 'travelfic-toolkit' ),
+                'label' => __( 'Serach Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -450,7 +450,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_tab',
             [
-                'label'     => esc_html__( 'Tab', 'travelfic-toolkit' ),
+                'label'     => __( 'Tab', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -459,14 +459,14 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_search_tab',
-                'label'    => esc_html__( 'Search Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Search Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tf-booking-form-tab button',
             ]
         );
         $this->add_control(
             'slider_search_tab_color',
             [
-                'label'     => esc_html__( 'Tab Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Tab Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#000',
                 'selectors' => [
@@ -477,7 +477,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_search_tab_background',
             [
-                'label'     => esc_html__( 'Tab Background', 'travelfic-toolkit' ),
+                'label'     => __( 'Tab Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -488,7 +488,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_search_tab_color_active',
             [
-                'label'     => esc_html__( 'Active Tab Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Active Tab Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -499,7 +499,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_search_tab_background_active',
             [
-                'label'     => esc_html__( 'Active Tab background', 'travelfic-toolkit' ),
+                'label'     => __( 'Active Tab background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -510,7 +510,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'slider_search_button_padding_',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
@@ -522,7 +522,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_search_input',
             [
-                'label'     => esc_html__( 'Input', 'travelfic-toolkit' ),
+                'label'     => __( 'Input', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -531,14 +531,14 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_search_input_style',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-search-box .tf_input-inner div, .tf_homepage-booking input, .tf_homepage-booking ::placeholder, .tft-search-box .tf_input-inner',
             ]
         );
         $this->add_control(
             'slider_search_input_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -552,7 +552,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_button',
             [
-                'label'     => esc_html__( 'Button', 'travelfic-toolkit' ),
+                'label'     => __( 'Button', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -562,7 +562,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_search_button',
-                'label'    => esc_html__( 'Search Button Typo', 'travelfic-toolkit' ),
+                'label'    => __( 'Search Button Typo', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-search-box .tf_button',
             ]
         );
@@ -621,13 +621,13 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_tab(
             'search_button_normal',
             [
-                'label' => esc_html__( 'Normal', 'travelfic-toolkit' ),
+                'label' => __( 'Normal', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
             'search_button_text_color',
             [
-                'label'     => esc_html__( 'Button Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -638,7 +638,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'search_button_background_color',
             [
-                'label'     => esc_html__( 'Button Background', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -653,14 +653,14 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->start_controls_tab(
             'search_button_hover',
             [
-                'label' => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label' => __( 'Hover', 'travelfic-toolkit' ),
             ]
         );
 
         $this->add_control(
             'search_button_hover_color',
             [
-                'label'     => esc_html__( 'Button Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -672,7 +672,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'search_button_background_hover_color',
             [
-                'label'     => esc_html__( 'Button Background', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '##D83B0B',
                 'selectors' => [
@@ -693,7 +693,7 @@ class TravelficSliderHero extends \Elementor\Widget_Base
         $type = $settings['type'] ? implode( ',', $type_arr ) : implode( ',', ['all'] );
         ?>
 		<style>
-			.tft-hero-slider-selector .tft-hero-single-item::before {
+			.tft-hero-slider-selector .tft-hero-single-item::before { 
 				<?php
 				if ( !empty( $settings['slider_opacity'] ) ) {?>
 					background: rgb(0 0 0 / <?php echo esc_html__( $settings['slider_opacity'] ); ?>%);

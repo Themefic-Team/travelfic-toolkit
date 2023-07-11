@@ -1,7 +1,7 @@
 <?php
 
 // Image Select Class
-class Travelfic_Image_Select_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_Image_Select_Control extends WP_Customize_Control {
     public $type = 'image_select';
 
     public function render_content() {
@@ -24,7 +24,7 @@ class Travelfic_Image_Select_Control extends WP_Customize_Control {
 }
 
 // Tab Select Class
-class Travelfic_Tab_Select_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_Tab_Select_Control extends WP_Customize_Control {
     public $type = 'tab_select';
 
     public function render_content() {
@@ -46,7 +46,7 @@ class Travelfic_Tab_Select_Control extends WP_Customize_Control {
 }
 
 // Section Heading Class
-class Travelfic_Sec_Section_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_Sec_Section_Control extends WP_Customize_Control {
     public $type = 'sec_section';
 
     public function render_content() {
@@ -57,7 +57,7 @@ class Travelfic_Sec_Section_Control extends WP_Customize_Control {
 }
 
 // Typography Class
-class Travelfic_typography_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
     public $type = 'typography';
 
     public function render_content() {

@@ -1,5 +1,5 @@
 <?php
-class Testimonials extends \Elementor\Widget_Base {
+class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
 
     /**
      * Get widget name.
@@ -95,7 +95,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'tft-testimonials',
             [
-                'label' => esc_html__( 'Slider Items', 'travelfic-toolkit' ),
+                'label' => __( 'Slider Items', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -103,7 +103,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $repeater = new \Elementor\Repeater ();
         $repeater->add_control(
             'person_image', [
-                'label'   => esc_html__( 'Image', 'travelfic-toolkit' ),
+                'label'   => __( 'Image', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -115,17 +115,17 @@ class Testimonials extends \Elementor\Widget_Base {
         );
         $repeater->add_control(
             'person_name', [
-                'label'       => esc_html__( 'Name', 'travelfic-toolkit' ),
+                'label'       => __( 'Name', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'John Doe', 'travelfic-toolkit' ),
+                'default'     => __( 'John Doe', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
         $repeater->add_control(
             'designation', [
-                'label'       => esc_html__( 'Designation', 'travelfic-toolkit' ),
+                'label'       => __( 'Designation', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'CEO', 'travelfic-toolkit' ),
+                'default'     => __( 'CEO', 'travelfic-toolkit' ),
                 'label_block' => true,
             ]
         );
@@ -133,7 +133,7 @@ class Testimonials extends \Elementor\Widget_Base {
             'testimonials_review', [
                 'label'   => __( 'Review Details', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::TEXTAREA,
-                'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore', 'travelfic-toolkit' ),
+                'default' => __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore', 'travelfic-toolkit' ),
             ]
         );
         $repeater->add_control(
@@ -155,7 +155,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_section',
             [
-                'label'       => esc_html__( 'Testimonials List', 'travelfic-toolkit' ),
+                'label'       => __( 'Testimonials List', 'travelfic-toolkit' ),
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ person_name }}}',
@@ -167,14 +167,14 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'testimonials_style_section',
             [
-                'label' => esc_html__( 'Item List', 'travelfic-toolkit' ),
+                'label' => __( 'Item List', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'testimonials_card_head',
             [
-                'label'     => esc_html__( 'List Style', 'travelfic-toolkit' ),
+                'label'     => __( 'List Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -182,7 +182,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_card_color',
             [
-                'label'     => esc_html__( 'List Background', 'travelfic-toolkit' ),
+                'label'     => __( 'List Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -193,7 +193,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_card_border_rds',
             [
-                'label'     => esc_html__( 'Border Radius', 'travelfic-toolkit' ),
+                'label'     => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -213,7 +213,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_title_space_bellow',
             [
-                'label'     => esc_html__( 'Title Space Bellow', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Space Bellow', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -233,7 +233,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_responsive_control(
             'testimonials_tour_item_card_padding',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -244,7 +244,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_title_head',
             [
-                'label'     => esc_html__( 'Titile', 'travelfic-toolkit' ),
+                'label'     => __( 'Titile', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -254,14 +254,14 @@ class Testimonials extends \Elementor\Widget_Base {
             [
                 'name'     => 'testimonials_title',
                 'selector' => '{{WRAPPER}} .tft-testimonials-selector .person-name',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
 
         $this->add_control(
             'testimonials_title_color',
             [
-                'label'     => esc_html__( 'Title Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -272,7 +272,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_designation',
             [
-                'label'     => esc_html__( 'Designation', 'travelfic-toolkit' ),
+                'label'     => __( 'Designation', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -282,13 +282,13 @@ class Testimonials extends \Elementor\Widget_Base {
             [
                 'name'     => 'testimonials_designation_typo',
                 'selector' => '{{WRAPPER}} .tft-testimonials-selector .designation',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
             'testimonials_designation_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -299,7 +299,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_content_head',
             [
-                'label'     => esc_html__( 'Content', 'travelfic-toolkit' ),
+                'label'     => __( 'Content', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -309,13 +309,13 @@ class Testimonials extends \Elementor\Widget_Base {
             [
                 'name'     => 'testimonials_content',
                 'selector' => '{{WRAPPER}} .tft-testimonials-selector .testimonial-body .tft-content',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
             'testimonials_content_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -326,7 +326,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_icon_head',
             [
-                'label'     => esc_html__( 'Icon', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -334,7 +334,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_icon_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -345,7 +345,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_hover',
             [
-                'label'     => esc_html__( 'Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -353,7 +353,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_card_color_hover',
             [
-                'label'     => esc_html__( 'List Background', 'travelfic-toolkit' ),
+                'label'     => __( 'List Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -365,7 +365,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_title_color_hover',
             [
-                'label'     => esc_html__( 'Title Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -376,7 +376,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_designation_color_hover',
             [
-                'label'     => esc_html__( 'Designation Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Designation Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -387,7 +387,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_content_color_hover',
             [
-                'label'     => esc_html__( 'Content Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Content Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -398,7 +398,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_icon_color_hover',
             [
-                'label'     => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -411,14 +411,14 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->start_controls_section(
             'testimonials_nav_style',
             [
-                'label' => esc_html__( 'Nav Style', 'travelfic-toolkit' ),
+                'label' => __( 'Nav Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'testimonials_icon_nav_color',
             [
-                'label'     => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
@@ -429,7 +429,7 @@ class Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_icon_nav_color_hover',
             [
-                'label'     => esc_html__( 'Icon Color Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Color Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [

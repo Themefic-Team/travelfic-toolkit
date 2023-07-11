@@ -1,5 +1,5 @@
 <?php
-class PopularTours extends \Elementor\Widget_Base
+class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 {
 
 	/**
@@ -105,7 +105,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'popular_tours',
 			[
-				'label' => esc_html__('Popular Tours', 'travelfic-toolkit'),
+				'label' => __('Popular Tours', 'travelfic-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -113,11 +113,11 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
 			'tf_post_type',
 			[
-				'label' => esc_html__('Post Type', 'travelfic-toolkit'),
+				'label' => __('Post Type', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'tf_tours',
 				'options' => [
-					'tf_tours' => esc_html__('Tours', 'travelfic-toolkit')
+					'tf_tours' => __('Tours', 'travelfic-toolkit')
 				]
 			]
 		);
@@ -127,14 +127,14 @@ class PopularTours extends \Elementor\Widget_Base
 			'post_order_by',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'label' => esc_html__('Order by', 'travelfic-toolkit'),
+				'label' => __('Order by', 'travelfic-toolkit'),
 				'default' => 'comment_count',
 				'options' => [
-					'date' => esc_html__('Date', 'travelfic-toolkit'),
-					'title' => esc_html__('Title', 'travelfic-toolkit'),
-					'modified' => esc_html__('Modified date', 'travelfic-toolkit'),
-					'comment_count' => esc_html__('Comment count', 'travelfic-toolkit'),
-					'rand' => esc_html__('Random', 'travelfic-toolkit'),
+					'date' => __('Date', 'travelfic-toolkit'),
+					'title' => __('Title', 'travelfic-toolkit'),
+					'modified' => __('Modified date', 'travelfic-toolkit'),
+					'comment_count' => __('Comment count', 'travelfic-toolkit'),
+					'rand' => __('Random', 'travelfic-toolkit'),
 				],
 			]
 		);
@@ -143,7 +143,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
 			'post_items',
 			[
-				'label' => esc_html__('Item Per page', 'travelfic-toolkit'),
+				'label' => __('Item Per page', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => '6',
 				'placeholder' => '3',
@@ -155,11 +155,11 @@ class PopularTours extends \Elementor\Widget_Base
 			'post_order',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'label' => esc_html__('Order', 'travelfic-toolkit'),
+				'label' => __('Order', 'travelfic-toolkit'),
 				'default' => 'DESC',
 				'options' => [
-					'DESC' => esc_html__('Descending', 'travelfic-toolkit'),
-					'ASC' => esc_html__('Ascending', 'travelfic-toolkit')
+					'DESC' => __('Descending', 'travelfic-toolkit'),
+					'ASC' => __('Ascending', 'travelfic-toolkit')
 				],
 			]
 		);
@@ -169,14 +169,14 @@ class PopularTours extends \Elementor\Widget_Base
         $this->start_controls_section(
             'popular_tour_style_section',
             [
-                'label' => esc_html__( 'Item List', 'travelfic-toolkit' ),
+                'label' => __( 'Item List', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 		$this->add_responsive_control(
             'popular_tour_item_card_padding',
             [
-                'label'      => esc_html__( 'Padding', 'travelfic-toolkit' ),
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
@@ -187,7 +187,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_title_head',
             [
-                'label'     => esc_html__( 'Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -197,14 +197,14 @@ class PopularTours extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_tour_item_title',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
             ]
         );
 		$this->add_control(
             'popular_tour_item_title_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -215,7 +215,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_meta_heading',
             [
-                'label'     => esc_html__( 'Meta Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Meta Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -224,14 +224,14 @@ class PopularTours extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_tour_item_meta',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content',
             ]
         );
 		$this->add_control(
             'popular_tour_item_meta_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -242,7 +242,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_tour_price',
             [
-                'label'     => esc_html__( 'Price', 'travelfic-toolkit' ),
+                'label'     => __( 'Price', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -251,14 +251,14 @@ class PopularTours extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_tour_price_typo',
-                'label'    => esc_html__( 'Typography', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-pricing',
             ]
         );
 		$this->add_control(
             'popular_tour_price_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -269,7 +269,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_icon_head',
             [
-                'label'     => esc_html__( 'Icon Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -277,7 +277,7 @@ class PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_tour_item_icon_color',
             [
-                'label'     => esc_html__( 'Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
