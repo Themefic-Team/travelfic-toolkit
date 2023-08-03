@@ -597,6 +597,17 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'search_form_border_color',
+            [
+                'label'     => __( 'Border Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D3040',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+        $this->add_control(
             'search_form_border_radius',
             [
                 'label' => __( 'Border Radius', 'travelfic-toolkit' ),
