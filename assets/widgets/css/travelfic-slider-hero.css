@@ -70,15 +70,15 @@
 }
 
 .tft-hero-slider-selector .slick-prev {
-  left: calc(47% - (1200px / 2) + 85px) !important;
+  left: calc(50% - (1200px / 2) + 0px) !important;
 }
 
 .tft-hero-slider-selector .slick-next {
-  right: calc(100% - (1200px / 2) + 85px) !important;
+  left: calc(50% - (1200px / 2) + 70px) !important;
 }
 
 .tft-hero-slider-selector .slider__counter {
-  right: calc(94% - (1200px / 2) + 0px) !important;
+  left: calc(50% - (1200px / 2) + 180px) !important;
 }
 
 .tft-hero-slider-selector button.slick-arrow {
@@ -357,12 +357,12 @@
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1139px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(51% - (1200px / 2) + 85px) !important;
-  }
 
+  .tft-hero-slider-selector .slick-prev {
+    left: calc(50% - (1200px / 2) + 90px) !important;
+  }
   .tft-hero-slider-selector .slick-next {
-    right: calc(130% - (1200px / 2) + 85px) !important;
+    left: calc(50% - (1200px / 2) + 160px) !important;
   }
 
   .tft-search-box .tft-search-box-inner {
@@ -381,11 +381,10 @@
 
 @media only screen and (min-width: 1140px) and (max-width: 1239px) {
   .tft-hero-slider-selector .slick-prev {
-    left: calc(51% - (1200px / 2) + 85px) !important;
+    left: calc(50% - (1200px / 2) + 60px) !important;
   }
-
   .tft-hero-slider-selector .slick-next {
-    right: calc(124% - (1200px / 2) + 85px) !important;
+    left: calc(50% - (1200px / 2) + 120px) !important;
   }
 
   .tft-search-box .tft-search-box-inner {
@@ -403,18 +402,6 @@
 }
 
 @media only screen and (min-width: 1240px) and (max-width: 1339px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(45% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slick-next {
-    right: calc(124% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slider__counter {
-    right: calc(122% - (1200px / 2) + 0px) !important;
-  }
-
   .tft-search-box .tft-search-box-inner {
     padding: 24px;
     width: 900px;
@@ -426,18 +413,6 @@
 }
 
 @media only screen and (min-width: 1340px) and (max-width: 1439px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(45% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slick-next {
-    right: calc(119% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slider__counter {
-    right: calc(111% - (1200px / 2) + 0px) !important;
-  }
-
   .tft-search-box .tft-search-box-inner {
     padding: 24px;
     width: 900px;
@@ -448,58 +423,3 @@
   }
 }
 
-@media only screen and (min-width: 1440px) and (max-width: 1500px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(45% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slick-next {
-    right: calc(116% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slider__counter {
-    right: calc(111% - (1200px / 2) + 0px) !important;
-  }
-}
-
-@media only screen and (min-width: 1501px) and (max-width: 1600px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(45% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slick-next {
-    right: calc(113% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slider__counter {
-    right: calc(107% - (1200px / 2) + 0px) !important;
-  }
-}
-
-@media only screen and (min-width: 1601px) and (max-width: 1700px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(46% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slick-next {
-    right: calc(108% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slider__counter {
-    right: calc(100% - (1200px / 2) + 0px) !important;
-  }
-}
-
-@media only screen and (min-width: 1701px) and (max-width: 1800px) {
-  .tft-hero-slider-selector .slick-prev {
-    left: calc(46% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slick-next {
-    right: calc(104% - (1200px / 2) + 85px) !important;
-  }
-
-  .tft-hero-slider-selector .slider__counter {
-    right: calc(100% - (1200px / 2) + 0px) !important;
-  }
-}
