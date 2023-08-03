@@ -455,7 +455,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'separator' => 'after',
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'search_box_padding',
             [
                 'label' => __( 'Padding', 'travelfic-toolkit' ),
