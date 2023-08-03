@@ -213,11 +213,11 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'default' => [
                     'unit' => 'px',
-                    'top' => 10,
+                    'top' => 14,
                     'right' => 14,
-                    'bottom' => 10,
+                    'bottom' => 14,
                     'left' => 14,
-                    'isLinked' => false,
+                    'isLinked' => true,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
