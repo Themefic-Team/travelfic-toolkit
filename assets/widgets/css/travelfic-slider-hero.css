@@ -314,11 +314,11 @@
 
 @media only screen and (max-width: 1024px) {
   .tft-hero-slider-selector .slider__counter {
-    left: 210px;
+    left: 210px !important;
   }
 
   .tft-hero-slider-selector .slick-next {
-    left: 100px;
+    left: 100px !important;
   }
 
   .tft-hero-slider-selector .slick-prev {
@@ -357,7 +357,6 @@
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1139px) {
-
   .tft-hero-slider-selector .slick-prev {
     left: calc(50% - (1200px / 2) + 90px) !important;
   }
@@ -380,6 +379,7 @@
 }
 
 @media only screen and (min-width: 1140px) and (max-width: 1239px) {
+
   .tft-hero-slider-selector .slick-prev {
     left: calc(50% - (1200px / 2) + 60px) !important;
   }
