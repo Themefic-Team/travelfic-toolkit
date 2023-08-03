@@ -1,0 +1,61 @@
+.tft-cf7-form-wrapper .wpcf7-form .tft-submit .wpcf7-submit {
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #F15D30;
+  color: #fff;
+}
+.tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit:hover {
+  background: #f94700;
+  cursor: pointer;
+}
+.tft-cf7-form-wrapper .wpcf7-form label {
+  color: #1D2A3B;
+}
+.tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea {
+  width: 100%;
+  padding: 12px 10px;
+}
+.tft-cf7-form-wrapper .wpcf7-form textarea {
+  height: 100px;
+}
+.tft-cf7-form-wrapper .wpcf7-form .tft-fields-group.tft-clmn-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 20px;
+}
+.tft-cf7-form-wrapper .wpcf7-form .tft-fields-group {
+  margin-bottom: 20px;
+}
+.tft-cf7-form-wrapper .wpcf7-form .tft-fields-group.tft-clmn-1 {
+  display: flex;
+}
+.tft-cf7-form-wrapper .wpcf7-form .tft-fields-group.tft-clmn-2 .tft-field {
+  flex-basis: 50%;
+}
+.tft-cf7-form-wrapper .wpcf7-form .tft-fields-group.tft-clmn-1 .tft-field {
+  flex-basis: 100%;
+}
+.tft-cf7-form-wrapper .tft-fields-group .tft-field p {
+    margin: 0;
+}
+/* Subcribe */
+.tft-cf7-form-wrapper .tft-fields-subscriptions .wpcf7-submit {
+    padding: 12px 16px;
+    width: 100%;
+	  color: #fff;
+}
+.tft-cf7-form-wrapper .tft-fields-subscriptions .tft-email {
+    flex-basis: 100% !important;
+    width: 100% !important;
+}
+.tft-cf7-form-wrapper .tft-fields-subscriptions .tft-btn {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+.tft-cf7-form-wrapper span.wpcf7-spinner {
+    position: absolute;
+}
