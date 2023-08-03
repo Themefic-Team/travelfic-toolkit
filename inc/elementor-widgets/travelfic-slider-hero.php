@@ -442,15 +442,61 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'slider_serach_style',
             [
-                'label' => __( 'Serach Style', 'travelfic-toolkit' ),
+                'label' => __( 'Search Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
+            'search_box',
+            [
+                'label'     => __( 'Search Box', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_control(
+            'search_box_padding',
+            [
+                'label' => __( 'Padding', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 40,
+                    'right' => 40,
+                    'bottom' => 40,
+                    'left' => 40,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tft-search-box-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_box_border_radius',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
             'slider_tab',
             [
-                'label'     => __( 'Tab', 'travelfic-toolkit' ),
+                'label'     => __( 'Search Tab', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
