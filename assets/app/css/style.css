@@ -3,3 +3,159 @@
     padding-left: 20px !important;
     padding-right: 20px !important;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+/* reset css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Ubuntu , sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
+a{
+    text-decoration: none;
+    color: #07245F;
+}
+
+/* header start */
+header {
+    background-color:  #EFF4FE;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .tft-site-logo-container {
+    background-color: #07245F;
+    width: 533px;
+    height: 151px;    
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+  clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+  
+}
+
+header .tft-site-logo-container .tft-site-img-logo {
+    max-width: 235px;
+    height: auto;
+    margin-right: 3rem;
+}
+
+.tft-site-menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+ 
+  }
+
+  /* top menu style */
+
+  .tft-site-top-bar {
+    background: linear-gradient(0deg, #0E3DD8, #0E3DD8),
+    linear-gradient(0deg, #1342E0, #1342E0);
+    height: 55px;
+    clip-path: polygon(3% 0, 100% 0%, 100% 100%, 0 100%);
+    padding: 0 3rem;
+    color:  #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+
+  .tft-site-top-bar-left-item {
+    color: #ffff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tft-site-top-bar-left {
+    display: flex;
+    gap: 1rem;
+  }
+  .tft-site-top-bar-left-item a {
+    color: #fff;
+  }
+  .tft-site-top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .tft-site-languages select {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+  }
+  .tft-site-login a {
+    color: #fff;
+   
+  }
+
+  .tft-site-languages select option {
+    color: #fff;
+    background: #000;
+  }
+  /* main menu style*/
+
+  .tft-site-menu {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 3rem;
+    justify-content: space-between;
+  }
+  .tft-site-menu ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    text-underline-offset: initial;
+    text-underline-position: under;
+    color :#000000;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  
+.tft-site-menu-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.tft-menu-cart {
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+}
+.tft-menu-bars {
+  display: flex;
+  height: 30px;
+  width: 30px;
+  align-items: center;
+}
+.tft-menu-search {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  width: 45px;
+}
+.tft-site-menu-discover .tfc-site-menu-discover-btn {
+  display: flex;
+  background-color: #FF6B00;
+  border-radius: 100px;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+}
