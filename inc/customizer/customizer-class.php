@@ -1,66 +1,74 @@
 <?php
 
 // Image Select Class
-class Travelfic_Toolkit_Image_Select_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_Image_Select_Control extends WP_Customize_Control
+{
     public $type = 'image_select';
 
-    public function render_content() {
+    public function render_content()
+    {
         $image_options = $this->choices;
         $value = $this->value();
-        ?>
-        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-            <ul class="image-select-container">
-            <?php foreach ( $image_options as $key => $image_url ) : ?>
+?>
+        <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
+        <ul class="image-select-container">
+            <?php foreach ($image_options as $key => $image_url) : ?>
                 <li>
-                <label>
-                    <input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $value, $key ); ?>/>
-                    <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $key ); ?>"/>
-                </label>
+                    <label>
+                        <input type="radio" name="<?php echo esc_attr($this->id); ?>" value="<?php echo esc_attr($key); ?>" <?php checked($value, $key); ?> />
+                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($key); ?>" />
+                    </label>
                 </li>
             <?php endforeach; ?>
-            </ul>
-        <?php
+        </ul>
+    <?php
     }
 }
 
 // Tab Select Class
-class Travelfic_Toolkit_Tab_Select_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_Tab_Select_Control extends WP_Customize_Control
+{
     public $type = 'tab_select';
 
-    public function render_content() {
+    public function render_content()
+    {
         $tab_options = $this->choices;
         $value = $this->value();
-        ?>
-            <ul class="tab-select-container">
-            <?php foreach ( $tab_options as $key => $label ) : ?>
+    ?>
+        <ul class="tab-select-container">
+            <?php foreach ($tab_options as $key => $label) : ?>
                 <li>
-                <label>
-                    <input type="radio" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $key ); ?>" <?php checked( $value, $key ); ?>/>
-                    <span><?php echo esc_html($label); ?></span>
-                </label>
+                    <label>
+                        <input type="radio" name="<?php echo esc_attr($this->id); ?>" value="<?php echo esc_attr($key); ?>" <?php checked($value, $key); ?> />
+                        <span><?php echo esc_html($label); ?></span>
+                    </label>
                 </li>
             <?php endforeach; ?>
-            </ul>
-        <?php
+        </ul>
+    <?php
     }
 }
 
 // Section Heading Class
-class Travelfic_Toolkit_Sec_Section_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_Sec_Section_Control extends WP_Customize_Control
+{
     public $type = 'sec_section';
 
-    public function render_content() {
+    public function render_content()
+    {
     ?>
-        <span class="travelfic-customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <span class="travelfic-customize-control-title"><?php echo esc_html($this->label); ?></span>
     <?php
     }
 }
 
 // Typography Class
-class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
+class Travelfic_Toolkit_typography_Control extends WP_Customize_Control
+{
     public $type = 'typography';
 
-    public function render_content() {
+    public function render_content()
+    {
         $value = $this->value();
 
         // If the value is an array, retrieve the individual field values
@@ -74,7 +82,7 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
             $fontSize = $this->get_default('font-size');
             $textTransform = $this->get_default('text-transform');
         }
-        ?>
+    ?>
         <label>
             <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
             <?php if (!empty($this->description)) { ?>
@@ -86,7 +94,8 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
         <?php
     }
 
-    private function get_default($field) {
+    private function get_default($field)
+    {
         $defaults = array(
             'font-size'      => '16',
             'line-height'      => '16',
@@ -96,17 +105,18 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
         return isset($defaults[$field]) ? $defaults[$field] : '';
     }
 
-    private function generate_fields($lineHeight, $fontSize, $textTransform) {
+    private function generate_fields($lineHeight, $fontSize, $textTransform)
+    {
         $fields = array(
             'font-size' => array(
                 'label' => __('Font Size (PX)', 'travelfic-toolkit'),
                 'type' => 'text',
-                'value' => esc_html( $fontSize ), // Pass the font-size value
+                'value' => esc_html($fontSize), // Pass the font-size value
             ),
             'line-height' => array(
                 'label' => __('Line Height (PX)', 'travelfic-toolkit'),
                 'type' => 'text',
-                'value' => esc_html( $lineHeight ), // Pass the line-height value
+                'value' => esc_html($lineHeight), // Pass the line-height value
             ),
             'text-transform' => array(
                 'label' => __('Text Transform', 'travelfic-toolkit'),
@@ -117,20 +127,20 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
                     'uppercase' => __('Uppercase', 'travelfic-toolkit'),
                     'lowercase' => __('Lowercase', 'travelfic-toolkit'),
                 ),
-                'value' => esc_html( $textTransform ), // Pass the text-transform value
+                'value' => esc_html($textTransform), // Pass the text-transform value
             ),
         );
 
         foreach ($fields as $field_id => $field) {
             $value = isset($field['value']) ? $field['value'] : '';
-        
-            ?>
+
+        ?>
             <p>
                 <label>
                     <span class="customize-control-subtitle"><?php echo esc_html($field['label']); ?></span>
                     <?php
                     if ('select' === $field['type']) {
-                        ?>
+                    ?>
                         <select <?php $this->link($field_id); ?> data-customize-setting-link="<?php echo $field_id; ?>">
                             <?php
                             foreach ($field['options'] as $option_value => $option_label) {
@@ -143,17 +153,18 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
                             }
                             ?>
                         </select>
-                        <?php
+                    <?php
                     } else {
-                        ?>
+                    ?>
                         <input type="number" <?php $this->link($field_id); ?> data-customize-setting-link="<?php echo $field_id; ?>" value="<?php echo esc_attr($value); ?>">
-                        <?php
+                    <?php
                     }
                     ?>
                 </label>
             </p>
-            <?php
+<?php
         }
-        
     }
 }
+
+// header design 2 Class

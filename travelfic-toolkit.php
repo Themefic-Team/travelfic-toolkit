@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Travelfic Toolkit
  * Plugin URI: https://themefic.com/
@@ -15,123 +16,131 @@
  */
 
 // don't load directly
-if ( !defined( 'ABSPATH' ) ) {
-    die( '-1' );
+if (!defined('ABSPATH')) {
+    die('-1');
 }
 
-define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.0' );
+define('TRAVELFIC_TOOLKIT_URL', plugin_dir_url(__FILE__));
+define('TRAVELFIC_TOOLKIT_VERSION', '1.0.0');
 
 /**
  * Include file from plugin if it is not available in theme
  */
-function travelfic_toolkit_settings() {
-    $theme_folder = wp_get_theme( 'travelfic' );
-    if ( $theme_folder->exists() ) {
+function travelfic_toolkit_settings()
+{
+    $theme_folder = wp_get_theme('travelfic');
+    if ($theme_folder->exists()) {
         $theme = wp_get_theme();
-        if ( $theme->get( 'Name' ) !== 'Travelfic' ) {
-            add_action( 'admin_notices', 'is_travelfic_active' );
+        if ($theme->get('Name') !== 'Travelfic') {
+            add_action('admin_notices', 'is_travelfic_active');
         }
     } else {
-        add_action( 'admin_notices', 'is_travelfic_install' );
+        add_action('admin_notices', 'is_travelfic_install');
     }
 }
-add_action( 'admin_init', 'travelfic_toolkit_settings' );
+add_action('admin_init', 'travelfic_toolkit_settings');
 
-if ( !function_exists( 'travelfic_get_theme_filepath' ) ) {
-    function travelfic_get_theme_filepath( $path, $file ) {
-        if ( !file_exists( $path ) ) {
-            $plugin_path = plugin_dir_path( __FILE__ ) . $file;
-            if ( file_exists( $plugin_path ) ) {
+if (!function_exists('travelfic_get_theme_filepath')) {
+    function travelfic_get_theme_filepath($path, $file)
+    {
+        if (!file_exists($path)) {
+            $plugin_path = plugin_dir_path(__FILE__) . $file;
+            if (file_exists($plugin_path)) {
                 $path = $plugin_path;
             }
         }
         return $path;
     }
 }
-add_filter( 'theme_file_path', 'travelfic_get_theme_filepath', 10, 2 );
+add_filter('theme_file_path', 'travelfic_get_theme_filepath', 10, 2);
 
 /**
  * Loading Text Domain
  *
  */
-add_action( 'plugins_loaded', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
+add_action('plugins_loaded', 'travelfic_toolkit_plugin_loaded_action', 10, 2);
 
-function travelfic_toolkit_plugin_loaded_action() {
-    load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+function travelfic_toolkit_plugin_loaded_action()
+{
+    load_plugin_textdomain('travelfic-toolkit', false, dirname(plugin_basename(__FILE__)) . '/lang/');
 }
 
 /**
  *    Customizer Settings
  */
-require_once dirname( __FILE__ ) . '/inc/customizer-settings.php';
+require_once dirname(__FILE__) . '/inc/customizer-settings.php';
 
 /**
  *    Customizer Apply
  */
-require_once dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php';
+require_once dirname(__FILE__) . '/inc/customizer/customizer-apply.php';
 
 /**
  * Elementor Widgets
  */
-require_once dirname( __FILE__ ) . '/inc/elementor-widgets.php';
+require_once dirname(__FILE__) . '/inc/elementor-widgets.php';
 /**
  * Plugin Functions
  */
-require_once dirname( __FILE__ ) . '/inc/functions.php';
+require_once dirname(__FILE__) . '/inc/functions.php';
 
 /**
  *    Admin & Customizer Enqueue
  */
 
-function travelfic_toolkit_enqueue_customizer_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css' );
-    wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer.js', array( 'jquery', 'customize-controls' ), '1.0.0', true );
+function travelfic_toolkit_enqueue_customizer_scripts()
+{
+    wp_enqueue_style('travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css');
+    wp_enqueue_script('travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer.js', array('jquery', 'customize-controls'), '1.0.0', true);
 }
-add_action( 'customize_controls_enqueue_scripts', 'travelfic_toolkit_enqueue_customizer_scripts' );
+add_action('customize_controls_enqueue_scripts', 'travelfic_toolkit_enqueue_customizer_scripts');
 
-function travelfic_toolkit_enqueue_customizer_preview_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css' );
+function travelfic_toolkit_enqueue_customizer_preview_scripts()
+{
+    wp_enqueue_style('travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css');
+    wp_enqueue_script('travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer-preview.js', array('jquery', 'customize-preview'), time(), true);
 }
-add_action( 'customize_preview_init', 'travelfic_toolkit_enqueue_customizer_preview_scripts' );
+add_action('customize_preview_init', 'travelfic_toolkit_enqueue_customizer_preview_scripts');
 
 /**
  *    Front-End Enqueue
  */
 
-add_action( 'wp_enqueue_scripts', 'travelfic_toolkit_front_page_script' );
-function travelfic_toolkit_front_page_script() {
+add_action('wp_enqueue_scripts', 'travelfic_toolkit_front_page_script');
+function travelfic_toolkit_front_page_script()
+{
 
-    wp_enqueue_style( 'travelfic-toolkit-css', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/style.css', false, '1.0.0' );
-
+    wp_enqueue_style('travelfic-toolkit-css', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/style.css', false, '1.0.0');
 }
 
 /**
  *    Admin Notice If Travelfic Not Active
  */
 
-if ( !function_exists( 'is_travelfic_active' ) ) {
-    function is_travelfic_active() {
-        ?>
-		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-				<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php __( 'Active Now', 'travelfic-toolkit' );?></a></p>
-		</div>
-	<?php
-}
+if (!function_exists('is_travelfic_active')) {
+    function is_travelfic_active()
+    {
+?>
+        <div id="message" class="error">
+            <p><?php printf(__('Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit'), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>'); ?></p>
+            <p><a class="install-now button" href="<?php echo esc_url(admin_url('/themes.php')); ?>"><?php __('Active Now', 'travelfic-toolkit'); ?></a></p>
+        </div>
+    <?php
+    }
 }
 
 /**
  *    Admin Notice If Travelfic Not Exits
  */
 
-if ( !function_exists( 'is_travelfic_install' ) ) {
-    function is_travelfic_install() {
-        ?>
-		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"><?php __( 'Install Now', 'travelfic-toolkit' );?></a></p>
-		</div>
-	<?php
-}
+if (!function_exists('is_travelfic_install')) {
+    function is_travelfic_install()
+    {
+    ?>
+        <div id="message" class="error">
+            <p><?php printf(__('Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit'), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>'); ?></p>
+            <p><a class="install-now button" href="<?php echo esc_url(admin_url('/theme-install.php?search=travelfic')); ?>"><?php __('Install Now', 'travelfic-toolkit'); ?></a></p>
+        </div>
+<?php
+    }
 }

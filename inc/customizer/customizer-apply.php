@@ -17,6 +17,7 @@ function travelfic_toolkit_header_callback($travelfic_header)
 
 function travelfic_design2_render_header($travelfic_header)
 {
+    $travelfic_prefix = 'travelfic_customizer_settings_';
     ob_start();
 ?>
     <header>
@@ -31,24 +32,32 @@ function travelfic_design2_render_header($travelfic_header)
                 <div class="tft-site-top-bar-left">
                     <div class="tft-site-top-bar-left-item">
                         <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/map.svg') ?>" alt="location">
-                        <span>Address</span>
+                        <span id="tft-site-address">
+                            <?php
+                            echo get_theme_mod($travelfic_prefix . 'site_address', '
+                            Address');
+                            ?>
+                        </span>
                     </div>
 
                     <div class="tft-site-top-bar-left-item">
                         <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/email.svg') ?>" alt="mail">
                         <span>
-                            <a href="mailto:
-
-                        ">
-                                info@example.com
+                            <a href="mailto:info@example.com " id="tft-site-email">
+                                <?php
+                                echo get_theme_mod($travelfic_prefix . 'site_email', '
+                                info@example.com');
+                                ?>
                             </a>
                         </span>
                     </div>
                     <div class="tft-site-top-bar-left-item">
                         <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/phone.svg') ?>" alt="phone">
                         <span>
-                            <a href="tel:(245) 2156 21453">
-                                (245) 2156 21453
+                            <a href="tel:(245) 2156 21453" id="tft-site-phone">
+                                <?php
+                                echo get_theme_mod($travelfic_prefix . 'site_phone', '(245) 2156 21453');
+                                ?>
                             </a>
                         </span>
 
