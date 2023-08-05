@@ -79,11 +79,16 @@ function travelfic_design2_render_header($travelfic_header)
             <!-- menu -->
             <div class="tft-site-menu">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact us</a></li>
+                    <?php
+
+                    wp_nav_menu(array(
+                        'theme_location' => 'primary_menu',
+                        'container' => 'ul',
+                        'items_wrap' => '%3$s',
+                        'fallback_cb' => false,
+                    ));
+
+                    ?>
                 </ul>
 
                 <!-- menu buttons -->
@@ -96,7 +101,7 @@ function travelfic_design2_render_header($travelfic_header)
                     </div>
                     <div class="tft-site-menu-buttons-item">
                         <a href="#" class="tft-menu-search">
-                            <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/search.svg') ?>"" alt=" search">
+                            <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/search.svg') ?>" alt=" search">
                         </a>
                     </div>
                     <div class="tft-site-menu-discover">
@@ -104,7 +109,7 @@ function travelfic_design2_render_header($travelfic_header)
                     </div>
                     <div class="tft-site-menu-buttons-item">
                         <a href="#" class="tft-menu-bars">
-                            <img src="assets/images/bar.svg" alt="bars">
+                            <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/bar.svg') ?>" alt="bars">
                         </a>
                     </div>
 
