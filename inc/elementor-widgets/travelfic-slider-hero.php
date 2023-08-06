@@ -224,14 +224,33 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         
-        $this->add_control(
+        $this->add_responsive_control(
             'slider_height',
             [
-                'label'   => __( 'Slider Height(px)', 'travelfic-toolkit' ),
-                'type'    => \Elementor\Controls_Manager::NUMBER,
-                'default' => 900,
-            ],
+                'label' => esc_html__('Slider Height(px)', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 800, // Your default value here
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
         );
+
+
         $this->add_control(
             'slider_opacity',
             [
@@ -853,7 +872,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 				<div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo $rand_number ?>">
 					<?php foreach ( $settings['hero_slider_list'] as $item ): ?>
 						<div class="tft-hero-single-item">
-							<div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url( $item['slider_image']['url'] ); ?>);height: <?php echo esc_html( $settings['slider_height'] ); ?>px;">
+							<div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url( $item['slider_image']['url'] ); ?>);">
 								<div class="tft-container tft-hero-single-item-inner">
 									<div class=" slider-inner-info">
 										<div class="tft-slider-title">
