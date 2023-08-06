@@ -1,19 +1,23 @@
-.slider-button {
+.tft-hero-slider-selector .slider-button {
   margin-top: 40px;
 }
 
-.slider-button a {
+.tft-hero-slider-selector .slider-button a {
   color: #fff;
   font-size: 18px;
 }
 
-.slick-prev:before,
-.slick-next:before {
+.tft-hero-slider-selector .slick-prev:before,
+.tft-hero-slider-selector .slick-next:before {
   color: #ffffff;
 }
 
-.slider-button input#submit:hover {
+.tft-hero-slider-selector .slider-button input#submit:hover {
   background: #f94700;
+}
+
+.hero--slider-wrapper {
+  overflow: hidden;
 }
 
 .tft-hero-slider-selector {
