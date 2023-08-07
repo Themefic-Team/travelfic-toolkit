@@ -244,7 +244,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_title_head',
             [
-                'label'     => __( 'Titile', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
