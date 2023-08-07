@@ -344,7 +344,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 		$this->add_control(
             'news_title_typo_color_hover',
             [
-                'label'     => __( 'Titile', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -426,7 +426,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 												<div class="tft-meta-wrap">
 													<p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
 												</div>
-											<div class="tft-post-titile">
+											<div class="tft-post-title">
 												<h3 class="tft-title"><?php the_title(); ?></h3>
 											</div>
 										</div>

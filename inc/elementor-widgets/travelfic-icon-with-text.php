@@ -243,35 +243,48 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base {
                 'separator' => 'after',
             ]
         );
-        $this->add_control(
+
+
+        $this->add_responsive_control(
             'icon_size',
             [
-                'label'     => __( 'Icon Size', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::SLIDER,
-                'range'     => [
+                'label' => esc_html__('Icon Size)', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
                     'px' => [
-                        'min' => 1,
+                        'min' => 0,
                         'max' => 200,
                     ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
                 ],
-                'default'   => [
+                'default' => [
                     'unit' => 'px',
-                    'size' => 46,
+                    'size' => 46, // Your default value here
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
-        $this->add_control(
+
+        $this->add_responsive_control(
             'icon_outter_width',
             [
                 'label'     => __( 'Icon outter Width', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
                 'range'     => [
                     'px' => [
                         'min' => 1,
                         'max' => 200,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
                     ],
                 ],
                 'default'   => [
@@ -283,15 +296,20 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base {
                 ],
             ]
         );
-        $this->add_control(
+        $this->add_responsive_control(
             'icon_outter_height',
             [
                 'label'     => __( 'Icon outter height', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
                 'range'     => [
                     'px' => [
                         'min' => 1,
                         'max' => 200,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
                     ],
                 ],
                 'default'   => [

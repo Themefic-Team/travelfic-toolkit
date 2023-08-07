@@ -302,6 +302,17 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             ]
         );
         $this->add_control(
+            'cf7_form_button_bg_hover_color',
+            [
+                'label'     => __( 'Background Hover', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#D83B0B',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit:hover' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+        $this->add_control(
             'cf7_form_button_radius',
             [
                 'label' => __( 'Border Radius', 'travelfic-toolkit' ),

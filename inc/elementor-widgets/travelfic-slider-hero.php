@@ -250,7 +250,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
 
-
         $this->add_control(
             'slider_opacity',
             [
