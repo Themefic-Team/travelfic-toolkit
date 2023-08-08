@@ -247,7 +247,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
         $this->add_control(
             'cf7_form_button',
             [
-                'label'     => __( 'Button', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Style', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -256,7 +256,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'cf7_form_button',
-                'label'    => __( 'Form Button', 'travelfic-toolkit' ),
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit',
             ]
         );
