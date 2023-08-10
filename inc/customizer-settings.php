@@ -304,7 +304,8 @@ function travelfic_toolkit_customize_register($wp_customize)
         'label'    => __('Footer Design Option', 'travelfic-toolkit'),
         'section'  => 'travelfic_customizer_footer',
         'choices'  => array(
-            'design1' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-1.png')
+            'design1' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-1.png'),
+            'design2' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-2.png'),
         ),
     )));
 

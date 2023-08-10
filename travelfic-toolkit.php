@@ -74,6 +74,10 @@ require_once dirname(__FILE__) . '/inc/customizer-settings.php';
  *    Customizer Apply
  */
 require_once dirname(__FILE__) . '/inc/customizer/customizer-apply.php';
+/**
+ *    Customizer design 
+ */
+require_once dirname(__FILE__) . '/inc/customizer/customizer-render.php';
 
 /**
  * Elementor Widgets
@@ -97,7 +101,7 @@ add_action('customize_controls_enqueue_scripts', 'travelfic_toolkit_enqueue_cust
 
 function travelfic_toolkit_enqueue_customizer_preview_scripts()
 {
-    wp_enqueue_style('travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css');
+    wp_enqueue_style('travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css', time());
     wp_enqueue_script('travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer-preview.js', array('jquery', 'customize-preview'), time(), true);
 }
 add_action('customize_preview_init', 'travelfic_toolkit_enqueue_customizer_preview_scripts');

@@ -7,7 +7,7 @@ function travelfic_toolkit_header_callback($travelfic_header)
     $travelfic_prefix = 'travelfic_customizer_settings_';
     $travelfic_header_check = get_theme_mod($travelfic_prefix . 'header_design_select', 'design1');
     if ($travelfic_header_check == "design2") {
-        $header_design2 =  travelfic_design2_render_header($travelfic_header);
+        $header_design2 =  Travelfic_Customizer_render::travelfic_toolkit_header_second_design($travelfic_header);
         return $header_design2;
     } else {
         return $travelfic_header;
@@ -15,120 +15,7 @@ function travelfic_toolkit_header_callback($travelfic_header)
 }
 
 
-function travelfic_design2_render_header($travelfic_header)
-{
-    $travelfic_prefix = 'travelfic_customizer_settings_';
-    ob_start();
-?>
-    <header>
-        <div class="tft-site-logo-container">
-            <div class="tft-site-img-logo">
-                <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/design2-logo.svg') ?>" alt="logo">
-            </div>
-        </div>
-        <div class="tft-site-menu-container">
-            <!-- top bar -->
-            <div class="tft-site-top-bar">
-                <div class="tft-site-top-bar-left">
-                    <div class="tft-site-top-bar-left-item">
-                        <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/map.svg') ?>" alt="location">
-                        <span id="tft-site-address">
-                            <?php
-                            echo get_theme_mod($travelfic_prefix . 'site_address', '
-                            Address');
-                            ?>
-                        </span>
-                    </div>
 
-                    <div class="tft-site-top-bar-left-item">
-                        <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/email.svg') ?>" alt="mail">
-                        <span>
-                            <a href="mailto:info@example.com " id="tft-site-email">
-                                <?php
-                                echo get_theme_mod($travelfic_prefix . 'site_email', '
-                                info@example.com');
-                                ?>
-                            </a>
-                        </span>
-                    </div>
-                    <div class="tft-site-top-bar-left-item">
-                        <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/phone.svg') ?>" alt="phone">
-                        <span>
-                            <a href="tel:(245) 2156 21453" id="tft-site-phone">
-                                <?php
-                                echo get_theme_mod($travelfic_prefix . 'site_phone', '(245) 2156 21453');
-                                ?>
-                            </a>
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div class="tft-site-top-bar-right">
-                    <div class="tft-site-languages">
-                        <select name="language" id="language">
-                            <option value="en">English</option>
-                            <option value="fr">French</option>
-                            <option value="de">German</option>
-                            <option value="it">Italian</option>
-                        </select>
-                    </div>
-
-                    <div class="tft-site-login">
-                        <a href="#">Login Now</a>
-                    </div>
-
-                </div>
-
-
-
-
-            </div>
-            <!-- menu -->
-            <div class="tft-site-menu">
-                <ul>
-                    <?php
-
-                    wp_nav_menu(array(
-                        'theme_location' => 'primary_menu',
-                        'container' => 'ul',
-                        'items_wrap' => '%3$s',
-                        'fallback_cb' => false,
-                    ));
-
-                    ?>
-                </ul>
-
-                <!-- menu buttons -->
-
-                <div class="tft-site-menu-buttons">
-                    <div class="tft-site-menu-buttons-item">
-                        <a href="#" class="tft-menu-cart">
-                            <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/cart.svg') ?>" alt="cart">
-                        </a>
-                    </div>
-                    <div class="tft-site-menu-buttons-item">
-                        <a href="#" class="tft-menu-search">
-                            <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/search.svg') ?>" alt=" search">
-                        </a>
-                    </div>
-                    <div class="tft-site-menu-discover">
-                        <a class="tfc-site-menu-discover-btn" href="#">Discover More</a>
-                    </div>
-                    <div class="tft-site-menu-buttons-item">
-                        <a href="#" class="tft-menu-bars">
-                            <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/bar.svg') ?>" alt="bars">
-                        </a>
-                    </div>
-
-                </div>
-    </header>
-
-<?php
-    $travelfic_header = ob_get_clean();
-    return $travelfic_header;
-}
 // Travelfic Footer
 
 add_filter('travelfic_footer', 'travelfic_toolkit_footer_callback', 11);
@@ -137,6 +24,11 @@ function travelfic_toolkit_footer_callback($travelfic_footer)
     $travelfic_prefix = 'travelfic_customizer_settings_';
     $travelfic_footer_check = get_theme_mod($travelfic_prefix . 'footer_design_select', 'design1');
     if ($travelfic_footer_check == "design1") {
+        return $travelfic_footer;
+    } elseif ($travelfic_footer_check == "design2") {
+        $footer_design2 =  Travelfic_Customizer_render::travelfic_toolkit_footer_second_design($travelfic_footer);
+        return $footer_design2;
+    } else {
         return $travelfic_footer;
     }
 }
