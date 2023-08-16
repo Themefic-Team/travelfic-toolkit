@@ -1,0 +1,135 @@
+
+/*
+Banner style Start
+*/
+
+.tft-banner-container{
+    position: relative;
+    height: 600px;
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+  }
+
+
+  .tft-banner-slider-item {
+    position: absolute;
+    width: 100%;
+    background-position: center;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .tft-banner-slider-item >img {
+    position: relative;
+    z-index: -1;
+    overflow: hidden;
+  }
+  .tft-banner-slider-item-content {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .tft-slider-dots {
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    z-index: 2;
+    width: 50px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transform: translate(-50%,-50%);
+  }
+  .tft-slider-dots span {
+    cursor: pointer;
+    height: 7px;
+    width: 7px;
+    margin: 0 2px;
+    background-color: #fff;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  .tft-slider-item-button {
+    background-color: #FA6400;
+    border: navajowhite;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    margin: 1rem 0;
+  }
+  .tft-slider-item-button a {
+    color: #fff;
+  }
+
+
+  .tft-slider-item-title {
+    font-family: 'Brygada 1918', serif;
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+  .tft-slider-item-title span {
+    display: block;
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.7rem;
+  }
+
+  .tft-slider-share-social {
+    position: absolute;
+    left: 2%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(50%,-50%);
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  .tft-social-title {
+
+    transform: rotate(-90deg);
+    letter-spacing: 3.68px;
+    margin-top: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    font-family: Ubuntu;
+    font-weight: 500;
+  }
+  .tft-social-divider {
+    height: 100px;
+    width: 1px;
+    background-color: #D9D9D9;
+    margin: 1rem 0;
+  }
+  .tft-slider-share-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .tft-slider-share-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #D6DFF0;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+  }
+  .tft-slider-single-dot.active, .tft-slider-single-dot:hover {
+    background-color: #FA6400;
+  }
+
+  .tft-slider-share-icons a i.fa {
+  color: #fff !important;
+  }

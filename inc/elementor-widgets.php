@@ -1,5 +1,6 @@
 <?php
-final class Travelfic_Toolkit_Elementor_Extensions {
+final class Travelfic_Toolkit_Elementor_Extensions
+{
 
     /**
      * Instance
@@ -25,7 +26,8 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      *
      * @return Elementor_Travelfic_Extension An instance of the class.
      */
-    public static function instance() {
+    public static function instance()
+    {
         if (is_null(self::$_instance)) {
             self::$_instance = new self();
         }
@@ -39,7 +41,8 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      *
      * @access public
      */
-    public function __construct() {
+    public function __construct()
+    {
         add_action('init', [$this, 'i18n']);
         add_action('plugins_loaded', [$this, 'init']);
     }
@@ -55,8 +58,9 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      *
      * @access public
      */
-    public function i18n() {
-        load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+    public function i18n()
+    {
+        load_plugin_textdomain('travelfic-toolkit', false, dirname(plugin_basename(__FILE__)) . '/lang/');
     }
 
     /**
@@ -72,7 +76,8 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      *
      * @access public
      */
-    public function init() {
+    public function init()
+    {
         // Check if Elementor installed and activated
         if (!did_action('elementor/loaded')) {
             return;
@@ -85,25 +90,31 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         add_action('wp_enqueue_scripts', [$this, 'elementor_assets_dependencies']);
     }
 
-    function elementor_assets_dependencies() {
+    function elementor_assets_dependencies()
+    {
         /* Styles */
-        wp_register_style( 'travelfic-toolkit-slider-hero', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-toolkit-icon-text', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-icon-text.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-toolkit-popular-tours', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-popular-tours.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-toolkit-testimonials', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-testimonials.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-toolkit-latest-news', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-toolkit-team', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
-        wp_register_style( 'travelfic-toolkit-tour-destination', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-destination.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style('travelfic-toolkit-slider-hero', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-slider-hero.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-icon-text', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-icon-text.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-popular-tours', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-popular-tours.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-testimonials', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-testimonials.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-latest-news', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-team', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-tour-destination', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-destination.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+        wp_register_style('travelfic-toolkit-banner', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-toolkit-banner.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all');
+
+        /* Scripts */
+        wp_register_script('travelfic-toolkit-banner-js', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/js/travelfic-toolkit-banner.js', array(), TRAVELFIC_TOOLKIT_VERSION, true);
     }
 
     /**
      *  Category for Theme Widgets.
      */
-    function add_elementor_category( $elements_manager ) {
+    function add_elementor_category($elements_manager)
+    {
         $elements_manager->add_category(
             'travelfic',
             [
-                'title' => __( 'Travelfic Addons', 'travelfic-toolkit' ),
+                'title' => __('Travelfic Addons', 'travelfic-toolkit'),
                 'icon'  => 'fa fa-plug',
             ]
         );
@@ -118,27 +129,29 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      *
      * @access public
      */
-    public function init_widgets() {
+    public function init_widgets()
+    {
         // Include Widget files
         require_once(__DIR__ . '/elementor-widgets/travelfic-slider-hero.php');
-        require_once( __DIR__ . '/elementor-widgets/travelfic-icon-with-text.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-popular-tours.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-testimonials.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-destination.php' );
+        require_once(__DIR__ . '/elementor-widgets/travelfic-icon-with-text.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-popular-tours.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-testimonials.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-latest-news.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-section-heading.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-team.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-destination.php');
+        require_once(__DIR__ . '/elementor-widgets/travelfic-banner.php');
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_SliderHero());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_IconWithText() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_PopularTours() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Testimonials() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_LatestNews() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_SectionHeading() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TeamMembers() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TourDestinaions() );
-
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_IconWithText());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_PopularTours());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_Testimonials());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_LatestNews());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_SectionHeading());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_TeamMembers());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_TourDestinaions());
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_Banner());
     }
 }
 
