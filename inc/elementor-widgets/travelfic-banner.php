@@ -226,8 +226,141 @@ class Travelfic_Toolkit_Banner extends \Elementor\Widget_Base
                 'title_field' => '{{{ social_link }}}',
             ]
         );
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
 
         $this->end_controls_section();
+
+        // style tab
+        $this->start_controls_section(
+            'section_banner_style',
+            [
+                'label' => __('Banner', 'travelfic-toolkit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        // slider container style
+
+        /* 
+       Container height size
+       */
+
+        $this->add_responsive_control(
+            'banner_height',
+            [
+                'label' => __('Banner Height', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1200,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-banner-container' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 600,
+                ],
+                'separator' => 'after',
+            ]
+        );
+
+        // title style
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'banner_title_typography',
+                'label' => __('Title Typography', 'travelfic-toolkit'),
+                'selector' => '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-title',
+
+            ]
+
+        );
+
+        $this->add_control(
+            'banner_title_color',
+            [
+                'label' => __('Title Color', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-title' => 'color: {{VALUE}}',
+                ],
+                'separator' => 'after',
+            ]
+        );
+        // subtitle style
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'banner_subtitle_typography',
+                'label' => __('Subtitle Typography', 'travelfic-toolkit'),
+                'selector' => '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-title .tft-subtitle',
+            ]
+
+        );
+
+        $this->add_control(
+            'banner_subtitle_color',
+            [
+                'label' => __('Subtitle Color', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-title .tft-subtitle' => 'color: {{VALUE}}',
+                ],
+                'separator' => 'after',
+            ]
+        );
+
+        // button style
+        $this->add_control(
+            'banner_button_color',
+            [
+                'label' => __('Button Color', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-button a' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'banner_button_typography',
+                'label' => __('Button Typography', 'travelfic-toolkit'),
+                'selector' => '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-button a',
+            ]
+
+        );
+
+
+        $this->add_control(
+            'banner_button_bg_color',
+            [
+                'label' => __('Button Background Color', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-banner-slider-item-content .tft-slider-item-button' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
     }
 
     protected function render()
@@ -292,7 +425,7 @@ class Travelfic_Toolkit_Banner extends \Elementor\Widget_Base
                         <?php foreach ($social_list as $social_item) {
                         ?>
                             <a href="<?php echo esc_url($social_item['social_link']) ?>">
-                                <!-- <img src="<?php echo esc_url($social_item['icon']) ?>" alt="facebook"> -->
+                                <!-- <img src="" alt="facebook"> -->
                                 <i class="<?php echo esc_attr($social_item['icon']); ?>" aria-hidden="true"></i>
                             </a>
                         <?php } ?>

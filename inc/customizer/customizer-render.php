@@ -130,7 +130,7 @@ class Travelfic_Customizer_render
                         <div class="tft-site-footer-item">
                             <div class="tft-footer-site-info">
                                 <div class=" tft-footer-logo">
-                                    <img src="assets/images/logo.svg" alt="logo">
+                                    <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/design2-logo.svg') ?>" alt="logo">
                                 </div>
                                 <div class="tft-footer-contact-info">
                                     <a href="tel:(245) 2156 21453">
