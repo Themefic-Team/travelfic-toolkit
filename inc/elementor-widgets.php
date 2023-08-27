@@ -94,6 +94,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         wp_register_style( 'travelfic-toolkit-latest-news', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-latest-news.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
         wp_register_style( 'travelfic-toolkit-team', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-team.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
         wp_register_style( 'travelfic-toolkit-tour-destination', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-destination.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-cf7-form', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-cf7-form.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
     }
 
     /**
@@ -128,6 +129,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-destination.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-cf7-form.php' );
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_SliderHero());
@@ -138,6 +140,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_SectionHeading() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TeamMembers() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TourDestinaions() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_CF7_Form() );
 
     }
 }

@@ -139,17 +139,15 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 			]
 		);
 
-		
 		$this->add_control(
-			'post_items',
-			[
-				'label' => __('Item Per page', 'travelfic-toolkit'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => '6',
-				'placeholder' => '3',
-			]
-		);
-
+            'post_items',
+            [
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'label'       => __( 'Item Per page', 'travelfic-toolkit' ),
+                'placeholder' => __( '4', 'travelfic-toolkit' ),
+                'default'     => 4,
+            ]
+        );
 		// Order
 		$this->add_control(
 			'post_order',

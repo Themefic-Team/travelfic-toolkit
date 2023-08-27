@@ -224,14 +224,32 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         
-        $this->add_control(
+        $this->add_responsive_control(
             'slider_height',
             [
-                'label'   => __( 'Slider Height(px)', 'travelfic-toolkit' ),
-                'type'    => \Elementor\Controls_Manager::NUMBER,
-                'default' => 900,
-            ],
+                'label' => esc_html__('Slider Height(px)', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 800, // Your default value here
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
         );
+
         $this->add_control(
             'slider_opacity',
             [
@@ -442,15 +460,61 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'slider_serach_style',
             [
-                'label' => __( 'Serach Style', 'travelfic-toolkit' ),
+                'label' => __( 'Search Style', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
         $this->add_control(
+            'search_box',
+            [
+                'label'     => __( 'Search Box', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_responsive_control(
+            'search_box_padding',
+            [
+                'label' => __( 'Padding', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 40,
+                    'right' => 40,
+                    'bottom' => 40,
+                    'left' => 40,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tft-search-box-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_box_border_radius',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
             'slider_tab',
             [
-                'label'     => __( 'Tab', 'travelfic-toolkit' ),
+                'label'     => __( 'Search Tab', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -507,6 +571,56 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'search_form_tab_border_width',
+            [
+                'label' => __( 'Border Width', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 1,
+                    'right' => 1,
+                    'bottom' => 1,
+                    'left' => 1,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_tab_border_color',
+            [
+                'label'     => __( 'Tab Border Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#ccc',
+                'selectors' => [
+                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_tab_border_radius',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 4,
+                    'right' => 4,
+                    'bottom' => 4,
+                    'left' => 4,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'slider_search_button_padding_',
             [
@@ -522,9 +636,58 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_search_input',
             [
-                'label'     => __( 'Input', 'travelfic-toolkit' ),
+                'label'     => __( 'Search Form', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+            ]
+        );
+        $this->add_control(
+            'search_form_border_width',
+            [
+                'label' => __( 'Border Width', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_border_color',
+            [
+                'label'     => __( 'Border Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D3040',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_border_radius',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'default' => [
+                    'unit' => 'px',
+                    'top' => 0,
+                    'right' => 0,
+                    'bottom' => 0,
+                    'left' => 0,
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
             ]
         );
         $this->add_group_control(
@@ -569,7 +732,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'search_button_border_width',
             [
-                'label' => __( 'Border Width', 'your-textdomain' ),
+                'label' => __( 'Border Width', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'default' => [
@@ -581,7 +744,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'isLinked' => false,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -708,7 +871,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 				<div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo $rand_number ?>">
 					<?php foreach ( $settings['hero_slider_list'] as $item ): ?>
 						<div class="tft-hero-single-item">
-							<div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url( $item['slider_image']['url'] ); ?>);height: <?php echo esc_html( $settings['slider_height'] ); ?>px;">
+							<div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url( $item['slider_image']['url'] ); ?>);">
 								<div class="tft-container tft-hero-single-item-inner">
 									<div class=" slider-inner-info">
 										<div class="tft-slider-title">

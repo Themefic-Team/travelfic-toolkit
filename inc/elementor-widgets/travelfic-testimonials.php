@@ -213,7 +213,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_title_space_bellow',
             [
-                'label'     => __( 'Title Space Bellow', 'travelfic-toolkit' ),
+                'label'     => __( 'Heading Space', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::SLIDER,
                 'range'     => [
                     'px' => [
@@ -244,7 +244,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_title_head',
             [
-                'label'     => __( 'Titile', 'travelfic-toolkit' ),
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -353,7 +353,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_card_color_hover',
             [
-                'label'     => __( 'List Background', 'travelfic-toolkit' ),
+                'label'     => __( 'Box Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -415,12 +415,77 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+        
+        $this->add_responsive_control(
+            'testimonials_nav__border_width',
+            [
+                'label' => esc_html__('Border', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 10,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 1, // Your default value here
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-testimonials-selector button.slick-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->add_control(
-            'testimonials_icon_nav_color',
+            'testimonials_nav_border_color',
+            [
+                'label'     => __( 'Border Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B33',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-testimonials-selector button.slick-arrow' => 'border-color: {{VALUE}} !important',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_nav_border_hover_color',
+            [
+                'label'     => __( 'Border Hover', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D30',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-testimonials-selector button.slick-arrow:hover' => 'border-color: {{VALUE}} !important',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_icon_nav_icon_color',
             [
                 'label'     => __( 'Icon Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-slide-default button.slick-arrow i' => 'color: {{VALUE}} !important',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_icon_nav_icon_color_hover',
+            [
+                'label'     => __( 'Icon Hover', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-slide-default button.slick-arrow:hover i' => 'color: {{VALUE}} !important',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_nav_color',
+            [
+                'label'     => __( 'Nav Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-slide-default button.slick-arrow' => 'background-color: {{VALUE}} !important',
                 ],
@@ -429,7 +494,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         $this->add_control(
             'testimonials_icon_nav_color_hover',
             [
-                'label'     => __( 'Icon Color Hover', 'travelfic-toolkit' ),
+                'label'     => __( 'Nav Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
