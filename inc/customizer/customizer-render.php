@@ -87,7 +87,7 @@ class Travelfic_Customizer_render
                                 'theme_location' => 'primary_menu',
                                 'menu_id'        => 'navigation',
                                 'container'      => 'ul',
-                                'menu_class'     => 'main--header-menu tft-flex'
+                                'menu_class'     => 'main--header-menu'
                             ));
                         ?>
                     </div>
@@ -132,115 +132,20 @@ class Travelfic_Customizer_render
         $travelfic_prefix = 'travelfic_customizer_settings_';
         ob_start();
     ?>
-        <footer>
-            <div class="tft-site-footer-top">
-                <div class="tft-site-container">
-                    <div class="tft-site-footer-wrapper">
-                        <div class="tft-site-footer-item">
-                            <div class="tft-footer-site-info">
-                                <div class=" tft-footer-logo">
-                                    <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/design2-logo.svg') ?>" alt="logo">
-                                </div>
-                                <div class="tft-footer-contact-info">
-                                    <a href="tel:(245) 2156 21453">
-                                        (245) 2156 21453
-                                    </a>
-                                    <a href="mailto:info@example.com">
-                                        info@example.com
-                                    </a>
-                                </div>
-                                <div class="tft-footer-location">
-                                    <h3>Our Office Location:</h3>
-                                    <p>512 Hilton Street, EDT Corss</p>
-                                    <p>
-                                        Boston. United State</p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 
-                            TODO: Will be implemented later
-
-                            - add social media links
-                            - add footer menu
-                            - add footer widgets
-                            
-                         -->
-                        <div class="tft-site-footer-item">
-
-                            <div class="tft-site-footer-item-title">
-                                <h3>Services</h3>
-                            </div>
-                            <div class="tft-site-footer-item-content">
-                                <ul>
-                                    <li><a href="#">Web design</a></li>
-                                    <li><a href="#">Development</a></li>
-                                    <li><a href="#">Hosting</a></li>
-                                    <li><a href="#">Search engine optimization</a></li>
-                                    <li><a href="#">Social media marketing</a></li>
-                                    <li><a href="#">Graphic design</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        <div class="tft-site-footer-item">
-                            <div class="tft-site-footer-item-title">
-                                <h3>Support</h3>
-                            </div>
-                            <div class="tft-site-footer-item-content">
-                                <ul>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Privacy policy</a></li>
-                                    <li><a href="#">Terms of service</a></li>
-                                    <li><a href="#">Contact us</a></li>
-                                    <li><a href="#">Online support</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-
-                        <div class="tft-site-footer-item">
-                            <div class="tft-site-footer-item-title">
-                                <h3>Newsletter</h3>
-                            </div>
-                            <div class="tft-site-footer-item-content">
-                                <p>Subscribe our weekly newsletter</p>
-                                <form class="tft-site-footer-newsletter-form" action="">
-                                    <div class="tft-site-footer-newsletter">
-                                        <input type="text" placeholder="Enter Email Address">
-                                        <img src=<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/mail.svg') ?> alt="arrow">
-
-                                    </div>
-                                    <button>Subscribe now</button>
-                                </form>
-                            </div>
-
-                        </div>
-
-
-
-                    </div>
-
+        <footer class="tft-design-2">
+            <div class="tft-footer-sections tft-w-padding">
+                <div class="tft-grid">
+                <?php dynamic_sidebar( 'footer_sideabr' ); ?>
+                </div>
+                <div class="tft-footer-copyright">
+                    <p>
+                    <?php
+                        $current_year = date('Y');
+                        printf( esc_html__('© Copyright %1$s %2$s by %3$s All Rights Reserved.', 'travelfic'), esc_html($current_year), esc_html( get_bloginfo('name') ), '<a target="_blank" href="'.esc_url("https://themefic.com/").'">Themefic</a>');
+                    ?>
+                    </p>
                 </div>
             </div>
-            <div class="tft-footer-bottom">
-                <div class="tft-site-container">
-                    <div class="tft-footer-bottom-wrapper">
-                        <div class="tft-site-copy-right">
-                            <p>© 2023 <a href="#">ThemeTags</a>. All Rights Reserved.</p>
-                        </div>
-                        <div class="tft-footer-bottom-links">
-                            <ul>
-                                <li><a href="#">Privacy policy</a></li>
-                                <li><a href="#">View on map</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </footer>
     <?php
     $travelfic_footer = ob_get_clean();

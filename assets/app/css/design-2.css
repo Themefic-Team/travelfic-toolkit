@@ -48,13 +48,18 @@
   justify-content: space-between;
   align-items: center;
 }
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu {
+  max-width: 33%;
+  width: 100%;
+}
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li {
-  margin-right: 24px;
+  margin-right: 32px;
+  display: inline-block;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li a {
   text-decoration: none;
@@ -62,6 +67,14 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
+  margin: 0px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-logo {
+  max-width: 33%;
+  width: 100%;
+  text-align: center;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-logo a.custom-logo-link img {
   width: 160px;
@@ -73,6 +86,11 @@
   font-weight: 700;
   line-height: normal;
   color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account {
+  max-width: 33%;
+  width: 100%;
+  text-align: right;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul {
   margin: 0;
@@ -92,6 +110,74 @@
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
   border: 1px solid #B58E53;
+}
+.tft-design-2 .tft-footer-sections {
+  padding-top: 64px;
+  padding-bottom: 32px;
+  background-color: #595349;
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-footer-sections a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-footer-sections .tft-grid {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 83px;
+}
+.tft-design-2 .tft-footer-sections .tft-grid .tft-footer-section {
+  width: 100%;
+}
+.tft-design-2 .tft-footer-sections .tft-grid h2 {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  color: #B58E53;
+  margin-bottom: 15px;
+  line-height: 32px;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li {
+  display: block;
+  padding-bottom: 8px;
+  margin: 0;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li a {
+  text-decoration: none;
+  display: block;
+  color: #FDF9F3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li:last-child {
+  padding-bottom: 0px;
+}
+.tft-design-2 .tft-footer-sections .tft-grid p {
+  margin: 0;
+}
+.tft-design-2 .tft-footer-sections .tft-footer-copyright {
+  border-top: 0.5px solid #99948D;
+  margin-top: 32px;
+}
+.tft-design-2 .tft-footer-sections .tft-footer-copyright p {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 20.8px */
+  margin: 0;
+  padding-top: 32px;
+  color: #99948D;
+  text-align: center;
+}
+.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
+  text-decoration: none;
+  color: #99948D;
 }
 
 /*# sourceMappingURL=design-2.css.map */

@@ -51,12 +51,15 @@
             justify-content: space-between;
             align-items: center;
             .tft-menu{
+                max-width: 33%;
+                width: 100%;
                 ul{
                     margin: 0;
                     padding: 0;
                     list-style: none;
                     li{
-                        margin-right: 24px;
+                        margin-right: 32px;
+                        display: inline-block;
                         a{
                             text-decoration: none;
                             color: $tft_white;
@@ -65,9 +68,15 @@
                             font-weight: 600;
                         }
                     }
+                    li:last-child{
+                        margin: 0px;
+                    }
                 }
             }
             .tft-logo{
+                max-width: 33%;
+                width: 100%;
+                text-align: center;
                 a.custom-logo-link{
                     img{
                        width: 160px; 
@@ -85,6 +94,9 @@
                 }
             }
             .tft-account{
+                max-width: 33%;
+                width: 100%;
+                text-align: right;
                 ul{
                     margin: 0;
                     padding: 0;
@@ -103,6 +115,75 @@
                             border: 1px solid $tft_primary_color;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    .tft-footer-sections{
+        padding-top: 64px;
+        padding-bottom: 32px;
+        background-color: $tft_secondary_color;
+        color: $tft_white;
+        a{
+            color: $tft_white;
+        }
+        .tft-grid{
+            display: flex;
+            justify-content: space-between;
+            align-content: flex-start;
+            flex-wrap: nowrap;
+            gap: 83px;
+            .tft-footer-section{
+                width: 100%;
+            }
+            h2{
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 700;
+                color: $tft_primary_color;
+                margin-bottom: 15px;
+                line-height: 32px;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                li{
+                    display: block;
+                    padding-bottom: 8px;
+                    margin: 0;
+                    a{
+                        text-decoration: none;
+                        display: block;
+                        color: $tft_white;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 600;
+                    }
+                }
+                li:last-child{
+                    padding-bottom: 0px;
+                }
+            }
+            p{
+                margin: 0;
+            }
+        }
+        .tft-footer-copyright{
+            border-top: .5px solid #99948D;
+            margin-top: 32px;
+            p{
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 130%; /* 20.8px */
+                margin: 0;
+                padding-top: 32px;  
+                color: #99948D;
+                text-align: center;
+                a{
+                    text-decoration: none;
+                    color: #99948D;
                 }
             }
         }

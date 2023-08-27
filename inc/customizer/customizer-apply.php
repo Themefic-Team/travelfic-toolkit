@@ -22,6 +22,9 @@ function travelfic_toolkit_footer_callback($travelfic_footer){
     $travelfic_footer_check = get_theme_mod($travelfic_prefix.'footer_design_select', 'design1');
     if($travelfic_footer_check=="design1"){
         return $travelfic_footer;
+    }elseif($travelfic_footer_check=="design2"){
+        $footer_design2 =  Travelfic_Customizer_render::travelfic_toolkit_footer_second_design($travelfic_footer);
+        return $footer_design2;
     }
 }
 
