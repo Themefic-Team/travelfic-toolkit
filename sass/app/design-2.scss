@@ -44,7 +44,7 @@
         }
     }
     .tft-menus-section{
-        background: rgba(48, 40, 28, 0.30);
+        background: $tft_white;
         padding-top: 32px;
         padding-bottom: 32px;
         .tft-flex{
@@ -62,10 +62,14 @@
                         display: inline-block;
                         a{
                             text-decoration: none;
-                            color: $tft_white;
+                            color: $tft_grey;
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 600;
+                            padding: 0px !important;
+                        }
+                        &::hover ul{
+                            left: 0;
                         }
                     }
                     li:last-child{
@@ -89,7 +93,7 @@
                         font-style: normal;
                         font-weight: 700;
                         line-height: normal;
-                        color: #FDF9F3;
+                        color: $tft_grey;
                     }
                 }
             }
@@ -104,7 +108,7 @@
                         display: inline-block;
                         a{
                             padding: 12px 32px;
-                            color: $tft_white;
+                            color: $tft_grey;
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 700;
@@ -159,6 +163,9 @@
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 600;
+                        &::hover{
+                            color: $tft_white !important;
+                        }
                     }
                 }
                 li:last-child{
@@ -176,7 +183,7 @@
                 font-size: 16px;
                 font-style: normal;
                 font-weight: 400;
-                line-height: 130%; /* 20.8px */
+                line-height: 130%;
                 margin: 0;
                 padding-top: 32px;  
                 color: #99948D;

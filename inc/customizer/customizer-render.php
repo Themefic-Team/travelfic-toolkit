@@ -82,6 +82,7 @@ class Travelfic_Customizer_render
             <div class="tft-menus-section tft-w-padding">
                 <div class="tft-flex">
                     <div class="tft-menu">
+                    <nav class="tft-site-navigation">
                         <?php
                             wp_nav_menu(array(
                                 'theme_location' => 'primary_menu',
@@ -90,6 +91,7 @@ class Travelfic_Customizer_render
                                 'menu_class'     => 'main--header-menu'
                             ));
                         ?>
+                    </nav>
                     </div>
                     <div class="tft-logo">
                     <?php
