@@ -51,7 +51,9 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'label'    => __('Header Design Option', 'travelfic-toolkit'),
         'section'  => 'travelfic_customizer_header',
         'choices'  => array(
-            'design1' => esc_url( TRAVELFIC_TOOLKIT_URL.'assets/admin/img/header-1.png' )
+            'design1' => esc_url( TRAVELFIC_TOOLKIT_URL.'assets/admin/img/header-1.png' ),
+            'design2' => esc_url( TRAVELFIC_TOOLKIT_URL.'assets/admin/img/header-2.png' )
+
         ),
         'priority' => 10,
     )));

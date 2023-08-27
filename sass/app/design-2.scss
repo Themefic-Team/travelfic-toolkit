@@ -1,3 +1,110 @@
-h1{
-    display: none;
+//import Common file
+
+@import 'common';
+
+.tft-design-2{
+    .tft-top-header{
+        background: $tft_secondary_color;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        .tft-flex{
+            justify-content: space-between;
+            align-items: center;
+            .tft-contact-info{
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: inline-flex;
+                        color: $tft_white;
+                        margin-left: 24px;
+                        align-items: center;
+                        svg{
+                            margin-right: 8px;
+                        }
+                    }
+                    li:first-child{
+                        margin: 0px;
+                    }
+                }
+            }
+            .tft-social-share{
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: inline-block;
+                        margin-left: 20px;
+                    }
+                    li:first-child{
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+    }
+    .tft-menus-section{
+        background: rgba(48, 40, 28, 0.30);
+        padding-top: 32px;
+        padding-bottom: 32px;
+        .tft-flex{
+            justify-content: space-between;
+            align-items: center;
+            .tft-menu{
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    li{
+                        margin-right: 24px;
+                        a{
+                            text-decoration: none;
+                            color: $tft_white;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+            .tft-logo{
+                a.custom-logo-link{
+                    img{
+                       width: 160px; 
+                    }
+                }
+                .logo-text{
+                    a{
+                        text-decoration: none;
+                        font-size: 32px;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: normal;
+                        color: #FDF9F3;
+                    }
+                }
+            }
+            .tft-account{
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        display: inline-block;
+                        a{
+                            padding: 12px 32px;
+                            color: $tft_white;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 700;
+                            text-decoration: none;
+                            display: inline-block;
+                        }
+                        a.login{
+                            border: 1px solid $tft_primary_color;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

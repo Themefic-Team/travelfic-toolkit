@@ -1,5 +1,97 @@
-h1 {
-  display: none;
+.tft-w-padding {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.tft-design-2 .tft-top-header {
+  background: #595349;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.tft-design-2 .tft-top-header .tft-flex {
+  justify-content: space-between;
+  align-items: center;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li {
+  display: inline-flex;
+  color: #FDF9F3;
+  margin-left: 24px;
+  align-items: center;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li svg {
+  margin-right: 8px;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li:first-child {
+  margin: 0px;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li:first-child {
+  margin: 0px;
+}
+.tft-design-2 .tft-menus-section {
+  background: rgba(48, 40, 28, 0.3);
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.tft-design-2 .tft-menus-section .tft-flex {
+  justify-content: space-between;
+  align-items: center;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li {
+  margin-right: 24px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li a {
+  text-decoration: none;
+  color: #FDF9F3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-logo a.custom-logo-link img {
+  width: 160px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-logo .logo-text a {
+  text-decoration: none;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li {
+  display: inline-block;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a {
+  padding: 12px 32px;
+  color: #FDF9F3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
+  border: 1px solid #B58E53;
 }
 
 /*# sourceMappingURL=design-2.css.map */

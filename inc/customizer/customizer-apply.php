@@ -7,6 +7,9 @@ function travelfic_toolkit_header_callback($travelfic_header){
     $travelfic_header_check = get_theme_mod($travelfic_prefix.'header_design_select', 'design1');
     if($travelfic_header_check=="design1"){
         return $travelfic_header;
+    }elseif($travelfic_header_check=="design2"){
+        $header_design2 =  Travelfic_Customizer_render::travelfic_toolkit_header_second_design($travelfic_header);
+        return $header_design2;
     }
 }
 
