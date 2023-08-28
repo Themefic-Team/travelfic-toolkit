@@ -81,17 +81,17 @@ class Travelfic_Customizer_render
 
             <div class="tft-menus-section tft-w-padding">
                 <div class="tft-flex">
-                    <div class="tft-menu">
-                    <nav class="tft-site-navigation">
-                        <?php
-                            wp_nav_menu(array(
-                                'theme_location' => 'primary_menu',
-                                'menu_id'        => 'navigation',
-                                'container'      => 'ul',
-                                'menu_class'     => 'main--header-menu'
-                            ));
-                        ?>
-                    </nav>
+                    <div class="tft-menu tft-header-desktop">
+                        <nav class="tft-site-navigation">
+                            <?php
+                                wp_nav_menu(array(
+                                    'theme_location' => 'primary_menu',
+                                    'menu_id'        => 'navigation',
+                                    'container'      => 'ul',
+                                    'menu_class'     => 'main--header-menu'
+                                ));
+                            ?>
+                        </nav>
                     </div>
                     <div class="tft-logo">
                     <?php

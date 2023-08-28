@@ -69,8 +69,10 @@
   font-weight: 600;
   padding: 0px !important;
 }
-.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li::hover ul {
-  left: 0;
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li .sub-menu li {
+  margin: 0px;
+  display: block;
+  padding: 5px 10px;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
   margin: 0px;
@@ -159,7 +161,7 @@
   font-style: normal;
   font-weight: 600;
 }
-.tft-design-2 .tft-footer-sections .tft-grid ul li a::hover {
+.tft-design-2 .tft-footer-sections .tft-grid ul li a:hover {
   color: #FDF9F3 !important;
 }
 .tft-design-2 .tft-footer-sections .tft-grid ul li:last-child {

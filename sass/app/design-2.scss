@@ -68,8 +68,12 @@
                             font-weight: 600;
                             padding: 0px !important;
                         }
-                        &::hover ul{
-                            left: 0;
+                        .sub-menu{
+                            li{
+                                margin: 0px;
+                                display: block;
+                                padding: 5px 10px;
+                            }
                         }
                     }
                     li:last-child{
@@ -163,7 +167,7 @@
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 600;
-                        &::hover{
+                        &:hover{
                             color: $tft_white !important;
                         }
                     }
