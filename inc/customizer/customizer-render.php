@@ -6,9 +6,18 @@ class Travelfic_Customizer_render
     public static function travelfic_toolkit_header_second_design($travelfic_header)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
+
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix.'stiky_header', 'disabled');
+        if( isset( $travelfic_sticky_settings ) ){
+            if( $travelfic_sticky_settings != 'disabled' ){
+                $travelfic_sticky_class = 'tf_has_sticky';
+            }else{        
+                $travelfic_sticky_class = '';
+            }
+        }
         ob_start();
-?>
-        <header class="tft-design-2">
+    ?>
+        <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
             <div class="tft-top-header tft-w-padding">
                 <div class="tft-flex">
                     <div class="tft-contact-info">

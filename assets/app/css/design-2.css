@@ -3,6 +3,13 @@
   padding-right: 200px;
 }
 
+.tf_has_sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
 .tft-design-2 .tft-top-header {
   background: #595349;
   padding-top: 16px;

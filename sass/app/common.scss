@@ -3,3 +3,9 @@
     padding-left: 200px;
     padding-right: 200px;
 }
+.tf_has_sticky{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
