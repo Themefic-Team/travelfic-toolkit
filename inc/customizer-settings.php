@@ -82,6 +82,104 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Header Layout Selection End*/
 
+    /* ---------------------- */
+    /* Design 2 Settings Start*/
+    /* ---------------------- */
+
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_2_section_opt', array(
+        'default'           => 'sections',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(new Travelfic_Toolkit_Sec_Section_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_2_section_opt', array(
+        'label'    => __('Design 2 Settings', 'travelfic-toolkit'),
+        'section'  => 'travelfic_customizer_header',
+        'priority' => 11,
+    )));
+
+    // Phone
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_phone", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_text_field",
+        "default" => '+88 00 123 456'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_phone", [
+        "label" => __("Phone Number", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "text",
+    ]);
+
+    // Email
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_email", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_text_field",
+        "default" => 'travello@outlook.com'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_email", [
+        "label" => __("Email", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "text",
+    ]);
+
+    // Facebook
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_facebook", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_facebook", [
+        "label" => __("Facebook", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "url",
+    ]);
+
+    // Twitter
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_twitter", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_twitter", [
+        "label" => __("Twitter", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "url",
+    ]);
+
+    // Youtube
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_youtube", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_youtube", [
+        "label" => __("Youtube", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "url",
+    ]);
+
+    // Linkedin
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_linkedin", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_linkedin", [
+        "label" => __("Linkedin", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "url",
+    ]);
+
+    /* ---------------------- */
+    /* Design 2 Settings End  */
+    /* ---------------------- */
+
+
     /* Header Sticky Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_sticky_section_opt', array(
         'default'           => 'sections',
