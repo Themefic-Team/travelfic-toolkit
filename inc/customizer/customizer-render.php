@@ -6,7 +6,7 @@ class Travelfic_Customizer_render
     public static function travelfic_toolkit_header_second_design($travelfic_header)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
-
+        // Sticky Settings Checked
         $travelfic_sticky_settings = get_theme_mod($travelfic_prefix.'stiky_header', 'disabled');
         if( isset( $travelfic_sticky_settings ) ){
             if( $travelfic_sticky_settings != 'disabled' ){
@@ -15,6 +15,23 @@ class Travelfic_Customizer_render
                 $travelfic_sticky_class = '';
             }
         }
+
+        // Transparent Header Settings Checked
+        $travelfic_transparent_settings = get_theme_mod($travelfic_prefix.'transparent_header', 'disabled');
+        if( isset( $travelfic_transparent_settings ) ){
+            if( $travelfic_transparent_settings != 'disabled' ){
+                $travelfic_transparent_class = 'tf_has_transparent';
+            }else{        
+                $travelfic_transparent_class = '';
+            }
+        }
+
+        $design_2_phone = get_theme_mod($travelfic_prefix.'design_2_phone', '+88 00 123 456');
+        $design_2_email = get_theme_mod($travelfic_prefix.'design_2_email', 'travello@outlook.com');
+        $design_2_facebook = get_theme_mod($travelfic_prefix.'design_2_facebook', '#');
+        $design_2_twitter = get_theme_mod($travelfic_prefix.'design_2_twitter', '#');
+        $design_2_youtube = get_theme_mod($travelfic_prefix.'design_2_youtube', '#');
+        $design_2_linkedin = get_theme_mod($travelfic_prefix.'design_2_linkedin', '#');
         ob_start();
     ?>
         <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
@@ -22,6 +39,8 @@ class Travelfic_Customizer_render
                 <div class="tft-flex">
                     <div class="tft-contact-info">
                         <ul>
+                            <?php 
+                            if(!empty($design_2_phone)){ ?>
                             <li>
                                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.3333 7.70297C11.3333 7.47256 11.3333 7.35735 11.368 7.25465C11.4687 6.95629 11.7344 6.84051 12.0006 6.71926C12.2999 6.58295 12.4495 6.51479 12.5978 6.5028C12.7661 6.48919 12.9347 6.52545 13.0786 6.60619C13.2693 6.71323 13.4023 6.91662 13.5385 7.08201C14.1674 7.8459 14.4819 8.22784 14.5969 8.64904C14.6898 8.98894 14.6898 9.34439 14.5969 9.6843C14.4291 10.2986 13.8989 10.8136 13.5064 11.2903C13.3057 11.5341 13.2053 11.656 13.0786 11.7271C12.9347 11.8079 12.7661 11.8441 12.5978 11.8305C12.4495 11.8185 12.2999 11.7504 12.0006 11.6141C11.7344 11.4928 11.4687 11.377 11.368 11.0787C11.3333 10.976 11.3333 10.8608 11.3333 10.6304V7.70297Z" stroke="#FDF9F4" stroke-width="1.5"/>
@@ -29,8 +48,11 @@ class Travelfic_Customizer_render
                                 <path d="M3.33325 6.5C3.33325 4.29086 5.42259 2.5 7.99992 2.5C10.5772 2.5 12.6666 4.29086 12.6666 6.5" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
                                 <path d="M12.6665 11.832V12.3654C12.6665 13.5436 11.4726 14.4987 9.99984 14.4987H8.6665" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                +88 00 123 456
+                                <?php echo esc_html( $design_2_phone ); ?>
                             </li>
+                            <?php } 
+                            if(!empty($design_2_email)){
+                            ?>
                             <li>
                                 <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">
@@ -38,15 +60,17 @@ class Travelfic_Customizer_render
                                 <path id="Vector_2" d="M1.34376 7.48245C1.38735 9.52614 1.40914 10.548 2.16322 11.3049C2.91731 12.0619 3.96681 12.0883 6.0658 12.141C7.35946 12.1735 8.64038 12.1735 9.93404 12.141C12.033 12.0883 13.0825 12.0619 13.8366 11.3049C14.5907 10.548 14.6125 9.52613 14.6561 7.48245C14.6701 6.82532 14.6701 6.17208 14.6561 5.51496C14.6125 3.47127 14.5907 2.44943 13.8366 1.69247C13.0825 0.935519 12.033 0.909149 9.93404 0.85641C8.64038 0.823906 7.35946 0.823905 6.0658 0.856406C3.9668 0.90914 2.91731 0.935508 2.16322 1.69246C1.40913 2.44942 1.38734 3.47126 1.34376 5.51495C1.32975 6.17208 1.32975 6.82532 1.34376 7.48245Z" stroke="#FDF9F4" stroke-width="1.5" stroke-linejoin="round"/>
                                 </g>
                                 </svg>
-                                travello@outlook.com
+                                <?php echo esc_html( $design_2_email ); ?>
                             </li>
+                            <?php } ?>
                         </ul>
                     </div>
 
                     <div class="tft-social-share">
                         <ul>
+                            <?php if(!empty($design_2_linkedin)){ ?>
                             <li>
-                                <a href="">
+                                <a href="<?php echo esc_url($design_2_linkedin); ?>" target="_blank">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.33276 13.6693V8.33594C4.33276 7.87 4.33276 7.63703 4.25664 7.45325C4.15515 7.20823 3.96047 7.01355 3.71545 6.91206C3.53168 6.83594 3.29871 6.83594 2.83276 6.83594C2.36682 6.83594 2.13385 6.83594 1.95008 6.91206C1.70505 7.01355 1.51038 7.20823 1.40888 7.45325C1.33276 7.63703 1.33276 7.87 1.33276 8.33594V13.6693C1.33276 14.1352 1.33276 14.3682 1.40888 14.552C1.51038 14.797 1.70505 14.9917 1.95008 15.0932C2.13385 15.1693 2.36682 15.1693 2.83276 15.1693C3.29871 15.1693 3.53168 15.1693 3.71545 15.0932C3.96047 14.9917 4.15515 14.797 4.25664 14.552C4.33276 14.3682 4.33276 14.1352 4.33276 13.6693Z" stroke="#FDF9F4"/>
                                     <path d="M4.33276 3.33594C4.33276 4.16436 3.66119 4.83594 2.83276 4.83594C2.00434 4.83594 1.33276 4.16436 1.33276 3.33594C1.33276 2.50751 2.00434 1.83594 2.83276 1.83594C3.66119 1.83594 4.33276 2.50751 4.33276 3.33594Z" stroke="#FDF9F4"/>
@@ -54,8 +78,11 @@ class Travelfic_Customizer_render
                                     </svg>
                                 </a>
                             </li>
+                            <?php }
+                            if(!empty($design_2_facebook)){
+                            ?>
                             <li>
-                                <a href="">
+                                <a href="<?php echo esc_url($design_2_facebook); ?>" target="_blank">
                                     <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
                                     <path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M2.12064 6.38759C1.4688 6.38759 1.33276 6.51549 1.33276 7.12833V8.23944C1.33276 8.85228 1.4688 8.98018 2.12064 8.98018H3.6964V13.4246C3.6964 14.0375 3.83244 14.1654 4.48428 14.1654H6.06004C6.71187 14.1654 6.84792 14.0375 6.84792 13.4246V8.98018H8.61725C9.11162 8.98018 9.23901 8.88984 9.37482 8.44294L9.71248 7.33183C9.94513 6.56627 9.80177 6.38759 8.95492 6.38759H6.84792V4.53573C6.84792 4.12664 7.20066 3.79499 7.63579 3.79499H9.87822C10.5301 3.79499 10.6661 3.66709 10.6661 3.05425V1.57277C10.6661 0.959932 10.5301 0.832031 9.87822 0.832031H7.63579C5.46013 0.832031 3.6964 2.49024 3.6964 4.53573V6.38759H2.12064Z" stroke="#FDF9F4" stroke-linejoin="round"/>
@@ -63,8 +90,11 @@ class Travelfic_Customizer_render
                                     </svg>
                                 </a>
                             </li>
+                            <?php } 
+                            if(!empty($design_2_twitter)){
+                            ?>
                             <li>
-                                <a href="">
+                                <a href="<?php echo esc_url($design_2_twitter); ?>" target="_blank">
                                     <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
                                     <path id="Vector" d="M1.33276 10.8346C2.50946 11.5153 3.87561 11.8346 5.33276 11.8346C9.65329 11.8346 13.1739 8.40964 13.3275 4.12662L14.6661 1.5013L12.43 1.83464C11.9599 1.41973 11.3424 1.16797 10.6661 1.16797C8.95117 1.16797 7.66656 2.84619 8.08005 4.48799C5.71132 4.64082 3.56521 3.18217 2.32405 1.23812C1.50041 4.03587 2.26362 7.40537 4.33276 9.48166C4.33276 10.2659 2.33276 10.7338 1.33276 10.8346Z" stroke="#FDF9F4" stroke-linejoin="round"/>
@@ -72,9 +102,11 @@ class Travelfic_Customizer_render
                                     </svg>
                                 </a>
                             </li>
-                            
+                            <?php } 
+                            if(!empty($design_2_youtube)){
+                            ?>
                             <li>
-                                <a href="">
+                                <a href="<?php echo esc_url($design_2_youtube); ?>" target="_blank">
                                     <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
                                     <path id="Vector" d="M7.99943 12.1654C9.20589 12.1654 10.3628 12.0462 11.4351 11.8276C12.7743 11.5546 13.444 11.4181 14.055 10.6324C14.6661 9.84679 14.6661 8.94488 14.6661 7.14106V5.85633C14.6661 4.05252 14.6661 3.15061 14.055 2.36495C13.444 1.57928 12.7743 1.44278 11.4351 1.16978C10.3628 0.951214 9.20589 0.832031 7.99943 0.832031C6.79297 0.832031 5.63602 0.951214 4.5638 1.16978C3.22453 1.44278 2.5549 1.57928 1.94383 2.36495C1.33276 3.15061 1.33276 4.05252 1.33276 5.85633V7.14106C1.33276 8.94488 1.33276 9.84679 1.94383 10.6324C2.5549 11.4181 3.22453 11.5546 4.5638 11.8276C5.63602 12.0462 6.79297 12.1654 7.99943 12.1654Z" stroke="#FDF9F4"/>
@@ -83,12 +115,13 @@ class Travelfic_Customizer_render
                                     </svg>
                                 </a>
                             </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="tft-menus-section tft-w-padding">
+            <div class="tft-menus-section tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>">
                 <div class="tft-flex">
                     <div class="tft-menu tft-header-desktop">
                         <nav class="tft-site-navigation">

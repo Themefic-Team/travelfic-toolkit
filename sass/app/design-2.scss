@@ -127,7 +127,38 @@
             }
         }
     }
-
+    .tft-menus-section.tf_has_transparent{
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        background: rgba(48, 40, 28, 0.50);
+        .tft-menu{
+            ul{
+                li{
+                    a{
+                        color: $tft_white;
+                    }
+                }
+            }
+        }
+        .tft-logo{
+            .logo-text{
+                a{
+                    color: $tft_white;
+                }
+            }
+        }
+        .tft-account{
+            ul{
+                li{
+                    a{
+                        color: $tft_white;
+                    }
+                }
+            }
+        }
+    }
     .tft-footer-sections{
         padding-top: 64px;
         padding-bottom: 32px;
