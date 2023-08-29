@@ -2,6 +2,11 @@
 .tft-w-padding{
     padding-left: 200px;
     padding-right: 200px;
+
+    @media #{$tft_max1366}{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
 }
 .tft_has_sticky{
     position: sticky;

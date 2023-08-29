@@ -121,9 +121,9 @@ class Travelfic_Customizer_render
                 </div>
             </div>
 
-            <div class="tft-menus-section tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>">
+            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>">
                 <div class="tft-flex">
-                    <div class="tft-menu tft-header-desktop">
+                    <div class="tft-menu">
                         <nav class="tft-site-navigation">
                             <?php
                                 wp_nav_menu(array(
@@ -164,6 +164,109 @@ class Travelfic_Customizer_render
                     </div>
                 </div>
             </div>
+
+            
+                
+            <div class="tft-menus-section tft-header-mobile <?php echo esc_attr( $travelfic_transparent_class ); ?>">
+                <div class="tft-main-header-wrapper <?php echo esc_attr( apply_filters( 'travelfic_header_tftcontainer', $travelfic_tftcontainer = '') ); ?> tft-container-flex align-center justify-sp-between tft-w-padding">
+                
+                    <div class="tft-header-left site-header-section">
+                        <div class="site--brand-logo">
+                            <?php
+                            if (has_custom_logo()) {
+                                the_custom_logo();
+                            } else { ?>
+                            <div class="logo-text">
+                                <a href="<?php echo esc_url(home_url('/')) ?>">
+                                    <?php bloginfo('name'); ?>
+                                </a>
+                            </div>
+                            <?php  } ?>
+                        </div>
+                    </div>
+                    <!-- Site Search Bar -->
+                    <div class="tft-header-center site-header-section">
+                        <a href="#" class="tft-mobile_menubar">
+                            <div class="tft-menubar-active">
+                                <i class="fas fa-bars"></i>
+                            </div>
+                            <div class="tft-menubar-close">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="<?php echo esc_attr( apply_filters( 'travelfic_header_tftcontainer', $travelfic_tftcontainer = '') ); ?> site-header-section tft-mobile-main-menu">
+                    <nav class="tft-site-navigation">
+                        <?php
+                        wp_nav_menu(array(
+                            'theme_location' => 'primary_menu',
+                            'menu_id'        => 'navigation',
+                            'container' => 'ul',
+                            'menu_class' => 'main--header-menu tft-flex',
+                            'walker' => has_nav_menu('primary_menu') ? new Travelfic_Custom_Nav_Walker() : '',
+                        ));
+                        ?>
+                        <div class="tft-social-share">
+                            <ul>
+                                <?php if(!empty($design_2_linkedin)){ ?>
+                                <li>
+                                    <a href="<?php echo esc_url($design_2_linkedin); ?>" target="_blank">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="content">
+                                        <path id="Vector 6810" d="M4.41602 15.4596V8.79297C4.41602 7.9711 4.41602 7.56016 4.18903 7.28358C4.14747 7.23294 4.10104 7.18651 4.05041 7.14496C3.77382 6.91797 3.36289 6.91797 2.54102 6.91797C1.71915 6.91797 1.30821 6.91797 1.03162 7.14496C0.980988 7.18651 0.934559 7.23294 0.893005 7.28358C0.666016 7.56016 0.666016 7.9711 0.666016 8.79297V15.4596C0.666016 16.2815 0.666016 16.6924 0.893005 16.969C0.934559 17.0197 0.980988 17.0661 1.03162 17.1076C1.30821 17.3346 1.71915 17.3346 2.54102 17.3346C3.36289 17.3346 3.77382 17.3346 4.05041 17.1076C4.10104 17.0661 4.14747 17.0197 4.18903 16.969C4.41602 16.6924 4.41602 16.2815 4.41602 15.4596Z" stroke="#595349"/>
+                                        <path id="Ellipse 1922" d="M4.41602 2.54297C4.41602 3.5785 3.57655 4.41797 2.54102 4.41797C1.50548 4.41797 0.666016 3.5785 0.666016 2.54297C0.666016 1.50743 1.50548 0.667969 2.54102 0.667969C3.57655 0.667969 4.41602 1.50743 4.41602 2.54297Z" stroke="#595349"/>
+                                        <path id="Vector" d="M9.27106 6.91797H8.58268C7.79701 6.91797 7.40417 6.91797 7.16009 7.16205C6.91602 7.40612 6.91602 7.79896 6.91602 8.58464V15.668C6.91602 16.4536 6.91602 16.8465 7.16009 17.0906C7.40417 17.3346 7.79701 17.3346 8.58268 17.3346H8.99937C9.78503 17.3346 10.1779 17.3346 10.4219 17.0906C10.666 16.8465 10.666 16.4537 10.666 15.668L10.6661 12.7514C10.6661 11.3707 11.1061 10.2514 12.4059 10.2514C13.0558 10.2514 13.5827 10.811 13.5827 11.5014V15.2514C13.5827 16.0371 13.5827 16.4299 13.8267 16.674C14.0708 16.9181 14.4636 16.9181 15.2493 16.9181H15.665C16.4505 16.9181 16.8432 16.9181 17.0873 16.6741C17.3313 16.4301 17.3314 16.0373 17.3316 15.2518L17.3327 10.6682C17.3327 8.5971 15.363 6.91817 13.4133 6.91817C12.3035 6.91817 11.3132 7.46221 10.6661 8.31293C10.666 7.78792 10.666 7.52541 10.552 7.33047C10.4797 7.20702 10.377 7.10425 10.2535 7.03202C10.0586 6.91797 9.79607 6.91797 9.27106 6.91797Z" stroke="#595349" stroke-linejoin="round"/>
+                                        </g>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <?php }
+                                if(!empty($design_2_facebook)){
+                                ?>
+                                <li>
+                                    <a href="<?php echo esc_url($design_2_facebook); ?>" target="_blank">                                       
+                                        <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="content">
+                                        <path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M2.15086 7.60851C1.33607 7.60851 1.16602 7.76838 1.16602 8.53443V9.92332C1.16602 10.6894 1.33607 10.8492 2.15086 10.8492H4.12056V16.4048C4.12056 17.1709 4.29061 17.3307 5.10541 17.3307H7.07511C7.8899 17.3307 8.05996 17.1709 8.05996 16.4048V10.8492H10.2716C10.8896 10.8492 11.0488 10.7363 11.2186 10.1777L11.6407 8.78881C11.9315 7.83186 11.7523 7.60851 10.6937 7.60851H8.05996V5.29369C8.05996 4.78232 8.50089 4.36777 9.0448 4.36777H11.8478C12.6626 4.36777 12.8327 4.20789 12.8327 3.44184V1.58999C12.8327 0.823939 12.6626 0.664062 11.8478 0.664062H9.0448C6.32522 0.664063 4.12056 2.73682 4.12056 5.29369V7.60851H2.15086Z" stroke="#595349" stroke-linejoin="round"/>
+                                        </g>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <?php } 
+                                if(!empty($design_2_twitter)){
+                                ?>
+                                <li>
+                                    <a href="<?php echo esc_url($design_2_twitter); ?>" target="_blank">                                        
+                                        <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="content">
+                                        <path id="Vector" d="M0.666016 13.4193C2.13688 14.2701 3.84458 14.6693 5.66602 14.6693C11.0667 14.6693 15.4674 10.388 15.6595 5.03425L17.3327 1.7526L14.5375 2.16927C13.9499 1.65063 13.1781 1.33594 12.3327 1.33594C10.189 1.33594 8.58326 3.43372 9.10013 5.48596C6.13921 5.677 3.45657 3.85369 1.90512 1.42363C0.875573 4.92081 1.82959 9.13268 4.41602 11.7281C4.41602 12.7084 1.91602 13.2933 0.666016 13.4193Z" stroke="#595349" stroke-linejoin="round"/>
+                                        </g>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <?php } 
+                                if(!empty($design_2_youtube)){
+                                ?>
+                                <li>
+                                    <a href="<?php echo esc_url($design_2_youtube); ?>" target="_blank">
+                                        <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="content">
+                                        <path id="Vector" d="M8.99935 15.0807C10.5074 15.0807 11.9536 14.9318 13.2939 14.6585C14.968 14.3173 15.805 14.1467 16.5688 13.1646C17.3327 12.1825 17.3327 11.0551 17.3327 8.80035V7.19444C17.3327 4.93967 17.3327 3.81229 16.5688 2.83021C15.805 1.84813 14.968 1.6775 13.2939 1.33625C11.9536 1.06304 10.5074 0.914062 8.99935 0.914062C7.49128 0.914062 6.04509 1.06304 4.70481 1.33625C3.03073 1.6775 2.19369 1.84813 1.42985 2.83021C0.666016 3.81229 0.666016 4.93967 0.666016 7.19444V8.80035C0.666016 11.0551 0.666016 12.1825 1.42985 13.1646C2.19369 14.1467 3.03073 14.3173 4.70481 14.6585C6.04509 14.9318 7.49128 15.0807 8.99935 15.0807Z" stroke="#595349"/>
+                                        <path id="Vector 3642" d="M12.3018 8.25943C12.1781 8.7643 11.5201 9.12689 10.204 9.85209C8.77271 10.6408 8.05703 11.0352 7.47733 10.8833C7.281 10.8318 7.10017 10.7413 6.94832 10.6186C6.5 10.2561 6.5 9.50363 6.5 7.9987C6.5 6.49377 6.5 5.7413 6.94832 5.37884C7.10017 5.25609 7.281 5.1656 7.47733 5.11414C8.05703 4.96221 8.7727 5.35657 10.204 6.14531C11.5201 6.8705 12.1781 7.2331 12.3018 7.73797C12.3439 7.90975 12.3439 8.08765 12.3018 8.25943Z" stroke="#595349" stroke-linejoin="round"/>
+                                        </g>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            
         </header>
 
     <?php

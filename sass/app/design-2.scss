@@ -85,6 +85,10 @@
                 max-width: 33%;
                 width: 100%;
                 text-align: center;
+                @media #{$tft_max991}{
+                    max-width: 50%;
+                    text-align: left;
+                }
                 a.custom-logo-link{
                     img{
                        width: 160px; 
@@ -121,6 +125,32 @@
                         }
                         a.login{
                             border: 1px solid $tft_primary_color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tft-menus-section.tft-header-mobile{
+        .tft-main-header-wrapper{
+            min-height: auto;
+            padding: 0 32px;
+        }
+        .tft-mobile-main-menu{
+            .tft-site-navigation{
+                background-color: #FCF4E8;
+                top: 31px;
+                ul{
+                    li{
+                        display: block;
+                        width: 100%;
+                        border: 0px solid;
+                        a{
+                            color: $tft_grey;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 600;
+                            line-height: 130%;
                         }
                     }
                 }
@@ -173,6 +203,16 @@
             align-content: flex-start;
             flex-wrap: nowrap;
             gap: 83px;
+            @media #{$tft_max991}{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            @media #{$tft_max575}{
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 0px;
+            }
             .tft-footer-section{
                 width: 100%;
             }

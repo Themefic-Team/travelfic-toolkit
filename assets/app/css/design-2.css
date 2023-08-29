@@ -2,6 +2,12 @@
   padding-left: 200px;
   padding-right: 200px;
 }
+@media only screen and (max-width: 1366px) {
+  .tft-w-padding {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
 
 .tft_has_sticky {
   position: sticky;
@@ -89,6 +95,12 @@
   width: 100%;
   text-align: center;
 }
+@media only screen and (max-width: 991.98px) {
+  .tft-design-2 .tft-menus-section .tft-flex .tft-logo {
+    max-width: 50%;
+    text-align: left;
+  }
+}
 .tft-design-2 .tft-menus-section .tft-flex .tft-logo a.custom-logo-link img {
   width: 160px;
 }
@@ -124,6 +136,26 @@
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
   border: 1px solid #B58E53;
 }
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
+  min-height: auto;
+  padding: 0 32px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
+  background-color: #FCF4E8;
+  top: 31px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li {
+  display: block;
+  width: 100%;
+  border: 0px solid;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li a {
+  color: #595349;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+}
 .tft-design-2 .tft-menus-section.tft_has_transparent {
   position: absolute;
   left: 0;
@@ -155,6 +187,20 @@
   align-content: flex-start;
   flex-wrap: nowrap;
   gap: 83px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-2 .tft-footer-sections .tft-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-design-2 .tft-footer-sections .tft-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
+  }
 }
 .tft-design-2 .tft-footer-sections .tft-grid .tft-footer-section {
   width: 100%;
