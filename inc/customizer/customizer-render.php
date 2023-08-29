@@ -10,7 +10,7 @@ class Travelfic_Customizer_render
         $travelfic_sticky_settings = get_theme_mod($travelfic_prefix.'stiky_header', 'disabled');
         if( isset( $travelfic_sticky_settings ) ){
             if( $travelfic_sticky_settings != 'disabled' ){
-                $travelfic_sticky_class = 'tf_has_sticky';
+                $travelfic_sticky_class = 'tft_has_sticky';
             }else{        
                 $travelfic_sticky_class = '';
             }
@@ -20,7 +20,7 @@ class Travelfic_Customizer_render
         $travelfic_transparent_settings = get_theme_mod($travelfic_prefix.'transparent_header', 'disabled');
         if( isset( $travelfic_transparent_settings ) ){
             if( $travelfic_transparent_settings != 'disabled' ){
-                $travelfic_transparent_class = 'tf_has_transparent';
+                $travelfic_transparent_class = 'tft_has_transparent';
             }else{        
                 $travelfic_transparent_class = '';
             }

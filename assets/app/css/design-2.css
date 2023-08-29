@@ -3,7 +3,7 @@
   padding-right: 200px;
 }
 
-.tf_has_sticky {
+.tft_has_sticky {
   position: sticky;
   top: 0;
   width: 100%;
@@ -124,20 +124,20 @@
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
   border: 1px solid #B58E53;
 }
-.tft-design-2 .tft-menus-section.tf_has_transparent {
+.tft-design-2 .tft-menus-section.tft_has_transparent {
   position: absolute;
   left: 0;
   right: 0;
   z-index: 99;
   background: rgba(48, 40, 28, 0.5);
 }
-.tft-design-2 .tft-menus-section.tf_has_transparent .tft-menu ul li a {
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-menu ul li a {
   color: #FDF9F3;
 }
-.tft-design-2 .tft-menus-section.tf_has_transparent .tft-logo .logo-text a {
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-logo .logo-text a {
   color: #FDF9F3;
 }
-.tft-design-2 .tft-menus-section.tf_has_transparent .tft-account ul li a {
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-account ul li a {
   color: #FDF9F3;
 }
 .tft-design-2 .tft-footer-sections {
