@@ -9,6 +9,15 @@
   }
 }
 
+.tft-l-padding {
+  padding-left: 200px;
+}
+@media only screen and (max-width: 1366px) {
+  .tft-l-padding {
+    padding-left: 32px;
+  }
+}
+
 .tft-fullwidth-container {
   padding-left: 32px;
   padding-right: 32px;

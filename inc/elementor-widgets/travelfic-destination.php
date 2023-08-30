@@ -110,6 +110,45 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
         foreach ( $categories as $category ) {
             $category_options[$category->term_id] = $category->name;
         }
+        // Design
+        $this->add_control(
+            'des_style',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Design', 'travelfic-toolkit' ),
+                'default' => 'design-1',
+                'options' => [
+                    'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
+                    'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                ],
+            ]
+        );
+        // Design 2 fields
+        $this->add_control(
+			'des_title',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
+                'default' => __( 'Top destinations', 'travelfic-toolkit' ),
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+			]
+		);
+        $this->add_control(
+			'des_subtitle',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
+                'default' => __( 'Destinations', 'travelfic-toolkit' ),
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+			]
+		);
+
         // Tour
         $this->add_control(
             'categories_id',
@@ -176,6 +215,82 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'separator' => 'after',
             ]
         );
+        // Design 2 Styles start
+        $this->add_control(
+            'tour_destination_sec_title_color',
+            [
+                'label'     => __( 'Section Title Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#595349',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_sec_subtitle_color',
+            [
+                'label'     => __( 'Section Subtitle Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'single_destination_title_color',
+            [
+                'label'     => __( 'Single Destination Title', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'single_destination_button_color',
+            [
+                'label'     => __( 'Destination Button Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'single_destination_button_bg',
+            [
+                'label'     => __( 'Destination Button Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+
+        // Design 2 Styles end
 
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
@@ -183,6 +298,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'name'     => 'tour_destination_title',
                 'label'    => __( 'Destination List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a',
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
             ]
         );
         $this->add_control(
@@ -193,6 +311,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'default'   => '#1D2A3B',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
                 ],
             ]
         );
@@ -205,6 +326,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a:hover' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
             ]
         );
         $this->add_group_control(
@@ -213,6 +337,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'name'     => 'tour_destination_sub_list',
                 'label'    => __( 'Destination Sub List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a',
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
             ]
         );
         $this->add_control(
@@ -224,6 +351,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
             ]
         );
         $this->add_control(
@@ -234,6 +364,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
                 ],
             ]
         );
@@ -258,6 +391,17 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             $cat_ids = $settings['categories_id'];
         }
 
+        // Design
+        if ( !empty( $settings['des_style'] ) ) {
+            $tft_design = $settings['des_style'];
+        }
+
+        if ( !empty( $settings['des_title'] ) ) {
+            $tft_sec_title = $settings['des_title'];
+        }
+        if ( !empty( $settings['des_subtitle'] ) ) {
+            $tft_sec_subtitle = $settings['des_subtitle'];
+        }
 
         $taxonomy = 'tour_destination';
         $show_count = 0;
@@ -281,63 +425,147 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             'hide_empty'   => $empty,
         );
         $all_categories = get_categories( $args );
-        ?>
+    if("design-1"==$tft_design){
+    ?>
 
 	<div class="tft-destination-wrapper tft-customizer-typography">
     	<div class="tft-destination tft-row">
-        <?php
+            <?php
+            foreach ( $all_categories as $cat ) {
+                if ( $cat->category_parent == 0 ) {
+                    $category_id = $cat->term_id;
+                    $meta = get_term_meta( $cat->term_id, 'tf_tour_destination', true );
+                    if(isset($meta['image'])){
+                        $cat_image = $meta['image'];
+                    } else{
+                        $cat_image = '';
+                    }
+                ?>
+                <div class="tft-single-destination tft-col">
+                    <div class="tft-destination-thumbnail tft-thumbnail">
+                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt=""></a>
+                    </div>
+                    <div class="tft-destination-title">
+                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'tour_destination' )) . '">' . esc_html($cat->name) . '</a>'; ?>
+                    </div>
 
-        foreach ( $all_categories as $cat ) {
-            if ( $cat->category_parent == 0 ) {
-                $category_id = $cat->term_id;
-                $meta = get_term_meta( $cat->term_id, 'tf_tour_destination', true );
-                if(isset($meta['image'])){
-                    $cat_image = $meta['image'];
-                } else{
-                    $cat_image = '';
-                }
-            ?>
-
-            <div class="tft-single-destination tft-col">
-                <div class="tft-destination-thumbnail tft-thumbnail">
-                    <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt=""></a>
-                </div>
-                <div class="tft-destination-title">
-                    <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'tour_destination' )) . '">' . esc_html($cat->name) . '</a>'; ?>
-                </div>
-
-                <div class="tft-destination-details">
                     <div class="tft-destination-details">
-                        <ul>
-                        <?php
-                        $args2 = array(
-                            'taxonomy'     => $taxonomy,
-                            'child_of'     => 0,
-                            'parent'       => $category_id,
-                            'orderby'      => $orderby,
-                            'show_count'   => $show_count,
-                            'pad_counts'   => $pad_counts,
-                            'hierarchical' => $hierarchical,
-                            'title_li'     => $title,
-                            'hide_empty'   => $empty,
-                        );
-                        $sub_cats = get_categories( $args2 );
-                        if ( $sub_cats ) {
-                            foreach ( $sub_cats as $sub_category ) {?>
-                                <li><a href="<?php echo esc_url(get_term_link( $sub_category->slug, 'tour_destination' )); ?>"><?php echo esc_html( $sub_category->name ); ?></a></li>
-                            <?php }
-                        }?>
-                        </ul>
+                        <div class="tft-destination-details">
+                            <ul>
+                            <?php
+                            $args2 = array(
+                                'taxonomy'     => $taxonomy,
+                                'child_of'     => 0,
+                                'parent'       => $category_id,
+                                'orderby'      => $orderby,
+                                'show_count'   => $show_count,
+                                'pad_counts'   => $pad_counts,
+                                'hierarchical' => $hierarchical,
+                                'title_li'     => $title,
+                                'hide_empty'   => $empty,
+                            );
+                            $sub_cats = get_categories( $args2 );
+                            if ( $sub_cats ) {
+                                foreach ( $sub_cats as $sub_category ) {?>
+                                    <li><a href="<?php echo esc_url(get_term_link( $sub_category->slug, 'tour_destination' )); ?>"><?php echo esc_html( $sub_category->name ); ?></a></li>
+                                <?php }
+                            }?>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php } else{
-            
-        } } ?>
-
+            <?php } else{
+                
+            } } ?>
+        </div>
     </div>
+    <?php }elseif("design-2"==$tft_design){ ?>
+    <div class="tft-destination-design-2 tft-l-padding" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/destination-bg.png' ); ?>);">
+        <div class="tft-destination-header">
+            <?php 
+            if(!empty($tft_sec_subtitle)){ ?>
+                <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+            <?php }
+            if(!empty($tft_sec_title)){
+            ?>
+            <h3><?php echo esc_html($tft_sec_title); ?></h3>
+            <?php } ?>
+        </div>
+        <?php $rand_number = rand(8);?>
+        <div class="tft-destination-content">
+            <div class="tft-destination-slides tft-destination-slide-<?php echo $rand_number; ?>">
+                <?php
+                foreach ( $all_categories as $cat ) {
+                    if ( $cat->category_parent == 0 ) {
+                        $category_id = $cat->term_id;
+                        $meta = get_term_meta( $cat->term_id, 'tf_tour_destination', true );
+                        if(isset($meta['image'])){
+                            $cat_image = $meta['image'];
+                        } else{
+                            $cat_image = '';
+                        }
+                    ?>
+                    <div class="tft-single-destination">
+                        <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
+                            <div class="tft-destination-content">
+                                <h3><?php echo esc_html($cat->name); ?></h3>
+                                <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>">
+                                    <?php echo __("Explore now", "travelfic-toolkit"); ?>
+                                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Vector" d="M17.0001 6L1.00012 6" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector_2" d="M12.0003 11C12.0003 11 17.0002 7.31756 17.0002 5.99996C17.0003 4.68237 12.0002 1 12.0002 1" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } else{
+                    
+                } } ?>
+            </div>
+        </div>
+        <script>
+            // Destination Slider
+            (function($) {
+                $(document).ready(function() {
+                    //Your Code Inside
+                    $('.tft-destination-slide-<?php echo $rand_number; ?>').slick({
+                        dots: false,
+                        arrows: true,
+                        infinite: true,
+                        speed: 300,
+                        autoplaySpeed: 2000,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa-solid fa-arrow-left-long'></i></i></button>",
+            	        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa-solid fa-arrow-right-long'></i></button>",
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1,
+                                    infinite: true,
+                                }
+                            },
+                            {
+                                breakpoint: 580,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1
+                                }
+                            }
+                        ]
+                    });
+                });
 
-</div>
+            }(jQuery));
+        </script>
+    </div>
+    <?php } ?>
 <?php
 }
 }

@@ -8,6 +8,12 @@
         padding-right: 32px;
     }
 }
+.tft-l-padding{
+    padding-left: 200px;
+    @media #{$tft_max1366}{
+        padding-left: 32px;
+    }
+}
 .tft-fullwidth-container{
     padding-left: 32px;
     padding-right: 32px;
