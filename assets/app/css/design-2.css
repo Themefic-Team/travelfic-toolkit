@@ -145,6 +145,12 @@
   min-height: auto;
   padding: 0 32px;
 }
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a {
+  color: #595349;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
+  color: #595349;
+}
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
   background-color: #FCF4E8;
   top: 31px;
@@ -198,6 +204,12 @@
   color: #FDF9F3;
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-account ul li a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-left .logo-text a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
   color: #FDF9F3;
 }
 .tft-design-2 .tft-footer-sections {

@@ -162,7 +162,9 @@ $travelfic_sticky_menu_color = get_theme_mod($travelfic_kit_pre.'stiky_header_me
     }
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft_has_transparent .tft-menu ul li a,
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft_has_transparent .tft-logo a,
-    .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft_has_transparent .tft-account ul li a{
+    .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft_has_transparent .tft-account ul li a,
+    .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a,
+    .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i{
         color: <?php echo esc_attr( $travelfic_sticky_menu_color ); ?>;
     }
 </style>

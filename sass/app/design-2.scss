@@ -135,6 +135,20 @@
         .tft-main-header-wrapper{
             min-height: auto;
             padding: 0 32px;
+            .tft-header-left{
+                .logo-text{
+                    a{
+                        color: $tft_grey;
+                    }
+                }
+            }
+            .tft-header-center{
+                .tft-mobile_menubar{
+                    i{
+                        color: $tft_grey;
+                    }
+                }
+            }
         }
         .tft-mobile-main-menu{
             .tft-site-navigation{
@@ -210,6 +224,23 @@
             ul{
                 li{
                     a{
+                        color: $tft_white;
+                    }
+                }
+            }
+        }
+
+        .tft-main-header-wrapper{
+            .tft-header-left{
+                .logo-text{
+                    a{
+                        color: $tft_white;
+                    }
+                }
+            }
+            .tft-header-center{
+                .tft-mobile_menubar{
+                    i{
                         color: $tft_white;
                     }
                 }
