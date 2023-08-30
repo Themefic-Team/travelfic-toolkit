@@ -140,6 +140,7 @@
             .tft-site-navigation{
                 background-color: #FCF4E8;
                 top: 31px;
+                padding: 50px 0px 45px 0px;
                 ul{
                     li{
                         display: block;
@@ -151,6 +152,32 @@
                             font-style: normal;
                             font-weight: 600;
                             line-height: 130%;
+                            padding: 8px 32px !important;
+                        }
+                        ul{
+                            background-color: #FCF4E8;
+                            li{
+                                a{
+                                    color: $tft_grey;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    line-height: 130%;
+                                }
+                            }
+                        }
+                    }
+                }
+                .tft-social-share{
+                    ul{
+                        margin: 32px 0px 0px 32px;
+                        li{
+                            display: inline-block;
+                            width: auto;
+                            a{
+                                display: inline-block;
+                                padding: 5px !important;
+                            }
                         }
                     }
                 }

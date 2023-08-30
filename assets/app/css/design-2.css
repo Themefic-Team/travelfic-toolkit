@@ -9,6 +9,11 @@
   }
 }
 
+.tft-fullwidth-container {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
 .tft_has_sticky {
   position: sticky;
   top: 0;
@@ -143,6 +148,7 @@
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
   background-color: #FCF4E8;
   top: 31px;
+  padding: 50px 0px 45px 0px;
 }
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li {
   display: block;
@@ -155,6 +161,28 @@
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
+  padding: 8px 32px !important;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul {
+  background-color: #FCF4E8;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul li a {
+  color: #595349;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul {
+  margin: 32px 0px 0px 32px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul li {
+  display: inline-block;
+  width: auto;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul li a {
+  display: inline-block;
+  padding: 5px !important;
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent {
   position: absolute;

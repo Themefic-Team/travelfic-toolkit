@@ -35,7 +35,7 @@ class Travelfic_Customizer_render
         ob_start();
     ?>
         <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
-            <div class="tft-top-header tft-w-padding">
+            <div class="tft-top-header tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-flex">
                     <div class="tft-contact-info">
                         <ul>
@@ -121,7 +121,7 @@ class Travelfic_Customizer_render
                 </div>
             </div>
 
-            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>">
+            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-flex">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
@@ -280,7 +280,7 @@ class Travelfic_Customizer_render
         ob_start();
     ?>
         <footer class="tft-design-2">
-            <div class="tft-footer-sections tft-w-padding">
+            <div class="tft-footer-sections tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-grid">
                 <?php dynamic_sidebar( 'footer_sideabr' ); ?>
                 </div>

@@ -71,6 +71,34 @@ function travelfic_toolkit_page_tftcontainer_callback($travelfic_tftcontainer){
     }
 }
 
+// Travelfic Header design 2 tft-container Controller
+
+add_filter('travelfic_header_2_tftcontainer', 'travelfic_toolkit_header_2_tftcontainer_callback', 11);
+function travelfic_toolkit_header_2_tftcontainer_callback($travelfic_tftcontainer){
+    $travelfic_prefix = 'travelfic_customizer_settings_';
+    $travelfic_header_width = get_theme_mod($travelfic_prefix.'header_width', 'default');
+
+    if($travelfic_header_width=="default"){
+        return $travelfic_tftcontainer;
+    }else{
+        return 'tft-fullwidth-container'; 
+    }
+}
+
+// Travelfic Footer design 2 tft-container Controller
+
+add_filter('travelfic_footer_2_tftcontainer', 'travelfic_toolkit_footer_2_tftcontainer_callback', 11);
+function travelfic_toolkit_footer_2_tftcontainer_callback($travelfic_tftcontainer){
+    $travelfic_prefix = 'travelfic_customizer_settings_';
+    $travelfic_footer_width = get_theme_mod($travelfic_prefix.'footer_width', 'default');
+
+    if($travelfic_footer_width=="default"){
+        return $travelfic_tftcontainer;
+    }else{
+        return 'tft-fullwidth-container'; 
+    }
+}
+
 // travelfic Customizer Options
 function travelfic_toolkit_customizer_style()
 {
