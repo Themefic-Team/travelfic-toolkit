@@ -164,58 +164,6 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "text",
     ]);
 
-    // Facebook
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_facebook", [
-        "transport" => "refresh",
-        "sanitize_callback" => "esc_url_raw",
-        "default" => '#'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_facebook", [
-        "label" => __("Facebook", "travelfic-toolkit"),
-        'priority' => 11,
-        "section" => "travelfic_customizer_header",
-        "type" => "url",
-    ]);
-
-    // Twitter
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_twitter", [
-        "transport" => "refresh",
-        "sanitize_callback" => "esc_url_raw",
-        "default" => '#'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_twitter", [
-        "label" => __("Twitter", "travelfic-toolkit"),
-        'priority' => 11,
-        "section" => "travelfic_customizer_header",
-        "type" => "url",
-    ]);
-
-    // Youtube
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_youtube", [
-        "transport" => "refresh",
-        "sanitize_callback" => "esc_url_raw",
-        "default" => '#'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_youtube", [
-        "label" => __("Youtube", "travelfic-toolkit"),
-        'priority' => 11,
-        "section" => "travelfic_customizer_header",
-        "type" => "url",
-    ]);
-
-    // Linkedin
-    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_linkedin", [
-        "transport" => "refresh",
-        "sanitize_callback" => "esc_url_raw",
-        "default" => '#'
-    ]);
-    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_linkedin", [
-        "label" => __("Linkedin", "travelfic-toolkit"),
-        'priority' => 11,
-        "section" => "travelfic_customizer_header",
-        "type" => "url",
-    ]);
-
     /* ---------------------- */
     /* Design 2 Settings End  */
     /* ---------------------- */
@@ -456,6 +404,123 @@ function travelfic_toolkit_customize_register($wp_customize) {
     ) );
 
     /* Page Layout Selection End*/
+
+    /* -------------------*/
+    /* Social Share Start */
+    /* ------------------ */
+    $wp_customize->add_section("travelfic_social_share", [
+        "title" => __("Social Share", "travelfic"),
+        "panel" => "travelfic_customizer_settings",
+        "priority" => 999,
+    ]);
+
+    // Facebook
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_facebook", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_facebook", [
+        "label" => __("Facebook", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // Twitter
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_twitter", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_twitter", [
+        "label" => __("Twitter", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // Youtube
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_youtube", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_youtube", [
+        "label" => __("Youtube", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // Linkedin
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_linkedin", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_linkedin", [
+        "label" => __("Linkedin", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // Instagram
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_instagram", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_instagram", [
+        "label" => __("Instagram", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // Pinterest
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_pinterest", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_pinterest", [
+        "label" => __("Pinterest", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // Reddit
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "social_reddit", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "social_reddit", [
+        "label" => __("Reddit", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_social_share",
+        "type" => "url",
+    ]);
+
+    // RSS
+    // $wp_customize->add_setting($travelfic_toolkit_prefix . "social_rss", [
+    //     "transport" => "refresh",
+    //     "sanitize_callback" => "esc_url_raw",
+    //     "default" => '#'
+    // ]);
+    // $wp_customize->add_control($travelfic_toolkit_prefix . "social_rss", [
+    //     "label" => __("RSS", "travelfic-toolkit"),
+    //     'priority' => 11,
+    //     "section" => "travelfic_social_share",
+    //     "type" => "url",
+    // ]);
+    
+    /* -----------------*/
+    /* Social Share End */
+    /* ---------------- */
 
     /* Typography Sanitization Start */
 
