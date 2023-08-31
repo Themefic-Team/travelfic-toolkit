@@ -134,6 +134,7 @@ $travelfic_sticky_bg_blur = get_theme_mod($travelfic_kit_pre.'stiky_header_blur'
 $travelfic_sticky_menu_color = get_theme_mod($travelfic_kit_pre.'stiky_header_menu_text_color', '#595349');
 
 $travelfic_design1_topbar = get_theme_mod($travelfic_kit_pre.'design_2_top_header_bg', '#595349');
+$travelfic_design1_topbar_color = get_theme_mod($travelfic_kit_pre.'design_2_top_header_color', '#FDF9F3');
 
 ?>
 
@@ -173,6 +174,19 @@ $travelfic_design1_topbar = get_theme_mod($travelfic_kit_pre.'design_2_top_heade
 
     .tft-design-2 .tft-top-header{
         background-color: <?php echo esc_attr( $travelfic_design1_topbar ); ?>;
+    }
+
+    .tft-design-2 .tft-top-header .tft-contact-info ul li {
+        color: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
+    }
+    .tft-design-2 .tft-top-header .tft-contact-info ul li svg,
+    .tft-design-2 .tft-top-header .tft-social-share ul li svg{
+        fill: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
+    }
+    .tft-design-2 .tft-top-header .tft-contact-info ul li svg path,
+    .tft-design-2 .tft-top-header .tft-social-share ul li svg path{
+
+        stroke: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
     }
 </style>
 

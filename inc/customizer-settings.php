@@ -125,6 +125,19 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "color",
     ]);
 
+    // Topbar color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_top_header_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color",
+        "default" => '#FDF9F3'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_top_header_color", [
+        "label" => __("Topbar Text Color", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
     // Phone
     $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_phone", [
         "transport" => "refresh",
@@ -405,6 +418,19 @@ function travelfic_toolkit_customize_register($wp_customize) {
           'default' => __( 'Default', 'travelfic-toolkit' ),
           'full' => __( 'Full Width', 'travelfic-toolkit' ),
         ),
+        'priority' => 10,
+      ) );
+
+      $wp_customize->add_setting( $travelfic_toolkit_prefix .'copyright_text', array(
+        'sanitize_callback' => 'sanitize_text_field',
+        'default' => __( '© Copyright 2023 Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit' ),
+      ) );
+        
+      $wp_customize->add_control( $travelfic_toolkit_prefix .'copyright_text', array(
+        'type' => 'textarea',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __( 'Footer Copyright Text', 'travelfic-toolkit' ),
+        'description' => __( 'You are able to change footer Copyright text.', 'travelfic-toolkit' ),
         'priority' => 10,
       ) );
 

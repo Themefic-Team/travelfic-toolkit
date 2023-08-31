@@ -6,6 +6,7 @@ class Travelfic_Customizer_Footer
     public static function travelfic_toolkit_footer_second_design($travelfic_footer)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
+        $design_2_copyright = get_theme_mod($travelfic_prefix.'copyright_text', '© Copyright 2023 Tourfic Development Site by Themefic All Rights Reserved.');
         ob_start();
     ?>
         <footer class="tft-design-2">
@@ -15,10 +16,7 @@ class Travelfic_Customizer_Footer
                 </div>
                 <div class="tft-footer-copyright">
                     <p>
-                    <?php
-                        $current_year = date('Y');
-                        printf( esc_html__('© Copyright %1$s %2$s by %3$s All Rights Reserved.', 'travelfic'), esc_html($current_year), esc_html( get_bloginfo('name') ), '<a target="_blank" href="'.esc_url("https://themefic.com/").'">Themefic</a>');
-                    ?>
+                    <?php echo esc_html( $design_2_copyright ); ?>
                     </p>
                 </div>
             </div>
