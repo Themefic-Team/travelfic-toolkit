@@ -64,6 +64,32 @@
     border-bottom: 3px solid #0284C7;
 }
 
+.tft-select-tab {
+    padding: 0;
+    margin-bottom: 0;
+}
+.tft-select-tab li {
+    display: inline-block;
+    text-align: center;
+    margin: 0px;
+    border: 1px solid #ddd;
+}
+.tft-select-tab li label{
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.tft-select-tab li label span{
+    padding: 10px;
+    line-height: 40px;
+}
+.tft-select-tab li label input {
+    display: none;
+}
+.tft-select-tab li label > input:checked + span{
+    background-color: #002C66;
+    color: #fff;
+}
+
 /* Customizer Section Title */
 .travelfic-customize-control-title {
     background: #ddd;

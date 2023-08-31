@@ -182,6 +182,28 @@ function travelfic_toolkit_customize_register($wp_customize) {
     )));
     /* Header Sticky Section Title End*/
 
+    /* Transparent Header Showing Option Start*/
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'transparent_showing', array(
+        'default'           => 'both',
+        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
+        "transport" => "refresh",
+    ));
+
+    $wp_customize->add_control(new Travelfic_Toolkit_Tab_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'transparent_showing', array(
+        'label'    => __('Enable On', 'travelfic-toolkit'),
+        'section'  => 'travelfic_customizer_header',
+        'choices'  => array(
+            'desktop' => __( 'Desktop', 'travelfic-toolkit'),
+            'mobile' => __( 'Mobile', 'travelfic-toolkit'),
+            'both' => __( 'Desktop+Mobile', 'travelfic-toolkit'),
+        ),
+        'input_attrs' => array(
+            'data-not-tab' => "true", // Encode the not_tab attribute as JSON data
+        ),
+        'priority' => 21,
+    )));
+    /* Transparent Header Showing Option Start*/
+
     /* Header Menu Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_section_opt', array(
         'default'           => 'sections',

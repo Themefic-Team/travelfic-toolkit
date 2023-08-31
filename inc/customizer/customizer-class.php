@@ -31,7 +31,7 @@ class Travelfic_Toolkit_Tab_Select_Control extends WP_Customize_Control {
         $tab_options = $this->choices;
         $value = $this->value();
         ?>
-            <ul class="tab-select-container">
+            <ul class="<?php echo !empty($this->input_attrs['data-not-tab']) && "true"==$this->input_attrs['data-not-tab'] ? esc_attr( 'tft-select-tab' ) : esc_attr('tab-select-container'); ?>">
             <?php foreach ( $tab_options as $key => $label ) : ?>
                 <li>
                 <label>
