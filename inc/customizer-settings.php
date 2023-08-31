@@ -97,6 +97,34 @@ function travelfic_toolkit_customize_register($wp_customize) {
         'priority' => 11,
     )));
 
+    // Topbar Enable/Disable
+
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_2_topbar', array(
+        'default'           => 'design1',
+        'sanitize_callback' => 'travelfic_checkbox_sanitize',
+        "transport" => "refresh",
+        "default" => 1
+    ));
+
+    $wp_customize->add_control(new Travelfic_Toolkit_Switcher_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_2_topbar', array(
+        'label'    => __('Enable Topbar?', 'travelfic-toolkit'),
+        'section'  => 'travelfic_customizer_header',
+        'priority' => 11,
+    )));
+
+    // Topbar Backgournd
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_top_header_bg", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color",
+        "default" => '#595349'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_top_header_bg", [
+        "label" => __("Topbar Background Color", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
     // Phone
     $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_phone", [
         "transport" => "refresh",

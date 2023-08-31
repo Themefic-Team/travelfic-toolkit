@@ -1,6 +1,6 @@
 <?php
 
-class Travelfic_Customizer_render
+class Travelfic_Customizer_Header
 {
 
     public static function travelfic_toolkit_header_second_design($travelfic_header)
@@ -26,6 +26,7 @@ class Travelfic_Customizer_render
             }
         }
 
+        $design_2_topbar = get_theme_mod($travelfic_prefix.'header_design_2_topbar', '1');
         $design_2_phone = get_theme_mod($travelfic_prefix.'design_2_phone', '+88 00 123 456');
         $design_2_email = get_theme_mod($travelfic_prefix.'design_2_email', 'travello@outlook.com');
         $design_2_facebook = get_theme_mod($travelfic_prefix.'design_2_facebook', '#');
@@ -35,6 +36,7 @@ class Travelfic_Customizer_render
         ob_start();
     ?>
         <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
+            <?php if(!empty($design_2_topbar)){ ?>
             <div class="tft-top-header tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-flex">
                     <div class="tft-contact-info">
@@ -120,6 +122,7 @@ class Travelfic_Customizer_render
                     </div>
                 </div>
             </div>
+            <?php } ?>
 
             <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-flex">
@@ -274,28 +277,4 @@ class Travelfic_Customizer_render
         return $travelfic_header;
     }
 
-    public static function travelfic_toolkit_footer_second_design($travelfic_footer)
-    {
-        $travelfic_prefix = 'travelfic_customizer_settings_';
-        ob_start();
-    ?>
-        <footer class="tft-design-2">
-            <div class="tft-footer-sections tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
-                <div class="tft-grid">
-                <?php dynamic_sidebar( 'footer_sideabr' ); ?>
-                </div>
-                <div class="tft-footer-copyright">
-                    <p>
-                    <?php
-                        $current_year = date('Y');
-                        printf( esc_html__('© Copyright %1$s %2$s by %3$s All Rights Reserved.', 'travelfic'), esc_html($current_year), esc_html( get_bloginfo('name') ), '<a target="_blank" href="'.esc_url("https://themefic.com/").'">Themefic</a>');
-                    ?>
-                    </p>
-                </div>
-            </div>
-        </footer>
-    <?php
-    $travelfic_footer = ob_get_clean();
-    return $travelfic_footer;
-    }
 }

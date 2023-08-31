@@ -56,6 +56,26 @@ class Travelfic_Toolkit_Sec_Section_Control extends WP_Customize_Control {
     }
 }
 
+// Switcher Class
+class Travelfic_Toolkit_Switcher_Control extends WP_Customize_Control {
+    public $type = 'switcher_section';
+
+    public function render_content() {
+        $value = $this->value();
+    ?>
+        <div class="travelfic-customize-switch">
+            <div class="travelfic-customize-switch-status">
+                <span><?php echo esc_html( $this->label ); ?></span>
+                <label class="switch">
+                    <input type="checkbox" value="<?php echo !empty($value) && 'true'==$value ? 1 : ''; ?>" <?php echo !empty($value) && 'true'==$value ? esc_attr( 'checked' ) : ''; ?> class="travelfic-switcher">
+                    <span class="switcher round"></span>
+                </label>
+            </div>
+        </div>
+    <?php
+    }
+}
+
 // Typography Class
 class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
     public $type = 'typography';

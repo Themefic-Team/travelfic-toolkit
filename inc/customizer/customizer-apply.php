@@ -8,7 +8,7 @@ function travelfic_toolkit_header_callback($travelfic_header){
     if($travelfic_header_check=="design1"){
         return $travelfic_header;
     }elseif($travelfic_header_check=="design2"){
-        $header_design2 =  Travelfic_Customizer_render::travelfic_toolkit_header_second_design($travelfic_header);
+        $header_design2 =  Travelfic_Customizer_Header::travelfic_toolkit_header_second_design($travelfic_header);
         return $header_design2;
     }
 }
@@ -23,7 +23,7 @@ function travelfic_toolkit_footer_callback($travelfic_footer){
     if($travelfic_footer_check=="design1"){
         return $travelfic_footer;
     }elseif($travelfic_footer_check=="design2"){
-        $footer_design2 =  Travelfic_Customizer_render::travelfic_toolkit_footer_second_design($travelfic_footer);
+        $footer_design2 =  Travelfic_Customizer_Footer::travelfic_toolkit_footer_second_design($travelfic_footer);
         return $footer_design2;
     }
 }
@@ -132,6 +132,9 @@ $travelfic_submenu_hover = get_theme_mod($travelfic_kit_pre.'submenu_text_hover_
 $travelfic_sticky_bg_color = get_theme_mod($travelfic_kit_pre.'stiky_header_bg_color', '#FDF9F3');
 $travelfic_sticky_bg_blur = get_theme_mod($travelfic_kit_pre.'stiky_header_blur', '24');
 $travelfic_sticky_menu_color = get_theme_mod($travelfic_kit_pre.'stiky_header_menu_text_color', '#595349');
+
+$travelfic_design1_topbar = get_theme_mod($travelfic_kit_pre.'design_2_top_header_bg', '#595349');
+
 ?>
 
 <style>
@@ -166,6 +169,10 @@ $travelfic_sticky_menu_color = get_theme_mod($travelfic_kit_pre.'stiky_header_me
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a,
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i{
         color: <?php echo esc_attr( $travelfic_sticky_menu_color ); ?>;
+    }
+
+    .tft-design-2 .tft-top-header{
+        background-color: <?php echo esc_attr( $travelfic_design1_topbar ); ?>;
     }
 </style>
 

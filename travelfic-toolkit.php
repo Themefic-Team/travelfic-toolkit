@@ -70,10 +70,17 @@ require_once dirname( __FILE__ ) . '/inc/customizer-settings.php';
  *    Customizer Apply
  */
 require_once dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php';
+
 /**
- *    Customizer design 
+ *    Customizer Header Apply 
  */
-require_once dirname(__FILE__) . '/inc/customizer/customizer-render.php';
+require_once dirname(__FILE__) . '/inc/customizer/customizer-header-rander.php';
+
+/**
+ *    Customizer Footer Apply 
+ */
+require_once dirname(__FILE__) . '/inc/customizer/customizer-footer-rander.php';
+
 /**
  * Elementor Widgets
  */
