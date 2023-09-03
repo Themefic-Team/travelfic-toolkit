@@ -2,6 +2,7 @@
     
     // Header Builder Tabs
 
+    // Sticky Design
     const makeStickyDesign = () => {
       wp.customize('travelfic_customizer_settings_stiky_header', function (value) {
         // Function to toggle the visibility of the fields
@@ -13,10 +14,28 @@
           }
         }
     
-        // Toggle the fields on initial load
         toggleFields(value.get());
     
-        // Toggle the fields when the option value changes
+        value.bind(function (newVal) {
+          toggleFields(newVal);
+        });
+      });
+    }
+
+    // Transparent Design
+    const makeTransparentDesign = () => {
+      wp.customize('travelfic_customizer_settings_transparent_header', function (value) {
+        // Function to toggle the visibility of the fields
+        function toggleFields(value) {
+          if ('enabled' === value) {
+            $('li[id*="travelfic_customizer_settings_transparent_showing"]').show();
+          } else {
+            $('li[id*="travelfic_customizer_settings_transparent_showing"]').hide();
+          }
+        }
+    
+        toggleFields(value.get());
+    
         value.bind(function (newVal) {
           toggleFields(newVal);
         });
@@ -37,10 +56,8 @@
           }
         }
     
-        // Toggle the fields on initial load
         toggleFields(value.get());
     
-        // Toggle the fields when the option value changes
         value.bind(function (newVal) {
           toggleFields(newVal);
         });
@@ -59,6 +76,9 @@
 
           // Design 2 settings hide for design tab
           $('li[id*="travelfic_customizer_settings_header_design_2_topbar"], li[id*="travelfic_customizer_settings_header_design_2_section_opt"],li[id*="travelfic_customizer_settings_design_2_phone"],li[id*="travelfic_customizer_settings_design_2_email"]').hide();
+          
+          // Transparent Header Design settings hide for settings Design Tab
+          $('li[id*="travelfic_customizer_settings_transparent_showing"]').hide();
 
           makeStickyDesign();
 
@@ -72,6 +92,8 @@
           $('li[id*="travelfic_customizer_settings_stiky_header_bg_color"],li[id*="travelfic_customizer_settings_stiky_header_blur"],li[id*="travelfic_customizer_settings_stiky_header_menu_text_color"]').hide();
 
           makeDesign2();
+          makeTransparentDesign();
+
         }
       }
       
