@@ -638,7 +638,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
 
         <div class="tft-testimonials-design-2">
             <div class="tft-testimonial-top-header">
-                <h6>Testimonials</h6>
+                <div class="testimonial-header-shape">
+                    <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-1.png' ); ?>" alt="Testimonial Shape">
+                    <h6>Testimonials</h6>
+                    <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-2.png' ); ?>" alt="Testimonial Shape">
+                </div>
                 <h3>What client’s say?</h3>
             </div>
             <div class="tft-testimonials-sliders" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-bg.png' ); ?>);">

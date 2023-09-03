@@ -93,10 +93,19 @@
 }
 
 /* Testimonial Design 2 */
+.tft-testimonials-design-2{
+  width: 100%;
+  overflow: hidden;
+}
 .tft-testimonials-design-2 .tft-testimonial-top-header{
   text-align: center;
 }
-.tft-testimonials-design-2 .tft-testimonial-top-header h6{
+.tft-testimonials-design-2 .tft-testimonial-top-header .testimonial-header-shape{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tft-testimonials-design-2 .tft-testimonial-top-header .testimonial-header-shape h6{
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -104,7 +113,7 @@
   letter-spacing: 0.16px;
   text-transform: uppercase;
   color: #B58E53;
-  margin: 0;
+  margin: 0 30px;
 }
 .tft-testimonials-design-2 .tft-testimonial-top-header h3{
   font-size: 56px;
@@ -115,10 +124,33 @@
   margin: 0;
   padding-bottom: 38px;
 }
+.tft-testimonials-design-2 .tft-testimonials-sliders{
+  padding: 120px 0px 55px 0px;
+}
+.tft-testimonials-design-2 .tft-testimonials-sliders .slick-dots li{
+  height: 40px;
+  width: 40px;
+}
+.tft-testimonials-design-2 .tft-testimonials-sliders .slick-dots li button{
+  height: 40px;
+  width: 40px;
+}
+.tft-testimonials-design-2 .tft-testimonials-sliders .slick-dots li button::before{
+  width: 40px;
+  height: 40px;
+  line-height: 38px;
+  color: #595349;
+}
+
+.tft-testimonials-design-2 .tft-testimonials-sliders .slick-dots li.slick-active button::before{
+  color: #B58E53;  
+  border: 2px solid #B58E53;
+  border-radius: 50%;
+}
 .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial{
   padding: 0px 56px 56px 56px;
   background-color: #FAEEDC;
-  margin: 50px 20px 0px 20px !important;
+  margin: 50px 20px 75px 20px !important;
   position: relative;
 }
 .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author-image{
