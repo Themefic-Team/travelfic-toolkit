@@ -18,11 +18,18 @@ class Travelfic_Customizer_Header
 
         // Transparent Header Settings Checked
         $travelfic_transparent_settings = get_theme_mod($travelfic_prefix.'transparent_header', 'disabled');
+        $travelfic_transparent_showing = get_theme_mod($travelfic_prefix.'transparent_showing', 'both');
         if( isset( $travelfic_transparent_settings ) ){
             if( $travelfic_transparent_settings != 'disabled' ){
-                $travelfic_transparent_class = 'tft_has_transparent';
+                if("both"==$travelfic_transparent_showing || "desktop"==$travelfic_transparent_showing){
+                    $travelfic_desktop_transparent_class = 'tft_has_transparent';
+                }
+                if("both"==$travelfic_transparent_showing || "mobile"==$travelfic_transparent_showing){
+                    $travelfic_mobile_transparent_class = 'tft_has_transparent';
+                }
             }else{        
-                $travelfic_transparent_class = '';
+                $travelfic_desktop_transparent_class = '';
+                $travelfic_mobile_transparent_class = '';
             }
         }
 
@@ -180,7 +187,7 @@ class Travelfic_Customizer_Header
             </div>
             <?php } ?>
 
-            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_desktop_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-flex">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
@@ -226,7 +233,7 @@ class Travelfic_Customizer_Header
 
             
                 
-            <div class="tft-menus-section tft-header-mobile <?php echo esc_attr( $travelfic_transparent_class ); ?>">
+            <div class="tft-menus-section tft-header-mobile <?php echo esc_attr( $travelfic_mobile_transparent_class ); ?>">
                 <div class="tft-main-header-wrapper <?php echo esc_attr( apply_filters( 'travelfic_header_tftcontainer', $travelfic_tftcontainer = '') ); ?> tft-container-flex align-center justify-sp-between tft-w-padding">
                 
                     <div class="tft-header-left site-header-section">
