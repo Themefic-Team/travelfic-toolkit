@@ -91,7 +91,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
      * @access protected
      */
     protected function register_controls() {
-
+        
         $this->start_controls_section(
             'tft-testimonials',
             [
@@ -99,6 +99,46 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
+
+        // Design
+        $this->add_control(
+            'testimonial_style',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Design', 'travelfic-toolkit' ),
+                'default' => 'design-1',
+                'options' => [
+                    'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
+                    'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                ],
+            ]
+        );
+
+        // Design 2 fields
+        $this->add_control(
+			'des_title',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
+                'default' => __( 'What client’s say?', 'travelfic-toolkit' ),
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+			]
+		);
+        $this->add_control(
+			'des_subtitle',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
+                'default' => __( 'Testimonials', 'travelfic-toolkit' ),
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+			]
+		);
 
         $repeater = new \Elementor\Repeater ();
         $repeater->add_control(
@@ -514,9 +554,14 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
     }
 
     protected function render() {
-    $settings = $this->get_settings_for_display();?>
+    $settings = $this->get_settings_for_display();
+    // Design
+    if ( !empty( $settings['testimonial_style'] ) ) {
+        $tft_design = $settings['testimonial_style'];
+    }
+    ?>
 
-    <?php if ( $settings['testimonials_section'] ): ?>
+    <?php if ( $settings['testimonials_section'] && "design-1"==$tft_design ){ ?>
         <div class="tft-testimonials-wrapper tft-customizer-typography">
             <div class="tft-testimonials-selector tft-slide-default">
                 <?php if ( $settings['testimonials_section'] ) {
@@ -543,7 +588,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 <?php }
                 }?>
             </div>
-    </div>
+        </div>
     <script>
         // Testimonials 
         (function ($) {
@@ -589,6 +634,41 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         }(jQuery)); 
 
         </script>
-    <?php endif; 
+    <?php } elseif ( $settings['testimonials_section'] && "design-2"==$tft_design ){ ?>
+
+        <div class="tft-testimonials-design-2">
+            <div class="tft-testimonial-top-header">
+                <h6>Testimonials</h6>
+                <h3>What client’s say?</h3>
+            </div>
+            <div class="tft-testimonials-sliders">
+                <div class="tft-testimonials-slides">
+                    <?php if ( $settings['testimonials_section'] ) {
+                    foreach ( $settings['testimonials_section'] as $item ) {?>
+                        <div class="tft-single-testimonial">
+                            <div class="tft-testimonials-inner">
+                                <div class="testimonial-header">
+                                    <div class="person-avatar">
+                                        <?php echo wp_get_attachment_image( $item['person_image']['id'], "team-image", "", array( "class" => "circle" ) ); ?>
+                                    </div>
+                                    <div class="person-info">
+                                        <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
+                                        <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
+                                    </div>
+                                </div>
+                                <div class="testimonial-body">
+                                    <p class="tft-content"><?php echo esc_html( $item['testimonials_review'] ) ?></p>
+                                </div>
+                                <div class="testimonial-footer">
+                                    <?php $this->testimonials_rattings( $item['rate'] );?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } } ?>
+                </div>
+            </div>
+        </div>
+
+    <?php }
     }
 }
