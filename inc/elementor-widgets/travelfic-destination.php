@@ -205,6 +205,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'selectors'  => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'des_style' => 'design-1', // Show this control only when des_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(
