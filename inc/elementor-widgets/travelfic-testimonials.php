@@ -641,26 +641,31 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 <h6>Testimonials</h6>
                 <h3>What client’s say?</h3>
             </div>
-            <div class="tft-testimonials-sliders">
+            <div class="tft-testimonials-sliders" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-bg.png' ); ?>);">
                 <div class="tft-testimonials-slides">
                     <?php if ( $settings['testimonials_section'] ) {
                     foreach ( $settings['testimonials_section'] as $item ) {?>
                         <div class="tft-single-testimonial">
                             <div class="tft-testimonials-inner">
-                                <div class="testimonial-header">
-                                    <div class="person-avatar">
-                                        <?php echo wp_get_attachment_image( $item['person_image']['id'], "team-image", "", array( "class" => "circle" ) ); ?>
-                                    </div>
-                                    <div class="person-info">
-                                        <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
-                                        <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
-                                    </div>
+                                <div class="testimonial-author-image">
+                                    <?php echo wp_get_attachment_image( $item['person_image']['id'], "team-image", "", array( "class" => "circle" ) ); ?>
+                                    
+                                    <svg width="61" height="49" viewBox="0 0 61 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 2190" d="M36.4167 36.3333C36.4167 30.755 36.4167 27.9659 38.1497 26.233C39.8827 24.5 42.6718 24.5 48.2501 24.5C53.8284 24.5 56.6175 24.5 58.3505 26.233C60.0834 27.9659 60.0834 30.755 60.0834 36.3333C60.0834 41.9116 60.0834 44.7008 58.3505 46.4337C56.6175 48.1667 53.8284 48.1667 48.2501 48.1667C42.6718 48.1667 39.8827 48.1667 38.1497 46.4337C36.4167 44.7008 36.4167 41.9116 36.4167 36.3333Z" stroke="#99948D" stroke-width="1.5"/>
+                                    <path id="Rectangle 2191" d="M36.4167 36.3359V24.0963C36.4167 13.2482 43.8591 4.04822 54.1667 0.835938" stroke="#99948D" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path id="Rectangle 2192" d="M0.916748 36.3333C0.916748 30.755 0.916748 27.9659 2.6497 26.233C4.38265 24.5 7.17179 24.5 12.7501 24.5C18.3284 24.5 21.1175 24.5 22.8505 26.233C24.5834 27.9659 24.5834 30.755 24.5834 36.3333C24.5834 41.9116 24.5834 44.7008 22.8505 46.4337C21.1175 48.1667 18.3284 48.1667 12.7501 48.1667C7.17179 48.1667 4.38265 48.1667 2.6497 46.4337C0.916748 44.7008 0.916748 41.9116 0.916748 36.3333Z" stroke="#99948D" stroke-width="1.5"/>
+                                    <path id="Rectangle 2193" d="M0.916748 36.3359V24.0963C0.916748 13.2482 8.35906 4.04822 18.6667 0.835938" stroke="#99948D" stroke-width="1.5" stroke-linecap="round"/>
+                                    </g>
+                                    </svg>
+
                                 </div>
-                                <div class="testimonial-body">
-                                    <p class="tft-content"><?php echo esc_html( $item['testimonials_review'] ) ?></p>
+                                <div class="testimonial-review">
+                                    <p class="tft-content">"<?php echo esc_html( $item['testimonials_review'] ) ?>"</p>
                                 </div>
-                                <div class="testimonial-footer">
-                                    <?php $this->testimonials_rattings( $item['rate'] );?>
+                                <div class="testimonial-author">
+                                    <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
+                                    <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
                                 </div>
                             </div>
                         </div>
@@ -668,7 +673,42 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 </div>
             </div>
         </div>
+        <script>
+            // Destination Slider
+            (function($) {
+                $(document).ready(function() {
+                    //Your Code Inside
+                    $('.tft-testimonials-slides').slick({
+                        dots: true,
+                        arrows: false,
+                        infinite: true,
+                        speed: 300,
+                        autoplaySpeed: 2000,
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        centerMode: true,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 1,
+                                    infinite: true,
+                                }
+                            },
+                            {
+                                breakpoint: 580,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1
+                                }
+                            }
+                        ]
+                    });
+                });
 
+            }(jQuery));
+        </script>
     <?php }
     }
 }
