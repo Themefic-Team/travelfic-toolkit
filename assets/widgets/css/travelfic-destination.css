@@ -170,6 +170,10 @@
   .tft-destination-design-2 .tft-destination-slides .slick-prev{
     right: 65px;
   }
+  .tft-destination-design-2 .tft-destination-header h3{
+    font-size: 32px;
+    line-height: 120%; /* 38.4px */
+  }
 }
 
 @media all and (max-width: 1024px){
@@ -179,10 +183,6 @@
   .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3{
     font-size: 20px;
     line-height: 120%;
-  }
-  .tft-destination-design-2 .tft-destination-header h3{
-    font-size: 32px;
-    line-height: 120%; /* 38.4px */
   }
 }
 @media all and (max-width: 767px){

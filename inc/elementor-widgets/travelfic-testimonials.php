@@ -1013,7 +1013,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                         centerMode: true,
                         responsive: [
                             {
-                                breakpoint: 1024,
+                                breakpoint: 1280,
                                 settings: {
                                     slidesToShow: 2,
                                     slidesToScroll: 1,

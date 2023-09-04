@@ -193,7 +193,11 @@
   color: #99948D;
   margin: 0;
 }
-
+@media (max-width: 1366px) {
+  .tft-testimonials-design-2 .tft-testimonial-top-header h3{
+    font-size: 32px;
+  }
+}
 @media (max-width: 767px) {
   .tft-testimonials-selector .slick-prev,
   .tft-testimonials-selector .slick-next {
