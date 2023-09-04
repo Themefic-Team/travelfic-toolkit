@@ -972,8 +972,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                         <div class="tft-single-testimonial">
                             <div class="tft-testimonials-inner">
                                 <div class="testimonial-author-image">
-                                    <?php echo wp_get_attachment_image( $item['person_image']['id'], "team-image", "", array( "class" => "circle" ) ); ?>
-                                    
+                                    <?php 
+                                    if(!empty($item['person_image']['url'])){ ?>
+                                    <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
+                                    <?php }else{ ?>
+                                        <img src="<?php echo esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Image">
+                                    <?php } ?>
                                     <svg width="61" height="49" viewBox="0 0 61 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
                                     <path id="Rectangle 2190" d="M36.4167 36.3333C36.4167 30.755 36.4167 27.9659 38.1497 26.233C39.8827 24.5 42.6718 24.5 48.2501 24.5C53.8284 24.5 56.6175 24.5 58.3505 26.233C60.0834 27.9659 60.0834 30.755 60.0834 36.3333C60.0834 41.9116 60.0834 44.7008 58.3505 46.4337C56.6175 48.1667 53.8284 48.1667 48.2501 48.1667C42.6718 48.1667 39.8827 48.1667 38.1497 46.4337C36.4167 44.7008 36.4167 41.9116 36.4167 36.3333Z" stroke="#99948D" stroke-width="1.5"/>
