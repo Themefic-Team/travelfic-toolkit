@@ -140,6 +140,34 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
 			]
 		);
         $this->add_control(
+			'about_us_experience',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'Years of Experience', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter Years of Experience', 'travelfic-toolkit' ),
+                'default' => __( '15+', 'travelfic-toolkit' ),
+                'condition' => [
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                ],
+			]
+		);
+        $this->add_control(
+            'about_us_image',
+            [
+                'label'   => __( 'About Us Image', 'travelfic-toolkit' ),
+                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                ],
+            ]
+        );
+        $this->add_control(
 			'about_us_content',
 			[
 				'type' => \Elementor\Controls_Manager::WYSIWYG,
@@ -165,20 +193,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_responsive_control(
-            'tour_destination_image_border_radius',
-            [
-                'label'      => __( 'Image Radius', 'travelfic-toolkit' ),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-2'
-                ],
-            ]
-        );
+        
         $this->add_control(
             'tour_destination_header',
             [
@@ -187,162 +202,81 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'separator' => 'after',
             ]
         );
-        // Design 2 Styles start
+        // Design 1 Styles start
         $this->add_control(
-            'tour_destination_sec_title_color',
+            'about_us_sec_title_color',
             [
-                'label'     => __( 'Section Title Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#595349',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
             ]
         );
         $this->add_control(
-            'tour_destination_sec_subtitle_color',
+            'about_us_sec_subtitle_color',
             [
-                'label'     => __( 'Section Subtitle Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Subtitle Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
             ]
         );
 
         $this->add_control(
-            'single_destination_title_color',
+            'about_us_sec_content_color',
             [
-                'label'     => __( 'Single Destination Title', 'travelfic-toolkit' ),
+                'label'     => __( 'Content Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#FDF9F3',
+                'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
             ]
         );
 
         $this->add_control(
-            'single_destination_button_color',
+            'about_us_years_color',
             [
-                'label'     => __( 'Destination Button Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Years of Experience Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#FDF9F3',
+                'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
             ]
         );
 
         $this->add_control(
-            'single_destination_button_bg',
+            'about_us_button_color',
             [
-                'label'     => __( 'Destination Button Background', 'travelfic-toolkit' ),
+                'label'     => __( 'Button Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a' => 'color: {{VALUE}};border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a span svg path' => 'fill: {{VALUE}};',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'tft_about_style' => 'design-1', // Show this control only when des_style is 'design-1'
                 ],
             ]
         );
-
-        // Design 2 Styles end
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'tour_destination_title',
-                'label'    => __( 'Destination List', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a',
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'tour_destination_title_color',
-            [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'tour_destination_title_color_hover',
-            [
-                'label'     => __( 'Hover', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a:hover' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'tour_destination_sub_list',
-                'label'    => __( 'Destination Sub List', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a',
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'tour_destination_sub_list_color',
-            [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'tour_destination_sub_list_color_hover',
-            [
-                'label'     => __( 'Hover', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-
 
     }
 
@@ -364,8 +298,13 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         if ( !empty( $settings['about_us_content'] ) ) {
             $tft_sec_content = $settings['about_us_content'];
         }
+        if ( !empty( $settings['about_us_image'] ) ) {
+            $tft_about_us_image = $settings['about_us_image'];
+        }
+        if ( !empty( $settings['about_us_experience'] ) ) {
+            $tft_about_us_experience = $settings['about_us_experience'];
+        }
 
-        
     if("design-1"==$tft_design){
     ?>
 
@@ -392,6 +331,23 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                             </span>
                         </a>
                     </div>
+                </div>
+                <div class="tft-about-us-image">
+                    <?php 
+                    if(!empty($tft_about_us_experience)){ ?>
+                    <div class="years-of-experience">
+                        <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/years-experience.png' ); ?>" alt="">
+                        <div class="tft-experience-years">
+                            <span><?php echo esc_html( $tft_about_us_experience ); ?></span>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php 
+                    if(!empty($tft_about_us_image['url'])){ ?>
+                    <div class="tft-about-image">
+                        <img src="<?php echo esc_url($tft_about_us_image['url']); ?>" alt="About Us Image">
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
