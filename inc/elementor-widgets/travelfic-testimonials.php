@@ -488,9 +488,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'List Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
+                'default'   => '#FAEEDC',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-selector .tft-testimonials-inner' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -512,7 +512,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_2_title',
-                'selector' => '{{WRAPPER}} .tft-testimonials-selector .person-name',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author h4',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -525,9 +525,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Title Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
+                'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-selector .person-name' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author h4' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -549,7 +549,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_2_designation_typo',
-                'selector' => '{{WRAPPER}} .tft-testimonials-selector .designation',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -561,9 +561,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
+                'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-selector .designation' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -585,7 +585,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_2_content',
-                'selector' => '{{WRAPPER}} .tft-testimonials-selector .testimonial-body .tft-content',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-review p',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -597,9 +597,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
+                'default'   => '#595349',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-selector .testimonial-body .tft-content' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-review p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -695,7 +695,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
-            'testimonials_2_card_color',
+            'testimonials_2_card_color_hover',
             [
                 'label'     => __( 'Box Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -1021,7 +1021,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                                 }
                             },
                             {
-                                breakpoint: 580,
+                                breakpoint: 866,
                                 settings: {
                                     slidesToShow: 1,
                                     slidesToScroll: 1

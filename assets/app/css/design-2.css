@@ -42,6 +42,7 @@
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul {
   margin: 0;
   padding: 0;
+  display: flex;
 }
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li {
   display: inline-flex;
