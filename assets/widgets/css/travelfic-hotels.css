@@ -171,8 +171,29 @@
         right: 24px;
     }
 }
+@media all and (max-width: 1366px){
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header h3{
+        font-size: 32px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3{
+        font-size: 20px;
+    }
+}
 @media all and (max-width: 1024px){
     .tft-popular-hotels-wrapper .tft-popular-hotels-items{
         grid-template-columns: auto auto;
+    }
+    .tft-popular-hotels-wrapper .read-more a{
+        width: 96px;
+        height: 96px;
+        font-size: 12px;
+    }
+    .tft-popular-hotels-wrapper .read-more a svg{
+        width: 32px;
+    }
+}
+@media all and (max-width: 767px){
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items{
+        grid-template-columns: auto;
     }
 }
