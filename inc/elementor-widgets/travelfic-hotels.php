@@ -332,9 +332,47 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 
 		$query = new \WP_Query ( $args );
 
+        if ( !empty( $settings['tft_section_title'] ) ) {
+            $tft_sec_title = $settings['tft_section_title'];
+        }
+        if ( !empty( $settings['tft_section_subtitle'] ) ) {
+            $tft_sec_subtitle = $settings['tft_section_subtitle'];
+        }
+        
 		?>
 
-		<div class="tft-popular-hotels-wrapper tft-customizer-typography tft-w-padding">
+		<div class="tft-popular-hotels-wrapper tft-customizer-typography tft-w-padding" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/hotel-lists-bg.png' ); ?>)">
+            <div class="tft-popular-hotel-header">
+                <div class="tft-hotel-header">
+                    <?php 
+                    if(!empty($tft_sec_subtitle)){ ?>
+                        <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                    <?php }
+                    if(!empty($tft_sec_title)){
+                    ?>
+                        <h3><?php echo esc_html($tft_sec_title); ?></h3>
+                    <?php } ?>
+
+                    <ul>
+                        <li class="active">
+                            <?php echo __("All", "travelfic-toolkit"); ?>
+                        </li>
+                        <li>
+                            <?php echo __("Featured", "travelfic-toolkit"); ?>
+                        </li>
+                    </ul>
+                </div>
+                <div class="read-more">
+                    <a href="#">
+                        <?php echo __("View All", "travelfic-toolkit"); ?>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
+                            <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
 			<div class="tft-popular-hotels-items tft-popular-hotels-selector">
 
 				<?php if ($query->have_posts()): ?>
@@ -357,9 +395,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 						<div class="tft-popular-single-item">
 							<div class="tft-popular-single-item-inner">
                                 <?php 
-                                $tft_hotel_image = get_the_post_thumbnail_url( get_the_ID() );
+                                $tft_hotel_image = !empty(get_the_post_thumbnail_url( get_the_ID() )) ? esc_url( get_the_post_thumbnail_url( get_the_ID() ) ) : esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png');
                                 ?>
-								<div class="tft-popular-thumbnail" style="background-image: url(<?php echo esc_url($tft_hotel_image) ?>);">
+								<div class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
                                     <div class="tft-hotel-details">
                                         <?php if ($comments && !$disable_review_sec == '1') { ?>
                                             <div class="tft-ratings">
@@ -369,6 +407,16 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                         <?php echo esc_html(tf_total_avg_rating($comments)); ?>
                                                     </span>
                                                     out of <?php tf_based_on_text(count($comments)); ?>
+                                                </span>
+                                            </div>
+                                        <?php }else{ ?>
+                                            <div class="tft-ratings">
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                    <span>
+                                                        0.0
+                                                    </span>
+                                                    out of 0 review
                                                 </span>
                                             </div>
                                         <?php } ?>
@@ -386,9 +434,11 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </clipPath>
                                             </defs>
                                             </svg>
-                                            <?php 
+                                            <span>
+                                                <?php 
                                                 echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
-                                            ?>
+                                                ?>
+                                            </span>
                                         </p>
                                         <div class="tf-others-details">
                                             <?php 
@@ -443,7 +493,21 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 					<?php endwhile; ?>
 				<?php endif; ?>
 			</div>
-			
+			<script>
+                (function($) {
+                    $(document).ready(function () {
+                        $('.tft-popular-single-item').hover(
+                            function () {
+                                $(this).find('.tf-others-details').slideDown('fast');
+                            },
+                            function () {
+                                $(this).find('.tf-others-details').slideUp('fast');
+                            }
+                        );
+                    });
+                }(jQuery));
+            </script>
+
 		</div>
 
 		<?php
