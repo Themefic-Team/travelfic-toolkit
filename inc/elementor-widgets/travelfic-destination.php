@@ -494,7 +494,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             <h3><?php echo esc_html($tft_sec_title); ?></h3>
             <?php } ?>
         </div>
-        <?php $rand_number = rand(8);?>
+        <?php $rand_number = rand(8,10);?>
         <div class="tft-destination-content">
             <div class="tft-destination-slides tft-destination-slide-<?php echo $rand_number; ?>">
                 <?php
