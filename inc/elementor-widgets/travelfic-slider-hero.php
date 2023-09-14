@@ -119,7 +119,18 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
-
+        $this->add_control(
+            'slider_style',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Design', 'travelfic-toolkit' ),
+                'default' => 'design-1',
+                'options' => [
+                    'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
+                    'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                ],
+            ]
+        );
         $repeater = new \Elementor\Repeater ();
         $repeater->add_control(
             'slider_image',
@@ -181,6 +192,39 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'        => \Elementor\Controls_Manager::REPEATER,
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ slider_title }}}',
+                'condition'   => [
+                    'slider_style' => 'design-1', // Add condition for Design 1 here
+                ],
+            ]
+        );
+
+        // Design 2 fields
+        $this->add_control(
+			'banner_title',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'Banner Title', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Banner title', 'travelfic-toolkit' ),
+                'default' => __( 'Embark on extraordinary voyages and explorations', 'travelfic-toolkit' ),
+                'condition' => [
+                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+			]
+		);
+        $this->add_control(
+            'banner_image',
+            [
+                'label'   => __( 'Banner Image', 'travelfic-toolkit' ),
+                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
             ]
         );
 
@@ -854,7 +898,32 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
         $type_arr = !is_array( $settings['type'] ) ? array( $settings['type'] ) : $settings['type'];
         $type = $settings['type'] ? implode( ',', $type_arr ) : implode( ',', ['all'] );
+
+        // Design
+        if ( !empty( $settings['slider_style'] ) ) {
+            $tft_design = $settings['slider_style'];
+        }
+        if ( !empty( $settings['banner_title'] ) ) {
+            $tft_banner_title = $settings['banner_title'];
+        }
+        if ( !empty( $settings['banner_image'] ) ) {
+            $tft_banner_image = $settings['banner_image'];
+        }
+
+        if("design-2"==$tft_design){
         ?>
+        <div class="tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-content">
+                <?php 
+                if(!empty($tft_banner_title)){ ?>
+                <h1><?php echo esc_html( $tft_banner_title ); ?></h1>
+                <?php } ?>
+                <div class="tft-search-form">
+                    <?php echo do_shortcode( '[tf_search_form  type="' . $type . '" design="2"]' ); ?>
+                </div>
+            </div>
+        </div>
+        <?php }else{ ?>
 		<style>
 			.tft-hero-slider-selector .tft-hero-single-item::before { 
 				<?php
@@ -864,7 +933,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 			}
 		</style>
 		<?php
-		if ( $settings['hero_slider_list'] ) {?>
+		if ( $settings['hero_slider_list'] ) { ?>
 			<!-- Slider Hero section -->
 			<div class="hero--slider-wrapper"> <!-- tft-customizer-typography -->
 				<?php $rand_number = rand();?>
@@ -967,7 +1036,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 					}
 				}(jQuery));
 			</script>
-		<?php }?>
+		<?php } } ?>
 		<?php do_action( 'slider_style', $rand_number );
     }
 }

@@ -263,6 +263,28 @@
   display: none;
 }
 
+/* Slider Design 2 */
+.tft-hero-design-2{
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tft-hero-design-2 .tft-hero-content{
+  width: 1240px;
+}
+.tft-hero-design-2 .tft-hero-content h1{
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  color: #FDF9F3;
+  text-align: center;
+}
+
 @media only screen and (max-width: 767px) {
   .tft-search-box {
     position: relative;
