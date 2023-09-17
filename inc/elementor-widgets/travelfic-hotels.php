@@ -27,7 +27,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('TFT Hotels', 'travelfic-toolkit');
+		return esc_html__('Travelfic Hotels', 'travelfic-toolkit');
 	}
 
 	/**

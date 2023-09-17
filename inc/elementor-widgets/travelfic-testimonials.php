@@ -24,7 +24,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__( 'TFT Testimonials', 'travelfic-toolkit' );
+        return esc_html__( 'Travelfic Testimonials', 'travelfic-toolkit' );
     }
 
     /**

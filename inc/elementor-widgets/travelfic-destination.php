@@ -24,7 +24,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__( 'TFT Tour Destinations', 'travelfic-toolkit' );
+        return esc_html__( 'Travelfic Tour Destinations', 'travelfic-toolkit' );
     }
 
     /**

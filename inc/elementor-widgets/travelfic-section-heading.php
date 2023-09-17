@@ -24,7 +24,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'TFT Heading', 'travelfic-toolkit' );
+		return esc_html__( 'Travelfic Heading', 'travelfic-toolkit' );
 	}
 
 	/**
