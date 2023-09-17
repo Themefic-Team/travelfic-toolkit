@@ -286,6 +286,16 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .tft-hero-design-2{
+    height: auto;
+    padding: 38px 16px;
+  }
+  .tft-hero-design-2 .tft-hero-content h1{
+    font-size: 24px;
+  }
+  .tft-hero-design-2 #tf_hotel_aval_check{
+    margin-bottom: 0px;
+  }
   .tft-search-box {
     position: relative;
   }

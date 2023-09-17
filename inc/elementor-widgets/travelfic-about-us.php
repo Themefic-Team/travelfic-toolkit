@@ -194,15 +194,15 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             ]
         );
         
-        $this->add_control(
-            'tour_destination_header',
+        // Design 1 Styles start
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
             [
-                'label'     => __( 'Title', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
+                'name'     => 'about_us_sec_title_typo',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3',
+                'label'    => __( 'Title Typography', 'travelfic-toolkit' ),
             ]
         );
-        // Design 1 Styles start
         $this->add_control(
             'about_us_sec_title_color',
             [
@@ -215,6 +215,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_sec_subtitle_typo',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6',
+                'label'    => __( 'Subtitle Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
@@ -231,7 +239,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_sec_content_typo',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p',
+                'label'    => __( 'Content Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'about_us_sec_content_color',
             [
@@ -246,7 +261,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_sec_years_typo',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span',
+                'label'    => __( 'Years of Experience Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'about_us_years_color',
             [
@@ -261,7 +283,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_sec_button_typo',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a',
+                'label'    => __( 'Button Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'about_us_button_color',
             [
