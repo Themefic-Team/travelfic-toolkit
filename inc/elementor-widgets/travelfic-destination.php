@@ -219,6 +219,14 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             ]
         );
         // Design 2 Styles start
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_sec_title_typo',
+                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3',
+                'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'tour_destination_sec_title_color',
             [
@@ -231,6 +239,14 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_sec_subtitle_typo',
+                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6',
+                'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
@@ -247,7 +263,14 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'single_destination_title_typo',
+                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content h3',
+                'label'    => __( 'Single Destination Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'single_destination_title_color',
             [
@@ -262,7 +285,14 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'single_destination_button_typo',
+                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a',
+                'label'    => __( 'Single Button Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'single_destination_button_color',
             [
