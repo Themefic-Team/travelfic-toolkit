@@ -196,6 +196,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         //         'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
         //     ]
         // );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_section_title_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header h3',
+                'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+            ]
+        );
 		$this->add_control(
             'popular_section_title_color',
             [
@@ -207,6 +215,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_section_subtitle_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header h6',
+                'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'popular_section_subtitle_color',
             [
@@ -216,6 +232,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header h6' => 'color: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_section_button_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .read-more a',
+                'label'    => __( 'Section Button Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
@@ -239,6 +263,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-hotels-wrapper .read-more a' => 'background: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_section_list_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header ul li',
+                'label'    => __( 'List Item Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
@@ -304,6 +336,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_hotel_card_review_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-ratings span',
+                'label'    => __( 'Review Typography', 'travelfic-toolkit' ),
+            ]
+        );
 		$this->add_control(
             'popular_hotel_card_review_color',
             [
@@ -315,6 +355,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_hotel_card_title_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3',
+                'label'    => __( 'Title Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'popular_hotel_card_title_color',
             [
@@ -324,6 +372,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3' => 'color: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_hotel_card_location_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations span',
+                'label'    => __( 'Location Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
@@ -338,6 +394,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_hotel_card_features_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li',
+                'label'    => __( 'Features Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'popular_hotel_card_features_color',
             [
@@ -347,6 +411,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li' => 'color: {{VALUE}}',
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_hotel_card_button_typo',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a',
+                'label'    => __( 'Button Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
