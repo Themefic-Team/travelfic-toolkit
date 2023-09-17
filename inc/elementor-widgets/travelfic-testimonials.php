@@ -215,6 +215,14 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_sec_title_typo',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h3',
+                'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+            ]
+        );
         $this->add_control(
             'tour_destination_sec_title_color',
             [
@@ -227,6 +235,14 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
                 ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_sec_subtitle_typo',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h6',
+                'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
             ]
         );
         $this->add_control(
