@@ -131,6 +131,43 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+        // Design
+        $this->add_control(
+            'blog_style',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Design', 'travelfic-toolkit' ),
+                'default' => 'design-1',
+                'options' => [
+                    'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
+                    'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                ],
+            ]
+        );
+        $this->add_control(
+			'tft_section_title',
+			[
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
+                'default' => __( 'We share our experiences, tips and travel stories to inspire', 'travelfic-toolkit' ),
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+			]
+		);
+        $this->add_control(
+			'tft_section_subtitle',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
+                'default' => __( 'BLOG & NEWS', 'travelfic-toolkit' ),
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+			]
+		);
 		// Category name
 		$this->add_control(
             'post_category',
@@ -373,6 +410,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 			'post_type'   => 'post'
 		);
 
+        // Design
+        if ( ! empty( $settings['blog_style'] ) ) {
+            $design = $settings['blog_style'];
+        }
+
 		// Display posts in category.
         if ( ! empty( $settings['post_category'] ) ) {
             $args['category_name'] = implode( ',', $settings['post_category'] ) ;
@@ -395,9 +437,75 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 
 		$query = new \WP_Query ( $args );
 		$items_count = $settings['post_items'];
-		
-	?>
 
+        if ( !empty( $settings['tft_section_title'] ) ) {
+            $tft_sec_title = $settings['tft_section_title'];
+        }
+        if ( !empty( $settings['tft_section_subtitle'] ) ) {
+            $tft_sec_subtitle = $settings['tft_section_subtitle'];
+        }
+		if("design-2"==$design){
+	    ?>
+        <div class="tft-design-2-blog tft-w-padding">
+            <div class="tft-blog-header">
+                <div class="tft-news-header">
+                    <?php 
+                    if(!empty($tft_sec_subtitle)){ ?>
+                        <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                    <?php }
+                    if(!empty($tft_sec_title)){
+                    ?>
+                        <h3><?php echo esc_html($tft_sec_title); ?></h3>
+                    <?php } ?>
+                </div>
+                <div class="read-more">
+                    <a href="#">
+                        <?php echo __("View All", "travelfic-toolkit"); ?>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
+                            <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tft-blog-gird-section blog-grid-item-<?php echo $items_count; ?>">
+                <?php if( $query->have_posts() ) : ?>
+					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					
+						<div class="tft-col-item tft-post-single-item">
+                            <a id="post-<?php the_ID(); ?>" href="<?php echo esc_url( get_permalink() ); ?>">
+                                
+                                <div class="tft-blog-thumbnail">
+                                    <?php 
+                                    if( get_the_post_thumbnail_url( get_the_ID() ) ){
+                                        the_post_thumbnail( 'blog-thumb' );
+                                    }else{ ?>
+                                        <img src="<?php echo esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
+                                    <?php } ?>
+                                </div>
+                                <div class="tft-content-details">
+                                    <p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
+                                    <h3 class="tft-title">
+                                        <?php 
+                                        echo strlen(get_the_title()) > 20 ? substr(get_the_title(), 0, 20) . '...' : get_the_title();
+                                        ?>
+                                    </h3>
+                                    <?php 
+                                    $travelfic_blog_content = wp_trim_words(get_the_content(), 5, '<span> ...Read more</span>');
+                                    echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
+                                    ?>
+                                </div>
+                            </a>
+						</div>
+					
+					<?php endwhile; ?>
+				<?php endif; ?>
+            </div>
+        </div>
+        <?php 
+        }else{ ?>
 		<style>
 			.tft-latest-posts .tft-post-thumbnail a::before {
 				background: linear-gradient(360deg, <?php echo esc_html( $settings['news_item_card_gradient_1'] ); ?> -9.6%, <?php echo esc_html( $settings['news_item_card_gradient_2'] ); ?> 109.78%);
@@ -437,11 +545,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 					
 					<?php endwhile; ?>
 				<?php endif; ?>
-					
                 </div>
             </div>
         </div>
-
+        <?php } ?>
     <?php
 	}
 }
