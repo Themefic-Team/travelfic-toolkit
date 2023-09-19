@@ -131,6 +131,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-destination.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-location.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-cf7-form.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-about-us.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-hotels.php' );
@@ -144,6 +145,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_SectionHeading() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TeamMembers() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TourDestinaions() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_HotelLocation() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_CF7_Form() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_AboutUs() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Hotels() );

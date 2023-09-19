@@ -111,6 +111,7 @@
   overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail::before{
   background-color: rgba(0, 0, 0, .4);
