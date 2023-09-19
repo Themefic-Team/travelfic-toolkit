@@ -283,6 +283,15 @@
   line-height: 120%;
   color: #FDF9F3;
   text-align: center;
+  margin-bottom: 30px;
+}
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button{
+  border: 0px;
+  padding: 15px 30px;
+  cursor: pointer;
+}
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button.active{
+  background-color: #B58E53;
 }
 
 @media only screen and (max-width: 767px) {

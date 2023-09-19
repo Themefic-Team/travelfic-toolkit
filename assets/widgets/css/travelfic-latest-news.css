@@ -99,10 +99,13 @@
   /* design 2 */
   .tft-design-2-blog{
     background: #FAEEDC;
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
   .tft-design-2-blog .tft-blog-header {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 40px;
   }
   .tft-design-2-blog .tft-blog-header h6{
       font-size: 16px;
@@ -119,6 +122,7 @@
       font-weight: 700;
       line-height: 120%;
       color: #595349;
+      margin: 0;
   }
 
   .tft-design-2-blog .read-more a{

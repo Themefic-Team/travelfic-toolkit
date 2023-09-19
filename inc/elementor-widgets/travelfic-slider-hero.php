@@ -335,11 +335,22 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_title',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-slider-title .tft-title',
-                    '{{WRAPPER}} .tft-hero-content h1',
-                ],
+                'selector' => '{{WRAPPER}} .tft-slider-title .tft-title',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'condition' => [
+                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'banner_title',
+                'selector' => '{{WRAPPER}} .tft-hero-content h1',
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'condition' => [
+                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
             ]
         );
 
