@@ -454,27 +454,36 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 			'post_type' => $settings['tf_post_type']
 		);
 
+        $featured_args = array(
+			'post_type' => $settings['tf_post_type']
+		);
+
 		// Display posts in category.
 		if ( !empty( $settings['post_category'] ) ) {
 			$args['category_name'] = $settings['post_category'];
+			$featured_args['category_name'] = $settings['post_category'];
 		}
 
 		// Items per page
 		if ( !empty( $settings['post_items'] ) ) {
 			$args['posts_per_page'] = $settings['post_items'];
+			$featured_args['posts_per_page'] = -1;
 		}
 
 		// Items Order By
 		if ( !empty( $settings['post_order_by'] ) ) {
 			$args['orderby'] = $settings['post_order_by'];
+			$featured_args['orderby'] = $settings['post_order_by'];
 		}
 
 		// Items Order
 		if ( !empty( $settings['post_order'] ) ) {
     		$args['order'] = $settings['post_order'];
+    		$featured_args['order'] = $settings['post_order'];
 		}
 
 		$query = new \WP_Query ( $args );
+		$featured_query = new \WP_Query ( $featured_args );
 
         if ( !empty( $settings['tft_section_title'] ) ) {
             $tft_sec_title = $settings['tft_section_title'];
@@ -498,10 +507,10 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     <?php } ?>
 
                     <ul>
-                        <li class="active">
+                        <li class="active" data-id="all">
                             <?php echo __("All", "travelfic-toolkit"); ?>
                         </li>
-                        <li>
+                        <li data-id="featured">
                             <?php echo __("Featured", "travelfic-toolkit"); ?>
                         </li>
                     </ul>
@@ -517,7 +526,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     </a>
                 </div>
             </div>
-			<div class="tft-popular-hotels-items tft-popular-hotels-selector">
+			<div class="tft-popular-hotels-items tft-popular-hotels-selector tf-widget-all-post">
 
 				<?php if ($query->have_posts()): ?>
 					<?php while ($query->have_posts()):
@@ -637,6 +646,150 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 					<?php endwhile; ?>
 				<?php endif; ?>
 			</div>
+
+            <div class="tft-popular-hotels-items tft-popular-hotels-selector tf-widget-featured-post">
+
+				<?php 
+                $featured_posts = [];
+                if ($featured_query->have_posts()): ?>
+					<?php while ($featured_query->have_posts()):
+						$featured_query->the_post(); 
+                        $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
+                        $tf_hotel_featured = !empty($option_meta['featured']) ? $option_meta['featured'] : '';
+                        if($tf_hotel_featured){
+                            $featured_posts[] = get_the_ID();
+                        }
+                    ?>
+						
+					<?php endwhile; ?>
+				<?php endif; 
+                $filter_args = array(
+                    'post_type'      => $settings['tf_post_type'],
+                    'post_status'    => 'publish',
+                    'posts_per_page' => $settings['post_items'],
+                    'post__in'       => $featured_posts,
+                );
+                $result_query = new WP_Query( $filter_args );
+                ?>
+                <?php if ($result_query->have_posts()): ?>
+					<?php while ($result_query->have_posts()):
+						$result_query->the_post(); ?>
+						<?php
+						// Review Query 
+						$args = array(
+							'post_id' => get_the_ID(),
+							'status'  => 'approve',
+							'type'    => 'comment',
+						);
+						$comments_query = new WP_Comment_Query( $args );
+						$comments = $comments_query->comments;
+
+						$option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
+
+						$disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+						?>
+						<div class="tft-popular-single-item">
+							<div class="tft-popular-single-item-inner">
+                                <?php 
+                                $tft_hotel_image = !empty(get_the_post_thumbnail_url( get_the_ID() )) ? esc_url( get_the_post_thumbnail_url( get_the_ID() ) ) : esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png');
+                                ?>
+								<div class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
+                                    <div class="tft-hotel-details">
+                                        <?php if ($comments && !$disable_review_sec == '1') { ?>
+                                            <div class="tft-ratings">
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                    <span>
+                                                        <?php echo esc_html(tf_total_avg_rating($comments)); ?>
+                                                    </span>
+                                                    out of <?php tf_based_on_text(count($comments)); ?>
+                                                </span>
+                                            </div>
+                                        <?php }else{ ?>
+                                            <div class="tft-ratings">
+                                                <span>
+                                                    <i class="fas fa-star"></i>
+                                                    <span>
+                                                        0.0
+                                                    </span>
+                                                    out of 0 review
+                                                </span>
+                                            </div>
+                                        <?php } ?>
+                                        <h3 class="tft-title">
+											<?php the_title() ?>
+										</h3>
+                                        <p class="tft-locations">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                            <g clip-path="url(#clip0_1443_3217)">
+                                            <path d="M10 17.9176L14.1248 13.7927C16.4028 11.5147 16.4028 7.82124 14.1248 5.54318C11.8468 3.26512 8.15327 3.26512 5.87521 5.54318C3.59715 7.82124 3.59715 11.5147 5.87521 13.7927L10 17.9176ZM10 20.2746L4.6967 14.9713C1.76777 12.0423 1.76777 7.2936 4.6967 4.36467C7.62563 1.43574 12.3743 1.43574 15.3033 4.36467C18.2323 7.2936 18.2323 12.0423 15.3033 14.9713L10 20.2746ZM10 11.3346C10.9205 11.3346 11.6667 10.5885 11.6667 9.66797C11.6667 8.74749 10.9205 8.0013 10 8.0013C9.0795 8.0013 8.33333 8.74749 8.33333 9.66797C8.33333 10.5885 9.0795 11.3346 10 11.3346ZM10 13.0013C8.15905 13.0013 6.66667 11.5089 6.66667 9.66797C6.66667 7.82702 8.15905 6.33464 10 6.33464C11.8409 6.33464 13.3333 7.82702 13.3333 9.66797C13.3333 11.5089 11.8409 13.0013 10 13.0013Z" fill="#595349"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_1443_3217">
+                                            <rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
+                                            </clipPath>
+                                            </defs>
+                                            </svg>
+                                            <span>
+                                                <?php 
+                                                echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
+                                                ?>
+                                            </span>
+                                        </p>
+                                        <div class="tf-others-details">
+                                            <?php 
+                                                $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
+                                                if(!empty($rooms)){
+                                                    $rm_features = [];
+                                                    foreach ( $rooms as $key => $room ) {
+                                                        //merge for each room's selected features
+                                                        if(!empty($room['features'])){
+                                                            $rm_features = array_unique(array_merge( $rm_features, $room['features'])) ;
+                                                        }
+                                                    }
+                                                    if(!empty($rm_features)){ ?>
+                                                    <ul>
+                                                        <?php
+                                                        $tft_limit = 1;
+                                                        foreach ( $rm_features as $feature ) {
+                                                            if($tft_limit<7){
+                                                                $term = get_term_by( 'id', $feature, 'hotel_feature' );
+
+                                                                $room_f_meta = get_term_meta( $feature, 'tf_hotel_feature', true );
+                                                                if ( ! empty( $room_f_meta ) ) {
+                                                                    $room_icon_type = ! empty( $room_f_meta['icon-type'] ) ? $room_f_meta['icon-type'] : '';
+                                                                }
+                                                                if ( ! empty( $room_icon_type ) && $room_icon_type == 'fa' && !empty($room_f_meta['icon-fa']) ) {
+                                                                    $room_feature_icon = '<i class="' . $room_f_meta['icon-fa'] . '"></i>';
+                                                                } elseif ( ! empty( $room_icon_type ) && $room_icon_type == 'c' && ! empty( $room_f_meta['icon-c'] )) {
+                                                                    $room_feature_icon = '<img src="' . $room_f_meta['icon-c'] . '" style="min-width: ' . $room_f_meta['dimention'] . 'px; height: ' . $room_f_meta['dimention'] . 'px;" />';
+                                                                }
+                                                                ?>
+                                                                <li>
+                                                                    <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
+                                                                    <?php echo $term->name; ?>
+                                                                </li>
+                                                            <?php
+                                                            }
+                                                        $tft_limit++;
+                                                        } ?>
+                                                    </ul>
+                                                    <?php
+                                                    }
+                                                }
+                                            ?>
+                                            <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
+                                        </div>
+                                    </div>
+								</div>
+								
+							</div>
+						</div>
+
+					<?php endwhile; ?>
+				<?php endif; ?>
+			</div>
+
 			<script>
                 (function($) {
                     $(document).ready(function () {
@@ -648,6 +801,17 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 $(this).find('.tf-others-details').slideUp('fast');
                             }
                         );
+
+                        $(document).on('click', '.tft-hotel-header ul li', function () {
+                            let $this = $(this).closest('.tft-popular-hotels-wrapper');
+                            let tab_type = $(this).attr('data-id');
+                            $this.find('.tft-hotel-header ul li').each(function() {
+                                $(this).removeClass('active');
+                            })
+                            $(this).addClass('active');
+                            $this.find('.tft-popular-hotels-items').hide();
+                            $this.find('.tf-widget-'+tab_type+'-post').css('display', 'grid');
+                        });
                     });
                 }(jQuery));
             </script>

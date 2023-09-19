@@ -63,6 +63,9 @@
     grid-template-columns: auto auto auto;
     gap: 40px;
 }
+.tft-popular-hotels-wrapper .tft-popular-hotels-items.tf-widget-featured-post{
+    display: none;
+}
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item-inner {
     padding-bottom: 85px;
     position: relative;
