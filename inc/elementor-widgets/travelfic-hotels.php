@@ -27,7 +27,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('Travelfic Hotels', 'travelfic-toolkit');
+		return esc_html__('Travelfic Hotels & Tours', 'travelfic-toolkit');
 	}
 
 	/**
@@ -84,7 +84,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['travelfic', 'popular', 'hotels', 'tft'];
+		return ['travelfic', 'popular', 'hotels', 'tours', 'tft'];
 	}
 
 	public function get_style_depends()
@@ -105,7 +105,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'tft_hotels',
 			[
-				'label' => __('Hotels Section', 'travelfic-toolkit'),
+				'label' => __('Hotels & Tours Section', 'travelfic-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -135,7 +135,8 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => 'tf_hotel',
 				'options' => [
-					'tf_hotel' => __('Hotels', 'travelfic-toolkit')
+					'tf_hotel' => __('Hotels', 'travelfic-toolkit'),
+					'tf_tours' => __('Tours', 'travelfic-toolkit')
 				]
 			]
 		);
@@ -188,14 +189,6 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             ]
         );
 
-		// $this->add_group_control(
-        //     \Elementor\Group_Control_Typography::get_type(),
-        //     [
-        //         'name'     => 'popular_tour_item_title',
-        //         'label'    => __( 'Typography', 'travelfic-toolkit' ),
-        //         'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
-        //     ]
-        // );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -540,10 +533,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 						);
 						$comments_query = new WP_Comment_Query( $args );
 						$comments = $comments_query->comments;
-
-						$option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
-
-						$disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+                        if("tf_hotel"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
+                            $disable_review_sec = !empty($meta['h-review']) ? $meta['h-review'] : '';
+                        }
+                        if("tf_tours"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
+                            $disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+                        }
 						?>
 						<div class="tft-popular-single-item">
 							<div class="tft-popular-single-item-inner">
@@ -589,12 +586,18 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </svg>
                                             <span>
                                                 <?php 
-                                                echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
+                                                if("tf_hotel"==$settings['tf_post_type']){
+                                                    echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
+                                                }
+                                                if("tf_tours"==$settings['tf_post_type']){
+                                                    echo !empty($option_meta['location']['address']) ? esc_html( $option_meta['location']['address'] ) : $option_meta['text_location'];
+                                                }
                                                 ?>
                                             </span>
                                         </p>
                                         <div class="tf-others-details">
                                             <?php 
+                                            if("tf_hotel"==$settings['tf_post_type']){
                                                 $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
                                                 if(!empty($rooms)){
                                                     $rm_features = [];
@@ -634,6 +637,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                     <?php
                                                     }
                                                 }
+                                            }
                                             ?>
                                             <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
                                         </div>
@@ -654,9 +658,16 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 if ($featured_query->have_posts()): ?>
 					<?php while ($featured_query->have_posts()):
 						$featured_query->the_post(); 
-                        $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
-                        $tf_hotel_featured = !empty($option_meta['featured']) ? $option_meta['featured'] : '';
-                        if($tf_hotel_featured){
+                        if("tf_hotel"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
+                            $tf_featured_post = !empty($option_meta['featured']) ? $option_meta['featured'] : '';
+                        }
+                        if("tf_tours"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
+                            $tf_featured_post = !empty($option_meta['tour_as_featured']) ? $option_meta['tour_as_featured'] : '';
+                        }
+                        
+                        if($tf_featured_post){
                             $featured_posts[] = get_the_ID();
                         }
                     ?>
@@ -684,9 +695,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 						$comments_query = new WP_Comment_Query( $args );
 						$comments = $comments_query->comments;
 
-						$option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
-
-						$disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+						if("tf_hotel"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
+                            $disable_review_sec = !empty($meta['h-review']) ? $meta['h-review'] : '';
+                        }
+                        if("tf_tours"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
+                            $disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+                        }
 						?>
 						<div class="tft-popular-single-item">
 							<div class="tft-popular-single-item-inner">
@@ -732,12 +748,18 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </svg>
                                             <span>
                                                 <?php 
-                                                echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
+                                                    if("tf_hotel"==$settings['tf_post_type']){
+                                                        echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
+                                                    }
+                                                    if("tf_tours"==$settings['tf_post_type']){
+                                                        echo !empty($option_meta['location']['address']) ? esc_html( $option_meta['location']['address'] ) : $option_meta['text_location'];
+                                                    }
                                                 ?>
                                             </span>
                                         </p>
                                         <div class="tf-others-details">
                                             <?php 
+                                            if("tf_hotel"==$settings['tf_post_type']){
                                                 $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
                                                 if(!empty($rooms)){
                                                     $rm_features = [];
@@ -777,6 +799,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                     <?php
                                                     }
                                                 }
+                                            }
                                             ?>
                                             <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
                                         </div>
