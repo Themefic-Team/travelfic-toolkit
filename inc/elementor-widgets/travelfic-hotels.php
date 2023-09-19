@@ -535,11 +535,16 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 						$comments = $comments_query->comments;
                         if("tf_hotel"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
-                            $disable_review_sec = !empty($meta['h-review']) ? $meta['h-review'] : '';
+                            $disable_review_sec = !empty($option_meta['h-review']) ? $option_meta['h-review'] : '';
                         }
                         if("tf_tours"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
-                            $disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+                            $disable_review_sec = !empty($option_meta['t-review']) ? $option_meta['t-review'] : '';
+
+                            $tour_duration = ! empty( $option_meta['duration'] ) ? $option_meta['duration'] : '';
+                            $duration_time = ! empty( $option_meta['duration_time'] ) ? $option_meta['duration_time'] : '';
+                            $night         = ! empty( $option_meta['night'] ) ? $option_meta['night'] : false;
+                            $night_count   = ! empty( $option_meta['night_count'] ) ? $option_meta['night_count'] : '';
                         }
 						?>
 						<div class="tft-popular-single-item">
@@ -595,6 +600,40 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 ?>
                                             </span>
                                         </p>
+                                        <?php 
+                                        if("tf_tours"==$settings['tf_post_type']){
+                                        if($tour_duration){
+                                        ?>
+                                        <p class="tour-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <path d="M10.0001 2.16406C14.6024 2.16406 18.3334 5.89502 18.3334 10.4974C18.3334 15.0997 14.6024 18.8307 10.0001 18.8307C5.39771 18.8307 1.66675 15.0997 1.66675 10.4974H3.33341C3.33341 14.1793 6.31818 17.1641 10.0001 17.1641C13.682 17.1641 16.6667 14.1793 16.6667 10.4974C16.6667 6.8155 13.682 3.83073 10.0001 3.83073C7.7086 3.83073 5.68714 4.98685 4.48717 6.7476L6.66675 6.7474V8.41406H1.66675V3.41406H3.33341L3.33332 5.49671C4.8537 3.47302 7.27402 2.16406 10.0001 2.16406ZM10.8334 6.33073L10.8332 10.1516L13.5356 12.8544L12.3571 14.0329L9.16658 10.8416L9.16675 6.33073H10.8334Z" fill="#595349"/>
+                                        </svg>
+                                        <?php echo esc_html( $tour_duration ); ?>
+                                            <?php
+                                            if ( $tour_duration > 1 ) {
+                                                $dur_string         = 's';
+                                                $duration_time_html = $duration_time . $dur_string;
+                                            } else {
+                                                $duration_time_html = $duration_time;
+                                            }
+                                            echo " " . esc_html( $duration_time_html );
+                                            ?>
+                                            <?php if ( $night ) { ?>
+                                                <span>
+                                                    <?php echo esc_html( $night_count ); ?>
+                                                    <?php
+                                                    if ( ! empty( $night_count ) ) {
+                                                        if ( $night_count > 1 ) {
+                                                            echo esc_html__( 'Nights', 'tourfic' );
+                                                        } else {
+                                                            echo esc_html__( 'Night', 'tourfic' );
+                                                        }
+                                                    }
+                                                    ?>
+                                                </span>
+                                            <?php } ?>
+                                        </p>
+                                        <?php } } ?>
                                         <div class="tf-others-details">
                                             <?php 
                                             if("tf_hotel"==$settings['tf_post_type']){
@@ -697,11 +736,16 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 
 						if("tf_hotel"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
-                            $disable_review_sec = !empty($meta['h-review']) ? $meta['h-review'] : '';
+                            $disable_review_sec = !empty($option_meta['h-review']) ? $option_meta['h-review'] : '';
                         }
                         if("tf_tours"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
-                            $disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+                            $disable_review_sec = !empty($option_meta['t-review']) ? $option_meta['t-review'] : '';
+
+                            $tour_duration = ! empty( $option_meta['duration'] ) ? $option_meta['duration'] : '';
+                            $duration_time = ! empty( $option_meta['duration_time'] ) ? $option_meta['duration_time'] : '';
+                            $night         = ! empty( $option_meta['night'] ) ? $option_meta['night'] : false;
+                            $night_count   = ! empty( $option_meta['night_count'] ) ? $option_meta['night_count'] : '';
                         }
 						?>
 						<div class="tft-popular-single-item">
@@ -757,6 +801,40 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 ?>
                                             </span>
                                         </p>
+                                        <?php 
+                                        if("tf_tours"==$settings['tf_post_type']){
+                                        if($tour_duration){
+                                        ?>
+                                        <p class="tour-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <path d="M10.0001 2.16406C14.6024 2.16406 18.3334 5.89502 18.3334 10.4974C18.3334 15.0997 14.6024 18.8307 10.0001 18.8307C5.39771 18.8307 1.66675 15.0997 1.66675 10.4974H3.33341C3.33341 14.1793 6.31818 17.1641 10.0001 17.1641C13.682 17.1641 16.6667 14.1793 16.6667 10.4974C16.6667 6.8155 13.682 3.83073 10.0001 3.83073C7.7086 3.83073 5.68714 4.98685 4.48717 6.7476L6.66675 6.7474V8.41406H1.66675V3.41406H3.33341L3.33332 5.49671C4.8537 3.47302 7.27402 2.16406 10.0001 2.16406ZM10.8334 6.33073L10.8332 10.1516L13.5356 12.8544L12.3571 14.0329L9.16658 10.8416L9.16675 6.33073H10.8334Z" fill="#595349"/>
+                                        </svg>
+                                        <?php echo esc_html( $tour_duration ); ?>
+                                            <?php
+                                            if ( $tour_duration > 1 ) {
+                                                $dur_string         = 's';
+                                                $duration_time_html = $duration_time . $dur_string;
+                                            } else {
+                                                $duration_time_html = $duration_time;
+                                            }
+                                            echo " " . esc_html( $duration_time_html );
+                                            ?>
+                                            <?php if ( $night ) { ?>
+                                                <span>
+                                                    <?php echo esc_html( $night_count ); ?>
+                                                    <?php
+                                                    if ( ! empty( $night_count ) ) {
+                                                        if ( $night_count > 1 ) {
+                                                            echo esc_html__( 'Nights', 'tourfic' );
+                                                        } else {
+                                                            echo esc_html__( 'Night', 'tourfic' );
+                                                        }
+                                                    }
+                                                    ?>
+                                                </span>
+                                            <?php } ?>
+                                        </p>
+                                        <?php } } ?>
                                         <div class="tf-others-details">
                                             <?php 
                                             if("tf_hotel"==$settings['tf_post_type']){
