@@ -107,6 +107,9 @@
       justify-content: space-between;
       margin-bottom: 40px;
   }
+  .tft-design-2-blog .tft-blog-header .tft-news-header{
+    width: 60%;
+  }
   .tft-design-2-blog .tft-blog-header h6{
       font-size: 16px;
       font-style: normal;
@@ -179,7 +182,7 @@
     font-weight: 700;
     line-height: 130%;
     color: #595349;
-    margin: 5px 0px;
+    margin: 5px 0px 15px 0px;
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item p.content{
     font-size: 18px;
@@ -274,7 +277,7 @@
     height: auto;
   }
   .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(4){
-    margin-top: -170px;
+    margin-top: -180px;
   }
   .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(1) a,
   .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(4) a{
@@ -303,7 +306,7 @@
   }
   .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(5),
   .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(5){
-    margin-top: -170px;
+    margin-top: -180px;
   }
   .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(1) a,
   .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(3) a,
@@ -384,6 +387,9 @@
     }
     .tft-design-2-blog .read-more a svg{
         width: 32px;
+    }
+    .tft-design-2-blog .tft-blog-header .tft-news-header{
+      width: auto;
     }
   }
   @media all and (max-width:767px) {

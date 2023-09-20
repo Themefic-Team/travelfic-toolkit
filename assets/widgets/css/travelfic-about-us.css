@@ -5,9 +5,7 @@
     display: grid;
     grid-template-columns: 35% 65%;
 }
-.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content{
-    padding-right: 18px;
-}
+
 .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6{
     font-size: 16px;
     font-style: normal;
@@ -61,6 +59,7 @@
     display: inline-block;
     top: 0;
     z-index: 99;
+    left: 30px;
 }
 .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years{
     position: absolute;
@@ -73,12 +72,13 @@
     align-items: center;
     justify-content: center;
 }
-.tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span{
+.tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2{
     font-size: 52px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
     color: #99948D;
+    margin: 0;
 }
 
 @media all and (max-width: 1100px){
@@ -87,16 +87,13 @@
     }
 }
 @media all and (max-width: 991px){
-    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content{
-        padding: 0;
-    }
     .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3{
         font-size: 32px;
     }
     .tft-about-us-wrapper .tft-about-us-grid .years-of-experience{
         width: 145px;
     }
-    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span{
+    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2{
         font-size: 32px;
     }
     .tft-about-us-wrapper .tft-about-us-grid .years-of-experience{

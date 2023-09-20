@@ -300,14 +300,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_years_typo',
-                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2',
                 'label'    => __( 'Years of Experience Typography', 'travelfic-toolkit' ),
-                'fields_options' => [
-                    'typography' => ['default' => 'yes'],
-                    'font_family' => [
-                        'default' => 'Cormorant Garamond',
-                    ],
-                ]
             ]
         );
         $this->add_control(
@@ -317,7 +311,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -414,7 +408,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     <div class="years-of-experience">
                         <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/years-experience.png' ); ?>" alt="">
                         <div class="tft-experience-years">
-                            <span><?php echo esc_html( $tft_about_us_experience ); ?></span>
+                            <h2><?php echo esc_html( $tft_about_us_experience ); ?></h2>
                         </div>
                     </div>
                     <?php } ?>

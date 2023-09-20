@@ -58,6 +58,9 @@
 .tft-destination-design-2{
   background-position: left top;
 }
+.tft-destination-design-2 .tft-destination-header{
+  width: 60%;
+}
 .tft-destination-design-2 .tft-destination-header h6{
   font-size: 16px;
   font-style: normal;
@@ -184,6 +187,11 @@
   .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3{
     font-size: 20px;
     line-height: 120%;
+  }
+}
+@media all and (max-width: 991px){
+  .tft-destination-design-2 .tft-destination-header{
+    width: 80%;
   }
 }
 @media all and (max-width: 767px){

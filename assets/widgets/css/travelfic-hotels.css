@@ -7,6 +7,9 @@
     justify-content: space-between;
     margin-bottom: 48px;
 }
+.tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
+    width: 60%;
+}
 .tft-popular-hotels-wrapper .tft-popular-hotel-header h6{
     font-size: 16px;
     font-style: normal;
@@ -206,6 +209,11 @@
     }
     .tft-popular-hotels-wrapper .read-more a svg{
         width: 32px;
+    }
+}
+@media all and (max-width: 991px){
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
+        width: auto;
     }
 }
 @media all and (max-width: 767px){
