@@ -202,7 +202,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
 			'banner_title',
 			[
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label' => esc_html__( 'Banner Title', 'travelfic-toolkit' ),
 				'placeholder' => esc_html__( 'Banner title', 'travelfic-toolkit' ),
                 'default' => __( 'Embark on extraordinary voyages and explorations', 'travelfic-toolkit' ),
@@ -351,6 +351,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'condition' => [
                     'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
                 ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ]
             ]
         );
 
@@ -366,6 +372,59 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        $this->add_control(
+            'shortcode_form_style',
+            [
+                'label'     => __( 'Form Style', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'shortcode_form_typo',
+                'selector' => '{{WRAPPER}} .tft-search-form, {{WRAPPER}} .tft-search-form button, {{WRAPPER}} .tft-search-form input',
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'condition' => [
+                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'shortcode_form_background',
+            [
+                'label'     => __( 'Form Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => 'rgba(48, 40, 28, 0.3)',
+                'selectors' => [
+                    '{{WRAPPER}} .tf_booking-widget-design-2' => 'background: {{VALUE}}'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'shortcode_form_button',
+            [
+                'label'     => __( 'Button Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_availability_checker_box button' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'background: {{VALUE}}',
+                ],
+            ]
+        );
+
         $this->add_control(
             'slider_subtitle',
             [
