@@ -181,6 +181,23 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 ],
 			]
 		);
+        $this->add_control(
+			'readme_link',
+			[
+				'type' => \Elementor\Controls_Manager::URL,
+				'label' => esc_html__( 'Read More URL', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter Link', 'travelfic-toolkit' ),
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+                'condition' => [
+                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                ],
+			]
+		);
 
     
         $this->end_controls_section();
@@ -351,7 +368,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     <?php } ?>
 
                     <div class="read-more">
-                        <a href="#">
+                        <a href="<?php echo esc_url($settings['readme_link']['url']); ?>">
                             <?php echo __("More", "travelfic-toolkit"); ?>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
