@@ -218,6 +218,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'name'     => 'about_us_sec_title_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3',
                 'label'    => __( 'Title Typography', 'travelfic-toolkit' ),
+                'default'  => [
+                    'font-family'    => 'Cormorant Garamond'
+                ],
             ]
         );
         $this->add_control(
@@ -240,6 +243,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'name'     => 'about_us_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6',
                 'label'    => __( 'Subtitle Typography', 'travelfic-toolkit' ),
+                'default'  => [
+                    'font-family'    => 'Josefin Sans'
+                ],
             ]
         );
         $this->add_control(
@@ -262,6 +268,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'name'     => 'about_us_sec_content_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p',
                 'label'    => __( 'Content Typography', 'travelfic-toolkit' ),
+                'default'  => [
+                    'font-family'    => 'Josefin Sans'
+                ],
             ]
         );
         $this->add_control(
@@ -284,6 +293,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'name'     => 'about_us_sec_years_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years span',
                 'label'    => __( 'Years of Experience Typography', 'travelfic-toolkit' ),
+                'default'  => [
+                    'font-family'    => 'Cormorant Garamond'
+                ],
             ]
         );
         $this->add_control(
@@ -306,6 +318,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'name'     => 'about_us_sec_button_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a',
                 'label'    => __( 'Button Typography', 'travelfic-toolkit' ),
+                'default'  => [
+                    'font-family'    => 'Josefin Sans'
+                ],
             ]
         );
         $this->add_control(
