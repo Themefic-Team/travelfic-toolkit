@@ -828,7 +828,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </span>
                                         </p>
                                         
-                                        <div class="tf-others-details">
+                                        <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
                                             <?php 
                                             if("tf_tours"==$settings['tf_post_type']){
                                             if($tour_duration){
@@ -923,10 +923,10 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     $(document).ready(function () {
                         $('.tft-popular-single-item').hover(
                             function () {
-                                $(this).find('.tf-others-details').slideDown('fast');
+                                $(this).find('.tf-others-details').slideDown('slow');
                             },
                             function () {
-                                $(this).find('.tf-others-details').slideUp('fast');
+                                $(this).find('.tf-others-details').slideUp('slow');
                             }
                         );
 
