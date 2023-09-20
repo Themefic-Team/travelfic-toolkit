@@ -221,6 +221,15 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'name'     => 'tour_destination_sec_title_typo',
                 'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h3',
                 'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(
@@ -243,6 +252,15 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'name'     => 'tour_destination_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h6',
                 'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(
@@ -533,6 +551,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
                 ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
 
@@ -570,6 +594,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
                 ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -606,6 +636,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
                 ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(

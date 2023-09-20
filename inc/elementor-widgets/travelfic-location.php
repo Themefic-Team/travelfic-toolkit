@@ -225,6 +225,15 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'name'     => 'tour_destination_sec_title_typo',
                 'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3',
                 'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ],
+                'condition' => [
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(
@@ -247,6 +256,15 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'name'     => 'tour_destination_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6',
                 'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ],
+                'condition' => [
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(
@@ -269,6 +287,15 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'name'     => 'single_destination_title_typo',
                 'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content h3',
                 'label'    => __( 'Single Destination Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ],
+                'condition' => [
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(
@@ -291,6 +318,15 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'name'     => 'single_destination_button_typo',
                 'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a',
                 'label'    => __( 'Single Button Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ],
+                'condition' => [
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+                ],
             ]
         );
         $this->add_control(

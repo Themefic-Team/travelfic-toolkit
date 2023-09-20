@@ -224,6 +224,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_section_title_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header h3',
                 'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ]
             ]
         );
 		$this->add_control(
@@ -243,6 +249,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_section_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header h6',
                 'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -262,6 +274,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_section_button_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .read-more a',
                 'label'    => __( 'Section Button Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -293,6 +311,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_section_list_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotel-header ul li',
                 'label'    => __( 'List Item Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -364,6 +388,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_hotel_card_review_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-ratings span',
                 'label'    => __( 'Review Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
 		$this->add_control(
@@ -383,6 +413,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_hotel_card_title_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3',
                 'label'    => __( 'Title Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -402,6 +438,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_hotel_card_location_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations span',
                 'label'    => __( 'Location Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -422,6 +464,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_hotel_card_features_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li',
                 'label'    => __( 'Features Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
@@ -441,6 +489,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'name'     => 'popular_hotel_card_button_typo',
                 'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a',
                 'label'    => __( 'Button Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
             ]
         );
         $this->add_control(
