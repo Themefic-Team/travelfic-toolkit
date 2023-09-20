@@ -37,7 +37,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-hotspot';
+        return 'eicon-google-maps';
     }
 
     /**

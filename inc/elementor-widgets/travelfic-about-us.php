@@ -37,7 +37,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @return string Widget icon.
      */
     public function get_icon() {
-        return 'eicon-hotspot';
+        return 'eicon-call-to-action';
     }
 
     /**
