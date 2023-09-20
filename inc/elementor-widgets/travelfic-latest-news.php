@@ -218,6 +218,23 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->add_control(
+			'view_all_link',
+			[
+				'type' => \Elementor\Controls_Manager::URL,
+				'label' => esc_html__( 'View ALL URL', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter Link', 'travelfic-toolkit' ),
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when tft_about_style is 'design-2'
+                ],
+			]
+		);
 		$this->end_controls_section();
 
 		// Style
@@ -459,7 +476,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                     <?php } ?>
                 </div>
                 <div class="read-more">
-                    <a href="#">
+                    <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
                         <?php echo __("View All", "travelfic-toolkit"); ?>
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">

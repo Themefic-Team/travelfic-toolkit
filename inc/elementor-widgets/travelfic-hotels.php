@@ -191,6 +191,22 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 				],
 			]
 		);
+
+        $this->add_control(
+			'view_all_link',
+			[
+				'type' => \Elementor\Controls_Manager::URL,
+				'label' => esc_html__( 'View ALL URL', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter Link', 'travelfic-toolkit' ),
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+			]
+		);
+
 		$this->end_controls_section();
 
 		// Style Section
@@ -522,7 +538,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     </ul>
                 </div>
                 <div class="read-more">
-                    <a href="#">
+                    <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
                         <?php echo __("View All", "travelfic-toolkit"); ?>
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
