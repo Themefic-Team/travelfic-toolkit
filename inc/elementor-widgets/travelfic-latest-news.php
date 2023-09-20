@@ -489,7 +489,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                                     <p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
                                     <h3 class="tft-title">
                                         <?php 
-                                        echo strlen(get_the_title()) > 20 ? substr(get_the_title(), 0, 20) . '...' : get_the_title();
+                                        echo travelfic_character_limit(get_the_title(), 15);
                                         ?>
                                     </h3>
                                     <?php 

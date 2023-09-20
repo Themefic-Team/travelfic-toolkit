@@ -11,6 +11,14 @@ if( ! function_exists('travelfic_get_meta') ){
     }
 }
 
+// Text Limit 
+if( ! function_exists('travelfic_character_limit') ){
+    function travelfic_character_limit($str, $limit)
+    {
+        return substr($str, 0, $limit) . '...';
+    }
+}
+
 // Primary Menu Limit
 function travelfic_toolkit_limit_menu_items($items, $args) {
     if ($args->theme_location == 'primary_menu') {
