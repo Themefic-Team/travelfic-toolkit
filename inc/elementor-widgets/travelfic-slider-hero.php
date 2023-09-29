@@ -837,7 +837,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Button Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '##D83B0B',
+                'default'   => '#D83B0B',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'background-color: {{VALUE}} !important;',
                 ],
@@ -859,7 +859,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 			.tft-hero-slider-selector .tft-hero-single-item::before { 
 				<?php
 				if ( !empty( $settings['slider_opacity'] ) ) {?>
-					background: rgb(0 0 0 / <?php echo esc_html__( $settings['slider_opacity'] ); ?>%);
+					background: rgb(0 0 0 / <?php echo esc_attr( $settings['slider_opacity'] ); ?>%);
 				<?php } ?>
 			}
 		</style>
@@ -867,8 +867,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 		if ( $settings['hero_slider_list'] ) {?>
 			<!-- Slider Hero section -->
 			<div class="hero--slider-wrapper"> <!-- tft-customizer-typography -->
-				<?php $rand_number = rand();?>
-				<div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo $rand_number ?>">
+				<?php $rand_number = rand(6,16);?>
+				<div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>">
 					<?php foreach ( $settings['hero_slider_list'] as $item ): ?>
 						<div class="tft-hero-single-item">
 							<div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url( $item['slider_image']['url'] ); ?>);">
@@ -890,7 +890,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 										<div class="slider-button">
                                             <?php 
                                                 if ( !empty( $item['slider_bttn_url'] ) ) { ?>
-                                                    <a class="bttn tft-bttn-primary" href="<?php echo $item['slider_bttn_url'] ?>">
+                                                    <a class="bttn tft-bttn-primary" href="<?php echo esc_url($item['slider_bttn_url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php
@@ -926,7 +926,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 					"use strict";
 					$(document).ready(function() {
 						//Your Code Inside
-						$('.tft-hero-slider-selector-<?php echo $rand_number ?>').slick({
+						$('.tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>').slick({
 							dots: false,
 							infinite: true,
 							slidesToShow: 1,
@@ -944,7 +944,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 					});
 
 					// Counter Number
-					var $tfSliderHero = $('.tft-hero-slider-selector-<?php echo $rand_number ?>');
+					var $tfSliderHero = $('.tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>');
 
 					if ($tfSliderHero.length) {
 						var currentSlide;
@@ -968,6 +968,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 				}(jQuery));
 			</script>
 		<?php }?>
-		<?php do_action( 'slider_style', $rand_number );
+		<?php do_action( 'slider_style', esc_html($rand_number) );
     }
 }
