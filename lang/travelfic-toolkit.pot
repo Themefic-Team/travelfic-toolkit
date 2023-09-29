@@ -10,13 +10,16 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-11 07:23+0000\n"
+"POT-Creation-Date: 2023-09-29 10:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: _s\n"
-"\n"
 "Language: \n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:172
+msgid "#"
+msgstr ""
 
 #: inc/elementor-widgets/travelfic-testimonials.php:146
 msgid "&#9733;"
@@ -38,6 +41,10 @@ msgstr ""
 msgid "&#9733;&#9733;&#9733;&#9733;&#9733;"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-popular-tours.php:147
+msgid "4"
+msgstr ""
+
 #: inc/elementor-widgets/travelfic-slider-hero.php:152
 msgid ""
 "A There are many variatio of passage of Lorem for a Ipsum available  Lorem "
@@ -48,15 +55,15 @@ msgstr ""
 msgid "Active Gap Item"
 msgstr ""
 
-#: travelfic-toolkit.php:114
+#: travelfic-toolkit.php:123
 msgid "Active Now"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:502
+#: inc/elementor-widgets/travelfic-slider-hero.php:566
 msgid "Active Tab background"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:491
+#: inc/elementor-widgets/travelfic-slider-hero.php:555
 msgid "Active Tab Color"
 msgstr ""
 
@@ -70,12 +77,17 @@ msgstr ""
 
 #: inc/elementor-widgets/travelfic-destination.php:146 
 #: inc/elementor-widgets/travelfic-latest-news.php:180 
-#: inc/elementor-widgets/travelfic-popular-tours.php:162
+#: inc/elementor-widgets/travelfic-popular-tours.php:160
 msgid "Ascending"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:392 
-#: inc/elementor-widgets/travelfic-slider-hero.php:426
+#: inc/elementor-widgets/travelfic-cf7-form.php:200
+msgid "Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:296 
+#: inc/elementor-widgets/travelfic-slider-hero.php:410 
+#: inc/elementor-widgets/travelfic-slider-hero.php:444
 msgid "Background Color"
 msgstr ""
 
@@ -89,6 +101,10 @@ msgstr ""
 msgid "Background Gradient 2"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-cf7-form.php:307
+msgid "Background Hover"
+msgstr ""
+
 #: inc/elementor-widgets/travelfic-latest-news.php:130
 msgid "Blog News"
 msgstr ""
@@ -97,32 +113,58 @@ msgstr ""
 msgid "Booking.com"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:591
+#: inc/elementor-widgets/travelfic-testimonials.php:422
+msgid "Border"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:666 
+#: inc/elementor-widgets/travelfic-slider-hero.php:754 
+#: inc/elementor-widgets/travelfic-testimonials.php:442
 msgid "Border Color"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-testimonials.php:453
+msgid "Border Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:230 
+#: inc/elementor-widgets/travelfic-cf7-form.php:318 
 #: inc/elementor-widgets/travelfic-latest-news.php:209 
-#: inc/elementor-widgets/travelfic-slider-hero.php:602 
+#: inc/elementor-widgets/travelfic-slider-hero.php:498 
+#: inc/elementor-widgets/travelfic-slider-hero.php:607 
+#: inc/elementor-widgets/travelfic-slider-hero.php:677 
+#: inc/elementor-widgets/travelfic-slider-hero.php:765 
 #: inc/elementor-widgets/travelfic-team.php:237 
 #: inc/elementor-widgets/travelfic-testimonials.php:196
 msgid "Border Radius"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:555
+#: inc/elementor-widgets/travelfic-slider-hero.php:577 
+#: inc/elementor-widgets/travelfic-slider-hero.php:647 
+#: inc/elementor-widgets/travelfic-slider-hero.php:735
+msgid "Border Width"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:356
+msgid "Box Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:718
 msgid "Button"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:641 
-#: inc/elementor-widgets/travelfic-slider-hero.php:675
+#: inc/elementor-widgets/travelfic-slider-hero.php:804 
+#: inc/elementor-widgets/travelfic-slider-hero.php:838
 msgid "Button Background"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:630 
-#: inc/elementor-widgets/travelfic-slider-hero.php:663
+#: inc/elementor-widgets/travelfic-slider-hero.php:793 
+#: inc/elementor-widgets/travelfic-slider-hero.php:826
 msgid "Button Color"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:334
+#: inc/elementor-widgets/travelfic-cf7-form.php:250 
+#: inc/elementor-widgets/travelfic-slider-hero.php:352
 msgid "Button Style"
 msgstr ""
 
@@ -155,17 +197,19 @@ msgstr ""
 msgid "CEO"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-cf7-form.php:285 
+#: inc/elementor-widgets/travelfic-cf7-form.php:345 
 #: inc/elementor-widgets/travelfic-destination.php:191 
 #: inc/elementor-widgets/travelfic-destination.php:221 
 #: inc/elementor-widgets/travelfic-latest-news.php:300 
 #: inc/elementor-widgets/travelfic-latest-news.php:327 
-#: inc/elementor-widgets/travelfic-popular-tours.php:207 
-#: inc/elementor-widgets/travelfic-popular-tours.php:234 
-#: inc/elementor-widgets/travelfic-popular-tours.php:261 
-#: inc/elementor-widgets/travelfic-popular-tours.php:280 
+#: inc/elementor-widgets/travelfic-popular-tours.php:205 
+#: inc/elementor-widgets/travelfic-popular-tours.php:232 
+#: inc/elementor-widgets/travelfic-popular-tours.php:259 
+#: inc/elementor-widgets/travelfic-popular-tours.php:278 
 #: inc/elementor-widgets/travelfic-section-heading.php:220 
-#: inc/elementor-widgets/travelfic-slider-hero.php:321 
-#: inc/elementor-widgets/travelfic-slider-hero.php:541 
+#: inc/elementor-widgets/travelfic-slider-hero.php:339 
+#: inc/elementor-widgets/travelfic-slider-hero.php:704 
 #: inc/elementor-widgets/travelfic-team.php:273 
 #: inc/elementor-widgets/travelfic-team.php:300 
 #: inc/elementor-widgets/travelfic-team.php:327 
@@ -185,7 +229,7 @@ msgstr ""
 msgid "Comment count"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:387 
+#: inc/elementor-widgets/travelfic-icon-with-text.php:405 
 #: inc/elementor-widgets/travelfic-section-heading.php:113 
 #: inc/elementor-widgets/travelfic-section-heading.php:204 
 #: inc/elementor-widgets/travelfic-team.php:311 
@@ -193,16 +237,16 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:403 
+#: inc/elementor-widgets/travelfic-icon-with-text.php:421 
 #: inc/elementor-widgets/travelfic-testimonials.php:390
 msgid "Content Color"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:414
+#: inc/elementor-widgets/travelfic-icon-with-text.php:432
 msgid "Content Color Hover"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:397
+#: inc/elementor-widgets/travelfic-icon-with-text.php:415
 msgid "Content Style"
 msgstr ""
 
@@ -218,7 +262,7 @@ msgstr ""
 
 #: inc/elementor-widgets/travelfic-destination.php:145 
 #: inc/elementor-widgets/travelfic-latest-news.php:179 
-#: inc/elementor-widgets/travelfic-popular-tours.php:161
+#: inc/elementor-widgets/travelfic-popular-tours.php:159
 msgid "Descending"
 msgstr ""
 
@@ -271,7 +315,11 @@ msgstr ""
 msgid "Footer Template Width"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-popular-tours.php:404
+#: inc/elementor-widgets/travelfic-cf7-form.php:137
+msgid "Form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:402
 msgid "from "
 msgstr ""
 
@@ -286,6 +334,10 @@ msgstr ""
 
 #: inc/customizer-settings.php:72
 msgid "Header Template Width"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:216
+msgid "Heading Space"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-section-heading.php:171
@@ -304,8 +356,8 @@ msgstr ""
 #: inc/elementor-widgets/travelfic-destination.php:232 
 #: inc/elementor-widgets/travelfic-latest-news.php:256 
 #: inc/elementor-widgets/travelfic-latest-news.php:339 
-#: inc/elementor-widgets/travelfic-slider-hero.php:407 
-#: inc/elementor-widgets/travelfic-slider-hero.php:656 
+#: inc/elementor-widgets/travelfic-slider-hero.php:425 
+#: inc/elementor-widgets/travelfic-slider-hero.php:819 
 #: inc/elementor-widgets/travelfic-testimonials.php:348
 msgid "Hover"
 msgstr ""
@@ -327,38 +379,38 @@ msgstr ""
 msgid "Icon"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:309 
+#: inc/elementor-widgets/travelfic-icon-with-text.php:327 
 #: inc/elementor-widgets/travelfic-testimonials.php:401 
-#: inc/elementor-widgets/travelfic-testimonials.php:421
+#: inc/elementor-widgets/travelfic-testimonials.php:464
 msgid "Icon Color"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-testimonials.php:432
-msgid "Icon Color Hover"
+#: inc/elementor-widgets/travelfic-testimonials.php:475
+msgid "Icon Hover"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:332
+#: inc/elementor-widgets/travelfic-icon-with-text.php:350
 msgid "Icon Outter Gradient 1"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:340
+#: inc/elementor-widgets/travelfic-icon-with-text.php:358
 msgid "Icon Outter Gradient 2"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:289
+#: inc/elementor-widgets/travelfic-icon-with-text.php:302
 msgid "Icon outter height"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:269
+#: inc/elementor-widgets/travelfic-icon-with-text.php:277
 msgid "Icon outter Width"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:249
-msgid "Icon Size"
+#: inc/elementor-widgets/travelfic-icon-with-text.php:251
+msgid "Icon Size)"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-icon-with-text.php:241 
-#: inc/elementor-widgets/travelfic-popular-tours.php:272
+#: inc/elementor-widgets/travelfic-popular-tours.php:270
 msgid "Icon Style"
 msgstr ""
 
@@ -371,11 +423,15 @@ msgstr ""
 msgid "Image Radius"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:525
-msgid "Input"
+#: inc/elementor-widgets/travelfic-cf7-form.php:178
+msgid "Input Color"
 msgstr ""
 
-#: travelfic-toolkit.php:129
+#: inc/elementor-widgets/travelfic-cf7-form.php:161
+msgid "Input Fields"
+msgstr ""
+
+#: travelfic-toolkit.php:142
 msgid "Install Now"
 msgstr ""
 
@@ -388,7 +444,7 @@ msgid "Item Limit"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-icon-with-text.php:182 
-#: inc/elementor-widgets/travelfic-popular-tours.php:172 
+#: inc/elementor-widgets/travelfic-popular-tours.php:170 
 #: inc/elementor-widgets/travelfic-team.php:211 
 #: inc/elementor-widgets/travelfic-testimonials.php:170
 msgid "Item List"
@@ -407,6 +463,10 @@ msgstr ""
 msgid "John Doe"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-cf7-form.php:189
+msgid "Label Color"
+msgstr ""
+
 #: inc/elementor-widgets/travelfic-section-heading.php:148
 msgid "Left"
 msgstr ""
@@ -420,8 +480,7 @@ msgid "Linkedin"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-icon-with-text.php:218 
-#: inc/elementor-widgets/travelfic-testimonials.php:185 
-#: inc/elementor-widgets/travelfic-testimonials.php:356
+#: inc/elementor-widgets/travelfic-testimonials.php:185
 msgid "List Background"
 msgstr ""
 
@@ -454,7 +513,7 @@ msgid "Lowercase"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-section-heading.php:230 
-#: inc/elementor-widgets/travelfic-slider-hero.php:342
+#: inc/elementor-widgets/travelfic-slider-hero.php:360
 msgid "Margin"
 msgstr ""
 
@@ -499,7 +558,7 @@ msgstr ""
 msgid "Meta"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-popular-tours.php:218
+#: inc/elementor-widgets/travelfic-popular-tours.php:216
 msgid "Meta Style"
 msgstr ""
 
@@ -516,11 +575,19 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-testimonials.php:486
+msgid "Nav Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:497
+msgid "Nav Hover"
+msgstr ""
+
 #: inc/elementor-widgets/travelfic-testimonials.php:414
 msgid "Nav Style"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:313
+#: inc/elementor-widgets/travelfic-slider-hero.php:331
 msgid "Navigation "
 msgstr ""
 
@@ -537,14 +604,18 @@ msgid "None"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-latest-news.php:229 
-#: inc/elementor-widgets/travelfic-slider-hero.php:367 
-#: inc/elementor-widgets/travelfic-slider-hero.php:624
+#: inc/elementor-widgets/travelfic-slider-hero.php:385 
+#: inc/elementor-widgets/travelfic-slider-hero.php:787
 msgid "Normal"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:337
+msgid "Notice"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-destination.php:142 
 #: inc/elementor-widgets/travelfic-latest-news.php:176 
-#: inc/elementor-widgets/travelfic-popular-tours.php:158
+#: inc/elementor-widgets/travelfic-popular-tours.php:156
 msgid "Order"
 msgstr ""
 
@@ -553,11 +624,14 @@ msgstr ""
 msgid "Order by"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-cf7-form.php:211 
+#: inc/elementor-widgets/travelfic-cf7-form.php:266 
 #: inc/elementor-widgets/travelfic-icon-with-text.php:199 
 #: inc/elementor-widgets/travelfic-latest-news.php:197 
-#: inc/elementor-widgets/travelfic-popular-tours.php:179 
-#: inc/elementor-widgets/travelfic-slider-hero.php:353 
-#: inc/elementor-widgets/travelfic-slider-hero.php:513 
+#: inc/elementor-widgets/travelfic-popular-tours.php:177 
+#: inc/elementor-widgets/travelfic-slider-hero.php:371 
+#: inc/elementor-widgets/travelfic-slider-hero.php:479 
+#: inc/elementor-widgets/travelfic-slider-hero.php:627 
 #: inc/elementor-widgets/travelfic-team.php:226 
 #: inc/elementor-widgets/travelfic-testimonials.php:236
 msgid "Padding"
@@ -579,7 +653,7 @@ msgstr ""
 msgid "Post Type"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-popular-tours.php:245
+#: inc/elementor-widgets/travelfic-popular-tours.php:243
 msgid "Price"
 msgstr ""
 
@@ -605,24 +679,41 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:192
+#: inc/elementor-widgets/travelfic-slider-hero.php:192 
+#: inc/elementor-widgets/travelfic-slider-hero.php:471
 msgid "Search Box"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:565
+#: inc/elementor-widgets/travelfic-slider-hero.php:728
 msgid "Search Button Typo"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:462
+#: inc/elementor-widgets/travelfic-slider-hero.php:639
+msgid "Search Form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:463
+msgid "Search Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:517
+msgid "Search Tab"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:526
 msgid "Search Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:114
+msgid "Select a form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:144
+msgid "Select Form"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-destination.php:117
 msgid "Select Tour Destinations"
-msgstr ""
-
-#: inc/elementor-widgets/travelfic-slider-hero.php:445
-msgid "Serach Style"
 msgstr ""
 
 #: inc/customizer-settings.php:34 inc/customizer-settings.php:238
@@ -654,11 +745,11 @@ msgstr ""
 msgid "Slider Items"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:238
+#: inc/elementor-widgets/travelfic-slider-hero.php:256
 msgid "Slider Opacity(%)"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:249
+#: inc/elementor-widgets/travelfic-slider-hero.php:267
 msgid "Slider Style"
 msgstr ""
 
@@ -686,6 +777,7 @@ msgstr ""
 msgid "Sticky Settings"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-cf7-form.php:154 
 #: inc/elementor-widgets/travelfic-destination.php:156
 msgid "Style"
 msgstr ""
@@ -694,7 +786,7 @@ msgstr ""
 msgid "Sub Title"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:286
+#: inc/elementor-widgets/travelfic-slider-hero.php:304
 msgid "Sub title"
 msgstr ""
 
@@ -718,7 +810,7 @@ msgstr ""
 msgid "Subscribe to "
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:302
+#: inc/elementor-widgets/travelfic-slider-hero.php:320
 msgid "Subtitle Color"
 msgstr ""
 
@@ -726,15 +818,15 @@ msgstr ""
 msgid "Suffix"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:453
-msgid "Tab"
-msgstr ""
-
-#: inc/elementor-widgets/travelfic-slider-hero.php:480
+#: inc/elementor-widgets/travelfic-slider-hero.php:544
 msgid "Tab Background"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:469
+#: inc/elementor-widgets/travelfic-slider-hero.php:596
+msgid "Tab Border Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:533
 msgid "Tab Color"
 msgstr ""
 
@@ -746,13 +838,17 @@ msgstr ""
 msgid "Testimonials List"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-slider-hero.php:381 
-#: inc/elementor-widgets/travelfic-slider-hero.php:414
+#: inc/elementor-widgets/travelfic-slider-hero.php:399 
+#: inc/elementor-widgets/travelfic-slider-hero.php:432
 msgid "Text Color"
 msgstr ""
 
 #: inc/customizer/customizer-class.php:112
 msgid "Text Transform"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:27
+msgid "TFT CF7 Forms"
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-section-heading.php:27 
@@ -804,42 +900,35 @@ msgstr ""
 msgid "This is a Page Template Width."
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-latest-news.php:347 
-#: inc/elementor-widgets/travelfic-testimonials.php:247
-msgid "Titile"
-msgstr ""
-
 #: inc/elementor-widgets/travelfic-destination.php:174 
 #: inc/elementor-widgets/travelfic-icon-with-text.php:131 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:349 
+#: inc/elementor-widgets/travelfic-icon-with-text.php:367 
 #: inc/elementor-widgets/travelfic-latest-news.php:164 
 #: inc/elementor-widgets/travelfic-latest-news.php:284 
+#: inc/elementor-widgets/travelfic-latest-news.php:347 
 #: inc/elementor-widgets/travelfic-popular-tours.php:134 
-#: inc/elementor-widgets/travelfic-popular-tours.php:190 
+#: inc/elementor-widgets/travelfic-popular-tours.php:188 
 #: inc/elementor-widgets/travelfic-section-heading.php:103 
 #: inc/elementor-widgets/travelfic-section-heading.php:178 
-#: inc/elementor-widgets/travelfic-slider-hero.php:257 
-#: inc/elementor-widgets/travelfic-team.php:257
+#: inc/elementor-widgets/travelfic-slider-hero.php:275 
+#: inc/elementor-widgets/travelfic-team.php:257 
+#: inc/elementor-widgets/travelfic-testimonials.php:247
 msgid "Title"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:365 
+#: inc/elementor-widgets/travelfic-icon-with-text.php:383 
 #: inc/elementor-widgets/travelfic-section-heading.php:194 
-#: inc/elementor-widgets/travelfic-slider-hero.php:275 
+#: inc/elementor-widgets/travelfic-slider-hero.php:293 
 #: inc/elementor-widgets/travelfic-testimonials.php:264 
 #: inc/elementor-widgets/travelfic-testimonials.php:368
 msgid "Title Color"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-icon-with-text.php:376
+#: inc/elementor-widgets/travelfic-icon-with-text.php:394
 msgid "Title Color Hover"
 msgstr ""
 
-#: inc/elementor-widgets/travelfic-testimonials.php:216
-msgid "Title Space Bellow"
-msgstr ""
-
-#: inc/elementor-widgets/travelfic-icon-with-text.php:359
+#: inc/elementor-widgets/travelfic-icon-with-text.php:377
 msgid "Title Style"
 msgstr ""
 
@@ -849,12 +938,6 @@ msgstr ""
 
 #: inc/elementor-widgets/travelfic-section-heading.php:257
 msgid "Title Suffix Color"
-msgstr ""
-
-#. Description of the plugin
-msgid ""
-"Toolkit for travelfic Theme which containing widgets and some extra "
-"functions."
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-slider-hero.php:101
@@ -869,7 +952,7 @@ msgstr ""
 msgid "Tours"
 msgstr ""
 
-#: inc/elementor-widgets.php:106
+#: inc/elementor-widgets.php:107
 msgid "Travelfic Addons"
 msgstr ""
 
@@ -877,9 +960,18 @@ msgstr ""
 msgid "Travelfic Toolkit"
 msgstr ""
 
-#: travelfic-toolkit.php:113 travelfic-toolkit.php:128
+#. Description of the plugin
+msgid ""
+"Travelfic Toolkit allows you to add extra functionality to the Travelfic "
+"WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel "
+"area etc. This toolkit improves the overall design and performance of your "
+"hotel or travel booking website developed using the Travelfic theme."
+msgstr ""
+
+#. %s is replaced with "theme name & link"
+#: travelfic-toolkit.php:121 travelfic-toolkit.php:140
 #, php-format
-msgid "Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated."
+msgid "Travelfic Toolkit requires %s to be activated."
 msgstr ""
 
 #: inc/elementor-widgets/travelfic-slider-hero.php:106
@@ -903,17 +995,19 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+#: inc/elementor-widgets/travelfic-cf7-form.php:171 
+#: inc/elementor-widgets/travelfic-cf7-form.php:259 
 #: inc/elementor-widgets/travelfic-latest-news.php:293 
 #: inc/elementor-widgets/travelfic-latest-news.php:320 
-#: inc/elementor-widgets/travelfic-popular-tours.php:200 
-#: inc/elementor-widgets/travelfic-popular-tours.php:227 
-#: inc/elementor-widgets/travelfic-popular-tours.php:254 
+#: inc/elementor-widgets/travelfic-popular-tours.php:198 
+#: inc/elementor-widgets/travelfic-popular-tours.php:225 
+#: inc/elementor-widgets/travelfic-popular-tours.php:252 
 #: inc/elementor-widgets/travelfic-section-heading.php:187 
 #: inc/elementor-widgets/travelfic-section-heading.php:213 
 #: inc/elementor-widgets/travelfic-section-heading.php:250 
-#: inc/elementor-widgets/travelfic-slider-hero.php:268 
-#: inc/elementor-widgets/travelfic-slider-hero.php:296 
-#: inc/elementor-widgets/travelfic-slider-hero.php:534 
+#: inc/elementor-widgets/travelfic-slider-hero.php:286 
+#: inc/elementor-widgets/travelfic-slider-hero.php:314 
+#: inc/elementor-widgets/travelfic-slider-hero.php:697 
 #: inc/elementor-widgets/travelfic-team.php:267 
 #: inc/elementor-widgets/travelfic-team.php:294 
 #: inc/elementor-widgets/travelfic-team.php:321 

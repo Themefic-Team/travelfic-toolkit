@@ -9,8 +9,7 @@
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.14.1
- * Elementor Pro tested up to: 3.14.1
+ * Elementor tested up to: 3.16.4
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
