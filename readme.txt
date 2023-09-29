@@ -1,5 +1,5 @@
 === Travelfic Toolkit ===
-Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
+Contributors: themefic
 Tags: tour-booking, tour-operator, travel, travel-booking, tour, travel-agency, hotel-booking, reservation, hotel, apartments, villa, hostel, wp-travel-engine, wp-travel, wp-hotel-booking, wp-tour-plugin, booking.com, agoda.com, airbnb, travel-itinerary, woocommerce-accommodation-bookings
 Requires at least: 5.4
 Tested up to: 6.3
