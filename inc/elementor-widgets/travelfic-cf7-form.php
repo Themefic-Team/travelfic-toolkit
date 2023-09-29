@@ -358,7 +358,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
         $selected_form = $settings['selected_form']; ?>
             <div class="tft-cf7-form-wrapper"> <?php 
                 if (!empty($selected_form)) {
-                    echo do_shortcode('[contact-form-7 id="' . $selected_form . '"]');
+                    echo do_shortcode('[contact-form-7 id="' . esc_attr($selected_form) . '"]');
                 } ?>
             </div> 
         <?php

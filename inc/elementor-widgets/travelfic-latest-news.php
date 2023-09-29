@@ -400,13 +400,13 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 
 		<style>
 			.tft-latest-posts .tft-post-thumbnail a::before {
-				background: linear-gradient(360deg, <?php echo esc_html( $settings['news_item_card_gradient_1'] ); ?> -9.6%, <?php echo esc_html( $settings['news_item_card_gradient_2'] ); ?> 109.78%);
+				background: linear-gradient(360deg, <?php echo esc_attr( $settings['news_item_card_gradient_1'] ); ?> -9.6%, <?php echo esc_attr( $settings['news_item_card_gradient_2'] ); ?> 109.78%);
 			}
 			.tft-latest-posts .tft-post-thumbnail a:hover::before  {
-				background: linear-gradient(360deg, <?php echo esc_html( $settings['news_item_card_gradient_1_hover'] ); ?> -9.6%, <?php echo esc_html( $settings['news_item_card_gradient_2_hover'] ); ?> 109.78%);
+				background: linear-gradient(360deg, <?php echo esc_attr( $settings['news_item_card_gradient_1_hover'] ); ?> -9.6%, <?php echo esc_attr( $settings['news_item_card_gradient_2_hover'] ); ?> 109.78%);
 			}
 			.tft-latest-posts .tft-post-thumbnail img{
-				border-radius: <?php echo esc_html( $settings['news_card_radius'] ); ?>px;
+				border-radius: <?php echo esc_attr( $settings['news_card_radius'] ); ?>px;
 			}
 		</style>
 

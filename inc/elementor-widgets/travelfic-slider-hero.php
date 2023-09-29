@@ -916,7 +916,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 			<?php if ( $settings['search_box_switcher'] == 'yes' ): ?>
 				<div class="tft-search-box">
 					<div class="tft-search-box-inner">
-						<?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ]' ); ?>
+						<?php echo do_shortcode( '[tf_search_form  type="' . esc_attr($type) . '" ]' ); ?>
 					</div>
 				</div>
 			<?php endif;?>
