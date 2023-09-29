@@ -168,6 +168,7 @@
   background-color: #f15d30;
   border: none;
   cursor: pointer;
+  min-height: 55px;
 }
 
 .tft-search-box input,
