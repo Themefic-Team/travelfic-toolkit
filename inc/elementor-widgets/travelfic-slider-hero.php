@@ -867,7 +867,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 		if ( $settings['hero_slider_list'] ) {?>
 			<!-- Slider Hero section -->
 			<div class="hero--slider-wrapper"> <!-- tft-customizer-typography -->
-				<?php $rand_number = rand(6,16);?>
+				<?php $rand_number = wp_rand(100,99999999);?>
 				<div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>">
 					<?php foreach ( $settings['hero_slider_list'] as $item ): ?>
 						<div class="tft-hero-single-item">

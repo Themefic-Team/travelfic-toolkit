@@ -86,13 +86,13 @@ require_once dirname( __FILE__ ) . '/inc/functions.php';
  */
 
 function travelfic_toolkit_enqueue_customizer_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css' );
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css', array(), '1.0.0' );
     wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer.js', array( 'jquery', 'customize-controls' ), '1.0.0', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'travelfic_toolkit_enqueue_customizer_scripts' );
 
 function travelfic_toolkit_enqueue_customizer_preview_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css' );
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css', array(), '1.0.0' );
 }
 add_action( 'customize_preview_init', 'travelfic_toolkit_enqueue_customizer_preview_scripts' );
 
@@ -115,8 +115,12 @@ if ( !function_exists( 'is_travelfic_active' ) ) {
     function is_travelfic_active() {
         ?>
 		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-				<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
+			<p>
+                <?php
+                /* translators: %s is replaced with "theme name & link" */
+                printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
+            </p>
+            <p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
 		</div>
 	<?php
 }
@@ -130,7 +134,11 @@ if ( !function_exists( 'is_travelfic_install' ) ) {
     function is_travelfic_install() {
         ?>
 		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
+			<p>
+                <?php 
+                /* translators: %s is replaced with "theme name & link" */
+                printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
+            </p>
 			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"> <?php echo esc_html__( 'Install Now', 'travelfic-toolkit');?> </a></p>
 		</div>
 	<?php
