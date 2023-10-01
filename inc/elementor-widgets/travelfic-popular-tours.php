@@ -139,17 +139,15 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 			]
 		);
 
-		
 		$this->add_control(
-			'post_items',
-			[
-				'label' => __('Item Per page', 'travelfic-toolkit'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => '6',
-				'placeholder' => '3',
-			]
-		);
-
+            'post_items',
+            [
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'label'       => __( 'Item Per page', 'travelfic-toolkit' ),
+                'placeholder' => __( '4', 'travelfic-toolkit' ),
+                'default'     => 4,
+            ]
+        );
 		// Order
 		$this->add_control(
 			'post_order',
@@ -402,10 +400,10 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 												if ( $pricing_rule == 'person' ) {
 													if( ! empty( $adult_pricing ) ){ ?>
 														<span class="tft-content"> <?php echo esc_html__( 'from ', 'travelfic-toolkit') ?> </span>
-														<span class="tft-pricing"><?php echo get_woocommerce_currency_symbol(). esc_html( $adult_pricing ); ?></span>
+														<span class="tft-pricing"><?php echo esc_html(wc_price( $adult_pricing )); ?></span>
 													<?php }
 												} else { ?>
-													<span class="tft-pricing"> <?php echo get_woocommerce_currency_symbol() . esc_html( $group_pricing ); ?> </span> 
+													<span class="tft-pricing"> <?php echo esc_html(wc_price( $group_pricing )); ?> </span> 
 												<?php }
 											?>
 										</div>

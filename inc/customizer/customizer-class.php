@@ -131,7 +131,7 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
                     <?php
                     if ('select' === $field['type']) {
                         ?>
-                        <select <?php $this->link($field_id); ?> data-customize-setting-link="<?php echo $field_id; ?>">
+                        <select <?php $this->link($field_id); ?> data-customize-setting-link="<?php echo esc_attr($field_id); ?>">
                             <?php
                             foreach ($field['options'] as $option_value => $option_label) {
                                 printf(
@@ -146,7 +146,7 @@ class Travelfic_Toolkit_typography_Control extends WP_Customize_Control {
                         <?php
                     } else {
                         ?>
-                        <input type="number" <?php $this->link($field_id); ?> data-customize-setting-link="<?php echo $field_id; ?>" value="<?php echo esc_attr($value); ?>">
+                        <input type="number" <?php $this->link($field_id); ?> data-customize-setting-link="<?php echo esc_attr($field_id); ?>" value="<?php echo esc_attr($value); ?>">
                         <?php
                     }
                     ?>

@@ -377,9 +377,12 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 					<?php foreach ($settings['members_list'] as $item) : ?>
 						<div class="tft-single-member tft-card-default">
 							<div class="team-members-inner tft-flex align-center">
+								<?php 
+								if(!empty($item['member_img']['url'])){ ?>
 								<div class="member_img">
 									<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
 								</div>
+								<?php } ?>
 								<div class="member-details">
 									<h3 class="tft-title"> <?php echo esc_html($item['member_name']); ?> </h3>
 									<p class="tft-subtitle"><?php echo esc_html($item['member_designation']); ?></p>

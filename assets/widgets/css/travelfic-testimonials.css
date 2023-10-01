@@ -1,6 +1,9 @@
 .tft-testimonials-selector .slick-prev,
 .tft-testimonials-selector .slick-next {
   top: -50px;
+  background-color: #fff;
+  border: 1px solid #1D2A3B33;
+  color: #F15D30;
 }
 .tft-testimonials-selector .slick-prev {
   left: 90%;
@@ -8,6 +11,9 @@
 .tft-testimonials-selector .slick-next {
   right: 0px;
 }
+
+
+
 .tft-testimonials-selector .tft-testimonials-inner {
   background: #fff;
   box-shadow: 1px 10px 20px rgba(29, 42, 59, 0.05);

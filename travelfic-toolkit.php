@@ -4,14 +4,14 @@
  * Plugin URI: https://themefic.com/
  * Description: Travelfic Toolkit allows you to add extra functionality to the Travelfic WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel area etc. This toolkit improves the overall design and performance of your hotel or travel booking website developed using the Travelfic theme.
  * Author: themefic
+ * Version: 1.0.0
+ * Tested up to: 6.3
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.14.1
- * Elementor Pro tested up to: 3.14.1
+ * Elementor tested up to: 3.16.4
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Version: 1.0.0
  */
 
 // don't load directly
@@ -85,13 +85,13 @@ require_once dirname( __FILE__ ) . '/inc/functions.php';
  */
 
 function travelfic_toolkit_enqueue_customizer_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css' );
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css', array(), '1.0.0' );
     wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer.js', array( 'jquery', 'customize-controls' ), '1.0.0', true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'travelfic_toolkit_enqueue_customizer_scripts' );
 
 function travelfic_toolkit_enqueue_customizer_preview_scripts() {
-    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css' );
+    wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css', array(), '1.0.0' );
 }
 add_action( 'customize_preview_init', 'travelfic_toolkit_enqueue_customizer_preview_scripts' );
 
@@ -114,8 +114,12 @@ if ( !function_exists( 'is_travelfic_active' ) ) {
     function is_travelfic_active() {
         ?>
 		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-				<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php __( 'Active Now', 'travelfic-toolkit' );?></a></p>
+			<p>
+                <?php
+                /* translators: %s is replaced with "theme name & link" */
+                printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
+            </p>
+            <p><a class="install-now button" href="<?php echo esc_url( admin_url( '/themes.php' ) ); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
 		</div>
 	<?php
 }
@@ -129,8 +133,12 @@ if ( !function_exists( 'is_travelfic_install' ) ) {
     function is_travelfic_install() {
         ?>
 		<div id="message" class="error">
-			<p><?php printf( __( 'Travelfic Toolkit requires %1$s Travelfic Theme %2$s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">', '</a></strong>' );?></p>
-			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"><?php __( 'Install Now', 'travelfic-toolkit' );?></a></p>
+			<p>
+                <?php 
+                /* translators: %s is replaced with "theme name & link" */
+                printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
+            </p>
+			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"> <?php echo esc_html__( 'Install Now', 'travelfic-toolkit');?> </a></p>
 		</div>
 	<?php
 }

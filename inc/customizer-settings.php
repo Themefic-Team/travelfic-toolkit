@@ -23,7 +23,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Header Tab Selection Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_tab_select', array(
         'default'           => 'settings',
-        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_radio',
         "transport" => "refresh",
     ));
 
@@ -43,7 +43,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
         'default'           => 'design1',
-        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_radio',
         "transport" => "refresh",
     ));
 
@@ -62,7 +62,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Header Layout Selection Start*/
 
     $wp_customize->add_setting( $travelfic_toolkit_prefix .'header_width', array(
-        'sanitize_callback' => 'travelfic_sanitize_select',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_select',
         'default' => 'default',
       ) );
       
@@ -117,7 +117,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
             'line-height'      => '24',
             'text-transform' => 'capitalize',
         ),
-        'sanitize_callback' => 'travelfic_sanitize_typography'
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_typography'
     ));
     $wp_customize->add_control(new Travelfic_Toolkit_typography_Control(
         $wp_customize,
@@ -166,7 +166,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
             'line-height'      => '24',
             'text-transform' => 'capitalize',
         ),
-        'sanitize_callback' => 'travelfic_sanitize_typography'
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_typography'
     ));
     $wp_customize->add_control(new Travelfic_Toolkit_typography_Control(
         $wp_customize,
@@ -227,7 +227,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Footer Tab Selection Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_tab_select', array(
         'default'           => 'settings',
-        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_radio',
         "transport" => "refresh",
     ));
 
@@ -247,7 +247,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_design_select', array(
         'default'           => 'design1',
-        "sanitize_callback" => "travelfic_kit_sanitize_radio",
+        "sanitize_callback" => "travelfic_toolkit_sanitize_radio",
     ));
 
     $wp_customize->add_control(new Travelfic_Toolkit_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_design_select', array(
@@ -263,7 +263,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Footer Layout Selection Start*/
 
     $wp_customize->add_setting( $travelfic_toolkit_prefix .'footer_width', array(
-        'sanitize_callback' => 'travelfic_sanitize_select',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_select',
         'default' => 'default',
       ) );
       
@@ -284,7 +284,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Page Layout Selection Start*/
 
     $wp_customize->add_setting( $travelfic_toolkit_prefix .'page_width', array(
-        'sanitize_callback' => 'travelfic_sanitize_select',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_select',
         'default' => 'default',
     ) );
     
@@ -304,7 +304,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Typography Sanitization Start */
 
-    function travelfic_sanitize_typography($value) {
+    function travelfic_toolkit_sanitize_typography($value) {
         $sanitized_value = array();
 
         $sanitized_value['line-height'] = absint($value['line-height']);
@@ -318,7 +318,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     /* Template Width Sanitization Start */
 
-    function travelfic_sanitize_select( $input, $setting ) {
+    function travelfic_toolkit_sanitize_select( $input, $setting ) {
         $input = sanitize_key( $input );
         $choices = $setting->manager->get_control( $setting->id )->choices;
         return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
@@ -329,7 +329,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     
     /* Travelfic Radio Sanitization Start */
 
-    function travelfic_kit_sanitize_radio( $input, $setting ){
+    function travelfic_toolkit_sanitize_radio( $input, $setting ){
 
         //input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
         $input = sanitize_key($input);
