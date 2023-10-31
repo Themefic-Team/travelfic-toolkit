@@ -1,4 +1,7 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
+
 // Travelfic Header 
 
 add_filter('travelfic_header', 'travelfic_toolkit_header_callback', 11);

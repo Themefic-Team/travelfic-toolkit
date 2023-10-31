@@ -30,10 +30,10 @@ function travelfic_toolkit_settings() {
     if ( $theme_folder->exists() ) {
         $theme = wp_get_theme();
         if ( $theme->get( 'Name' ) !== 'Travelfic' ) {
-            add_action( 'admin_notices', 'is_travelfic_active' );
+            add_action( 'admin_notices', 'travelfic_active' );
         }
     } else {
-        add_action( 'admin_notices', 'is_travelfic_install' );
+        add_action( 'admin_notices', 'travelfic_install' );
     }
 }
 add_action( 'admin_init', 'travelfic_toolkit_settings' );
@@ -110,8 +110,8 @@ function travelfic_toolkit_front_page_script() {
  *    Admin Notice If Travelfic Not Active
  */
 
-if ( !function_exists( 'is_travelfic_active' ) ) {
-    function is_travelfic_active() {
+if ( !function_exists( 'travelfic_active' ) ) {
+    function travelfic_active() {
         ?>
 		<div id="message" class="error">
 			<p>
@@ -129,8 +129,8 @@ if ( !function_exists( 'is_travelfic_active' ) ) {
  *    Admin Notice If Travelfic Not Exits
  */
 
-if ( !function_exists( 'is_travelfic_install' ) ) {
-    function is_travelfic_install() {
+if ( !function_exists( 'travelfic_install' ) ) {
+    function travelfic_install() {
         ?>
 		<div id="message" class="error">
 			<p>
