@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
+
 // Image Select Class
 class Travelfic_Toolkit_Image_Select_Control extends WP_Customize_Control {
     public $type = 'image_select';
