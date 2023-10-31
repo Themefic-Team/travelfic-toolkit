@@ -1,4 +1,7 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
+
 //option function
 if( ! function_exists('travelfic_get_meta') ){
     function travelfic_get_meta( $id, $key, $attr=''){
