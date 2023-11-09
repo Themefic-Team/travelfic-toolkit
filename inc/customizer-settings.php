@@ -167,6 +167,32 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "text",
     ]);
 
+    // Register URL
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_registration_url", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_registration_url", [
+        "label" => __("Register URL", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "url",
+    ]);
+
+    // Login URL
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_login_url", [
+        "transport" => "refresh",
+        "sanitize_callback" => "esc_url_raw",
+        "default" => '#'
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_2_login_url", [
+        "label" => __("Login URL", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "url",
+    ]);
+
     /* ---------------------- */
     /* Design 2 Settings End  */
     /* ---------------------- */

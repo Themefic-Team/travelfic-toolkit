@@ -793,7 +793,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                                     <?php } ?>
                                 </div>
                                 <div class="tft-content-details">
-                                    <p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
+                                    <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
                                     <h3 class="tft-title">
                                         <?php 
                                         echo travelfic_character_limit(get_the_title(), 15);
@@ -839,7 +839,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 									<?php the_post_thumbnail( 'blog-thumb' ); ?>
 										<div class="tft-post-content-wrap">
 												<div class="tft-meta-wrap">
-													<p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
+													<p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
 												</div>
 											<div class="tft-post-title">
 												<h3 class="tft-title"><?php the_title(); ?></h3>

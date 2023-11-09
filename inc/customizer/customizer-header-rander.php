@@ -36,6 +36,8 @@ class Travelfic_Customizer_Header
         $design_2_topbar = get_theme_mod($travelfic_prefix.'header_design_2_topbar', '1');
         $design_2_phone = get_theme_mod($travelfic_prefix.'design_2_phone', '+88 00 123 456');
         $design_2_email = get_theme_mod($travelfic_prefix.'design_2_email', 'travello@outlook.com');
+        $design_2_registration_url = get_theme_mod($travelfic_prefix.'design_2_registration_url', '#');
+        $design_2_login_url = get_theme_mod($travelfic_prefix.'design_2_login_url', '#');
         $social_facebook = get_theme_mod($travelfic_prefix.'social_facebook', '#');
         $social_twitter = get_theme_mod($travelfic_prefix.'social_twitter', '#');
         $social_youtube = get_theme_mod($travelfic_prefix.'social_youtube', '#');
@@ -220,12 +222,16 @@ class Travelfic_Customizer_Header
                     </div>
                     <div class="tft-account">
                         <ul>
+                            <?php 
+                            if(!empty($design_2_registration_url)){ ?>
                             <li>
-                                <a href="#"><?php echo __("Register", "travelfic-toolkit"); ?></a>
+                                <a href="<?php echo esc_url( $design_2_registration_url ); ?>"><?php echo __("Register", "travelfic-toolkit"); ?></a>
                             </li>
+                            <?php } if(!empty($design_2_login_url)){ ?>
                             <li>
-                                <a href="#" class="login"><?php echo __("Login", "travelfic-toolkit"); ?></a>
+                                <a href="<?php echo esc_url( $design_2_login_url ); ?>" class="login"><?php echo __("Login", "travelfic-toolkit"); ?></a>
                             </li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
