@@ -1,5 +1,5 @@
 <?php
-class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
+class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
 
     /**
      * Get widget name.
@@ -11,7 +11,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
      * @return string Widget name.
      */
     public function get_name() {
-        return 'tft-destinations-tours';
+        return 'tft-locations-hotel';
     }
 
     /**
@@ -24,7 +24,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__( 'Travelfic Tour Destinations', 'travelfic-toolkit' );
+        return esc_html__( 'Travelfic Hotel Location', 'travelfic-toolkit' );
     }
 
     /**
@@ -76,7 +76,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
      * @return array Widget keywords.
      */
     public function get_keywords() {
-        return ['travelfic', 'destinaions', 'tours', 'tft'];
+        return ['travelfic', 'locations', 'hotels', 'tft'];
     }
 
     public function get_style_depends(){
@@ -94,16 +94,16 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
     protected function register_controls() {
         
         $this->start_controls_section(
-            'tour_destination',
+            'hotel_location',
             [
-                'label' => __( 'Tour Destinations', 'travelfic-toolkit' ),
+                'label' => __( 'Hotel Locations', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         // Tour
         $categories = get_categories( array(
-            'taxonomy'   => 'tour_destination',
+            'taxonomy'   => 'hotel_location',
             'hide_empty' => true,
         ) );
         $category_options = array();
@@ -112,7 +112,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
         }
         // Design
         $this->add_control(
-            'des_style',
+            'hotel_location_style',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'label'   => __( 'Design', 'travelfic-toolkit' ),
@@ -130,9 +130,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
 				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
-                'default' => __( 'Top destinations', 'travelfic-toolkit' ),
+                'default' => __( 'Top Hotel Locations', 'travelfic-toolkit' ),
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
 			]
 		);
@@ -142,18 +142,18 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
 				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
-                'default' => __( 'Destinations', 'travelfic-toolkit' ),
+                'default' => __( 'Locations', 'travelfic-toolkit' ),
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
 			]
 		);
 
-        // Tour
+        // Hotel
         $this->add_control(
-            'categories_id',
+            'hotel_categories_id',
             [
-                'label' => __( 'Select Tour Destinations', 'travelfic-toolkit' ),
+                'label' => __( 'Select Hotel Location', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'options' => $category_options,
                 'default' => '',
@@ -175,7 +175,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
 
         // 
         $this->add_control(
-            'cat_order',
+            'hotel_cat_order',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'label'   => __( 'Order', 'travelfic-toolkit' ),
@@ -206,7 +206,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -232,7 +232,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -246,7 +246,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -263,7 +263,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -277,7 +277,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -294,7 +294,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -308,7 +308,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -325,7 +325,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -339,7 +339,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -354,7 +354,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -368,7 +368,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'label'    => __( 'Destination List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a',
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-1'
                 ],
             ]
         );
@@ -382,7 +382,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-1'
                 ],
             ]
         );
@@ -396,7 +396,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-1'
                 ],
             ]
         );
@@ -407,7 +407,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'label'    => __( 'Destination Sub List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a',
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-1'
                 ],
             ]
         );
@@ -421,7 +421,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-1'
                 ],
             ]
         );
@@ -435,7 +435,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'hotel_location_style' => 'design-1', // Show this control only when hotel_location_style is 'design-1'
                 ],
             ]
         );
@@ -447,22 +447,22 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
     protected function render() {
         $settings = $this->get_settings_for_display();
 
-        if ( !empty( $settings['cat_order'] ) ) {
-            $order = $settings['cat_order'];
+        if ( !empty( $settings['hotel_cat_order'] ) ) {
+            $order = $settings['hotel_cat_order'];
         }
         if ( !empty( $settings['post_per_page'] ) ) {
             $post_per_page = $settings['post_per_page'];
         }
-        if ( !empty( $settings['categories_id'] ) ) {
-            $cat_ids = $settings['categories_id'];
+        if ( !empty( $settings['hotel_categories_id'] ) ) {
+            $cat_ids = $settings['hotel_categories_id'];
             intval( $cat_ids );
         } else {
-            $cat_ids = $settings['categories_id'];
+            $cat_ids = $settings['hotel_categories_id'];
         }
 
         // Design
-        if ( !empty( $settings['des_style'] ) ) {
-            $tft_design = $settings['des_style'];
+        if ( !empty( $settings['hotel_location_style'] ) ) {
+            $tft_design = $settings['hotel_location_style'];
         }
 
         if ( !empty( $settings['des_title'] ) ) {
@@ -472,7 +472,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             $tft_sec_subtitle = $settings['des_subtitle'];
         }
 
-        $taxonomy = 'tour_destination';
+        $taxonomy = 'hotel_location';
         $show_count = 0;
         $orderby = 'name';
         $pad_counts = 0;
@@ -503,7 +503,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             foreach ( $all_categories as $cat ) {
                 if ( $cat->category_parent == 0 ) {
                     $category_id = $cat->term_id;
-                    $meta = get_term_meta( $cat->term_id, 'tf_tour_destination', true );
+                    $meta = get_term_meta( $cat->term_id, 'tf_hotel_location', true );
                     if(isset($meta['image'])){
                         $cat_image = $meta['image'];
                     } else{
@@ -512,10 +512,10 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 ?>
                 <div class="tft-single-destination tft-col">
                     <div class="tft-destination-thumbnail tft-thumbnail">
-                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt=""></a>
+                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt=""></a>
                     </div>
                     <div class="tft-destination-title">
-                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'tour_destination' )) . '">' . esc_html($cat->name) . '</a>'; ?>
+                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'hotel_location' )) . '">' . esc_html($cat->name) . '</a>'; ?>
                     </div>
 
                     <div class="tft-destination-details">
@@ -536,7 +536,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                             $sub_cats = get_categories( $args2 );
                             if ( $sub_cats ) {
                                 foreach ( $sub_cats as $sub_category ) {?>
-                                    <li><a href="<?php echo esc_url(get_term_link( $sub_category->slug, 'tour_destination' )); ?>"><?php echo esc_html( $sub_category->name ); ?></a></li>
+                                    <li><a href="<?php echo esc_url(get_term_link( $sub_category->slug, 'hotel_location' )); ?>"><?php echo esc_html( $sub_category->name ); ?></a></li>
                                 <?php }
                             }?>
                             </ul>
@@ -562,12 +562,12 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
         </div>
         <?php $rand_number = rand(8,10);?>
         <div class="tft-destination-content">
-            <div class="tft-destination-slides tft-destination-slide-<?php echo $rand_number; ?>">
+            <div class="tft-destination-slides tft-locations-slide-<?php echo $rand_number; ?>">
                 <?php
                 foreach ( $all_categories as $cat ) {
                     if ( $cat->category_parent == 0 ) {
                         $category_id = $cat->term_id;
-                        $meta = get_term_meta( $cat->term_id, 'tf_tour_destination', true );
+                        $meta = get_term_meta( $cat->term_id, 'tf_hotel_location', true );
                         if(isset($meta['image'])){
                             $cat_image = $meta['image'];
                         } else{
@@ -578,7 +578,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
                             <div class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>">
+                                <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>">
                                     <?php echo __("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
@@ -600,7 +600,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             (function($) {
                 $(document).ready(function() {
                     //Your Code Inside
-                    $('.tft-destination-slide-<?php echo $rand_number; ?>').slick({
+                    $('.tft-locations-slide-<?php echo $rand_number; ?>').slick({
                         dots: false,
                         arrows: true,
                         infinite: true,

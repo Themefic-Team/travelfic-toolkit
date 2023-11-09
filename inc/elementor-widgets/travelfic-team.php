@@ -27,7 +27,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('TFT Team Members', 'travelfic-toolkit');
+		return esc_html__('Travelfic Team Members', 'travelfic-toolkit');
 	}
 
 	/**

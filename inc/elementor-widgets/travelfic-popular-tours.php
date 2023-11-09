@@ -27,7 +27,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('TFT Popular Tours', 'travelfic-toolkit');
+		return esc_html__('Travelfic Popular Tours', 'travelfic-toolkit');
 	}
 
 	/**

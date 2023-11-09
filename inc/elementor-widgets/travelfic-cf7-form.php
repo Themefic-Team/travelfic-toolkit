@@ -24,7 +24,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return esc_html__( 'TFT CF7 Forms', 'travelfic-toolkit' );
+        return esc_html__( 'Travelfic CF7 Forms', 'travelfic-toolkit' );
     }
 
     /**
@@ -80,7 +80,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
     }
 
     public function get_style_depends() {
-        return ['travelfic-cf7-form'];
+        return ['travelfic-toolkit-cf7-form'];
     }
 
     // Function to fetch Contact Form 7 forms
