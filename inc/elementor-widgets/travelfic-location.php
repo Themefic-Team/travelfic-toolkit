@@ -504,15 +504,15 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 if ( $cat->category_parent == 0 ) {
                     $category_id = $cat->term_id;
                     $meta = get_term_meta( $cat->term_id, 'tf_hotel_location', true );
-                    if(isset($meta['image'])){
+                    if(!empty($meta['image'])){
                         $cat_image = $meta['image'];
                     } else{
-                        $cat_image = '';
+                        $cat_image = TRAVELFIC_TOOLKIT_URL.'assets/app/img/feature-default.jpg';
                     }
                 ?>
                 <div class="tft-single-destination tft-col">
                     <div class="tft-destination-thumbnail tft-thumbnail">
-                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt=""></a>
+                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php _e("Hotel Location Image", "travelfic-toolkit"); ?>"></a>
                     </div>
                     <div class="tft-destination-title">
                         <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'hotel_location' )) . '">' . esc_html($cat->name) . '</a>'; ?>
@@ -568,10 +568,10 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                     if ( $cat->category_parent == 0 ) {
                         $category_id = $cat->term_id;
                         $meta = get_term_meta( $cat->term_id, 'tf_hotel_location', true );
-                        if(isset($meta['image'])){
+                        if(!empty($meta['image'])){
                             $cat_image = $meta['image'];
                         } else{
-                            $cat_image = '';
+                            $cat_image = TRAVELFIC_TOOLKIT_URL.'assets/app/img/feature-default.jpg';
                         }
                     ?>
                     <div class="tft-single-destination">
