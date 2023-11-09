@@ -167,6 +167,7 @@
   width: 96px !important;
   border-radius: 50%;
   margin: 0 auto;
+  object-fit: cover;
 }
 .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-review p{
   font-family: Josefin Sans;
