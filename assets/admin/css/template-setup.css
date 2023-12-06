@@ -24,3 +24,132 @@ body.admin_page_travelfic-template-list {
     max-width: 1280px;
     margin: auto;
 }
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2{
+    color: #000;
+    font-family: inherit;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 64px; /* 133.333% */
+    margin: 0;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter{
+    display: flex;
+    justify-content: space-between;
+    padding: 56px 0px;
+}
+
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form{
+    width: 390px;
+    border-radius: 4px;
+    border: 1px solid #666D74;
+    background: #FFF;
+    padding: 0px 16px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input{
+    border: 0px solid;
+    color: #666D74;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    width: 100%;
+    padding: 0px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input:focus{
+    outline: none;
+    box-shadow: none;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection select{
+    border-radius: 4px;
+    border: 1px solid #F0F2F4;
+    background: #FFF;
+    /* Button shadow */
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    height: 50px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img{
+    border-radius: 4px;
+    box-shadow: 0px 0px 30px 0px rgba(156, 156, 156, 0.60);
+    height: 440px;
+    overflow: hidden;
+    position: relative;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(29, 35, 39, 0.6);
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview a{
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #F0F2F4;
+    background: #FFF;
+    /* Button shadow */
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img img{
+    width: 100%;
+}
+
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn{
+    border-radius: 4px;
+    border: 1px solid #F0F2F4;
+    background: #FFF;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    text-align: center;
+    cursor: pointer;
+    margin-top: 41px;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn svg{
+    height: 14px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn:hover{
+    border-radius: 4px;
+    background: #1D2327;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    color: #F0F0F1;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn:hover svg path{
+    background: #F0F0F1;
+}
