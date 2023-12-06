@@ -1,0 +1,26 @@
+/* Travelfic Admin Template List */
+/* hide wp menu and admin bar */
+body.admin_page_travelfic-template-list {
+    background-color: #fff;
+}
+
+.admin_page_travelfic-template-list #wpcontent {
+    margin-left: 0 !important;
+}
+
+.admin_page_travelfic-template-list #wpbody-content, .admin_page_travelfic-template-list #wpcontent {
+    padding: 0;
+    overflow-x: hidden !important;
+    min-height: calc(100vh - 32px);
+}
+
+.admin_page_travelfic-template-list #adminmenumain, .admin_page_travelfic-template-list .error, .admin_page_travelfic-template-list .notice, .admin_page_travelfic-template-list .update-nag, .admin_page_travelfic-template-list .updated, .admin_page_travelfic-template-list div#wpadminbar, .admin_page_travelfic-template-list div#wpfooter {
+    display: none;
+}
+.travelfic-template-list-wrapper{
+    margin: auto;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container{
+    max-width: 1280px;
+    margin: auto;
+}

@@ -18,7 +18,11 @@ if( ! function_exists('travelfic_get_meta') ){
 if( ! function_exists('travelfic_character_limit') ){
     function travelfic_character_limit($str, $limit)
     {
-        return substr($str, 0, $limit) . '...';
+        if(strlen($str) > $limit ){
+        	return substr($str, 0, $limit) . '...';
+		}else{
+			return $str;
+		}
     }
 }
 
