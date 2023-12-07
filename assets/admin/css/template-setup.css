@@ -23,6 +23,8 @@ body.admin_page_travelfic-template-list {
 .travelfic-template-list-wrapper .travelfic-template-list-container{
     max-width: 1280px;
     margin: auto;
+    padding-bottom: 179px;
+    padding-top: 124px;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2{
     color: #000;
@@ -96,6 +98,11 @@ body.admin_page_travelfic-template-list {
     justify-content: center;
     align-items: center;
     background-color: rgba(29, 35, 39, 0.6);
+    opacity: 0;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img:hover .template-preview{
+    opacity: 1;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview a{
     text-decoration: none;
@@ -114,11 +121,16 @@ body.admin_page_travelfic-template-list {
     display: flex;
     gap: 8px;
     align-items: center;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview a:hover{
+    background: #1D2327;
+    color: #F0F0F1;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 32px;
+    gap: 56px 32px;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img img{
     width: 100%;
@@ -151,5 +163,5 @@ body.admin_page_travelfic-template-list {
     color: #F0F0F1;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn:hover svg path{
-    background: #F0F0F1;
+    stroke: #F0F0F1;
 }
