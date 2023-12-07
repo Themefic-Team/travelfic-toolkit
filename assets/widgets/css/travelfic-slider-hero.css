@@ -357,7 +357,25 @@
     width: 100% !important;
   }
 }
-
+@media all and (max-width: 1024px){
+  .tft-hero-design-2 .tft-hero-content{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media all and (max-width: 991px){
+  .tft-hero-design-2 .tft-hero-content h1{
+    font-size: 40px;
+  }
+}
+@media all and (max-width: 767px){
+  .tft-hero-design-2 .tft-hero-content h1{
+    font-size: 24px;
+  }
+  .tft-hero-design-2 .tft-hero-content select[name="tf-booking-form-tab-select"]{
+    color: #FDF9F3;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .tft-hero-slider-selector .slider__counter {
     left: 210px !important;

@@ -42,6 +42,11 @@
     margin-right: 30px;
     display: inline-block;
     cursor: pointer;
+    transition: .3s all ease;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header ul li:hover{
+    background-color: #917242 !important;
+    color: #FDF9F3 !important;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotel-header ul li.active{
     background-color: #B58E53;
@@ -60,6 +65,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: .3s all ease;
+}
+.tft-popular-hotels-wrapper .read-more a:hover{
+    background-color: #917242 !important;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items{
     display: grid;
@@ -155,6 +164,10 @@
     line-height: 150%;
     text-align: center;
     margin-top: 16px;
+    transition: .3s all ease;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a:hover{
+    background: #917242 !important;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul{
     display: grid;
@@ -215,9 +228,29 @@
     .tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
         width: auto;
     }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail{
+        height: 390px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header ul li{
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        margin-right: 15px !important;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a{
+        font-size: 12px !important;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li{
+        font-size: 14px !important;
+    }
 }
 @media all and (max-width: 767px){
     .tft-popular-hotels-wrapper .tft-popular-hotels-items{
         grid-template-columns: auto;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header h3{
+        font-size: 20px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header h6{
+        font-size: 8px;
     }
 }

@@ -142,6 +142,10 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      transition: .3s all ease;
+  }
+  .tft-design-2-blog .read-more a:hover{
+    background-color: #917242;
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item{
     background-color: #FDF9F3;

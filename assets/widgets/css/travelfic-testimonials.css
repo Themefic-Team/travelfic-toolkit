@@ -199,6 +199,23 @@
     font-size: 32px;
   }
 }
+@media all and (max-width: 991px){
+  .tft-testimonials-design-2 .tft-testimonials-sliders{
+    padding: 18px 20px 28px 20px !important
+  }
+  .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author-image img{
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author-image svg{
+    width: 24px !important;
+    top: -9px;
+  }
+  .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author-image {
+    position: relative;
+    top: -16px;
+  }
+}
 @media (max-width: 767px) {
   .tft-testimonials-selector .slick-prev,
   .tft-testimonials-selector .slick-next {
