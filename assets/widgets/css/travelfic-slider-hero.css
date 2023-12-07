@@ -290,11 +290,15 @@
   border: 0px;
   padding: 15px 30px;
   cursor: pointer;
+  transition: .3s all ease;
 }
 .tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button.active{
   background-color: #B58E53;
 }
-
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button:hover{
+  background-color: #917242;
+  color: #FDF9F3;
+}
 @media only screen and (max-width: 767px) {
   .tft-hero-design-2{
     height: auto;
