@@ -138,6 +138,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-cf7-form.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-about-us.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-hotels.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-apartment-location.php' );
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_SliderHero());
@@ -152,6 +153,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_CF7_Form() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_AboutUs() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Hotels() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_ApartmentLocation() );
 
     }
 }

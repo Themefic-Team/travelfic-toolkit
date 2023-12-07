@@ -27,7 +27,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('Travelfic Hotels & Tours', 'travelfic-toolkit');
+		return esc_html__('Travelfic Hotels, Tours & Apartment', 'travelfic-toolkit');
 	}
 
 	/**
@@ -84,7 +84,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['travelfic', 'popular', 'hotels', 'tours', 'tft'];
+		return ['travelfic', 'popular', 'hotels', 'tours', 'apartment', 'tft'];
 	}
 
 	public function get_style_depends()
@@ -105,7 +105,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'tft_hotels',
 			[
-				'label' => __('Hotels & Tours Section', 'travelfic-toolkit'),
+				'label' => __('Hotels, Tours & Apartment Section', 'travelfic-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -136,7 +136,8 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 				'default' => 'tf_hotel',
 				'options' => [
 					'tf_hotel' => __('Hotels', 'travelfic-toolkit'),
-					'tf_tours' => __('Tours', 'travelfic-toolkit')
+					'tf_tours' => __('Tours', 'travelfic-toolkit'),
+					'tf_apartment' => __('Apartments', 'travelfic-toolkit')
 				]
 			]
 		);
@@ -629,6 +630,10 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             $night         = ! empty( $option_meta['night'] ) ? $option_meta['night'] : false;
                             $night_count   = ! empty( $option_meta['night_count'] ) ? $option_meta['night_count'] : '';
                         }
+                        if("tf_apartment"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_apartment_opt' );
+                            $disable_review_sec = !empty($option_meta['disable-apartment-review']) ? $option_meta['disable-apartment-review'] : '';
+                        }
 						?>
 						<div class="tft-popular-single-item">
 							<div class="tft-popular-single-item-inner">
@@ -681,10 +686,13 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             <span>
                                                 <?php 
                                                 if("tf_hotel"==$settings['tf_post_type']){
-                                                    echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
+                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                                 }
                                                 if("tf_tours"==$settings['tf_post_type']){
-                                                    echo !empty($option_meta['location']['address']) ? esc_html( $option_meta['location']['address'] ) : $option_meta['text_location'];
+                                                    echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
+                                                }
+                                                if("tf_apartment"==$settings['tf_post_type']){
+                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                                 }
                                                 ?>
                                             </span>
@@ -768,6 +776,50 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 }
                                             }
                                             ?>
+                                            <?php 
+                                            if("tf_apartment"==$settings['tf_post_type']){
+                                                $amenitiess = !empty($option_meta['amenities']) ? tf_data_types($option_meta['amenities']) : '';
+                                                if(!empty($amenitiess)){
+                                                    $rm_features = [];
+                                                    foreach ( $amenitiess as $key => $apartment ) {
+                                                        //merge for each room's selected features
+                                                        if(!empty($apartment['feature'])){
+                                                            $rm_features[] = $apartment['feature'] ;
+                                                        }
+                                                    }
+                                                    if(!empty($rm_features)){ ?>
+                                                    <ul>
+                                                        <?php
+                                                        $tft_limit = 1;
+                                                        foreach ( $rm_features as $feature ) {
+                                                            if($tft_limit<7){
+                                                                $term = get_term_by( 'id', $feature, 'apartment_feature' );
+
+                                                                $apartment_f_meta = get_term_meta( $feature, 'tf_apartment_feature', true );
+                                                                if ( ! empty( $apartment_f_meta ) ) {
+                                                                    $apartment_icon_type = ! empty( $apartment_f_meta['icon-type'] ) ? $apartment_f_meta['icon-type'] : '';
+                                                                }
+                                                                if ( ! empty( $apartment_icon_type ) && $apartment_icon_type == 'fa' && !empty($apartment_f_meta['icon-fa']) ) {
+                                                                    $apartment_feature_icon = '<i class="' . $apartment_f_meta['icon-fa'] . '"></i>';
+                                                                } elseif ( ! empty( $apartment_icon_type ) && $apartment_icon_type == 'c' && ! empty( $apartment_f_meta['icon-c'] )) {
+                                                                    $apartment_feature_icon = '<img src="' . $apartment_f_meta['icon-c'] . '" style="min-width: ' . $apartment_f_meta['dimention'] . 'px; height: ' . $apartment_f_meta['dimention'] . 'px;" />';
+                                                                }
+                                                                ?>
+                                                                <li>
+                                                                    <?php echo ! empty( $apartment_feature_icon ) ? $apartment_feature_icon : ''; ?>
+                                                                    <?php echo $term->name; ?>
+                                                                </li>
+                                                            <?php
+                                                            }
+                                                        $tft_limit++;
+                                                        } ?>
+                                                    </ul>
+                                                    <?php
+                                                    }
+                                                }
+                                            }
+                                            ?>
+
                                             <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
                                         </div>
                                     </div>
@@ -795,7 +847,10 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
                             $tf_featured_post = !empty($option_meta['tour_as_featured']) ? $option_meta['tour_as_featured'] : '';
                         }
-                        
+                        if("tf_apartment"==$settings['tf_post_type']){
+                            $option_meta = travelfic_get_meta( get_the_ID(), 'tf_apartment_opt' );
+                            $disable_review_sec = !empty($option_meta['disable-apartment-review']) ? $option_meta['disable-apartment-review'] : '';
+                        }
                         if($tf_featured_post){
                             $featured_posts[] = get_the_ID();
                         }
