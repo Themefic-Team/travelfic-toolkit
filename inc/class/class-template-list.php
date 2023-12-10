@@ -66,7 +66,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		 */
 		public function travelfic_template_list_page() {
             $this->travelfic_template_list_step();
-            $this->tf_setup_step_one();
+            $this->travelfic_setup_theme();
 		}
 
 		/**
@@ -79,7 +79,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     <div class="travelfic-template-list-heading">
                         <h2><?php _e("What type of website are you building?", "travelfic-toolkit"); ?></h2>
                     </div>
-                    <div class="travelfic-template-filter">
+                    <!-- <div class="travelfic-template-filter">
                         <div class="travelfic-search-form">
                             <input type="text" placeholder="<?php _e("Search for templates", "travelfic-toolkit"); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <option value=""><?php _e("Apartment", "travelfic-toolkit"); ?></option>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="travelfic-templates-list">
 
@@ -236,49 +236,36 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		/**
 		 * Setup step one
 		 */
-		private function tf_setup_step_one() {
-			$tf_disable_services = ! empty( tfopt( 'disable-services' ) ) ? tfopt( 'disable-services' ) : '';
-			?>
-            <div class="tf-setup-step-container tf-setup-step-1 <?php echo self::$current_step == 'step_1' ? 'active' : ''; ?>" data-step="1">
-                <section class="tf-setup-step-layout">
-					<?php $this->tf_setup_wizard_steps_header() ?>
-                    <h1 class="tf-setup-step-title"><?php _e( 'Select your service type', 'tourfic' ) ?></h1>
-                    <p class="tf-setup-step-desc"><?php _e( '(You can choose any one or both)', 'tourfic' ) ?></p>
-                    <ul class="tf-select-service">
-                        <li>
-                            <input type="checkbox" id="tf-hotel" name="tf-services[]"
-                                   value="hotel" <?php echo empty( $tf_disable_services ) || ! in_array( 'hotel', $tf_disable_services ) ? esc_attr( 'checked' ) : ''; ?>/>
-                            <label for="tf-hotel">
-                                <img src="<?php echo TF_ASSETS_ADMIN_URL . 'images/hotel.png' ?>" alt="<?php esc_attr_e( 'Hotel', 'tourfic' ) ?>">
-                                <span><?php _e( 'Hotel', 'tourfic' ) ?></span>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="tf-tour" name="tf-services[]" value="tour" <?php echo empty( $tf_disable_services ) || ! in_array( 'tour', $tf_disable_services ) ? esc_attr( 'checked' ) : ''; ?>/>
-                            <label for="tf-tour">
-                                <img src="<?php echo TF_ASSETS_ADMIN_URL . 'images/tour.png' ?>" alt="<?php esc_attr_e( 'Tour', 'tourfic' ) ?>">
-                                <span><?php _e( 'Tour', 'tourfic' ) ?></span>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="tf-apartment" name="tf-services[]"
-                                   value="apartment" <?php echo empty( $tf_disable_services ) || ! in_array( 'apartment', $tf_disable_services ) ? esc_attr( 'checked' ) : ''; ?>/>
-                            <label for="tf-apartment">
-                                <img src="<?php echo TF_ASSETS_ADMIN_URL . 'images/apartment.png' ?>" alt="<?php esc_attr_e( 'Apartment', 'tourfic' ) ?>">
-                                <span><?php _e( 'Apartment', 'tourfic' ) ?></span>
-                            </label>
-                        </li>
-                    </ul>
-                </section>
-                <div class="tf-setup-action-btn-wrapper">
-                    <div></div>
-                    <div class="tf-setup-action-btn-next">
-                        <button type="button" class="tf-setup-skip-btn tf-link-btn"><?php _e( 'Skip this step', 'tourfic' ) ?></button>
-                        <button type="button" class="tf-setup-next-btn tf-admin-btn tf-btn-secondary"><?php _e( 'Next', 'tourfic' ) ?></button>
+		private function travelfic_setup_theme() {
+		?>
+        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper">
+            <div class="travelfic-template-import-container">
+                <div class="travelfic-template-list-heading">
+                    <h2><?php _e("Hey, we are building your website...", "travelfic-toolkit"); ?></h2>
+                </div>
+                <div class="travelfic-template-demo-importing">
+                    <div class="demo-importing-loader">
+                        <div class="loader-heading">
+                            <div class="loader-label">
+                            <?php _e("Installing required themes...", "travelfic-toolkit"); ?>
+                            </div>
+                            <div class="loader-precent">
+                                10%
+                            </div>
+                        </div>
+                        <div class="loader-bars">
+                            <div class="loader-precent-bar">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="importing-img">
+                        <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.png' ?>" alt="">
                     </div>
                 </div>
             </div>
-			<?php
+        </div>
+        <?php
 		}
 
 		/**

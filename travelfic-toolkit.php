@@ -131,6 +131,17 @@ function travelfic_toolkit_front_page_script() {
  add_action( 'admin_enqueue_scripts', 'travelfic_toolkit_admin_page_script' );
  function travelfic_toolkit_admin_page_script() {
      wp_enqueue_style( 'travelfic-toolkit-admin-css', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/template-setup.css', false, '1.0.0' );
+     wp_enqueue_script( 'travelfic-toolkit-admin-js', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/template-setup.js', array( 'jquery'), '1.0.0', true );
+     wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
+        array(
+            'travelfic_toolkit_nonce'   => wp_create_nonce( 'updates' ),
+            'ajax_url'       => admin_url( 'admin-ajax.php' ),
+            'installing'     => __( 'Plugin Installing & Activating...', 'travelfic' ),
+            'installed'      => __( 'Installed', 'travelfic' ),
+            'activated'      => __( 'Activated', 'travelfic' ),
+            'install_failed' => __( 'Install failed', 'travelfic' ),
+        )
+    );
  }
 
 /**
