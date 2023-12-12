@@ -37,11 +37,41 @@
         //     }
         // });
 
+        // $.ajax({
+        //     type: 'post',
+        //     url: travelfic_toolkit_script_params.ajax_url,
+        //     data: {
+        //         action: 'travelfic-customizer-settings-import',
+        //         _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+        //     },
+        //     success: function(response1) {
+        //         console.log(response1);
+        //     },
+        //     error: function(error) {
+        //         console.log(error);
+        //     }
+        // });
+
+        // $.ajax({
+        //     type: 'post',
+        //     url: travelfic_toolkit_script_params.ajax_url,
+        //     data: {
+        //         action: 'travelfic-customizer-hotel-import',
+        //         _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+        //     },
+        //     success: function(response1) {
+        //         console.log(response1);
+        //     },
+        //     error: function(error) {
+        //         console.log(error);
+        //     }
+        // });
+
         $.ajax({
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'travelfic-customizer-settings-import',
+                action: 'travelfic-customizer-tour-import',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response1) {
