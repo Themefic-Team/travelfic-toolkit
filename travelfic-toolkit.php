@@ -20,6 +20,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
+define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.0' );
 
 /**
@@ -96,6 +97,10 @@ require_once dirname( __FILE__ ) . '/inc/functions.php';
 if(is_admin()){
 	if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-template-list.php' ) ) {
 		require_once dirname( __FILE__ ) . '/inc/class/class-template-list.php';
+	}
+
+    if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-importer.php' ) ) {
+		require_once dirname( __FILE__ ) . '/inc/class/class-importer.php';
 	}
 }
 /**

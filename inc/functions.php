@@ -89,4 +89,5 @@ function install_activate_plugin_demo_import_callback() {
     }
 
     wp_die();
+
 }
