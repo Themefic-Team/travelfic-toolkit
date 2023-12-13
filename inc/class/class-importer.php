@@ -27,6 +27,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_ajax_travelfic-customizer-settings-import', array( $this, 'prepare_travelfic_customizer_settings' ) );
 			add_action( 'wp_ajax_travelfic-customizer-hotel-import', array( $this, 'prepare_travelfic_hotel_imports' ) );
 			add_action( 'wp_ajax_travelfic-customizer-tour-import', array( $this, 'prepare_travelfic_tour_imports' ) );
+			add_action( 'wp_ajax_travelfic-customizer-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
 		}
 
 		/**
@@ -56,9 +57,98 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             if (file_exists($customizers_files)) {
                 $imported_data = file_get_contents($customizers_files);
                 $imported_data = json_decode( $imported_data, true );
-                // var_dump($imported_data);
                 foreach ($imported_data as $key => $value) {
                     set_theme_mod($key, $value);
+                }
+                die();
+            }
+		}
+
+        /**
+		 * Tourfic Customizer Settings
+		 */
+		public function prepare_travelfic_pages_imports() {
+            
+            // $response = wp_remote_get( 'https://websitedemos.net/love-nature-fse/wp-json/wp/v2/pages/282' );
+
+			// if ( is_wp_error( $response ) ) {
+			// 	wp_send_json_error( wp_remote_retrieve_body( $response ) );
+			// }
+
+			// $body = wp_remote_retrieve_body( $response );
+			// $data = json_decode( $body, true );
+            // $meta    = json_decode( $data['post-meta']['_elementor_data'], true );
+            // // tf_var_dump($data);
+            // tf_var_dump($data);
+
+            $customizers_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/pages.json';
+            if (file_exists($customizers_files)) {
+                $imported_data = file_get_contents($customizers_files);
+                $imported_data = json_decode( $imported_data, true );
+                foreach($imported_data as $page){
+                    $title = $page['title'];
+                    $content = $page['content'];
+                    $pages_images = $page['media_urls'];
+                    $media_urls = explode(", ", $pages_images);
+                    $update_media_url = [];
+                    foreach($media_urls as $media){
+                        if(!empty($media)){
+                            // Download the image file
+                            $page_image_data = file_get_contents( $media );
+                            
+                            // Create a unique filename for the image
+                            $page_filename   = basename( $media );
+                            $page_upload_dir = wp_upload_dir();
+                            $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+                    
+                            // Save the image file to the uploads directory
+                            file_put_contents( $page_image_path, $page_image_data );
+                            
+                            if (file_exists($page_image_path)) {
+                                // Create the attachment for the uploaded image
+                                $page_attachment = array(
+                                    'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                                    'post_mime_type' => 'image/jpeg',
+                                    'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                                    'post_content'   => '',
+                                    'post_status'    => 'inherit'
+                                );
+                                // Insert the attachment
+                                $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+                    
+                                // Include the necessary file for media_handle_sideload().
+                                require_once(ABSPATH . 'wp-admin/includes/image.php');
+                    
+                                // Generate the attachment metadata
+                                $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
+                                wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
+                    
+                                $update_media_url[$media] = wp_get_attachment_url($page_attachment_id);
+                            }
+                        }
+                    }
+                    // // Create a new page programmatically
+                    // $new_page = array(
+                    //     'post_title' => $title,
+                    //     'post_content' => $content,
+                    //     'post_status' => 'publish',
+                    //     'post_type' => 'page'
+                    // );
+
+                    // // Insert the page into the database
+                    // $new_page_id = wp_insert_post($new_page);
+
+                    // update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
+                    // update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
+                    // update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
+                    // update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
+                    // update_post_meta($new_page_id, 'tft-pmb-background-img', $page['tft-pmb-background-img']);
+                    // update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
+                    // update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
+                    // update_post_meta($new_page_id, '_elementor_data', $page['_elementor_data']);
+                    // update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
+                    // update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                    // update_post_meta($new_page_id, '_elementor_css', $page['_elementor_css']);
                 }
                 die();
             }
