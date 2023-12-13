@@ -568,38 +568,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             require_once ABSPATH . 'wp-includes/post.php';
                         }
 
-                        //update only when update existing is checked
-                        if( ! empty( $update_existing ) && $update_existing == 'on' ){
-                            if( $post_id ){
-                                $post_data = array(
-                                    'ID'           => $post_id,
-                                    'post_title'   => $post_title,
-                                    'post_content' => $post_content,
-                                    'post_status'  => 'publish',
-                                    'post_author'  => 1,
-                                    'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
-                                );
-                                wp_update_post( $post_data ); 
+                        // Create an array to store the post data for the current row
+                        $post_data = array(
+                            'post_type'    => 'tf_hotel',
+                            'post_title'   => $post_title,
+                            'post_content' => $post_content,
+                            'post_status'  => 'publish',
+                            'post_author'  => 1,
+                            'post_date'    => $post_date,
+                            'meta_input'   => $post_meta,
+                            'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
+                        );
 
-                                //insert post meta
-                                update_post_meta( $post_id, 'tf_hotels_opt', $post_meta['tf_hotels_opt'] );
-                            }
-                        }else{
-                            // Create an array to store the post data for the current row
-                            $post_data = array(
-                                'post_type'    => 'tf_hotel',
-                                'post_title'   => $post_title,
-                                'post_content' => $post_content,
-                                'post_status'  => 'publish',
-                                'post_author'  => 1,
-                                'post_date'    => $post_date,
-                                'meta_input'   => $post_meta,
-                                'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
-                            );
-
-                            $post_id = wp_insert_post( $post_data );
-
-                        }
+                        $post_id = wp_insert_post( $post_data );
 
                         // Assign taxonomies to the post
                         if (!empty($taxonomies)) {
@@ -709,8 +690,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 'id',
                 'post_title',
                 'slug',
-                'thumbnail',
                 'post_content',
+                'thumbnail',
                 'adult_price',
                 'child_price',
                 'infant_price',
@@ -838,8 +819,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 array_shift( $csv_data );
                 $post_meta     = array();
         
-                $post_meta           = array();
-                $total_row           = count( $csv_data );
                 foreach ( $csv_data as $row_index => $row ) {
                     $post_id      = '';
                     $post_title   = '';
@@ -980,7 +959,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         } 
                     }
         
-                    foreach ( $column_mapping as $column_index => $field ) {
+                    foreach ( $column_mapping_data as $column_index => $field ) {
                         if( $field == 'id' ){
                             $post_id = $row[$column_index];
                         }
@@ -1284,38 +1263,20 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     if ( ! function_exists( 'post_exists' ) ) {
                         require_once ABSPATH . 'wp-includes/post.php';
                     }
-        
-                    //update only when update existing is checked
-                    if( ! empty( $update_existing ) && $update_existing == 'on' ){
-                        if( $post_id ){
-        
-                            $post_data = array(
-                                'ID'           => $post_id,
-                                'post_title'   => $post_title,
-                                'post_content' => $post_content,
-                                'post_status'  => 'publish',
-                                'post_author'  => 1,
-                                'meta_input'   => $post_meta,
-                                'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
-                            );
-                            wp_update_post( $post_data ); 
-                        }
-                    }else{
-                        // Create an array to store the post data for the current row
-                        $post_data = array(
-                            'post_type'    => 'tf_tours',
-                            'post_title'   => $post_title,
-                            'post_content' => $post_content,
-                            'post_status'  => 'publish',
-                            'post_author'  => 1,
-                            'post_date'    => $post_date,
-                            'meta_input'   => $post_meta,
-                            'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
-                        );
-        
-                        $post_id = wp_insert_post( $post_data );
-        
-                    }
+                   
+                    // Create an array to store the post data for the current row
+                    $post_data = array(
+                        'post_type'    => 'tf_tours',
+                        'post_title'   => $post_title,
+                        'post_content' => $post_content,
+                        'post_status'  => 'publish',
+                        'post_author'  => 1,
+                        'post_date'    => $post_date,
+                        'meta_input'   => $post_meta,
+                        'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
+                    );
+    
+                    $post_id = wp_insert_post( $post_data );
         
                     //assign or create taxonomies to the imported tours
                     if (!empty($taxonomies)) {
