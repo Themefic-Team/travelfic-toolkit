@@ -253,10 +253,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     <div class="demo-importing-loader">
                         <div class="loader-heading">
                             <div class="loader-label">
-                            <?php _e("Installing required themes...", "travelfic-toolkit"); ?>
+                            <?php _e("Installing required plugins...", "travelfic-toolkit"); ?>
                             </div>
                             <div class="loader-precent">
-                                10%
+                                0%
                             </div>
                         </div>
                         <div class="loader-bars">
