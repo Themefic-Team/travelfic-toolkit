@@ -2,6 +2,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
 
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 //option function
 if( ! function_exists('travelfic_get_meta') ){
     function travelfic_get_meta( $id, $key, $attr=''){
