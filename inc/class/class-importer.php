@@ -25,15 +25,17 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function __construct() {
 			add_action( 'wp_ajax_travelfic-global-settings-import', array( $this, 'prepare_travelfic_global_settings' ) );
 			add_action( 'wp_ajax_travelfic-customizer-settings-import', array( $this, 'prepare_travelfic_customizer_settings' ) );
-			add_action( 'wp_ajax_travelfic-customizer-hotel-import', array( $this, 'prepare_travelfic_hotel_imports' ) );
-			add_action( 'wp_ajax_travelfic-customizer-tour-import', array( $this, 'prepare_travelfic_tour_imports' ) );
-			add_action( 'wp_ajax_travelfic-customizer-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
+			add_action( 'wp_ajax_travelfic-demo-hotel-import', array( $this, 'prepare_travelfic_hotel_imports' ) );
+			add_action( 'wp_ajax_travelfic-demo-tour-import', array( $this, 'prepare_travelfic_tour_imports' ) );
+			add_action( 'wp_ajax_travelfic-demo-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
 		}
 
 		/**
 		 * Tourfic Global Settings
 		 */
 		public function prepare_travelfic_global_settings() {
+            check_ajax_referer('updates', '_ajax_nonce');
+
             $settings_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/settings.json';
             if (file_exists($settings_files)) {
                 $imported_data = file_get_contents($settings_files);
@@ -52,6 +54,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             // // Output or use the retrieved data
             // var_dump(json_encode($customizer_data));
+            check_ajax_referer('updates', '_ajax_nonce');
 
             $customizers_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/customizer.json';
             if (file_exists($customizers_files)) {
@@ -80,6 +83,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             // $meta    = json_decode( $data['post-meta']['_elementor_data'], true );
             // // tf_var_dump($data);
             // tf_var_dump($data);
+
+            check_ajax_referer('updates', '_ajax_nonce');
 
             $pages_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/pages.json';
             if (file_exists($pages_files)) {
@@ -196,6 +201,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Hotel importer Settings
 		 */
 		public function prepare_travelfic_hotel_imports() {
+
+            check_ajax_referer('updates', '_ajax_nonce');
 
             $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/hotel-data.csv';
             if (file_exists($dummy_hotels_files)) {
@@ -813,6 +820,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_tour_imports() {
 
+            check_ajax_referer('updates', '_ajax_nonce');
+            
             $dummy_tours_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/tour-data.csv';
             $dummy_tours_fields = array(
                 'id',

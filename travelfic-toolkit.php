@@ -186,3 +186,14 @@ if ( !function_exists( 'travelfic_install' ) ) {
 	<?php
     }
 }
+
+/**
+ *    Admin See Template Action
+*/
+
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'travelfic_toolkit_template_list');
+function travelfic_toolkit_template_list( $links ) {
+    $link = sprintf( "<a href='%s' style='color:#2271b1;'>%s</a>", admin_url( 'admin.php?page=travelfic-template-list'), __( 'See Library', 'travelfic-toolkit' ) );
+    array_push( $links, $link );
+    return $links;
+}
