@@ -271,6 +271,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     <div class="importing-img">
                         <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.png' ?>" alt="">
                     </div>
+                    <div class="importing-success">
+                        <h4><?php _e("This theme was built by @themefic. It's a really impressive feat!", "travelfic-toolkit"); ?></h4>
+                        <a href="<?php echo site_url(); ?>" target="_blank"><?php _e("Visit you website", "travelfic-toolkit"); ?></a>
+                    </div>
                 </div>
             </div>
         </div>
