@@ -273,7 +273,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     </div>
                     <div class="importing-success">
                         <h4><?php _e("This theme was built by @themefic. It's a really impressive feat!", "travelfic-toolkit"); ?></h4>
-                        <a href="<?php echo site_url(); ?>" target="_blank"><?php _e("Visit you website", "travelfic-toolkit"); ?></a>
+                        <a href="<?php echo site_url(); ?>" target="_blank">
+                            <?php _e("Visit your website", "travelfic-toolkit"); ?>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+                            <path d="M9.33268 10.6666C8.99555 10.9943 7.66602 11.8665 7.66602 12.3333M9.33268 14C8.99555 13.6723 7.66602 12.8001 7.66602 12.3333M7.66602 12.3333L12.9993 12.3333" stroke="#F0F0F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.33398 14.6666H6.15217C3.97803 14.6666 2.89096 14.6666 2.13603 14.1347C1.91973 13.9823 1.72771 13.8016 1.56579 13.598C1.00065 12.8875 1.00065 11.8644 1.00065 9.81814V8.12117C1.00065 6.14572 1.00065 5.158 1.31328 4.36913C1.81586 3.10091 2.87874 2.10055 4.22623 1.62753C5.0644 1.33329 6.11386 1.33329 8.21277 1.33329C9.41215 1.33329 10.0118 1.33329 10.4908 1.50143C11.2608 1.77173 11.8682 2.34336 12.1553 3.06805C12.334 3.51884 12.334 4.08325 12.334 5.21208V8.66663" stroke="#F0F0F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M0.999349 8C0.999349 6.7727 1.99427 5.77778 3.22157 5.77778C3.66543 5.77778 4.18871 5.85555 4.62026 5.73992C5.00369 5.63718 5.30319 5.33768 5.40593 4.95424C5.52157 4.52269 5.44379 3.99941 5.44379 3.55556C5.44379 2.32826 6.43872 1.33333 7.66602 1.33333" stroke="#F0F0F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                     </div>
                 </div>
             </div>

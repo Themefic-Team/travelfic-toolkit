@@ -215,7 +215,10 @@ body.admin_page_travelfic-template-list {
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 125% */
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 .travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-img img{
     margin: 0 auto;
