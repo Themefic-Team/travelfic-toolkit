@@ -512,10 +512,10 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                 ?>
                 <div class="tft-single-destination tft-col">
                     <div class="tft-destination-thumbnail tft-thumbnail">
-                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartments_locations' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php _e("Tour Destination Image", "travelfic-toolkit"); ?>"></a>
+                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php _e("Tour Destination Image", "travelfic-toolkit"); ?>"></a>
                     </div>
                     <div class="tft-destination-title">
-                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'apartments_locations' )) . '">' . esc_html($cat->name) . '</a>'; ?>
+                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'apartment_location' )) . '">' . esc_html($cat->name) . '</a>'; ?>
                     </div>
 
                     <div class="tft-destination-details">
@@ -578,7 +578,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
                             <div class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartments_locations' )); ?>">
+                                <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>">
                                     <?php echo __("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">

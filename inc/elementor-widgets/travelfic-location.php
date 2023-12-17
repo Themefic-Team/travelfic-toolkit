@@ -609,8 +609,8 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         slidesToShow: 3,
                         slidesToScroll: 1,
                         centerMode: true,
-                        prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa-solid fa-arrow-left-long'></i></i></button>",
-            	        nextArrow:"<button type='button' class='slick-next pull-right'><i class='fa-solid fa-arrow-right-long'></i></button>",
+                        prevArrow:'<button type="button" class="slick-prev pull-left"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M7.82843 11.0009H44V13.0009H7.82843L13.1924 18.3648L11.7782 19.779L4 12.0009L11.7782 4.22266L13.1924 5.63687L7.82843 11.0009Z" fill="#B58E53"/></svg></button>',
+            	        nextArrow:'<button type="button" class="slick-next pull-right"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M40.1716 11.0009H4V13.0009H40.1716L34.8076 18.3648L36.2218 19.779L44 12.0009L36.2218 4.22266L34.8076 5.63687L40.1716 11.0009Z" fill="#B58E53"/></svg></button>',
                         responsive: [
                             {
                                 breakpoint: 1024,

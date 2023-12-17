@@ -1257,7 +1257,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 					}
 				}(jQuery));
 			</script>
-		<?php } } ?>
-		<?php do_action( 'slider_style', esc_html($rand_number) );
+		<?php 
+        do_action( 'slider_style', esc_html($rand_number) );
+        }
+        }
     }
 }

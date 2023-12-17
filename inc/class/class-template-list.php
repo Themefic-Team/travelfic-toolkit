@@ -122,7 +122,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     </a>
                                 </div>
                             </div>
-                            <div class="template-import-btn">
+                            <div class="template-import-btn" data-template="hotel" data-design="1">
                                 <?php _e("Import demo 1", "travelfic-toolkit"); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
                                 <path d="M9.83268 10.6665C9.49555 10.9942 8.16602 11.8664 8.16602 12.3332M9.83268 13.9998C9.49555 13.6722 8.16602 12.8 8.16602 12.3332M8.16602 12.3332L13.4993 12.3332" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
