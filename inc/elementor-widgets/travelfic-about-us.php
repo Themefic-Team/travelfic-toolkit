@@ -388,7 +388,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     <?php } if(!empty($tft_sec_title)){ ?>
                         <h3><?php echo esc_html( $tft_sec_title ); ?></h3>
                     <?php } if(!empty($tft_sec_content)){ ?>
-                        <p><?php echo esc_html( $tft_sec_content ); ?></p>
+                        <p><?php echo $tft_sec_content; ?></p>
                     <?php } ?>
 
                     <div class="read-more">

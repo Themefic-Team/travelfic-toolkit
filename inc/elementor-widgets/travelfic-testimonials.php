@@ -1066,7 +1066,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                         autoplaySpeed: 2000,
                         slidesToShow: 3,
                         slidesToScroll: 1,
-                        centerMode: true,
+                        centerMode: <?php echo !empty($settings['testimonials_section']) && count($settings['testimonials_section']) > 3 ? 'true' : 'false' ?>,
                         responsive: [
                             {
                                 breakpoint: 1280,

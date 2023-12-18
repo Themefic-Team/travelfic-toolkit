@@ -571,7 +571,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         
 		?>
 
-		<div class="tft-popular-hotels-wrapper tft-customizer-typography tft-w-padding" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/hotel-lists-bg.png' ); ?>)">
+		<div class="tft-popular-hotels-wrapper tft-customizer-typography" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/hotel-lists-bg.png' ); ?>)">
             <div class="tft-popular-hotel-header">
                 <div class="tft-hotel-header">
                     <?php 
@@ -943,12 +943,15 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </svg>
                                             <span>
                                                 <?php 
-                                                    if("tf_hotel"==$settings['tf_post_type']){
-                                                        echo !empty($option_meta['map']['address']) ? esc_html( $option_meta['map']['address'] ) : $option_meta['address'];
-                                                    }
-                                                    if("tf_tours"==$settings['tf_post_type']){
-                                                        echo !empty($option_meta['location']['address']) ? esc_html( $option_meta['location']['address'] ) : $option_meta['text_location'];
-                                                    }
+                                                if("tf_hotel"==$settings['tf_post_type']){
+                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
+                                                }
+                                                if("tf_tours"==$settings['tf_post_type']){
+                                                    echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
+                                                }
+                                                if("tf_apartment"==$settings['tf_post_type']){
+                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
+                                                }
                                                 ?>
                                             </span>
                                         </p>
