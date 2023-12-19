@@ -350,6 +350,20 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             ]
         );
         $this->add_control(
+            'about_us_button_bg',
+            [
+                'label'     => __( 'Button Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a' => 'background: {{VALUE}};',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
+            ]
+        );
+        $this->add_control(
             'about_us_button_color',
             [
                 'label'     => __( 'Button Color', 'travelfic-toolkit' ),
@@ -358,6 +372,36 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a' => 'color: {{VALUE}};border-color: {{VALUE}};',
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a span svg path' => 'fill: {{VALUE}};',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'about_us_button_hover_bg',
+            [
+                'label'     => __( 'Button Hover Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#917242',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'background: {{VALUE}} !important;border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_button_hover_color',
+            [
+                'label'     => __( 'Button Hover Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a:hover span svg path' => 'fill: {{VALUE}};',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when des_style is 'design-1'

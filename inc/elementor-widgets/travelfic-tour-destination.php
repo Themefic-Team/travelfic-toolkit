@@ -295,20 +295,20 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 ],
             ]
         );
-        $this->add_control(
-            'tour_destination_card_opacity',
-            [
-                'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => 'rgba(0, 0, 0, .4)',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail::before {' => 'background-color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'des_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
-                ],
-            ]
-        );
+        // $this->add_control(
+        //     'tour_destination_card_opacity',
+        //     [
+        //         'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
+        //         'type'      => \Elementor\Controls_Manager::COLOR,
+        //         'default'   => 'rgba(0, 0, 0, .4)',
+        //         'selectors' => [
+        //             '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail::before {' => 'background-color: {{VALUE}}',
+        //         ],
+        //         'condition' => [
+        //             'des_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+        //         ],
+        //     ]
+        // );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -365,6 +365,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'default'   => '#FDF9F3',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span svg path' => 'stroke: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -380,6 +381,36 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'default'   => '#B58E53',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'single_destination_button_hov_color',
+            [
+                'label'     => __( 'Destination Button Hover Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span:hover svg path' => 'stroke: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'single_destination_button_hov_bg',
+            [
+                'label'     => __( 'Destination Button Hover Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#917242',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover' => 'background: {{VALUE}} !important',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
