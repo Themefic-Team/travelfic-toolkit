@@ -578,6 +578,28 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'popular_hotel_card_button_hover_color',
+            [
+                'label'     => __( 'Button Hover Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span:hover' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'popular_hotel_card_button_hover_bg',
+            [
+                'label'     => __( 'Button Hover Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#917242',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span:hover' => 'background: {{VALUE}} !important',
+                ],
+            ]
+        );
 
 	}
 

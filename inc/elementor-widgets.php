@@ -133,8 +133,8 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-latest-news.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-section-heading.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-team.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-destination.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-location.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-tour-destination.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-hotel-location.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-cf7-form.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-about-us.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-hotels.php' );
