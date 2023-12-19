@@ -281,6 +281,20 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 ],
             ]
         );
+        $this->add_responsive_control(
+            'single_destination_card_padding',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3, {{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'hotel_location_style' => 'design-2', // Show this control only when blog_style is 'design-1'
+                ],
+            ]
+        );
         $this->add_control(
             'single_destination_card_opacity',
             [

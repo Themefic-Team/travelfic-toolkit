@@ -418,6 +418,18 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'separator' => 'after',
             ]
         );
+        $this->add_responsive_control(
+            'popular_hotel_card_padding',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details' => 'left: {{LEFT}}{{UNIT}};right: {{RIGHT}}{{UNIT}};',
+                ],
+            ]
+        );
 		$this->add_control(
             'popular_hotel_card_color',
             [

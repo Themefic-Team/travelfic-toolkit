@@ -321,7 +321,20 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
+        $this->add_responsive_control(
+            'banner_inner_padding',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-hero-design-2 .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
         $this->add_control(
             'slider_title',
             [
@@ -359,7 +372,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ]
             ]
         );
-
+        
         $this->add_control(
             'title_color',
             [

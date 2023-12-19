@@ -544,7 +544,20 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
 
 
         // Design 2 Styles
-
+        $this->add_responsive_control(
+            'testimonials_2_card_padding',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when blog_style is 'design-1'
+                ],
+            ]
+        );
         $this->add_control(
             'testimonials_2_card_color',
             [

@@ -340,6 +340,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             ]
         );
         $this->add_control(
+            'blog_section_button_bg',
+            [
+                'label'     => __( 'Section Button Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
             'blog_section_button_color',
             [
                 'label'     => __( 'Section Button Color', 'travelfic-toolkit' ),
@@ -348,6 +362,35 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .tft-design-2-blog .read-more a' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .tft-design-2-blog .read-more a span svg path' => 'fill: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_button_hover_bg',
+            [
+                'label'     => __( 'Section Button Hover Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#917242',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a:hover' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_button_hover_color',
+            [
+                'label'     => __( 'Section Button Hover Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a:hover span svg path' => 'fill: {{VALUE}}',
                 ],
                 'condition' => [
                     'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
@@ -507,9 +550,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-title' => 'color: {{VALUE}}',
-                    'condition' => [
-                        'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
-                    ],
+                ],
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
                 ],
             ]
         );
@@ -591,6 +634,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
         );
 
         // Design 2 News Field
+        $this->add_responsive_control(
+            'news_design2_card_paddding',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item .tft-content-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-1'
+                ],
+            ]
+        );
         $this->add_control(
             'news_design2_overley',
             [
