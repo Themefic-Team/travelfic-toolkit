@@ -112,7 +112,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         }
         // Design
         $this->add_control(
-            'des_style',
+            'aprt_location_style',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
                 'label'   => __( 'Design', 'travelfic-toolkit' ),
@@ -132,7 +132,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
 				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
                 'default' => __( 'Next level of living', 'travelfic-toolkit' ),
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
 			]
 		);
@@ -144,7 +144,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
 				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
                 'default' => __( 'Destinations', 'travelfic-toolkit' ),
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
 			]
 		);
@@ -206,7 +206,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -232,7 +232,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -246,7 +246,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -263,7 +263,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -277,7 +277,21 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'single_destination_card_opacity',
+            [
+                'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => 'rgba(0, 0, 0, .4)',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2  .tft-single-destination .tft-destination-thumbnail::before {' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'aprt_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
             ]
         );
@@ -294,7 +308,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -308,7 +322,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -316,7 +330,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'single_destination_button_typo',
-                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a',
+                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span',
                 'label'    => __( 'Single Button Typography', 'travelfic-toolkit' ),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
@@ -325,7 +339,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ],
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -336,10 +350,10 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#FDF9F3',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -351,10 +365,10 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content a' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-content span' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
                 ],
             ]
         );
@@ -368,7 +382,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                 'label'    => __( 'Destination List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a',
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-1'
                 ],
             ]
         );
@@ -382,7 +396,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-1'
                 ],
             ]
         );
@@ -396,7 +410,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-1'
                 ],
             ]
         );
@@ -407,7 +421,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                 'label'    => __( 'Destination Sub List', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a',
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-1'
                 ],
             ]
         );
@@ -421,7 +435,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-1'
                 ],
             ]
         );
@@ -435,7 +449,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'aprt_location_style' => 'design-1', // Show this control only when aprt_location_style is 'design-1'
                 ],
             ]
         );
@@ -461,8 +475,8 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         }
 
         // Design
-        if ( !empty( $settings['des_style'] ) ) {
-            $tft_design = $settings['des_style'];
+        if ( !empty( $settings['aprt_location_style'] ) ) {
+            $tft_design = $settings['aprt_location_style'];
         }
 
         if ( !empty( $settings['des_title'] ) ) {
@@ -549,7 +563,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         </div>
     </div>
     <?php }elseif("design-2"==$tft_design){ ?>
-    <div class="tft-destination-design-2 tft-l-padding" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/destination-bg.png' ); ?>);">
+    <div class="tft-destination-design-2" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/destination-bg.png' ); ?>);">
         <div class="tft-destination-header">
             <?php 
             if(!empty($tft_sec_subtitle)){ ?>
@@ -562,7 +576,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         </div>
         <?php $rand_number = rand(8,10);?>
         <div class="tft-destination-content">
-            <div class="tft-destination-slides tft-destination-slide-<?php echo $rand_number; ?>">
+            <div class="tft-destination-slides tft-apart-destination-slide-<?php echo $rand_number; ?>">
                 <?php
                 foreach ( $all_categories as $cat ) {
                     if ( $cat->category_parent == 0 ) {
@@ -576,9 +590,9 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ?>
                     <div class="tft-single-destination">
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                            <div class="tft-destination-content">
+                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>">
+                                <span>
                                     <?php echo __("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
@@ -586,8 +600,8 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                                     <path id="Vector_2" d="M12.0003 11C12.0003 11 17.0002 7.31756 17.0002 5.99996C17.0003 4.68237 12.0002 1 12.0002 1" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </g>
                                     </svg>
-                                </a>
-                            </div>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 <?php } else{
@@ -600,7 +614,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
             (function($) {
                 $(document).ready(function() {
                     //Your Code Inside
-                    $('.tft-destination-slide-<?php echo $rand_number; ?>').slick({
+                    $('.tft-apart-destination-slide-<?php echo $rand_number; ?>').slick({
                         dots: false,
                         arrows: true,
                         infinite: true,
@@ -608,7 +622,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                         autoplaySpeed: 2000,
                         slidesToShow: 3,
                         slidesToScroll: 1,
-                        centerMode: true,
+                        centerMode: <?php echo !empty($all_categories) && count($all_categories) > 3 ? 'true' : 'false' ?>,
                         prevArrow:'<button type="button" class="slick-prev pull-left"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M7.82843 11.0009H44V13.0009H7.82843L13.1924 18.3648L11.7782 19.779L4 12.0009L11.7782 4.22266L13.1924 5.63687L7.82843 11.0009Z" fill="#B58E53"/></svg></button>',
             	        nextArrow:'<button type="button" class="slick-next pull-right"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M40.1716 11.0009H4V13.0009H40.1716L34.8076 18.3648L36.2218 19.779L44 12.0009L36.2218 4.22266L34.8076 5.63687L40.1716 11.0009Z" fill="#B58E53"/></svg></button>',
                         responsive: [

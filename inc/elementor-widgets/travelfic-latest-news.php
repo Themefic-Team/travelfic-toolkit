@@ -246,7 +246,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
+        $this->add_control(
+            'blog_section_bg',
+            [
+                'label'     => __( 'Section Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FAEEDC',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -578,7 +591,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
         );
 
         // Design 2 News Field
-
+        $this->add_control(
+            'news_design2_overley',
+            [
+                'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(238, 199, 140, 0.94)',
+                'selectors' => [
+                    '{{WRAPPER}} .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a .tft-content-details, .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details, .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details, .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a .tft-content-details' => 'background: {{VALUE}}',
+                    'condition' => [
+                        'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                    ],
+                ],
+            ]
+        );
         $this->add_control(
             'news_design2_title_head',
             [
@@ -753,7 +779,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
         }
 		if("design-2"==$design){
 	    ?>
-        <div class="tft-design-2-blog tft-w-padding">
+        <div class="tft-design-2-blog">
             <div class="tft-blog-header">
                 <div class="tft-news-header">
                     <?php 

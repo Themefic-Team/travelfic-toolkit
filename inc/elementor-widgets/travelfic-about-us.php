@@ -212,6 +212,23 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         );
         
         // Design 1 Styles start
+        $this->add_control(
+			'content_positon',
+			[
+				'label' => esc_html__( 'Content Position', 'travelfic-toolkit' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'start',
+				'options' => [
+					'start' => esc_html__( 'Start', 'travelfic-toolkit' ),
+					'center' => esc_html__( 'Center', 'travelfic-toolkit' ),
+					'end' => esc_html__( 'End', 'travelfic-toolkit' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content' => 'justify-content: {{VALUE}};',
+				],
+			]
+		);
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [

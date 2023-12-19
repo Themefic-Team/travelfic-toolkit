@@ -140,6 +140,20 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
 			]
 		);
 
+        $this->add_control(
+			'testimonial_bg',
+			[
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'label' => esc_html__( 'Testimonial Background', 'travelfic-toolkit' ),
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+                'default' => [
+                    'url' => TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-bg.png',
+                ],
+			]
+		);
+
         $repeater = new \Elementor\Repeater ();
         $repeater->add_control(
             'person_image', [
@@ -215,6 +229,20 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->add_control(
+            'tft_testimonial_section_bg',
+            [
+                'label'     => __( 'Section Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-testimonials-design-2' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+            ]
+        );      
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -924,7 +952,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
     if ( !empty( $settings['des_subtitle'] ) ) {
         $tft_sec_subtitle = $settings['des_subtitle'];
     }
-
+    if ( !empty( $settings['testimonial_bg'] ) ) {
+        $tft_testimonial_bg = $settings['testimonial_bg'];
+    }
     ?>
 
     <?php if ( $settings['testimonials_section'] && "design-1"==$tft_design ){ ?>
@@ -1017,7 +1047,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 <h3><?php echo esc_html($tft_sec_title); ?></h3>
                 <?php } ?>
             </div>
-            <div class="tft-testimonials-sliders" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-bg.png' ); ?>);">
+            <div class="tft-testimonials-sliders" style="background-image: url(<?php echo !empty($tft_testimonial_bg['url']) ? esc_url( $tft_testimonial_bg['url'] ) : ''; ?>);">
                 <div class="tft-testimonials-slides">
                     <?php if ( $settings['testimonials_section'] ) {
                     foreach ( $settings['testimonials_section'] as $item ) {?>
@@ -1081,6 +1111,14 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                                 settings: {
                                     slidesToShow: 1,
                                     slidesToScroll: 1
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    centerMode: false
                                 }
                             }
                         ]

@@ -150,7 +150,7 @@
   padding: 0px 48px 36px 48px;
   margin: 0;
 }
-.tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content a{
+.tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span{
   background-color: #B58E53;
   padding: 20px 48px;
   display: flex;
@@ -164,7 +164,7 @@
   transition: .3s all ease;
 }
 
-.tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content a:hover{
+.tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover{
   background: #917242 !important;
 }
 

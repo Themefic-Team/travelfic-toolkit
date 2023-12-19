@@ -224,4 +224,8 @@
   .tft-testimonials-selector .slick-prev {
     left: 75%;
   }
+  .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial{
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+  }
 }
