@@ -125,6 +125,19 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         );
         // Design 2 fields
         $this->add_control(
+			'location_section_bg',
+			[
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'label' => esc_html__( 'Section Background', 'travelfic-toolkit' ),
+                'condition' => [
+                    'aprt_location_style' => 'design-2', // Show this control only when aprt_location_style is 'design-2'
+                ],
+                'default' => [
+                    'url' => TRAVELFIC_TOOLKIT_URL.'assets/app/img/destination-bg.png',
+                ],
+			]
+		);
+        $this->add_control(
 			'des_title',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -295,20 +308,20 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                 ],
             ]
         );
-        // $this->add_control(
-        //     'apartment_destination_card_opacity',
-        //     [
-        //         'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
-        //         'type'      => \Elementor\Controls_Manager::COLOR,
-        //         'default'   => 'rgba(0, 0, 0, .4)',
-        //         'selectors' => [
-        //             '{{WRAPPER}} .tft-destination-design-2  .tft-single-destination .tft-destination-thumbnail::before {' => 'background-color: {{VALUE}}',
-        //         ],
-        //         'condition' => [
-        //             'aprt_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
-        //         ],
-        //     ]
-        // );
+        $this->add_control(
+            'apartment_destination_card_opacity',
+            [
+                'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => 'rgba(0, 0, 0, .4)',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-2  .tft-single-destination .tft-destination-thumbnail::before' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'aprt_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+                ],
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -531,7 +544,9 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         if ( !empty( $settings['des_subtitle'] ) ) {
             $tft_sec_subtitle = $settings['des_subtitle'];
         }
-
+        if ( !empty( $settings['location_section_bg'] ) ) {
+            $tft_location_section_bg = $settings['location_section_bg'];
+        }
         $taxonomy = 'apartment_location';
         $show_count = 0;
         $orderby = 'name';
@@ -609,7 +624,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         </div>
     </div>
     <?php }elseif("design-2"==$tft_design){ ?>
-    <div class="tft-destination-design-2" style="background-image: url(<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/destination-bg.png' ); ?>);">
+    <div class="tft-destination-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
         <div class="tft-destination-header">
             <?php 
             if(!empty($tft_sec_subtitle)){ ?>
