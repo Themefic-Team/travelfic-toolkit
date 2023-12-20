@@ -92,7 +92,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access protected
      */
     protected function register_controls() {
-        
+
         $this->start_controls_section(
             'tft-about-us',
             [
@@ -173,8 +173,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
 				'type' => \Elementor\Controls_Manager::WYSIWYG,
 				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
 				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
-                'default' => __( 'Welcome to VICTORIA, where comfort meets elegance. Personalized service and attention to detail ensure a truly exceptional stay. Stay in luxury, dine exquisitely, and relax in the spa. With us, you can create unforgettable memories. 
-                
+                'default' => __( 'Welcome to VICTORIA, where comfort meets elegance. Personalized service and attention to detail ensure a truly exceptional stay. Stay in luxury, dine exquisitely, and relax in the spa. With us, you can create unforgettable memories.
+
                 "Creating memorable moments is our passion. Welcome to our hotel, where comfort, elegance, and genuine hospitality meet."', 'travelfic-toolkit' ),
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -199,7 +199,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
 			]
 		);
 
-    
+
         $this->end_controls_section();
 
         // Style
@@ -210,7 +210,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        
+
         // Design 1 Styles start
         $this->add_control(
 			'content_positon',
@@ -411,7 +411,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
 
     }
 
-   
+
     protected function render() {
         $settings = $this->get_settings_for_display();
 
@@ -439,11 +439,11 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
     if("design-1"==$tft_design){
     ?>
 
-	<div class="tft-about-us-wrapper tft-customizer-typography tft-w-padding">
+	<div class="tft-about-us-wrapper tft-customizer-typography">
     	<div class="tft-about-us tft-row">
             <div class="tft-about-us-grid">
                 <div class="tft-about-us-content">
-                    <?php 
+                    <?php
                     if(!empty($tft_sec_subtitle)){ ?>
                         <h6><?php echo esc_html( $tft_sec_subtitle ); ?></h6>
                     <?php } if(!empty($tft_sec_title)){ ?>
@@ -464,7 +464,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     </div>
                 </div>
                 <div class="tft-about-us-image">
-                    <?php 
+                    <?php
                     if(!empty($tft_about_us_experience)){ ?>
                     <div class="years-of-experience">
                         <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/years-experience.png' ); ?>" alt="">
@@ -473,7 +473,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                         </div>
                     </div>
                     <?php } ?>
-                    <?php 
+                    <?php
                     if(!empty($tft_about_us_image['url'])){ ?>
                     <div class="tft-about-image">
                         <img src="<?php echo esc_url($tft_about_us_image['url']); ?>" alt="About Us Image">
@@ -484,7 +484,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         </div>
     </div>
     <?php } ?>
-    
+
 <?php
 }
 }
