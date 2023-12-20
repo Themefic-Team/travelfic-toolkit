@@ -223,6 +223,13 @@ class Travelfic_Customizer_Header
                     <div class="tft-account">
                         <ul>
                             <?php 
+                            if ( is_user_logged_in() ) {
+                            ?>
+                            <li>
+                                <a href="<?php echo site_url( 'my-account/' ); ?>" class="login"><?php echo __("Profile", "travelfic-toolkit"); ?></a>
+                            </li>
+                            <?php
+                            }else{
                             if(!empty($design_2_registration_url)){ ?>
                             <li>
                                 <a href="<?php echo esc_url( $design_2_registration_url ); ?>"><?php echo __("Register", "travelfic-toolkit"); ?></a>
@@ -231,7 +238,7 @@ class Travelfic_Customizer_Header
                             <li>
                                 <a href="<?php echo esc_url( $design_2_login_url ); ?>" class="login"><?php echo __("Login", "travelfic-toolkit"); ?></a>
                             </li>
-                            <?php } ?>
+                            <?php } } ?>
                         </ul>
                     </div>
                 </div>

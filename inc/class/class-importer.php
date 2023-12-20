@@ -28,6 +28,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_ajax_travelfic-demo-hotel-import', array( $this, 'prepare_travelfic_hotel_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-tour-import', array( $this, 'prepare_travelfic_tour_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
+			add_action( 'wp_ajax_travelfic-demo-widget-import', array( $this, 'prepare_travelfic_widgets_imports' ) );
+			add_action( 'wp_ajax_travelfic-demo-menu-import', array( $this, 'prepare_travelfic_menus_imports' ) );
 		}
 
 		/**
@@ -47,13 +49,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		}
 
         /**
-		 * Tourfic Customizer Settings
+		 * Tourfic Customizer Importer Settings
 		 */
 		public function prepare_travelfic_customizer_settings() {
-            // $customizer_data = get_theme_mods();
-
-            // // Output or use the retrieved data
-            // var_dump(json_encode($customizer_data));
             check_ajax_referer('updates', '_ajax_nonce');
 
             $customizers_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/customizer.json';
@@ -68,21 +66,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		}
 
         /**
-		 * Tourfic Customizer Settings
+		 * Tourfic Pages Importer Settings
 		 */
 		public function prepare_travelfic_pages_imports() {
-            
-            // $response = wp_remote_get( 'https://websitedemos.net/love-nature-fse/wp-json/wp/v2/pages/282' );
-
-			// if ( is_wp_error( $response ) ) {
-			// 	wp_send_json_error( wp_remote_retrieve_body( $response ) );
-			// }
-
-			// $body = wp_remote_retrieve_body( $response );
-			// $data = json_decode( $body, true );
-            // $meta    = json_decode( $data['post-meta']['_elementor_data'], true );
-            // // tf_var_dump($data);
-            // tf_var_dump($data);
 
             check_ajax_referer('updates', '_ajax_nonce');
 
@@ -180,6 +166,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                     // Insert the page into the database
                     $new_page_id = wp_insert_post($new_page);
+                    if(!empty($title) && "home-page"==$title){
+                        update_option( 'page_on_front', $new_page_id );
+                        update_option( 'show_on_front', 'page' );
+                    }
 
                     update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
                     update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
@@ -196,6 +186,186 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 die();
             }
 		}
+
+        /**
+		 * Tourfic Menu importer Settings
+		 */
+		public function prepare_travelfic_menus_imports() {
+            check_ajax_referer('updates', '_ajax_nonce');
+
+            $serialized_menu = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/menu.txt';
+            if (file_exists($serialized_menu)) {
+                $serialized_menu = file_get_contents($serialized_menu);
+                $menu_items = unserialize($serialized_menu);
+
+                $menu_name = 'Imported Menu';
+                $menu_id = wp_create_nav_menu($menu_name);
+                
+                if ($menu_id && !is_wp_error($menu_id)) {
+                    $location = 'primary_menu';
+                    $locations = get_theme_mod('nav_menu_locations');
+                    $locations[$location] = $menu_id;
+                    set_theme_mod('nav_menu_locations', $locations);
+                    if(!empty($menu_items)){
+                        foreach ($menu_items as $item) {
+                            $item_data['menu-item-object-id'] = (int) $item->object_id;
+                            $item_data['menu-item-object'] = $item->object;
+                            $item_data['menu-item-type'] = $item->type;
+                            $item_data['menu-item-title'] = $item->title;
+                            $item_data['menu-item-url'] = $item->url;
+                            $item_data['menu-item-status'] = 'publish';
+                            wp_update_nav_menu_item($menu_id, 0, $item_data);
+                        }
+                    }
+                    echo 'Menu imported successfully.';
+                } else {
+                    echo 'Error creating menu.';
+                }
+            }
+        }
+
+        /**
+		 * Tourfic Widget importer Settings
+		 */
+		public function prepare_travelfic_widgets_imports() {
+            check_ajax_referer('updates', '_ajax_nonce');
+
+            $widgets = [
+                "custom_html" => [2 => "on", 3 => "on"],
+                "tft_footer_info" => [4 => "on", 3 => "on"],
+                "text" => [3 => "on", 2 => "on"],
+                "tf_hotel_filter" => [4 => "on", 5 => "on"],
+                "tf_hotel_type_filter" => [2 => "on"],
+                "tf_activities_filter" => [3 => "on", 2 => "on"],
+                "tf_tour_feature_filter" => [3 => "on", 2 => "on"],
+                "tf_price_filters" => [7 => "on", 8 => "on", 3 => "on", 4 => "on", 5 => "on", 6 => "on"],
+                "tf_attraction_filter" => [2 => "on"],
+                "travelfic_recent_posts_widget" => [3 => "on"],
+                "block" => [7 => "on", 9 => "on", 12 => "on"],
+                "tf_similar_tours" => [2 => "on"]
+            ];
+            $import_file = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/widget.json';
+            
+            self::travelfic_toolkit_clear_widgets();
+    
+            $json_data = file_get_contents( $import_file );
+            $json_data = json_decode( $json_data, true );
+            $sidebar_data = $json_data[0];
+            $widget_data = $json_data[1];
+            foreach ( $sidebar_data as $title => $sidebar ) {
+                $count = count( $sidebar );
+                for ( $i = 0; $i < $count; $i++ ) {
+                    $widget = array( );
+                    $widget['type'] = trim( substr( $sidebar[$i], 0, strrpos( $sidebar[$i], '-' ) ) );
+                    $widget['type-index'] = trim( substr( $sidebar[$i], strrpos( $sidebar[$i], '-' ) + 1 ) );
+                    if ( !isset( $widgets[$widget['type']][$widget['type-index']] ) ) {
+                        unset( $sidebar_data[$title][$i] );
+                    }
+                }
+                $sidebar_data[$title] = array_values( $sidebar_data[$title] );
+            }
+    
+            foreach ( $widgets as $widget_title => $widget_value ) {
+                foreach ( $widget_value as $widget_key => $widget_value ) {
+                    $widgets[$widget_title][$widget_key] = $widget_data[$widget_title][$widget_key];
+                }
+            }
+    
+            $sidebar_data = array( array_filter( $sidebar_data ), $widgets );
+            $response['id'] = ( self::travelfic_toolkit_parse_import_data( $sidebar_data ) ) ? true : new WP_Error( 'widget_import_submit', 'Unknown Error' );
+    
+            $response = new WP_Ajax_Response( $response );
+            $response->send();
+        }
+
+        
+        public static function travelfic_toolkit_clear_widgets() {
+            $sidebars = wp_get_sidebars_widgets();
+            $inactive = isset($sidebars['wp_inactive_widgets']) ? $sidebars['wp_inactive_widgets'] : array();
+
+            unset($sidebars['wp_inactive_widgets']);
+
+            foreach ( $sidebars as $sidebar => $widgets ) {
+                $inactive = array_merge($inactive, $widgets);
+                $sidebars[$sidebar] = array();
+            }
+
+            $sidebars['wp_inactive_widgets'] = $inactive;
+            wp_set_sidebars_widgets( $sidebars );
+        }
+
+        public static function travelfic_toolkit_parse_import_data( $import_array ) {
+            $sidebars_data = $import_array[0];
+            $widget_data = $import_array[1];
+            $current_sidebars = get_option( 'sidebars_widgets' );
+            $new_widgets = array( );
+
+            foreach ( $sidebars_data as $import_sidebar => $import_widgets ) :
+
+                foreach ( $import_widgets as $import_widget ) :
+                    //if the sidebar exists
+                    if ( isset( $current_sidebars[$import_sidebar] ) ) :
+                        $title = trim( substr( $import_widget, 0, strrpos( $import_widget, '-' ) ) );
+                        $index = trim( substr( $import_widget, strrpos( $import_widget, '-' ) + 1 ) );
+                        $current_widget_data = get_option( 'widget_' . $title );
+                        $new_widget_name = self::travelfic_toolkit_get_new_widget_name( $title, $index );
+                        $new_index = trim( substr( $new_widget_name, strrpos( $new_widget_name, '-' ) + 1 ) );
+
+                        if ( !empty( $new_widgets[ $title ] ) && is_array( $new_widgets[$title] ) ) {
+                            while ( array_key_exists( $new_index, $new_widgets[$title] ) ) {
+                                $new_index++;
+                            }
+                        }
+                        $current_sidebars[$import_sidebar][] = $title . '-' . $new_index;
+                        if ( array_key_exists( $title, $new_widgets ) ) {
+                            $new_widgets[$title][$new_index] = $widget_data[$title][$index];
+                            $multiwidget = $new_widgets[$title]['_multiwidget'];
+                            unset( $new_widgets[$title]['_multiwidget'] );
+                            $new_widgets[$title]['_multiwidget'] = $multiwidget;
+                        } else {
+                            $current_widget_data[$new_index] = $widget_data[$title][$index];
+                            $current_multiwidget = $current_widget_data['_multiwidget'];
+                            $new_multiwidget = isset($widget_data[$title]['_multiwidget']) ? $widget_data[$title]['_multiwidget'] : false;
+                            $multiwidget = ($current_multiwidget != $new_multiwidget) ? $current_multiwidget : 1;
+                            unset( $current_widget_data['_multiwidget'] );
+                            $current_widget_data['_multiwidget'] = $multiwidget;
+                            $new_widgets[$title] = $current_widget_data;
+                        }
+
+                    endif;
+                endforeach;
+            endforeach;
+
+            if ( isset( $new_widgets ) && isset( $current_sidebars ) ) {
+                update_option( 'sidebars_widgets', $current_sidebars );
+
+                foreach ( $new_widgets as $title => $content ) {
+                    $content = apply_filters( 'widget_data_import', $content, $title );
+                    update_option( 'widget_' . $title, $content );
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public static function travelfic_toolkit_get_new_widget_name( $widget_name, $widget_index ) {
+            $current_sidebars = get_option( 'sidebars_widgets' );
+            $all_widget_array = array( );
+            foreach ( $current_sidebars as $sidebar => $widgets ) {
+                if ( !empty( $widgets ) && is_array( $widgets ) && $sidebar != 'wp_inactive_widgets' ) {
+                    foreach ( $widgets as $widget ) {
+                        $all_widget_array[] = $widget;
+                    }
+                }
+            }
+            while ( in_array( $widget_name . '-' . $widget_index, $all_widget_array ) ) {
+                $widget_index++;
+            }
+            $new_widget_name = $widget_name . '-' . $widget_index;
+            return $new_widget_name;
+        }
 
         /**
 		 * Tourfic Hotel importer Settings
