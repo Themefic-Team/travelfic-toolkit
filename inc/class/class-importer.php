@@ -38,10 +38,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_global_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
 
-            $settings_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/settings.json';
+            $settings_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/settings.json' );
             if (file_exists($settings_files)) {
-                $imported_data = file_get_contents($settings_files);
-                $imported_data = unserialize( $imported_data );
+                $imported_data = wp_remote_retrieve_body($settings_files);
+                $imported_data = json_decode( $imported_data, true );
                 update_option( 'tf_settings', $imported_data );
                 wp_send_json_success($imported_data);
                 die();
@@ -54,9 +54,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_customizer_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
 
-            $customizers_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/customizer.json';
+            $customizers_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/customizer.json' );
             if (file_exists($customizers_files)) {
-                $imported_data = file_get_contents($customizers_files);
+                $imported_data = wp_remote_retrieve_body($customizers_files);
                 $imported_data = json_decode( $imported_data, true );
                 foreach ($imported_data as $key => $value) {
                     set_theme_mod($key, $value);
@@ -72,9 +72,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
 
-            $pages_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/pages.json';
+            $pages_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/pages.json' );
             if (file_exists($pages_files)) {
-                $imported_data = file_get_contents($pages_files);
+                $imported_data = wp_remote_retrieve_body($pages_files);
                 $imported_data = json_decode( $imported_data, true );
                 foreach($imported_data as $page){
                     $title = !empty($page['title']) ? $page['title'] : '';
@@ -193,11 +193,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_menus_imports() {
             check_ajax_referer('updates', '_ajax_nonce');
 
-            $serialized_menu = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/menu.txt';
+            $serialized_menu = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/menu.txt' );
             if (file_exists($serialized_menu)) {
-                $serialized_menu = file_get_contents($serialized_menu);
+                $serialized_menu = wp_remote_retrieve_body($serialized_menu);
                 $menu_items = unserialize($serialized_menu);
-
                 $menu_name = 'Imported Menu';
                 $menu_id = wp_create_nav_menu($menu_name);
                 
@@ -229,6 +228,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_widgets_imports() {
             check_ajax_referer('updates', '_ajax_nonce');
+            
+            self::travelfic_toolkit_clear_widgets();
 
             $widgets = [
                 "custom_html" => [2 => "on", 3 => "on"],
@@ -244,12 +245,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 "block" => [7 => "on", 9 => "on", 12 => "on"],
                 "tf_similar_tours" => [2 => "on"]
             ];
-            $import_file = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/widget.json';
-            
-            self::travelfic_toolkit_clear_widgets();
-    
-            $json_data = file_get_contents( $import_file );
-            $json_data = json_decode( $json_data, true );
+            $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
+            $imported_data = wp_remote_retrieve_body($import_file);
+            $json_data = json_decode( $imported_data, true );
+
             $sidebar_data = $json_data[0];
             $widget_data = $json_data[1];
             foreach ( $sidebar_data as $title => $sidebar ) {
