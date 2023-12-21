@@ -182,12 +182,10 @@ $travelfic_design1_topbar_color = get_theme_mod($travelfic_kit_pre.'design_2_top
     .tft-design-2 .tft-top-header .tft-contact-info ul li {
         color: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
     }
-    .tft-design-2 .tft-top-header .tft-contact-info ul li svg,
-    .tft-design-2 .tft-top-header .tft-social-share ul li svg{
-        fill: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
-    }
     .tft-design-2 .tft-top-header .tft-contact-info ul li svg path,
-    .tft-design-2 .tft-top-header .tft-social-share ul li svg path{
+    .tft-design-2 .tft-top-header .tft-social-share ul li svg path,
+    .tft-design-2 .tft-top-header .tft-social-share ul li svg circle,
+    .tft-design-2 .tft-top-header .tft-social-share ul li svg ellipse{
 
         stroke: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
     }
