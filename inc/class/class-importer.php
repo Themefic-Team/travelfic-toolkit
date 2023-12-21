@@ -39,8 +39,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $settings_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/settings.json' );
-            if (file_exists($settings_files)) {
-                $imported_data = wp_remote_retrieve_body($settings_files);
+            $imported_data = wp_remote_retrieve_body($settings_files);
+            if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
                 update_option( 'tf_settings', $imported_data );
                 wp_send_json_success($imported_data);
@@ -55,8 +55,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $customizers_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/customizer.json' );
-            if (file_exists($customizers_files)) {
-                $imported_data = wp_remote_retrieve_body($customizers_files);
+            $imported_data = wp_remote_retrieve_body($customizers_files);
+            if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
                 foreach ($imported_data as $key => $value) {
                     set_theme_mod($key, $value);
@@ -73,8 +73,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $pages_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/pages.json' );
-            if (file_exists($pages_files)) {
-                $imported_data = wp_remote_retrieve_body($pages_files);
+            $imported_data = wp_remote_retrieve_body($pages_files);
+            if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
                 foreach($imported_data as $page){
                     $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
@@ -196,8 +196,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $serialized_menu = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/menu.txt' );
-            if (file_exists($serialized_menu)) {
-                $serialized_menu = wp_remote_retrieve_body($serialized_menu);
+            $serialized_menu = wp_remote_retrieve_body($serialized_menu);
+            if (!empty($serialized_menu)) {
                 $menu_items = unserialize($serialized_menu);
                 $menu_name = 'Imported Menu';
                 $menu_id = wp_create_nav_menu($menu_name);
