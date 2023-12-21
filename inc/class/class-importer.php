@@ -77,52 +77,54 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $imported_data = wp_remote_retrieve_body($pages_files);
                 $imported_data = json_decode( $imported_data, true );
                 foreach($imported_data as $page){
+                    $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
                     $title = !empty($page['title']) ? $page['title'] : '';
                     $content = !empty($page['content']) ? $page['content'] : '';
                     $elementor_content =  !empty($page['_elementor_data']) ? $page['_elementor_data'] : '';
                     $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
-                    $media_urls = explode(", ", $pages_images);
-                    $update_media_url = [];
-                    foreach($media_urls as $media){
-                        if(!empty($media)){
-                            // Download the image file
-                            $page_image_data = file_get_contents( $media );
-                            $page_filename   = basename( $media );
-                            $page_upload_dir = wp_upload_dir();
-                            $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
-                    
-                            // Save the image file to the uploads directory
-                            file_put_contents( $page_image_path, $page_image_data );
-                            
-                            if (file_exists($page_image_path)) {
-                                // Create the attachment for the uploaded image
-                                $page_attachment = array(
-                                    'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                    'post_mime_type' => 'image/jpeg',
-                                    'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
-                                    'post_content'   => '',
-                                    'post_status'    => 'inherit'
-                                );
-                                // Insert the attachment
-                                $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
-                    
-                                // Include the necessary file for media_handle_sideload().
-                                require_once(ABSPATH . 'wp-admin/includes/image.php');
-                    
-                                // Generate the attachment metadata
-                                $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
-                                wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
-                    
-                                $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
+                    if(!empty($pages_images)){
+                        $media_urls = explode(", ", $pages_images);
+                        $update_media_url = [];
+                        foreach($media_urls as $media){
+                            if(!empty($media)){
+                                // Download the image file
+                                $page_image_data = file_get_contents( $media );
+                                $page_filename   = basename( $media );
+                                $page_upload_dir = wp_upload_dir();
+                                $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+                        
+                                // Save the image file to the uploads directory
+                                file_put_contents( $page_image_path, $page_image_data );
+                                
+                                if (file_exists($page_image_path)) {
+                                    // Create the attachment for the uploaded image
+                                    $page_attachment = array(
+                                        'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                                        'post_mime_type' => 'image/jpeg',
+                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                                        'post_content'   => '',
+                                        'post_status'    => 'inherit'
+                                    );
+                                    // Insert the attachment
+                                    $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+                        
+                                    // Include the necessary file for media_handle_sideload().
+                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
+                        
+                                    // Generate the attachment metadata
+                                    $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
+                                    wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
+                        
+                                    $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
+                                }
                             }
                         }
+                        foreach ($update_media_url as $key => $value) {
+                            // Replace the keys in the string
+                            $elementor_content = str_replace($value, $key, $elementor_content);
+                        }
                     }
-                    foreach ($update_media_url as $key => $value) {
-                        // Replace the keys in the string
-                        $elementor_content = str_replace($value, $key, $elementor_content);
-                    }
-                    
                     if(!empty($tft_header_bg)){
                         // Download the image file
                         $page_image_data = file_get_contents( $tft_header_bg );
@@ -166,7 +168,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                     // Insert the page into the database
                     $new_page_id = wp_insert_post($new_page);
-                    if(!empty($title) && "home-page"==$title){
+                    if(!empty($is_front)){
                         update_option( 'page_on_front', $new_page_id );
                         update_option( 'show_on_front', 'page' );
                     }
@@ -211,7 +213,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             $item_data['menu-item-object'] = $item->object;
                             $item_data['menu-item-type'] = $item->type;
                             $item_data['menu-item-title'] = $item->title;
-                            $item_data['menu-item-url'] = $item->url;
+                            $item_data['menu-item-url'] = str_replace("https://hotelic.tourfic.site/",site_url(),$item->url);
                             $item_data['menu-item-status'] = 'publish';
                             wp_update_nav_menu_item($menu_id, 0, $item_data);
                         }
@@ -232,19 +234,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             self::travelfic_toolkit_clear_widgets();
 
             $widgets = [
-                "custom_html" => [2 => "on", 3 => "on"],
-                "tft_footer_info" => [4 => "on", 3 => "on"],
-                "text" => [3 => "on", 2 => "on"],
-                "tf_hotel_filter" => [4 => "on", 5 => "on"],
-                "tf_hotel_type_filter" => [2 => "on"],
-                "tf_activities_filter" => [3 => "on", 2 => "on"],
-                "tf_tour_feature_filter" => [3 => "on", 2 => "on"],
-                "tf_price_filters" => [7 => "on", 8 => "on", 3 => "on", 4 => "on", 5 => "on", 6 => "on"],
-                "tf_attraction_filter" => [2 => "on"],
-                "travelfic_recent_posts_widget" => [3 => "on"],
-                "block" => [7 => "on", 9 => "on", 12 => "on"],
-                "tf_similar_tours" => [2 => "on"]
+                "block" => [
+                    2 => "on",
+                    3 => "on",
+                    4 => "on",
+                    11 => "on",
+                    12 => "on",
+                    13 => "on",
+                    14 => "on",
+                    5 => "on",
+                    6 => "on"
+                ]
             ];
+
             $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
             $imported_data = wp_remote_retrieve_body($import_file);
             $json_data = json_decode( $imported_data, true );
