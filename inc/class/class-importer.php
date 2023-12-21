@@ -373,7 +373,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
 
-            $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/hotel-data.csv';
+            $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/hotel-data.csv';
             if (file_exists($dummy_hotels_files)) {
                 $dummy_hotel_fields = array(
                     'id',
@@ -991,7 +991,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
             
-            $dummy_tours_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/1/tour-data.csv';
+            $dummy_tours_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/tour-data.csv';
             $dummy_tours_fields = array(
                 'id',
                 'post_title',
