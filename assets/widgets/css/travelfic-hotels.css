@@ -159,7 +159,7 @@
     transition: max-height 0.4s ease; /* Transition for hover */
 }
 
-.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span{
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details{
     display: block;
     padding: 12px 32px;
     background-color: #B58E53;
@@ -172,7 +172,7 @@
     margin-top: 16px;
     transition: .3s all ease;
 }
-.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span:hover{
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover{
     background: #917242 !important;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul{

@@ -546,7 +546,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_hotel_card_button_typo',
-                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details',
                 'label'    => __( 'Button Typography', 'travelfic-toolkit' ),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
@@ -563,7 +563,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#FDF9F3',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -574,7 +574,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -585,7 +585,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#FDF9F3',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -596,7 +596,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#917242',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details > span:hover' => 'background: {{VALUE}} !important',
+                    '{{WRAPPER}} .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover' => 'background: {{VALUE}} !important',
                 ],
             ]
         );
@@ -737,190 +737,190 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 $tft_hotel_image = !empty(get_the_post_thumbnail_url( get_the_ID() )) ? esc_url( get_the_post_thumbnail_url( get_the_ID() ) ) : esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png');
                                 ?>
 								<a href="<?php echo esc_url( get_permalink() ); ?>" class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
-                                    <div class="tft-hotel-details">
-                                        <?php if ($comments && !$disable_review_sec == '1') { ?>
-                                            <div class="tft-ratings">
-                                                <span>
-                                                    <i class="fas fa-star"></i>
-                                                    <span>
-                                                        <?php echo esc_html(tf_total_avg_rating($comments)); ?>
-                                                    </span>
-                                                    out of <?php tf_based_on_text(count($comments)); ?>
-                                                </span>
-                                            </div>
-                                        <?php }else{ ?>
-                                            <div class="tft-ratings">
-                                                <span>
-                                                    <i class="fas fa-star"></i>
-                                                    <span>
-                                                        0.0
-                                                    </span>
-                                                    out of 0 review
-                                                </span>
-                                            </div>
-                                        <?php } ?>
-                                        <h3 class="tft-title">
-                                            <?php 
-                                            if("Split"==$settings['card_title_type']){
-                                                echo travelfic_character_limit(get_the_title(), 15);
-                                            }else{
-                                                the_title();
-                                            } 
-                                            ?>
-										</h3>
-                                        <p class="tft-locations">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                            <g clip-path="url(#clip0_1443_3217)">
-                                            <path d="M10 17.9176L14.1248 13.7927C16.4028 11.5147 16.4028 7.82124 14.1248 5.54318C11.8468 3.26512 8.15327 3.26512 5.87521 5.54318C3.59715 7.82124 3.59715 11.5147 5.87521 13.7927L10 17.9176ZM10 20.2746L4.6967 14.9713C1.76777 12.0423 1.76777 7.2936 4.6967 4.36467C7.62563 1.43574 12.3743 1.43574 15.3033 4.36467C18.2323 7.2936 18.2323 12.0423 15.3033 14.9713L10 20.2746ZM10 11.3346C10.9205 11.3346 11.6667 10.5885 11.6667 9.66797C11.6667 8.74749 10.9205 8.0013 10 8.0013C9.0795 8.0013 8.33333 8.74749 8.33333 9.66797C8.33333 10.5885 9.0795 11.3346 10 11.3346ZM10 13.0013C8.15905 13.0013 6.66667 11.5089 6.66667 9.66797C6.66667 7.82702 8.15905 6.33464 10 6.33464C11.8409 6.33464 13.3333 7.82702 13.3333 9.66797C13.3333 11.5089 11.8409 13.0013 10 13.0013Z" fill="#595349"/>
-                                            </g>
-                                            <defs>
-                                            <clipPath id="clip0_1443_3217">
-                                            <rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
-                                            </clipPath>
-                                            </defs>
-                                            </svg>
+                                    
+                                </a>
+                                <div class="tft-hotel-details">
+                                    <?php if ($comments && !$disable_review_sec == '1') { ?>
+                                        <div class="tft-ratings">
                                             <span>
-                                                <?php 
-                                                if("tf_hotel"==$settings['tf_post_type']){
-                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
-                                                }
-                                                if("tf_tours"==$settings['tf_post_type']){
-                                                    echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
-                                                }
-                                                if("tf_apartment"==$settings['tf_post_type']){
-                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
-                                                }
-                                                ?>
+                                                <i class="fas fa-star"></i>
+                                                <span>
+                                                    <?php echo esc_html(tf_total_avg_rating($comments)); ?>
+                                                </span>
+                                                out of <?php tf_based_on_text(count($comments)); ?>
                                             </span>
-                                        </p>
-                                        
-                                        <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
-                                            <?php 
-                                            if("tf_tours"==$settings['tf_post_type']){
-                                            if($tour_duration){
-                                            ?>
-                                            <p class="tour-time">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                            <path d="M10.0001 2.16406C14.6024 2.16406 18.3334 5.89502 18.3334 10.4974C18.3334 15.0997 14.6024 18.8307 10.0001 18.8307C5.39771 18.8307 1.66675 15.0997 1.66675 10.4974H3.33341C3.33341 14.1793 6.31818 17.1641 10.0001 17.1641C13.682 17.1641 16.6667 14.1793 16.6667 10.4974C16.6667 6.8155 13.682 3.83073 10.0001 3.83073C7.7086 3.83073 5.68714 4.98685 4.48717 6.7476L6.66675 6.7474V8.41406H1.66675V3.41406H3.33341L3.33332 5.49671C4.8537 3.47302 7.27402 2.16406 10.0001 2.16406ZM10.8334 6.33073L10.8332 10.1516L13.5356 12.8544L12.3571 14.0329L9.16658 10.8416L9.16675 6.33073H10.8334Z" fill="#595349"/>
-                                            </svg>
-                                            <?php echo esc_html( $tour_duration ); ?>
-                                                <?php
-                                                if ( $tour_duration > 1 ) {
-                                                    $dur_string         = 's';
-                                                    $duration_time_html = $duration_time . $dur_string;
-                                                } else {
-                                                    $duration_time_html = $duration_time;
-                                                }
-                                                echo " " . esc_html( $duration_time_html );
-                                                ?>
-                                                <?php if ( $night ) { ?>
-                                                    <span>
-                                                        <?php echo esc_html( $night_count ); ?>
-                                                        <?php
-                                                        if ( ! empty( $night_count ) ) {
-                                                            if ( $night_count > 1 ) {
-                                                                echo esc_html__( 'Nights', 'tourfic' );
-                                                            } else {
-                                                                echo esc_html__( 'Night', 'tourfic' );
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </span>
-                                                <?php } ?>
-                                            </p>
-                                            <?php } } ?>
+                                        </div>
+                                    <?php }else{ ?>
+                                        <div class="tft-ratings">
+                                            <span>
+                                                <i class="fas fa-star"></i>
+                                                <span>
+                                                    0.0
+                                                </span>
+                                                out of 0 review
+                                            </span>
+                                        </div>
+                                    <?php } ?>
+                                    <h3 class="tft-title">
+                                        <?php 
+                                        if("Split"==$settings['card_title_type']){
+                                            echo travelfic_character_limit(get_the_title(), 15);
+                                        }else{
+                                            the_title();
+                                        } 
+                                        ?>
+                                    </h3>
+                                    <p class="tft-locations">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <g clip-path="url(#clip0_1443_3217)">
+                                        <path d="M10 17.9176L14.1248 13.7927C16.4028 11.5147 16.4028 7.82124 14.1248 5.54318C11.8468 3.26512 8.15327 3.26512 5.87521 5.54318C3.59715 7.82124 3.59715 11.5147 5.87521 13.7927L10 17.9176ZM10 20.2746L4.6967 14.9713C1.76777 12.0423 1.76777 7.2936 4.6967 4.36467C7.62563 1.43574 12.3743 1.43574 15.3033 4.36467C18.2323 7.2936 18.2323 12.0423 15.3033 14.9713L10 20.2746ZM10 11.3346C10.9205 11.3346 11.6667 10.5885 11.6667 9.66797C11.6667 8.74749 10.9205 8.0013 10 8.0013C9.0795 8.0013 8.33333 8.74749 8.33333 9.66797C8.33333 10.5885 9.0795 11.3346 10 11.3346ZM10 13.0013C8.15905 13.0013 6.66667 11.5089 6.66667 9.66797C6.66667 7.82702 8.15905 6.33464 10 6.33464C11.8409 6.33464 13.3333 7.82702 13.3333 9.66797C13.3333 11.5089 11.8409 13.0013 10 13.0013Z" fill="#595349"/>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_1443_3217">
+                                        <rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
+                                        </clipPath>
+                                        </defs>
+                                        </svg>
+                                        <span>
                                             <?php 
                                             if("tf_hotel"==$settings['tf_post_type']){
-                                                $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
-                                                if(!empty($rooms)){
-                                                    $rm_features = [];
-                                                    foreach ( $rooms as $key => $room ) {
-                                                        //merge for each room's selected features
-                                                        if(!empty($room['features'])){
-                                                            $rm_features = array_unique(array_merge( $rm_features, $room['features'])) ;
-                                                        }
-                                                    }
-                                                    if(!empty($rm_features)){ ?>
-                                                    <ul>
-                                                        <?php
-                                                        $tft_limit = 1;
-                                                        foreach ( $rm_features as $feature ) {
-                                                            if($tft_limit<7){
-                                                                $term = get_term_by( 'id', $feature, 'hotel_feature' );
-
-                                                                $room_f_meta = get_term_meta( $feature, 'tf_hotel_feature', true );
-                                                                if ( ! empty( $room_f_meta ) ) {
-                                                                    $room_icon_type = ! empty( $room_f_meta['icon-type'] ) ? $room_f_meta['icon-type'] : '';
-                                                                }
-                                                                if ( ! empty( $room_icon_type ) && $room_icon_type == 'fa' && !empty($room_f_meta['icon-fa']) ) {
-                                                                    $room_feature_icon = '<i class="' . $room_f_meta['icon-fa'] . '"></i>';
-                                                                } elseif ( ! empty( $room_icon_type ) && $room_icon_type == 'c' && ! empty( $room_f_meta['icon-c'] )) {
-                                                                    $room_feature_icon = '<img src="' . $room_f_meta['icon-c'] . '" style="min-width: ' . $room_f_meta['dimention'] . 'px; height: ' . $room_f_meta['dimention'] . 'px;" />';
-                                                                }
-                                                                ?>
-                                                                <li>
-                                                                    <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
-                                                                    <?php echo $term->name; ?>
-                                                                </li>
-                                                            <?php
-                                                            }
-                                                        $tft_limit++;
-                                                        } ?>
-                                                    </ul>
-                                                    <?php
-                                                    }
-                                                }
+                                                echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
-                                            ?>
-                                            <?php 
+                                            if("tf_tours"==$settings['tf_post_type']){
+                                                echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
+                                            }
                                             if("tf_apartment"==$settings['tf_post_type']){
-                                                $amenitiess = !empty($option_meta['amenities']) ? tf_data_types($option_meta['amenities']) : '';
-                                                if(!empty($amenitiess)){
-                                                    $rm_features = [];
-                                                    foreach ( $amenitiess as $key => $apartment ) {
-                                                        //merge for each room's selected features
-                                                        if(!empty($apartment['feature'])){
-                                                            $rm_features[] = $apartment['feature'] ;
-                                                        }
-                                                    }
-                                                    if(!empty($rm_features)){ ?>
-                                                    <ul>
-                                                        <?php
-                                                        $tft_limit = 1;
-                                                        foreach ( $rm_features as $feature ) {
-                                                            if($tft_limit<7){
-                                                                $term = get_term_by( 'id', $feature, 'apartment_feature' );
-
-                                                                $apartment_f_meta = get_term_meta( $feature, 'tf_apartment_feature', true );
-                                                                if ( ! empty( $apartment_f_meta ) ) {
-                                                                    $apartment_icon_type = ! empty( $apartment_f_meta['icon-type'] ) ? $apartment_f_meta['icon-type'] : '';
-                                                                }
-                                                                if ( ! empty( $apartment_icon_type ) && $apartment_icon_type == 'fa' && !empty($apartment_f_meta['icon-fa']) ) {
-                                                                    $apartment_feature_icon = '<i class="' . $apartment_f_meta['icon-fa'] . '"></i>';
-                                                                } elseif ( ! empty( $apartment_icon_type ) && $apartment_icon_type == 'c' && ! empty( $apartment_f_meta['icon-c'] )) {
-                                                                    $apartment_feature_icon = '<img src="' . $apartment_f_meta['icon-c'] . '" style="min-width: ' . $apartment_f_meta['dimention'] . 'px; height: ' . $apartment_f_meta['dimention'] . 'px;" />';
-                                                                }
-                                                                ?>
-                                                                <li>
-                                                                    <?php echo ! empty( $apartment_feature_icon ) ? $apartment_feature_icon : ''; ?>
-                                                                    <?php echo $term->name; ?>
-                                                                </li>
-                                                            <?php
-                                                            }
-                                                        $tft_limit++;
-                                                        } ?>
-                                                    </ul>
-                                                    <?php
-                                                    }
-                                                }
+                                                echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
                                             ?>
+                                        </span>
+                                    </p>
+                                    
+                                    <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
+                                        <?php 
+                                        if("tf_tours"==$settings['tf_post_type']){
+                                        if($tour_duration){
+                                        ?>
+                                        <p class="tour-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <path d="M10.0001 2.16406C14.6024 2.16406 18.3334 5.89502 18.3334 10.4974C18.3334 15.0997 14.6024 18.8307 10.0001 18.8307C5.39771 18.8307 1.66675 15.0997 1.66675 10.4974H3.33341C3.33341 14.1793 6.31818 17.1641 10.0001 17.1641C13.682 17.1641 16.6667 14.1793 16.6667 10.4974C16.6667 6.8155 13.682 3.83073 10.0001 3.83073C7.7086 3.83073 5.68714 4.98685 4.48717 6.7476L6.66675 6.7474V8.41406H1.66675V3.41406H3.33341L3.33332 5.49671C4.8537 3.47302 7.27402 2.16406 10.0001 2.16406ZM10.8334 6.33073L10.8332 10.1516L13.5356 12.8544L12.3571 14.0329L9.16658 10.8416L9.16675 6.33073H10.8334Z" fill="#595349"/>
+                                        </svg>
+                                        <?php echo esc_html( $tour_duration ); ?>
+                                            <?php
+                                            if ( $tour_duration > 1 ) {
+                                                $dur_string         = 's';
+                                                $duration_time_html = $duration_time . $dur_string;
+                                            } else {
+                                                $duration_time_html = $duration_time;
+                                            }
+                                            echo " " . esc_html( $duration_time_html );
+                                            ?>
+                                            <?php if ( $night ) { ?>
+                                                <span>
+                                                    <?php echo esc_html( $night_count ); ?>
+                                                    <?php
+                                                    if ( ! empty( $night_count ) ) {
+                                                        if ( $night_count > 1 ) {
+                                                            echo esc_html__( 'Nights', 'tourfic' );
+                                                        } else {
+                                                            echo esc_html__( 'Night', 'tourfic' );
+                                                        }
+                                                    }
+                                                    ?>
+                                                </span>
+                                            <?php } ?>
+                                        </p>
+                                        <?php } } ?>
+                                        <?php 
+                                        if("tf_hotel"==$settings['tf_post_type']){
+                                            $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
+                                            if(!empty($rooms)){
+                                                $rm_features = [];
+                                                foreach ( $rooms as $key => $room ) {
+                                                    //merge for each room's selected features
+                                                    if(!empty($room['features'])){
+                                                        $rm_features = array_unique(array_merge( $rm_features, $room['features'])) ;
+                                                    }
+                                                }
+                                                if(!empty($rm_features)){ ?>
+                                                <ul>
+                                                    <?php
+                                                    $tft_limit = 1;
+                                                    foreach ( $rm_features as $feature ) {
+                                                        if($tft_limit<7){
+                                                            $term = get_term_by( 'id', $feature, 'hotel_feature' );
 
-                                            <span><?php echo __("View details", "travelfic-toolkit"); ?></span>
-                                        </div>
+                                                            $room_f_meta = get_term_meta( $feature, 'tf_hotel_feature', true );
+                                                            if ( ! empty( $room_f_meta ) ) {
+                                                                $room_icon_type = ! empty( $room_f_meta['icon-type'] ) ? $room_f_meta['icon-type'] : '';
+                                                            }
+                                                            if ( ! empty( $room_icon_type ) && $room_icon_type == 'fa' && !empty($room_f_meta['icon-fa']) ) {
+                                                                $room_feature_icon = '<i class="' . $room_f_meta['icon-fa'] . '"></i>';
+                                                            } elseif ( ! empty( $room_icon_type ) && $room_icon_type == 'c' && ! empty( $room_f_meta['icon-c'] )) {
+                                                                $room_feature_icon = '<img src="' . $room_f_meta['icon-c'] . '" style="min-width: ' . $room_f_meta['dimention'] . 'px; height: ' . $room_f_meta['dimention'] . 'px;" />';
+                                                            }
+                                                            ?>
+                                                            <li>
+                                                                <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
+                                                                <?php echo $term->name; ?>
+                                                            </li>
+                                                        <?php
+                                                        }
+                                                    $tft_limit++;
+                                                    } ?>
+                                                </ul>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        <?php 
+                                        if("tf_apartment"==$settings['tf_post_type']){
+                                            $amenitiess = !empty($option_meta['amenities']) ? tf_data_types($option_meta['amenities']) : '';
+                                            if(!empty($amenitiess)){
+                                                $rm_features = [];
+                                                foreach ( $amenitiess as $key => $apartment ) {
+                                                    //merge for each room's selected features
+                                                    if(!empty($apartment['feature'])){
+                                                        $rm_features[] = $apartment['feature'] ;
+                                                    }
+                                                }
+                                                if(!empty($rm_features)){ ?>
+                                                <ul>
+                                                    <?php
+                                                    $tft_limit = 1;
+                                                    foreach ( $rm_features as $feature ) {
+                                                        if($tft_limit<7){
+                                                            $term = get_term_by( 'id', $feature, 'apartment_feature' );
+
+                                                            $apartment_f_meta = get_term_meta( $feature, 'tf_apartment_feature', true );
+                                                            if ( ! empty( $apartment_f_meta ) ) {
+                                                                $apartment_icon_type = ! empty( $apartment_f_meta['icon-type'] ) ? $apartment_f_meta['icon-type'] : '';
+                                                            }
+                                                            if ( ! empty( $apartment_icon_type ) && $apartment_icon_type == 'fa' && !empty($apartment_f_meta['icon-fa']) ) {
+                                                                $apartment_feature_icon = '<i class="' . $apartment_f_meta['icon-fa'] . '"></i>';
+                                                            } elseif ( ! empty( $apartment_icon_type ) && $apartment_icon_type == 'c' && ! empty( $apartment_f_meta['icon-c'] )) {
+                                                                $apartment_feature_icon = '<img src="' . $apartment_f_meta['icon-c'] . '" style="min-width: ' . $apartment_f_meta['dimention'] . 'px; height: ' . $apartment_f_meta['dimention'] . 'px;" />';
+                                                            }
+                                                            ?>
+                                                            <li>
+                                                                <?php echo ! empty( $apartment_feature_icon ) ? $apartment_feature_icon : ''; ?>
+                                                                <?php echo $term->name; ?>
+                                                            </li>
+                                                        <?php
+                                                        }
+                                                    $tft_limit++;
+                                                    } ?>
+                                                </ul>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+
+                                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn-view-details"><?php echo __("View details", "travelfic-toolkit"); ?></a>
                                     </div>
-                                    </a>
-								
+                                </div>
 							</div>
 						</div>
 
@@ -994,146 +994,146 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 <?php 
                                 $tft_hotel_image = !empty(get_the_post_thumbnail_url( get_the_ID() )) ? esc_url( get_the_post_thumbnail_url( get_the_ID() ) ) : esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png');
                                 ?>
-								<div class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
-                                    <div class="tft-hotel-details">
-                                        <?php if ($comments && !$disable_review_sec == '1') { ?>
-                                            <div class="tft-ratings">
-                                                <span>
-                                                    <i class="fas fa-star"></i>
-                                                    <span>
-                                                        <?php echo esc_html(tf_total_avg_rating($comments)); ?>
-                                                    </span>
-                                                    out of <?php tf_based_on_text(count($comments)); ?>
-                                                </span>
-                                            </div>
-                                        <?php }else{ ?>
-                                            <div class="tft-ratings">
-                                                <span>
-                                                    <i class="fas fa-star"></i>
-                                                    <span>
-                                                        0.0
-                                                    </span>
-                                                    out of 0 review
-                                                </span>
-                                            </div>
-                                        <?php } ?>
-                                        <h3 class="tft-title">
-                                            <?php 
-                                            if("Split"==$settings['card_title_type']){
-                                                echo travelfic_character_limit(get_the_title(), 15);
-                                            }else{
-                                                the_title();
-                                            } 
-                                            ?>
-										</h3>
-                                        <p class="tft-locations">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                            <g clip-path="url(#clip0_1443_3217)">
-                                            <path d="M10 17.9176L14.1248 13.7927C16.4028 11.5147 16.4028 7.82124 14.1248 5.54318C11.8468 3.26512 8.15327 3.26512 5.87521 5.54318C3.59715 7.82124 3.59715 11.5147 5.87521 13.7927L10 17.9176ZM10 20.2746L4.6967 14.9713C1.76777 12.0423 1.76777 7.2936 4.6967 4.36467C7.62563 1.43574 12.3743 1.43574 15.3033 4.36467C18.2323 7.2936 18.2323 12.0423 15.3033 14.9713L10 20.2746ZM10 11.3346C10.9205 11.3346 11.6667 10.5885 11.6667 9.66797C11.6667 8.74749 10.9205 8.0013 10 8.0013C9.0795 8.0013 8.33333 8.74749 8.33333 9.66797C8.33333 10.5885 9.0795 11.3346 10 11.3346ZM10 13.0013C8.15905 13.0013 6.66667 11.5089 6.66667 9.66797C6.66667 7.82702 8.15905 6.33464 10 6.33464C11.8409 6.33464 13.3333 7.82702 13.3333 9.66797C13.3333 11.5089 11.8409 13.0013 10 13.0013Z" fill="#595349"/>
-                                            </g>
-                                            <defs>
-                                            <clipPath id="clip0_1443_3217">
-                                            <rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
-                                            </clipPath>
-                                            </defs>
-                                            </svg>
+                                <a href="<?php echo esc_url( get_permalink() ); ?>" class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
+                                </a>
+                                <div class="tft-hotel-details">
+                                    <?php if ($comments && !$disable_review_sec == '1') { ?>
+                                        <div class="tft-ratings">
                                             <span>
-                                                <?php 
-                                                if("tf_hotel"==$settings['tf_post_type']){
-                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
-                                                }
-                                                if("tf_tours"==$settings['tf_post_type']){
-                                                    echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
-                                                }
-                                                if("tf_apartment"==$settings['tf_post_type']){
-                                                    echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
-                                                }
-                                                ?>
+                                                <i class="fas fa-star"></i>
+                                                <span>
+                                                    <?php echo esc_html(tf_total_avg_rating($comments)); ?>
+                                                </span>
+                                                out of <?php tf_based_on_text(count($comments)); ?>
                                             </span>
-                                        </p>
-                                        
-                                        <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
-                                            <?php 
-                                            if("tf_tours"==$settings['tf_post_type']){
-                                            if($tour_duration){
-                                            ?>
-                                            <p class="tour-time">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                            <path d="M10.0001 2.16406C14.6024 2.16406 18.3334 5.89502 18.3334 10.4974C18.3334 15.0997 14.6024 18.8307 10.0001 18.8307C5.39771 18.8307 1.66675 15.0997 1.66675 10.4974H3.33341C3.33341 14.1793 6.31818 17.1641 10.0001 17.1641C13.682 17.1641 16.6667 14.1793 16.6667 10.4974C16.6667 6.8155 13.682 3.83073 10.0001 3.83073C7.7086 3.83073 5.68714 4.98685 4.48717 6.7476L6.66675 6.7474V8.41406H1.66675V3.41406H3.33341L3.33332 5.49671C4.8537 3.47302 7.27402 2.16406 10.0001 2.16406ZM10.8334 6.33073L10.8332 10.1516L13.5356 12.8544L12.3571 14.0329L9.16658 10.8416L9.16675 6.33073H10.8334Z" fill="#595349"/>
-                                            </svg>
-                                            <?php echo esc_html( $tour_duration ); ?>
-                                                <?php
-                                                if ( $tour_duration > 1 ) {
-                                                    $dur_string         = 's';
-                                                    $duration_time_html = $duration_time . $dur_string;
-                                                } else {
-                                                    $duration_time_html = $duration_time;
-                                                }
-                                                echo " " . esc_html( $duration_time_html );
-                                                ?>
-                                                <?php if ( $night ) { ?>
-                                                    <span>
-                                                        <?php echo esc_html( $night_count ); ?>
-                                                        <?php
-                                                        if ( ! empty( $night_count ) ) {
-                                                            if ( $night_count > 1 ) {
-                                                                echo esc_html__( 'Nights', 'tourfic' );
-                                                            } else {
-                                                                echo esc_html__( 'Night', 'tourfic' );
-                                                            }
-                                                        }
-                                                        ?>
-                                                    </span>
-                                                <?php } ?>
-                                            </p>
-                                            <?php } } ?>
+                                        </div>
+                                    <?php }else{ ?>
+                                        <div class="tft-ratings">
+                                            <span>
+                                                <i class="fas fa-star"></i>
+                                                <span>
+                                                    0.0
+                                                </span>
+                                                out of 0 review
+                                            </span>
+                                        </div>
+                                    <?php } ?>
+                                    <h3 class="tft-title">
+                                        <?php 
+                                        if("Split"==$settings['card_title_type']){
+                                            echo travelfic_character_limit(get_the_title(), 15);
+                                        }else{
+                                            the_title();
+                                        } 
+                                        ?>
+                                    </h3>
+                                    <p class="tft-locations">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <g clip-path="url(#clip0_1443_3217)">
+                                        <path d="M10 17.9176L14.1248 13.7927C16.4028 11.5147 16.4028 7.82124 14.1248 5.54318C11.8468 3.26512 8.15327 3.26512 5.87521 5.54318C3.59715 7.82124 3.59715 11.5147 5.87521 13.7927L10 17.9176ZM10 20.2746L4.6967 14.9713C1.76777 12.0423 1.76777 7.2936 4.6967 4.36467C7.62563 1.43574 12.3743 1.43574 15.3033 4.36467C18.2323 7.2936 18.2323 12.0423 15.3033 14.9713L10 20.2746ZM10 11.3346C10.9205 11.3346 11.6667 10.5885 11.6667 9.66797C11.6667 8.74749 10.9205 8.0013 10 8.0013C9.0795 8.0013 8.33333 8.74749 8.33333 9.66797C8.33333 10.5885 9.0795 11.3346 10 11.3346ZM10 13.0013C8.15905 13.0013 6.66667 11.5089 6.66667 9.66797C6.66667 7.82702 8.15905 6.33464 10 6.33464C11.8409 6.33464 13.3333 7.82702 13.3333 9.66797C13.3333 11.5089 11.8409 13.0013 10 13.0013Z" fill="#595349"/>
+                                        </g>
+                                        <defs>
+                                        <clipPath id="clip0_1443_3217">
+                                        <rect width="20" height="20" fill="white" transform="translate(0 0.5)"/>
+                                        </clipPath>
+                                        </defs>
+                                        </svg>
+                                        <span>
                                             <?php 
                                             if("tf_hotel"==$settings['tf_post_type']){
-                                                $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
-                                                if(!empty($rooms)){
-                                                    $rm_features = [];
-                                                    foreach ( $rooms as $key => $room ) {
-                                                        //merge for each room's selected features
-                                                        if(!empty($room['features'])){
-                                                            $rm_features = array_unique(array_merge( $rm_features, $room['features'])) ;
-                                                        }
-                                                    }
-                                                    if(!empty($rm_features)){ ?>
-                                                    <ul>
-                                                        <?php
-                                                        $tft_limit = 1;
-                                                        foreach ( $rm_features as $feature ) {
-                                                            if($tft_limit<7){
-                                                                $term = get_term_by( 'id', $feature, 'hotel_feature' );
-
-                                                                $room_f_meta = get_term_meta( $feature, 'tf_hotel_feature', true );
-                                                                if ( ! empty( $room_f_meta ) ) {
-                                                                    $room_icon_type = ! empty( $room_f_meta['icon-type'] ) ? $room_f_meta['icon-type'] : '';
-                                                                }
-                                                                if ( ! empty( $room_icon_type ) && $room_icon_type == 'fa' && !empty($room_f_meta['icon-fa']) ) {
-                                                                    $room_feature_icon = '<i class="' . $room_f_meta['icon-fa'] . '"></i>';
-                                                                } elseif ( ! empty( $room_icon_type ) && $room_icon_type == 'c' && ! empty( $room_f_meta['icon-c'] )) {
-                                                                    $room_feature_icon = '<img src="' . $room_f_meta['icon-c'] . '" style="min-width: ' . $room_f_meta['dimention'] . 'px; height: ' . $room_f_meta['dimention'] . 'px;" />';
-                                                                }
-                                                                ?>
-                                                                <li>
-                                                                    <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
-                                                                    <?php echo $term->name; ?>
-                                                                </li>
-                                                            <?php
-                                                            }
-                                                        $tft_limit++;
-                                                        } ?>
-                                                    </ul>
-                                                    <?php
-                                                    }
-                                                }
+                                                echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
+                                            }
+                                            if("tf_tours"==$settings['tf_post_type']){
+                                                echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
+                                            }
+                                            if("tf_apartment"==$settings['tf_post_type']){
+                                                echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
                                             ?>
-                                            <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
-                                        </div>
+                                        </span>
+                                    </p>
+                                    
+                                    <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
+                                        <?php 
+                                        if("tf_tours"==$settings['tf_post_type']){
+                                        if($tour_duration){
+                                        ?>
+                                        <p class="tour-time">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                        <path d="M10.0001 2.16406C14.6024 2.16406 18.3334 5.89502 18.3334 10.4974C18.3334 15.0997 14.6024 18.8307 10.0001 18.8307C5.39771 18.8307 1.66675 15.0997 1.66675 10.4974H3.33341C3.33341 14.1793 6.31818 17.1641 10.0001 17.1641C13.682 17.1641 16.6667 14.1793 16.6667 10.4974C16.6667 6.8155 13.682 3.83073 10.0001 3.83073C7.7086 3.83073 5.68714 4.98685 4.48717 6.7476L6.66675 6.7474V8.41406H1.66675V3.41406H3.33341L3.33332 5.49671C4.8537 3.47302 7.27402 2.16406 10.0001 2.16406ZM10.8334 6.33073L10.8332 10.1516L13.5356 12.8544L12.3571 14.0329L9.16658 10.8416L9.16675 6.33073H10.8334Z" fill="#595349"/>
+                                        </svg>
+                                        <?php echo esc_html( $tour_duration ); ?>
+                                            <?php
+                                            if ( $tour_duration > 1 ) {
+                                                $dur_string         = 's';
+                                                $duration_time_html = $duration_time . $dur_string;
+                                            } else {
+                                                $duration_time_html = $duration_time;
+                                            }
+                                            echo " " . esc_html( $duration_time_html );
+                                            ?>
+                                            <?php if ( $night ) { ?>
+                                                <span>
+                                                    <?php echo esc_html( $night_count ); ?>
+                                                    <?php
+                                                    if ( ! empty( $night_count ) ) {
+                                                        if ( $night_count > 1 ) {
+                                                            echo esc_html__( 'Nights', 'tourfic' );
+                                                        } else {
+                                                            echo esc_html__( 'Night', 'tourfic' );
+                                                        }
+                                                    }
+                                                    ?>
+                                                </span>
+                                            <?php } ?>
+                                        </p>
+                                        <?php } } ?>
+                                        <?php 
+                                        if("tf_hotel"==$settings['tf_post_type']){
+                                            $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
+                                            if(!empty($rooms)){
+                                                $rm_features = [];
+                                                foreach ( $rooms as $key => $room ) {
+                                                    //merge for each room's selected features
+                                                    if(!empty($room['features'])){
+                                                        $rm_features = array_unique(array_merge( $rm_features, $room['features'])) ;
+                                                    }
+                                                }
+                                                if(!empty($rm_features)){ ?>
+                                                <ul>
+                                                    <?php
+                                                    $tft_limit = 1;
+                                                    foreach ( $rm_features as $feature ) {
+                                                        if($tft_limit<7){
+                                                            $term = get_term_by( 'id', $feature, 'hotel_feature' );
+
+                                                            $room_f_meta = get_term_meta( $feature, 'tf_hotel_feature', true );
+                                                            if ( ! empty( $room_f_meta ) ) {
+                                                                $room_icon_type = ! empty( $room_f_meta['icon-type'] ) ? $room_f_meta['icon-type'] : '';
+                                                            }
+                                                            if ( ! empty( $room_icon_type ) && $room_icon_type == 'fa' && !empty($room_f_meta['icon-fa']) ) {
+                                                                $room_feature_icon = '<i class="' . $room_f_meta['icon-fa'] . '"></i>';
+                                                            } elseif ( ! empty( $room_icon_type ) && $room_icon_type == 'c' && ! empty( $room_f_meta['icon-c'] )) {
+                                                                $room_feature_icon = '<img src="' . $room_f_meta['icon-c'] . '" style="min-width: ' . $room_f_meta['dimention'] . 'px; height: ' . $room_f_meta['dimention'] . 'px;" />';
+                                                            }
+                                                            ?>
+                                                            <li>
+                                                                <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
+                                                                <?php echo $term->name; ?>
+                                                            </li>
+                                                        <?php
+                                                        }
+                                                    $tft_limit++;
+                                                    } ?>
+                                                </ul>
+                                                <?php
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        <a class="btn-view-details" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
                                     </div>
-								</div>
+                                </div>
 								
 							</div>
 						</div>
