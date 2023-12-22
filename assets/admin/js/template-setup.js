@@ -10,23 +10,22 @@
         var plugin_slugs = ['tourfic', 'elementor', 'woocommerce'];
         $('.demo-importing-loader .loader-heading .loader-label').text(travelfic_toolkit_script_params.installing);
         
-        // plugin_slugs.forEach(function (slug, index) {
-        //     let travelfic_install_action = slug+"_ajax_install_plugin"
-        //     var data = {
-        //         action: travelfic_install_action,
-        //         _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
-        //         slug: slug,
-        //     };
-        //     // Installing Function
-        //     jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
-        //         if(response.success){
-        //             Travelfic_Activation_Actions(slug, index);
-        //         }else{
-        //             $(".plug-"+slug+"-btn").click();
-        //         }
-        //     })
-        // });
-        $(".menu-import-btn").click();
+        plugin_slugs.forEach(function (slug, index) {
+            let travelfic_install_action = slug+"_ajax_install_plugin"
+            var data = {
+                action: travelfic_install_action,
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                slug: slug,
+            };
+            // Installing Function
+            jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
+                if(response.success){
+                    Travelfic_Activation_Actions(slug, index);
+                }else{
+                    $(".plug-"+slug+"-btn").click();
+                }
+            })
+        });
     });
     
     // Tourfic Install
