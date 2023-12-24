@@ -7,25 +7,26 @@
         $("#travelfic-template-list-wrapper").slideUp();
         $("#travelfic-template-importing-wrapper").slideDown();
         template_type = $(this).attr('data-template');
-        var plugin_slugs = ['tourfic', 'elementor', 'woocommerce'];
+        // var plugin_slugs = ['tourfic', 'elementor', 'woocommerce'];
         $('.demo-importing-loader .loader-heading .loader-label').text(travelfic_toolkit_script_params.installing);
         
-        plugin_slugs.forEach(function (slug, index) {
-            let travelfic_install_action = slug+"_ajax_install_plugin"
-            var data = {
-                action: travelfic_install_action,
-                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
-                slug: slug,
-            };
-            // Installing Function
-            jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
-                if(response.success){
-                    Travelfic_Activation_Actions(slug, index);
-                }else{
-                    $(".plug-"+slug+"-btn").click();
-                }
-            })
-        });
+        // plugin_slugs.forEach(function (slug, index) {
+        //     let travelfic_install_action = slug+"_ajax_install_plugin"
+        //     var data = {
+        //         action: travelfic_install_action,
+        //         _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+        //         slug: slug,
+        //     };
+        //     // Installing Function
+        //     jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
+        //         if(response.success){
+        //             Travelfic_Activation_Actions(slug, index);
+        //         }else{
+        //             $(".plug-"+slug+"-btn").click();
+        //         }
+        //     })
+        // });
+        $(".demo-page-import-btn").click();
     });
     
     // Tourfic Install
@@ -196,7 +197,7 @@
             success: function(response) {
                 $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
                 $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
-                $(".demo-hotel-import-btn").click();
+                // $(".demo-hotel-import-btn").click();
             },
             error: function(error) {
                 console.log(error);
