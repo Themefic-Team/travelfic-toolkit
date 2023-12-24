@@ -224,6 +224,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     echo 'Error creating menu.';
                 }
             }
+            
+            die();
         }
 
         /**

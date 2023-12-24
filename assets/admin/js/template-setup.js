@@ -206,32 +206,34 @@
 
     // Demo Hotel importer
     $(document).on('click', '.demo-hotel-import-btn', function (e) {
-        $('.demo-importing-loader .loader-heading .loader-label').text("Hotel Demo importing...");
-        $.ajax({
-            type: 'post',
-            url: travelfic_toolkit_script_params.ajax_url,
-            data: {
-                action: 'travelfic-demo-hotel-import',
-                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
-            },
-            success: function(response) {
-                if("hotel"==template_type){
-                    $('.demo-importing-loader .loader-heading .loader-precent').text('100%');
-                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "100%");
-                    $('.demo-importing-loader .loader-heading .loader-label').text("Almost done! ready to go...");
-                    $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("Congratulations! your website is ready 👏");
-                    $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-img').hide();
-                    $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
-                }else{
-                    $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
-                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
-                    $(".demo-tour-import-btn").click();
+        if("hotel"==template_type){
+            $('.demo-importing-loader .loader-heading .loader-label').text("Hotel Demo importing...");
+            $.ajax({
+                type: 'post',
+                url: travelfic_toolkit_script_params.ajax_url,
+                data: {
+                    action: 'travelfic-demo-hotel-import',
+                    _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                },
+                success: function(response) {
+                    
+                        $('.demo-importing-loader .loader-heading .loader-precent').text('100%');
+                        $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "100%");
+                        $('.demo-importing-loader .loader-heading .loader-label').text("Almost done! ready to go...");
+                        $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("Congratulations! your website is ready 👏");
+                        $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-img').hide();
+                        $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
+                    
+                },
+                error: function(error) {
+                    console.log(error);
                 }
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+            });
+        }else{
+            $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
+            $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
+            $(".demo-tour-import-btn").click();
+        }
     });
 
     // Demo Tour importer
