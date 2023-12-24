@@ -388,6 +388,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
 
+            $hotels_post = array(
+                'post_type' => 'tf_hotel',
+                'posts_per_page' => -1,
+            );
+            
+            $hotels_query = new WP_Query($hotels_post);
+            if(!empty($hotels_query)){
+                $hotels_count = $hotels_query->post_count;
+                if($hotels_count>=5){
+                    return;
+                }
+            }
+
             $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/hotel-data.csv';
             if (file_exists($dummy_hotels_files)) {
                 $dummy_hotel_fields = array(
@@ -1005,6 +1018,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_tour_imports() {
 
             check_ajax_referer('updates', '_ajax_nonce');
+
+            $tours_post = array(
+                'post_type' => 'tf_tours',
+                'posts_per_page' => -1,
+            );
+            
+            $tours_query = new WP_Query($tours_post);
+            if(!empty($tours_query)){
+                $tours_count = $tours_query->post_count;
+                if($tours_count>=5){
+                    return;
+                }
+            }
             
             $dummy_tours_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/tour-data.csv';
             $dummy_tours_fields = array(
