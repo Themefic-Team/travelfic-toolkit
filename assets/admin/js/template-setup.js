@@ -4,41 +4,46 @@
     let template_type = '';
     let plugin_slugs = travelfic_toolkit_script_params.actives_plugins;
     let plugin_slug_length = plugin_slugs.length-1;
+    
     // Import Template
     $(document).on('click', '.template-import-btn', function (e) {
         $("#travelfic-template-list-wrapper").slideUp();
         $("#travelfic-template-importing-wrapper").slideDown();
         template_type = $(this).attr('data-template');
         $('.demo-importing-loader .loader-heading .loader-label').text(travelfic_toolkit_script_params.installing);
-        
-        plugin_slugs.forEach(function (slug, index) {
-            let travelfic_install_action = slug+"_ajax_install_plugin"
-            var data = {
-                action: travelfic_install_action,
-                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
-                slug: slug,
-            };
-            // Installing Function
-            jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
-                if(response){
-                    if(response.success){
-                        Travelfic_Activation_Actions(slug, index);
-                    }else if(response.data && response.data.errorCode !== undefined && response.data.errorCode=="folder_exists"){
-                        Travelfic_Activation_Actions(slug, index);
-                    }else{
-                        if("tourfic"==slug){
-                            $('.plug-tourfic-btn').click();
-                        }
-                        if("woocommerce"==slug){
-                            $('.plug-woocommerce-btn').click();
-                        }
-                        if("elementor"==slug){
-                            $('.plug-elementor-btn').click();
+        if (plugin_slugs.length > 0) {
+            plugin_slugs.forEach(function (slug, index) {
+                let travelfic_install_action = slug+"_ajax_install_plugin"
+                var data = {
+                    action: travelfic_install_action,
+                    _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                    slug: slug,
+                };
+                // Installing Function
+                jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
+                    if(response){
+                        if(response.success){
+                            Travelfic_Activation_Actions(slug, index);
+                        }else if(response.data && response.data.errorCode !== undefined && response.data.errorCode=="folder_exists"){
+                            Travelfic_Activation_Actions(slug, index);
+                        }else{
+                            if("tourfic"==slug){
+                                $('.plug-tourfic-btn').click();
+                            }
+                            if("woocommerce"==slug){
+                                $('.plug-woocommerce-btn').click();
+                            }
+                            if("elementor"==slug){
+                                $('.plug-elementor-btn').click();
+                            }
                         }
                     }
-                }
-            })
-        });
+                })
+            });
+        }else{
+            $(".settings-import-btn").click();
+        }
+
     });
     
     // Tourfic Install
