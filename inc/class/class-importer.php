@@ -234,19 +234,29 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             
             self::travelfic_toolkit_clear_widgets();
 
-            $widgets = [
-                "block" => [
-                    2 => "on",
-                    3 => "on",
-                    4 => "on",
+            $widgets = array(
+                "block" => array(
                     11 => "on",
                     12 => "on",
                     13 => "on",
-                    14 => "on",
-                    5 => "on",
-                    6 => "on"
-                ]
-            ];
+                    14 => "on"
+                ),
+                "tf_hotel_filter" => array(
+                    2 => "on",
+                    3 => "on"
+                ),
+                "tf_hotel_type_filter" => array(
+                    3 => "on",
+                    2 => "on"
+                ),
+                "tf_price_filters" => array(
+                    2 => "on",
+                    3 => "on"
+                ),
+                "tf_tour_feature_filter" => array(
+                    3 => "on"
+                )
+            );
 
             $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
             $imported_data = wp_remote_retrieve_body($import_file);
