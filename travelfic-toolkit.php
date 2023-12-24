@@ -19,6 +19,8 @@ if ( !defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
 
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.0' );
@@ -27,6 +29,10 @@ define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.0' );
  * Include file from plugin if it is not available in theme
  */
 function travelfic_toolkit_settings() {
+    if ( ! get_option( 'tf_setup_wizard' ) && ! get_option( 'tf_settings' ) ) {
+        update_option( 'tf_setup_wizard', 'active' );
+        update_option( 'tf_settings', 'active' );
+    }
     $theme_folder = wp_get_theme( 'travelfic' );
     if ( $theme_folder->exists() ) {
         $theme = wp_get_theme();
@@ -135,6 +141,16 @@ function travelfic_toolkit_front_page_script() {
 
  add_action( 'admin_enqueue_scripts', 'travelfic_toolkit_admin_page_script' );
  function travelfic_toolkit_admin_page_script() {
+    $travelfic_toolkit_active_plugins = [];
+    if ( ! is_plugin_active( 'tourfic/tourfic.php' ) ) {
+        $travelfic_toolkit_active_plugins[] = "tourfic";
+    }
+    if ( ! is_plugin_active( 'elementor/elementor.php' ) ) {
+        $travelfic_toolkit_active_plugins[] = "elementor";
+    }
+    if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+        $travelfic_toolkit_active_plugins[] = "woocommerce";
+    }
      wp_enqueue_style( 'travelfic-toolkit-admin-css', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/template-setup.css', false, '1.0.0' );
      wp_enqueue_script( 'travelfic-toolkit-admin-js', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/template-setup.js', array( 'jquery'), '1.0.0', true );
      wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
@@ -145,6 +161,7 @@ function travelfic_toolkit_front_page_script() {
             'installed'      => __( 'Installed', 'travelfic' ),
             'activated'      => __( 'Activated', 'travelfic' ),
             'install_failed' => __( 'Install failed', 'travelfic' ),
+            'actives_plugins' => $travelfic_toolkit_active_plugins
         )
     );
  }

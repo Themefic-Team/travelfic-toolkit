@@ -2,12 +2,13 @@
     'use strict';
 
     let template_type = '';
+    let plugin_slugs = travelfic_toolkit_script_params.actives_plugins;
+    let plugin_slug_length = plugin_slugs.length-1;
     // Import Template
     $(document).on('click', '.template-import-btn', function (e) {
         $("#travelfic-template-list-wrapper").slideUp();
         $("#travelfic-template-importing-wrapper").slideDown();
         template_type = $(this).attr('data-template');
-        var plugin_slugs = ['tourfic', 'elementor', 'woocommerce'];
         $('.demo-importing-loader .loader-heading .loader-label').text(travelfic_toolkit_script_params.installing);
         
         plugin_slugs.forEach(function (slug, index) {
@@ -19,10 +20,22 @@
             };
             // Installing Function
             jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
-                if(response.success){
-                    Travelfic_Activation_Actions(slug, index);
-                }else{
-                    $(".plug-"+slug+"-btn").click();
+                if(response){
+                    if(response.success){
+                        Travelfic_Activation_Actions(slug, index);
+                    }else if(response.data && response.data.errorCode !== undefined && response.data.errorCode=="folder_exists"){
+                        Travelfic_Activation_Actions(slug, index);
+                    }else{
+                        if("tourfic"==slug){
+                            $('.plug-tourfic-btn').click();
+                        }
+                        if("woocommerce"==slug){
+                            $('.plug-woocommerce-btn').click();
+                        }
+                        if("elementor"==slug){
+                            $('.plug-elementor-btn').click();
+                        }
+                    }
                 }
             })
         });
@@ -85,12 +98,12 @@
             },
             success: function(active) {
                 if(index==0 && active.success){
-                    $('.demo-importing-loader .loader-heading .loader-precent').text('15%');
-                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "15%");
+                    $('.demo-importing-loader .loader-heading .loader-precent').text('10%');
+                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "10%");
                 }
-                if(index==1 && active.success){
-                }
-                if(index==2 && active.success){
+                if(index==plugin_slug_length && active.success){
+                    $('.demo-importing-loader .loader-heading .loader-precent').text('20%');
+                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "20%");
                     $(".settings-import-btn").click();
                 }
             },
