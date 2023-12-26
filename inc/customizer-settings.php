@@ -214,7 +214,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Transparent Header Showing Option Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'transparent_showing', array(
         'default'           => 'both',
-        'sanitize_callback' => 'travelfic_kit_sanitize_radio',
+        'sanitize_callback' => 'travelfic_toolkit_sanitize_radio',
         "transport" => "refresh",
     ));
 

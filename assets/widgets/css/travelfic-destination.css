@@ -204,13 +204,13 @@
   .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3{
     padding: 0px 16px 16px 16px;
   }
-  .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content a{
+  .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span{
     padding: 8px 16px;
   }
   .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content{
     bottom: 0px;
   }
-  .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content a{
+  .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail .tft-destination-content span{
     font-size: 12px !important;
   }
 }
