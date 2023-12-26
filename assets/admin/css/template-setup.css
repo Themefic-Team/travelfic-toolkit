@@ -135,7 +135,11 @@ body.admin_page_travelfic-template-list {
     width: 100%;
     max-height: 440px;
 }
-
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template h2{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn{
     border-radius: 4px;
     border: 1px solid #F0F2F4;
@@ -150,7 +154,7 @@ body.admin_page_travelfic-template-list {
     line-height: 20px; /* 125% */
     text-align: center;
     cursor: pointer;
-    margin-top: 41px;
+    margin-top: 20px;
     transition: .3s all ease;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn svg{

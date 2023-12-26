@@ -124,8 +124,11 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     </a>
                                 </div>
                             </div>
+                            <h2>
+                                <?php _e("Travelfic Hotelic Demo", "travelfic-toolkit"); ?>
+                            </h2>
                             <div class="template-import-btn" data-template="hotel" data-design="1">
-                                <?php _e("Import demo 1", "travelfic-toolkit"); ?>
+                                <?php _e("Import Hotelic", "travelfic-toolkit"); ?>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
                                 <path d="M9.83268 10.6665C9.49555 10.9942 8.16602 11.8664 8.16602 12.3332M9.83268 13.9998C9.49555 13.6722 8.16602 12.8 8.16602 12.3332M8.16602 12.3332L13.4993 12.3332" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M6.83398 14.6665H6.65217C4.47803 14.6665 3.39096 14.6665 2.63603 14.1346C2.41973 13.9822 2.22771 13.8015 2.06579 13.5979C1.50065 12.8874 1.50065 11.8643 1.50065 9.81802V8.12105C1.50065 6.1456 1.50065 5.15788 1.81328 4.36901C2.31586 3.10079 3.37874 2.10043 4.72623 1.62741C5.5644 1.33317 6.61386 1.33317 8.71277 1.33317C9.91215 1.33317 10.5118 1.33317 10.9908 1.50131C11.7608 1.7716 12.3682 2.34324 12.6553 3.06793C12.834 3.51872 12.834 4.08313 12.834 5.21196V8.6665" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
