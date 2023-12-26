@@ -70,9 +70,39 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		}
 
 		/**
-		 * Welcome step
-		 */
+        * Template List
+        */
+        public function template_list_header_footer(){
+        ?>
+        <div class="travelfic-template-top-header">
+            <div class="header-logo">
+                <img src="https://quizzicaltrade.s1-tastewp.com/wp-content/plugins/astra-sites/inc/lib/onboarding/assets/images/logo.svg" class="stc-logo-image" alt="Starter Templates">
+            </div>
+            <div class="header-exit-btn">
+                <a href="<?php echo admin_url(); ?>" title="<?php _e("Exit to Dashboard", "travelfic-toolkit"); ?>">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.8333 15.8333H4.16667V4.16667H10V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V10H15.8333V15.8333ZM11.6667 2.5V4.16667H14.6583L6.46667 12.3583L7.64167 13.5333L15.8333 5.34167V8.33333H17.5V2.5H11.6667Z" fill="#6B7280"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="travelfic-template-bottom-footer">
+            <div class="footer-back-btn">
+                <a href="<?php echo admin_url(); ?>" title="<?php _e("Back to Dashboard", "travelfic-toolkit"); ?>">
+                    <svg width="14" height="9" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0009 4.4999C14.0009 4.36729 13.9482 4.24011 13.8544 4.14635C13.7607 4.05258 13.6335 3.9999 13.5009 3.9999H1.70789L4.85489 0.853899C4.90138 0.807411 4.93826 0.752222 4.96342 0.691483C4.98858 0.630743 5.00153 0.565643 5.00153 0.499899C5.00153 0.434155 4.98858 0.369055 4.96342 0.308316C4.93826 0.247576 4.90138 0.192387 4.85489 0.145899C4.80841 0.0994111 4.75322 0.062535 4.69248 0.0373759C4.63174 0.0122168 4.56664 -0.000732422 4.50089 -0.000732422C4.43515 -0.000732422 4.37005 0.0122168 4.30931 0.0373759C4.24857 0.062535 4.19338 0.0994111 4.14689 0.145899L0.146894 4.1459C0.100331 4.19234 0.0633877 4.24752 0.0381812 4.30827C0.0129748 4.36901 0 4.43413 0 4.4999C0 4.56567 0.0129748 4.63079 0.0381812 4.69153C0.0633877 4.75228 0.100331 4.80745 0.146894 4.8539L4.14689 8.8539C4.19338 8.90039 4.24857 8.93726 4.30931 8.96242C4.37005 8.98758 4.43515 9.00053 4.50089 9.00053C4.56664 9.00053 4.63174 8.98758 4.69248 8.96242C4.75322 8.93726 4.80841 8.90039 4.85489 8.8539C4.90138 8.80741 4.93826 8.75222 4.96342 8.69148C4.98858 8.63074 5.00153 8.56564 5.00153 8.4999C5.00153 8.43416 4.98858 8.36905 4.96342 8.30832C4.93826 8.24758 4.90138 8.19239 4.85489 8.1459L1.70789 4.9999H13.5009C13.6335 4.9999 13.7607 4.94722 13.8544 4.85345C13.9482 4.75968 14.0009 4.63251 14.0009 4.4999Z">
+                        </path>
+                    </svg>
+                    <?php _e("Back", "travelfic-toolkit"); ?>    
+                </a>
+            </div>
+        </div>
+        <?php
+        }
+
 		private function travelfic_template_list_step() {
+            $this->template_list_header_footer();
 			?>
             <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper">
                 <div class="travelfic-template-list-container">
@@ -125,7 +155,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 </div>
                             </div>
                             <h2>
-                                <?php _e("Travelfic Hotelic Demo", "travelfic-toolkit"); ?>
+                                <?php _e("Hotelic - Hotel marketplace demo", "travelfic-toolkit"); ?>
                             </h2>
                             <div class="template-import-btn" data-template="hotel" data-design="1">
                                 <?php _e("Import Hotelic", "travelfic-toolkit"); ?>
@@ -147,6 +177,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		 * Setup step one
 		 */
 		private function travelfic_setup_theme() {
+            $this->template_list_header_footer();
 		?>
         <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper">
             <div class="travelfic-template-import-container">
