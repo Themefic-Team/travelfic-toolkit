@@ -260,3 +260,33 @@ body.admin_page_travelfic-template-list {
     background: #003C79;
     height: 8px;
 }
+
+@media all and (max-width: 1280px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media all and (max-width: 767px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2, 
+    .travelfic-template-list-wrapper .travelfic-template-import-container .travelfic-template-list-heading h2{
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
+        grid-template-columns: 1fr 1fr;
+        margin-top: 24px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-import-container{
+        padding: 40px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container{
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
