@@ -104,7 +104,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		private function travelfic_template_list_step() {
             $this->template_list_header_footer();
 			?>
-            <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper">
+            <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>)">
                 <div class="travelfic-template-list-container">
                     <div class="travelfic-template-list-heading">
                         <h2><?php _e("What type of website are you building?", "travelfic-toolkit"); ?></h2>

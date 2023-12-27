@@ -9,6 +9,7 @@
     $(document).on('click', '.template-import-btn', function (e) {
         $("#travelfic-template-list-wrapper").slideUp();
         $("#travelfic-template-importing-wrapper").slideDown();
+        $("#travelfic-template-importing-wrapper").addClass('travelfic-importing-showing');
         template_type = $(this).attr('data-template');
         $('.demo-importing-loader .loader-heading .loader-label').text(travelfic_toolkit_script_params.installing);
         if (plugin_slugs.length > 0) {
@@ -237,7 +238,7 @@
                     
                         $('.demo-importing-loader .loader-heading .loader-precent').text('100%');
                         $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "100%");
-                        $('.demo-importing-loader .loader-heading .loader-label').text("Almost done! ready to go...");
+                        $('.demo-importing-loader .loader-heading .loader-label').text("Done! ready to go...");
                         $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("Congratulations! your website is ready 👏");
                         $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-img').hide();
                         $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
@@ -267,7 +268,7 @@
             success: function(response) {
                 $('.demo-importing-loader .loader-heading .loader-precent').text('100%');
                 $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "100%");
-                $('.demo-importing-loader .loader-heading .loader-label').text("Almost done! ready to go...");
+                $('.demo-importing-loader .loader-heading .loader-label').text("Done! ready to go...");
                 $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("Congratulations! your website is ready 👏");
                 $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-img').hide();
                 $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
