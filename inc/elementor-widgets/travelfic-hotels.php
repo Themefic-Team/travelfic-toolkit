@@ -862,7 +862,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                             ?>
                                                             <li>
                                                                 <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
-                                                                <?php echo $term->name; ?>
+                                                                <?php echo !empty($term->name) ? $term->name : ''; ?>
                                                             </li>
                                                         <?php
                                                         }
