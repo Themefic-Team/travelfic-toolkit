@@ -354,4 +354,11 @@ body.admin_page_travelfic-template-list {
         padding-top: 60px;
         padding-bottom: 60px;
     }
+    #travelfic-template-importing-wrapper{
+        position: static !important;
+        height: auto !important;
+    }
+    #travelfic-template-importing-wrapper.travelfic-importing-showing{
+        display: block !important;
+    }
 }
