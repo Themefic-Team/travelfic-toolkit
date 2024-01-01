@@ -76,7 +76,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
         ?>
         <div class="travelfic-template-top-header">
             <div class="header-logo">
-                <img src="https://quizzicaltrade.s1-tastewp.com/wp-content/plugins/astra-sites/inc/lib/onboarding/assets/images/logo.svg" class="stc-logo-image" alt="Starter Templates">
+                <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/travelfic-toolkit-icon.png' ?>" class="stc-logo-image" alt="Starter Templates">
             </div>
             <div class="header-exit-btn">
                 <a href="<?php echo admin_url(); ?>" title="<?php _e("Exit to Dashboard", "travelfic-toolkit"); ?>">
