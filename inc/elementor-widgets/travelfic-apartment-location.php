@@ -646,7 +646,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                         if(!empty($meta['image'])){
                             $cat_image = $meta['image'];
                         } else{
-                            $cat_image = TRAVELFIC_TOOLKIT_URL.'assets/app/img/feature-default.jpg';
+                            $cat_image = 'https://via.placeholder.com/450x600';
                         }
                     ?>
                     <div class="tft-single-destination">

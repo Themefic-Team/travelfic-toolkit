@@ -200,32 +200,58 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $serialized_menu = wp_remote_retrieve_body($serialized_menu);
             if (!empty($serialized_menu)) {
                 $menu_items = unserialize($serialized_menu);
-                $menu_name = 'Imported Menu';
-                $menu_id = wp_create_nav_menu($menu_name);
-                
-                if ($menu_id && !is_wp_error($menu_id)) {
-                    $location = 'primary_menu';
-                    $locations = get_theme_mod('nav_menu_locations');
-                    $locations[$location] = $menu_id;
-                    set_theme_mod('nav_menu_locations', $locations);
-                    if(!empty($menu_items)){
-                        foreach ($menu_items as $item) {
-                            $item_data['menu-item-object-id'] = (int) $item->object_id;
-                            $item_data['menu-item-object'] = $item->object;
-                            $item_data['menu-item-type'] = $item->type;
-                            $item_data['menu-item-title'] = $item->title;
-                            $item_data['menu-item-url'] = str_replace("https://hotelic.tourfic.site/",site_url(),$item->url);
-                            $item_data['menu-item-status'] = 'publish';
-                            wp_update_nav_menu_item($menu_id, 0, $item_data);
-                        }
-                    }
-                    echo 'Menu imported successfully.';
-                } else {
-                    echo 'Error creating menu.';
-                }
+                self::travelfic_toolkit_create_menu_from_imported_data($menu_items);
             }
             
             die();
+        }
+        public static function travelfic_toolkit_create_menu_from_imported_data($menu_data) {
+
+            $menu_name = 'Imported Main Menu';
+            $menu_exists = wp_get_nav_menu_object($menu_name);
+        
+            if (!$menu_exists) {
+                $menu_id = wp_create_nav_menu($menu_name);
+            } else {
+                $menu_id = $menu_exists->term_id;
+            }
+        
+            foreach ($menu_data as $menu_item) {
+                // Add top-level menu items.
+                $menu_item_data = array(
+                    'menu-item-title' => $menu_item['title'],
+                    'menu-item-url' => str_replace("https://hotelic.tourfic.site/",site_url(),$menu_item['url']),
+                    'menu-item-object' => 'custom',
+                    'menu-item-parent' => 0,
+                    'menu-item-type' => 'custom',
+                    'menu-item-status' => 'publish'
+                );
+        
+                // Insert the top-level menu item.
+                $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
+        
+                if (!empty($menu_item['sub_menu'])) {
+                    foreach ($menu_item['sub_menu'] as $sub_menu_item) {
+                        // Prepare data for sub-menu items.
+                        $sub_menu_item_data = array(
+                            'menu-item-title' => $sub_menu_item['title'],
+                            'menu-item-url' => str_replace("https://hotelic.tourfic.site/",site_url(),$sub_menu_item['url']),
+                            'menu-item-object' => 'custom',
+                            'menu-item-parent-id' => $menu_item_id,
+                            'menu-item-type' => 'custom',
+                            'menu-item-status' => 'publish'
+                        );
+        
+                        // Insert the sub-menu items.
+                        wp_update_nav_menu_item($menu_id, 0, $sub_menu_item_data);
+                    }
+                }
+            }
+        
+            // Assign the created menu to a menu location.
+            $locations = get_theme_mod('nav_menu_locations');
+            $locations['primary_menu'] = $menu_id;
+            set_theme_mod('nav_menu_locations', $locations);
         }
 
         /**
