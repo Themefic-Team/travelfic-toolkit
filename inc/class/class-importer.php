@@ -220,7 +220,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 // Add top-level menu items.
                 $menu_item_data = array(
                     'menu-item-title' => $menu_item['title'],
-                    'menu-item-url' => str_replace("https://hotelic.tourfic.site/",site_url(),$menu_item['url']),
+                    'menu-item-url' => str_replace("https://hotelic.tourfic.site",site_url(),$menu_item['url']),
                     'menu-item-object' => 'custom',
                     'menu-item-parent' => 0,
                     'menu-item-type' => 'custom',
@@ -235,7 +235,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
                             'menu-item-title' => $sub_menu_item['title'],
-                            'menu-item-url' => str_replace("https://hotelic.tourfic.site/",site_url(),$sub_menu_item['url']),
+                            'menu-item-url' => str_replace("https://hotelic.tourfic.site",site_url(),$sub_menu_item['url']),
                             'menu-item-object' => 'custom',
                             'menu-item-parent-id' => $menu_item_id,
                             'menu-item-type' => 'custom',

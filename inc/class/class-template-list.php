@@ -115,6 +115,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="demo-tour-import-btn" style="display: none;"><?php _e("Tour Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-page-import-btn" style="display: none;"><?php _e("Pages Import", "travelfic-toolkit"); ?></span>
                         <span class="plug-tourfic-btn" style="display: none;"><?php _e("Tourfic Install", "travelfic-toolkit"); ?></span>
+                        <span class="plug-cf7-btn" style="display: none;"><?php _e("CF7 Install", "travelfic-toolkit"); ?></span>
                         <span class="plug-woocommerce-btn" style="display: none;"><?php _e("Woocommerce Install", "travelfic-toolkit"); ?></span>
                         <span class="plug-elementor-btn" style="display: none;"><?php _e("Elementor Install", "travelfic-toolkit"); ?></span>
                         <span class="widget-import-btn" style="display: none;"><?php _e("Widget Import", "travelfic-toolkit"); ?></span>
@@ -179,7 +180,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		private function travelfic_setup_theme() {
             $this->template_list_header_footer();
 		?>
-        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper">
+        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), lightgray 50% / cover no-repeat;">
             <div class="travelfic-template-import-container">
                 <div class="travelfic-template-list-heading">
                     <h2><?php _e("Hey, we are building your website...", "travelfic-toolkit"); ?></h2>

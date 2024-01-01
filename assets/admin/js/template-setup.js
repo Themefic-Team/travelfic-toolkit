@@ -28,6 +28,9 @@
                         }else if(response.data && response.data.errorCode !== undefined && response.data.errorCode=="folder_exists"){
                             Travelfic_Activation_Actions(slug, index);
                         }else{
+                            if("contact-form-7"==slug){
+                                $('.plug-cf7-btn').click();
+                            }
                             if("tourfic"==slug){
                                 $('.plug-tourfic-btn').click();
                             }
@@ -47,6 +50,21 @@
 
     });
     
+    // CF7 Install
+    $(document).on('click', '.plug-cf7-btn', function (e) {
+        var data = {
+            action: "contact-form-7_ajax_install_plugin",
+            _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+            slug: "contact-form-7",
+        };
+        // Installing Function
+        jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
+            if(response.success){
+                Travelfic_Activation_Actions("contact-form-7", 0);
+            }
+        })
+    });
+
     // Tourfic Install
     $(document).on('click', '.plug-tourfic-btn', function (e) {
         var data = {
@@ -57,7 +75,7 @@
         // Installing Function
         jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
             if(response.success){
-                Travelfic_Activation_Actions("tourfic", 0);
+                Travelfic_Activation_Actions("tourfic", 1);
             }
         })
     });
@@ -72,7 +90,7 @@
         // Installing Function
         jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
             if(response.success){
-                Travelfic_Activation_Actions("woocommerce", 2);
+                Travelfic_Activation_Actions("woocommerce", 3);
             }
         })
     });
@@ -87,7 +105,7 @@
         // Installing Function
         jQuery.post(travelfic_toolkit_script_params.ajax_url, data, function (response) {
             if(response.success){
-                Travelfic_Activation_Actions("elementor", 1);
+                Travelfic_Activation_Actions("elementor", 2);
             }
         })
     });

@@ -29,7 +29,9 @@ if( ! function_exists('travelfic_character_limit') ){
 if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	add_action('wp_ajax_woocommerce_ajax_install_plugin', 'wp_ajax_install_plugin');
 }
-
+if ( ! is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
+	add_action('wp_ajax_contact-form-7_ajax_install_plugin', 'wp_ajax_install_plugin');
+}
 if ( ! is_plugin_active( 'tourfic/tourfic.php' ) ) {
 	add_action('wp_ajax_tourfic_ajax_install_plugin', 'wp_ajax_install_plugin');
 }
@@ -50,7 +52,11 @@ function install_activate_plugin_demo_import_callback() {
 
     // activate the plugin
     $plugin_slug = sanitize_text_field( wp_unslash($_POST['slug']) );
-    $result = activate_plugin($plugin_slug.'/'.$plugin_slug.'.php');
+    if("contact-form-7"==$plugin_slug){
+        $result = activate_plugin($plugin_slug.'/wp-'.$plugin_slug.'.php');
+    }else{
+        $result = activate_plugin($plugin_slug.'/'.$plugin_slug.'.php');
+    }
 
     if (is_wp_error($result)) {
         wp_send_json_error('Error: ' . $result->get_error_message());

@@ -142,6 +142,9 @@ function travelfic_toolkit_front_page_script() {
  add_action( 'admin_enqueue_scripts', 'travelfic_toolkit_admin_page_script' );
  function travelfic_toolkit_admin_page_script() {
     $travelfic_toolkit_active_plugins = [];
+    if ( ! is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
+        $travelfic_toolkit_active_plugins[] = "contact-form-7";
+    }
     if ( ! is_plugin_active( 'tourfic/tourfic.php' ) ) {
         $travelfic_toolkit_active_plugins[] = "tourfic";
     }
