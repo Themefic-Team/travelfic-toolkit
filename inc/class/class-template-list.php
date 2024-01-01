@@ -168,6 +168,31 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                             </div>
                         </div>
 
+                        <div class="travelfic-single-template">
+                            <div class="template-img">
+                                <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/templates/home-1.png' ?>" alt="">
+                                <div class="template-preview">
+                                    <a href="<?php echo esc_url("https://hotelic.tourfic.site/"); ?>" target="_blank">
+                                        <?php _e("Preview", "travelfic-toolkit"); ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4.66602 11.3337L11.3327 4.66699M11.3327 4.66699H4.66602M11.3327 4.66699V11.3337" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <h2>
+                                <?php _e("Travelic - Tour marketplace demo", "travelfic-toolkit"); ?>
+                            </h2>
+                            <div class="template-import-btn" data-template="tour" data-design="2">
+                                <?php _e("Import Travelic", "travelfic-toolkit"); ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                                <path d="M9.83268 10.6665C9.49555 10.9942 8.16602 11.8664 8.16602 12.3332M9.83268 13.9998C9.49555 13.6722 8.16602 12.8 8.16602 12.3332M8.16602 12.3332L13.4993 12.3332" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6.83398 14.6665H6.65217C4.47803 14.6665 3.39096 14.6665 2.63603 14.1346C2.41973 13.9822 2.22771 13.8015 2.06579 13.5979C1.50065 12.8874 1.50065 11.8643 1.50065 9.81802V8.12105C1.50065 6.1456 1.50065 5.15788 1.81328 4.36901C2.31586 3.10079 3.37874 2.10043 4.72623 1.62741C5.5644 1.33317 6.61386 1.33317 8.71277 1.33317C9.91215 1.33317 10.5118 1.33317 10.9908 1.50131C11.7608 1.7716 12.3682 2.34324 12.6553 3.06793C12.834 3.51872 12.834 4.08313 12.834 5.21196V8.6665" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1.49935 8C1.49935 6.7727 2.49427 5.77778 3.72157 5.77778C4.16543 5.77778 4.68871 5.85555 5.12026 5.73992C5.50369 5.63718 5.80319 5.33768 5.90593 4.95424C6.02157 4.52269 5.94379 3.99941 5.94379 3.55556C5.94379 2.32826 6.93872 1.33333 8.16602 1.33333" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

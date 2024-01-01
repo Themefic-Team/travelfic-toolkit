@@ -37,8 +37,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_global_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
-
-            $settings_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/settings.json' );
+            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $demo_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/settings.json';
+            $settings_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($settings_files);
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
@@ -53,8 +54,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_customizer_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
-
-            $customizers_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/customizer.json' );
+            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $demo_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/customizer.json';
+            $customizers_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($customizers_files);
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
@@ -71,8 +73,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_pages_imports() {
 
             check_ajax_referer('updates', '_ajax_nonce');
-
-            $pages_files = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/pages.json' );
+            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $demo_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/pages.json';
+            $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
@@ -195,8 +198,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_menus_imports() {
             check_ajax_referer('updates', '_ajax_nonce');
-
-            $serialized_menu = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/menu.txt' );
+            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $demo_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/menu.txt';
+            $serialized_menu = wp_remote_get( $demo_data_url );
             $serialized_menu = wp_remote_retrieve_body($serialized_menu);
             if (!empty($serialized_menu)) {
                 $menu_items = unserialize($serialized_menu);
@@ -261,7 +265,17 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
             
             self::travelfic_toolkit_clear_widgets();
-            if(!empty($_POST['template']) && $_POST['template']=="hotel"){
+            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $demo_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/widget.json';
+
+            $import_file = wp_remote_get( $demo_data_url );
+            $imported_data = wp_remote_retrieve_body($import_file);
+            $json_data = json_decode( $imported_data, true );
+
+            $sidebar_data = $json_data[0];
+            $widget_data = $json_data[1];
+            
+            if($template_key==1){
                 $widgets = array(
                     "recent-posts" => [
                         2 => "on"
@@ -291,51 +305,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         3 => "on"
                     ]
                 );
-
-                $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
-                $imported_data = wp_remote_retrieve_body($import_file);
-                $json_data = json_decode( $imported_data, true );
-
-                $sidebar_data = $json_data[0];
-                $widget_data = $json_data[1];
-            }else{
-                $widgets = array(
-                    "recent-posts" => [
-                        2 => "on"
-                    ],
-                    "tag_cloud" => [
-                        2 => "on"
-                    ],
-                    "block" => [
-                        11 => "on",
-                        12 => "on",
-                        13 => "on",
-                        14 => "on"
-                    ],
-                    "tf_hotel_filter" => [
-                        2 => "on",
-                        3 => "on"
-                    ],
-                    "tf_hotel_type_filter" => [
-                        3 => "on",
-                        2 => "on"
-                    ],
-                    "tf_price_filters" => [
-                        2 => "on",
-                        3 => "on"
-                    ],
-                    "tf_tour_feature_filter" => [
-                        3 => "on"
-                    ]
-                );
-
-                $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
-                $imported_data = wp_remote_retrieve_body($import_file);
-                $json_data = json_decode( $imported_data, true );
-
-                $sidebar_data = $json_data[0];
-                $widget_data = $json_data[1];
             }
+
             foreach ( $sidebar_data as $title => $sidebar ) {
                 $count = count( $sidebar );
                 for ( $i = 0; $i < $count; $i++ ) {

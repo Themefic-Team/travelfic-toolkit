@@ -2,6 +2,7 @@
     'use strict';
 
     let template_type = '';
+    let template_design = '';
     let plugin_slugs = travelfic_toolkit_script_params.actives_plugins;
     let plugin_slug_length = plugin_slugs.length-1;
     
@@ -11,6 +12,7 @@
         $("#travelfic-template-importing-wrapper").slideDown();
         $("#travelfic-template-importing-wrapper").addClass('travelfic-importing-showing');
         template_type = $(this).attr('data-template');
+        template_design = $(this).attr('data-design');
         $('.demo-importing-loader .loader-heading .loader-label').text(travelfic_toolkit_script_params.installing);
         if (plugin_slugs.length > 0) {
             plugin_slugs.forEach(function (slug, index) {
@@ -145,6 +147,7 @@
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
                 action: 'travelfic-global-settings-import',
+                template_version: template_design,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response) {
@@ -166,6 +169,7 @@
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
                 action: 'travelfic-customizer-settings-import',
+                template_version: template_design,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response) {
@@ -187,6 +191,7 @@
             data: {
                 action: 'travelfic-demo-widget-import',
                 template: template_type,
+                template_version: template_design,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response) {
@@ -208,6 +213,7 @@
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
                 action: 'travelfic-demo-menu-import',
+                template_version: template_design,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response) {
@@ -229,6 +235,7 @@
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
                 action: 'travelfic-demo-pages-import',
+                template_version: template_design,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response) {
