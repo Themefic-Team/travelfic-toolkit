@@ -309,3 +309,62 @@
 }
 
 /*# sourceMappingURL=design-2.css.map */
+
+/* Contact Form CSS */
+#tf-cf7-contact-form {
+	margin-top: 20px;
+}
+
+#tf-cf7-contact-form p {
+	font-family: Josefin Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 130%; /* 20.8px */
+}
+
+#tf-cf7-contact-form input, #tf-cf7-contact-form textarea {
+	display: flex;
+	padding: 12px 14px;
+	align-items: center;
+	gap: 8px;
+	align-self: stretch;
+	width: 100%;
+	border: 1px solid #99948D;
+	box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+	background-color: transparent;
+		border-radius: unset;
+}
+
+#tf-cf7-contact-form textarea {
+	height: 130px;
+}
+
+#tf-cf7-contact-form input::placeholder, #tf-cf7-contact-form textarea::placeholder {
+	font-family: Josefin Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 130%;
+	color: #C1BFBB;
+}
+
+#tf-cf7-contact-form input[type=submit] {
+	display: flex;
+	width: 100%;
+	padding: 12px 32px;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 8px;
+	font-family: Josefin Sans;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 150%;
+	text-align: center;
+	background: #B58E53 !important;
+	color: #FDF9F3;
+}
+#tf-cf7-contact-form input::focus, #tf-cf7-contact-form textarea::focus {
+	border: 2px solid #99948D !important;
+}
