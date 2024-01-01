@@ -261,37 +261,81 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
             
             self::travelfic_toolkit_clear_widgets();
+            if(!empty($_POST['template']) && $_POST['template']=="hotel"){
+                $widgets = array(
+                    "recent-posts" => [
+                        2 => "on"
+                    ],
+                    "tag_cloud" => [
+                        2 => "on"
+                    ],
+                    "block" => [
+                        11 => "on",
+                        12 => "on",
+                        13 => "on",
+                        14 => "on"
+                    ],
+                    "tf_hotel_filter" => [
+                        2 => "on",
+                        3 => "on"
+                    ],
+                    "tf_hotel_type_filter" => [
+                        3 => "on",
+                        2 => "on"
+                    ],
+                    "tf_price_filters" => [
+                        2 => "on",
+                        3 => "on"
+                    ],
+                    "tf_tour_feature_filter" => [
+                        3 => "on"
+                    ]
+                );
 
-            $widgets = array(
-                "block" => array(
-                    11 => "on",
-                    12 => "on",
-                    13 => "on",
-                    14 => "on"
-                ),
-                "tf_hotel_filter" => array(
-                    2 => "on",
-                    3 => "on"
-                ),
-                "tf_hotel_type_filter" => array(
-                    3 => "on",
-                    2 => "on"
-                ),
-                "tf_price_filters" => array(
-                    2 => "on",
-                    3 => "on"
-                ),
-                "tf_tour_feature_filter" => array(
-                    3 => "on"
-                )
-            );
+                $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
+                $imported_data = wp_remote_retrieve_body($import_file);
+                $json_data = json_decode( $imported_data, true );
 
-            $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
-            $imported_data = wp_remote_retrieve_body($import_file);
-            $json_data = json_decode( $imported_data, true );
+                $sidebar_data = $json_data[0];
+                $widget_data = $json_data[1];
+            }else{
+                $widgets = array(
+                    "recent-posts" => [
+                        2 => "on"
+                    ],
+                    "tag_cloud" => [
+                        2 => "on"
+                    ],
+                    "block" => [
+                        11 => "on",
+                        12 => "on",
+                        13 => "on",
+                        14 => "on"
+                    ],
+                    "tf_hotel_filter" => [
+                        2 => "on",
+                        3 => "on"
+                    ],
+                    "tf_hotel_type_filter" => [
+                        3 => "on",
+                        2 => "on"
+                    ],
+                    "tf_price_filters" => [
+                        2 => "on",
+                        3 => "on"
+                    ],
+                    "tf_tour_feature_filter" => [
+                        3 => "on"
+                    ]
+                );
 
-            $sidebar_data = $json_data[0];
-            $widget_data = $json_data[1];
+                $import_file = wp_remote_get( 'https://hotelic.tourfic.site/demos/v1/widget.json' );
+                $imported_data = wp_remote_retrieve_body($import_file);
+                $json_data = json_decode( $imported_data, true );
+
+                $sidebar_data = $json_data[0];
+                $widget_data = $json_data[1];
+            }
             foreach ( $sidebar_data as $title => $sidebar ) {
                 $count = count( $sidebar );
                 for ( $i = 0; $i < $count; $i++ ) {

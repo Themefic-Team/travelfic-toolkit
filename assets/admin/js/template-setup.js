@@ -168,6 +168,7 @@
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
                 action: 'travelfic-demo-widget-import',
+                template: template_type,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             },
             success: function(response) {
