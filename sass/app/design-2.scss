@@ -10,11 +10,21 @@
         .tft-flex{
             justify-content: space-between;
             align-items: center;
+            @media #{$tft_max767}{
+                flex-wrap: wrap;
+            }
             .tft-contact-info{
+                @media #{$tft_max767}{
+                    width: 100%;
+                }
                 ul{
                     margin: 0;
                     padding: 0;
                     display: flex;
+                    @media #{$tft_max767}{
+                        justify-content: center;
+                        flex-wrap: wrap;
+                    }
                     li{
                         display: inline-flex;
                         color: $tft_white;
@@ -30,15 +40,26 @@
                 }
             }
             .tft-social-share{
+                @media #{$tft_max767}{
+                    width: 100%;
+                    text-align: center;
+                    margin-top: 10px;
+                }
                 ul{
                     margin: 0;
                     padding: 0;
                     li{
                         display: inline-block;
                         margin-left: 20px;
+                        @media #{$tft_max767}{
+                            margin: 0px 5px;
+                        }
                     }
                     li:first-child{
                         margin: 0px;
+                        @media #{$tft_max767}{
+                            margin: 0px 5px;
+                        }
                     }
                 }
             }
