@@ -9,6 +9,7 @@
     left: 0;
     width: 100%;
     background-color: #fff;
+    z-index: 99;
 }
 .travelfic-template-top-header .header-logo{
     align-items: center;
