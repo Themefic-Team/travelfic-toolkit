@@ -23,6 +23,7 @@
 .tft-icon-text-wrapper img {
   height: 48px;
   width: 48px;
+  object-fit: cover;
 }
 .tft-icon-text-wrapper .tft-icon-text-single {
   border: 1px solid #ededf0;

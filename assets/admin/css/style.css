@@ -64,6 +64,32 @@
     border-bottom: 3px solid #0284C7;
 }
 
+.tft-select-tab {
+    padding: 0;
+    margin-bottom: 0;
+}
+.tft-select-tab li {
+    display: inline-block;
+    text-align: center;
+    margin: 0px;
+    border: 1px solid #ddd;
+}
+.tft-select-tab li label{
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.tft-select-tab li label span{
+    padding: 10px;
+    line-height: 40px;
+}
+.tft-select-tab li label input {
+    display: none;
+}
+.tft-select-tab li label > input:checked + span{
+    background-color: #002C66;
+    color: #fff;
+}
+
 /* Customizer Section Title */
 .travelfic-customize-control-title {
     background: #ddd;
@@ -73,4 +99,61 @@
     font-weight: 700;
     color: #50575e;
     margin: 0px -30px;
+}
+
+.travelfic-customize-switch .travelfic-customize-switch-status{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.travelfic-customize-switch .travelfic-customize-switch-status span{
+    font-weight: 700;
+    font-size: 15px;
+}
+.travelfic-customize-switch .travelfic-customize-switch-status .switch {
+    margin-left: 15px;
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 20px;
+}
+.travelfic-customize-switch .travelfic-customize-switch-status .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.travelfic-customize-switch .travelfic-customize-switch-status .switcher.round {
+    border-radius: 20px;
+}
+.travelfic-customize-switch .travelfic-customize-switch-status .switcher {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #EE3560;
+    transition: .4s;
+}
+.travelfic-customize-switch .switcher.round::before {
+    border-radius: 50%;
+}
+.travelfic-customize-switch .switcher::before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.travelfic-customize-switch input:checked + .switcher {
+    background-color: #002C66;
+}
+.travelfic-customize-switch input:checked + .switcher::before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
 }

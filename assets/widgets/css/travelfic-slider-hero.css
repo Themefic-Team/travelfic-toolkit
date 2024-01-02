@@ -264,7 +264,52 @@
   display: none;
 }
 
+/* Slider Design 2 */
+.tft-hero-design-2{
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tft-hero-design-2 .tft-hero-content{
+  width: 1240px;
+}
+.tft-hero-design-2 .tft-hero-content h1{
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  color: #FDF9F3;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button{
+  border: 0px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: .3s all ease;
+}
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button.active{
+  background-color: #B58E53;
+}
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button:hover{
+  background-color: #917242;
+  color: #FDF9F3;
+}
 @media only screen and (max-width: 767px) {
+  .tft-hero-design-2{
+    height: auto;
+    padding: 38px 16px;
+  }
+  .tft-hero-design-2 .tft-hero-content h1{
+    font-size: 24px;
+  }
+  .tft-hero-design-2 #tf_hotel_aval_check{
+    margin-bottom: 0px;
+  }
   .tft-search-box {
     position: relative;
   }
@@ -316,7 +361,25 @@
     width: 100% !important;
   }
 }
-
+@media all and (max-width: 1024px){
+  .tft-hero-design-2 .tft-hero-content{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media all and (max-width: 991px){
+  .tft-hero-design-2 .tft-hero-content h1{
+    font-size: 40px;
+  }
+}
+@media all and (max-width: 767px){
+  .tft-hero-design-2 .tft-hero-content h1{
+    font-size: 24px;
+  }
+  .tft-hero-design-2 .tft-hero-content select[name="tf-booking-form-tab-select"]{
+    color: #FDF9F3;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .tft-hero-slider-selector .slider__counter {
     left: 210px !important;

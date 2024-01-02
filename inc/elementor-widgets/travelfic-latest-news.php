@@ -24,7 +24,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'TFT Latest News', 'travelfic-toolkit' );
+		return esc_html__( 'Travelfic Latest News', 'travelfic-toolkit' );
 	}
 
 	/**
@@ -131,6 +131,43 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
+        // Design
+        $this->add_control(
+            'blog_style',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __( 'Design', 'travelfic-toolkit' ),
+                'default' => 'design-1',
+                'options' => [
+                    'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
+                    'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                ],
+            ]
+        );
+        $this->add_control(
+			'tft_section_title',
+			[
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
+                'default' => __( 'We share our experiences, tips and travel stories to inspire', 'travelfic-toolkit' ),
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+			]
+		);
+        $this->add_control(
+			'tft_section_subtitle',
+			[
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
+                'default' => __( 'BLOG & NEWS', 'travelfic-toolkit' ),
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+			]
+		);
 		// Category name
 		$this->add_control(
             'post_category',
@@ -181,9 +218,187 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->add_control(
+			'view_all_link',
+			[
+				'type' => \Elementor\Controls_Manager::URL,
+				'label' => esc_html__( 'View ALL URL', 'travelfic-toolkit' ),
+				'placeholder' => esc_html__( 'Enter Link', 'travelfic-toolkit' ),
+				'default' => [
+					'url' => '#',
+					'is_external' => true,
+					'nofollow' => true,
+				],
+				'label_block' => true,
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+			]
+		);
 		$this->end_controls_section();
 
-		// Style
+
+        // Style Section
+        $this->start_controls_section(
+            'blog_design_2_section_style',
+            [
+                'label' => __( 'Section Styles', 'travelfic-toolkit' ),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'blog_section_bg',
+            [
+                'label'     => __( 'Section Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FAEEDC',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'blog_section_title_typo',
+                'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h3',
+                'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+		$this->add_control(
+            'blog_section_title_color',
+            [
+                'label'     => __( 'Section Title Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#595349',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'blog_section_subtitle_typo',
+                'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h6',
+                'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_subtitle_color',
+            [
+                'label'     => __( 'Section Subtitle Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h6' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'blog_section_button_typo',
+                'selector' => '{{WRAPPER}} .tft-design-2-blog .read-more a',
+                'label'    => __( 'Section Button Typography', 'travelfic-toolkit' ),
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_button_bg',
+            [
+                'label'     => __( 'Section Button Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#B58E53',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_button_color',
+            [
+                'label'     => __( 'Section Button Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a span svg path' => 'fill: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_button_hover_bg',
+            [
+                'label'     => __( 'Section Button Hover Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#917242',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a:hover' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'blog_section_button_hover_color',
+            [
+                'label'     => __( 'Section Button Hover Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FDF9F3',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-design-2-blog .read-more a:hover span svg path' => 'fill: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+        $this->end_controls_section();
+
 		$this->start_controls_section(
             'news_style_section',
             [
@@ -200,6 +415,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'selectors'  => [
                     '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -209,6 +427,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'label'   => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type'    => \Elementor\Controls_Manager::NUMBER,
                 'default' => 10,
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ],
         );
 
@@ -218,6 +439,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'label'     => __( 'Card Gradient', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->start_controls_tabs( 'news_hover_style' );
@@ -227,6 +451,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             'search_button_normal',
             [
                 'label' => __( 'Normal', 'travelfic-toolkit' ),
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -235,7 +462,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background Gradient 1', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B'
+                'default'   => '#1D2A3B',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -244,7 +474,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background Gradient 2', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1d2a3b00'
+                'default'   => '#1d2a3b00',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
         $this->end_controls_tab();
@@ -254,6 +487,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             'search_button_hover',
             [
                 'label' => __( 'Hover', 'travelfic-toolkit' ),
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -262,7 +498,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background Gradient 1', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30'
+                'default'   => '#F15D30',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -271,7 +510,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background Gradient 2', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#eb390300'
+                'default'   => '#eb390300',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -284,6 +526,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'label'     => __( 'Title', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->add_group_control(
@@ -292,6 +537,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'name'     => 'news_title_typo',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-title',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->add_control(
@@ -303,6 +551,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-title' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->add_control(
@@ -311,6 +562,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'label'     => __( 'Meta', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->add_group_control(
@@ -319,6 +573,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'name'     => 'news_meta_typo',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'selector' => '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-meta-wrap .tft-meta',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->add_control(
@@ -330,6 +587,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .tft-latest-posts .tft-post-content-wrap .tft-meta-wrap .tft-meta' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 
@@ -339,6 +599,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'label'     => __( 'Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
             ]
         );
 		$this->add_control(
@@ -349,6 +612,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-latest-posts .tft-post-thumbnail a:hover  .tft-title' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
                 ],
             ]
         );
@@ -361,6 +627,167 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .tft-latest-posts .tft-post-thumbnail a:hover .tft-meta' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'blog_style' => 'design-1', // Show this control only when blog_style is 'design-1'
+                ],
+            ]
+        );
+
+        // Design 2 News Field
+        $this->add_responsive_control(
+            'news_design2_card_paddding',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item .tft-content-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-1'
+                ],
+            ]
+        );
+        $this->add_control(
+            'news_design2_overley',
+            [
+                'label'     => __( 'Card Overley Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default' => 'rgba(238, 199, 140, 0.94)',
+                'selectors' => [
+                    '{{WRAPPER}} .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a .tft-content-details, .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details, .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details, .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details, .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a .tft-content-details' => 'background: {{VALUE}}',
+                    'condition' => [
+                        'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                    ],
+                ],
+            ]
+        );
+        $this->add_control(
+            'news_design2_title_head',
+            [
+                'label'     => __( 'Title', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'news_design2_title_typo',
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item a h3',
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Cormorant Garamond',
+                    ],
+                ]
+            ]
+        );
+		$this->add_control(
+            'news_design2_title_typo_color',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#595349',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item a h3' => 'color: {{VALUE}}',
+                    'condition' => [
+                        'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'news_design2_date_head',
+            [
+                'label'     => __( 'Date', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'news_design2_time_typo',
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item a p.tft-meta',
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
+            ]
+        );
+		$this->add_control(
+            'news_design2_time_typo_color',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#99948D',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item a p.tft-meta' => 'color: {{VALUE}}',
+                    'condition' => [
+                        'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                    ],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'news_design2_content_head',
+            [
+                'label'     => __( 'Content', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+            ]
+        );
+		$this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'news_design2_content_typo',
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item p.content',
+                'condition' => [
+                    'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
+            ]
+        );
+		$this->add_control(
+            'news_design2_content_typo_color',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#99948D',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item p.content' => 'color: {{VALUE}}',
+                    'condition' => [
+                        'blog_style' => 'design-2', // Show this control only when blog_style is 'design-2'
+                    ],
+                ],
             ]
         );
 		
@@ -372,6 +799,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 		$args = array(
 			'post_type'   => 'post'
 		);
+
+        // Design
+        if ( ! empty( $settings['blog_style'] ) ) {
+            $design = $settings['blog_style'];
+        }
 
 		// Display posts in category.
         if ( ! empty( $settings['post_category'] ) ) {
@@ -395,9 +827,75 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 
 		$query = new \WP_Query ( $args );
 		$items_count = $settings['post_items'];
-		
-	?>
 
+        if ( !empty( $settings['tft_section_title'] ) ) {
+            $tft_sec_title = $settings['tft_section_title'];
+        }
+        if ( !empty( $settings['tft_section_subtitle'] ) ) {
+            $tft_sec_subtitle = $settings['tft_section_subtitle'];
+        }
+		if("design-2"==$design){
+	    ?>
+        <div class="tft-design-2-blog">
+            <div class="tft-blog-header">
+                <div class="tft-news-header">
+                    <?php 
+                    if(!empty($tft_sec_subtitle)){ ?>
+                        <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                    <?php }
+                    if(!empty($tft_sec_title)){
+                    ?>
+                        <h3><?php echo esc_html($tft_sec_title); ?></h3>
+                    <?php } ?>
+                </div>
+                <div class="read-more">
+                    <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
+                        <?php echo __("View All", "travelfic-toolkit"); ?>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
+                            <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="tft-blog-gird-section blog-grid-item-<?php echo $items_count; ?>">
+                <?php if( $query->have_posts() ) : ?>
+					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					
+						<div class="tft-col-item tft-post-single-item">
+                            <a id="post-<?php the_ID(); ?>" href="<?php echo esc_url( get_permalink() ); ?>">
+                                
+                                <div class="tft-blog-thumbnail">
+                                    <?php 
+                                    if( get_the_post_thumbnail_url( get_the_ID() ) ){
+                                        the_post_thumbnail( 'blog-thumb' );
+                                    }else{ ?>
+                                        <img src="<?php echo esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
+                                    <?php } ?>
+                                </div>
+                                <div class="tft-content-details">
+                                    <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
+                                    <h3 class="tft-title">
+                                        <?php 
+                                        echo travelfic_character_limit(get_the_title(), 15);
+                                        ?>
+                                    </h3>
+                                    <?php 
+                                    $travelfic_blog_content = wp_trim_words(get_the_content(), 5, '<span> ...Read more</span>');
+                                    echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
+                                    ?>
+                                </div>
+                            </a>
+						</div>
+					
+					<?php endwhile; ?>
+				<?php endif; ?>
+            </div>
+        </div>
+        <?php 
+        }else{ ?>
 		<style>
 			.tft-latest-posts .tft-post-thumbnail a::before {
 				background: linear-gradient(360deg, <?php echo esc_attr( $settings['news_item_card_gradient_1'] ); ?> -9.6%, <?php echo esc_attr( $settings['news_item_card_gradient_2'] ); ?> 109.78%);
@@ -424,7 +922,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 									<?php the_post_thumbnail( 'blog-thumb' ); ?>
 										<div class="tft-post-content-wrap">
 												<div class="tft-meta-wrap">
-													<p class="tft-meta"><i class="fas fa-clock"></i> <?php the_date(); ?></p>
+													<p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
 												</div>
 											<div class="tft-post-title">
 												<h3 class="tft-title"><?php the_title(); ?></h3>
@@ -437,11 +935,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 					
 					<?php endwhile; ?>
 				<?php endif; ?>
-					
                 </div>
             </div>
         </div>
-
+        <?php } ?>
     <?php
 	}
 }

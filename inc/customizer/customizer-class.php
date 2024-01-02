@@ -33,7 +33,7 @@ class Travelfic_Toolkit_Tab_Select_Control extends WP_Customize_Control {
         $tab_options = $this->choices;
         $value = $this->value();
         ?>
-            <ul class="tab-select-container">
+            <ul class="<?php echo !empty($this->input_attrs['data-not-tab']) && "true"==$this->input_attrs['data-not-tab'] ? esc_attr( 'tft-select-tab' ) : esc_attr('tab-select-container'); ?>">
             <?php foreach ( $tab_options as $key => $label ) : ?>
                 <li>
                 <label>
@@ -54,6 +54,26 @@ class Travelfic_Toolkit_Sec_Section_Control extends WP_Customize_Control {
     public function render_content() {
     ?>
         <span class="travelfic-customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+    <?php
+    }
+}
+
+// Switcher Class
+class Travelfic_Toolkit_Switcher_Control extends WP_Customize_Control {
+    public $type = 'switcher_section';
+
+    public function render_content() {
+        $value = $this->value();
+    ?>
+        <div class="travelfic-customize-switch">
+            <div class="travelfic-customize-switch-status">
+                <span><?php echo esc_html( $this->label ); ?></span>
+                <label class="switch">
+                    <input type="checkbox" value="<?php echo !empty($value) && 'true'==$value ? 1 : ''; ?>" <?php echo !empty($value) && 'true'==$value ? esc_attr( 'checked' ) : ''; ?> class="travelfic-switcher">
+                    <span class="switcher round"></span>
+                </label>
+            </div>
+        </div>
     <?php
     }
 }

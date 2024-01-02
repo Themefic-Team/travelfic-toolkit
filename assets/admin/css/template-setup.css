@@ -1,0 +1,383 @@
+/* Travelfic Admin Template List */
+.travelfic-template-top-header{
+    box-shadow: 0 6px 8px -3px rgba(0,0,0,.05),0 4px 6px -2px rgba(0,0,0,.05);
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 99;
+}
+.travelfic-template-top-header .header-logo{
+    align-items: center;
+    border-right: 1px solid #D1D5DB;
+    display: flex;
+    justify-content: center;
+    padding: 16px 24px;
+    height: 44px;
+    width: 44px;
+}
+.travelfic-template-top-header .header-logo img{
+    border-radius: 50%;
+}
+.travelfic-template-top-header .header-exit-btn{
+    border-left: 1px solid #D1D5DB;
+    padding: 26px 30px;
+}
+.travelfic-template-bottom-footer{
+    align-items: center;
+    bottom: 0;
+    box-shadow: 0 -4px 8px -3px rgba(0,0,0,.05),0 -2px 6px -2px rgba(0,0,0,.05);
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    padding: 21px 45px;
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    background-color: #fff;
+}
+.travelfic-template-bottom-footer .footer-back-btn a{
+    color: #4B5563;
+    text-decoration: none;
+    font-size: 15px;
+}
+.travelfic-template-bottom-footer .footer-back-btn a:focus{
+    box-shadow: none;
+    border: 0px solid;
+}
+.travelfic-template-bottom-footer .footer-back-btn a svg path{
+    fill: #4B5563;
+}
+
+body.admin_page_travelfic-template-list {
+    background-color: #fff;
+}
+
+.admin_page_travelfic-template-list #wpcontent {
+    margin-left: 0 !important;
+}
+
+.admin_page_travelfic-template-list #wpbody-content, .admin_page_travelfic-template-list #wpcontent {
+    padding: 0;
+    overflow-x: hidden !important;
+    min-height: calc(100vh - 32px);
+}
+
+.admin_page_travelfic-template-list #adminmenumain, .admin_page_travelfic-template-list .error, .admin_page_travelfic-template-list .notice, .admin_page_travelfic-template-list .update-nag, .admin_page_travelfic-template-list .updated, .admin_page_travelfic-template-list div#wpadminbar, .admin_page_travelfic-template-list div#wpfooter {
+    display: none;
+}
+.travelfic-template-list-wrapper{
+    margin: auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container{
+    max-width: 1280px;
+    margin: auto;
+    padding-bottom: 65px;
+    padding-top: 124px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2,
+.travelfic-template-list-wrapper .travelfic-template-import-container .travelfic-template-list-heading h2{
+    color: #000;
+    font-family: inherit;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 64px; /* 133.333% */
+    margin: 0;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter{
+    display: flex;
+    justify-content: space-between;
+    padding: 56px 0px 0px 0px;
+}
+
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form{
+    width: 390px;
+    border-radius: 4px;
+    border: 1px solid #666D74;
+    background: #FFF;
+    padding: 0px 16px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input{
+    border: 0px solid;
+    color: #666D74;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    width: 100%;
+    padding: 0px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input:focus{
+    outline: none;
+    box-shadow: none;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection select{
+    border-radius: 4px;
+    border: 1px solid #F0F2F4;
+    background: #FFF;
+    /* Button shadow */
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    height: 50px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img{
+    border-radius: 4px;
+    box-shadow: 0px 0px 30px 0px rgba(156, 156, 156, 0.60);
+    position: relative;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .new-template-tag{
+    border-radius: 400px;
+    background: #DF1E1E;
+    color: #FFF;
+    font-family: inherit;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px;
+    padding: 7px 21px;
+    position: absolute;
+    right: -8px;
+    top: -10px;
+    z-index: 99;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(29, 35, 39, 0.6);
+    opacity: 0;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img:hover .template-preview{
+    opacity: 1;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview a{
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #F0F2F4;
+    background: #FFF;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview a:hover{
+    background: #1D2327;
+    color: #F0F0F1;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 56px 32px;
+    margin-top: 56px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img img{
+    width: 100%;
+    max-height: 440px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template h2{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn{
+    border-radius: 4px;
+    border: 1px solid #F0F2F4;
+    background: #FFF;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn svg{
+    height: 14px;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn:hover{
+    border-radius: 4px;
+    background: #1D2327;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    color: #F0F0F1;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn:hover svg path{
+    stroke: #F0F0F1;
+}
+
+/* importing Page */
+#travelfic-template-importing-wrapper{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+#travelfic-template-importing-wrapper.travelfic-importing-showing{
+    display: flex !important;
+}
+.travelfic-template-list-wrapper .travelfic-template-import-container{
+    max-width: 950px;
+    margin: auto;
+    padding-bottom: 179px;
+    padding-top: 124px;
+    border-radius: 4px;
+    background: #FFF;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 72px;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader{
+    margin: 32px 0px 48px 0px;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-img,
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-success{
+    text-align: center;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-success{
+    max-width: 490px;
+    margin: 0 auto;
+    display: none;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-success h4{
+    color: #666D74;
+    text-align: center;
+    font-family: inherit;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 160% */
+    margin-top: 36px;
+    margin-bottom: 72px;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-success a{
+    text-decoration: none;
+    border-radius: 4px;
+    background: #003C79;
+    box-shadow: 0px 8px 20px 0px rgba(29, 35, 39, 0.06);
+    padding: 12px 16px;
+    color: #F0F0F1;
+    font-family: inherit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 125% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-img img{
+    margin: 0 auto;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .loader-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .loader-heading .loader-label{
+    color: #1D2327;
+    font-family: inherit;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 160% */
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .loader-heading .loader-precent{
+    color: #003C79;
+    font-family: inherit;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px; /* 160% */
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .loader-bars{
+    border-radius: 16px;
+    background: #F0F0F1;
+    height: 8px;
+    width: 100%;
+    position: relative;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .loader-bars .loader-precent-bar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    background: #003C79;
+    height: 8px;
+}
+
+@media all and (max-width: 1280px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media all and (max-width: 767px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2, 
+    .travelfic-template-list-wrapper .travelfic-template-import-container .travelfic-template-list-heading h2{
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
+        grid-template-columns: 1fr 1fr;
+        margin-top: 24px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-import-container{
+        padding: 40px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-import-btn{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container{
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    #travelfic-template-importing-wrapper{
+        position: static !important;
+        height: auto !important;
+    }
+    #travelfic-template-importing-wrapper.travelfic-importing-showing{
+        display: block !important;
+    }
+}
