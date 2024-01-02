@@ -29,10 +29,6 @@ define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.0' );
  * Include file from plugin if it is not available in theme
  */
 function travelfic_toolkit_settings() {
-    if ( ! get_option( 'tf_setup_wizard' ) && ! get_option( 'tf_settings' ) ) {
-        update_option( 'tf_setup_wizard', 'active' );
-        update_option( 'tf_settings', 'active' );
-    }
     $theme_folder = wp_get_theme( 'travelfic' );
     if ( $theme_folder->exists() ) {
         $theme = wp_get_theme();
