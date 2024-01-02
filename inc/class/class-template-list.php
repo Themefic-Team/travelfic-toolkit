@@ -178,7 +178,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <?php _e("New", "travelfic-toolkit"); ?>
                                 </span>
                                 <div class="template-preview">
-                                    <a href="<?php echo esc_url("https://hotelic.tourfic.site/"); ?>" target="_blank">
+                                    <a href="<?php echo esc_url("https://travelic.tourfic.site/"); ?>" target="_blank">
                                         <?php _e("Preview", "travelfic-toolkit"); ?>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M4.66602 11.3337L11.3327 4.66699M11.3327 4.66699H4.66602M11.3327 4.66699V11.3337" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>

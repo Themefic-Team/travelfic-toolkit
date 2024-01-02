@@ -5,11 +5,11 @@
  * Description: Travelfic Toolkit allows you to add extra functionality to the Travelfic WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel area etc. This toolkit improves the overall design and performance of your hotel or travel booking website developed using the Travelfic theme.
  * Author: themefic
  * Version: 1.0.0
- * Tested up to: 6.3
+ * Tested up to: 6.4
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.16.4
+ * Elementor tested up to: 3.18.3
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */

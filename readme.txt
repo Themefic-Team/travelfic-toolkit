@@ -1,10 +1,10 @@
 === Travelfic Toolkit ===
-Contributors: themefic
+Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour-booking, tour-operator, travel, travel-booking, tour, travel-agency, hotel-booking, reservation, hotel, apartments, villa, hostel, wp-travel-engine, wp-travel, wp-hotel-booking, wp-tour-plugin, booking.com, agoda.com, airbnb, travel-itinerary, woocommerce-accommodation-bookings
 Requires at least: 5.4
-Tested up to: 6.3
+Tested up to: 6.4
 Stable tag: 1.0.0
-Requires PHP: 7.2
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,12 @@ Travelfic Toolkit is compinion plugin of Travelfic Theme.
 = How to install Travelfic Toolkit? =
 
 See the installation tab.
+
+== Screenshots ==
+
+1. Demo Template List
+2. Demo Template Importing
+3. Demo Importing Finished
 
 == Changelog ==
 
