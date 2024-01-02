@@ -204,12 +204,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $serialized_menu = wp_remote_retrieve_body($serialized_menu);
             if (!empty($serialized_menu)) {
                 $menu_items = unserialize($serialized_menu);
-                self::travelfic_toolkit_create_menu_from_imported_data($menu_items);
+                self::travelfic_toolkit_create_menu_from_imported_data($menu_items, $template_key);
             }
             
             die();
         }
-        public static function travelfic_toolkit_create_menu_from_imported_data($menu_data) {
+        public static function travelfic_toolkit_create_menu_from_imported_data($menu_data, $template_key) {
 
             $menu_name = 'Imported Main Menu';
             $menu_exists = wp_get_nav_menu_object($menu_name);
@@ -219,12 +219,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             } else {
                 $menu_id = $menu_exists->term_id;
             }
-        
+            $template_key = $template_key;
             foreach ($menu_data as $menu_item) {
                 // Add top-level menu items.
                 $menu_item_data = array(
                     'menu-item-title' => $menu_item['title'],
-                    'menu-item-url' => str_replace("https://hotelic.tourfic.site",site_url(),$menu_item['url']),
+                    'menu-item-url' => $template_key==1 ? str_replace("https://hotelic.tourfic.site",site_url(),$menu_item['url']) : str_replace("https://travelic.tourfic.site",site_url(),$menu_item['url']),
                     'menu-item-object' => 'custom',
                     'menu-item-parent' => 0,
                     'menu-item-type' => 'custom',
@@ -239,7 +239,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
                             'menu-item-title' => $sub_menu_item['title'],
-                            'menu-item-url' => str_replace("https://hotelic.tourfic.site",site_url(),$sub_menu_item['url']),
+                            'menu-item-url' => $template_key==1 ? str_replace("https://hotelic.tourfic.site",site_url(),$sub_menu_item['url']) : str_replace("https://travelic.tourfic.site",site_url(),$sub_menu_item['url']),
                             'menu-item-object' => 'custom',
                             'menu-item-parent-id' => $menu_item_id,
                             'menu-item-type' => 'custom',
@@ -307,6 +307,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 );
             }
 
+            if($template_key==2){
+                $widgets = [
+                    "meta" => [
+                        2 => "on"
+                    ],
+                    "recent-posts" => [
+                        2 => "on"
+                    ],
+                    "block" => [
+                        11 => "on",
+                        12 => "on",
+                        13 => "on",
+                        14 => "on"
+                    ],
+                    "tf_activities_filter" => [
+                        3 => "on",
+                        4 => "on"
+                    ],
+                    "tf_attraction_filter" => [
+                        2 => "on",
+                        3 => "on"
+                    ],
+                    "tf_tour_feature_filter" => [
+                        2 => "on",
+                        3 => "on"
+                    ],
+                    "tf_tour_type_filter" => [
+                        2 => "on"
+                    ],
+                    "tf_price_filters" => [
+                        4 => "on",
+                        5 => "on"
+                    ],
+                    "tf_hotel_type_filter" => [
+                        3 => "on"
+                    ]
+                ];                
+            }
             foreach ( $sidebar_data as $title => $sidebar ) {
                 $count = count( $sidebar );
                 for ( $i = 0; $i < $count; $i++ ) {
