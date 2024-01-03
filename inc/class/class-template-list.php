@@ -177,7 +177,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 
                         <div class="travelfic-single-template">
                             <div class="template-img">
-                                <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/templates/home-1.png' ?>" alt="">
+                                <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/templates/home-2.png' ?>" alt="">
                                 <span class="new-template-tag">
                                     <?php _e("New", "travelfic-toolkit"); ?>
                                 </span>
