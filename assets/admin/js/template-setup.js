@@ -132,12 +132,102 @@
                     $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "20%");
                     $(".settings-import-btn").click();
                 }
+                if(!active.success){
+                    if(plugin_slug=="contact-form-7"){
+                        $(".plug-active-cf7-btn").click();
+                    }
+                    if(plugin_slug=="tourfic"){
+                        $(".plug-active-tourfic-btn").click();
+                    }
+                    if(plugin_slug=="woocommerce"){
+                        $(".plug-active-woocommerce-btn").click();
+                    }
+                    if(plugin_slug=="elementor"){
+                        $(".plug-active-elementor-btn").click();
+                    }
+                }
             },
             error: function(error) {
                 console.log(error);
             }
         });
     }
+
+    // CF7 Active If Failed
+    $(document).on('click', '.plug-active-cf7-btn', function (e) {
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic_toolkit_ajax_active_plugin',
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                slug: "contact-form-7",
+            },
+            success: function(active) {
+                
+            },
+            error: function(error) {
+                
+            }
+        });
+    });
+
+    // tourfic Active If Failed
+    $(document).on('click', '.plug-active-tourfic-btn', function (e) {
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic_toolkit_ajax_active_plugin',
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                slug: "tourfic",
+            },
+            success: function(active) {
+                
+            },
+            error: function(error) {
+                
+            }
+        });
+    });
+
+    // woocommerce Active If Failed
+    $(document).on('click', '.plug-active-woocommerce-btn', function (e) {
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic_toolkit_ajax_active_plugin',
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                slug: "woocommerce",
+            },
+            success: function(active) {
+                
+            },
+            error: function(error) {
+                
+            }
+        });
+    });
+
+    // elementor Active If Failed
+    $(document).on('click', '.plug-active-elementor-btn', function (e) {
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic_toolkit_ajax_active_plugin',
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                slug: "elementor",
+            },
+            success: function(active) {
+                
+            },
+            error: function(error) {
+                
+            }
+        });
+    });
 
     // Global Settings importer
     $(document).on('click', '.settings-import-btn', function (e) {

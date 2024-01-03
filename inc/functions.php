@@ -61,7 +61,7 @@ function install_activate_plugin_demo_import_callback() {
     if (is_wp_error($result)) {
         wp_send_json_error('Error: ' . $result->get_error_message());
     } else {
-        wp_send_json_success('Plugin installed and activated successfully!');
+        wp_send_json_success('Plugin activated successfully!');
     }
 
     wp_die();
