@@ -120,6 +120,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="plug-elementor-btn" style="display: none;"><?php _e("Elementor Install", "travelfic-toolkit"); ?></span>
                         <span class="widget-import-btn" style="display: none;"><?php _e("Widget Import", "travelfic-toolkit"); ?></span>
                         <span class="menu-import-btn" style="display: none;"><?php _e("Menu Import", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-tourfic-btn" style="display: none;"><?php _e("Tourfic Active", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-cf7-btn" style="display: none;"><?php _e("CF7 Active", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-woocommerce-btn" style="display: none;"><?php _e("Woocommerce Active", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-elementor-btn" style="display: none;"><?php _e("Elementor Active", "travelfic-toolkit"); ?></span>
                     </div>
                     <!-- <div class="travelfic-template-filter">
                         <div class="travelfic-search-form">
