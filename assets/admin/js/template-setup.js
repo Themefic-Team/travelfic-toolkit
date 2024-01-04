@@ -116,11 +116,12 @@
 
     // Activation Functions
     const Travelfic_Activation_Actions = (plugin_slug, index) => {
+        let travelfic_active_action = plugin_slug+"_ajax_active_plugin"
         $.ajax({
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'travelfic_toolkit_ajax_active_plugin',
+                action: travelfic_active_action,
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: plugin_slug,
             },
@@ -161,7 +162,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'travelfic_toolkit_ajax_active_plugin',
+                action: 'contact-form-7_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "contact-form-7",
             },
@@ -180,7 +181,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'travelfic_toolkit_ajax_active_plugin',
+                action: 'tourfic_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "tourfic",
             },
@@ -199,7 +200,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'travelfic_toolkit_ajax_active_plugin',
+                action: 'woocommerce_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "woocommerce",
             },
@@ -218,7 +219,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'travelfic_toolkit_ajax_active_plugin',
+                action: 'elementor_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "elementor",
             },
