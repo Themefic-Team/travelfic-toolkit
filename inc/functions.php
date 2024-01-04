@@ -52,7 +52,8 @@ function travelfic_toolkit_cf7_activate_plugin_callback() {
     }
 
     // activate the plugin
-    activate_plugin('contact-form-7/wp-contact-form-7.php');
+    $activate_plugin = activate_plugin('contact-form-7/wp-contact-form-7.php');
+    $cf7_activate_plugin = activate_plugin('contact-form-7/wp-contact-form-7.php');
 
     if(is_plugin_active( 'contact-form-7/wp-contact-form-7.php' )){
         wp_send_json_success('contact-form-7 activated successfully.');
@@ -74,7 +75,8 @@ function travelfic_toolkit_tourfic_activate_plugin_callback() {
         wp_send_json_error('Permission denied');
     }
     //Activation
-    activate_plugin('tourfic/tourfic.php');
+    $activate_plugin = activate_plugin('tourfic/tourfic.php');
+    $tourfic_activate_plugin = activate_plugin('tourfic/tourfic.php');
 
     if(is_plugin_active( 'tourfic/tourfic.php' )){
         wp_send_json_success('tourfic activated successfully.');
@@ -96,7 +98,8 @@ function travelfic_toolkit_elementor_activate_plugin_callback() {
         wp_send_json_error('Permission denied');
     }
     //Activation
-    activate_plugin('elementor/elementor.php');
+    $activate_plugin = activate_plugin('elementor/elementor.php');
+    $elementor_activate_plugin = activate_plugin('elementor/elementor.php');
 
     if(is_plugin_active( 'elementor/elementor.php' )){
         wp_send_json_success('elementor activated successfully.');
@@ -118,7 +121,8 @@ function travelfic_toolkit_woocommerce_activate_plugin_callback() {
         wp_send_json_error('Permission denied');
     }
     //Activation
-    activate_plugin('woocommerce/woocommerce.php');
+    $activate_plugin = activate_plugin('woocommerce/woocommerce.php');
+    $woocommerce_activate_plugin = activate_plugin('woocommerce/woocommerce.php');
 
     if(is_plugin_active( 'woocommerce/woocommerce.php' )){
         wp_send_json_success('woocommerce activated successfully.');
