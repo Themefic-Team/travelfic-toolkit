@@ -8,6 +8,8 @@
     
     // Import Template
     $(document).on('click', '.template-import-btn', function (e) {
+        // hide sync btn
+        $('.travelfic-templte-sync-btn').hide();
         $("#travelfic-template-list-wrapper").slideUp();
         $("#travelfic-template-importing-wrapper").slideDown();
         $("#travelfic-template-importing-wrapper").addClass('travelfic-importing-showing');
@@ -391,6 +393,27 @@
             },
             error: function(error) {
                 console.log(error);
+            }
+        });
+    });
+
+    // Template List Sync
+    $(document).on('click', '.travelfic-templte-sync-btn', function (e) {
+        let current = $(this);
+        current.addClass('travelfic-templte-sync-loading');
+
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic-template-list-sync',
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+            },
+            success: function(response) {
+                location.reload();
+            },
+            error: function(error) {
+                
             }
         });
     });

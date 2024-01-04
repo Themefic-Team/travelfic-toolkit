@@ -57,7 +57,7 @@ add_filter( 'theme_file_path', 'travelfic_get_theme_filepath', 10, 2 );
 /**
  * Loading Text Domain
  *
- */
+*/
 add_action( 'plugins_loaded', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
 
 function travelfic_toolkit_plugin_loaded_action() {
@@ -66,32 +66,40 @@ function travelfic_toolkit_plugin_loaded_action() {
 
 /**
  *    Customizer Settings
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/customizer-settings.php';
 
 /**
  *    Customizer Apply
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php';
 
 /**
  *    Customizer Header Apply 
- */
+*/
 require_once dirname(__FILE__) . '/inc/customizer/customizer-header-rander.php';
 
 /**
  *    Customizer Footer Apply 
- */
+*/
 require_once dirname(__FILE__) . '/inc/customizer/customizer-footer-rander.php';
 
 /**
  * Elementor Widgets
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/elementor-widgets.php';
 /**
  * Plugin Functions
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/functions.php';
+
+/**
+ * Template Sync Class
+*/
+if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-template-sync.php' ) ) {
+    require_once dirname( __FILE__ ) . '/inc/class/class-template-sync.php';
+}
+
 
 /**
  * Template List Class

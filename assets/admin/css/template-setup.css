@@ -23,6 +23,18 @@
 .travelfic-template-top-header .header-logo img{
     border-radius: 50%;
 }
+.travelfic-template-top-header .top-header-right-navigation{
+    display: flex;
+    align-items: center;
+}
+.travelfic-template-top-header .top-header-right-navigation .travelfic-templte-sync-btn{
+    cursor: pointer;
+    margin-right: 30px;
+}
+.travelfic-template-top-header .top-header-right-navigation .travelfic-templte-sync-btn.travelfic-templte-sync-loading svg{
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}
 .travelfic-template-top-header .header-exit-btn{
     border-left: 1px solid #D1D5DB;
     padding: 26px 30px;
