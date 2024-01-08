@@ -200,7 +200,9 @@ class Travelfic_Customizer_Header
                     <?php
                     if($travelfic_transparent_settings == 'enabled'){
                         if(!empty($header_trasnparent_logo)){ ?>
+                        <a href="<?php echo esc_url(home_url('/')) ?>">
                             <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php _e("Logo", "travelfic-toolkit"); ?>">
+                        </a>
                         <?php }else{ ?>
                         <div class="logo-text">
                             <a href="<?php echo esc_url(home_url('/')) ?>">
