@@ -54,6 +54,7 @@ class Travelfic_Customizer_Header
         $social_instagram = get_theme_mod($travelfic_prefix.'social_instagram', '#');
         $social_pinterest = get_theme_mod($travelfic_prefix.'social_pinterest', '#');
         $social_reddit = get_theme_mod($travelfic_prefix.'social_reddit', '#');
+        $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         ob_start();
     ?>
         <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
@@ -196,6 +197,18 @@ class Travelfic_Customizer_Header
                     </div>
                     <div class="tft-logo">
                     <?php
+                    if($travelfic_transparent_settings == 'enabled'){
+                        if(!empty($header_trasnparent_logo)){ ?>
+                            <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php _e("Logo", "travelfic-toolkit"); ?>">
+                        <?php }else{ ?>
+                        <div class="logo-text">
+                            <a href="<?php echo esc_url(home_url('/')) ?>">
+                                <?php bloginfo('name'); ?>
+                            </a>
+                        </div>
+                        <?php 
+                        }
+                    }else{
                         if (has_custom_logo()) {
                             if (function_exists('the_custom_logo')) {
                                 the_custom_logo();
@@ -207,9 +220,7 @@ class Travelfic_Customizer_Header
                                 <?php bloginfo('name'); ?>
                             </a>
                         </div>
-                        <?php
-                        }
-                        ?>
+                    <?php } } ?>
                     </div>
                     <div class="tft-account">
                         <ul>

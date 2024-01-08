@@ -233,6 +233,26 @@ function travelfic_toolkit_customize_register($wp_customize) {
     )));
     /* Transparent Header Showing Option Start*/
 
+    /* Transparent Header image Start*/
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "trasnparent_logo", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_url"
+    ]);
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            $travelfic_toolkit_prefix . "trasnparent_logo",
+            [
+                "label" => __("Transparent Header Logo", "travelfic-toolkit"),
+                "section" => "travelfic_customizer_header",
+                "settings" => $travelfic_toolkit_prefix . "trasnparent_logo",
+                'priority' => 21,
+            ]
+        )
+    );
+    /* Transparent Header image End*/
+
     /* Header Menu Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_section_opt', array(
         'default'           => 'sections',
