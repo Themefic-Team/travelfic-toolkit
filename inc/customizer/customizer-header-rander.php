@@ -55,6 +55,7 @@ class Travelfic_Customizer_Header
         $social_pinterest = get_theme_mod($travelfic_prefix.'social_pinterest', '#');
         $social_reddit = get_theme_mod($travelfic_prefix.'social_reddit', '#');
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
+        $travelfic_header_bg = get_theme_mod($travelfic_prefix.'header_bg_color');
         ob_start();
     ?>
         <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
@@ -181,7 +182,7 @@ class Travelfic_Customizer_Header
             </div>
             <?php } ?>
 
-            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_desktop_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_desktop_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
                 <div class="tft-flex">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
