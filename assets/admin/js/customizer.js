@@ -94,6 +94,8 @@
           // Transparent Header Design settings hide for settings Design Tab
           $('li[id*="travelfic_customizer_settings_transparent_showing"], li[id*="travelfic_customizer_settings_trasnparent_logo"]').hide();
 
+          $('li[id*="customize-control-travelfic_customizer_settings_transparent_menu_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_menu_hover_color"], li[id*="customize-control-travelfic_customizer_settings_header_bg_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_header_section_opt"], li[id*="customize-control-travelfic_customizer_settings_transparent_header_bg_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_bg"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_text_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_text_hover_color"]').show();
+
           makeStickyDesign();
 
         } else {
@@ -104,6 +106,8 @@
 
           // Sticky Design settings hide for settings tab
           $('li[id*="travelfic_customizer_settings_stiky_header_bg_color"],li[id*="travelfic_customizer_settings_stiky_header_blur"],li[id*="travelfic_customizer_settings_stiky_header_menu_text_color"]').hide();
+
+          $('li[id*="customize-control-travelfic_customizer_settings_transparent_menu_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_menu_hover_color"], li[id*="customize-control-travelfic_customizer_settings_header_bg_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_header_section_opt"], li[id*="customize-control-travelfic_customizer_settings_transparent_header_bg_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_bg"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_text_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_text_hover_color"]').hide();
 
           makeDesign2();
           makeTransparentDesign();
