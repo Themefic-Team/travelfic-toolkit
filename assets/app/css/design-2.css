@@ -138,6 +138,9 @@
   display: block;
   padding: 5px 10px;
 }
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li.current_page_item > a {
+  color: #B58E53;
+}
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
   margin: 0px;
 }

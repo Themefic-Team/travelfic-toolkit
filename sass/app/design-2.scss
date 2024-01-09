@@ -99,6 +99,9 @@
                             }
                         }
                     }
+                    li.current_page_item>a{
+                        color: $tft_primary_color;
+                    }
                     li:last-child{
                         margin: 0px;
                     }
