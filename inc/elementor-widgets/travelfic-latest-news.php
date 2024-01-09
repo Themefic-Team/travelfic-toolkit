@@ -883,8 +883,18 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                                         ?>
                                     </h3>
                                     <?php 
-                                    $travelfic_blog_content = wp_trim_words(get_the_content(), 5, '<span> ...Read more</span>');
-                                    echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
+                                    // $travelfic_blog_content = wp_trim_words(get_the_content(), 15, '<span> ...Read more</span>');
+
+                                    $blog_single_cont = strip_tags(get_the_content());
+
+                                    if(strlen($blog_single_cont) > 35 ){
+                                        $blog_single_cont = substr($blog_single_cont, 0, 35) . '<span> ...Read more</span>';
+                                    }else{
+                                        $blog_single_cont = $blog_single_cont;
+                                    }
+                                    echo '<p class="content">' . $blog_single_cont . '</p>';
+
+                                    // echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
                                     ?>
                                 </div>
                             </a>

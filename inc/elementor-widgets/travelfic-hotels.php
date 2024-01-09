@@ -764,7 +764,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                     <h3 class="tft-title">
                                         <?php 
                                         if("Split"==$settings['card_title_type']){
-                                            echo travelfic_character_limit(get_the_title(), 15);
+                                            echo travelfic_character_limit(get_the_title(), 40);
                                         }else{
                                             the_title();
                                         } 

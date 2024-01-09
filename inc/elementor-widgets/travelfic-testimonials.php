@@ -1050,9 +1050,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 <?php 
                 if(!empty($tft_sec_subtitle)){ ?>
                 <div class="testimonial-header-shape">
-                    <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-1.png' ); ?>" alt="Testimonial Shape">
+                    <!-- <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-1.png' ); ?>" alt="Testimonial Shape"> -->
                     <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
-                    <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-2.png' ); ?>" alt="Testimonial Shape">
+                    <!-- <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-2.png' ); ?>" alt="Testimonial Shape"> -->
                 </div>
                 <?php }
                 if(!empty($tft_sec_title)){
