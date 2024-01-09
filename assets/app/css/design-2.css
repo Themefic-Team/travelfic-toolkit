@@ -72,6 +72,9 @@
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li:first-child {
   margin: 0px;
 }
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share {
+  margin-top: 7px;
+}
 @media only screen and (max-width: 767.98px) {
   .tft-design-2 .tft-top-header .tft-flex .tft-social-share {
     width: 100%;
@@ -102,8 +105,8 @@
 }
 .tft-design-2 .tft-menus-section {
   background: #FDF9F3;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 31px;
+  padding-bottom: 31px;
 }
 .tft-design-2 .tft-menus-section .tft-flex {
   justify-content: space-between;
@@ -197,6 +200,10 @@
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
+  transition: 0.3s all ease;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a:hover {
+  color: #B58E53;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
   border: 1px solid #B58E53;

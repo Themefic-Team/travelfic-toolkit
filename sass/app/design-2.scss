@@ -40,6 +40,7 @@
                 }
             }
             .tft-social-share{
+                margin-top: 7px;
                 @media #{$tft_max767}{
                     width: 100%;
                     text-align: center;
@@ -67,8 +68,8 @@
     }
     .tft-menus-section{
         background: $tft_white;
-        padding-top: 32px;
-        padding-bottom: 32px;
+        padding-top: 31px;
+        padding-bottom: 31px;
         .tft-flex{
             justify-content: space-between;
             align-items: center;
@@ -161,6 +162,10 @@
                             font-weight: 700;
                             text-decoration: none;
                             display: inline-block;
+                            transition: .3s all ease;
+                            &:hover{
+                                color: $tft_primary_color;
+                            }
                         }
                         a.login{
                             border: 1px solid $tft_primary_color;

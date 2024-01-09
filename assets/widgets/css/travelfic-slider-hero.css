@@ -266,13 +266,14 @@
 
 /* Slider Design 2 */
 .tft-hero-design-2{
-  height: 100vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 232px;
+  padding-bottom: 184px;
 }
 .tft-hero-design-2 .tft-hero-content{
   width: 1240px;
@@ -284,7 +285,7 @@
   line-height: 120%;
   color: #FDF9F3;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 120px;
 }
 .tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button{
   border: 0px;

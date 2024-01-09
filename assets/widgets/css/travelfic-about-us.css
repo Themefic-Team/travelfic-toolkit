@@ -97,6 +97,7 @@
     line-height: 120%;
     color: #99948D;
     margin: 0;
+    height: 64%;
 }
 
 @media all and (max-width: 1100px){
