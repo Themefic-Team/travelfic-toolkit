@@ -265,7 +265,8 @@
   left: 0;
   right: 0;
   z-index: 99;
-  background: rgba(48, 40, 28, 0.5);
+  background: rgba(48, 40, 28, 0.3);
+  backdrop-filter: blur(15px);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-menu ul li a {
   color: #FDF9F3;

@@ -250,7 +250,8 @@
         left: 0;
         right: 0;
         z-index: 99;
-        background: rgba(48, 40, 28, 0.50);
+        background: rgba(48, 40, 28, 0.3);
+        backdrop-filter: blur(15px);
         .tft-menu{
             ul{
                 li{
