@@ -211,6 +211,11 @@
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
   border: 1px solid #B58E53;
 }
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
+  background: #917242;
+  color: #FDF9F3;
+  border-color: #917242;
+}
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
   min-height: auto;
   padding: 0 32px;

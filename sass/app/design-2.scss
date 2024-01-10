@@ -172,6 +172,11 @@
                         }
                         a.login{
                             border: 1px solid $tft_primary_color;
+                            &:hover{
+                                background: #917242;
+                                color: #FDF9F3;
+                                border-color: #917242;
+                            }
                         }
                     }
                 }
