@@ -185,7 +185,9 @@
   box-shadow: none;
   padding: 0px;
 }
-
+.tft-hero-design-1 .tf-booking-form-tab button {
+  cursor: pointer;
+}
 .tft-search-box .tft-tour-serach-fields-wrap > div {
   border: none;
   display: flex;
