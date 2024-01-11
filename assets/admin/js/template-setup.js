@@ -435,7 +435,6 @@
         var searchTerm = $('#travelfic_template_search').val().toLowerCase();
         var filterValue = $('#travelfic_filter_value').val().toLowerCase();
 
-        // Filter div elements based on data-template_name and data-template_type
         $('.travelfic-single-template').hide().filter(function () {
             var templateName = $(this).data('template_name').toLowerCase();
             var templateType = $(this).data('template_type').toLowerCase();
