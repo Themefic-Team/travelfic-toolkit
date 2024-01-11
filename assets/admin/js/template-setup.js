@@ -420,12 +420,33 @@
     });
 
     // Template Filter by Search Box
-    $('#travelfic_template_search').on('input', function () {
-        let Travelfic_searchTerm = $(this).val().toLowerCase();
-        $('.travelfic-single-template').hide().filter(function () {
-            return $(this).data('template_name').toLowerCase().includes(Travelfic_searchTerm);
-        }).show();
+    $(document).on('click', '.travelfic-filter-selection ul li', function (e) {
+        let Current = $(this);
+        let Select_value = Current.attr('data-value');
+        $('.travelfic-filter-selection ul li').removeClass('active');
+        Current.addClass('active');
+        $("#travelfic_filter_value").val(Select_value);
+        Travelfic_Template_Filter();
     });
+    $('#travelfic_template_search').on('input', function () {
+        Travelfic_Template_Filter();
+    });
+    const Travelfic_Template_Filter = () =>{
+        var searchTerm = $('#travelfic_template_search').val().toLowerCase();
+        var filterValue = $('#travelfic_filter_value').val().toLowerCase();
+
+        // Filter div elements based on data-template_name and data-template_type
+        $('.travelfic-single-template').hide().filter(function () {
+            var templateName = $(this).data('template_name').toLowerCase();
+            var templateType = $(this).data('template_type').toLowerCase();
+            
+            if (filterValue === 'all') {
+                return templateName.includes(searchTerm);
+            } else {
+                return templateName.includes(searchTerm) && templateType === filterValue;
+            }
+        }).fadeIn();
+    }
 
 })(jQuery);
   

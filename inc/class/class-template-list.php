@@ -135,20 +135,18 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     <div class="travelfic-template-filter">
                         <div class="travelfic-search-form">
                             <input type="text" id="travelfic_template_search" placeholder="<?php _e("Search for templates", "travelfic-toolkit"); ?>">
+                            <input type="hidden" value="all" id="travelfic_filter_value">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z" fill="#666D74"/>
                             </svg>
                         </div>
                         <div class="travelfic-filter-selection">
-                            <select name="" id="">
-                                <option value=""><?php _e("Tour", "travelfic-toolkit"); ?></option>
-                            </select>
-                            <select name="" id="">
-                                <option value=""><?php _e("Hotel", "travelfic-toolkit"); ?></option>
-                            </select>
-                            <select name="" id="">
-                                <option value=""><?php _e("Apartment", "travelfic-toolkit"); ?></option>
-                            </select>
+                            <ul>
+                                <li class="active" data-value="all"><?php _e("All", "travelfic-toolkit"); ?></li>
+                                <li data-value="tour"><?php _e("Tour", "travelfic-toolkit"); ?></li>
+                                <li data-value="hotel"><?php _e("Hotel", "travelfic-toolkit"); ?></li>
+                                <li data-value="apartment"><?php _e("Apartment", "travelfic-toolkit"); ?></li>
+                            </ul>
                         </div>
                     </div>
 
