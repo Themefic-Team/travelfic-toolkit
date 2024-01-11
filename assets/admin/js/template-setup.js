@@ -419,5 +419,13 @@
         });
     });
 
+    // Template Filter by Search Box
+    $('#travelfic_template_search').on('input', function () {
+        let Travelfic_searchTerm = $(this).val().toLowerCase();
+        $('.travelfic-single-template').hide().filter(function () {
+            return $(this).data('template_name').toLowerCase().includes(Travelfic_searchTerm);
+        }).show();
+    });
+
 })(jQuery);
   
