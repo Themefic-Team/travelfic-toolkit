@@ -464,6 +464,77 @@ body.admin_page_travelfic-template-list {
     background: #003C79;
     height: 8px;
 }
+.travelfic-import-confirmaiton-msg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card{
+    border-radius: 16px;
+    border: 1px solid #CFE5FC;
+    background: #F6FAFE;
+    box-shadow: 0px 32px 32px 0px rgba(125, 168, 212, 0.02), 0px 16px 40px 0px rgba(125, 168, 212, 0.04), 0px 32px 56px 0px rgba(125, 168, 212, 0.08);
+    width: 584px;
+    position: relative;
+    text-align: center;
+    padding: 32px;
+    box-sizing: border-box;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 190px;
+    background-repeat: no-repeat;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card h3{
+    color: #27333F;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 133.333% */
+    margin: 0px 0px 8px 0px;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card p{
+    color: #27333F;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    margin: 0px 0px 24px 0px;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card a{
+    border-radius: 8px;
+    background: #003C79;
+    padding: 16px 32px;
+    display: flex;
+    color: #F6FAFE;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: .3s all ease;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card a svg{
+    margin-top: 3px;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card a:hover{
+    background: #002951;
+}
 
 @media all and (max-width: 1280px){
     .travelfic-template-list-wrapper .travelfic-template-list-container{
