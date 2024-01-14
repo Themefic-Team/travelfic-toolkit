@@ -359,7 +359,7 @@
     // Demo Hotel importer
     $(document).on('click', '.demo-hotel-import-btn', function (e) {
         if("hotel"==template_type){
-            $('.demo-importing-loader .loader-heading .loader-label').text("Hurray! ready to go...");
+            $('.demo-importing-loader .loader-heading .loader-label').text("Hotel Demo importing...");
             $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("We are almost done...");
             $.ajax({
                 type: 'post',
