@@ -32,6 +32,7 @@ class Travelfic_Customizer_Header
                 $travelfic_mobile_transparent_class = '';
             }
         }
+
         $travelfic_archive_transparent_showing = get_theme_mod($travelfic_prefix.'archive_transparent_header', 'disabled');
         if(is_archive()  || is_single() || is_404() || is_search()){
             if("disabled"==$travelfic_archive_transparent_showing ){
@@ -42,6 +43,15 @@ class Travelfic_Customizer_Header
                 $travelfic_mobile_transparent_class = 'tft_has_transparent';
             }
         }
+
+        if (is_page()) { 
+            $disable_single_page = get_post_meta( get_the_ID(), 'tft-pmb-transfar-header', true );
+            if(!empty($disable_single_page)){
+                $travelfic_desktop_transparent_class = '';
+                $travelfic_mobile_transparent_class = '';
+            }
+        }
+
         $design_2_topbar = get_theme_mod($travelfic_prefix.'header_design_2_topbar', '1');
         $design_2_phone = get_theme_mod($travelfic_prefix.'design_2_phone', '+88 00 123 456');
         $design_2_email = get_theme_mod($travelfic_prefix.'design_2_email', 'travello@outlook.com');
@@ -54,6 +64,8 @@ class Travelfic_Customizer_Header
         $social_instagram = get_theme_mod($travelfic_prefix.'social_instagram', '#');
         $social_pinterest = get_theme_mod($travelfic_prefix.'social_pinterest', '#');
         $social_reddit = get_theme_mod($travelfic_prefix.'social_reddit', '#');
+        $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
+        $travelfic_header_bg = get_theme_mod($travelfic_prefix.'header_bg_color');
         ob_start();
     ?>
         <header class="tft-design-2 <?php echo esc_attr( $travelfic_sticky_class ); ?>">
@@ -180,7 +192,7 @@ class Travelfic_Customizer_Header
             </div>
             <?php } ?>
 
-            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_desktop_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr( $travelfic_desktop_transparent_class ); ?>  <?php echo esc_attr( apply_filters( 'travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '') ); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
                 <div class="tft-flex">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
@@ -196,6 +208,20 @@ class Travelfic_Customizer_Header
                     </div>
                     <div class="tft-logo">
                     <?php
+                    if($travelfic_transparent_settings == 'enabled'){
+                        if(!empty($header_trasnparent_logo)){ ?>
+                        <a href="<?php echo esc_url(home_url('/')) ?>">
+                            <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php _e("Logo", "travelfic-toolkit"); ?>">
+                        </a>
+                        <?php }else{ ?>
+                        <div class="logo-text">
+                            <a href="<?php echo esc_url(home_url('/')) ?>">
+                                <?php bloginfo('name'); ?>
+                            </a>
+                        </div>
+                        <?php 
+                        }
+                    }else{
                         if (has_custom_logo()) {
                             if (function_exists('the_custom_logo')) {
                                 the_custom_logo();
@@ -207,9 +233,7 @@ class Travelfic_Customizer_Header
                                 <?php bloginfo('name'); ?>
                             </a>
                         </div>
-                        <?php
-                        }
-                        ?>
+                    <?php } } ?>
                     </div>
                     <div class="tft-account">
                         <ul>

@@ -103,7 +103,7 @@
   .tft-design-2-blog .tft-blog-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
   }
   .tft-design-2-blog .tft-blog-header .tft-news-header{
     width: 60%;
@@ -116,6 +116,7 @@
       letter-spacing: 0.16px;
       text-transform: uppercase;
       color: #B58E53;
+      margin-bottom: 8px;
   }
   .tft-design-2-blog .tft-blog-header h3{
       font-size: 56px;
@@ -147,7 +148,7 @@
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item{
     background-color: #FDF9F3;
-    height: 250px;
+    height: 220px;
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item .tft-content-details{
     padding: 32px;
@@ -164,7 +165,7 @@
     width: 50%;
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item a .tft-blog-thumbnail img{
-    height: 250px;
+    height: 220px;
     object-fit: cover;
     width: 100%;
   }
@@ -247,6 +248,17 @@
     background: rgba(238, 199, 140, 0.94);
     justify-content: end;
   }
+  .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,
+  .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,
+  .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,
+  .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a .tft-content-details h3,
+  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,
+  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details h3,
+  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,
+  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details h3,
+  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a .tft-content-details h3{
+    margin-bottom: 0px;
+  }
   .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details p.content,
   .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details p.content,
   .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details p.content,
@@ -306,9 +318,17 @@
   .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(5){
     height: auto;
   }
+  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(1) .tft-blog-thumbnail img,
+  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(3) .tft-blog-thumbnail img,
+  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(5) .tft-blog-thumbnail img,
+  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(1) .tft-blog-thumbnail img,
+  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(3) .tft-blog-thumbnail img,
+  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(5) .tft-blog-thumbnail img{
+    height: 300px;
+  }
   .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(5),
   .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(5){
-    margin-top: -180px;
+    margin-top: -263px;
   }
   .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(1) a,
   .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(3) a,

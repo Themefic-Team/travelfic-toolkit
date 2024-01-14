@@ -80,29 +80,20 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
             </div>
             <div class="top-header-right-navigation">
                 <div class="travelfic-templte-sync-btn" title="<?php _e("Sync Library", "travelfic-toolkit"); ?>">
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.5835 7.33332L8.25016 11H5.50016C5.50016 14.0342 7.966 16.5 11.0002 16.5C11.926 16.5 12.806 16.2708 13.5668 15.8583L14.9052 17.1967C13.7777 17.9117 12.4393 18.3333 11.0002 18.3333C6.9485 18.3333 3.66683 15.0517 3.66683 11H0.916832L4.5835 7.33332ZM16.5002 11C16.5002 7.96582 14.0343 5.49999 11.0002 5.49999C10.0743 5.49999 9.19433 5.72916 8.4335 6.14166L7.09516 4.80332C8.22266 4.08832 9.561 3.66666 11.0002 3.66666C15.0518 3.66666 18.3335 6.94832 18.3335 11H21.0835L17.4168 14.6667L13.7502 11H16.5002Z" fill="#6B7280"></path>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Refresh">
+                    <path id="Vector" d="M5 7.99999L8.99999 12H5.99999C5.99999 15.31 8.69 18 12 18C13.01 18 13.97 17.75 14.8 17.3L16.26 18.76C15.03 19.54 13.57 20 12 20C7.58 20 4 16.42 4 12H1L5 7.99999ZM18 12C18 8.68999 15.31 6 12 6C10.99 6 10.03 6.25 9.2 6.7L7.73999 5.23999C8.96999 4.45999 10.43 4 12 4C16.42 4 20 7.57999 20 12H23L19 16L15 12H18Z" fill="#3D4C5C"/>
+                    </g>
                     </svg>
                 </div>
                 <div class="header-exit-btn">
                     <a href="<?php echo admin_url(); ?>" title="<?php _e("Exit to Dashboard", "travelfic-toolkit"); ?>">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.8333 15.8333H4.16667V4.16667H10V2.5H4.16667C3.24167 2.5 2.5 3.25 2.5 4.16667V15.8333C2.5 16.75 3.24167 17.5 4.16667 17.5H15.8333C16.75 17.5 17.5 16.75 17.5 15.8333V10H15.8333V15.8333ZM11.6667 2.5V4.16667H14.6583L6.46667 12.3583L7.64167 13.5333L15.8333 5.34167V8.33333H17.5V2.5H11.6667Z" fill="#6B7280"></path>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.7731 9.22687L9 15M14.7731 9.22687C14.2678 8.72156 11.8846 9.21665 11.1649 9.22687M14.7731 9.22687C15.2784 9.73219 14.7834 12.1154 14.7731 12.8351" stroke="#3D4C5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="#3D4C5C" stroke-width="1.5"/>
                         </svg>
                     </a>
                 </div>
-            </div>
-        </div>
-
-        <div class="travelfic-template-bottom-footer">
-            <div class="footer-back-btn">
-                <a href="<?php echo admin_url(); ?>" title="<?php _e("Back to Dashboard", "travelfic-toolkit"); ?>">
-                    <svg width="14" height="9" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0009 4.4999C14.0009 4.36729 13.9482 4.24011 13.8544 4.14635C13.7607 4.05258 13.6335 3.9999 13.5009 3.9999H1.70789L4.85489 0.853899C4.90138 0.807411 4.93826 0.752222 4.96342 0.691483C4.98858 0.630743 5.00153 0.565643 5.00153 0.499899C5.00153 0.434155 4.98858 0.369055 4.96342 0.308316C4.93826 0.247576 4.90138 0.192387 4.85489 0.145899C4.80841 0.0994111 4.75322 0.062535 4.69248 0.0373759C4.63174 0.0122168 4.56664 -0.000732422 4.50089 -0.000732422C4.43515 -0.000732422 4.37005 0.0122168 4.30931 0.0373759C4.24857 0.062535 4.19338 0.0994111 4.14689 0.145899L0.146894 4.1459C0.100331 4.19234 0.0633877 4.24752 0.0381812 4.30827C0.0129748 4.36901 0 4.43413 0 4.4999C0 4.56567 0.0129748 4.63079 0.0381812 4.69153C0.0633877 4.75228 0.100331 4.80745 0.146894 4.8539L4.14689 8.8539C4.19338 8.90039 4.24857 8.93726 4.30931 8.96242C4.37005 8.98758 4.43515 9.00053 4.50089 9.00053C4.56664 9.00053 4.63174 8.98758 4.69248 8.96242C4.75322 8.93726 4.80841 8.90039 4.85489 8.8539C4.90138 8.80741 4.93826 8.75222 4.96342 8.69148C4.98858 8.63074 5.00153 8.56564 5.00153 8.4999C5.00153 8.43416 4.98858 8.36905 4.96342 8.30832C4.93826 8.24758 4.90138 8.19239 4.85489 8.1459L1.70789 4.9999H13.5009C13.6335 4.9999 13.7607 4.94722 13.8544 4.85345C13.9482 4.75968 14.0009 4.63251 14.0009 4.4999Z">
-                        </path>
-                    </svg>
-                    <?php _e("Back", "travelfic-toolkit"); ?>    
-                </a>
             </div>
         </div>
         <?php
@@ -111,10 +102,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		private function travelfic_template_list_step() {
             $this->template_list_header_footer();
 			?>
-            <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), lightgray 50% / cover no-repeat;">
+            <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), #F8FAFC 50% / cover no-repeat;">
                 <div class="travelfic-template-list-container">
                     <div class="travelfic-template-list-heading">
-                        <h2><?php _e("What type of website are you building?", "travelfic-toolkit"); ?></h2>
+                        <h2><?php _e("What kind of travel site do you envision creating?", "travelfic-toolkit"); ?></h2>
 
                         <span class="settings-import-btn" style="display: none;"><?php _e("Settings Import", "travelfic-toolkit"); ?></span>
                         <span class="customizer-import-btn" style="display: none;"><?php _e("Customizer Import", "travelfic-toolkit"); ?></span>
@@ -132,67 +123,84 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="plug-active-woocommerce-btn" style="display: none;"><?php _e("Woocommerce Active", "travelfic-toolkit"); ?></span>
                         <span class="plug-active-elementor-btn" style="display: none;"><?php _e("Elementor Active", "travelfic-toolkit"); ?></span>
                     </div>
-                    <!-- <div class="travelfic-template-filter">
+                    <div class="travelfic-template-filter">
                         <div class="travelfic-search-form">
-                            <input type="text" placeholder="<?php _e("Search for templates", "travelfic-toolkit"); ?>">
+                            <input type="text" id="travelfic_template_search" placeholder="<?php _e("Search for templates", "travelfic-toolkit"); ?>">
+                            <input type="hidden" value="all" id="travelfic_filter_value">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z" fill="#666D74"/>
                             </svg>
                         </div>
                         <div class="travelfic-filter-selection">
-                            <select name="" id="">
-                                <option value=""><?php _e("Tour", "travelfic-toolkit"); ?></option>
-                            </select>
-                            <select name="" id="">
-                                <option value=""><?php _e("Hotel", "travelfic-toolkit"); ?></option>
-                            </select>
-                            <select name="" id="">
-                                <option value=""><?php _e("Apartment", "travelfic-toolkit"); ?></option>
-                            </select>
+                            <ul>
+                                <li class="active" data-value="all"><?php _e("All", "travelfic-toolkit"); ?></li>
+                                <li data-value="tour"><?php _e("Tour", "travelfic-toolkit"); ?></li>
+                                <li data-value="hotel"><?php _e("Hotel", "travelfic-toolkit"); ?></li>
+                                <li data-value="apartment"><?php _e("Apartment", "travelfic-toolkit"); ?></li>
+                            </ul>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="travelfic-templates-list">
                         <?php 
                         $travelfic_sync_templates_list =  !empty(get_option('travelfic_template_sync__schudle_option')) ? get_option('travelfic_template_sync__schudle_option') : '';
                         if(!empty($travelfic_sync_templates_list)){
                         foreach($travelfic_sync_templates_list as $single_temp){
+                            if(empty($single_temp['coming_soon'])){
                         ?>
-                        <div class="travelfic-single-template">
-                            <div class="template-img">
-                                <?php if(!empty($single_temp['template_image_url'])){ ?>
-                                <img src="<?php echo esc_url($single_temp['template_image_url']) ?>" alt="">
-                                <?php } ?>
-                                <?php if(!empty($single_temp['featured_title'])){ ?>
-                                <span class="new-template-tag">
-                                    <?php echo esc_html($single_temp['featured_title']); ?>
-                                </span>
-                                <?php } ?>
-                                <div class="template-preview">
-                                    <a href="<?php echo !empty($single_temp['demo_url']) ? esc_url($single_temp['demo_url']) : '' ?>" target="_blank">
-                                        <?php _e("Preview", "travelfic-toolkit"); ?>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                        <path d="M4.66602 11.3337L11.3327 4.66699M11.3327 4.66699H4.66602M11.3327 4.66699V11.3337" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </a>
+                            <div class="travelfic-single-template" data-template_type="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-template_name="<?php echo !empty($single_temp['title']) ? esc_html($single_temp['title']) : '' ?>">
+                                <div class="template-img">
+                                    <?php if(!empty($single_temp['template_image_url'])){ ?>
+                                    <img src="<?php echo esc_url($single_temp['template_image_url']) ?>" alt="">
+                                    <?php } ?>
+                                    <?php if(!empty($single_temp['featured_title'])){ ?>
+                                    <span class="new-template-tag">
+                                        <?php echo esc_html($single_temp['featured_title']); ?>
+                                        <span class="pulse"></span>
+                                    </span>
+                                    <?php } ?>
+                                    <div class="template-preview">
+                                        <div class="import-button-group">
+                                            <a href="<?php echo !empty($single_temp['demo_url']) ? esc_url($single_temp['demo_url']) : '' ?>" target="_blank">
+                                                <?php _e("Preview", "travelfic-toolkit"); ?>
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="content">
+                                                <path id="Vector 4130" d="M12.5 2.00012L1.5 13.0001" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round"/>
+                                                <path id="Vector" d="M6.5 1.13151C6.5 1.13151 12.1335 0.65662 12.9885 1.51153C13.8434 2.36645 13.3684 8 13.3684 8" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                </svg>
+                                            </a>
+                                            <div class="template-import-btn" data-template="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-design="<?php echo !empty($single_temp['demo']) ? esc_html($single_temp['demo']) : '' ?>">
+                                                <?php _e("Import Demo", "travelfic-toolkit"); ?>
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 14.5L12 4.5M12 14.5C11.2998 14.5 9.99153 12.5057 9.5 12M12 14.5C12.7002 14.5 14.0085 12.5057 14.5 12" stroke="#211D12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M20 16.5C20 18.982 19.482 19.5 17 19.5H7C4.518 19.5 4 18.982 4 16.5" stroke="#211D12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <?php if(!empty($single_temp['title'])){ ?>
+                                <h2>
+                                    <?php echo esc_html($single_temp['title']); ?>
+                                </h2>
+                                <?php } ?>
                             </div>
-                            <?php if(!empty($single_temp['title'])){ ?>
-                            <h2>
-                                <?php echo esc_html($single_temp['title']); ?>
-                            </h2>
+                            <?php }
+                            if(!empty($single_temp['coming_soon'])){ ?>
+                                <div class="travelfic-single-template" data-template_type="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-template_name="<?php echo !empty($single_temp['title']) ? esc_html($single_temp['title']) : '' ?>">
+                                    <div class="template-img">
+                                        <?php if(!empty($single_temp['template_image_url'])){ ?>
+                                        <img src="<?php echo esc_url($single_temp['template_image_url']) ?>" alt="">
+                                        <?php } ?>
+                                    </div>
+                                    <?php if(!empty($single_temp['title'])){ ?>
+                                    <h2>
+                                        <?php echo esc_html($single_temp['title']); ?>
+                                    </h2>
+                                    <?php } ?>
+                                </div>
                             <?php } ?>
-                            <?php if(!empty($single_temp['import_title'])){ ?>
-                            <div class="template-import-btn" data-template="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-design="<?php echo !empty($single_temp['demo']) ? esc_html($single_temp['demo']) : '' ?>">
-                                <?php echo esc_html($single_temp['import_title']); ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
-                                <path d="M9.83268 10.6665C9.49555 10.9942 8.16602 11.8664 8.16602 12.3332M9.83268 13.9998C9.49555 13.6722 8.16602 12.8 8.16602 12.3332M8.16602 12.3332L13.4993 12.3332" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M6.83398 14.6665H6.65217C4.47803 14.6665 3.39096 14.6665 2.63603 14.1346C2.41973 13.9822 2.22771 13.8015 2.06579 13.5979C1.50065 12.8874 1.50065 11.8643 1.50065 9.81802V8.12105C1.50065 6.1456 1.50065 5.15788 1.81328 4.36901C2.31586 3.10079 3.37874 2.10043 4.72623 1.62741C5.5644 1.33317 6.61386 1.33317 8.71277 1.33317C9.91215 1.33317 10.5118 1.33317 10.9908 1.50131C11.7608 1.7716 12.3682 2.34324 12.6553 3.06793C12.834 3.51872 12.834 4.08313 12.834 5.21196V8.6665" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M1.49935 8C1.49935 6.7727 2.49427 5.77778 3.72157 5.77778C4.16543 5.77778 4.68871 5.85555 5.12026 5.73992C5.50369 5.63718 5.80319 5.33768 5.90593 4.95424C6.02157 4.52269 5.94379 3.99941 5.94379 3.55556C5.94379 2.32826 6.93872 1.33333 8.16602 1.33333" stroke="#1D2327" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <?php } ?>
-                        </div>
                         <?php } } ?>
 
                     </div>
@@ -207,10 +215,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		private function travelfic_setup_theme() {
             $this->template_list_header_footer();
 		?>
-        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), lightgray 50% / cover no-repeat;">
+        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), #F8FAFC 50% / cover no-repeat;">
             <div class="travelfic-template-import-container">
+                <div class="travelfic-importing-bg" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png' ?>)"></div>
                 <div class="travelfic-template-list-heading">
-                    <h2><?php _e("Hey, we are building your website...", "travelfic-toolkit"); ?></h2>
+                    <h2><?php _e("Demo Import in progress...", "travelfic-toolkit"); ?></h2>
+                    <div class="travelfic-installing-highlights-content">
+                    </div>
                 </div>
                 <div class="travelfic-template-demo-importing">
                     <div class="demo-importing-loader">
@@ -229,17 +240,51 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         </div>
                     </div>
                     <div class="importing-img">
-                        <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.png' ?>" alt="">
+                        <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.gif' ?>" alt="">
                     </div>
                     <div class="importing-success">
-                        <h4><?php _e("This theme was built by @themefic. It's a really impressive feat!", "travelfic-toolkit"); ?></h4>
-                        <a href="<?php echo site_url(); ?>" target="_blank">
-                            <?php _e("Visit your website", "travelfic-toolkit"); ?>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                            <path d="M9.33268 10.6666C8.99555 10.9943 7.66602 11.8665 7.66602 12.3333M9.33268 14C8.99555 13.6723 7.66602 12.8001 7.66602 12.3333M7.66602 12.3333L12.9993 12.3333" stroke="#F0F0F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6.33398 14.6666H6.15217C3.97803 14.6666 2.89096 14.6666 2.13603 14.1347C1.91973 13.9823 1.72771 13.8016 1.56579 13.598C1.00065 12.8875 1.00065 11.8644 1.00065 9.81814V8.12117C1.00065 6.14572 1.00065 5.158 1.31328 4.36913C1.81586 3.10091 2.87874 2.10055 4.22623 1.62753C5.0644 1.33329 6.11386 1.33329 8.21277 1.33329C9.41215 1.33329 10.0118 1.33329 10.4908 1.50143C11.2608 1.77173 11.8682 2.34336 12.1553 3.06805C12.334 3.51884 12.334 4.08325 12.334 5.21208V8.66663" stroke="#F0F0F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M0.999349 8C0.999349 6.7727 1.99427 5.77778 3.22157 5.77778C3.66543 5.77778 4.18871 5.85555 4.62026 5.73992C5.00369 5.63718 5.30319 5.33768 5.40593 4.95424C5.52157 4.52269 5.44379 3.99941 5.44379 3.55556C5.44379 2.32826 6.43872 1.33333 7.66602 1.33333" stroke="#F0F0F1" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="190" height="150" viewBox="0 0 190 150" fill="none">
+                        <path d="M0.574219 135.292C0.574219 143.243 7.02502 149.688 14.9827 149.688H175.025C182.983 149.688 189.433 143.243 189.433 135.292V38.0034H0.574219V135.292Z" fill="#F6FAFE"/>
+                        <path d="M175.02 150H14.9776C6.86054 150 0.257812 143.403 0.257812 135.293V37.6934H189.74V135.293C189.74 143.401 183.137 150 175.02 150ZM0.880477 38.3155V135.293C0.880477 143.06 7.20426 149.378 14.9776 149.378H175.02C182.793 149.378 189.117 143.06 189.117 135.293V38.3155H0.880477Z" fill="#CFE5FC"/>
+                        <path d="M175.025 0.311035H14.9827C7.02502 0.311035 0.574219 6.75368 0.574219 14.7068V38.0038H189.433V14.7068C189.433 6.75368 182.983 0.311035 175.025 0.311035Z" fill="#F6FAFE"/>
+                        <path d="M189.74 38.3149H0.257812V14.7068C0.257812 6.59693 6.86054 0 14.9776 0H175.02C183.137 0 189.74 6.59693 189.74 14.7068V38.3149ZM0.880477 37.6928H189.117V14.7068C189.117 6.94034 182.793 0.622117 175.02 0.622117H14.9776C7.20426 0.622117 0.880477 6.94034 0.880477 14.7068V37.6928Z" fill="#CFE5FC"/>
+                        <path d="M27.3374 20.7321C28.2052 16.4598 25.4424 12.2936 21.1664 11.4265C16.8904 10.5594 12.7205 13.3198 11.8526 17.5921C10.9848 21.8643 13.7476 26.0305 18.0236 26.8976C22.2996 27.7647 26.4695 25.0043 27.3374 20.7321Z" fill="#CFE5FC"/>
+                        <path d="M48.4505 24.7399C51.5357 21.6573 51.5357 16.6595 48.4505 13.577C45.3652 10.4945 40.363 10.4945 37.2778 13.577C34.1925 16.6596 34.1925 21.6573 37.2778 24.7399C40.363 27.8224 45.3652 27.8224 48.4505 24.7399Z" fill="#F6FAFE"/>
+                        <path d="M42.8679 27.3606C38.3399 27.3606 34.6562 23.6802 34.6562 19.1561C34.6562 14.6321 38.3399 10.9517 42.8679 10.9517C47.396 10.9517 51.0797 14.6321 51.0797 19.1561C51.0772 23.6802 47.396 27.3606 42.8679 27.3606ZM42.8679 11.5763C38.6836 11.5763 35.2789 14.978 35.2789 19.1586C35.2789 23.3392 38.6836 26.741 42.8679 26.741C47.0523 26.741 50.457 23.3392 50.457 19.1586C50.457 14.978 47.0523 11.5763 42.8679 11.5763Z" fill="#CFE5FC"/>
+                        <path d="M103.007 26.6907H71.5549C67.3905 26.6907 64.0156 23.3188 64.0156 19.1581C64.0156 14.9974 67.3905 11.6255 71.5549 11.6255H103.007C107.171 11.6255 110.546 14.9974 110.546 19.1581C110.546 23.3163 107.171 26.6907 103.007 26.6907Z" fill="#F6FAFE"/>
+                        <path d="M103.002 27.0017H71.5498C67.221 27.0017 63.6992 23.483 63.6992 19.1581C63.6992 14.8331 67.221 11.3145 71.5498 11.3145H103.002C107.331 11.3145 110.852 14.8331 110.852 19.1581C110.852 23.483 107.331 27.0017 103.002 27.0017ZM71.5473 11.9341C67.5622 11.9341 64.3194 15.1741 64.3194 19.1556C64.3194 23.1372 67.5622 26.3771 71.5473 26.3771H102.999C106.984 26.3771 110.227 23.1372 110.227 19.1556C110.227 15.1741 106.984 11.9341 102.999 11.9341H71.5473Z" fill="#CFE5FC"/>
+                        <path d="M95.3197 106.75L79.8477 91.2775L87.1605 83.9646L94.7103 91.5144L119.527 62.3308L127.415 69.0342L95.3197 106.75Z" fill="#FFC100"/>
+                        <path d="M121.659 81.5269V92.767C121.659 108.138 113.771 117.448 107.135 122.56C100.059 128.011 92.9832 129.839 92.7124 129.941C92.4415 130.008 92.1707 130.042 91.8998 130.042C91.5951 130.042 91.3243 130.008 91.0196 129.941C90.7149 129.873 83.6729 127.909 76.597 122.425C67.0836 115.044 62.0729 104.82 62.0729 92.767L61.9375 68.7295C80.4566 68.7295 91.7644 57.3201 91.7983 57.2185C92.0691 57.7602 98.5017 65.8179 109.843 67.9846L105.002 73.6724C98.4001 71.7765 94.2697 68.6279 91.8321 66.0887C88.345 69.7451 81.4046 74.5865 68.7086 75.3313V92.767C68.7086 102.788 72.7375 111.015 80.6597 117.143C85.3318 120.766 90.0039 122.56 91.866 123.203C93.7619 122.594 98.5356 120.766 103.242 117.109C111.028 111.015 114.989 102.822 114.989 92.7332V89.3137L121.659 81.5269Z" fill="#CFE5FC"/>
+                        </svg>
+                        <div class="sucessful-button-group">
+                            <a href="<?php echo site_url(); ?>" target="_blank">
+                                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="content">
+                                <path id="Vector" d="M2 6L17 5.99984" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path id="Vector 6908" d="M6 0.999756L1.70711 5.29265C1.37377 5.62598 1.20711 5.79265 1.20711 5.99976C1.20711 6.20686 1.37377 6.37353 1.70711 6.70686L6 10.9998" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                </svg>
+                                <?php _e("Back To Dashboard", "travelfic-toolkit"); ?>
+                            </a>
+                            <a href="<?php echo site_url(); ?>" target="_blank" class="visit-site">
+                                <?php _e("Visit Your Website", "travelfic-toolkit"); ?>
+                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="content">
+                                <path id="Vector 4130" d="M12.5 2.00012L1.5 13.0001" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round"/>
+                                <path id="Vector" d="M6.5 1.13151C6.5 1.13151 12.1335 0.65662 12.9885 1.51153C13.8434 2.36645 13.3684 8 13.3684 8" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                </svg>
+                            </a>
+                            <a href="<?php echo site_url(); ?>" target="_blank">
+                                <?php _e("Tourfic Settings", "travelfic-toolkit"); ?>
+                                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="content">
+                                <path id="Vector" d="M16 5.99963L1 5.99963" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path id="Vector 6907" d="M12 0.999756L16.2929 5.29265C16.6262 5.62598 16.7929 5.79265 16.7929 5.99976C16.7929 6.20686 16.6262 6.37353 16.2929 6.70686L12 10.9998" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
