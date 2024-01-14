@@ -139,6 +139,7 @@ body.admin_page_travelfic-template-list {
     padding: 0;
     display: inline-flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul li{
     display: inline-block;
@@ -169,6 +170,7 @@ body.admin_page_travelfic-template-list {
     border-radius: 8px;
     box-shadow: 0px 0px 30px 0px rgba(39, 51, 63, 0.30);
     position: relative;
+    height: 450px;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img img{
     border-radius: 8px;
@@ -263,7 +265,7 @@ body.admin_page_travelfic-template-list {
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img img{
     width: 100%;
-    max-height: 440px;
+    height: 100%;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template h2{
     margin-top: 24px;
@@ -468,8 +470,24 @@ body.admin_page_travelfic-template-list {
         padding-left: 20px;
         padding-right: 20px;
     }
+    .travelfic-template-top-header .header-logo{
+        padding-left: 20px;
+    }
+    .travelfic-template-top-header .header-exit-btn{
+        padding-right: 20px;
+    }
 }
-
+@media all and (max-width: 1199px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img{
+        height: auto;
+    }
+}
+@media all and (max-width: 991px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter{
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+}
 @media all and (max-width: 767px){
     .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2, 
     .travelfic-template-list-wrapper .travelfic-template-import-container .travelfic-template-list-heading h2{
