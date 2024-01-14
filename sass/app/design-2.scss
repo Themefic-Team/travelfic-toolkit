@@ -30,6 +30,7 @@
                         color: $tft_white;
                         margin-left: 24px;
                         align-items: center;
+                        font-weight: 400;
                         svg{
                             margin-right: 8px;
                         }
@@ -304,9 +305,9 @@
         padding-top: 64px;
         padding-bottom: 32px;
         background-color: $tft_secondary_color;
-        color: $tft_white;
+        color: #FAEEDC;
         a{
-            color: $tft_white;
+            color: #FAEEDC;
         }
         .tft-grid{
             display: flex;
@@ -326,6 +327,7 @@
             }
             .tft-footer-section{
                 width: 100%;
+                
             }
             h2{
                 font-size: 32px;
@@ -345,7 +347,7 @@
                     a{
                         text-decoration: none;
                         display: block;
-                        color: $tft_white;
+                        color: #FAEEDC;
                         font-size: 16px;
                         font-style: normal;
                         font-weight: 600;

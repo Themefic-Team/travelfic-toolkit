@@ -65,6 +65,7 @@
   color: #FDF9F3;
   margin-left: 24px;
   align-items: center;
+  font-weight: 400;
 }
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li svg {
   margin-right: 8px;
@@ -292,10 +293,10 @@
   padding-top: 64px;
   padding-bottom: 32px;
   background-color: #595349;
-  color: #FDF9F3;
+  color: #FAEEDC;
 }
 .tft-design-2 .tft-footer-sections a {
-  color: #FDF9F3;
+  color: #FAEEDC;
 }
 .tft-design-2 .tft-footer-sections .tft-grid {
   display: flex;
@@ -341,7 +342,7 @@
 .tft-design-2 .tft-footer-sections .tft-grid ul li a {
   text-decoration: none;
   display: block;
-  color: #FDF9F3;
+  color: #FAEEDC;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
