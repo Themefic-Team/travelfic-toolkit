@@ -163,17 +163,31 @@ function travelfic_toolkit_front_page_script() {
     if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
         $travelfic_toolkit_active_plugins[] = "woocommerce";
     }
-     wp_enqueue_style( 'travelfic-toolkit-admin-css', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/template-setup.css', false, TRAVELFIC_TOOLKIT_VERSION );
-     wp_enqueue_script( 'travelfic-toolkit-admin-js', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/template-setup.js', array( 'jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
-     wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
+
+    $travelfic_toolkit_facts = [
+        __("According to Statista, 81% of global travelers believe that sustainable travel is important for the world", "travelfic-toolkit"),
+        __("France is the most visited country in the world, reporting 89.4 million tourists annually", "travelfic-toolkit"),
+        __("The shortest flight in the world is a 1 minute 14-second connecting flight between Westray and Papa Westray in Scotland’s Orkney Islands", "travelfic-toolkit"),
+        __("Paris, London, and Rome are the top 3 trending and most preferred travel destinations (based on the latest data)", "travelfic-toolkit"),
+        __("Exploring new places together is the main priority for 49% of families planning to travel", "travelfic-toolkit"),
+        __("Travelers usually tend to book accommodation and flight tickets roughly three months prior to the trip date", "travelfic-toolkit"),
+        __("A majority of travelers say that they expect to spend more on travel than other aspects of their life such as car insurance, healthcare, etc", "travelfic-toolkit"),
+        __("Children born after 2010, also known as Generation Alpha, are said to show the most influence over a family’s travel plans", "travelfic-toolkit")
+    ];
+    shuffle($travelfic_toolkit_facts);
+
+    wp_enqueue_style( 'travelfic-toolkit-admin-css', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/template-setup.css', false, TRAVELFIC_TOOLKIT_VERSION );
+    wp_enqueue_script( 'travelfic-toolkit-admin-js', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/template-setup.js', array( 'jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
+    wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
         array(
             'travelfic_toolkit_nonce'   => wp_create_nonce( 'updates' ),
             'ajax_url'       => admin_url( 'admin-ajax.php' ),
-            'installing'     => __( 'Plugin Installing & Activating...', 'travelfic' ),
-            'installed'      => __( 'Installed', 'travelfic' ),
-            'activated'      => __( 'Activated', 'travelfic' ),
-            'install_failed' => __( 'Install failed', 'travelfic' ),
-            'actives_plugins' => $travelfic_toolkit_active_plugins
+            'installing'     => __( 'Plugin Installing & Activating...', 'travelfic-toolkit' ),
+            'installed'      => __( 'Installed', 'travelfic-toolkit' ),
+            'activated'      => __( 'Activated', 'travelfic-toolkit' ),
+            'install_failed' => __( 'Install failed', 'travelfic-toolkit' ),
+            'actives_plugins' => $travelfic_toolkit_active_plugins,
+            'facts' => $travelfic_toolkit_facts
         )
     );
 
