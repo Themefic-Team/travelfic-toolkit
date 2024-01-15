@@ -106,7 +106,12 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                 <div class="travelfic-card-flex">
                     <div class="import-confirmation-card">
                         <div class="import-confirmation-bg" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png' ?>)">
-
+                        </div>
+                        <div class="import-confirmation-close">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="#EBF5FF"/>
+                            <path d="M15.9994 14.8149L20.1475 10.6667L21.3327 11.8519L17.1846 16.0001L21.3327 20.1482L20.1475 21.3334L15.9994 17.1853L11.8512 21.3334L10.666 20.1482L14.8142 16.0001L10.666 11.8519L11.8512 10.6667L15.9994 14.8149Z" fill="#27333F"/>
+                            </svg>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="63" viewBox="0 0 72 63" fill="none">
                         <path d="M20.5351 20.4642L18.7949 25.1878C23.9376 32.8025 32.8734 39.8392 39.7987 42.1121C57.165 47.8115 72.3631 33.3106 71.9927 33.5456C62.9002 39.3244 54.5128 39.9427 51.8494 40.0239C42.6484 40.3036 36.4175 35.1173 33.7362 32.0734C32.0906 30.2046 30.652 28.2339 29.1334 26.3041C27.7156 24.5018 25.45 21.4848 24.256 19.6792L20.5351 20.4642Z" fill="#FFC100"/>
@@ -120,14 +125,100 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         </svg>
                         <h3><?php _e("Before we procced...", "travelfic-toolkit"); ?></h3>
                         <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
-
-                        <a href="#">
+                        <div class="demo-importing-data-list">
+                            <label class="form-control">
+                                <input type="checkbox" value="customizer" name="imports[]" checked />
+                                <?php _e("Import Customizer Settings", "travelfic-toolkit"); ?>
+                                <span class="checkmark"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-control">
+                                <input type="checkbox" value="tourfic" name="imports[]" checked />
+                                <?php _e("Import Tourfic Settings", "travelfic-toolkit"); ?>
+                                <span class="checkmark"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-control">
+                                <input type="checkbox" name="checkbox" checked disabled/>
+                                <?php _e("Install Required Plugins", "travelfic-toolkit"); ?>
+                                <span class="checkmark disabled"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-control">
+                                <input type="checkbox" value="demo" name="imports[]" checked />
+                                <?php _e("Import Content", "travelfic-toolkit"); ?>
+                                <span class="checkmark"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label>
+                            <!-- <label class="form-control">
+                                <input type="checkbox" value="customizer" name="checkbox" checked />
+                                <?php _e("Share Non-Sensitive Data", "travelfic-toolkit"); ?>
+                                <span class="checkmark"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label> -->
+                        </div>
+                        <button id="submit_confirm">
                             <?php _e("Submit & Build My Website", "travelfic-toolkit"); ?>
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 12.1812L4 12.1812" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 7.18115L19.2929 11.474C19.6262 11.8074 19.7929 11.974 19.7929 12.1812C19.7929 12.3883 19.6262 12.5549 19.2929 12.8883L15 17.1812" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -249,7 +340,9 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                 <div class="travelfic-importing-bg" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png' ?>)"></div>
                 <div class="travelfic-template-list-heading">
                     <h2><?php _e("Demo Import in progress...", "travelfic-toolkit"); ?></h2>
-                    <div class="travelfic-installing-highlights-content">
+                    <div class="travelfic-exits-highlights-finished">
+                        <div class="travelfic-installing-highlights-content">
+                        </div>
                     </div>
                 </div>
                 <div class="travelfic-template-demo-importing">
@@ -286,7 +379,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <path d="M121.659 81.5269V92.767C121.659 108.138 113.771 117.448 107.135 122.56C100.059 128.011 92.9832 129.839 92.7124 129.941C92.4415 130.008 92.1707 130.042 91.8998 130.042C91.5951 130.042 91.3243 130.008 91.0196 129.941C90.7149 129.873 83.6729 127.909 76.597 122.425C67.0836 115.044 62.0729 104.82 62.0729 92.767L61.9375 68.7295C80.4566 68.7295 91.7644 57.3201 91.7983 57.2185C92.0691 57.7602 98.5017 65.8179 109.843 67.9846L105.002 73.6724C98.4001 71.7765 94.2697 68.6279 91.8321 66.0887C88.345 69.7451 81.4046 74.5865 68.7086 75.3313V92.767C68.7086 102.788 72.7375 111.015 80.6597 117.143C85.3318 120.766 90.0039 122.56 91.866 123.203C93.7619 122.594 98.5356 120.766 103.242 117.109C111.028 111.015 114.989 102.822 114.989 92.7332V89.3137L121.659 81.5269Z" fill="#CFE5FC"/>
                         </svg>
                         <div class="sucessful-button-group">
-                            <a href="<?php echo site_url(); ?>" target="_blank">
+                            <a href="<?php echo admin_url(); ?>">
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">
                                 <path id="Vector" d="M2 6L17 5.99984" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -304,7 +397,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 </g>
                                 </svg>
                             </a>
-                            <a href="<?php echo site_url(); ?>" target="_blank">
+                            <a href="<?php echo admin_url('admin.php?page=tf_settings'); ?>">
                                 <?php _e("Tourfic Settings", "travelfic-toolkit"); ?>
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">
