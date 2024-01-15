@@ -142,29 +142,28 @@ body.admin_page_travelfic-template-list {
     line-height: 20px; /* 125% */
     width: 100%;
     padding: 0px;
+    transition: .3s all ease;
 }
-.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover input,
-.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover input::placeholder{
-    background: #EBF5FF;
-    color: #27333F;
-}
-.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover svg path{
-    fill: #27333F
-}
+
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input::placeholder{
     color: #70808F;
-    background: #F6FAFE;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px; /* 125% */
-    transition: .3s all ease;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input:focus{
     outline: none;
     box-shadow: none;
     background: #EBF5FF;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover input{
+    background: #EBF5FF;
+    color: #27333F;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover svg path{
+    fill: #27333F
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul{
     margin: 0;
