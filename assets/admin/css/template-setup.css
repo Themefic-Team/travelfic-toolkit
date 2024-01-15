@@ -464,6 +464,226 @@ body.admin_page_travelfic-template-list {
     background: #003C79;
     height: 8px;
 }
+.travelfic-import-confirmaiton-msg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,28,57,.2);
+}
+.travelfic-import-confirmaiton-msg.show{
+    display: flex;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card{
+    border-radius: 16px;
+    border: 1px solid #CFE5FC;
+    background: #F6FAFE;
+    box-shadow: 0px 32px 32px 0px rgba(125, 168, 212, 0.02), 0px 16px 40px 0px rgba(125, 168, 212, 0.04), 0px 32px 56px 0px rgba(125, 168, 212, 0.08);
+    width: 584px;
+    position: relative;
+    text-align: center;
+    padding: 32px;
+    box-sizing: border-box;
+    z-index: 0;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-close{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: .3s all ease;
+    border: 1px solid rgba(235, 245, 255, 1);
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-close:hover{
+    border: 1px solid rgba(39, 51, 63, 1);
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 190px;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card h3{
+    color: #27333F;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px; /* 133.333% */
+    margin: 0px 0px 8px 0px;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card p{
+    color: #27333F;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    margin: 0px 0px 24px 0px;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list{
+    display: grid;
+    justify-content: center;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label {
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    color: #27333F;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    align-items: center;
+    padding-left: 25px;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .checkmark {
+    position: absolute;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid #27333F;
+    background: #EEF2F6;
+    transform: translateY(-0.075em);
+    transition: .3s all ease;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label input ~ .checkmark:hover {
+    border: 1px solid #003C79;
+    background: #DFE6ED;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label input:checked ~ .checkmark {
+    border: 1px solid #003C79;
+    background: #DFE6ED;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .checkmark.disabled {
+    position: absolute;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 60, 121, 1) !important;
+    background: rgba(223, 230, 237, 1) !important;
+    transform: translateY(-0.075em);
+    opacity: 0.5;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 3px;
+    height: 7px;
+    border: solid #003C79;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip{
+    margin-left: 8px;
+    position: relative;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip svg{
+    margin-top: 9px;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip .label-tooltip-content{
+    border-radius: 8px;
+    background: #121A21;
+    padding: 8px 12px;
+    width: 243px;
+    position: absolute;
+    right: -18px;
+    top: -53px;
+    z-index: 9;
+    display: none;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip:hover .label-tooltip-content{
+    display: block;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip .label-tooltip-content:before{
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    right: 12px;
+    bottom: -3px;
+    background: #121A21;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip .label-tooltip-content p{
+    color: #EEF2F6;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 0;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card button{
+    border-radius: 8px;
+    background: #003C79;
+    padding: 16px 32px;
+    display: flex;
+    color: #F6FAFE;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: .3s all ease;
+    margin-top: 32px;
+    cursor: pointer;
+    border: 0px solid;
+    width: 100%;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card button svg{
+    margin-top: 3px;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card button:hover{
+    background: #002951;
+}
 
 @media all and (max-width: 1280px){
     .travelfic-template-list-wrapper .travelfic-template-list-container{
