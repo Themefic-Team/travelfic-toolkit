@@ -178,6 +178,40 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 </div>
                             </label>
                             <label class="form-control">
+                                <input type="checkbox" value="widgets" name="imports[]" checked />
+                                <?php _e("Import Widgets", "travelfic-toolkit"); ?>
+                                <span class="checkmark"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-control">
+                                <input type="checkbox" value="menu" name="imports[]" checked />
+                                <?php _e("Import Menu", "travelfic-toolkit"); ?>
+                                <span class="checkmark"></span>
+                                <div class="label-tooltip">
+                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="content">
+                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
+                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    </svg>
+                                    <div class="label-tooltip-content">
+                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="form-control">
                                 <input type="checkbox" value="demo" name="imports[]" checked />
                                 <?php _e("Import Content", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
@@ -194,23 +228,6 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     </div>
                                 </div>
                             </label>
-                            <!-- <label class="form-control">
-                                <input type="checkbox" value="customizer" name="checkbox" checked />
-                                <?php _e("Share Non-Sensitive Data", "travelfic-toolkit"); ?>
-                                <span class="checkmark"></span>
-                                <div class="label-tooltip">
-                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="content">
-                                    <path id="Rectangle 1773" d="M0.666016 7.18148C0.666016 4.19592 0.666016 2.70313 1.59351 1.77564C2.52101 0.848145 4.01379 0.848145 6.99935 0.848145C9.98491 0.848145 11.4777 0.848145 12.4052 1.77564C13.3327 2.70313 13.3327 4.19592 13.3327 7.18148C13.3327 10.167 13.3327 11.6598 12.4052 12.5873C11.4777 13.5148 9.98491 13.5148 6.99935 13.5148C4.01379 13.5148 2.52101 13.5148 1.59351 12.5873C0.666016 11.6598 0.666016 10.167 0.666016 7.18148Z" stroke="#27333F"/>
-                                    <path id="Vector 2612" d="M7.16081 10.5149V7.18156C7.16081 6.86729 7.16081 6.71015 7.06318 6.61252C6.96555 6.51489 6.80841 6.51489 6.49414 6.51489" stroke="#27333F" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path id="Vector" d="M6.99401 4.51489H7" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </g>
-                                    </svg>
-                                    <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
-                                    </div>
-                                </div>
-                            </label> -->
                         </div>
                         <button id="submit_confirm">
                             <?php _e("Submit & Build My Website", "travelfic-toolkit"); ?>
