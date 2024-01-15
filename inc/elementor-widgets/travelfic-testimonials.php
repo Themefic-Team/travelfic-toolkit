@@ -587,7 +587,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_2_title',
-                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author h4',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -608,7 +608,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -809,7 +809,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -983,7 +983,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                                     <img src="<?php echo esc_url( $item['person_image']['url'] ); ?>" alt="Image">
                                 </div>
                                 <div class="person-info">
-                                    <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
+                                    <p class="person-name"><?php echo esc_html( $item['person_name'] ) ?></p>
                                     <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
                                 </div>
                             </div>
@@ -1088,7 +1088,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                                     <p class="tft-content">"<?php echo travelfic_character_limit( $item['testimonials_review'], 100 ); ?> "</p>
                                 </div>
                                 <div class="testimonial-author">
-                                    <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
+                                    <p class="person-name"><?php echo esc_html( $item['person_name'] ) ?></p>
                                     <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
                                 </div>
                             </div>

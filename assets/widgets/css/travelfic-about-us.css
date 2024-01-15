@@ -30,6 +30,16 @@
     margin-top: 0px;
     margin-bottom: 32px;
 }
+
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-quotes, .tft-about-us-author {
+	font-size: 16px !important;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 130% !important;
+	padding-right: 55px;
+	margin-top: 2px;
+}
+
 .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p{
     font-size: 18px;
     font-style: normal;
@@ -38,17 +48,9 @@
     color: #99948D;
     margin-top: 0px;
 }
-.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-quotes, .tft-about-us-author {
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: 130%;
-	padding-right: 55px;
-	margin-top: 2px;
-}
 
 .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-author {
-	font-weight: 600;
+	font-weight: 600 !important;
 	margin-top: 0px;
 }
 
