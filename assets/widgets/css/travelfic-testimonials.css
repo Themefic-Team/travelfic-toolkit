@@ -106,6 +106,7 @@
   justify-content: center;
 }
 .tft-testimonials-design-2 .tft-testimonial-top-header .testimonial-header-shape h6{
+  font-family: 'Josefin Sans' !important;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -122,7 +123,7 @@
   line-height: 120%;
   color: #595349;
   margin: 0;
-  padding-bottom: 38px;
+  padding-bottom: 48px;
 }
 .tft-testimonials-design-2 .tft-testimonials-sliders{
   padding: 120px 0px 55px 0px;

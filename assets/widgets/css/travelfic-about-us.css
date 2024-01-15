@@ -10,6 +10,7 @@
     flex-direction: column;
 }
 .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6{
+    font-family: 'Josefin Sans' !important;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -36,6 +37,19 @@
     line-height: 130%;
     color: #99948D;
     margin-top: 0px;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-quotes, .tft-about-us-author {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 130%;
+	padding-right: 55px;
+	margin-top: 2px;
+}
+
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-author {
+	font-weight: 600;
+	margin-top: 0px;
 }
 
 .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a{

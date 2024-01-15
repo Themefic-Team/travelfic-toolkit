@@ -62,6 +62,7 @@
   width: 60%;
 }
 .tft-destination-design-2 .tft-destination-header h6{
+  font-family: 'Josefin Sans' !important;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -78,7 +79,7 @@
   line-height: 120%; /* 67.2px */
   color: #595349;
   margin: 0;
-  padding-bottom: 38px;
+  padding-bottom: 48px;
 }
 .tft-destination-design-2 .tft-destination-slides .slick-list.draggable{
   width: 100% !important;
