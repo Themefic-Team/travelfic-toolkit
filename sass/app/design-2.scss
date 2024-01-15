@@ -34,6 +34,11 @@
                         svg{
                             margin-right: 8px;
                         }
+                        a{
+                            text-decoration: none;
+                            color: $tft_white;
+                            transition: .3s all ease;
+                        }
                     }
                     li:first-child{
                         margin: 0px;
