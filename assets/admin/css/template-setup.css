@@ -309,8 +309,6 @@ body.admin_page_travelfic-template-list {
     display: none;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    position: fixed;
     width: 100%;
     top: 0;
     z-index: 99;
@@ -332,6 +330,7 @@ body.admin_page_travelfic-template-list {
     position: relative;
     box-sizing: border-box;
     z-index: 0;
+    margin-top: 125px;
 }
 .travelfic-template-list-wrapper .travelfic-template-import-container .travelfic-template-list-heading,
 .travelfic-template-list-wrapper .travelfic-template-import-container .travelfic-template-demo-importing .demo-importing-loader,
