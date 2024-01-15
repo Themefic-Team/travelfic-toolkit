@@ -109,6 +109,7 @@
     width: 60%;
   }
   .tft-design-2-blog .tft-blog-header h6{
+    font-family: 'Josefin Sans' !important;
       font-size: 16px;
       font-style: normal;
       font-weight: 700;
@@ -180,15 +181,15 @@
     margin: 0px;
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item a h3{
-    font-size: 36px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 700;
     line-height: 130%;
     color: #595349;
-    margin: 5px 0px 15px 0px;
+    margin: 8px 0px 24px 0px;
   }
   .tft-design-2-blog .tft-blog-gird-section .tft-post-single-item p.content{
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
@@ -245,7 +246,7 @@
     width: 100%;
     left: 0;
     top: 0;
-    background: rgba(238, 199, 140, 0.94);
+    background: rgba(238, 199, 140, 0.90);
     justify-content: end;
   }
   .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,

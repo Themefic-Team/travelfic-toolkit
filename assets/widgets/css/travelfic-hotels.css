@@ -10,7 +10,8 @@
 .tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
     width: 60%;
 }
-.tft-popular-hotels-wrapper .tft-popular-hotel-header h6{
+.tft-popular-hotels-wrapper .tft-popular-hotel-header h6 {
+    font-family: 'Josefin Sans' !important;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -117,6 +118,7 @@
     font-weight: 700;
     line-height: 120%;
     color: #595349;
+    margin-bottom: 16px;
     /* height: 115px; */
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations{
