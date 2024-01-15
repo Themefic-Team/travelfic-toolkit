@@ -825,3 +825,8 @@ body.admin_page_travelfic-template-list {
         width: auto;
     }
 }
+@media all and (max-width: 480px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
+        grid-template-columns: 1fr;
+    }
+}
