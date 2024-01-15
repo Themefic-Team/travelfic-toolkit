@@ -108,9 +108,18 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <div class="import-confirmation-bg" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png' ?>)">
                         </div>
                         <div class="import-confirmation-close">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <rect width="32" height="32" rx="8" fill="#EBF5FF"/>
-                            <path d="M15.9994 14.8149L20.1475 10.6667L21.3327 11.8519L17.1846 16.0001L21.3327 20.1482L20.1475 21.3334L15.9994 17.1853L11.8512 21.3334L10.666 20.1482L14.8142 16.0001L10.666 11.8519L11.8512 10.6667L15.9994 14.8149Z" fill="#27333F"/>
+                            <div class="default">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect width="32" height="32" rx="8" fill="#EBF5FF"/>
+                                <path d="M15.9994 14.8149L20.1475 10.6667L21.3327 11.8519L17.1846 16.0001L21.3327 20.1482L20.1475 21.3334L15.9994 17.1853L11.8512 21.3334L10.666 20.1482L14.8142 16.0001L10.666 11.8519L11.8512 10.6667L15.9994 14.8149Z" fill="#27333F"/>
+                                </svg>
+                            </div>
+                            <div class="hover">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" fill="#EBF5FF"/>
+                                <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="#CFE5FC"/>
+                                <path d="M15.9994 14.8149L20.1475 10.6667L21.3327 11.8519L17.1846 16.0001L21.3327 20.1482L20.1475 21.3334L15.9994 17.1853L11.8512 21.3334L10.666 20.1482L14.8142 16.0001L10.666 11.8519L11.8512 10.6667L15.9994 14.8149Z" fill="#27333F"/>
+                            </div>
                             </svg>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="72" height="63" viewBox="0 0 72 63" fill="none">

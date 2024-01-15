@@ -510,6 +510,18 @@
         $('.travelfic-import-confirmaiton-msg').removeClass('show');
     });
 
+    // Search Bar Focus
+    $(document).on('click', '#travelfic_template_search', function (e) {
+        var $this = $(this);
+        $this.parent().addClass('focused');
+    });
+
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest(".travelfic-search-form").length) {
+            $(".travelfic-search-form").removeClass('focused');
+        }
+    });
+
     // Template Filter by Search Box
     $(document).on('click', '.travelfic-filter-selection ul li', function (e) {
         let Current = $(this);
