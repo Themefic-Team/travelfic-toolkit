@@ -55,6 +55,13 @@
 /* ------------------ */
 /* Design 2 CSS START */
 /* ------------------ */
+.tft-destination-design-2 .tft-single-destination{
+  width: 480px !important;
+}
+.tft-destination-design-2 .tft-destination-slides .slick-track {
+  margin-left: 100px;
+}
+
 .tft-destination-design-2{
   background-position: left top;
 }
@@ -104,7 +111,7 @@
 .tft-destination-design-2 .tft-destination-slides .slick-prev i,
 .tft-destination-design-2 .tft-destination-slides .slick-next i{
   color: #B58E53;
-  font-size: 24px; 
+  font-size: 24px;
 }
 .tft-destination-design-2 .tft-single-destination{
   margin: 0px 20px !important;
@@ -216,7 +223,7 @@
   }
 }
 @media all and (max-width: 767px){
-  
+
 }
 
 @media (min-width:768px) and (max-width:1024px) {
