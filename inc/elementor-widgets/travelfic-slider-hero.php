@@ -265,9 +265,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __( 'Slider Control', 'travelfic-toolkit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
             ]
         );
 
@@ -293,10 +290,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design-2' => 'height: {{SIZE}}{{UNIT}};',
                 ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
+
             ]
         );
 
@@ -315,7 +311,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000000', 
+                'default' => '#000000',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
                 ],
@@ -343,7 +339,19 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'separator' => 'after',
             ]
         );
+        $this->add_responsive_control(
+            'slider_title_spacing',
+            [
+                'label'      => __( 'Padding', 'travelfic-toolkit' ),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
 
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [

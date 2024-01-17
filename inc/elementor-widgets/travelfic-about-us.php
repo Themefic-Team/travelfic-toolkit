@@ -598,7 +598,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     <?php
                     if(!empty($tft_about_us_experience)){ ?>
                     <div class="years-of-experience">
-                        <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/years-experience.png' ); ?>" alt="">
+                        <img class="experience-badge" src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/years-experience.png' ); ?>" alt="">
                         <div class="tft-experience-years">
                             <h2><?php echo esc_html( $tft_about_us_experience ); ?></h2>
                         </div>

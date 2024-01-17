@@ -71,7 +71,7 @@ body.admin_page_travelfic-template-list {
     max-width: 1280px;
     margin: auto;
     padding-bottom: 65px;
-    padding-top: 107px;
+    padding-top: 120px;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2{
     color: #27333F;
@@ -104,10 +104,32 @@ body.admin_page_travelfic-template-list {
     border-radius: 8px;
     border: 1px solid #70808F;
     background: #F6FAFE;
-    padding: 0px 16px;
+    padding: 2px 16px;
     display: flex;
     align-items: center;
     height: 52px;
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover{
+    border: 1px solid #27333F;
+    background: #EBF5FF;
+    box-shadow: 0px 8px 20px 0px rgba(0, 42, 85, 0.06);
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form.focused{
+    border: 1px solid #27333F;
+    background: #EBF5FF;
+    box-shadow: 0px 8px 20px 0px rgba(0, 42, 85, 0.06);
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form.focused input,
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form.focused input::placeholder{
+    background: #EBF5FF;
+    color: #27333F;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form svg path{
+    transition: .3s all ease;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form.focused svg path{
+    fill: #27333F
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input{
     border: 0px solid;
@@ -120,10 +142,11 @@ body.admin_page_travelfic-template-list {
     line-height: 20px; /* 125% */
     width: 100%;
     padding: 0px;
+    transition: .3s all ease;
 }
+
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input::placeholder{
     color: #70808F;
-    background: #F6FAFE;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -133,6 +156,14 @@ body.admin_page_travelfic-template-list {
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input:focus{
     outline: none;
     box-shadow: none;
+    background: #EBF5FF;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover input{
+    background: #EBF5FF;
+    color: #27333F;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover svg path{
+    fill: #27333F
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul{
     margin: 0;
@@ -155,16 +186,17 @@ body.admin_page_travelfic-template-list {
     margin: 0;
     cursor: pointer;
     transition: .3s all ease;
-}
-.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul li:hover{
-    background: #003C79;
-    color: #F6FAFE;
-    border-color: #003C79;
+    background: #F6FAFE;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul li.active{
     background: #003C79;
     color: #F6FAFE;
     border-color: #003C79;
+}
+.travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul li:hover{
+    background: #002951;
+    color: #F6FAFE;
+    border-color: #002951;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img{
     border-radius: 8px;
@@ -500,11 +532,19 @@ body.admin_page_travelfic-template-list {
     right: 16px;
     cursor: pointer;
     border-radius: 8px;
-    transition: .3s all ease;
-    border: 1px solid rgba(235, 245, 255, 1);
 }
-.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-close:hover{
-    border: 1px solid rgba(39, 51, 63, 1);
+
+.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-close .hover{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: .3s all ease;
+}
+.travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-close:hover .hover{
+    opacity: 1;
 }
 .travelfic-import-confirmaiton-msg .import-confirmation-card .import-confirmation-bg{
     position: absolute;
@@ -522,7 +562,7 @@ body.admin_page_travelfic-template-list {
     font-style: normal;
     font-weight: 500;
     line-height: 32px; /* 133.333% */
-    margin: 0px 0px 8px 0px;
+    margin: 4px 0px 8px 0px;
 }
 .travelfic-import-confirmaiton-msg .import-confirmation-card p{
     color: #27333F;
@@ -536,6 +576,7 @@ body.admin_page_travelfic-template-list {
 .travelfic-import-confirmaiton-msg .demo-importing-data-list{
     display: grid;
     justify-content: center;
+    gap: 5px;
 }
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label {
     display: inline-flex;
@@ -569,7 +610,6 @@ body.admin_page_travelfic-template-list {
     border-radius: 4px;
     border: 1px solid #27333F;
     background: #EEF2F6;
-    transform: translateY(-0.075em);
     transition: .3s all ease;
 }
 
@@ -582,7 +622,23 @@ body.admin_page_travelfic-template-list {
     border: 1px solid #003C79;
     background: #DFE6ED;
 }
-
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .checkmark:before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 4px;
+    background: #DFE6ED;
+    box-shadow: 0px 0px 0px 4px rgba(0, 60, 122, 0.05);
+    left: -2px;
+    top: -2px;
+    z-index: -1;
+    opacity: 0;
+    transition: .3s all ease;
+}
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label input ~ .checkmark:hover:before{
+    opacity: 1;
+}
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label .checkmark.disabled {
     position: absolute;
     left: 0;
@@ -594,7 +650,9 @@ body.admin_page_travelfic-template-list {
     transform: translateY(-0.075em);
     opacity: 0.5;
 }
-
+.travelfic-import-confirmaiton-msg .demo-importing-data-list label .checkmark.disabled::before{
+    position: static;
+}
 .checkmark:after {
     content: "";
     position: absolute;
@@ -621,7 +679,7 @@ body.admin_page_travelfic-template-list {
     position: relative;
 }
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip svg{
-    margin-top: 9px;
+    margin-top: 6px;
 }
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip .label-tooltip-content{
     border-radius: 8px;
@@ -661,7 +719,7 @@ body.admin_page_travelfic-template-list {
 .travelfic-import-confirmaiton-msg .import-confirmation-card button{
     border-radius: 8px;
     background: #003C79;
-    padding: 16px 32px;
+    padding: 13px 32px 16px 32px;
     display: flex;
     color: #F6FAFE;
     font-family: Inter;
@@ -765,5 +823,10 @@ body.admin_page_travelfic-template-list {
 @media all and (max-width: 584px){
     .travelfic-import-confirmaiton-msg .import-confirmation-card{
         width: auto;
+    }
+}
+@media all and (max-width: 480px){
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list{
+        grid-template-columns: 1fr;
     }
 }
