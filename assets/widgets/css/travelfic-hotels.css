@@ -121,6 +121,11 @@
     margin-bottom: 16px;
     /* height: 115px; */
 }
+
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3 a {
+    text-decoration: none;
+    color: inherit;
+}
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations{
     display: flex;
     margin: 0;
