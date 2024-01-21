@@ -737,6 +737,8 @@ body.admin_page_travelfic-template-list {
     cursor: pointer;
     border: 0px solid;
     width: 100%;
+    height: 52px;
+    box-sizing: border-box;
 }
 .travelfic-import-confirmaiton-msg .import-confirmation-card button svg{
     margin-top: 3px;
