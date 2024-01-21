@@ -578,7 +578,7 @@ body.admin_page_travelfic-template-list {
 .travelfic-import-confirmaiton-msg .demo-importing-data-list{
     display: grid;
     justify-content: center;
-    gap: 8px;
+    gap: 16px;
 }
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label {
     display: inline-flex;
