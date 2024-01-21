@@ -100,14 +100,14 @@ body.admin_page_travelfic-template-list {
 }
 
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form{
-    width: 390px;
+    width: 486px;
     border-radius: 8px;
     border: 1px solid #70808F;
     background: #F6FAFE;
-    padding: 2px 16px;
+    padding: 0px 16px;
     display: flex;
     align-items: center;
-    height: 52px;
+    height: 50px;
     transition: .3s all ease;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form:hover{
@@ -143,6 +143,8 @@ body.admin_page_travelfic-template-list {
     width: 100%;
     padding: 0px;
     transition: .3s all ease;
+    min-height: 28px !important;
+    height: 28px !important;
 }
 
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form input::placeholder{
@@ -187,6 +189,8 @@ body.admin_page_travelfic-template-list {
     cursor: pointer;
     transition: .3s all ease;
     background: #F6FAFE;
+    height: 52px;
+    box-sizing: border-box;
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-filter-selection ul li.active{
     background: #003C79;
@@ -230,21 +234,17 @@ body.admin_page_travelfic-template-list {
     right: 0;
     bottom: 0;
     background: #E76B6B;
-    animation: travelfic_pulse 1.2s ease infinite;
+    animation: travelfic_pulse 1.4s ease infinite;
     border-radius: 400px;
     z-index: -1;
 }
 
 @keyframes travelfic_pulse {
     0% {
-      transform: scale(1, 1);
-    }
-    50% {
-      opacity: 0.3;
+        box-shadow: 0 0 0 0px rgba(231, 107, 107, 0.05);
     }
     100% {
-      transform: scale(1.5);
-      opacity: 0;
+        box-shadow: 0 0 0 10px rgba(231, 107, 107, 0.3);
     }
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img .template-preview{
@@ -677,9 +677,8 @@ body.admin_page_travelfic-template-list {
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip{
     margin-left: 8px;
     position: relative;
-}
-.travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip svg{
-    margin-top: 6px;
+    height: 16px;
+    margin-top: -2px;
 }
 .travelfic-import-confirmaiton-msg .demo-importing-data-list label .label-tooltip .label-tooltip-content{
     border-radius: 8px;
@@ -688,7 +687,7 @@ body.admin_page_travelfic-template-list {
     width: 243px;
     position: absolute;
     right: -18px;
-    top: -53px;
+    top: -60px;
     z-index: 9;
     display: none;
 }
