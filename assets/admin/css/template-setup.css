@@ -442,6 +442,8 @@ body.admin_page_travelfic-template-list {
     align-items: center;
     gap: 8px;
     transition: .3s all ease;
+    height: 52px;
+    box-sizing: border-box;
 }
 
 .travelfic-template-list-wrapper .travelfic-template-demo-importing .importing-success a.visit-site{
