@@ -192,7 +192,7 @@ function travelfic_toolkit_front_page_script() {
     );
 
     if(!empty($screen) && 'admin_page_travelfic-template-list'==$screen){
-        wp_enqueue_style( 'travelfic-toolkit-fonts', '//fonts.googleapis.com/css2?family=Inter:wght@100;200;900&display=swap', array(), TRAVELFIC_TOOLKIT_VERSION );
+        wp_enqueue_style( 'travelfic-toolkit-fonts', '//fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap', array(), TRAVELFIC_TOOLKIT_VERSION );
     }
  }
 
