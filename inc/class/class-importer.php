@@ -205,7 +205,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     if(!empty($is_blog)){
                         update_option( 'page_for_posts', $new_page_id );
                     }
-                    
+
                     if(!empty($page['_wp_page_template'])){
                         update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
                         update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
@@ -308,73 +308,79 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             
             if($template_key==1){
                 $widgets = array(
-                    "recent-posts" => [
-                        2 => "on"
-                    ],
-                    "tag_cloud" => [
-                        2 => "on"
-                    ],
-                    "block" => [
-                        11 => "on",
-                        12 => "on",
-                        13 => "on",
-                        14 => "on"
-                    ],
-                    "tf_hotel_filter" => [
-                        2 => "on",
-                        3 => "on"
-                    ],
-                    "tf_hotel_type_filter" => [
-                        3 => "on",
-                        2 => "on"
-                    ],
-                    "tf_price_filters" => [
-                        2 => "on",
-                        3 => "on"
-                    ],
-                    "tf_tour_feature_filter" => [
-                        3 => "on"
-                    ]
+                    'block' => array(
+                        15 => 'on',
+                        18 => 'on',
+                        16 => 'on',
+                        19 => 'on',
+                        17 => 'on',
+                        21 => 'on',
+                        20 => 'on',
+                        22 => 'on',
+                        23 => 'on',
+                        11 => 'on',
+                        12 => 'on',
+                        13 => 'on',
+                        14 => 'on',
+                    ),
+                    'tf_price_filters' => array(
+                        2 => 'on',
+                        4 => 'on',
+                    ),
+                    'tf_hotel_filter' => array(
+                        2 => 'on',
+                        3 => 'on',
+                    ),
+                    'tf_hotel_type_filter' => array(
+                        3 => 'on',
+                        2 => 'on',
+                    ),
+                    'tf_tour_feature_filter' => array(
+                        3 => 'on',
+                    ),
                 );
             }
 
             if($template_key==2){
-                $widgets = [
-                    "meta" => [
-                        2 => "on"
-                    ],
-                    "recent-posts" => [
-                        2 => "on"
-                    ],
-                    "block" => [
-                        11 => "on",
-                        12 => "on",
-                        13 => "on",
-                        14 => "on"
-                    ],
-                    "tf_activities_filter" => [
-                        3 => "on",
-                        4 => "on"
-                    ],
-                    "tf_attraction_filter" => [
-                        2 => "on",
-                        3 => "on"
-                    ],
-                    "tf_tour_feature_filter" => [
-                        2 => "on",
-                        3 => "on"
-                    ],
-                    "tf_tour_type_filter" => [
-                        2 => "on"
-                    ],
-                    "tf_price_filters" => [
-                        4 => "on",
-                        5 => "on"
-                    ],
-                    "tf_hotel_type_filter" => [
-                        3 => "on"
-                    ]
-                ];                
+                $widgets = array(
+                    'block' => array(
+                        15 => 'on',
+                        16 => 'on',
+                        17 => 'on',
+                        19 => 'on',
+                        18 => 'on',
+                        20 => 'on',
+                        21 => 'on',
+                        22 => 'on',
+                        23 => 'on',
+                        11 => 'on',
+                        12 => 'on',
+                        13 => 'on',
+                        14 => 'on',
+                    ),
+                    'tf_price_filters' => array(
+                        4 => 'on',
+                        5 => 'on',
+                    ),
+                    'tf_activities_filter' => array(
+                        3 => 'on',
+                        4 => 'on',
+                    ),
+                    'tf_attraction_filter' => array(
+                        2 => 'on',
+                        3 => 'on',
+                    ),
+                    'tf_tour_feature_filter' => array(
+                        2 => 'on',
+                        3 => 'on',
+                    ),
+                    'tf_tour_type_filter' => array(
+                        2 => 'on',
+                    ),
+                    'tf_hotel_type_filter' => array(
+                        3 => 'on',
+                    ),
+                );                                
             }
 
             if($template_key==3){
