@@ -74,6 +74,30 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+
+
+            $demo_forms_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/forms.json';
+            $forms_files = wp_remote_get( $demo_forms_data_url );
+            $forms_imported_data = wp_remote_retrieve_body($forms_files);
+            if (!empty($forms_imported_data)) {
+                $forms_imported_data = json_decode( $forms_imported_data, true );
+                foreach($forms_imported_data as $form){
+
+                    $form_title = !empty($form['title']) ? $form['title'] : '';
+                    $form_properties = !empty($form['properties']) ? json_decode($form['properties'],true) : '';
+                    // tf_var_dump($form_properties);
+                    if ( class_exists( 'WPCF7' ) ) {
+                        $contact_form = WPCF7_ContactForm::get_template(
+                            array( 
+                                'title' => $form_title,
+                            )
+                        ); 
+                        $contact_form->set_properties($form_properties);
+                        $contact_form->save();
+                    }
+                }
+            }
+            
             $demo_data_url = 'https://hotelic.tourfic.site/demos/v'.$template_key.'/pages.json';
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
@@ -344,6 +368,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         3 => "on"
                     ]
                 ];                
+            }
+
+            if($template_key==3){
+                $widgets = array(
+                    'block' => array(
+                        36 => 'on',
+                        37 => 'on',
+                        38 => 'on',
+                        33 => 'on',
+                        13 => 'on',
+                        21 => 'on',
+                        24 => 'on',
+                        28 => 'on'
+                    ),
+                    'tf_activities_filter' => array(
+                        2 => 'on',
+                        3 => 'on'
+                    ),
+                    'tf_attraction_filter' => array(
+                        2 => 'on',
+                        3 => 'on'
+                    ),
+                    'tf_tour_feature_filter' => array(
+                        2 => 'on',
+                        3 => 'on'
+                    ),
+                    'tf_tour_type_filter' => array(
+                        2 => 'on',
+                        3 => 'on'
+                    ),
+                    'tf_price_filters' => array(
+                        2 => 'on',
+                        3 => 'on'
+                    ),
+                    'nav_menu' => array(
+                        3 => 'on'
+                    )
+                );                
             }
             foreach ( $sidebar_data as $title => $sidebar ) {
                 $count = count( $sidebar );
