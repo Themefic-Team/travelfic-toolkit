@@ -105,6 +105,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $imported_data = json_decode( $imported_data, true );
                 foreach($imported_data as $page){
                     $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
+                    $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
                     $title = !empty($page['title']) ? $page['title'] : '';
                     $content = !empty($page['content']) ? $page['content'] : '';
                     $elementor_content =  !empty($page['_elementor_data']) ? json_encode($page['_elementor_data']) : '';
@@ -201,17 +202,23 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_option( 'show_on_front', 'page' );
                     }
 
-                    update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
-                    update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
-                    update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
-                    update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
-                    update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
-                    update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
-                    update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-                    update_post_meta($new_page_id, '_elementor_data', $elementor_content);
-                    update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
-                    update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
-                    update_post_meta($new_page_id, '_elementor_css', $elementor_content_css);
+                    if(!empty($is_blog)){
+                        update_option( 'page_for_posts', $new_page_id );
+                    }
+                    
+                    if(!empty($page['_wp_page_template'])){
+                        update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
+                        update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
+                        update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
+                        update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
+                        update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
+                        update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
+                        update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
+                        update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                        update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
+                        update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                        update_post_meta($new_page_id, '_elementor_css', $elementor_content_css);
+                    }
                 }
                 die();
             }
