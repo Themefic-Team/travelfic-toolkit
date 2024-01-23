@@ -386,6 +386,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             if($template_key==3){
                 $widgets = array(
                     'block' => array(
+                        39 => 'on',
+                        40 => 'on',
+                        42 => 'on',
+                        43 => 'on',
+                        44 => 'on',
+                        45 => 'on',
+                        46 => 'on',
                         36 => 'on',
                         37 => 'on',
                         38 => 'on',
@@ -393,32 +400,32 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         13 => 'on',
                         21 => 'on',
                         24 => 'on',
-                        28 => 'on'
+                        28 => 'on',
                     ),
                     'tf_activities_filter' => array(
                         2 => 'on',
-                        3 => 'on'
+                        3 => 'on',
                     ),
                     'tf_attraction_filter' => array(
                         2 => 'on',
-                        3 => 'on'
+                        3 => 'on',
                     ),
                     'tf_tour_feature_filter' => array(
                         2 => 'on',
-                        3 => 'on'
+                        3 => 'on',
                     ),
                     'tf_tour_type_filter' => array(
                         2 => 'on',
-                        3 => 'on'
+                        3 => 'on',
                     ),
                     'tf_price_filters' => array(
                         2 => 'on',
-                        3 => 'on'
+                        3 => 'on',
                     ),
                     'nav_menu' => array(
-                        3 => 'on'
-                    )
-                );                
+                        3 => 'on',
+                    ),
+                );           
             }
             foreach ( $sidebar_data as $title => $sidebar ) {
                 $count = count( $sidebar );
