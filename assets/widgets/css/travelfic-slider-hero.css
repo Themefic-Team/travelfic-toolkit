@@ -178,13 +178,16 @@
 
 .tft-search-box .tf_homepage-booking {
   margin: 0px;
+  border-radius: 4px 0px 0px 4px;
 }
 
 .tft-search-box #tf-booking-search-tabs {
   box-shadow: none;
-  padding: 20px 0px;
+  padding: 0px;
 }
-
+.tft-hero-design-1 .tf-booking-form-tab button {
+  cursor: pointer;
+}
 .tft-search-box .tft-tour-serach-fields-wrap > div {
   border: none;
   display: flex;
@@ -195,7 +198,7 @@
 }
 
 .tft-search-box .tf_destination-wrap {
-  border: none;
+  border-right: 1px solid #ccc;
 }
 
 .tf_input-inner *,
@@ -266,7 +269,6 @@
 
 /* Slider Design 2 */
 .tft-hero-design-2{
-  height: 100vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -284,7 +286,8 @@
   line-height: 120%;
   color: #FDF9F3;
   text-align: center;
-  margin-bottom: 30px;
+  padding-bottom: 120px;
+  padding-top: 120px;
 }
 .tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button{
   border: 0px;

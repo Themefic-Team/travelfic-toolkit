@@ -242,7 +242,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
                 ],
             ]
-        );      
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -587,7 +587,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_2_title',
-                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author h4',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -608,7 +608,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -630,7 +630,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_2_designation_typo',
-                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author .designation',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -650,7 +650,49 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author p' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author .designation' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_2_author',
+            [
+                'label'     => __( 'Author', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'testimonials_2_author_typo',
+                'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author .person-name',
+                'label'    => __( 'Typography', 'travelfic-toolkit' ),
+                'condition' => [
+                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                ],
+                'fields_options' => [
+                    'typography' => ['default' => 'yes'],
+                    'font_family' => [
+                        'default' => 'Josefin Sans',
+                    ],
+                ]
+            ]
+        );
+        $this->add_control(
+            'testimonials_2_author_color',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#99948D',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial .testimonial-author .person-name' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -809,7 +851,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author h4' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
@@ -854,7 +896,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        
+
         $this->add_responsive_control(
             'testimonials_nav__border_width',
             [
@@ -968,6 +1010,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
     if ( !empty( $settings['testimonial_bg'] ) ) {
         $tft_testimonial_bg = $settings['testimonial_bg'];
     }
+
     ?>
 
     <?php if ( $settings['testimonials_section'] && "design-1"==$tft_design ){ ?>
@@ -979,10 +1022,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                         <div class="tft-testimonials-inner">
                             <div class="testimonial-header">
                                 <div class="person-avatar">
-                                    <?php echo wp_get_attachment_image( $item['person_image']['id'], "team-image", "", array( "class" => "circle" ) ); ?>
+                                    <img src="<?php echo esc_url( $item['person_image']['url'] ); ?>" alt="Image">
                                 </div>
                                 <div class="person-info">
-                                    <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
+                                    <p class="person-name"><?php echo esc_html( $item['person_name'] ) ?></p>
                                     <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
                                 </div>
                             </div>
@@ -999,7 +1042,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             </div>
         </div>
     <script>
-        // Testimonials 
+        // Testimonials
         (function ($) {
             "use strict";
             $(document).ready(function () {
@@ -1040,19 +1083,19 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                     });
 
             });
-        }(jQuery)); 
+        }(jQuery));
 
         </script>
     <?php } elseif ( $settings['testimonials_section'] && "design-2"==$tft_design ){ ?>
 
         <div class="tft-testimonials-design-2">
             <div class="tft-testimonial-top-header">
-                <?php 
+                <?php
                 if(!empty($tft_sec_subtitle)){ ?>
                 <div class="testimonial-header-shape">
-                    <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-1.png' ); ?>" alt="Testimonial Shape">
+                    <!-- <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-1.png' ); ?>" alt="Testimonial Shape"> -->
                     <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
-                    <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-2.png' ); ?>" alt="Testimonial Shape">
+                    <!-- <img src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/testimonial-group-2.png' ); ?>" alt="Testimonial Shape"> -->
                 </div>
                 <?php }
                 if(!empty($tft_sec_title)){
@@ -1067,7 +1110,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                         <div class="tft-single-testimonial">
                             <div class="tft-testimonials-inner">
                                 <div class="testimonial-author-image">
-                                    <?php 
+                                    <?php
                                     if(!empty($item['person_image']['url'])){ ?>
                                     <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
                                     <?php }else{ ?>
@@ -1087,7 +1130,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                                     <p class="tft-content">"<?php echo travelfic_character_limit( $item['testimonials_review'], 100 ); ?> "</p>
                                 </div>
                                 <div class="testimonial-author">
-                                    <h4 class="person-name"><?php echo esc_html( $item['person_name'] ) ?></h4>
+                                    <p class="person-name"><?php echo esc_html( $item['person_name'] ) ?></p>
                                     <p class="designation"><?php echo esc_html( $item['designation'] ) ?></p>
                                 </div>
                             </div>

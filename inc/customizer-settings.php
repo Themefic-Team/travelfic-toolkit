@@ -141,6 +141,18 @@ function travelfic_toolkit_customize_register($wp_customize) {
         "type" => "color",
     ]);
 
+    // Header background color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "header_bg_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "header_bg_color", [
+        "label" => __("Header Background", "travelfic-toolkit"),
+        'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
     // Phone
     $wp_customize->add_setting($travelfic_toolkit_prefix . "design_2_phone", [
         "transport" => "refresh",
@@ -233,6 +245,26 @@ function travelfic_toolkit_customize_register($wp_customize) {
     )));
     /* Transparent Header Showing Option Start*/
 
+    /* Transparent Header image Start*/
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "trasnparent_logo", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_url"
+    ]);
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            $travelfic_toolkit_prefix . "trasnparent_logo",
+            [
+                "label" => __("Transparent Header Logo", "travelfic-toolkit"),
+                "section" => "travelfic_customizer_header",
+                "settings" => $travelfic_toolkit_prefix . "trasnparent_logo",
+                'priority' => 21,
+            ]
+        )
+    );
+    /* Transparent Header image End*/
+
     /* Header Menu Section Title Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_section_opt', array(
         'default'           => 'sections',
@@ -253,7 +285,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Header Menu Typography Start*/
     $wp_customize->add_setting($travelfic_toolkit_prefix .'header_menu_typo', array(
         'default'           => array(
-            'font-size'      => '18',
+            'font-size'      => '16',
             'line-height'      => '24',
             'text-transform' => 'capitalize',
         ),
@@ -302,7 +334,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
     /* Header SubMenu Typography Start */
     $wp_customize->add_setting($travelfic_toolkit_prefix .'header_submenu_typo', array(
         'default'           => array(
-            'font-size'      => '18',
+            'font-size'      => '16',
             'line-height'      => '24',
             'text-transform' => 'capitalize',
         ),
@@ -362,6 +394,95 @@ function travelfic_toolkit_customize_register($wp_customize) {
     ]);
 
     /* Header SubMenu Colors End */
+
+    /* Transparent Header Menu Section Title Start*/
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'transparent_header_section_opt', array(
+        'default'           => 'sections',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    $wp_customize->add_control(new Travelfic_Toolkit_Sec_Section_Control($wp_customize, $travelfic_toolkit_prefix . 'transparent_header_section_opt', array(
+        'label'    => __('Transparent Header Settings', 'travelfic-toolkit'),
+        'section'  => 'travelfic_customizer_header',
+        'priority' => 23,
+        'sec'  => array(
+            'sections' => __('Transparent Header Settings', 'travelfic-toolkit'),
+        ),
+    )));
+
+    // Transparent Header background color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "transparent_header_bg_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "transparent_header_bg_color", [
+        "label" => __("Header Background", "travelfic-toolkit"),
+        'priority' => 24,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    //menu Color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "transparent_menu_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "transparent_menu_color", [
+        "label" => __("Menu Color", "travelfic-toolkit"),
+        'priority' => 25,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    //menu Hover Color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "transparent_menu_hover_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "transparent_menu_hover_color", [
+        "label" => __("Menu Hover Color", "travelfic-toolkit"),
+        'priority' => 25,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    //Submenu Background
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "transparent_submenu_bg", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "transparent_submenu_bg", [
+        "label" => __("Submenu Background", "travelfic-toolkit"),
+        'priority' => 25,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    //Submenu Default Color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "transparent_submenu_text_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "transparent_submenu_text_color", [
+        "label" => __("Submenu Text Color", "travelfic-toolkit"),
+        'priority' => 26,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    //Submenu Hover Color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "transparent_submenu_text_hover_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color"
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "transparent_submenu_text_hover_color", [
+        "label" => __("Submenu Text Hover Color", "travelfic-toolkit"),
+        'priority' => 27,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    /* Transparent Header Menu Section Title End*/
 
 
     /* Footer Tab Selection Start*/

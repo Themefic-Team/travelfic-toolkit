@@ -55,6 +55,7 @@
 /* ------------------ */
 /* Design 2 CSS START */
 /* ------------------ */
+
 .tft-destination-design-2{
   background-position: left top;
 }
@@ -62,6 +63,7 @@
   width: 60%;
 }
 .tft-destination-design-2 .tft-destination-header h6{
+  font-family: 'Josefin Sans' !important;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -69,7 +71,7 @@
   letter-spacing: 0.16px;
   text-transform: uppercase;
   color: #B58E53;
-  margin: 0;
+  margin: 0px 0px 8px 0px;
 }
 .tft-destination-design-2 .tft-destination-header h3{
   font-size: 56px;
@@ -78,7 +80,7 @@
   line-height: 120%; /* 67.2px */
   color: #595349;
   margin: 0;
-  padding-bottom: 38px;
+  padding-bottom: 48px;
 }
 .tft-destination-design-2 .tft-destination-slides .slick-list.draggable{
   width: 100% !important;
@@ -103,7 +105,7 @@
 .tft-destination-design-2 .tft-destination-slides .slick-prev i,
 .tft-destination-design-2 .tft-destination-slides .slick-next i{
   color: #B58E53;
-  font-size: 24px; 
+  font-size: 24px;
 }
 .tft-destination-design-2 .tft-single-destination{
   margin: 0px 20px !important;
@@ -215,7 +217,7 @@
   }
 }
 @media all and (max-width: 767px){
-  
+
 }
 
 @media (min-width:768px) and (max-width:1024px) {

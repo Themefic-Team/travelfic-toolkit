@@ -93,10 +93,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 		}
 
 	   return $options;
-	   
+
 	}
 
-	
+
 
 	/**
 	 * Get widget keywords.
@@ -790,11 +790,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 ],
             ]
         );
-		
+
 	}
 
 	protected function render() {
-	$settings = $this->get_settings_for_display(); 
+	$settings = $this->get_settings_for_display();
 
 		$args = array(
 			'post_type'   => 'post'
@@ -839,7 +839,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
         <div class="tft-design-2-blog">
             <div class="tft-blog-header">
                 <div class="tft-news-header">
-                    <?php 
+                    <?php
                     if(!empty($tft_sec_subtitle)){ ?>
                         <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
                     <?php }
@@ -863,12 +863,12 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
             <div class="tft-blog-gird-section blog-grid-item-<?php echo $items_count; ?>">
                 <?php if( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-					
+
 						<div class="tft-col-item tft-post-single-item">
                             <a id="post-<?php the_ID(); ?>" href="<?php echo esc_url( get_permalink() ); ?>">
-                                
+
                                 <div class="tft-blog-thumbnail">
-                                    <?php 
+                                    <?php
                                     if( get_the_post_thumbnail_url( get_the_ID() ) ){
                                         the_post_thumbnail( 'blog-thumb' );
                                     }else{ ?>
@@ -876,25 +876,35 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                                     <?php } ?>
                                 </div>
                                 <div class="tft-content-details">
-                                    <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
+                                    <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date('j M, Y'); ?></p>
                                     <h3 class="tft-title">
-                                        <?php 
-                                        echo travelfic_character_limit(get_the_title(), 15);
+                                        <?php
+                                        echo travelfic_character_limit(get_the_title(), 22);
                                         ?>
                                     </h3>
-                                    <?php 
-                                    $travelfic_blog_content = wp_trim_words(get_the_content(), 5, '<span> ...Read more</span>');
-                                    echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
+                                    <?php
+                                    // $travelfic_blog_content = wp_trim_words(get_the_content(), 15, '<span> ...Read more</span>');
+
+                                    $blog_single_cont = strip_tags(get_the_content());
+
+                                    if(strlen($blog_single_cont) > 28 ){
+                                        $blog_single_cont = substr($blog_single_cont, 0, 28) . '<span> ...Read more</span>';
+                                    }else{
+                                        $blog_single_cont = $blog_single_cont;
+                                    }
+                                    echo '<p class="content">' . $blog_single_cont . '</p>';
+
+                                    // echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
                                     ?>
                                 </div>
                             </a>
 						</div>
-					
+
 					<?php endwhile; ?>
 				<?php endif; ?>
             </div>
         </div>
-        <?php 
+        <?php
         }else{ ?>
 		<style>
 			.tft-latest-posts .tft-post-thumbnail a::before {
@@ -911,10 +921,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 		<div class="tft-latest-posts-wrapper tft-customizer-typography">
             <div class="tft-latest-posts">
                 <div id="items-count-<?php echo esc_html($items_count); ?>" class="tft-latest-post-items">
-					
+
 				<?php if( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-					
+
 						<div class="tft-col-item tft-post-single-item">
 							<div class="tft-post-thumbnail tft-thumbnail">
 								<div class="tft-thumbnail-url">
@@ -932,7 +942,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
 								</div>
 							</div>
 						</div>
-					
+
 					<?php endwhile; ?>
 				<?php endif; ?>
                 </div>

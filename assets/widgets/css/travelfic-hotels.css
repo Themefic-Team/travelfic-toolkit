@@ -10,7 +10,8 @@
 .tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
     width: 60%;
 }
-.tft-popular-hotels-wrapper .tft-popular-hotel-header h6{
+.tft-popular-hotels-wrapper .tft-popular-hotel-header h6 {
+    font-family: 'Josefin Sans' !important;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -25,6 +26,7 @@
     font-weight: 700;
     line-height: 120%;
     color: #595349;
+    margin-bottom: 24px;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotel-header ul{
     margin: 0;
@@ -79,9 +81,6 @@
     padding-bottom: 85px;
     position: relative;
 }
-.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item{
-    transition: .3s all ease;
-}
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail{
     height: 550px;
     background-position: center;
@@ -116,12 +115,16 @@
     font-weight: 700;
     line-height: 120%;
     color: #595349;
+    margin-bottom: 16px;
     /* height: 115px; */
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3 a {
+    text-decoration: none;
+    color: inherit;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations{
     display: flex;
     margin: 0;
-    height: 42px;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tour-time{
     display: flex;
@@ -147,16 +150,15 @@
     margin-left: 3px;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details {
-    margin-top: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
+    padding-top: 0px;
+    transition: max-height 0.6s ease;
 }
 
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item:hover .tft-hotel-details .tf-others-details {
     max-height: 200px;
-    margin-top: 30px;
-    transition: max-height 0.4s ease; /* Transition for hover */
+    transition: max-height 0.6s ease;
 }
 
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details{
@@ -182,6 +184,7 @@
     padding: 0;
     list-style: none;
     gap: 12px;
+    padding-top: 16px;
 }
 .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li{
     font-size: 16px;

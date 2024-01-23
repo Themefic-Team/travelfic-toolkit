@@ -375,8 +375,9 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 											<p class="tft-content">
 												<i class="fas fa-location-arrow"></i>
 												<?php 
-													if( isset( $option_meta['text_location'] ) ){
-														echo esc_html( $option_meta['text_location'] );
+													$tour_location_address = !empty(tf_data_types( $option_meta['location'] )['address']) ? tf_data_types($option_meta['location'])["address"] : '';
+													if( !empty( $tour_location_address ) ){
+														echo esc_html( travelfic_character_limit( $tour_location_address, 45) );
 													}
 												?>
 											</p>
@@ -386,7 +387,15 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 											<div class="tft-popular-tour-duration">
 												<p class="tft-content">
 													<i class="fas fa-calendar-alt"></i>
-													<?php echo esc_html( $option_meta['duration'] );?>
+													<?php 
+														echo esc_html( $option_meta['duration'] ) . " ";
+
+														if ( $option_meta['duration'] > 1) { 
+															echo esc_html( $option_meta['duration_time'] ) . 's';
+														} else {
+															echo esc_html( $option_meta['duration_time'] );
+														} 
+													?>
 												</p>
 											</div>
 										<?php }

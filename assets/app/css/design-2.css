@@ -32,8 +32,8 @@
 
 .tft-design-2 .tft-top-header {
   background: #595349;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .tft-design-2 .tft-top-header .tft-flex {
   justify-content: space-between;
@@ -42,6 +42,9 @@
 @media only screen and (max-width: 767.98px) {
   .tft-design-2 .tft-top-header .tft-flex {
     flex-wrap: wrap;
+  }
+  .tft-design-2 .tft-top-header  {
+    display: none;
   }
 }
 @media only screen and (max-width: 767.98px) {
@@ -65,12 +68,21 @@
   color: #FDF9F3;
   margin-left: 24px;
   align-items: center;
+  font-weight: 400;
 }
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li svg {
   margin-right: 8px;
 }
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li a {
+  text-decoration: none;
+  color: #FDF9F3;
+  transition: 0.3s all ease;
+}
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li:first-child {
   margin: 0px;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share {
+  margin-top: 7px;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-design-2 .tft-top-header .tft-flex .tft-social-share {
@@ -102,8 +114,8 @@
 }
 .tft-design-2 .tft-menus-section {
   background: #FDF9F3;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 31px;
+  padding-bottom: 31px;
 }
 .tft-design-2 .tft-menus-section .tft-flex {
   justify-content: space-between;
@@ -134,6 +146,9 @@
   margin: 0px;
   display: block;
   padding: 5px 10px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li.current_page_item > a {
+  color: #B58E53;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
   margin: 0px;
@@ -197,9 +212,18 @@
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
+  transition: 0.3s all ease;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a:hover {
+  color: #B58E53;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
   border: 1px solid #B58E53;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
+  background: #917242;
+  color: #FDF9F3;
+  border-color: #917242;
 }
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
   min-height: auto;
@@ -255,7 +279,8 @@
   left: 0;
   right: 0;
   z-index: 99;
-  background: rgba(48, 40, 28, 0.5);
+  background: rgba(48, 40, 28, 0.3);
+  backdrop-filter: blur(15px);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-menu ul li a {
   color: #FDF9F3;
@@ -276,10 +301,10 @@
   padding-top: 64px;
   padding-bottom: 32px;
   background-color: #595349;
-  color: #FDF9F3;
+  color: #FAEEDC;
 }
 .tft-design-2 .tft-footer-sections a {
-  color: #FDF9F3;
+  color: #FAEEDC;
 }
 .tft-design-2 .tft-footer-sections .tft-grid {
   display: flex;
@@ -310,7 +335,7 @@
   font-style: normal;
   font-weight: 700;
   color: #B58E53;
-  margin-bottom: 15px;
+  margin-bottom: 24px;
   line-height: 32px;
 }
 .tft-design-2 .tft-footer-sections .tft-grid ul {
@@ -325,7 +350,7 @@
 .tft-design-2 .tft-footer-sections .tft-grid ul li a {
   text-decoration: none;
   display: block;
-  color: #FDF9F3;
+  color: #FAEEDC;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;

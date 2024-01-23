@@ -4,7 +4,7 @@
  * Plugin URI: https://themefic.com/
  * Description: Travelfic Toolkit allows you to add extra functionality to the Travelfic WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel area etc. This toolkit improves the overall design and performance of your hotel or travel booking website developed using the Travelfic theme.
  * Author: themefic
- * Version: 1.0.1
+ * Version: 1.0.2
  * Tested up to: 6.4
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
@@ -23,7 +23,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.1' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.2' );
 
 /**
  * Include file from plugin if it is not available in theme
@@ -57,7 +57,7 @@ add_filter( 'theme_file_path', 'travelfic_get_theme_filepath', 10, 2 );
 /**
  * Loading Text Domain
  *
- */
+*/
 add_action( 'plugins_loaded', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
 
 function travelfic_toolkit_plugin_loaded_action() {
@@ -66,32 +66,40 @@ function travelfic_toolkit_plugin_loaded_action() {
 
 /**
  *    Customizer Settings
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/customizer-settings.php';
 
 /**
  *    Customizer Apply
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/customizer/customizer-apply.php';
 
 /**
  *    Customizer Header Apply 
- */
+*/
 require_once dirname(__FILE__) . '/inc/customizer/customizer-header-rander.php';
 
 /**
  *    Customizer Footer Apply 
- */
+*/
 require_once dirname(__FILE__) . '/inc/customizer/customizer-footer-rander.php';
 
 /**
  * Elementor Widgets
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/elementor-widgets.php';
 /**
  * Plugin Functions
- */
+*/
 require_once dirname( __FILE__ ) . '/inc/functions.php';
+
+/**
+ * Template Sync Class
+*/
+if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-template-sync.php' ) ) {
+    require_once dirname( __FILE__ ) . '/inc/class/class-template-sync.php';
+}
+
 
 /**
  * Template List Class
@@ -141,7 +149,7 @@ function travelfic_toolkit_front_page_script() {
  */
 
  add_action( 'admin_enqueue_scripts', 'travelfic_toolkit_admin_page_script' );
- function travelfic_toolkit_admin_page_script() {
+ function travelfic_toolkit_admin_page_script($screen) {
     $travelfic_toolkit_active_plugins = [];
     if ( ! is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
         $travelfic_toolkit_active_plugins[] = "contact-form-7";
@@ -155,19 +163,37 @@ function travelfic_toolkit_front_page_script() {
     if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
         $travelfic_toolkit_active_plugins[] = "woocommerce";
     }
-     wp_enqueue_style( 'travelfic-toolkit-admin-css', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/template-setup.css', false, TRAVELFIC_TOOLKIT_VERSION );
-     wp_enqueue_script( 'travelfic-toolkit-admin-js', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/template-setup.js', array( 'jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
-     wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
+
+    $travelfic_toolkit_facts = [
+        __("According to Statista, 81% of global travelers believe that sustainable travel is important for the world", "travelfic-toolkit"),
+        __("France is the most visited country in the world, reporting 89.4 million tourists annually", "travelfic-toolkit"),
+        __("The shortest flight in the world is a 1 minute 14-second connecting flight between Westray and Papa Westray in Scotland’s Orkney Islands", "travelfic-toolkit"),
+        __("Paris, London, and Rome are the top 3 trending and most preferred travel destinations (based on the latest data)", "travelfic-toolkit"),
+        __("Exploring new places together is the main priority for 49% of families planning to travel", "travelfic-toolkit"),
+        __("Travelers usually tend to book accommodation and flight tickets roughly three months prior to the trip date", "travelfic-toolkit"),
+        __("A majority of travelers say that they expect to spend more on travel than other aspects of their life such as car insurance, healthcare, etc", "travelfic-toolkit"),
+        __("Children born after 2010, also known as Generation Alpha, are said to show the most influence over a family’s travel plans", "travelfic-toolkit")
+    ];
+    shuffle($travelfic_toolkit_facts);
+
+    wp_enqueue_style( 'travelfic-toolkit-admin-css', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/template-setup.css', false, TRAVELFIC_TOOLKIT_VERSION );
+    wp_enqueue_script( 'travelfic-toolkit-admin-js', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/template-setup.js', array( 'jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
+    wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
         array(
             'travelfic_toolkit_nonce'   => wp_create_nonce( 'updates' ),
             'ajax_url'       => admin_url( 'admin-ajax.php' ),
-            'installing'     => __( 'Plugin Installing & Activating...', 'travelfic' ),
-            'installed'      => __( 'Installed', 'travelfic' ),
-            'activated'      => __( 'Activated', 'travelfic' ),
-            'install_failed' => __( 'Install failed', 'travelfic' ),
-            'actives_plugins' => $travelfic_toolkit_active_plugins
+            'installing'     => __( 'Plugin Installing & Activating...', 'travelfic-toolkit' ),
+            'installed'      => __( 'Installed', 'travelfic-toolkit' ),
+            'activated'      => __( 'Activated', 'travelfic-toolkit' ),
+            'install_failed' => __( 'Install failed', 'travelfic-toolkit' ),
+            'actives_plugins' => $travelfic_toolkit_active_plugins,
+            'facts' => $travelfic_toolkit_facts
         )
     );
+
+    if(!empty($screen) && 'admin_page_travelfic-template-list'==$screen){
+        wp_enqueue_style( 'travelfic-toolkit-fonts', '//fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap', array(), TRAVELFIC_TOOLKIT_VERSION );
+    }
  }
 
 /**

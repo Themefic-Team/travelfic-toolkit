@@ -113,7 +113,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             $forms = $this->get_contact_form_7_forms(); // Fetch available forms
             $form_options = array('' => __('Select a form', 'travelfic-toolkit'));
             foreach ($forms as $form) {
-                $form_options[$form->ID()] = $form->title();
+                $form_options[$form->title()] = $form->title();
             }
             return $form_options;
         } else{
@@ -358,7 +358,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
         $selected_form = $settings['selected_form']; ?>
             <div class="tft-cf7-form-wrapper"> <?php 
                 if (!empty($selected_form)) {
-                    echo do_shortcode('[contact-form-7 id="' . esc_attr($selected_form) . '"]');
+                    echo do_shortcode('[contact-form-7 title="' . esc_attr($selected_form) . '"]');
                 } ?>
             </div> 
         <?php
