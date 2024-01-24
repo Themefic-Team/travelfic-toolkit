@@ -763,6 +763,9 @@ body.admin_page_travelfic-template-list {
     .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-templates-list .travelfic-single-template .template-img{
         height: auto;
     }
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form{
+        width: 420px;
+    }
 }
 @media all and (max-width: 1024px){
     .travelfic-template-list-wrapper .travelfic-template-import-container{
@@ -786,6 +789,9 @@ body.admin_page_travelfic-template-list {
     .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter{
         flex-wrap: wrap;
         gap: 24px;
+    }
+    .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-filter .travelfic-search-form{
+        width: 100%;
     }
 }
 @media all and (max-width: 767px){
