@@ -162,3 +162,47 @@
 .select2-container.select2-container--default.select2-container--open {
     z-index: 999999 !important;
 }
+
+#customize-control-travelfic_customizer_settings_heading_font_family,
+#customize-control-travelfic_customizer_settings_body_font_family{
+    margin-right: 16px;
+}
+#customize-control-travelfic_customizer_settings_heading_font_family span.select2,
+#customize-control-travelfic_customizer_settings_body_font_family span.select2{
+    height: 48px;
+    border-radius: 0px;
+    background: #FFF;
+    width: 100% !important;
+}
+#customize-control-travelfic_customizer_settings_heading_font_family span.selection .select2-selection__clear,
+#customize-control-travelfic_customizer_settings_body_font_family span.selection .select2-selection__clear{
+    margin-right: 0px;
+    padding-top: 0px;
+    margin-left: 10px;
+}
+#customize-control-travelfic_customizer_settings_heading_font_family span.selection span.select2-selection__placeholder,
+#customize-control-travelfic_customizer_settings_body_font_family span.selection span.select2-selection__placeholder{
+    color: #1d2327;
+}
+#customize-control-travelfic_customizer_settings_heading_font_family span.select2-selection,
+#customize-control-travelfic_customizer_settings_body_font_family span.select2-selection{
+    height: 48px;
+    border: 0px solid;
+    background: transparent;
+    color: #1d2327;
+    font-family: -apple-system, "system-ui", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    
+}
+#customize-control-travelfic_customizer_settings_heading_font_family span.select2-selection span.select2-selection__arrow,
+#customize-control-travelfic_customizer_settings_body_font_family span.select2-selection span.select2-selection__arrow{
+    height: 48px;
+    padding-right: 16px;
+}
+

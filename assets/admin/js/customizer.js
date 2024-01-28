@@ -4,6 +4,7 @@
     wp.customize.control( 'travelfic_customizer_settings_heading_font_family', function( control ) {
       control.container.find( 'select' ).select2({
         placeholder: 'Select Fonts Family',
+        allowClear: true
       });
     });
 
@@ -11,6 +12,7 @@
     wp.customize.control( 'travelfic_customizer_settings_body_font_family', function( control ) {
       control.container.find( 'select' ).select2({
         placeholder: 'Select Fonts Family',
+        allowClear: true
       });
     });
 
