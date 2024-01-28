@@ -244,27 +244,3 @@ function travelfic_toolkit_template_list( $links ) {
     array_push( $links, $link );
     return $links;
 }
-
-
-/**
- * Initialize the plugin tracker
- *
- * @return void
- */
-function appsero_init_tracker_travelfic_toolkit() {
-
-    if ( ! class_exists( 'Appsero\Client' ) ) {
-      require_once __DIR__ . '/inc/app/src/Client.php';
-    }
-
-    $client = new Appsero\Client( '7929498b-c2c3-47f9-b8db-ad56e0090a98', 'Travelfic Toolkit', __FILE__ );
-
-    // Admin notice text
-	$notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from %1$s (I can unsubscribe anytime).' ), $client->name );
-	$client->insights()->notice( $notice );
-	// Active insights
-	$client->insights()->init();
-
-}
-
-appsero_init_tracker_travelfic_toolkit();
