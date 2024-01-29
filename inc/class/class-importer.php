@@ -305,127 +305,24 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             $sidebar_data = $json_data[0];
             $widget_data = $json_data[1];
-            
-            if($template_key==1){
-                $widgets = array(
-                    'block' => array(
-                        15 => 'on',
-                        18 => 'on',
-                        16 => 'on',
-                        19 => 'on',
-                        17 => 'on',
-                        21 => 'on',
-                        20 => 'on',
-                        22 => 'on',
-                        23 => 'on',
-                        11 => 'on',
-                        12 => 'on',
-                        13 => 'on',
-                        14 => 'on',
-                    ),
-                    'tf_price_filters' => array(
-                        2 => 'on',
-                        4 => 'on',
-                    ),
-                    'tf_hotel_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_hotel_type_filter' => array(
-                        3 => 'on',
-                        2 => 'on',
-                    ),
-                    'tf_tour_feature_filter' => array(
-                        3 => 'on',
-                    ),
-                );
-            }
 
-            if($template_key==2){
-                $widgets = array(
-                    'block' => array(
-                        15 => 'on',
-                        16 => 'on',
-                        17 => 'on',
-                        19 => 'on',
-                        18 => 'on',
-                        20 => 'on',
-                        21 => 'on',
-                        22 => 'on',
-                        23 => 'on',
-                        11 => 'on',
-                        12 => 'on',
-                        13 => 'on',
-                        14 => 'on',
-                    ),
-                    'tf_price_filters' => array(
-                        4 => 'on',
-                        5 => 'on',
-                    ),
-                    'tf_activities_filter' => array(
-                        3 => 'on',
-                        4 => 'on',
-                    ),
-                    'tf_attraction_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_tour_feature_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_tour_type_filter' => array(
-                        2 => 'on',
-                    ),
-                    'tf_hotel_type_filter' => array(
-                        3 => 'on',
-                    ),
-                );                                
-            }
+            $widgets = [];
+            foreach ($sidebar_data as $key => $value) {
+                foreach ($value as $item) {
+                    // Adjusted regular expression to match underscores
+                    preg_match('/^([a-zA-Z_]+)-(\d+)$/', $item, $matches);
 
-            if($template_key==3){
-                $widgets = array(
-                    'block' => array(
-                        39 => 'on',
-                        40 => 'on',
-                        42 => 'on',
-                        43 => 'on',
-                        44 => 'on',
-                        45 => 'on',
-                        46 => 'on',
-                        36 => 'on',
-                        37 => 'on',
-                        38 => 'on',
-                        33 => 'on',
-                        13 => 'on',
-                        21 => 'on',
-                        24 => 'on',
-                        28 => 'on',
-                    ),
-                    'tf_activities_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_attraction_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_tour_feature_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_tour_type_filter' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'tf_price_filters' => array(
-                        2 => 'on',
-                        3 => 'on',
-                    ),
-                    'nav_menu' => array(
-                        3 => 'on',
-                    ),
-                );           
+                    if (count($matches) === 3) {
+                        $prefix = $matches[1];
+                        $number = (int) $matches[2];
+
+                        if (!isset($widgets[$prefix])) {
+                            $widgets[$prefix] = [];
+                        }
+
+                        $widgets[$prefix][$number] = 'on';
+                    }
+                }
             }
             foreach ( $sidebar_data as $title => $sidebar ) {
                 $count = count( $sidebar );
