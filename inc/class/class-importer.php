@@ -109,6 +109,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $title = !empty($page['title']) ? $page['title'] : '';
                     $content = !empty($page['content']) ? $page['content'] : '';
                     $elementor_content =  !empty($page['_elementor_data']) ? json_encode($page['_elementor_data']) : '';
+                    // $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
                     $elementor_content_css =  !empty($page['_elementor_css']) ? $page['_elementor_css'] : '';
                     $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
