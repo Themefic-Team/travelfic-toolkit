@@ -108,9 +108,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
                     $title = !empty($page['title']) ? $page['title'] : '';
                     $content = !empty($page['content']) ? $page['content'] : '';
-                    $elementor_content =  !empty($page['_elementor_data']) ? json_encode($page['_elementor_data']) : '';
-                    // $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
-                    $elementor_content_css =  !empty($page['_elementor_css']) ? $page['_elementor_css'] : '';
+                    $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
                     $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
                     if(!empty($pages_images)){
@@ -218,9 +216,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($new_page_id, '_elementor_data', $elementor_content);
                         update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
                         update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
-                        update_post_meta($new_page_id, '_elementor_css', $elementor_content_css);
                     }
                 }
+
+                delete_option('_elementor_global_css');
+		        delete_option('elementor-custom-breakpoints-files');
                 die();
             }
 		}
