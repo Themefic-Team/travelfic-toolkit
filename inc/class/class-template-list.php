@@ -40,7 +40,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 
 			if ( current_user_can( 'manage_options' ) ) {
 				add_submenu_page(
-					'',
+					'travelfic-template-list',
 					esc_html__( 'Travelfic Template List', 'travelfic-toolkit' ),
 					esc_html__( 'Travelfic Template List', 'travelfic-toolkit' ),
 					'manage_options',
