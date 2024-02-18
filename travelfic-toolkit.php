@@ -4,7 +4,7 @@
  * Plugin URI: https://themefic.com/
  * Description: Travelfic Toolkit allows you to add extra functionality to the Travelfic WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel area etc. This toolkit improves the overall design and performance of your hotel or travel booking website developed using the Travelfic theme.
  * Author: themefic
- * Version: 1.0.3
+ * Version: 1.0.4
  * Tested up to: 6.4
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
@@ -23,7 +23,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.3' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.4' );
 
 /**
  * Include file from plugin if it is not available in theme
@@ -244,27 +244,3 @@ function travelfic_toolkit_template_list( $links ) {
     array_push( $links, $link );
     return $links;
 }
-
-
-/**
- * Initialize the plugin tracker
- *
- * @return void
- */
-function appsero_init_tracker_travelfic_toolkit() {
-
-    if ( ! class_exists( 'Appsero\Client' ) ) {
-      require_once __DIR__ . '/inc/app/src/Client.php';
-    }
-
-    $client = new Appsero\Client( '7929498b-c2c3-47f9-b8db-ad56e0090a98', 'Travelfic Toolkit', __FILE__ );
-
-    // Admin notice text
-	$notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from %1$s (I can unsubscribe anytime).' ), $client->name );
-	$client->insights()->notice( $notice );
-	// Active insights
-	$client->insights()->init();
-
-}
-
-appsero_init_tracker_travelfic_toolkit();
