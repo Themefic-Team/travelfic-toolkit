@@ -31,8 +31,9 @@ define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.4' );
 function travelfic_toolkit_settings() {
     $theme_folder = wp_get_theme( 'travelfic' );
     if ( $theme_folder->exists() ) {
-        $theme = wp_get_theme();
-        if ( $theme->get( 'Name' ) !== 'Travelfic' ) {
+        $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+
+        if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' ) {
             add_action( 'admin_notices', 'travelfic_active' );
         }
     } else {
