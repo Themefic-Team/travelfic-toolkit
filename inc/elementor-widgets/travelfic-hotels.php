@@ -608,11 +608,11 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 		$settings = $this->get_settings_for_display();
 
 		$args = array(
-			'post_type' => $settings['tf_post_type']
+			'post_type' => !empty($settings['tf_post_type']) ? $settings['tf_post_type'] : ''
 		);
 
         $featured_args = array(
-			'post_type' => $settings['tf_post_type']
+			'post_type' => !empty($settings['tf_post_type']) ? $settings['tf_post_type'] : ''
 		);
 
 		// Display posts in category.
@@ -713,11 +713,11 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 						);
 						$comments_query = new WP_Comment_Query( $args );
 						$comments = $comments_query->comments;
-                        if("tf_hotel"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
                             $disable_review_sec = !empty($option_meta['h-review']) ? $option_meta['h-review'] : '';
                         }
-                        if("tf_tours"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
                             $disable_review_sec = !empty($option_meta['t-review']) ? $option_meta['t-review'] : '';
 
@@ -726,7 +726,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             $night         = ! empty( $option_meta['night'] ) ? $option_meta['night'] : false;
                             $night_count   = ! empty( $option_meta['night_count'] ) ? $option_meta['night_count'] : '';
                         }
-                        if("tf_apartment"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_apartment"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_apartment_opt' );
                             $disable_review_sec = !empty($option_meta['disable-apartment-review']) ? $option_meta['disable-apartment-review'] : '';
                         }
@@ -785,22 +785,22 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         </svg>
                                         <span>
                                             <?php 
-                                            if("tf_hotel"==$settings['tf_post_type']){
+                                            if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                                                 echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
-                                            if("tf_tours"==$settings['tf_post_type']){
+                                            if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                                                 echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
                                             }
-                                            if("tf_apartment"==$settings['tf_post_type']){
+                                            if(!empty($settings['tf_post_type']) && "tf_apartment"==$settings['tf_post_type']){
                                                 echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
                                             ?>
                                         </span>
                                     </p>
                                     
-                                    <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
+                                    <div class="tf-others-details" style="<?php echo !empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
                                         <?php 
-                                        if("tf_tours"==$settings['tf_post_type']){
+                                        if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                                         if($tour_duration){
                                         ?>
                                         <p class="tour-time">
@@ -834,7 +834,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         </p>
                                         <?php } } ?>
                                         <?php 
-                                        if("tf_hotel"==$settings['tf_post_type']){
+                                        if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                                             $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
                                             if(!empty($rooms)){
                                                 $rm_features = [];
@@ -877,7 +877,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         }
                                         ?>
                                         <?php 
-                                        if("tf_apartment"==$settings['tf_post_type']){
+                                        if(!empty($settings['tf_post_type']) && "tf_apartment"==$settings['tf_post_type']){
                                             $amenitiess = !empty($option_meta['amenities']) ? tf_data_types($option_meta['amenities']) : '';
                                             if(!empty($amenitiess)){
                                                 $rm_features = [];
@@ -937,15 +937,15 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 if ($featured_query->have_posts()): ?>
 					<?php while ($featured_query->have_posts()):
 						$featured_query->the_post(); 
-                        if("tf_hotel"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
                             $tf_featured_post = !empty($option_meta['featured']) ? $option_meta['featured'] : '';
                         }
-                        if("tf_tours"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
                             $tf_featured_post = !empty($option_meta['tour_as_featured']) ? $option_meta['tour_as_featured'] : '';
                         }
-                        if("tf_apartment"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_apartment"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_apartment_opt' );
                             $disable_review_sec = !empty($option_meta['disable-apartment-review']) ? $option_meta['disable-apartment-review'] : '';
                         }
@@ -957,9 +957,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 					<?php endwhile; ?>
 				<?php endif; 
                 $filter_args = array(
-                    'post_type'      => $settings['tf_post_type'],
+                    'post_type'      => !empty($settings['tf_post_type']) ? $settings['tf_post_type'] : '',
                     'post_status'    => 'publish',
-                    'posts_per_page' => $settings['post_items'],
+                    'posts_per_page' => !empty($settings['post_items']) ? $settings['post_items'] : -1,
                     'post__in'       => $featured_posts,
                 );
                 $result_query = new WP_Query( $filter_args );
@@ -977,11 +977,11 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 						$comments_query = new WP_Comment_Query( $args );
 						$comments = $comments_query->comments;
 
-						if("tf_hotel"==$settings['tf_post_type']){
+						if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_hotels_opt' );
                             $disable_review_sec = !empty($option_meta['h-review']) ? $option_meta['h-review'] : '';
                         }
-                        if("tf_tours"==$settings['tf_post_type']){
+                        if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                             $option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
                             $disable_review_sec = !empty($option_meta['t-review']) ? $option_meta['t-review'] : '';
 
@@ -1044,22 +1044,22 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         </svg>
                                         <span>
                                             <?php 
-                                            if("tf_hotel"==$settings['tf_post_type']){
+                                            if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                                                 echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
-                                            if("tf_tours"==$settings['tf_post_type']){
+                                            if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                                                 echo !empty( tf_data_types($option_meta['location'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['location'])['address'], 40 ) ) : '';
                                             }
-                                            if("tf_apartment"==$settings['tf_post_type']){
+                                            if(!empty($settings['tf_post_type']) && "tf_apartment"==$settings['tf_post_type']){
                                                 echo !empty( tf_data_types($option_meta['map'])['address'] ) ? esc_html( travelfic_character_limit( tf_data_types($option_meta['map'])['address'], 40 ) ) : '';
                                             }
                                             ?>
                                         </span>
                                     </p>
                                     
-                                    <div class="tf-others-details" style="<?php echo "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
+                                    <div class="tf-others-details" style="<?php echo !empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type'] ? esc_attr( 'margin-top: 0px' ) : ''; ?>">
                                         <?php 
-                                        if("tf_tours"==$settings['tf_post_type']){
+                                        if(!empty($settings['tf_post_type']) && "tf_tours"==$settings['tf_post_type']){
                                         if($tour_duration){
                                         ?>
                                         <p class="tour-time">
@@ -1093,7 +1093,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         </p>
                                         <?php } } ?>
                                         <?php 
-                                        if("tf_hotel"==$settings['tf_post_type']){
+                                        if(!empty($settings['tf_post_type']) && "tf_hotel"==$settings['tf_post_type']){
                                             $rooms = !empty($option_meta['room']) ? $option_meta['room'] : '';
                                             if(!empty($rooms)){
                                                 $rm_features = [];
