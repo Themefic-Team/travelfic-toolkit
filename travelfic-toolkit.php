@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name: Travelfic Toolkit
- * Plugin URI: https://themefic.com/
- * Description: Travelfic Toolkit allows you to add extra functionality to the Travelfic WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel area etc. This toolkit improves the overall design and performance of your hotel or travel booking website developed using the Travelfic theme.
- * Author: themefic
- * Version: 1.0.5
- * Tested up to: 6.4
+ * Plugin URI: https://tourfic.site/travelfic/
+ * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
+ * Author: Themefic
+ * Version: 1.0.6
+ * Tested up to: 6.4.3
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.19.2
+ * Elementor tested up to: 3.19.4
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -23,7 +23,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.5' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.6' );
 
 /**
  * Include file from plugin if it is not available in theme
