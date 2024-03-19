@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 function travelfic_toolkit_customize_register($wp_customize) {
     $travelfic_toolkit_prefix = "travelfic_customizer_settings_";
 
+    $travelfic_theme_style = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
 
     // Customizer Class Include
     require_once( dirname( __FILE__ ) . '/customizer/customizer-class.php' );
@@ -104,7 +105,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_2_topbar', array(
         'default'           => 'design1',
-        'sanitize_callback' => 'travelfic_checkbox_sanitize',
+        'sanitize_callback' => $travelfic_theme_style == 'travelfic' || $travelfic_theme_style == 'travelfic-child' ? 'travelfic_checkbox_sanitize' : 'hotelic_checkbox_sanitize',
         "transport" => "refresh",
         "default" => 1
     ));
