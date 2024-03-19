@@ -587,7 +587,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 ?>
                 <div class="tft-single-destination tft-col">
                     <div class="tft-destination-thumbnail tft-thumbnail">
-                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php _e("Tour Destination Image", "travelfic-toolkit"); ?>"></a>
+                        <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php esc_html_e("Tour Destination Image", "travelfic-toolkit"); ?>"></a>
                     </div>
                     <div class="tft-destination-title">
                         <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'tour_destination' )) . '">' . esc_html($cat->name) . '</a>'; ?>
@@ -637,7 +637,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
         </div>
         <?php $rand_number = rand(8,10);?>
         <div class="tft-destination-content">
-            <div class="tft-destination-slides tft-destination-slide-<?php echo $rand_number; ?>">
+            <div class="tft-destination-slides tft-destination-slide-<?php echo esc_attr($rand_number); ?>">
                 <?php
                 foreach ( $all_destination_categories as $cat ) {
                     if ( $cat->category_parent == 0 ) {
@@ -654,7 +654,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                             <a href="<?php echo esc_url(get_term_link( $cat->slug, 'tour_destination' )); ?>" class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
                                 <span>
-                                    <?php echo __("Explore now", "travelfic-toolkit"); ?>
+                                    <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
                                     <path id="Vector" d="M17.0001 6L1.00012 6" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -675,7 +675,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
             (function($) {
                 $(document).ready(function() {
                     //Your Code Inside
-                    $('.tft-destination-slide-<?php echo $rand_number; ?>').slick({
+                    $('.tft-destination-slide-<?php echo esc_attr($rand_number); ?>').slick({
                         dots: false,
                         arrows: true,
                         infinite: true,

@@ -211,7 +211,7 @@ class Travelfic_Customizer_Header
                     if($travelfic_transparent_settings == 'enabled'){
                         if(!empty($header_trasnparent_logo)){ ?>
                         <a href="<?php echo esc_url(home_url('/')) ?>">
-                            <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php _e("Logo", "travelfic-toolkit"); ?>">
+                            <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_html_e("Logo", "travelfic-toolkit"); ?>">
                         </a>
                         <?php }else{ ?>
                         <div class="logo-text">
@@ -241,17 +241,17 @@ class Travelfic_Customizer_Header
                             if ( is_user_logged_in() ) {
                             ?>
                             <li>
-                                <a href="<?php echo site_url( 'my-account/' ); ?>" class="login"><?php echo __("Profile", "travelfic-toolkit"); ?></a>
+                                <a href="<?php echo esc_url(site_url( 'my-account/' )); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
                             </li>
                             <?php
                             }else{
                             if(!empty($design_2_registration_url)){ ?>
                             <li>
-                                <a href="<?php echo esc_url( $design_2_registration_url ); ?>"><?php echo __("Register", "travelfic-toolkit"); ?></a>
+                                <a href="<?php echo esc_url( $design_2_registration_url ); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
                             </li>
                             <?php } if(!empty($design_2_login_url)){ ?>
                             <li>
-                                <a href="<?php echo esc_url( $design_2_login_url ); ?>" class="login"><?php echo __("Login", "travelfic-toolkit"); ?></a>
+                                <a href="<?php echo esc_url( $design_2_login_url ); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
                             </li>
                             <?php } } ?>
                         </ul>

@@ -672,25 +672,25 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                         <?php 
                         if("alls"==$tft_posts_tabs){ ?>
                         <li class="active" data-id="all">
-                            <?php echo __("All", "travelfic-toolkit"); ?>
+                            <?php echo esc_html_e("All", "travelfic-toolkit"); ?>
                         </li>
                         <li data-id="featured">
-                            <?php echo __("Featured", "travelfic-toolkit"); ?>
+                            <?php echo esc_html_e("Featured", "travelfic-toolkit"); ?>
                         </li>
                         <?php }elseif("all"==$tft_posts_tabs){ ?>
                         <li class="active" data-id="all">
-                            <?php echo __("All", "travelfic-toolkit"); ?>
+                            <?php echo esc_html_e("All", "travelfic-toolkit"); ?>
                         </li>
                         <?php }elseif("featured"==$tft_posts_tabs){ ?>
                         <li class="active" data-id="featured">
-                            <?php echo __("Featured", "travelfic-toolkit"); ?>
+                            <?php echo esc_html_e("Featured", "travelfic-toolkit"); ?>
                         </li>
                         <?php } ?>
                     </ul>
                 </div>
                 <div class="read-more">
                     <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
-                        <?php echo __("View All", "travelfic-toolkit"); ?>
+                        <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
                             <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4"/>
@@ -736,7 +736,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 <?php 
                                 $tft_hotel_image = !empty(get_the_post_thumbnail_url( get_the_ID() )) ? esc_url( get_the_post_thumbnail_url( get_the_ID() ) ) : esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png');
                                 ?>
-								<a href="<?php echo esc_url( get_permalink() ); ?>" class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
+								<a href="<?php echo esc_url( get_permalink() ); ?>" class="tft-popular-thumbnail" style="background-image: url(<?php echo esc_url($tft_hotel_image) ?>);">
                                     
                                 </a>
                                 <div class="tft-hotel-details">
@@ -863,8 +863,8 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                             }
                                                             ?>
                                                             <li>
-                                                                <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
-                                                                <?php echo !empty($term->name) ? $term->name : ''; ?>
+                                                                <?php echo ! empty( $room_feature_icon ) ? wp_kses_post($room_feature_icon) : ''; ?>
+                                                                <?php echo !empty($term->name) ? esc_html($term->name) : ''; ?>
                                                             </li>
                                                         <?php
                                                         }
@@ -906,8 +906,8 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                             }
                                                             ?>
                                                             <li>
-                                                                <?php echo ! empty( $apartment_feature_icon ) ? $apartment_feature_icon : ''; ?>
-                                                                <?php echo $term->name; ?>
+                                                                <?php echo ! empty( $apartment_feature_icon ) ? wp_kses_post($apartment_feature_icon) : ''; ?>
+                                                                <?php echo esc_html($term->name); ?>
                                                             </li>
                                                         <?php
                                                         }
@@ -920,7 +920,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         }
                                         ?>
 
-                                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn-view-details"><?php echo __("View details", "travelfic-toolkit"); ?></a>
+                                        <a href="<?php echo esc_url( get_permalink() ); ?>" class="btn-view-details"><?php echo esc_html_e("View details", "travelfic-toolkit"); ?></a>
                                     </div>
                                 </div>
 							</div>
@@ -996,7 +996,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 <?php 
                                 $tft_hotel_image = !empty(get_the_post_thumbnail_url( get_the_ID() )) ? esc_url( get_the_post_thumbnail_url( get_the_ID() ) ) : esc_url(site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png');
                                 ?>
-                                <a href="<?php echo esc_url( get_permalink() ); ?>" class="tft-popular-thumbnail" style="background-image: url(<?php echo $tft_hotel_image ?>);">
+                                <a href="<?php echo esc_url( get_permalink() ); ?>" class="tft-popular-thumbnail" style="background-image: url(<?php echo esc_url($tft_hotel_image) ?>);">
                                 </a>
                                 <div class="tft-hotel-details">
                                     <?php if ($comments && !$disable_review_sec == '1') { ?>
@@ -1122,8 +1122,8 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                             }
                                                             ?>
                                                             <li>
-                                                                <?php echo ! empty( $room_feature_icon ) ? $room_feature_icon : ''; ?>
-                                                                <?php echo $term->name; ?>
+                                                                <?php echo ! empty( $room_feature_icon ) ? wp_kses_post($room_feature_icon) : ''; ?>
+                                                                <?php echo esc_html($term->name); ?>
                                                             </li>
                                                         <?php
                                                         }
@@ -1135,7 +1135,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             }
                                         }
                                         ?>
-                                        <a class="btn-view-details" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo __("View details", "travelfic-toolkit"); ?></a>
+                                        <a class="btn-view-details" href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html_e("View details", "travelfic-toolkit"); ?></a>
                                     </div>
                                 </div>
 								

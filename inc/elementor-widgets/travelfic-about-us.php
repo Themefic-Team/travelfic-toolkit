@@ -572,20 +572,20 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     <?php }
 
                     if(!empty($tft_sec_content)){ ?>
-                        <p><?php echo $tft_sec_content; ?></p>
+                        <p><?php echo wp_kses_post($tft_sec_content); ?></p>
                     <?php } ?>
 
                     <?php if(!empty($tft_sec_quotes)){ ?>
-                        <p class="tft-about-us-quotes"><?php echo $tft_sec_quotes; ?></p>
+                        <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
                     <?php } ?>
 
                     <?php if(!empty($tft_sec_author)){ ?>
-                        <p class="tft-about-us-author"><?php echo $tft_sec_author; ?></p>
+                        <p class="tft-about-us-author"><?php echo esc_html($tft_sec_author); ?></p>
                     <?php } ?>
 
                     <div class="read-more">
                         <a href="<?php echo esc_url($settings['readme_link']['url']); ?>">
-                            <?php echo __("More", "travelfic-toolkit"); ?>
+                            <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
                                 <path d="M56.7071 8.86336C57.0976 8.47283 57.0976 7.83967 56.7071 7.44914L50.3431 1.08518C49.9526 0.694658 49.3195 0.694658 48.9289 1.08518C48.5384 1.47571 48.5384 2.10887 48.9289 2.4994L54.5858 8.15625L48.9289 13.8131C48.5384 14.2036 48.5384 14.8368 48.9289 15.2273C49.3195 15.6178 49.9526 15.6178 50.3431 15.2273L56.7071 8.86336ZM0 9.15625H56V7.15625H0V9.15625Z" fill="#B58E53"/>
