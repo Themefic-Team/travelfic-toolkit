@@ -294,12 +294,20 @@ class Travelfic_Customizer_Header
                 <div class="<?php echo esc_attr( apply_filters( 'travelfic_header_tftcontainer', $travelfic_tftcontainer = '') ); ?> site-header-section tft-mobile-main-menu">
                     <nav class="tft-site-navigation">
                         <?php
+                        $travelfic_current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+                        $travelfic_walker_menu = "";
+                        if ( $travelfic_current_active_theme == 'travelfic' || $travelfic_current_active_theme == 'travelfic-child' ) {
+                            $travelfic_walker_menu = new Travelfic_Custom_Nav_Walker();
+                        }
+                        if ( $travelfic_current_active_theme == 'hotelic' || $travelfic_current_active_theme == 'hotelic-child' ) {
+                            $travelfic_walker_menu = new Hotelic_Custom_Nav_Walker();
+                        }
                         wp_nav_menu(array(
                             'theme_location' => 'primary_menu',
                             'menu_id'        => 'navigation',
                             'container' => 'ul',
                             'menu_class' => 'main--header-menu tft-flex',
-                            'walker' => has_nav_menu('primary_menu') ? new Travelfic_Custom_Nav_Walker() : '',
+                            'walker' => has_nav_menu('primary_menu') ?  $travelfic_walker_menu : '',
                         ));
                         ?>
                         <div class="tft-social-share">

@@ -29,11 +29,17 @@ define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.7' );
  * Include file from plugin if it is not available in theme
  */
 function travelfic_toolkit_settings() {
-    $theme_folder = wp_get_theme( 'travelfic' );
+    $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+    if($current_active_theme == 'travelfic' || $current_active_theme == 'travelfic-child'){
+        $theme_folder = wp_get_theme( 'travelfic' );
+    }elseif($current_active_theme == 'hotelic' || $current_active_theme == 'hotelic-child'){
+        $theme_folder = wp_get_theme( 'hotelic' );
+    }else{
+        $theme_folder = wp_get_theme( 'travelfic' );
+    }
+    
     if ( $theme_folder->exists() ) {
-        $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
-
-        if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' ) {
+        if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' && $current_active_theme != 'hotelic' && $current_active_theme != 'hotelic-child' ) {
             add_action( 'admin_notices', 'travelfic_active' );
         }
     } else {
