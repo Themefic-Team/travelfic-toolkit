@@ -223,7 +223,7 @@ $travelfic_transparent_menu_hover_color = get_theme_mod($travelfic_kit_pre.'tran
         background-color: <?php echo esc_attr( $travelfic_design1_topbar ); ?>;
     }
 
-    .tft-design-2 .tft-top-header .tft-contact-info ul li {
+    .tft-design-2 .tft-top-header .tft-contact-info ul li a {
         color: <?php echo esc_attr( $travelfic_design1_topbar_color ).' !important'; ?>;
     }
     .tft-design-2 .tft-top-header .tft-contact-info ul li svg path,
