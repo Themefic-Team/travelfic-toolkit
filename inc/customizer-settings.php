@@ -544,7 +544,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
       $wp_customize->add_setting( $travelfic_toolkit_prefix .'copyright_text', array(
         'sanitize_callback' => 'sanitize_text_field',
-        'default' => __( '© Copyright 2023 Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit' ),
+        'default' => __( '© Copyright 2024 Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit' ),
       ) );
         
       $wp_customize->add_control( $travelfic_toolkit_prefix .'copyright_text', array(
