@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 // Travelfic Header 
 
 add_filter('travelfic_header', 'travelfic_toolkit_header_callback', 11);
-add_filter('hotelic_header', 'travelfic_toolkit_header_callback', 11);
+add_filter('ultimate_hotel_booking_header', 'travelfic_toolkit_header_callback', 11);
 function travelfic_toolkit_header_callback($travelfic_header){
 	$travelfic_prefix = 'travelfic_customizer_settings_';
     $travelfic_header_check = get_theme_mod($travelfic_prefix.'header_design_select', 'design1');
@@ -21,7 +21,7 @@ function travelfic_toolkit_header_callback($travelfic_header){
 // Travelfic Footer
 
 add_filter('travelfic_footer', 'travelfic_toolkit_footer_callback', 11);
-add_filter('hotelic_footer', 'travelfic_toolkit_footer_callback', 11);
+add_filter('ultimate_hotel_booking_footer', 'travelfic_toolkit_footer_callback', 11);
 function travelfic_toolkit_footer_callback($travelfic_footer){
     $travelfic_prefix = 'travelfic_customizer_settings_';
     $travelfic_footer_check = get_theme_mod($travelfic_prefix.'footer_design_select', 'design1');
@@ -36,7 +36,7 @@ function travelfic_toolkit_footer_callback($travelfic_footer){
 // Travelfic Header tft-container Controller
 
 add_filter('travelfic_header_tftcontainer', 'travelfic_toolkit_header_tftcontainer_callback', 11);
-add_filter('hotelic_header_tftcontainer', 'travelfic_toolkit_header_tftcontainer_callback', 11);
+add_filter('ultimate_hotel_booking_header_tftcontainer', 'travelfic_toolkit_header_tftcontainer_callback', 11);
 function travelfic_toolkit_header_tftcontainer_callback($travelfic_tftcontainer){
     $travelfic_prefix = 'travelfic_customizer_settings_';
     $travelfic_header_width = get_theme_mod($travelfic_prefix.'header_width', 'default');
@@ -51,7 +51,7 @@ function travelfic_toolkit_header_tftcontainer_callback($travelfic_tftcontainer)
 // Travelfic Footer tft-container Controller
 
 add_filter('travelfic_footer_tftcontainer', 'travelfic_toolkit_footer_tftcontainer_callback', 11);
-add_filter('hotelic_footer_tftcontainer', 'travelfic_toolkit_footer_tftcontainer_callback', 11);
+add_filter('ultimate_hotel_booking_footer_tftcontainer', 'travelfic_toolkit_footer_tftcontainer_callback', 11);
 function travelfic_toolkit_footer_tftcontainer_callback($travelfic_tftcontainer){
     $travelfic_prefix = 'travelfic_customizer_settings_';
     $travelfic_footer_width = get_theme_mod($travelfic_prefix.'footer_width', 'default');

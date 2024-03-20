@@ -299,8 +299,8 @@ class Travelfic_Customizer_Header
                         if ( $travelfic_current_active_theme == 'travelfic' || $travelfic_current_active_theme == 'travelfic-child' ) {
                             $travelfic_walker_menu = new Travelfic_Custom_Nav_Walker();
                         }
-                        if ( $travelfic_current_active_theme == 'hotelic' || $travelfic_current_active_theme == 'hotelic-child' ) {
-                            $travelfic_walker_menu = new Hotelic_Custom_Nav_Walker();
+                        if ( $travelfic_current_active_theme == 'ultimate-hotel-booking' || $travelfic_current_active_theme == 'ultimate-hotel-booking-child' ) {
+                            $travelfic_walker_menu = new Ultimate_hotel_booking_Custom_Nav_Walker();
                         }
                         wp_nav_menu(array(
                             'theme_location' => 'primary_menu',

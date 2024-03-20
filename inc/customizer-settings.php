@@ -105,7 +105,7 @@ function travelfic_toolkit_customize_register($wp_customize) {
 
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_2_topbar', array(
         'default'           => 'design1',
-        'sanitize_callback' => $travelfic_theme_style == 'travelfic' || $travelfic_theme_style == 'travelfic-child' ? 'travelfic_checkbox_sanitize' : 'hotelic_checkbox_sanitize',
+        'sanitize_callback' => $travelfic_theme_style == 'travelfic' || $travelfic_theme_style == 'travelfic-child' ? 'travelfic_checkbox_sanitize' : 'ultimate_hotel_booking_checkbox_sanitize',
         "transport" => "refresh",
         "default" => 1
     ));
