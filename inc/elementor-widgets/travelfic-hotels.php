@@ -765,7 +765,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         <a href="<?php echo  esc_url(get_the_permalink())?>">
                                             <?php 
                                             if("Split"==$settings['card_title_type']){
-                                                echo travelfic_character_limit(get_the_title(), 40);
+                                                echo esc_html(travelfic_character_limit(get_the_title(), 40));
                                             }else{
                                                 the_title();
                                             } 
@@ -1024,7 +1024,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         <a href="<?php echo  esc_url(get_the_permalink())?>">
                                             <?php 
                                             if("Split"==$settings['card_title_type']){
-                                                echo travelfic_character_limit(get_the_title(), 15);
+                                                echo esc_html(travelfic_character_limit(get_the_title(), 15));
                                             }else{
                                                 the_title();
                                             } 

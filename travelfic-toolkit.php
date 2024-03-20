@@ -216,7 +216,7 @@ if ( !function_exists( 'travelfic_active' ) ) {
                 /* translators: %s is replaced with "theme name & link" */
                 printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
             </p>
-            <p><a class="install-now button" href="<?php echo wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=travelfic' ), 'switch-theme_travelfic'); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
+            <p><a class="install-now button" href="<?php echo esc_url(wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=travelfic' ), 'switch-theme_travelfic')); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
 		</div>
 	<?php
     }

@@ -879,20 +879,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                                     <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date('j M, Y'); ?></p>
                                     <h3 class="tft-title">
                                         <?php
-                                        echo travelfic_character_limit(get_the_title(), 22);
+                                        echo esc_html(travelfic_character_limit(get_the_title(), 22));
                                         ?>
                                     </h3>
                                     <?php
                                     // $travelfic_blog_content = wp_trim_words(get_the_content(), 15, '<span> ...Read more</span>');
 
-                                    $blog_single_cont = strip_tags(get_the_content());
+                                    $blog_single_cont = wp_strip_all_tags(get_the_content());
 
                                     if(strlen($blog_single_cont) > 28 ){
                                         $blog_single_cont = substr($blog_single_cont, 0, 28) . '<span> ...Read more</span>';
                                     }else{
                                         $blog_single_cont = $blog_single_cont;
                                     }
-                                    echo '<p class="content">' . $blog_single_cont . '</p>';
+                                    echo '<p class="content">' . wp_kses_post($blog_single_cont) . '</p>';
 
                                     // echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
                                     ?>
