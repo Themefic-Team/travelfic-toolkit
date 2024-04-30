@@ -438,7 +438,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
             }
 			if ( ! get_option( 'travelfic_toolkit_template_wizard' ) ) {
 				update_option( 'travelfic_toolkit_template_wizard', 'active' );
-				wp_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );
+
+                $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+                if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' ) {
+                    wp_redirect( admin_url( 'themes.php' ) );
+                }else{
+				    wp_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );
+                }
 				exit;
 			}
 		}

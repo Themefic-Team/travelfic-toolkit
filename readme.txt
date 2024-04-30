@@ -140,9 +140,10 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.0.8 - 03 April 2024 =
+= 1.0.8 - 30 April 2024 =
 
-- Minor bug fixes & improvements
+- Fixed: Minor bug fixes & improvements
+- Added: Notice for Travelfic theme 
 - Compatibility: Compatible with WordPress 6.5
 
 = 1.0.7 - 15 March 2024 =
