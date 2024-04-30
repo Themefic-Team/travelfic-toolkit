@@ -145,6 +145,7 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 - Fixed: Minor bug fixes & improvements
 - Added: Notice for Travelfic theme 
 - Compatibility: Compatible with WordPress 6.5
+- Added: Plugin dependency notice
 
 = 1.0.7 - 15 March 2024 =
 
