@@ -136,3 +136,19 @@ function travelfic_toolkit_woocommerce_activate_plugin_callback() {
     }
     wp_die();
 }
+
+if(!function_exists('travelfic_transparent_header_class')){
+    function travelfic_transparent_header_class($classes){
+        $activated_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : '';
+        if($activated_theme == 'travelfic' || $activated_theme == 'travelfic-child'){
+            $archive_transparent_header = get_theme_mod('travelfic_customizer_settings_archive_transparent_header');
+            if($archive_transparent_header == "enabled"){
+                $classes[] = 'tft-archive-transparent-header'; 
+            }
+        }
+
+        return $classes;
+    }
+}
+
+add_filter("body_class", "travelfic_transparent_header_class");
