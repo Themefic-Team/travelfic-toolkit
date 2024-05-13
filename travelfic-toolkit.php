@@ -101,7 +101,6 @@ if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-template-sync.php' ) )
     require_once dirname( __FILE__ ) . '/inc/class/class-template-sync.php';
 }
 
-
 /**
  * Template List Class
  */
