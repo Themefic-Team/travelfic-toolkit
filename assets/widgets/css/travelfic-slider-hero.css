@@ -518,8 +518,8 @@
 .tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button:active{
   color: #FDF9F3;
 }
-/* 
-.tft-hero-design-1 .tf-booking-form-tab ..btn-styled {
 
-} */
+.tft-hero-design-1 .tf-booking-form-tab .btn-styled {
+  font-size: none !important;
+}
 

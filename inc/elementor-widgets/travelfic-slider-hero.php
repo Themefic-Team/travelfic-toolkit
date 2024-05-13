@@ -311,7 +311,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000000',
+                'default' => '#1D1D1D94',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
                 ],
@@ -861,7 +861,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
