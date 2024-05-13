@@ -3,7 +3,7 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 6.5
-Stable tag: 1.0.9
+Stable tag: 1.0.10
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -139,6 +139,10 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.0.10 - 13 May 2024 =
+
+- Fixed: Hero section background issue
 
 = 1.0.9 - 12 May 2024 =
 
