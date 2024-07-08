@@ -27,7 +27,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 			add_action( 'admin_menu', [ $this, 'travelfic_template_list_menu' ], 100 );
 			add_filter( 'woocommerce_enable_setup_wizard', '__return_false' );
 			add_action( 'admin_init', [ $this, 'travelfic_toolkit_activation_redirect' ] );
-			add_action( 'wp_ajax_tf_setup_wizard_submit', [ $this, 'tf_setup_wizard_submit_ajax' ] );
+//			add_action( 'wp_ajax_tf_setup_wizard_submit', [ $this, 'tf_setup_wizard_submit_ajax' ] );
 			add_action( 'in_admin_header', [ $this, 'remove_notice' ], 1000 );
 
 			self::$current_step = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : 'welcome';
