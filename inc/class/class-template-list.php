@@ -27,7 +27,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 			add_action( 'admin_menu', [ $this, 'travelfic_template_list_menu' ], 100 );
 			add_filter( 'woocommerce_enable_setup_wizard', '__return_false' );
 			add_action( 'admin_init', [ $this, 'travelfic_toolkit_activation_redirect' ] );
-			add_action( 'wp_ajax_tf_setup_wizard_submit', [ $this, 'tf_setup_wizard_submit_ajax' ] );
+//			add_action( 'wp_ajax_tf_setup_wizard_submit', [ $this, 'tf_setup_wizard_submit_ajax' ] );
 			add_action( 'in_admin_header', [ $this, 'remove_notice' ], 1000 );
 
 			self::$current_step = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : 'welcome';
@@ -438,7 +438,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
             }
 			if ( ! get_option( 'travelfic_toolkit_template_wizard' ) ) {
 				update_option( 'travelfic_toolkit_template_wizard', 'active' );
-				wp_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );
+
+                $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+                if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' ) {
+                    wp_redirect( admin_url( 'themes.php' ) );
+                }else{
+				    wp_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );
+                }
 				exit;
 			}
 		}

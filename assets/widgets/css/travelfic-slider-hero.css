@@ -497,3 +497,29 @@
   }
 }
 
+.tft-hero-design-2 .tf-booking-form-tab .btn-styled {
+  border: #e6e6e6 !important;
+  border-radius: 0px !important;
+  overflow: hidden;
+  position: relative;
+  color: #333 !important;
+  font-size: 16px !important;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  background-color: #e6e6e6 !important;
+  padding: 15px 30px !important;
+}
+
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button:hover{
+  background-color: #917242 !important;
+  color: #FDF9F3 !important;
+}
+.tft-hero-design-2 .tft-hero-content .tf-booking-form-tab button:active{
+  color: #FDF9F3;
+}
+
+.tft-hero-design-1 .tf-booking-form-tab .btn-styled {
+  font-size: none !important;
+}
+

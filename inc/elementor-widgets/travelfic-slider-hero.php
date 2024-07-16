@@ -311,7 +311,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000000',
+                'default' => '#1D1D1D94',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
                 ],
@@ -390,6 +390,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .tft-hero-design-2 .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}} !important',
                 ],
             ]
         );
@@ -441,7 +442,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'default'   => '#B58E53',
                 'selectors' => [
                     '{{WRAPPER}} .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_availability_checker_box button' => 'background: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'background: {{VALUE}} !important',
                 ],
             ]
         );
@@ -745,7 +746,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#000',
                 'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} button.tf-tablinks' => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -759,7 +760,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} button.tf-tablinks' => 'background: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -773,7 +774,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks.active' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} button.tf-tablinks.active' => 'color: {{VALUE}} !important',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -787,7 +788,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#F15D30',
                 'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks.active' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} button.tf-tablinks.active' => 'background: {{VALUE}} !important',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -809,7 +810,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'isLinked' => false,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -823,7 +824,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#ccc',
                 'selectors' => [
-                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-color: {{VALUE}}',
+                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-color: {{VALUE}} !important',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -845,7 +846,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'isLinked' => false,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -860,7 +861,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
