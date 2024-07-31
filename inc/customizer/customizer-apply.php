@@ -211,7 +211,7 @@ $travelfic_transparent_menu_hover_color = get_theme_mod($travelfic_kit_pre.'tran
     /* Transparent Header End */
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section{
         background-color: <?php echo esc_attr( $travelfic_sticky_bg_color.' !important' ); ?>;
-        backdrop-filter: blur(<?php echo esc_attr( $travelfic_sticky_bg_blur.' !important' ); ?>);
+        backdrop-filter: <?php echo 'blur('.esc_attr( $travelfic_sticky_bg_blur.'px) !important' ); ?>;
     }
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section .tft-menu ul li a,
     .tft_has_sticky.tft-navbar-shrink .tft-menus-section .tft-logo a,
