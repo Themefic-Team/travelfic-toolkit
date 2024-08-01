@@ -4,12 +4,12 @@
  * Plugin URI: https://tourfic.site/travelfic/
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
- * Version: 1.0.13
+ * Version: 1.0.14
  * Tested up to: 6.6
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.21
+ * Elementor tested up to: 3.23.3
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -23,17 +23,23 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.13' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.0.14' );
 
 /**
  * Include file from plugin if it is not available in theme
  */
 function travelfic_toolkit_settings() {
-    $theme_folder = wp_get_theme( 'travelfic' );
+    $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+    if($current_active_theme == 'travelfic' || $current_active_theme == 'travelfic-child'){
+        $theme_folder = wp_get_theme( 'travelfic' );
+    }elseif($current_active_theme == 'ultimate-hotel-booking' || $current_active_theme == 'ultimate-hotel-booking-child'){
+        $theme_folder = wp_get_theme( 'ultimate-hotel-booking' );
+    }else{
+        $theme_folder = wp_get_theme( 'travelfic' );
+    }
+    
     if ( $theme_folder->exists() ) {
-        $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
-
-        if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' ) {
+        if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' && $current_active_theme != 'ultimate-hotel-booking' && $current_active_theme != 'ultimate-hotel-booking-child' ) {
             add_action( 'admin_notices', 'travelfic_active' );
         }
     } else {
@@ -209,7 +215,7 @@ if ( !function_exists( 'travelfic_active' ) ) {
                 /* translators: %s is replaced with "theme name & link" */
                 printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
             </p>
-            <p><a class="install-now button" href="<?php echo wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=travelfic' ), 'switch-theme_travelfic'); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
+            <p><a class="install-now button" href="<?php echo esc_url(wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=travelfic' ), 'switch-theme_travelfic')); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
 		</div>
 	<?php
     }

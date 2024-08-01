@@ -580,7 +580,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                 $parent_term_id = $parent_result['term_id'];
                                             } else {
                                                 // Handle error if necessary
-                                                echo 'Error creating parent term: ' . $parent_result->get_error_message();
+                                                echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
                                                 continue;
                                             }
                                         } else {
@@ -605,7 +605,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                     $child_term_id = $child_result['term_id'];
                                                 } else {
                                                     // Handle error if necessary
-                                                    echo 'Error creating child term: ' . $child_result->get_error_message();
+                                                    echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
                                                     continue;
                                                 }
                                             } else {
@@ -632,7 +632,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                 wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
                                             } else {
                                                 // Handle error if necessary
-                                                echo 'Error creating term: ' . $term_result->get_error_message();
+                                                echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
                                             }
                                         } else {
                                             wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
@@ -1000,7 +1000,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                 $parent_term_id = $parent_result['term_id'];
                                             } else {
                                                 // Handle error if necessary
-                                                echo 'Error creating parent term: ' . $parent_result->get_error_message();
+                                                echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
                                                 continue;
                                             }
                                         } else {
@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                     $child_term_id = $child_result['term_id'];
                                                 } else {
                                                     // Handle error if necessary
-                                                    echo 'Error creating child term: ' . $child_result->get_error_message();
+                                                    echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
                                                     continue;
                                                 }
                                             } else {
@@ -1052,7 +1052,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                 wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
                                             } else {
                                                 // Handle error if necessary
-                                                echo 'Error creating term: ' . $term_result->get_error_message();
+                                                echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
                                             }
                                         } else {
                                             wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
@@ -1273,7 +1273,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                             $parent_term_id = $parent_result['term_id'];
                                         } else {
                                             // Handle error if necessary
-                                            echo 'Error creating parent term: ' . $parent_result->get_error_message();
+                                            echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
                                             continue;
                                         }
                                     } else {
@@ -1297,7 +1297,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                 $child_term_ids[] = $child_result['term_id'];
                                             } else {
                                                 // Handle error if necessary
-                                                echo 'Error creating child term: ' . $child_result->get_error_message();
+                                                echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
                                                 continue;
                                             }
                                         } else {
@@ -1324,7 +1324,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                             wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
                                         } else {
                                             // Handle error if necessary
-                                            echo 'Error creating term: ' . $term_result->get_error_message();
+                                            echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
                                         }
                                     } else {
                                         wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
@@ -1712,7 +1712,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                             $parent_term_id = $parent_result['term_id'];
                                         } else {
                                             // Handle error if necessary
-                                            echo 'Error creating parent term: ' . $parent_result->get_error_message();
+                                            echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
                                             continue;
                                         }
                                     } else {
@@ -1736,7 +1736,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                                 $child_term_ids[] = $child_result['term_id'];
                                             } else {
                                                 // Handle error if necessary
-                                                echo 'Error creating child term: ' . $child_result->get_error_message();
+                                                echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
                                                 continue;
                                             }
                                         } else {
@@ -1763,7 +1763,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                             wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
                                         } else {
                                             // Handle error if necessary
-                                            echo 'Error creating term: ' . $term_result->get_error_message();
+                                            echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
                                         }
                                     } else {
                                         wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);

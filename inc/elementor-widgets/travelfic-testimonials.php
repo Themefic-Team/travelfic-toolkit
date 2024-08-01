@@ -1127,7 +1127,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
 
                                 </div>
                                 <div class="testimonial-review">
-                                    <p class="tft-content">"<?php echo travelfic_character_limit( $item['testimonials_review'], 100 ); ?> "</p>
+                                    <p class="tft-content">"<?php echo wp_kses_post(travelfic_character_limit( $item['testimonials_review'], 100 )); ?> "</p>
                                 </div>
                                 <div class="testimonial-author">
                                     <p class="person-name"><?php echo esc_html( $item['person_name'] ) ?></p>

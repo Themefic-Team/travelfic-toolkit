@@ -347,7 +347,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 										<?php 
 										$tf_tour_thumbnail = !empty(get_the_post_thumbnail_url(get_the_ID())) ? get_the_post_thumbnail_url(get_the_ID()) : TRAVELFIC_TOOLKIT_URL.'assets/app/img/feature-default.jpg';
 										?>
-										<img src="<?php echo esc_url($tf_tour_thumbnail); ?>" alt="<?php _e("Tour Image", "travelfic-toolkit"); ?>">
+										<img src="<?php echo esc_url($tf_tour_thumbnail); ?>" alt="<?php esc_html_e("Tour Image", "travelfic-toolkit"); ?>">
 									</a>
 
 									<?php if ($comments && !$disable_review_sec == '1') { ?>
@@ -412,10 +412,10 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 												if ( $pricing_rule == 'person' ) {
 													if( ! empty( $adult_pricing ) ){ ?>
 														<span class="tft-content"> <?php echo esc_html__( 'from ', 'travelfic-toolkit') ?> </span>
-														<span class="tft-pricing"><?php echo wc_price( esc_html($adult_pricing ) ); ?></span>
+														<span class="tft-pricing"><?php echo wp_kses_post(wc_price( esc_html($adult_pricing ) )); ?></span>
 													<?php }
 												} else { ?>
-													<span class="tft-pricing"> <?php echo wc_price( esc_html($group_pricing ) ); ?> </span> 
+													<span class="tft-pricing"> <?php echo wp_kses_post(wc_price( esc_html($group_pricing ) )); ?> </span> 
 												<?php }
 											?>
 										</div>
