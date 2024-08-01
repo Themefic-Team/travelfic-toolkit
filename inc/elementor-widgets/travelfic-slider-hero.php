@@ -1159,7 +1159,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             <div class="tft-hero-content">
                 <?php
                 if(!empty($tft_banner_title)){ ?>
-                <h1><?php echo $tft_banner_title; ?></h1>
+                <h1><?php echo esc_html($tft_banner_title); ?></h1>
                 <?php } ?>
                 <?php if ( $settings['search_box_switcher'] == 'yes' ){ ?>
                 <div class="tft-search-form">

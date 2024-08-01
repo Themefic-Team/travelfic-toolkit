@@ -76,10 +76,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
         ?>
         <div class="travelfic-template-top-header">
             <div class="header-logo">
-                <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/travelfic-toolkit-icon.png' ?>" class="stc-logo-image" alt="Starter Templates">
+                <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/travelfic-toolkit-icon.png') ?>" class="stc-logo-image" alt="Starter Templates">
             </div>
             <div class="top-header-right-navigation">
-                <div class="travelfic-templte-sync-btn" title="<?php _e("Sync Library", "travelfic-toolkit"); ?>">
+                <div class="travelfic-templte-sync-btn" title="<?php esc_html_e("Sync Library", "travelfic-toolkit"); ?>">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="Refresh">
                     <path id="Vector" d="M5 7.99999L8.99999 12H5.99999C5.99999 15.31 8.69 18 12 18C13.01 18 13.97 17.75 14.8 17.3L16.26 18.76C15.03 19.54 13.57 20 12 20C7.58 20 4 16.42 4 12H1L5 7.99999ZM18 12C18 8.68999 15.31 6 12 6C10.99 6 10.03 6.25 9.2 6.7L7.73999 5.23999C8.96999 4.45999 10.43 4 12 4C16.42 4 20 7.57999 20 12H23L19 16L15 12H18Z" fill="#3D4C5C"/>
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     </svg>
                 </div>
                 <div class="header-exit-btn">
-                    <a href="<?php echo admin_url(); ?>" title="<?php _e("Exit to Dashboard", "travelfic-toolkit"); ?>">
+                    <a href="<?php echo esc_url(admin_url()); ?>" title="<?php esc_html_e("Exit to Dashboard", "travelfic-toolkit"); ?>">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.7731 9.22687L9 15M14.7731 9.22687C14.2678 8.72156 11.8846 9.21665 11.1649 9.22687M14.7731 9.22687C15.2784 9.73219 14.7834 12.1154 14.7731 12.8351" stroke="#3D4C5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="#3D4C5C" stroke-width="1.5"/>
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
             <div class="travelfic-import-confirmaiton-msg">
                 <div class="travelfic-card-flex">
                     <div class="import-confirmation-card">
-                        <div class="import-confirmation-bg" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png' ?>)">
+                        <div class="import-confirmation-bg" style="background-image: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png'); ?>)">
                         </div>
                         <div class="import-confirmation-close">
                             <div class="default">
@@ -132,12 +132,12 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <path d="M18.8984 58.4185L21.3873 56.4831L21.2032 53.3357L23.8134 55.1044L26.7498 53.9568L25.8742 56.9855L27.8728 59.424L24.7221 59.5269L23.0205 62.1814L21.9485 59.2164L18.8984 58.4185Z" fill="#FFC100"/>
                         <path d="M33.8622 15.4106L34.0396 12.2632L31.5469 10.3329L34.5952 9.52823L35.6606 6.56104L37.3677 9.2121L40.519 9.30834L38.5254 11.7513L39.4072 14.7778L36.4686 13.6369L33.8622 15.4106Z" fill="#FFC100"/>
                         </svg>
-                        <h3><?php _e("Before we procced...", "travelfic-toolkit"); ?></h3>
-                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                        <h3><?php esc_html_e("Before we procced...", "travelfic-toolkit"); ?></h3>
+                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                         <div class="demo-importing-data-list">
                             <label class="form-control">
                                 <input type="checkbox" value="customizer" name="imports[]" checked />
-                                <?php _e("Import Customizer Settings", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Import Customizer Settings", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,13 +146,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <path d="M7.99401 5.51489H8" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                     <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
                                 </div>
                             </label>
                             <label class="form-control">
                                 <input type="checkbox" value="tourfic" name="imports[]" checked />
-                                <?php _e("Import Tourfic Settings", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Import Tourfic Settings", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,13 +161,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <path d="M7.99401 5.51489H8" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                     <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
                                 </div>
                             </label>
                             <label class="form-control">
                                 <input type="checkbox" name="checkbox" checked disabled/>
-                                <?php _e("Install Required Plugins", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Install Required Plugins", "travelfic-toolkit"); ?>
                                 <span class="checkmark disabled"></span>
                                 <div class="label-tooltip">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -176,13 +176,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <path d="M7.99401 5.51489H8" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                     <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
                                 </div>
                             </label>
                             <label class="form-control">
                                 <input type="checkbox" value="widgets" name="imports[]" checked />
-                                <?php _e("Import Widgets", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Import Widgets", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -191,13 +191,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <path d="M7.99401 5.51489H8" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                     <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
                                 </div>
                             </label>
                             <label class="form-control">
                                 <input type="checkbox" value="menu" name="imports[]" checked />
-                                <?php _e("Import Menu", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Import Menu", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -206,13 +206,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <path d="M7.99401 5.51489H8" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                     <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
                                 </div>
                             </label>
                             <label class="form-control">
                                 <input type="checkbox" value="demo" name="imports[]" checked />
-                                <?php _e("Import Content", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Import Content", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -221,13 +221,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <path d="M7.99401 5.51489H8" stroke="#27333F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                     <div class="label-tooltip-content">
-                                        <p><?php _e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                                        <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
                                 </div>
                             </label>
                         </div>
                         <button id="submit_confirm">
-                            <?php _e("Submit & Build My Website", "travelfic-toolkit"); ?>
+                            <?php esc_html_e("Submit & Build My Website", "travelfic-toolkit"); ?>
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 12.1812L4 12.1812" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M15 7.18115L19.2929 11.474C19.6262 11.8074 19.7929 11.974 19.7929 12.1812C19.7929 12.3883 19.6262 12.5549 19.2929 12.8883L15 17.1812" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -236,30 +236,30 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     </div>
                 </div>
             </div>
-            <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), #F8FAFC 50% / cover no-repeat;">
+            <div class="travelfic-template-list-wrapper" id="travelfic-template-list-wrapper" style="background: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png'); ?>), #F8FAFC 50% / cover no-repeat;">
                 <div class="travelfic-template-list-container">
                     <div class="travelfic-template-list-heading">
-                        <h2><?php _e("What kind of travel site do you envision creating?", "travelfic-toolkit"); ?></h2>
+                        <h2><?php esc_html_e("What kind of travel site do you envision creating?", "travelfic-toolkit"); ?></h2>
 
-                        <span class="settings-import-btn" style="display: none;"><?php _e("Settings Import", "travelfic-toolkit"); ?></span>
-                        <span class="customizer-import-btn" style="display: none;"><?php _e("Customizer Import", "travelfic-toolkit"); ?></span>
-                        <span class="demo-hotel-import-btn" style="display: none;"><?php _e("Hotel Import", "travelfic-toolkit"); ?></span>
-                        <span class="demo-tour-import-btn" style="display: none;"><?php _e("Tour Import", "travelfic-toolkit"); ?></span>
-                        <span class="demo-page-import-btn" style="display: none;"><?php _e("Pages Import", "travelfic-toolkit"); ?></span>
-                        <span class="plug-tourfic-btn" style="display: none;"><?php _e("Tourfic Install", "travelfic-toolkit"); ?></span>
-                        <span class="plug-cf7-btn" style="display: none;"><?php _e("CF7 Install", "travelfic-toolkit"); ?></span>
-                        <span class="plug-woocommerce-btn" style="display: none;"><?php _e("Woocommerce Install", "travelfic-toolkit"); ?></span>
-                        <span class="plug-elementor-btn" style="display: none;"><?php _e("Elementor Install", "travelfic-toolkit"); ?></span>
-                        <span class="widget-import-btn" style="display: none;"><?php _e("Widget Import", "travelfic-toolkit"); ?></span>
-                        <span class="menu-import-btn" style="display: none;"><?php _e("Menu Import", "travelfic-toolkit"); ?></span>
-                        <span class="plug-active-tourfic-btn" style="display: none;"><?php _e("Tourfic Active", "travelfic-toolkit"); ?></span>
-                        <span class="plug-active-cf7-btn" style="display: none;"><?php _e("CF7 Active", "travelfic-toolkit"); ?></span>
-                        <span class="plug-active-woocommerce-btn" style="display: none;"><?php _e("Woocommerce Active", "travelfic-toolkit"); ?></span>
-                        <span class="plug-active-elementor-btn" style="display: none;"><?php _e("Elementor Active", "travelfic-toolkit"); ?></span>
+                        <span class="settings-import-btn" style="display: none;"><?php esc_html_e("Settings Import", "travelfic-toolkit"); ?></span>
+                        <span class="customizer-import-btn" style="display: none;"><?php esc_html_e("Customizer Import", "travelfic-toolkit"); ?></span>
+                        <span class="demo-hotel-import-btn" style="display: none;"><?php esc_html_e("Hotel Import", "travelfic-toolkit"); ?></span>
+                        <span class="demo-tour-import-btn" style="display: none;"><?php esc_html_e("Tour Import", "travelfic-toolkit"); ?></span>
+                        <span class="demo-page-import-btn" style="display: none;"><?php esc_html_e("Pages Import", "travelfic-toolkit"); ?></span>
+                        <span class="plug-tourfic-btn" style="display: none;"><?php esc_html_e("Tourfic Install", "travelfic-toolkit"); ?></span>
+                        <span class="plug-cf7-btn" style="display: none;"><?php esc_html_e("CF7 Install", "travelfic-toolkit"); ?></span>
+                        <span class="plug-woocommerce-btn" style="display: none;"><?php esc_html_e("Woocommerce Install", "travelfic-toolkit"); ?></span>
+                        <span class="plug-elementor-btn" style="display: none;"><?php esc_html_e("Elementor Install", "travelfic-toolkit"); ?></span>
+                        <span class="widget-import-btn" style="display: none;"><?php esc_html_e("Widget Import", "travelfic-toolkit"); ?></span>
+                        <span class="menu-import-btn" style="display: none;"><?php esc_html_e("Menu Import", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-tourfic-btn" style="display: none;"><?php esc_html_e("Tourfic Active", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-cf7-btn" style="display: none;"><?php esc_html_e("CF7 Active", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-woocommerce-btn" style="display: none;"><?php esc_html_e("Woocommerce Active", "travelfic-toolkit"); ?></span>
+                        <span class="plug-active-elementor-btn" style="display: none;"><?php esc_html_e("Elementor Active", "travelfic-toolkit"); ?></span>
                     </div>
                     <div class="travelfic-template-filter">
                         <div class="travelfic-search-form">
-                            <input type="text" id="travelfic_template_search" placeholder="<?php _e("Search for templates", "travelfic-toolkit"); ?>">
+                            <input type="text" id="travelfic_template_search" placeholder="<?php esc_html_e("Search for templates", "travelfic-toolkit"); ?>">
                             <input type="hidden" value="all" id="travelfic_filter_value">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M11 2C15.968 2 20 6.032 20 11C20 15.968 15.968 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2ZM11 18C14.8675 18 18 14.8675 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18ZM19.4853 18.0711L22.3137 20.8995L20.8995 22.3137L18.0711 19.4853L19.4853 18.0711Z" fill="#666D74"/>
@@ -267,10 +267,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         </div>
                         <div class="travelfic-filter-selection">
                             <ul>
-                                <li class="active" data-value="all"><?php _e("All", "travelfic-toolkit"); ?></li>
-                                <li data-value="tour"><?php _e("Tour", "travelfic-toolkit"); ?></li>
-                                <li data-value="hotel"><?php _e("Hotel", "travelfic-toolkit"); ?></li>
-                                <li data-value="apartment"><?php _e("Apartment", "travelfic-toolkit"); ?></li>
+                                <li class="active" data-value="all"><?php esc_html_e("All", "travelfic-toolkit"); ?></li>
+                                <li data-value="tour"><?php esc_html_e("Tour", "travelfic-toolkit"); ?></li>
+                                <li data-value="hotel"><?php esc_html_e("Hotel", "travelfic-toolkit"); ?></li>
+                                <li data-value="apartment"><?php esc_html_e("Apartment", "travelfic-toolkit"); ?></li>
                             </ul>
                         </div>
                     </div>
@@ -296,7 +296,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <div class="template-preview">
                                         <div class="import-button-group">
                                             <a href="<?php echo !empty($single_temp['demo_url']) ? esc_url($single_temp['demo_url']) : '' ?>" target="_blank">
-                                                <?php _e("Preview", "travelfic-toolkit"); ?>
+                                                <?php esc_html_e("Preview", "travelfic-toolkit"); ?>
                                                 <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <g id="content">
                                                 <path id="Vector 4130" d="M12.5 2.00012L1.5 13.0001" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round"/>
@@ -305,7 +305,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                                 </svg>
                                             </a>
                                             <div class="template-import-btn" data-template="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-design="<?php echo !empty($single_temp['demo']) ? esc_html($single_temp['demo']) : '' ?>">
-                                                <?php _e("Import Demo", "travelfic-toolkit"); ?>
+                                                <?php esc_html_e("Import Demo", "travelfic-toolkit"); ?>
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M12 14.5L12 4.5M12 14.5C11.2998 14.5 9.99153 12.5057 9.5 12M12 14.5C12.7002 14.5 14.0085 12.5057 14.5 12" stroke="#211D12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M20 16.5C20 18.982 19.482 19.5 17 19.5H7C4.518 19.5 4 18.982 4 16.5" stroke="#211D12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -349,11 +349,11 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		private function travelfic_setup_theme() {
             $this->template_list_header_footer();
 		?>
-        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png' ?>), #F8FAFC 50% / cover no-repeat;">
+        <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png'); ?>), #F8FAFC 50% / cover no-repeat;">
             <div class="travelfic-template-import-container">
-                <div class="travelfic-importing-bg" style="background-image: url(<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png' ?>)"></div>
+                <div class="travelfic-importing-bg" style="background-image: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/importing-bg.png'); ?>)"></div>
                 <div class="travelfic-template-list-heading">
-                    <h2><?php _e("Demo Import in progress...", "travelfic-toolkit"); ?></h2>
+                    <h2><?php esc_html_e("Demo Import in progress...", "travelfic-toolkit"); ?></h2>
                     <div class="travelfic-exits-highlights-finished">
                         <div class="travelfic-installing-highlights-content">
                         </div>
@@ -363,7 +363,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     <div class="demo-importing-loader">
                         <div class="loader-heading">
                             <div class="loader-label">
-                            <?php _e("Installing required plugins...", "travelfic-toolkit"); ?>
+                            <?php esc_html_e("Installing required plugins...", "travelfic-toolkit"); ?>
                             </div>
                             <div class="loader-precent">
                                 0%
@@ -376,7 +376,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         </div>
                     </div>
                     <div class="importing-img">
-                        <img src="<?php echo TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.gif' ?>" alt="">
+                        <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.gif'); ?>" alt="">
                     </div>
                     <div class="importing-success">
                         <svg xmlns="http://www.w3.org/2000/svg" width="190" height="150" viewBox="0 0 190 150" fill="none">
@@ -393,17 +393,17 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <path d="M121.659 81.5269V92.767C121.659 108.138 113.771 117.448 107.135 122.56C100.059 128.011 92.9832 129.839 92.7124 129.941C92.4415 130.008 92.1707 130.042 91.8998 130.042C91.5951 130.042 91.3243 130.008 91.0196 129.941C90.7149 129.873 83.6729 127.909 76.597 122.425C67.0836 115.044 62.0729 104.82 62.0729 92.767L61.9375 68.7295C80.4566 68.7295 91.7644 57.3201 91.7983 57.2185C92.0691 57.7602 98.5017 65.8179 109.843 67.9846L105.002 73.6724C98.4001 71.7765 94.2697 68.6279 91.8321 66.0887C88.345 69.7451 81.4046 74.5865 68.7086 75.3313V92.767C68.7086 102.788 72.7375 111.015 80.6597 117.143C85.3318 120.766 90.0039 122.56 91.866 123.203C93.7619 122.594 98.5356 120.766 103.242 117.109C111.028 111.015 114.989 102.822 114.989 92.7332V89.3137L121.659 81.5269Z" fill="#CFE5FC"/>
                         </svg>
                         <div class="sucessful-button-group">
-                            <a href="<?php echo admin_url(); ?>">
+                            <a href="<?php echo esc_url(admin_url()); ?>">
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">
                                 <path id="Vector" d="M2 6L17 5.99984" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path id="Vector 6908" d="M6 0.999756L1.70711 5.29265C1.37377 5.62598 1.20711 5.79265 1.20711 5.99976C1.20711 6.20686 1.37377 6.37353 1.70711 6.70686L6 10.9998" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </g>
                                 </svg>
-                                <?php _e("Back To Dashboard", "travelfic-toolkit"); ?>
+                                <?php esc_html_e("Back To Dashboard", "travelfic-toolkit"); ?>
                             </a>
-                            <a href="<?php echo site_url(); ?>" target="_blank" class="visit-site">
-                                <?php _e("Visit Your Website", "travelfic-toolkit"); ?>
+                            <a href="<?php echo esc_url(site_url()); ?>" target="_blank" class="visit-site">
+                                <?php esc_html_e("Visit Your Website", "travelfic-toolkit"); ?>
                                 <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">
                                 <path id="Vector 4130" d="M12.5 2.00012L1.5 13.0001" stroke="#F6FAFE" stroke-width="1.5" stroke-linecap="round"/>
@@ -411,8 +411,8 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 </g>
                                 </svg>
                             </a>
-                            <a href="<?php echo admin_url('admin.php?page=tf_settings'); ?>">
-                                <?php _e("Tourfic Settings", "travelfic-toolkit"); ?>
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=tf_settings')); ?>">
+                                <?php esc_html_e("Tourfic Settings", "travelfic-toolkit"); ?>
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">
                                 <path id="Vector" d="M16 5.99963L1 5.99963" stroke="#003C79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -434,7 +434,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		public function travelfic_toolkit_activation_redirect() {
             if ( ! get_option( 'tf_setup_wizard' ) && ! get_option( 'tf_settings' ) ) {
                 update_option( 'tf_setup_wizard', 'active' );
-                update_option( 'tf_settings', 'active' );
+                update_option( 'tf_settings', '' );
             }
 			if ( ! get_option( 'travelfic_toolkit_template_wizard' ) ) {
 				update_option( 'travelfic_toolkit_template_wizard', 'active' );

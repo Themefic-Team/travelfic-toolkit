@@ -26,7 +26,7 @@ class Travelfic_Toolkit_Template_SYNC {
             'plugin' => 'travelfic_toolkit', 
         );
         $response = wp_remote_post($this->api_url, array(
-            'body'    => json_encode($query_params),
+            'body'    => wp_json_encode($query_params),
             'headers' => array('Content-Type' => 'application/json'),
         )); 
         if (is_wp_error($response)) {

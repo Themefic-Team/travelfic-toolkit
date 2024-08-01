@@ -850,7 +850,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 </div>
                 <div class="read-more">
                     <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
-                        <?php echo __("View All", "travelfic-toolkit"); ?>
+                        <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
                             <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4"/>
@@ -860,7 +860,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                 </div>
             </div>
 
-            <div class="tft-blog-gird-section blog-grid-item-<?php echo $items_count; ?>">
+            <div class="tft-blog-gird-section blog-grid-item-<?php echo esc_attr($items_count); ?>">
                 <?php if( $query->have_posts() ) : ?>
 					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 
@@ -879,20 +879,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base {
                                     <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date('j M, Y'); ?></p>
                                     <h3 class="tft-title">
                                         <?php
-                                        echo travelfic_character_limit(get_the_title(), 22);
+                                        echo esc_html(travelfic_character_limit(get_the_title(), 22));
                                         ?>
                                     </h3>
                                     <?php
                                     // $travelfic_blog_content = wp_trim_words(get_the_content(), 15, '<span> ...Read more</span>');
 
-                                    $blog_single_cont = strip_tags(get_the_content());
+                                    $blog_single_cont = wp_strip_all_tags(get_the_content());
 
                                     if(strlen($blog_single_cont) > 28 ){
                                         $blog_single_cont = substr($blog_single_cont, 0, 28) . '<span> ...Read more</span>';
                                     }else{
                                         $blog_single_cont = $blog_single_cont;
                                     }
-                                    echo '<p class="content">' . $blog_single_cont . '</p>';
+                                    echo '<p class="content">' . wp_kses_post($blog_single_cont) . '</p>';
 
                                     // echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
                                     ?>
