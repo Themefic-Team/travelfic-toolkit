@@ -142,8 +142,9 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 = 1.0.14 - 01 August 2024 =
 
-- System stability improved
-- Design issue fixed
+- Improvement: System stability
+- Fixed: Design issues
+- Improvement: Security enhancements
 
 = 1.0.13 - 17 July 2024 =
 
