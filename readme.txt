@@ -140,7 +140,7 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.0.14 - 01 August 2024 =
+= 1.0.14 - 02 August 2024 =
 
 - Improvement: System stability
 - Fixed: Design issues
