@@ -310,6 +310,33 @@ class Travelfic_Customizer_Header
                             'walker' => has_nav_menu('primary_menu') ?  $travelfic_walker_menu : '',
                         ));
                         ?>
+
+                         <?php if( is_user_logged_in() || !empty( $design_2_registration_url ) && !empty($design_2_login_url) ) : ?>
+
+                            <!-- Login/Register Links for Hamburger Menu -->
+                            <div class="tft-mobile-account" style="padding-top: 15px;">
+                                <ul>
+                                    <?php
+                                    if ( is_user_logged_in() ) {
+                                    ?>
+                                    <li>
+                                        <a href="<?php echo esc_url(site_url( 'my-account/' )); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
+                                    </li>
+                                    <?php
+                                    }else{
+                                    if(!empty($design_2_registration_url)){ ?>
+                                    <li>
+                                        <a href="<?php echo esc_url( $design_2_registration_url ); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
+                                    </li>
+                                    <?php } if(!empty($design_2_login_url)){ ?>
+                                    <li>
+                                        <a href="<?php echo esc_url( $design_2_login_url ); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
+                                    </li>
+                                    <?php } } ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+
                         <div class="tft-social-share">
                             <ul>
                                 <?php if(!empty($social_linkedin)){ ?>

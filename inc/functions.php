@@ -153,73 +153,75 @@ if(!function_exists('travelfic_transparent_header_class')){
 
 add_filter("body_class", "travelfic_transparent_header_class");
 
-if(!function_exists('tf_based_on_text')) {
-	function tf_based_on_text( $number ) {
-		$comments_title = apply_filters(
-			'tf_comment_form_title',
-			sprintf( // WPCS: XSS OK.
-			/* translators: 1: number of comments */
-				esc_html( _nx( '%1$s review', '%1$s reviews', $number, 'comments title', 'tourfic' ) ),
-				number_format_i18n( $number )
-			)
-		);
-		echo esc_html( $comments_title );
-	}
-}
-
-if(!function_exists('tf_total_avg_rating')) {
-	function tf_total_avg_rating( $comments ) {
-
-		foreach ( $comments as $comment ) {
-			$tf_comment_meta = get_comment_meta( $comment->comment_ID, TF_COMMENT_META, true );
-			$tf_base_rate    = get_comment_meta( $comment->comment_ID, TF_BASE_RATE, true );
-
-			if ( $tf_comment_meta ) {
-				$total_rate[] = tf_average_rating_change_on_base( tf_average_ratings( $tf_comment_meta ), $tf_base_rate );
-			}
-		}
-
-		return tf_average_ratings( $total_rate );
-
-	}
-}
-
-if(!function_exists('tf_average_rating_change_on_base')) {
-	function tf_average_rating_change_on_base( $rating, $base_rate = 5 ) {
-
-		$settings_base = ! empty ( tfopt( 'r-base' ) ) ? tfopt( 'r-base' ) : 5;
-		$base_rate     = ! empty ( $base_rate ) ? $base_rate : 5;
-
-		if ( $settings_base != $base_rate ) {
-			if ( $settings_base > 5 ) {
-				$rating = $rating * 2;
-			} else {
-				$rating = $rating / 2;
-			}
-		}
-
-		return $rating;
-	}
-}
-
-if(!function_exists('tf_average_ratings')) {
-	function tf_average_ratings( $ratings = [] ) {
-
-		if ( ! $ratings ) {
-			return 0;
-		}
-
-		// No sub collection of ratings
-		if ( count( $ratings ) == count( $ratings, COUNT_RECURSIVE ) ) {
-			$average = array_sum( $ratings ) / count( $ratings );
-		} else {
-			$average = 0;
-			foreach ( $ratings as $rating ) {
-				$average += array_sum( $rating ) / count( $rating );
-			}
-			$average = $average / count( $ratings );
-		}
-
-		return sprintf( '%.1f', $average );
-	}
+if( !class_exists("\Tourfic\App\TF_Review") ) {
+    if(!function_exists('tf_based_on_text')) {
+        function tf_based_on_text( $number ) {
+            $comments_title = apply_filters(
+                'tf_comment_form_title',
+                sprintf( // WPCS: XSS OK.
+                /* translators: 1: number of comments */
+                    esc_html( _nx( '%1$s review', '%1$s reviews', $number, 'comments title', 'tourfic' ) ),
+                    number_format_i18n( $number )
+                )
+            );
+            echo esc_html( $comments_title );
+        }
+    }
+    
+    if(!function_exists('tf_total_avg_rating')) {
+        function tf_total_avg_rating( $comments ) {
+    
+            foreach ( $comments as $comment ) {
+                $tf_comment_meta = get_comment_meta( $comment->comment_ID, TF_COMMENT_META, true );
+                $tf_base_rate    = get_comment_meta( $comment->comment_ID, TF_BASE_RATE, true );
+    
+                if ( $tf_comment_meta ) {
+                    $total_rate[] = tf_average_rating_change_on_base( tf_average_ratings( $tf_comment_meta ), $tf_base_rate );
+                }
+            }
+    
+            return tf_average_ratings( $total_rate );
+    
+        }
+    }
+    
+    if(!function_exists('tf_average_rating_change_on_base')) {
+        function tf_average_rating_change_on_base( $rating, $base_rate = 5 ) {
+    
+            $settings_base = ! empty ( tfopt( 'r-base' ) ) ? tfopt( 'r-base' ) : 5;
+            $base_rate     = ! empty ( $base_rate ) ? $base_rate : 5;
+    
+            if ( $settings_base != $base_rate ) {
+                if ( $settings_base > 5 ) {
+                    $rating = $rating * 2;
+                } else {
+                    $rating = $rating / 2;
+                }
+            }
+    
+            return $rating;
+        }
+    }
+    
+    if(!function_exists('tf_average_ratings')) {
+        function tf_average_ratings( $ratings = [] ) {
+    
+            if ( ! $ratings ) {
+                return 0;
+            }
+    
+            // No sub collection of ratings
+            if ( count( $ratings ) == count( $ratings, COUNT_RECURSIVE ) ) {
+                $average = array_sum( $ratings ) / count( $ratings );
+            } else {
+                $average = 0;
+                foreach ( $ratings as $rating ) {
+                    $average += array_sum( $rating ) / count( $rating );
+                }
+                $average = $average / count( $ratings );
+            }
+    
+            return sprintf( '%.1f', $average );
+        }
+    }
 }
