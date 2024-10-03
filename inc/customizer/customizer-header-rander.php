@@ -239,9 +239,10 @@ class Travelfic_Customizer_Header
                         <ul>
                             <?php
                             if ( is_user_logged_in() ) {
+                                $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
                             ?>
                             <li>
-                                <a href="<?php echo esc_url(site_url( 'my-account/' )); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
+                                <a href="<?php echo esc_url( $dashboard_url ); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
                             </li>
                             <?php
                             }else{
@@ -318,9 +319,10 @@ class Travelfic_Customizer_Header
                                 <ul>
                                     <?php
                                     if ( is_user_logged_in() ) {
+                                        $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
                                     ?>
                                     <li>
-                                        <a href="<?php echo esc_url(site_url( 'my-account/' )); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
+                                        <a href="<?php echo esc_url($dashboard_url); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
                                     </li>
                                     <?php
                                     }else{
