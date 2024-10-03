@@ -12,7 +12,7 @@ A companion plugin to the Travelfic and Ultimate Hotel Booking with which you ca
 
 == Description ==
 
-## THE BEST HOTEL BOOKING, TOUR BOOKING AND TRAVEL BOOKING WORDPRESS THEME - TRAVELFIC
+## THE BEST HOTEL BOOKING, TOUR BOOKING AND TRAVEL BOOKING WORDPRESS THEME - TRAVELFIC and ULTIMATE HOTEL BOOKING
 
 👉 Theme Live Demo Link: [Click Here](https://tourfic.site/travelfic/)
 👉 Our Travel Booking Engine: [Tourfic](https://wordpress.org/plugins/tourfic/)
@@ -20,21 +20,21 @@ A companion plugin to the Travelfic and Ultimate Hotel Booking with which you ca
 👉 Our [Documentation](https://themefic.com/docs/tourfic/).
 👉 Join Our [Facebook Group](https://www.facebook.com/groups/tourfic).
 
-**Travelfic Toolkit** enhances the [Travelfic WordPress theme](https://wordpress.org/themes/travelfic/) by adding functionality to the Customizer, Widgets Section, Single Tour, Single Hotel areas, and more. This toolkit boosts your travel or hotel booking website's design and performance by incorporating built-in demo templates.
+**Tourfic Toolkit** enhances the [Travelfic and Ultimate Hotel Booking WordPress theme](https://wordpress.org/themes/travelfic/) by adding functionality to the Customizer, Widgets Section, Single Tour, Single Hotel areas, and more. This toolkit boosts your travel or hotel booking website's design and performance by incorporating built-in demo templates.
 
-Travelfic leverages [Tourfic's integrated booking features](https://themefic.com/tourfic), enabling customers to create accounts and book hotels, apartments, and tour packages directly on your site. Tourfic offers extensive functionalities, covering basic to advanced needs, ideal for projects in the hotel, apartment, and travel industries.
+Travelfic and Ultimate Hotel Booking leverages [Tourfic's integrated booking features](https://themefic.com/tourfic), enabling customers to create accounts and book hotels, apartments, and tour packages directly on your site. Tourfic offers extensive functionalities, covering basic to advanced needs, ideal for projects in the hotel, apartment, and travel industries.
 
-In short, to fully utilize this plugin, ensure the **Travelfic Theme** and **Tourfic plugin** are both installed and activated.
+In short, to fully utilize this plugin, ensure the **Travelfic and Ultimate Hotel Booking Theme** and **Tourfic plugin** are both installed and activated.
 
-= 🎉  ABOUT TRAVELFIC WORDPRESS THEME = 
+= 🎉  ABOUT TRAVELFIC and ULTIMATE HOTEL BOOKING WORDPRESS THEME = 
 
-The Travelfic Theme is a free Hotel Booking WordPress theme ideal for setting up websites for Hotel Reservations as well as Travel and Tour Booking. This theme lets you list trips, rooms, apartments, places, and types of trips, showcase travel activities, spotlight unique offerings, and enables visitors to book their trips / rooms directly on the site. 
+The Travelfic and Ultimate Hotel Booking Theme is a free Hotel Booking WordPress theme ideal for setting up websites for Hotel Reservations as well as Travel and Tour Booking. This theme lets you list trips, rooms, apartments, places, and types of trips, showcase travel activities, spotlight unique offerings, and enables visitors to book their trips / rooms directly on the site. 
 
-Additionally, the Travelfic Theme works seamlessly with the Tourfic plugin, offering extra options and versatility for crafting your travel & hotel booking site.
+Additionally, the Travelfic and Ultimate Hotel Booking Theme works seamlessly with the Tourfic plugin, offering extra options and versatility for crafting your travel & hotel booking site.
 
 > Check the [Demo](https://tourfic.site/travelfic)
 
-= 🎉  WIDGETS, SECTIONS & FEATURES OF TRAVELFIC  = 
+= 🎉  WIDGETS, SECTIONS & FEATURES OF TRAVELFIC and ULTIMATE HOTEL BOOKING = 
 
 The Travelfic Toolkit plugin comes packed with a range of widgets, sections, and functionalities to enhance your hotel and travel booking website with custom features. Below are some highlighted capabilities:
 
@@ -64,7 +64,7 @@ Equipped with all the necessary tools, Tourfic enables you to create detailed tr
 
 [youtube https://www.youtube.com/watch?v=99jUEJQIxkg]
 
-**With Travelfic, You can:**
+**With Travelfic and ULTIMATE HOTEL BOOKING, You can:**
 * Quickly build a professional website for your tour or travel agency, improving your digital footprint.
 * Set up a hotel reservation and room booking system for your hotel's website to improve guest experiences.
 * Create an easy-to-use apartment booking system to increase your website's occupancy rates.
@@ -115,16 +115,16 @@ Tourfic Toolkit is a companion plugin to the Travelfic and Ultimate Hotel Bookin
 * Go through the Quick setup wizard for the basic setup.
 * Check our [Documentation](https://themefic.com/docs/tourfic/getting-started/installation/) & [YouTube videos](https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N) for further instruction.
 
-= Can Travelfic be considered as a travel tour WordPress theme? =
+= Can Travelfic and Ultimate Hotel Booking be considered as a travel tour WordPress theme? =
 Certainly! Travelfic simplifies the process of setting up a travel and tour booking website, ensuring your customers can conveniently place bookings.
 
-= Can Travelfic be considered as a Hotel reservation WordPress theme? =
+= Can Travelfic and Ultimate Hotel Booking be considered as a Hotel reservation WordPress theme? =
 Absolutely! Travelfic enables the effortless creation of a hotel reservation website, allowing your customers to easily make bookings.
 
-= Can I use Travelfic as a travel packages WordPress theme? =
+= Can I use Travelfic and Ultimate Hotel Booking as a travel packages WordPress theme? =
 Yes, you can use Travelfic as a WordPress theme specifically designed for travel packages, enabling you to showcase and sell various travel deals effectively.
 
-= Can I create a website similar to Booking.com or Agoda with Travelfic? =
+= Can I create a website similar to Booking.com or Agoda with Travelfic, and Ultimate Hotel Booking ? =
 
 Yes, You can create your own professional tour operator and travel agency website within 59 minutes, just like Booking.com, Agoda, Hotels.com, Airbnb, etc.
 
