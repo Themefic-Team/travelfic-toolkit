@@ -1,14 +1,14 @@
-=== Travelfic Toolkit ===
+=== Tourfic Toolkit ===
 Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 6.6
-Stable tag: 1.0.15
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
+A companion plugin to the Travelfic and Ultimate Hotel Booking with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
 
 == Description ==
 
@@ -103,11 +103,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability](https://patchstack.com/database/vdp/travelfic-toolkit).
 
-= What is Travelfic Toolkit? =
+= What is Tourfic Toolkit? =
 
-Travelfic Toolkit is a companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
+Tourfic Toolkit is a companion plugin to the Travelfic and Ultimate Hotel Booking Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
 
-= How to install Travelfic Toolkit? =
+= How to install Tourfic Toolkit? =
 
 * Download and unzip the plugin. Upload the unzipped folder to the wp-contents/plugins folder of your WordPress installation.
 * Active the plugin from the WordPress Plugins administration page OR, Go to WP admin panel, click 'Plugins' -> 'Add new'. In the search input box, type 'Travelfic Toolkit'.
@@ -139,6 +139,11 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.1.1 - 03 October 2024 =
+
+- System stability improved
+- Added Ultimate Hotel Booking
 
 = 1.0.15 - 21 August 2024 =
 
