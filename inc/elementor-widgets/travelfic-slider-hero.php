@@ -1259,22 +1259,22 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             $tft_banner_image = $settings['banner_image'];
         }
 
+        $tour_tab_title = $hotel_tab_title = $apt_tab_title = '';
+        if( !empty( $settings['tour_tab_title'] )){
+            $tour_tab_title = 'tour_tab_title="' . $settings['tour_tab_title'] . '" ' ;
+        }
+        if( !empty( $settings['hotel_tab_title'] )){
+            $hotel_tab_title = 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ';
+        }
+        if( !empty( $settings['apt_tab_title'] )){
+            $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
+        }
+
         if("design-2"==$tft_design){
         ?>
         <div class="tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
             <div class="tft-hero-content">
                 <?php
-                $tour_tab_title = $hotel_tab_title = $apt_tab_title = '';
-                if( !empty( $settings['tour_tab_title'] )){
-                    $tour_tab_title = 'tour_tab_title="' . $settings['tour_tab_title'] . '" ' ;
-                }
-                if( !empty( $settings['hotel_tab_title'] )){
-                    $hotel_tab_title = 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ';
-                }
-                if( !empty( $settings['apt_tab_title'] )){
-                    $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
-                }
-
                 if(!empty($tft_banner_title)){ ?>
                 <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
                 <?php } ?>
@@ -1337,10 +1337,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 					<span></span>
 				</div>
 			</div>
-			<?php if ( $settings['search_box_switcher'] == 'yes' ): ?>
+			<?php if ( $settings['search_box_switcher'] == 'yes' ): 
+                
+                
+                ?>
 				<div class="tft-search-box tft-hero-design-1">
 					<div class="tft-search-box-inner">
-						<?php echo do_shortcode( '[tf_search_form  type="' . esc_attr($type) . '" ]' ); ?>
+						<?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . ']' ); ?>
 					</div>
 				</div>
 			<?php endif;?>
