@@ -280,6 +280,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-tour-items  .slick-arrow i' => 'color: {{VALUE}}',
                 ],
             ]
         );
