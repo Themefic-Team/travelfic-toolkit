@@ -260,41 +260,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'tour_tab_title',
-            [
-                'type'     => \Elementor\Controls_Manager::TEXT,
-                'label'    => __( 'Tour Tab Title', 'travelfic-toolkit' ),
-                'multiple' => true,
-                'default'  => __( 'Tour', 'travelfic-toolkit' ),
-                'conditions' => [
-                    'relation' => 'or',
-                    'terms' => [
-                        [
-                            'name' => 'type',
-                            'operator' => 'contains',
-                            'value' => 'all',
-                        ],
-                        [
-                            'name' => 'type',
-                            'operator' => 'contains',
-                            'value' => 'tour',
-                        ],
-                        [
-                            'name' => 'type',
-                            'operator' => '==',
-                            'value' => [],
-                        ],
-                        [
-                            'name' => 'type',
-                            'operator' => '==',
-                            'value' => '',
-                        ],
-                    ],
-                ],
-                'label_block' => true,
-            ]
-        );
-        $this->add_control(
             'hotel_tab_title',
             [
                 'type'     => \Elementor\Controls_Manager::TEXT,
@@ -329,6 +294,43 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label_block' => true,
             ]
         );
+
+        $this->add_control(
+            'tour_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
+                'label'    => __( 'Tour Tab Title', 'travelfic-toolkit' ),
+                'multiple' => true,
+                'default'  => __( 'Tour', 'travelfic-toolkit' ),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'all',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'tour',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => [],
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => '',
+                        ],
+                    ],
+                ],
+                'label_block' => true,
+            ]
+        );
+
         $this->add_control(
             'apt_tab_title',
             [
