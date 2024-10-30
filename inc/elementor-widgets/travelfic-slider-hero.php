@@ -247,7 +247,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'default'     => 'yes',
             ]
         );
-
+        
         $this->add_control(
             'type',
             [
@@ -256,6 +256,112 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'multiple' => true,
                 'options'  => $this->tf_search_types(),
                 'default'  => ['all'],
+            ]
+        );
+
+        $this->add_control(
+            'tour_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
+                'label'    => __( 'Tour Tab Title', 'travelfic-toolkit' ),
+                'multiple' => true,
+                'default'  => __( 'Tour', 'travelfic-toolkit' ),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'all',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'tour',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => [],
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => '',
+                        ],
+                    ],
+                ],
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'hotel_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
+                'label'    => __( 'Hotel Tab Title', 'travelfic-toolkit' ),
+                'multiple' => true,
+                'default'  => __( 'Hotel', 'travelfic-toolkit' ),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'all',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'hotel',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => [],
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => '',
+                        ],
+                    ],
+                ],
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'apt_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
+                'label'    => __( 'Apartment Tab Title', 'travelfic-toolkit' ),
+                'multiple' => true,
+                'default'  => __( 'Apartment', 'travelfic-toolkit' ),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'all',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'apartment',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => [],
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => '',
+                        ],
+                    ],
+                ],
+                'label_block' => true,
             ]
         );
         $this->end_controls_section();
@@ -1153,6 +1259,17 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             $tft_banner_image = $settings['banner_image'];
         }
 
+        $tour_tab_title = $hotel_tab_title = $apt_tab_title = '';
+        if( !empty( $settings['tour_tab_title'] )){
+            $tour_tab_title = 'tour_tab_title="' . $settings['tour_tab_title'] . '" ' ;
+        }
+        if( !empty( $settings['hotel_tab_title'] )){
+            $hotel_tab_title = 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ';
+        }
+        if( !empty( $settings['apt_tab_title'] )){
+            $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
+        }
+
         if("design-2"==$tft_design){
         ?>
         <div class="tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
@@ -1163,7 +1280,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <?php } ?>
                 <?php if ( $settings['search_box_switcher'] == 'yes' ){ ?>
                 <div class="tft-search-form">
-                    <?php echo do_shortcode( '[tf_search_form  type="' . $type . '" design="2"]' ); ?>
+                    <?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . 'design="2"]' ); ?>
                 </div>
                 <?php } ?>
             </div>
@@ -1220,10 +1337,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 					<span></span>
 				</div>
 			</div>
-			<?php if ( $settings['search_box_switcher'] == 'yes' ): ?>
+			<?php if ( $settings['search_box_switcher'] == 'yes' ): 
+                
+                
+                ?>
 				<div class="tft-search-box tft-hero-design-1">
 					<div class="tft-search-box-inner">
-						<?php echo do_shortcode( '[tf_search_form  type="' . esc_attr($type) . '" ]' ); ?>
+						<?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . ']' ); ?>
 					</div>
 				</div>
 			<?php endif;?>
