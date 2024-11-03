@@ -412,6 +412,10 @@
   .tft-hero-design-2 .tft-hero-content h1{
     font-size: 24px;
   }
+  .tft-hero-design-3 .tft-hero-content-box h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
   .tft-hero-design-2 .tft-hero-content select[name="tf-booking-form-tab-select"]{
     color: #FDF9F3;
   }
@@ -420,7 +424,9 @@
   .tft-hero-slider-selector .slider__counter {
     left: 210px !important;
   }
-
+  .tft-hero-design-3 .tft-hero-content-box .tft-search-form{
+    width: 100%;
+  }
   .tft-hero-slider-selector .slick-next {
     left: 100px !important;
   }
