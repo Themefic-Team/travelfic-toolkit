@@ -128,6 +128,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'options' => [
                     'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
                     'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                    'design-3'  => __( 'Design 3', 'travelfic-toolkit' ),
                 ],
             ]
         );
@@ -207,7 +208,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 				'placeholder' => esc_html__( 'Banner title', 'travelfic-toolkit' ),
                 'default' => __( 'Embark on extraordinary voyages and explorations', 'travelfic-toolkit' ),
                 'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
                 ],
 			]
 		);
@@ -223,7 +224,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
                 ],
             ]
         );
@@ -399,6 +400,38 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} .tft-hero-design-2' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-1', 'design-2'], // Show this control only when des_style is 'design-2'
+                ],
+
+            ]
+        );
+        $this->add_responsive_control(
+            'design-3-slider_height',
+            [
+                'label' => esc_html__('Slider Height(px)', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 540, // Your default value here
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-3' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'slider_style' => 'design-3', // Show this control only when des_style is 'design-2'
                 ],
 
             ]
@@ -1287,9 +1320,22 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <?php } ?>
             </div>
         </div>
-        <?php }else{ ?>
+        <?php }elseif("design-3"==$tft_design){ ?>
+            <div class="tft-hero-design-3" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+                <div class="tft-hero-content-box">
+                <?php
+                if(!empty($tft_banner_title)){ ?>
+                <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                <?php } ?>
 
-		<?php
+                <?php if ( $settings['search_box_switcher'] == 'yes' ){ ?>
+                    <div class="tft-search-form">
+                        <?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . 'design="3"]' ); ?>
+                    </div>
+                <?php } ?>
+                </div>
+            </div>
+        <?php }else{ 
 		if ( $settings['hero_slider_list'] ) { ?>
 			<!-- Slider Hero section -->
 			<div class="hero--slider-wrapper tft-hero-design-1"> <!-- tft-customizer-typography -->
