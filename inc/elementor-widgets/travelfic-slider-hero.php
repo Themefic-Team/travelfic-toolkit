@@ -99,6 +99,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             'all'   => __( 'All', 'travelfic-toolkit' ),
             'hotel' => __( 'Hotel', 'travelfic-toolkit' ),
             'tour'  => __( 'Tour', 'travelfic-toolkit' ),
+            'carrentals'  => __( 'Car', 'travelfic-toolkit' ),
         );
 
         if ( function_exists( 'is_tf_pro' ) && is_tf_pro() ) {
@@ -348,6 +349,41 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             'name' => 'type',
                             'operator' => 'contains',
                             'value' => 'apartment',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => [],
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => '',
+                        ],
+                    ],
+                ],
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'car_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
+                'label'    => __( 'Car Tab Title', 'travelfic-toolkit' ),
+                'multiple' => true,
+                'default'  => __( 'Car', 'travelfic-toolkit' ),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'all',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'carrentals',
                         ],
                         [
                             'name' => 'type',
@@ -1259,7 +1295,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             $tft_banner_image = $settings['banner_image'];
         }
 
-        $tour_tab_title = $hotel_tab_title = $apt_tab_title = '';
+        $tour_tab_title = $hotel_tab_title = $apt_tab_title = $car_tab_title = '';
         if( !empty( $settings['tour_tab_title'] )){
             $tour_tab_title = 'tour_tab_title="' . $settings['tour_tab_title'] . '" ' ;
         }
@@ -1268,6 +1304,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         }
         if( !empty( $settings['apt_tab_title'] )){
             $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
+        }
+        if( !empty( $settings['car_tab_title'] )){
+            $car_tab_title = 'car_tab_title="' . $settings['car_tab_title'] . '" ';
         }
 
         if("design-2"==$tft_design){
@@ -1280,7 +1319,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <?php } ?>
                 <?php if ( $settings['search_box_switcher'] == 'yes' ){ ?>
                 <div class="tft-search-form">
-                    <?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . 'design="2"]' ); ?>
+                    <?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . 'design="2"]' ); ?>
                 </div>
                 <?php } ?>
             </div>
@@ -1343,7 +1382,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ?>
 				<div class="tft-search-box tft-hero-design-1">
 					<div class="tft-search-box-inner">
-						<?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . ']' ); ?>
+						<?php echo do_shortcode( '[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . ']' ); ?>
 					</div>
 				</div>
 			<?php endif;?>
