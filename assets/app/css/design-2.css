@@ -43,9 +43,6 @@
   .tft-design-2 .tft-top-header .tft-flex {
     flex-wrap: wrap;
   }
-  .tft-design-2 .tft-top-header  {
-    display: none;
-  }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-design-2 .tft-top-header .tft-flex .tft-contact-info {
@@ -262,6 +259,12 @@
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-contact-info-mobile {
+  margin-top: 32px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-contact-info-mobile .tft-top-bar-details li a:last-child {
+  padding-top: 0px !important;
 }
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul {
   margin: 32px 0px 0px 32px;

@@ -240,6 +240,13 @@
                         }
                     }
                 }
+                .tft-contact-info-mobile {
+                    margin-top: 32px;
+                    
+                    .tft-top-bar-details li a:last-child {
+                        padding-top: 0px !important;
+                    }
+                }
                 .tft-social-share{
                     ul{
                         margin: 32px 0px 0px 32px;
