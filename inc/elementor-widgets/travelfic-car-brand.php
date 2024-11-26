@@ -409,8 +409,9 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base{
                         centerMode: true,
                         focusOnSelect: true,
                         infinite: true,
-                        speed: 300,
-                        autoplaySpeed: 2000,
+                        autoplay: true,
+                        speed: 900,
+                        autoplaySpeed: 6000,
                         responsive: [
                             {
                                 breakpoint: 1024,
