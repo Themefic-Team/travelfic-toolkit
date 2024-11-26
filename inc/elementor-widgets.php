@@ -100,6 +100,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         wp_register_style( 'travelfic-toolkit-cf7-form', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-cf7-form.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
         wp_register_style( 'travelfic-toolkit-about-us', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-about-us.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
         wp_register_style( 'travelfic-toolkit-hotels', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-hotels.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
+        wp_register_style( 'travelfic-toolkit-cars-brand', TRAVELFIC_TOOLKIT_URL . 'assets/widgets/css/travelfic-cars-brand.css', array(), TRAVELFIC_TOOLKIT_VERSION, 'all' );
     }
 
     /**
@@ -140,6 +141,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-hotels.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-apartment-location.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-cars.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-car-brand.php' );
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_SliderHero());
@@ -156,6 +158,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Hotels() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_ApartmentLocation() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Cars() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_CarBrands() );
 
     }
 }

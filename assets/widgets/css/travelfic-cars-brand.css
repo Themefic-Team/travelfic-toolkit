@@ -1,0 +1,83 @@
+.tft-brands-wrapper .tft-brands-header{
+    max-width: 784px;
+    margin: 0 auto;
+}
+.tft-brands-wrapper .tft-brands-header h2{
+    color: #27333F;
+    text-align: center;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+.tft-brands-wrapper .tft-brands-header p{
+    color: #566676;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    margin-top: 0px;
+    margin-bottom: 56px;
+}
+.tft-brands-wrapper .tft-brands .slick-slide{
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+}
+.tft-brands-wrapper .tft-brands.tft-brands-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.tft-brands-wrapper .tft-brands.tft-brands-grid .tft-single-brands{
+    width: calc(33% - 8px);
+}
+.tft-brands-wrapper .tft-brands-thumbnail{
+    height: 212px;
+    background: #EEF2F6;
+    border-radius: 16px;
+    position: relative;
+}
+.tft-brands-wrapper .tft-brands-thumbnail a{
+    text-decoration: none;
+}
+.tft-brands-wrapper .tft-brands-thumbnail a img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.tft-brands-wrapper .tft-brands-thumbnail .tft-brands-title{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.tft-brands-wrapper .tft-brands-thumbnail .tft-brands-title a{
+    text-decoration: none;
+    color: #27333F;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 31.5px */
+    display: inline-block;
+    padding: 4px 17px 0px 16px;
+    background: #D9D9D9;
+    border-radius: 0px 16px 0px 16px;
+}
+
+/* ---------------- */
+/* ---------------- */
+
+@media all and (max-width: 991px){
+    .tft-brands-wrapper .tft-brands.tft-brands-grid .tft-single-brands {
+        width: calc(50% - 8px);
+    }
+}
+@media all and (max-width: 560px){
+    .tft-brands-wrapper .tft-brands.tft-brands-grid .tft-single-brands {
+        width: 100%;
+    }
+}
