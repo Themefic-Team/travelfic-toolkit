@@ -213,7 +213,7 @@ if ( !function_exists( 'travelfic_active' ) ) {
 			<p>
                 <?php
                 /* translators: %s is replaced with "theme name & link" */
-                printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
+                printf( esc_html__( 'Travelfic Toolkit recommend %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
             </p>
             <p><a class="install-now button" href="<?php echo esc_url(wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=travelfic' ), 'switch-theme_travelfic')); ?>"><?php echo esc_html__( 'Active Now', 'travelfic-toolkit' );?></a></p>
 		</div>
@@ -232,7 +232,7 @@ if ( !function_exists( 'travelfic_install' ) ) {
 			<p>
                 <?php 
                 /* translators: %s is replaced with "theme name & link" */
-                printf( esc_html__( 'Travelfic Toolkit requires %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
+                printf( esc_html__( 'Travelfic Toolkit recommend %s to be activated.', 'travelfic-toolkit' ), '<strong><a href="https://wordpress.org/themes/travelfic/" target="_blank">Travelfic Theme</a></strong>' ); ?>
             </p>
 			<p><a class="install-now button" href="<?php echo esc_url( admin_url( '/theme-install.php?search=travelfic' ) ); ?>"> <?php echo esc_html__( 'Install Now', 'travelfic-toolkit');?> </a></p>
 		</div>
