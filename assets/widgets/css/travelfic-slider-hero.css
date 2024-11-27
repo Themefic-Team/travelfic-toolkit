@@ -302,6 +302,39 @@
   background-color: #917242;
   color: #FDF9F3;
 }
+
+/* Hero Design 3 */
+.tft-hero-design-3{
+  background: #b8c5d2;
+  height: 540px;
+  margin: 24px 24px 86px 24px;
+  border-radius: 16px;
+}
+.tft-hero-design-3 .tft-hero-content-box{
+  position: absolute;
+  right: 24px;
+  left: 24px;
+  bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tft-hero-design-3 .tft-hero-content-box h1{
+  color: #FFF;
+  text-align: center;
+  font-size: 67px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 80.4px */
+  margin-bottom: 110px;
+}
+.tft-hero-design-3 .tft-hero-content-box .tf-booking-forms-wrapper{
+  margin-top: 0;
+}
+.tft-hero-design-3 .tft-hero-content-box .tft-search-form{
+  width: 1040px;
+}
+
 @media only screen and (max-width: 767px) {
   .tft-hero-design-2{
     height: auto;
@@ -379,6 +412,10 @@
   .tft-hero-design-2 .tft-hero-content h1{
     font-size: 24px;
   }
+  .tft-hero-design-3 .tft-hero-content-box h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
   .tft-hero-design-2 .tft-hero-content select[name="tf-booking-form-tab-select"]{
     color: #FDF9F3;
   }
@@ -387,7 +424,9 @@
   .tft-hero-slider-selector .slider__counter {
     left: 210px !important;
   }
-
+  .tft-hero-design-3 .tft-hero-content-box .tft-search-form{
+    width: 100%;
+  }
   .tft-hero-slider-selector .slick-next {
     left: 100px !important;
   }
