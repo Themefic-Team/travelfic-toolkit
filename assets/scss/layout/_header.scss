@@ -1,0 +1,834 @@
+// travelfic toolkit header design 2
+.tft-design-2 {
+  .tft-top-header {
+    background: $tft_secondary_color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .tft-flex {
+      justify-content: space-between;
+      align-items: center;
+      @media #{$max767} {
+        flex-wrap: wrap;
+      }
+      .tft-contact-info {
+        @media #{$max767} {
+          width: 100%;
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          @media #{$max767} {
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+          li {
+            display: inline-flex;
+            color: $tft_white;
+            margin-left: 24px;
+            align-items: center;
+            font-weight: 400;
+            svg {
+              margin-right: 8px;
+            }
+            a {
+              text-decoration: none;
+              color: $tft_white;
+              transition: 0.3s all ease;
+            }
+          }
+          li:first-child {
+            margin: 0px;
+          }
+        }
+      }
+      .tft-social-share {
+        margin-top: 7px;
+        @media #{$max767} {
+          width: 100%;
+          text-align: center;
+          margin-top: 10px;
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+          li {
+            display: inline-block;
+            margin-left: 20px;
+            @media #{$max767} {
+              margin: 0px 5px;
+            }
+          }
+          li:first-child {
+            margin: 0px;
+            @media #{$max767} {
+              margin: 0px 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tft-menus-section {
+    background: $tft_white;
+    padding-top: 31px;
+    padding-bottom: 31px;
+    .tft-flex {
+      justify-content: space-between;
+      align-items: center;
+      .tft-menu {
+        max-width: 33%;
+        width: 100%;
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          li {
+            margin-right: 32px;
+            display: inline-block;
+            a {
+              text-decoration: none;
+              color: $tft_grey;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 600;
+              padding: 0px !important;
+            }
+            .sub-menu {
+              li {
+                margin: 0px;
+                display: block;
+                padding: 5px 10px;
+              }
+            }
+          }
+          li.current_page_item > a {
+            color: $tft_primary_color;
+          }
+          li:last-child {
+            margin: 0px;
+          }
+        }
+        ul.sub-menu {
+          background: #fcf4e8;
+          box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
+          padding: 8px;
+          li {
+            background-color: #fff;
+            margin-bottom: 4px !important;
+            padding: 10px !important;
+            transition: 0.3s all ease;
+            &:hover {
+              background: #faeedc;
+            }
+            &:last-child {
+              margin-bottom: 0px !important;
+            }
+          }
+        }
+      }
+      .tft-logo {
+        max-width: 33%;
+        width: 100%;
+        text-align: center;
+        @media #{$max991} {
+          max-width: 50%;
+          text-align: left;
+        }
+        a.custom-logo-link {
+          img {
+            width: 160px;
+          }
+        }
+        .logo-text {
+          a {
+            text-decoration: none;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            color: $tft_grey;
+          }
+        }
+      }
+      .tft-account {
+        max-width: 33%;
+        width: 100%;
+        text-align: right;
+        ul {
+          margin: 0;
+          padding: 0;
+          li {
+            display: inline-block;
+            a {
+              padding: 12px 32px;
+              color: $tft_grey;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 700;
+              text-decoration: none;
+              display: inline-block;
+              transition: 0.3s all ease;
+              &:hover {
+                color: $tft_primary_color;
+              }
+            }
+            a.login {
+              border: 1px solid $tft_primary_color;
+              &:hover {
+                background: #917242;
+                color: #fdf9f3;
+                border-color: #917242;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .tft-menus-section.tft-header-mobile {
+    .tft-main-header-wrapper {
+      min-height: auto;
+      padding: 0 32px;
+      .tft-header-left {
+        .logo-text {
+          a {
+            color: $tft_grey;
+          }
+        }
+      }
+      .tft-header-center {
+        .tft-mobile_menubar {
+          i {
+            color: $tft_grey;
+          }
+        }
+      }
+    }
+    .tft-mobile-main-menu {
+      .tft-site-navigation {
+        background-color: #fcf4e8;
+        top: 31px;
+        padding: 50px 0px 45px 0px;
+        ul {
+          li {
+            display: block;
+            width: 100%;
+            border: 0px solid;
+            a {
+              color: $tft_grey;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 130%;
+              padding: 8px 32px !important;
+            }
+            ul {
+              background-color: #fcf4e8;
+              li {
+                a {
+                  color: $tft_grey;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 130%;
+                }
+              }
+            }
+          }
+        }
+        .tft-social-share {
+          ul {
+            margin: 32px 0px 0px 32px;
+            li {
+              display: inline-block;
+              width: auto;
+              a {
+                display: inline-block;
+                padding: 5px !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .tft-menus-section.tft_has_transparent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: rgba(48, 40, 28, 0.3);
+    backdrop-filter: blur(15px);
+    .tft-menu {
+      ul {
+        li {
+          a {
+            color: $tft_white;
+          }
+        }
+      }
+    }
+    .tft-logo {
+      .logo-text {
+        a {
+          color: $tft_white;
+        }
+      }
+    }
+    .tft-account {
+      ul {
+        li {
+          a {
+            color: $tft_white;
+          }
+        }
+      }
+    }
+
+    .tft-main-header-wrapper {
+      .tft-header-left {
+        .logo-text {
+          a {
+            color: $tft_white;
+          }
+        }
+      }
+      .tft-header-center {
+        .tft-mobile_menubar {
+          i {
+            color: $tft_white;
+          }
+        }
+      }
+    }
+  }
+  .tft-footer-sections {
+    padding-top: 64px;
+    padding-bottom: 32px;
+    background-color: $tft_secondary_color;
+    color: #faeedc;
+    a {
+      color: #faeedc;
+    }
+    .tft-grid {
+      display: flex;
+      justify-content: space-between;
+      align-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 83px;
+      @media #{$max991} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+      @media #{$max575} {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0px;
+      }
+      .tft-footer-section {
+        width: 100%;
+      }
+      h2 {
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        color: $tft_primary_color;
+        margin-bottom: 24px;
+        line-height: 32px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: block;
+          padding-bottom: 8px;
+          margin: 0;
+          a {
+            text-decoration: none;
+            display: block;
+            color: #faeedc;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            &:hover {
+              color: $tft_white !important;
+            }
+          }
+        }
+        li:last-child {
+          padding-bottom: 0px;
+        }
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .tft-footer-copyright {
+      border-top: 0.5px solid #99948d;
+      margin-top: 32px;
+      p {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        margin: 0;
+        padding-top: 32px;
+        color: #99948d;
+        text-align: center;
+        a {
+          text-decoration: none;
+          color: #99948d;
+        }
+      }
+    }
+  }
+}
+
+// travelfic toolkit header design 3
+.tft-design-3 {
+  background: $color-blue;
+  // min-height: 151px;
+  overflow: hidden;
+  @media #{$max991} {
+    min-height: auto;
+    background: transparent;
+  }
+
+  // container
+  &__container {
+    @media #{$max991} {
+      padding: 0;
+    }
+  }
+
+  // logo
+  &__logo {
+    line-height: 0;
+    a {
+      text-decoration: none;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      color: $color-white;
+      &:hover {
+        color: $color-white;
+      }
+      img {
+        @media #{$max991} {
+          max-width: 160px;
+        }
+      }
+    }
+  }
+
+  // header content
+  &__content {
+    @include d-flex();
+    @include align-items(center);
+    @media #{$max991} {
+      flex-direction: column-reverse;
+      width: 100%;
+      @include align-items(start);
+    }
+    // header left
+    &-left {
+      max-width: 388px;
+      flex: 1;
+      @media #{$max1680} {
+        max-width: 270px;
+      }
+      @media #{$max991} {
+        @include d-flex();
+        @include justify-content(space-between);
+        @include align-items(center);
+        width: 100%;
+        max-width: 100%;
+        background: $color-blue;
+        padding: 15px;
+      }
+    }
+    // header right
+    &-right {
+      flex: 1;
+      position: relative;
+      background: $color-white;
+      clip-path: polygon(3.5% 0%, 2000% 0, 100% 100%, 0% 100%);
+      padding-left: 50px;
+      @media #{$max991} {
+        flex: inherit;
+        width: 100%;
+        padding-left: 0;
+        clip-path: none;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: 100%;
+        padding-right: 100%;
+        top: 0;
+        background-color: $color-white;
+        width: 100vw;
+        height: 100%;
+        @media #{$max991} {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // header topbar
+  &__topbar {
+    padding-left: 20px;
+    position: relative;
+    background: $linear-gradient;
+    min-height: 55px;
+    @include d-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    margin-left: 30px;
+    z-index: 99;
+    @media #{$max1399} {
+      padding-left: 15px;
+      margin-left: 30px;
+      min-height: 45px;
+    }
+    @media #{$max1366} {
+      padding-left: 5px;
+      margin-left: 8px;
+    }
+    @media #{$max991} {
+      padding-left: 0;
+      min-height: 40px;
+      width: 100%;
+      @include justify-content(end);
+      margin-left: 0;
+    }
+    @media #{$max575} {
+      @include justify-content(center);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: -20px;
+      padding-right: 100%;
+      top: 0;
+      background: $linear-gradient;
+      width: 100vw;
+      height: 100%;
+      transform: skewX(-16deg);
+      z-index: -1;
+      @media #{$max991} {
+        display: none;
+      }
+    }
+    &-right {
+      @media #{$max991} {
+        display: none;
+      }
+      &.mobile-view {
+        display: none;
+        @media #{$max991} {
+          display: block;
+          a,
+          select {
+            color: $color-black;
+          }
+        }
+        .tft-design-3__topbar-list-item:first-child {
+          @media #{$max575} {
+            display: block;
+          }
+        }
+      }
+    }
+    &-left {
+      @media #{$max991} {
+        padding: 10px 15px;
+      }
+      @media #{$max575} {
+        flex: 1;
+      }
+    }
+    &-list {
+      @include d-flex();
+      @include align-items(center);
+      gap: 30px;
+      @media #{$max1399} {
+        gap: 20px;
+        @include align-items(baseline);
+      }
+      @media #{$max991} {
+        gap: 15px;
+      }
+      @media #{$max575} {
+        @include justify-content(space-between);
+      }
+      &-item {
+        @media #{$max1399} {
+          max-height: 24px;
+          min-height: 24px;
+        }
+        @media #{$max991} {
+          max-height: initial;
+          min-height: initial;
+        }
+        &:first-child {
+          @media #{$max575} {
+            display: none;
+          }
+        }
+      }
+      &-link {
+        @include d-flex();
+        @include align-items(center);
+        gap: 10.5px;
+        color: $color-white;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18.38px;
+        font-family: $font-ubuntu;
+        &:hover {
+          color: $color-white;
+        }
+        &:visited{
+          color: $color-white;
+        }
+        @media #{$max1399} {
+          font-size: 15px;
+        }
+        @media #{$max991} {
+          font-size: 14px;
+          line-height: 18px;
+          gap: 8px;
+          svg {
+            width: 18px;
+          }
+        }
+        svg {
+          @media #{$max575} {
+            width: 15px;
+            margin-top: 1px;
+          }
+        }
+      }
+      &:hover {
+        color: $color-white;
+      }
+      &:focus {
+        color: $color-white;
+        outline: none;
+        box-shadow: none;
+      }
+
+      &-text {
+        line-height: inherit;
+      }
+
+      &-select {
+        background: transparent;
+        border: 0;
+        color: $color-white;
+        cursor: pointer;
+        &:focus {
+          color: $color-white;
+          outline: none;
+          box-shadow: none;
+        }
+        option {
+          color: $color-black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &__bars {
+    @media #{$max991} {
+      position: relative;
+      min-height: 20px;
+      left: 0px;
+      cursor: pointer;
+      width: 30px;
+      &--icon {
+        width: 30px;
+        height: 2px;
+        background: $color-white;
+        position: absolute;
+        top: 0;
+        cursor: pointer;
+        &:nth-child(2) {
+          top: 8px;
+        }
+        &:nth-child(3) {
+          top: 17px;
+        }
+      }
+    }
+  }
+
+  // header bottom
+  &__bottom {
+    padding: 20px 0 21px 54.13px;
+    @include d-flex();
+    @include align-items(center);
+    @include justify-content(space-between);
+    @media #{$max1480} {
+      padding: 15px 0 15px 35px;
+      gap: 15px;
+      @include justify-content(end);
+    }
+    @media #{$max991} {
+      padding: 8px 15px 8px 15px;
+      @include justify-content(end);
+      gap: inherit;
+    }
+    &__nav {
+      min-width: 754px;
+      @media #{$max1680} {
+        min-width: auto;
+      }
+      @media #{$max1199} {
+        min-width: 700px;
+      }
+      @media #{$max991} {
+        display: none;
+      }
+      &--list {
+        @include d-flex();
+        @include justify-content(space-between);
+        @media #{$max1680} {
+          gap: 25px;
+          @include justify-content(flex-start);
+        }
+        .menu-item {
+          a {
+            font-family: $font-ubuntu;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 16.09px;
+            text-align: left;
+            color: $color-black;
+            @include transition(0.3s);
+            text-transform: uppercase;
+            &:hover {
+              color: $color-primary;
+            }
+          }
+        }
+      }
+    }
+    &__right {
+      @include d-flex();
+      @include align-items(center);
+      gap: 30px;
+      @media #{$max991} {
+        gap: 15px;
+      }
+      &__list {
+        @include d-flex();
+        @include align-items(center);
+        gap: 20px;
+        @media #{$max991} {
+          gap: 15px;
+        }
+        &__item {
+          &--link {
+            display: block;
+            width: 45px;
+            height: 45px;
+            @include d-flex();
+            @include align-items(center);
+            @include justify-content(center);
+            background: $color-white;
+            border: 1px dashed #060d1c;
+            @include box-circle();
+            @media #{$max991} {
+              width: 35px;
+              height: 35px;
+            }
+            svg {
+              @media #{$max991} {
+                width: 16px;
+                height: 16px;
+              }
+            }
+          }
+        }
+      }
+      &__button {
+        @media #{$max575} {
+          display: none;
+        }
+        .mh-btn {
+          @media #{$max991} {
+            min-height: 38px;
+            font-size: 14px;
+            min-width: 130px;
+          }
+        }
+      }
+      &__box {
+        line-height: 15px;
+        @media #{$max575} {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// mobile sidenav
+.mobile-sidenav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 280px;
+  background-color: $color-dark-blue;
+  overflow-x: hidden;
+  transition: 0.5s ease;
+  z-index: 1000;
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  &__nav {
+    margin-top: 70px;
+    &--list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      a {
+        padding: 7px 25px;
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+  &.open {
+    left: 0;
+  }
+
+  .mh-header__bottom__right__button {
+    display: none;
+    @media #{$max575} {
+      display: block;
+      margin: 20px 25px;
+    }
+  }
+}

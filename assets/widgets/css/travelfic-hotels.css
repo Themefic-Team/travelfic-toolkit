@@ -1,0 +1,265 @@
+.tft-popular-hotels-wrapper{
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
+    width: 60%;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header h6 {
+    font-family: 'Josefin Sans' !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: 0.16px;
+    text-transform: uppercase;
+    color: #B58E53;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header h3{
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    color: #595349;
+    margin-bottom: 24px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header ul li{
+    padding: 12px 32px;
+    background-color: #99948D;
+    color: #FDF9F3;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    margin-right: 30px;
+    display: inline-block;
+    cursor: pointer;
+    transition: .3s all ease;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header ul li:hover{
+    background-color: #917242 !important;
+    color: #FDF9F3 !important;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotel-header ul li.active{
+    background-color: #B58E53;
+}
+.tft-popular-hotels-wrapper .read-more a{
+    width: 156px;
+    height: 156px;
+    background-color: #B58E53;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    color: #FDF9F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .3s all ease;
+}
+.tft-popular-hotels-wrapper .read-more a:hover{
+    background-color: #917242 !important;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 40px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item-inner {
+    padding-bottom: 85px;
+    position: relative;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail{
+    height: 550px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 56px;
+    padding-right: 56px;
+    display: block;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details{
+    background-color: #FCF4E8;
+    padding: 32px;
+    position: absolute;
+    left: 56px;
+    right: 56px;
+    bottom: 0;
+    overflow: hidden;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-ratings span{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    color: #99948D;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-ratings span i{
+    color: #FFC700;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3{
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    color: #595349;
+    margin-bottom: 16px;
+    /* height: 115px; */
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations{
+    display: flex;
+    margin: 0;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tour-time{
+    display: flex;
+    margin: 0;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    color: #595349;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations svg,
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tour-time svg{
+    margin-right: 8px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tft-locations span{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    color: #595349;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tour-time span{
+    margin-left: 3px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details {
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0px;
+    transition: max-height 0.6s ease;
+}
+
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item:hover .tft-hotel-details .tf-others-details {
+    max-height: 200px;
+    transition: max-height 0.6s ease;
+}
+
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details{
+    display: block;
+    padding: 12px 32px;
+    background-color: #B58E53;
+    color: #FDF9F3;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+    margin-top: 16px;
+    transition: .3s all ease;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover{
+    background: #917242 !important;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 12px;
+    padding-top: 16px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    color: #99948D;
+    display: flex;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li img{
+    width: 20px;
+}
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li i,
+.tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li img{
+    margin-right: 8px;
+}
+
+@media all and (max-width: 1600px){
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail{
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details{
+        left: 24px;
+        right: 24px;
+    }
+}
+@media all and (max-width: 1366px){
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header h3{
+        font-size: 32px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3{
+        font-size: 20px;
+    }
+}
+@media all and (max-width: 1024px){
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items{
+        grid-template-columns: auto auto;
+    }
+    .tft-popular-hotels-wrapper .read-more a{
+        width: 96px;
+        height: 96px;
+        font-size: 12px;
+    }
+    .tft-popular-hotels-wrapper .read-more a svg{
+        width: 32px;
+    }
+}
+@media all and (max-width: 991px){
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header .tft-hotel-header{
+        width: auto;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail{
+        height: 390px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header ul li{
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        margin-right: 15px !important;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a{
+        font-size: 12px !important;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li{
+        font-size: 14px !important;
+    }
+}
+@media all and (max-width: 767px){
+    .tft-popular-hotels-wrapper .tft-popular-hotels-items{
+        grid-template-columns: auto;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header h3{
+        font-size: 20px;
+    }
+    .tft-popular-hotels-wrapper .tft-popular-hotel-header h6{
+        font-size: 8px;
+    }
+}

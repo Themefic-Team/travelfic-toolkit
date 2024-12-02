@@ -1,0 +1,500 @@
+// hero banner
+.hero-banner {
+  background-position: center center;
+  min-height: 800px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  position: relative;
+  @include d-flex();
+  @include align-items(center);
+  overflow: hidden;
+  @media #{$max1366} {
+    min-height: 700px;
+  }
+  @media #{$max1199} {
+    min-height: 650px;
+  }
+  @media #{$max991} {
+    min-height: 600px;
+  }
+  @media #{$max767} {
+    min-height: 500px;
+  }
+  @media #{$max575} {
+    min-height: 450px;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: $linear-gradient2;
+    z-index: -1;
+  }
+  &__container {
+    position: relative;
+    width: 100%;
+    @media #{$max1199} {
+      width: 100%;
+    }
+  }
+  // slider
+  &__slider {
+    position: relative;
+    top: 50%;
+    &__item {
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(center);
+      color: $color-white;
+      &__content {
+        text-align: center;
+        &--subtitle {
+          font-family: $font-caveat;
+          font-size: 36px;
+          font-weight: 400;
+          line-height: 45.36px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          @media #{$max1199} {
+            font-size: 32px;
+            line-height: 40px;
+          }
+          @media #{$max991} {
+            font-size: 28px;
+            line-height: 38px;
+          }
+          @media #{$max767} {
+            font-size: 24px;
+            line-height: 32px;
+          }
+        }
+        &--title {
+          font-family: $font-brygada;
+          font-size: 100px;
+          font-weight: 500;
+          line-height: 117px;
+          margin: 14px 0 35px;
+          @media #{$max1199} {
+            font-size: 80px;
+            line-height: 90px;
+          }
+          @media #{$max991} {
+            font-size: 65px;
+            line-height: 70px;
+          }
+          @media #{$max767} {
+            font-size: 50px;
+            line-height: 65px;
+            margin-bottom: 20px;
+          }
+        }
+        &--link {
+          padding: 0 42px;
+          gap: 5px;
+          @media #{$max767} {
+            padding: 0 30px;
+          }
+          i {
+            line-height: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  &__social {
+    position: absolute;
+    left: -33px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 99;
+    @include d-flex();
+    flex-direction: column;
+    @include justify-content(center);
+    @include align-items(center);
+    color: $color-white;
+    gap: 20px;
+    @media #{$max1760} {
+      left: 15px;
+    }
+    @media #{$max1199} {
+      background: #07245f;
+      left: -60px;
+      gap: 10px;
+      padding: 14px 8px;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    // social list
+    &__list {
+      @include d-flex();
+      gap: 20px;
+      flex-direction: column;
+      @media #{$max991} {
+        gap: 10px;
+      }
+      &__item {
+        &--link {
+          @include d-flex();
+          @include align-items(center);
+          @include justify-content(center);
+          @include box-circle();
+          width: 45px;
+          height: 45px;
+          border: 1px solid #d6dff0;
+          @include transition(0.3s);
+          @media #{$max991} {
+            width: 30px;
+            height: 30px;
+          }
+          &:hover {
+            background: $color-primary;
+            border-color: $color-primary;
+          }
+          i {
+            font-size: 14px;
+            color: $color-white;
+            @media #{$max991} {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    // divider
+    &__divider {
+      width: 1px;
+      height: 100px;
+      background: $color-gray;
+      @media #{$max767} {
+        height: 80px;
+      }
+    }
+
+    &__label {
+      text-transform: uppercase;
+      font-family: $font-ubuntu;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 18.38px;
+      letter-spacing: 0.23em;
+      writing-mode: tb-rl;
+      transform: rotate(180deg);
+      color: white;
+    }
+  }
+
+  // mobile share label
+  &__mobile--share {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color:#101f36b3;
+    padding: 10px 6px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    @media #{$max1199} {
+      display: block;
+    }
+  }
+
+  //   slick dots
+  .slick-dots {
+    position: absolute;
+    top: 50%;
+    right: -12px;
+    max-width: 1706px;
+    margin: auto;
+    @include d-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    gap: 20px;
+    transform: translateY(-50%);
+    z-index: 99;
+    flex-direction: column;
+    align-items: end;
+    @media #{$max1760} {
+      right: 0;
+    }
+    @media #{$max991} {
+      right: 0;
+      bottom: 0px;
+      gap: 8px;
+      transform: none;
+      flex-direction: row;
+      width: 100%;
+      margin-bottom: -130px;
+    }
+    @media #{$max575} {
+      right: 0;
+      bottom: 10px;
+      gap: 8px;
+      transform: none;
+      flex-direction: row;
+      width: 100%;
+      margin-bottom: -100px;
+    }
+    li {
+      width: 30px;
+      height: 30px;
+      border: 2px solid transparent;
+      background: transparent;
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(center);
+      cursor: pointer;
+      @media #{$max767} {
+        width: 25px;
+        height: 25px;
+      }
+      &.slick-active {
+        border-color: $color-white;
+      }
+      button {
+        width: 10px;
+        height: 10px;
+        background: $color-white;
+        border: 0;
+        padding: 0;
+        font-size: 0;
+        cursor: pointer;
+        @include bd-radius(0);
+        @media #{$max767} {
+          width: 9px;
+          height: 9px;
+        }
+      }
+    }
+  }
+}
+
+// travel form
+.mh-travel {
+  padding: 80px 0;
+  background-color: $color-secondary;
+  @media #{$max1199} {
+    padding: 60px 0;
+  }
+  @media #{$max991} {
+    padding: 50px 0;
+  }
+  @media #{$max767} {
+    padding: 40px 0;
+  }
+  &__form {
+    &__fieldset {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(space-between);
+      gap: 70px;
+      @media #{$max1366} {
+        gap: 40px;
+      }
+      @media #{$max1199} {
+        max-width: 800px;
+        margin: auto;
+        flex-direction: column;
+        @include align-items(start);
+      }
+
+      @media #{$max767} {
+        max-width: 450px;
+        margin: auto;
+        gap: 30px;
+      }
+      &__left {
+        max-width: 310px;
+        flex: 1;
+        @media #{$max1366} {
+          max-width: 300px;
+        }
+        @media #{$max1199} {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+      &__middle {
+        flex: 1;
+        @include d-flex();
+        @include align-items(center);
+        @include justify-content(space-between);
+        @media #{$max1199} {
+          width: 100%;
+        }
+        @media #{$max767} {
+          display: grid;
+          gap: 40px;
+          grid-template-columns: repeat(2, 1fr);
+          width: 100%;
+        }
+        @media #{$max575} {
+          width: 100%;
+        }
+        @media #{$max340} {
+          gap: 25px;
+        }
+      }
+      &__right {
+        max-width: 180px;
+        flex: 1;
+      }
+    }
+
+    &__divider {
+      background: #ffffff2e;
+      width: 1px;
+      height: 100px;
+      @media #{$max767} {
+        display: none;
+      }
+    }
+
+    &__field {
+      @include d-flex();
+      @include align-items(center);
+      gap: 20px;
+      color: $color-white;
+      position: relative;
+      @media #{$max1366} {
+        gap: 16px;
+      }
+      @media #{$max767} {
+        gap: 12px;
+      }
+      .field--title {
+        font-family: $font-brygada;
+        font-size: 60px;
+        font-weight: 500;
+        line-height: 70.2px;
+        @media #{$max1366} {
+          font-size: 50px;
+          line-height: 60.2px;
+        }
+        @media #{$max991} {
+          font-size: 40px;
+          line-height: 1;
+        }
+        @media #{$max340} {
+          font-size: 35px;
+        }
+      }
+      .form--span {
+        display: block;
+        font-family: $font-ubuntu;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 26px;
+        @media #{$max991} {
+          font-size: 15px;
+          line-height: 22px;
+        }
+      }
+      .form--span__bold {
+        font-weight: bold;
+      }
+      &__incdec {
+        span {
+          &.form--span {
+            font-size: 24px;
+            line-height: 27.58px;
+            text-align: center;
+            @media #{$max991} {
+              font-size: 20px;
+              line-height: 22.98px;
+            }
+          }
+        }
+      }
+
+      &__icon {
+        line-height: 0;
+        svg {
+          @media #{$max1366} {
+            width: 38px;
+            height: auto;
+          }
+          @media #{$max991} {
+            width: 35px;
+            height: auto;
+          }
+          @media #{$max767} {
+            width: 30px;
+            height: auto;
+          }
+        }
+      }
+      .icon--location {
+        position: absolute;
+        top: 17px;
+        right: 22px;
+        @media #{$max767} {
+          top: 12px;
+          right: 16px;
+        }
+        svg {
+          @media #{$max1366} {
+            width: 12px;
+          }
+        }
+      }
+    }
+
+    &__label {
+      font-family: $font-ubuntu;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 22.98px;
+      color: $color-white;
+      opacity: 0.5;
+      margin-bottom: 28px;
+      display: block;
+      @media #{$max991} {
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+      @media #{$max767} {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+    }
+
+    &__input {
+      width: 100%;
+      background: #2051f5;
+      color: $color-white;
+      border: 0;
+      font-family: $font-ubuntu;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 18.38px;
+      padding: 16px 25px 21px;
+      @include bd-radius(5px);
+      @media #{$max767} {
+        font-size: 14px;
+        padding: 12px 16px 16px;
+      }
+      &::placeholder {
+        color: $color-white;
+      }
+    }
+
+    &__submit {
+      @include bd-radius(5px);
+      gap: 15px;
+      padding: 0;
+      cursor: pointer;
+      &:hover {
+        background: $color-blue;
+      }
+    }
+  }
+}

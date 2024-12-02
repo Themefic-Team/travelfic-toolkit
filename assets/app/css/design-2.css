@@ -1,0 +1,446 @@
+.tft-w-padding {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+@media only screen and (max-width: 1366px) {
+  .tft-w-padding {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.tft-l-padding {
+  padding-left: 200px;
+}
+@media only screen and (max-width: 1366px) {
+  .tft-l-padding {
+    padding-left: 32px;
+  }
+}
+
+.tft-fullwidth-container {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.tft_has_sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.tft-design-2 .tft-top-header {
+  background: #595349;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tft-design-2 .tft-top-header .tft-flex {
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-2 .tft-top-header .tft-flex {
+    flex-wrap: wrap;
+  }
+  .tft-design-2 .tft-top-header  {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-2 .tft-top-header .tft-flex .tft-contact-info {
+    width: 100%;
+  }
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li {
+  display: inline-flex;
+  color: #FDF9F3;
+  margin-left: 24px;
+  align-items: center;
+  font-weight: 400;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li svg {
+  margin-right: 8px;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li a {
+  text-decoration: none;
+  color: #FDF9F3;
+  transition: 0.3s all ease;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li:first-child {
+  margin: 0px;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share {
+  margin-top: 7px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-2 .tft-top-header .tft-flex .tft-social-share {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li {
+  display: inline-block;
+  margin-left: 20px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li {
+    margin: 0px 5px;
+  }
+}
+.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li:first-child {
+  margin: 0px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li:first-child {
+    margin: 0px 5px;
+  }
+}
+.tft-design-2 .tft-menus-section {
+  background: #FDF9F3;
+  padding-top: 31px;
+  padding-bottom: 31px;
+}
+.tft-design-2 .tft-menus-section .tft-flex {
+  justify-content: space-between;
+  align-items: center;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu {
+  max-width: 33%;
+  width: 100%;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li {
+  margin-right: 32px;
+  display: inline-block;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li a {
+  text-decoration: none;
+  color: #595349;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  padding: 0px !important;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li .sub-menu li {
+  margin: 0px;
+  display: block;
+  padding: 5px 10px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li.current_page_item > a {
+  color: #B58E53;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
+  margin: 0px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu {
+  background: #FCF4E8;
+  box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu li {
+  background-color: #fff;
+  margin-bottom: 4px !important;
+  padding: 10px !important;
+  transition: 0.3s all ease;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu li:hover {
+  background: #FAEEDC;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu li:last-child {
+  margin-bottom: 0px !important;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-logo {
+  max-width: 33%;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-2 .tft-menus-section .tft-flex .tft-logo {
+    max-width: 50%;
+    text-align: left;
+  }
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-logo a.custom-logo-link img {
+  width: 160px;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-logo .logo-text a {
+  text-decoration: none;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #595349;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account {
+  max-width: 33%;
+  width: 100%;
+  text-align: right;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li {
+  display: inline-block;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a {
+  padding: 12px 32px;
+  color: #595349;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s all ease;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a:hover {
+  color: #B58E53;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
+  border: 1px solid #B58E53;
+}
+.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
+  background: #917242;
+  color: #FDF9F3;
+  border-color: #917242;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
+  min-height: auto;
+  padding: 0 32px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a {
+  color: #595349;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
+  color: #595349;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
+  background-color: #FCF4E8;
+  top: 31px;
+  padding: 50px 0px 45px 0px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li {
+  display: block;
+  width: 100%;
+  border: 0px solid;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li a {
+  color: #595349;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+  padding: 8px 32px !important;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul {
+  background-color: #FCF4E8;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul li a {
+  color: #595349;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul {
+  margin: 32px 0px 0px 32px;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul li {
+  display: inline-block;
+  width: auto;
+}
+.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul li a {
+  display: inline-block;
+  padding: 5px !important;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: rgba(48, 40, 28, 0.3);
+  backdrop-filter: blur(15px);
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-menu ul li a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-logo .logo-text a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-account ul li a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-left .logo-text a {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
+  color: #FDF9F3;
+}
+.tft-design-2 .tft-footer-sections {
+  padding-top: 64px;
+  padding-bottom: 32px;
+  background-color: #595349;
+  color: #FAEEDC;
+}
+.tft-design-2 .tft-footer-sections a {
+  color: #FAEEDC;
+}
+.tft-design-2 .tft-footer-sections .tft-grid {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 83px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-2 .tft-footer-sections .tft-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-design-2 .tft-footer-sections .tft-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
+  }
+}
+.tft-design-2 .tft-footer-sections .tft-grid .tft-footer-section {
+  width: 100%;
+}
+.tft-design-2 .tft-footer-sections .tft-grid h2 {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  color: #B58E53;
+  margin-bottom: 24px;
+  line-height: 32px;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul {
+  margin: 0;
+  padding: 0;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li {
+  display: block;
+  padding-bottom: 8px;
+  margin: 0;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li a {
+  text-decoration: none;
+  display: block;
+  color: #FAEEDC;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li a:hover {
+  color: #FDF9F3 !important;
+}
+.tft-design-2 .tft-footer-sections .tft-grid ul li:last-child {
+  padding-bottom: 0px;
+}
+.tft-design-2 .tft-footer-sections .tft-grid p {
+  margin: 0;
+}
+.tft-design-2 .tft-footer-sections .tft-footer-copyright {
+  border-top: 0.5px solid #99948D;
+  margin-top: 32px;
+}
+.tft-design-2 .tft-footer-sections .tft-footer-copyright p {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  margin: 0;
+  padding-top: 32px;
+  color: #99948D;
+  text-align: center;
+}
+.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
+  text-decoration: none;
+  color: #99948D;
+}
+
+/* Contact Form CSS */
+#tf-cf7-contact-form {
+  margin-top: 20px;
+}
+
+#tf-cf7-contact-form p {
+  font-family: Josefin Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 20.8px */
+}
+
+#tf-cf7-contact-form input, #tf-cf7-contact-form textarea {
+  display: flex;
+  padding: 12px 14px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  width: 100%;
+  border: 1px solid #99948D;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  background-color: transparent;
+  border-radius: unset;
+}
+
+#tf-cf7-contact-form textarea {
+  height: 130px;
+}
+
+#tf-cf7-contact-form input::placeholder, #tf-cf7-contact-form textarea::placeholder {
+  font-family: Josefin Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  color: #C1BFBB;
+}
+
+#tf-cf7-contact-form input[type=submit] {
+  display: flex;
+  width: 100%;
+  padding: 12px 32px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: Josefin Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  text-align: center;
+  background: #B58E53 !important;
+  color: #FDF9F3;
+}
+
+#tf-cf7-contact-form input::focus, #tf-cf7-contact-form textarea::focus {
+  border: 2px solid #99948D !important;
+}
+
+/*# sourceMappingURL=design-2.css.map */

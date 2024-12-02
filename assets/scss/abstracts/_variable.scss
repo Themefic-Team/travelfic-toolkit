@@ -1,0 +1,57 @@
+
+// ================================ //
+// font family variable
+// ================================ //
+
+$font-ubuntu: "Ubuntu", sans-serif;
+$font-caveat: "Caveat", cursive;
+$font-brygada: "Brygada 1918", serif;
+
+// ================================ //
+// color variable
+// ================================ //
+
+$tft_primary_color : #B58E53;
+$tft_secondary_color : #595349;
+$tft_white : #FDF9F3;
+$tft_grey : #595349;
+
+$color-primary: #ff6b00;
+$color-secondary: #0e3dd8;
+$color-blue: #07245f;
+$color-dark-blue: #101f36;
+$color-dark-blue2: #203453;
+$color-dark-blue3:#132847;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gray: #D9D9D9;
+
+
+// ================================ //
+// Linear gradient
+// ================================ //
+$linear-gradient: linear-gradient(0deg, #1342e0, #1342e0),
+  linear-gradient(0deg, #0e3dd8, #0e3dd8);
+$linear-gradient2:linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 57, 204, 0.03) 125.37%);
+
+
+// ================================ //
+//Media Query
+// ================================ //
+
+$max1920: "only screen and (max-width: 1920px)";
+$max1850: "only screen and (max-width: 1850px)";
+$max1800: "only screen and (max-width: 1800px)";
+$max1760: "only screen and (max-width: 1760px)";
+$max1680: "only screen and (max-width: 1680px)";
+$max1480: "only screen and (max-width: 1480px)";
+$max1399: "only screen and (max-width: 1399.98px)";
+$max1366: "only screen and (max-width: 1366px)";
+$max1280: "only screen and (max-width: 1280px)";
+$max1199: "only screen and (max-width: 1199.98px)";
+$max991: "only screen and (max-width: 991.98px)";
+$max767: "only screen and (max-width: 767.98px)";
+$max575: "only screen and (max-width: 575.98px)";
+$max480: "only screen and (max-width: 480px)";
+$max375: "only screen and (max-width: 375.98px)";
+$max340: "only screen and (max-width: 374.98px)";

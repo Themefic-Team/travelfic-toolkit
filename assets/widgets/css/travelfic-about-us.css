@@ -1,0 +1,177 @@
+.tft-about-us-wrapper{
+    padding-top: 30px;
+}
+.tft-about-us-wrapper .tft-about-us-grid{
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content{
+    display: flex;
+    flex-direction: column;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6{
+    font-family: 'Josefin Sans' !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: 0.16px;
+    text-transform: uppercase;
+    color: #B58E53;
+    margin-top: 0px;
+    margin-bottom: 8px;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3{
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    color: #595349;
+    margin-top: 0px;
+    margin-bottom: 32px;
+}
+
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-quotes, .tft-about-us-author {
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.3;
+	padding-right: 55px;
+	margin-top: 2px;
+}
+
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #99948D;
+    margin-top: 0px;
+}
+
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-author {
+	font-weight: 600 !important;
+	margin-top: 0px;
+}
+
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a{
+    width: 156px;
+    height: 156px;
+    border: 1px solid #B58E53;
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    color: #B58E53;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: .3s all ease;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a:hover{
+    background: #917242 !important;
+    border-color: #917242 !important;
+    color: #FDF9F3 !important;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a:hover svg path{
+    fill: #FDF9F3 !important;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-image{
+    position: relative;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-image .tft-about-image{
+    padding-left: 100px;
+}
+.tft-about-us-wrapper .tft-about-us-grid .tft-about-us-image .tft-about-image img{
+    width: 100%;
+    margin-top: 80px;
+}
+.tft-about-us-wrapper .tft-about-us-grid .years-of-experience{
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    z-index: 99;
+    left: 30px;
+}
+.tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2{
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    color: #99948D;
+    margin: 0;
+    height: 64%;
+}
+
+.experience-badge{
+    animation: rotation 14s infinite linear;
+  }
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
+@media all and (max-width: 1100px){
+    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience{
+        left: 30px;
+    }
+}
+@media all and (max-width: 991px){
+    .tft-about-us-wrapper .tft-about-us-grid{
+        grid-template-columns: 45% 55%;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3{
+        font-size: 32px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience{
+        width: 145px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2{
+        font-size: 32px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience{
+        left: 50px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a{
+        width: 90px;
+        height: 90px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a span svg{
+        width: 36px !important;
+    }
+}
+@media all and (max-width: 767px){
+    .tft-about-us-wrapper .tft-about-us-grid{
+        display: flow-root;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content{
+        margin-bottom: 16px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-image .tft-about-image{
+        padding-left: 0px;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .years-of-experience{
+        display: none;
+    }
+    .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-image .tft-about-image img{
+        margin-top: 0px !important;
+    }
+}

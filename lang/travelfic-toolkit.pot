@@ -1,0 +1,2017 @@
+# Copyright (C) 2020 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-01-23 04:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: _s\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
+
+#: inc/elementor-widgets/travelfic-about-us.php:190
+msgid ""
+"\"Creating memorable moments is our passion. Welcome to our hotel, where "
+"comfort, elegance, and genuine hospitality meet.\""
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:183
+msgid "#"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:200
+msgid "&#9733;"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:201
+msgid "&#9733;&#9733;"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:202
+msgid "&#9733;&#9733;&#9733;"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:203
+msgid "&#9733;&#9733;&#9733;&#9733;"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:204
+msgid "&#9733;&#9733;&#9733;&#9733;&#9733;"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:128
+msgid "*"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:148
+msgid "15+"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:147
+msgid "4"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:188
+msgid "6"
+msgstr ""
+
+#: travelfic-toolkit.php:174
+msgid ""
+"A majority of travelers say that they expect to spend more on travel than "
+"other aspects of their life such as car insurance, healthcare, etc"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:163
+msgid ""
+"A There are many variatio of passage of Lorem for a Ipsum available  Lorem "
+"for a Ipsum available dummy lorem text."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:99
+msgid "About Us"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:136
+msgid "about us"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:157
+msgid "About Us Image"
+msgstr ""
+
+#: travelfic-toolkit.php:168
+msgid ""
+"According to Statista, 81% of global travelers believe that sustainable "
+"travel is important for the world"
+msgstr ""
+
+#: travelfic-toolkit.php:187
+msgid "Activated"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:149
+msgid "Active Gap Item"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:394
+msgid "Active List Item Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:405
+msgid "Active List Item Color"
+msgstr ""
+
+#: travelfic-toolkit.php:212
+msgid "Active Now"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:786
+msgid "Active Tab background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:772
+msgid "Active Tab Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:201
+msgid "Add Author Details"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:144
+msgid "Alignment"
+msgstr ""
+
+#: inc/class/class-template-list.php:270
+#: inc/elementor-widgets/travelfic-hotels.php:129
+#: inc/elementor-widgets/travelfic-hotels.php:675
+#: inc/elementor-widgets/travelfic-hotels.php:682
+#: inc/elementor-widgets/travelfic-slider-hero.php:99
+msgid "All"
+msgstr ""
+
+#: inc/class/class-template-list.php:273
+msgid "Apartment"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:99
+msgid "Apartment Location"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:163
+msgid "Apartments"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:198
+#: inc/elementor-widgets/travelfic-hotel-location.php:198
+#: inc/elementor-widgets/travelfic-hotels.php:201
+#: inc/elementor-widgets/travelfic-latest-news.php:217
+#: inc/elementor-widgets/travelfic-popular-tours.php:160
+#: inc/elementor-widgets/travelfic-tour-destination.php:198
+msgid "Ascending"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:663
+msgid "Author"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:385
+msgid "Author Alignment"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:410
+msgid "Author Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:200
+msgid "Author Details"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:373
+msgid "Author Typography"
+msgstr ""
+
+#: inc/class/class-template-list.php:403
+msgid "Back To Dashboard"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:200
+#: inc/elementor-widgets/travelfic-slider-hero.php:312
+msgid "Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:296
+#: inc/elementor-widgets/travelfic-slider-hero.php:591
+#: inc/elementor-widgets/travelfic-slider-hero.php:634
+msgid "Background Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:463
+#: inc/elementor-widgets/travelfic-latest-news.php:499
+msgid "Background Gradient 1"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:475
+#: inc/elementor-widgets/travelfic-latest-news.php:511
+msgid "Background Gradient 2"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:307
+msgid "Background Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:217
+msgid "Banner Image"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:206
+msgid "Banner Title"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:207
+msgid "Banner title"
+msgstr ""
+
+#: inc/class/class-template-list.php:135
+msgid "Before we procced..."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:165
+msgid "BLOG & NEWS"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:130
+msgid "Blog News"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:105
+msgid "Booking.com"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:903
+msgid "Border"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:907
+#: inc/elementor-widgets/travelfic-slider-hero.php:1016
+#: inc/elementor-widgets/travelfic-testimonials.php:923
+msgid "Border Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:934
+msgid "Border Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:230
+#: inc/elementor-widgets/travelfic-cf7-form.php:318
+#: inc/elementor-widgets/travelfic-latest-news.php:427
+#: inc/elementor-widgets/travelfic-slider-hero.php:700
+#: inc/elementor-widgets/travelfic-slider-hero.php:836
+#: inc/elementor-widgets/travelfic-slider-hero.php:921
+#: inc/elementor-widgets/travelfic-slider-hero.php:1030
+#: inc/elementor-widgets/travelfic-team.php:237
+#: inc/elementor-widgets/travelfic-testimonials.php:342
+msgid "Border Radius"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:800
+#: inc/elementor-widgets/travelfic-slider-hero.php:885
+#: inc/elementor-widgets/travelfic-slider-hero.php:994
+msgid "Border Width"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:749
+#: inc/elementor-widgets/travelfic-testimonials.php:835
+msgid "Box Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:971
+msgid "Button"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:468
+#: inc/elementor-widgets/travelfic-hotels.php:573
+#: inc/elementor-widgets/travelfic-slider-hero.php:439
+#: inc/elementor-widgets/travelfic-slider-hero.php:1078
+#: inc/elementor-widgets/travelfic-slider-hero.php:1121
+msgid "Button Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:482
+#: inc/elementor-widgets/travelfic-hotels.php:562
+#: inc/elementor-widgets/travelfic-slider-hero.php:1064
+#: inc/elementor-widgets/travelfic-slider-hero.php:1106
+msgid "Button Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:498
+#: inc/elementor-widgets/travelfic-hotels.php:595
+msgid "Button Hover Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:512
+#: inc/elementor-widgets/travelfic-hotels.php:584
+msgid "Button Hover Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:446
+#: inc/elementor-widgets/travelfic-cf7-form.php:250
+#: inc/elementor-widgets/travelfic-slider-hero.php:515
+msgid "Button Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:456
+#: inc/elementor-widgets/travelfic-hotels.php:550
+msgid "Button Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:181
+msgid "Button URL"
+msgstr ""
+
+#: inc/customizer/customizer-class.php:138
+msgid "Capitalize"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:436
+msgid "Card Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:439
+msgid "Card Gradient"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:314
+#: inc/elementor-widgets/travelfic-hotel-location.php:314
+#: inc/elementor-widgets/travelfic-latest-news.php:654
+#: inc/elementor-widgets/travelfic-tour-destination.php:314
+msgid "Card Overley Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:416
+#: inc/elementor-widgets/travelfic-icon-with-text.php:190
+#: inc/elementor-widgets/travelfic-team.php:218
+msgid "Card Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:210
+msgid "Card Title"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:176
+msgid "Category"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:247
+#: inc/elementor-widgets/travelfic-about-us.php:393
+#: inc/elementor-widgets/travelfic-section-heading.php:152
+msgid "Center"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:182
+msgid "CEO"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:202
+msgid "CEO of VICTORIA"
+msgstr ""
+
+#: inc/class/class-template-list.php:256
+msgid "CF7 Active"
+msgstr ""
+
+#: inc/class/class-template-list.php:250
+msgid "CF7 Install"
+msgstr ""
+
+#: travelfic-toolkit.php:175
+msgid ""
+"Children born after 2010, also known as Generation Alpha, are said to show "
+"the most influence over a family’s travel plans"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:451
+#: inc/elementor-widgets/travelfic-apartment-location.php:490
+#: inc/elementor-widgets/travelfic-cf7-form.php:285
+#: inc/elementor-widgets/travelfic-cf7-form.php:345
+#: inc/elementor-widgets/travelfic-hotel-location.php:451
+#: inc/elementor-widgets/travelfic-hotel-location.php:490
+#: inc/elementor-widgets/travelfic-latest-news.php:548
+#: inc/elementor-widgets/travelfic-latest-news.php:584
+#: inc/elementor-widgets/travelfic-latest-news.php:696
+#: inc/elementor-widgets/travelfic-latest-news.php:739
+#: inc/elementor-widgets/travelfic-latest-news.php:782
+#: inc/elementor-widgets/travelfic-popular-tours.php:205
+#: inc/elementor-widgets/travelfic-popular-tours.php:232
+#: inc/elementor-widgets/travelfic-popular-tours.php:259
+#: inc/elementor-widgets/travelfic-popular-tours.php:278
+#: inc/elementor-widgets/travelfic-section-heading.php:220
+#: inc/elementor-widgets/travelfic-slider-hero.php:499
+#: inc/elementor-widgets/travelfic-slider-hero.php:954
+#: inc/elementor-widgets/travelfic-team.php:273
+#: inc/elementor-widgets/travelfic-team.php:300
+#: inc/elementor-widgets/travelfic-team.php:327
+#: inc/elementor-widgets/travelfic-team.php:347
+#: inc/elementor-widgets/travelfic-testimonials.php:461
+#: inc/elementor-widgets/travelfic-testimonials.php:497
+#: inc/elementor-widgets/travelfic-testimonials.php:522
+#: inc/elementor-widgets/travelfic-testimonials.php:649
+#: inc/elementor-widgets/travelfic-testimonials.php:691
+#: inc/elementor-widgets/travelfic-testimonials.php:733
+#: inc/elementor-widgets/travelfic-tour-destination.php:450
+#: inc/elementor-widgets/travelfic-tour-destination.php:489
+msgid "Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:358
+msgid "Color Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:203
+#: inc/elementor-widgets/travelfic-popular-tours.php:136
+msgid "Comment count"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:405
+#: inc/elementor-widgets/travelfic-latest-news.php:754
+#: inc/elementor-widgets/travelfic-section-heading.php:113
+#: inc/elementor-widgets/travelfic-section-heading.php:204
+#: inc/elementor-widgets/travelfic-team.php:311
+#: inc/elementor-widgets/travelfic-testimonials.php:475
+#: inc/elementor-widgets/travelfic-testimonials.php:705
+msgid "Content"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:329
+#: inc/elementor-widgets/travelfic-icon-with-text.php:421
+#: inc/elementor-widgets/travelfic-testimonials.php:792
+#: inc/elementor-widgets/travelfic-testimonials.php:878
+msgid "Content Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:432
+msgid "Content Color Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:242
+msgid "Content Position"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:415
+msgid "Content Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:317
+msgid "Content Typography"
+msgstr ""
+
+#: inc/class/class-template-list.php:245
+msgid "Customizer Import"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:176
+#: inc/elementor-widgets/travelfic-latest-news.php:200
+#: inc/elementor-widgets/travelfic-latest-news.php:711
+#: inc/elementor-widgets/travelfic-popular-tours.php:133
+msgid "Date"
+msgstr ""
+
+#: inc/customizer-settings.php:80 inc/customizer-settings.php:538
+#: inc/customizer-settings.php:572
+msgid "Default"
+msgstr ""
+
+#: inc/class/class-template-list.php:356
+msgid "Demo Import in progress..."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:197
+#: inc/elementor-widgets/travelfic-hotel-location.php:197
+#: inc/elementor-widgets/travelfic-hotels.php:200
+#: inc/elementor-widgets/travelfic-latest-news.php:216
+#: inc/elementor-widgets/travelfic-popular-tours.php:159
+#: inc/elementor-widgets/travelfic-tour-destination.php:197
+msgid "Descending"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:174
+#: inc/elementor-widgets/travelfic-icon-with-text.php:140
+msgid "Descriptions"
+msgstr ""
+
+#: inc/customizer-settings.php:38 inc/customizer-settings.php:500
+#: inc/elementor-widgets/travelfic-about-us.php:110
+#: inc/elementor-widgets/travelfic-apartment-location.php:118
+#: inc/elementor-widgets/travelfic-hotel-location.php:118
+#: inc/elementor-widgets/travelfic-latest-news.php:139
+#: inc/elementor-widgets/travelfic-slider-hero.php:126
+#: inc/elementor-widgets/travelfic-testimonials.php:108
+#: inc/elementor-widgets/travelfic-tour-destination.php:118
+msgid "Design"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:113
+#: inc/elementor-widgets/travelfic-apartment-location.php:121
+#: inc/elementor-widgets/travelfic-hotel-location.php:121
+#: inc/elementor-widgets/travelfic-latest-news.php:142
+#: inc/elementor-widgets/travelfic-slider-hero.php:129
+#: inc/elementor-widgets/travelfic-testimonials.php:111
+#: inc/elementor-widgets/travelfic-tour-destination.php:121
+msgid "Design 1"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:122
+#: inc/elementor-widgets/travelfic-hotel-location.php:122
+#: inc/elementor-widgets/travelfic-latest-news.php:143
+#: inc/elementor-widgets/travelfic-slider-hero.php:130
+#: inc/elementor-widgets/travelfic-testimonials.php:112
+#: inc/elementor-widgets/travelfic-tour-destination.php:122
+msgid "Design 2"
+msgstr ""
+
+#: inc/customizer-settings.php:98
+msgid "Design 2 Settings"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:180
+#: inc/elementor-widgets/travelfic-testimonials.php:439
+#: inc/elementor-widgets/travelfic-testimonials.php:621
+msgid "Designation"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:778
+#: inc/elementor-widgets/travelfic-testimonials.php:864
+msgid "Designation Color"
+msgstr ""
+
+#: inc/customizer-settings.php:237
+msgid "Desktop"
+msgstr ""
+
+#: inc/customizer-settings.php:239
+msgid "Desktop+Mobile"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:392
+#: inc/elementor-widgets/travelfic-hotel-location.php:392
+#: inc/elementor-widgets/travelfic-tour-destination.php:392
+msgid "Destination Button Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:376
+#: inc/elementor-widgets/travelfic-hotel-location.php:376
+#: inc/elementor-widgets/travelfic-tour-destination.php:376
+msgid "Destination Button Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:423
+#: inc/elementor-widgets/travelfic-hotel-location.php:423
+#: inc/elementor-widgets/travelfic-tour-destination.php:422
+msgid "Destination Button Hover Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:407
+#: inc/elementor-widgets/travelfic-hotel-location.php:407
+#: inc/elementor-widgets/travelfic-tour-destination.php:406
+msgid "Destination Button Hover Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:441
+#: inc/elementor-widgets/travelfic-hotel-location.php:441
+#: inc/elementor-widgets/travelfic-tour-destination.php:440
+msgid "Destination List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:480
+#: inc/elementor-widgets/travelfic-hotel-location.php:480
+#: inc/elementor-widgets/travelfic-tour-destination.php:479
+msgid "Destination Sub List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:158
+#: inc/elementor-widgets/travelfic-tour-destination.php:158
+msgid "Destinations"
+msgstr ""
+
+#: inc/class/class-template-list.php:258
+msgid "Elementor Active"
+msgstr ""
+
+#: inc/class/class-template-list.php:252
+msgid "Elementor Install"
+msgstr ""
+
+#: inc/customizer-settings.php:176
+msgid "Email"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:208
+msgid "Embark on extraordinary voyages and explorations"
+msgstr ""
+
+#: inc/customizer-settings.php:234
+msgid "Enable On"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:244
+msgid "Enable Search Box?"
+msgstr ""
+
+#: inc/customizer-settings.php:113
+msgid "Enable Topbar?"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:248
+msgid "End"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:124
+msgid "Enjoy an extraordinary retreat with us"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:213
+#: inc/elementor-widgets/travelfic-hotels.php:224
+#: inc/elementor-widgets/travelfic-latest-news.php:226
+msgid "Enter Link"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:147
+msgid "Enter Years of Experience"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:175
+#: inc/elementor-widgets/travelfic-about-us.php:189
+msgid "Enter your descriptions"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:135
+#: inc/elementor-widgets/travelfic-apartment-location.php:157
+#: inc/elementor-widgets/travelfic-hotel-location.php:157
+#: inc/elementor-widgets/travelfic-hotels.php:149
+#: inc/elementor-widgets/travelfic-latest-news.php:164
+#: inc/elementor-widgets/travelfic-testimonials.php:135
+#: inc/elementor-widgets/travelfic-tour-destination.php:157
+msgid "Enter your SubTitle"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:123
+#: inc/elementor-widgets/travelfic-apartment-location.php:145
+#: inc/elementor-widgets/travelfic-hotel-location.php:145
+#: inc/elementor-widgets/travelfic-hotels.php:140
+#: inc/elementor-widgets/travelfic-latest-news.php:152
+#: inc/elementor-widgets/travelfic-testimonials.php:123
+#: inc/elementor-widgets/travelfic-tour-destination.php:145
+msgid "Enter your title"
+msgstr ""
+
+#: inc/class/class-template-list.php:90
+msgid "Exit to Dashboard"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:173
+msgid "Explore Now"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:657
+#: inc/elementor-widgets/travelfic-hotel-location.php:657
+#: inc/elementor-widgets/travelfic-tour-destination.php:657
+msgid "Explore now"
+msgstr ""
+
+#: travelfic-toolkit.php:172
+msgid ""
+"Exploring new places together is the main priority for 49% of families "
+"planning to travel"
+msgstr ""
+
+#: inc/customizer-settings.php:596 inc/elementor-widgets/travelfic-team.php:167
+msgid "Facebook"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:130
+#: inc/elementor-widgets/travelfic-hotels.php:678
+#: inc/elementor-widgets/travelfic-hotels.php:686
+msgid "Featured"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:537
+msgid "Features Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:525
+msgid "Features Typography"
+msgstr ""
+
+#: inc/customizer/customizer-class.php:124
+msgid "Font Size (PX)"
+msgstr ""
+
+#: inc/customizer-settings.php:552
+msgid "Footer Copyright Text"
+msgstr ""
+
+#: inc/customizer-settings.php:496 inc/customizer-settings.php:515
+msgid "Footer Design Option"
+msgstr ""
+
+#: inc/customizer-settings.php:535
+msgid "Footer Template Width"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:137
+msgid "Form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:427
+msgid "Form Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:400
+msgid "Form Style"
+msgstr ""
+
+#: travelfic-toolkit.php:169
+msgid ""
+"France is the most visited country in the world, reporting 89.4 million "
+"tourists annually"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:414
+msgid "from "
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:214
+msgid "Full Title"
+msgstr ""
+
+#: inc/customizer-settings.php:81 inc/customizer-settings.php:539
+#: inc/customizer-settings.php:573
+msgid "Full Width"
+msgstr ""
+
+#: inc/customizer-settings.php:150 inc/customizer-settings.php:419
+msgid "Header Background"
+msgstr ""
+
+#: inc/customizer-settings.php:34 inc/customizer-settings.php:54
+msgid "Header Design Option"
+msgstr ""
+
+#: inc/customizer-settings.php:77
+msgid "Header Template Width"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:365
+msgid "Heading Space"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:171
+msgid "Heading Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:126
+msgid "Hide"
+msgstr ""
+
+#: inc/class/class-template-list.php:272
+#: inc/elementor-widgets/travelfic-slider-hero.php:100
+msgid "Hotel"
+msgstr ""
+
+#: inc/class/class-template-list.php:246
+msgid "Hotel Import"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotel-location.php:590
+msgid "Hotel Location Image"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotel-location.php:99
+msgid "Hotel Locations"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:150
+#: inc/elementor-widgets/travelfic-hotels.php:161
+msgid "Hotels"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:108
+msgid "Hotels, Tours & Apartment Section"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:465
+#: inc/elementor-widgets/travelfic-apartment-location.php:504
+#: inc/elementor-widgets/travelfic-hotel-location.php:465
+#: inc/elementor-widgets/travelfic-hotel-location.php:504
+#: inc/elementor-widgets/travelfic-latest-news.php:489
+#: inc/elementor-widgets/travelfic-latest-news.php:599
+#: inc/elementor-widgets/travelfic-slider-hero.php:609
+#: inc/elementor-widgets/travelfic-slider-hero.php:1096
+#: inc/elementor-widgets/travelfic-testimonials.php:536
+#: inc/elementor-widgets/travelfic-testimonials.php:823
+#: inc/elementor-widgets/travelfic-tour-destination.php:464
+#: inc/elementor-widgets/travelfic-tour-destination.php:503
+msgid "Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:187
+msgid "How many items?"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://themefic.com"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://themefic.com/"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:120
+#: inc/elementor-widgets/travelfic-testimonials.php:511
+msgid "Icon"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:327
+#: inc/elementor-widgets/travelfic-testimonials.php:806
+#: inc/elementor-widgets/travelfic-testimonials.php:945
+msgid "Icon Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:956
+msgid "Icon Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:350
+msgid "Icon Outter Gradient 1"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:358
+msgid "Icon Outter Gradient 2"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:302
+msgid "Icon outter height"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:277
+msgid "Icon outter Width"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:251
+msgid "Icon Size)"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:241
+#: inc/elementor-widgets/travelfic-popular-tours.php:270
+msgid "Icon Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:107
+#: inc/elementor-widgets/travelfic-testimonials.php:160
+msgid "Image"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:215
+#: inc/elementor-widgets/travelfic-hotel-location.php:215
+#: inc/elementor-widgets/travelfic-tour-destination.php:215
+msgid "Image Radius"
+msgstr ""
+
+#: inc/class/class-template-list.php:215
+msgid "Import Content"
+msgstr ""
+
+#: inc/class/class-template-list.php:140
+msgid "Import Customizer Settings"
+msgstr ""
+
+#: inc/class/class-template-list.php:308
+msgid "Import Demo"
+msgstr ""
+
+#: inc/class/class-template-list.php:200
+msgid "Import Menu"
+msgstr ""
+
+#: inc/class/class-template-list.php:155
+msgid "Import Tourfic Settings"
+msgstr ""
+
+#: inc/class/class-template-list.php:185
+msgid "Import Widgets"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:178
+msgid "Input Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:161
+msgid "Input Fields"
+msgstr ""
+
+#: inc/customizer-settings.php:648
+msgid "Instagram"
+msgstr ""
+
+#: travelfic-toolkit.php:188
+msgid "Install failed"
+msgstr ""
+
+#: travelfic-toolkit.php:231
+msgid "Install Now"
+msgstr ""
+
+#: inc/class/class-template-list.php:170
+msgid "Install Required Plugins"
+msgstr ""
+
+#: travelfic-toolkit.php:186
+msgid "Installed"
+msgstr ""
+
+#: inc/class/class-template-list.php:366
+msgid "Installing required plugins..."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:153
+msgid "It is Time To Explore The World"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:183
+#: inc/elementor-widgets/travelfic-hotel-location.php:183
+#: inc/elementor-widgets/travelfic-tour-destination.php:183
+msgid "Item Limit"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:182
+#: inc/elementor-widgets/travelfic-popular-tours.php:170
+#: inc/elementor-widgets/travelfic-team.php:211
+#: inc/elementor-widgets/travelfic-testimonials.php:313
+msgid "Item List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:187
+#: inc/elementor-widgets/travelfic-popular-tours.php:146
+msgid "Item Per page"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:99
+#: inc/elementor-widgets/travelfic-latest-news.php:186
+msgid "Items"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:174
+msgid "John Doe"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:189
+msgid "Label Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:389
+#: inc/elementor-widgets/travelfic-section-heading.php:148
+msgid "Left"
+msgstr ""
+
+#: inc/customizer/customizer-class.php:129
+msgid "Line Height (PX)"
+msgstr ""
+
+#: inc/customizer-settings.php:635 inc/elementor-widgets/travelfic-team.php:175
+msgid "Linkedin"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:218
+#: inc/elementor-widgets/travelfic-testimonials.php:328
+#: inc/elementor-widgets/travelfic-testimonials.php:564
+msgid "List Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:229
+msgid "List Background Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:372
+msgid "List Item Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:383
+msgid "List Item Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:360
+msgid "List Item Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:320
+msgid "List Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:511
+msgid "Location Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:499
+msgid "Location Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotel-location.php:158
+msgid "Locations"
+msgstr ""
+
+#: inc/customizer/customizer-header-rander.php:254
+msgid "Login"
+msgstr ""
+
+#: inc/customizer-settings.php:202
+msgid "Login URL"
+msgstr ""
+
+#: inc/customizer/customizer-header-rander.php:214
+msgid "Logo"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:190
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
+"tempor incididunt ut labore"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:116
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:142
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, "
+"luctus nec ullamcorper mattis, pulvinar dapibus leo."
+msgstr ""
+
+#: inc/customizer/customizer-class.php:140
+msgid "Lowercase"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:230
+#: inc/elementor-widgets/travelfic-slider-hero.php:526
+msgid "Margin"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:136
+msgid "Member Designation"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:144
+msgid "Member Details"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:114
+msgid "Member Image"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:128
+msgid "Member Name"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:198
+msgid "Members List"
+msgstr ""
+
+#: inc/customizer-settings.php:313 inc/customizer-settings.php:431
+msgid "Menu Color"
+msgstr ""
+
+#: inc/customizer-settings.php:326 inc/customizer-settings.php:443
+msgid "Menu Hover Color"
+msgstr ""
+
+#: inc/class/class-template-list.php:254
+msgid "Menu Import"
+msgstr ""
+
+#: inc/customizer-settings.php:275 inc/customizer-settings.php:279
+msgid "Menu Settings"
+msgstr ""
+
+#: inc/customizer-settings.php:298
+msgid "Menu Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:562
+#: inc/elementor-widgets/travelfic-latest-news.php:624
+msgid "Meta"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:216
+msgid "Meta Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:170
+msgid "Middle item gap"
+msgstr ""
+
+#: inc/customizer-settings.php:238
+msgid "Mobile"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:178
+#: inc/elementor-widgets/travelfic-latest-news.php:202
+#: inc/elementor-widgets/travelfic-popular-tours.php:135
+msgid "Modified date"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:588
+msgid "More"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:172
+msgid "Name"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:967
+msgid "Nav Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:978
+msgid "Nav Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:895
+msgid "Nav Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:488
+msgid "Navigation "
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:405
+msgid "News List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:146
+msgid "Next level of living"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:152
+msgid "No"
+msgstr ""
+
+#: inc/customizer/customizer-class.php:137
+msgid "None"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:453
+#: inc/elementor-widgets/travelfic-slider-hero.php:557
+#: inc/elementor-widgets/travelfic-slider-hero.php:1055
+msgid "Normal"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:337
+msgid "Notice"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:194
+#: inc/elementor-widgets/travelfic-hotel-location.php:194
+#: inc/elementor-widgets/travelfic-hotels.php:197
+#: inc/elementor-widgets/travelfic-latest-news.php:213
+#: inc/elementor-widgets/travelfic-popular-tours.php:156
+#: inc/elementor-widgets/travelfic-tour-destination.php:194
+msgid "Order"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:173
+#: inc/elementor-widgets/travelfic-latest-news.php:197
+#: inc/elementor-widgets/travelfic-popular-tours.php:130
+msgid "Order by"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:300
+#: inc/elementor-widgets/travelfic-cf7-form.php:211
+#: inc/elementor-widgets/travelfic-cf7-form.php:266
+#: inc/elementor-widgets/travelfic-hotel-location.php:300
+#: inc/elementor-widgets/travelfic-hotels.php:424
+#: inc/elementor-widgets/travelfic-icon-with-text.php:199
+#: inc/elementor-widgets/travelfic-latest-news.php:412
+#: inc/elementor-widgets/travelfic-latest-news.php:640
+#: inc/elementor-widgets/travelfic-popular-tours.php:177
+#: inc/elementor-widgets/travelfic-slider-hero.php:323
+#: inc/elementor-widgets/travelfic-slider-hero.php:345
+#: inc/elementor-widgets/travelfic-slider-hero.php:540
+#: inc/elementor-widgets/travelfic-slider-hero.php:678
+#: inc/elementor-widgets/travelfic-slider-hero.php:859
+#: inc/elementor-widgets/travelfic-team.php:226
+#: inc/elementor-widgets/travelfic-testimonials.php:388
+#: inc/elementor-widgets/travelfic-testimonials.php:550
+#: inc/elementor-widgets/travelfic-tour-destination.php:300
+msgid "Padding"
+msgstr ""
+
+#: inc/customizer-settings.php:569
+msgid "Page Template Width"
+msgstr ""
+
+#: inc/class/class-template-list.php:248
+msgid "Pages Import"
+msgstr ""
+
+#: travelfic-toolkit.php:171
+msgid ""
+"Paris, London, and Rome are the top 3 trending and most preferred travel "
+"destinations (based on the latest data)"
+msgstr ""
+
+#: inc/customizer-settings.php:163
+msgid "Phone Number"
+msgstr ""
+
+#: inc/customizer-settings.php:661
+msgid "Pinterest"
+msgstr ""
+
+#: travelfic-toolkit.php:185
+msgid "Plugin Installing & Activating..."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:108
+msgid "Popular Tours"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:184
+#: inc/elementor-widgets/travelfic-hotel-location.php:184
+#: inc/elementor-widgets/travelfic-tour-destination.php:184
+msgid "Post Per Page"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:157
+#: inc/elementor-widgets/travelfic-popular-tours.php:116
+msgid "Post Type"
+msgstr ""
+
+#: inc/class/class-template-list.php:299
+msgid "Preview"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:243
+msgid "Price"
+msgstr ""
+
+#: inc/customizer/customizer-header-rander.php:244
+msgid "Profile"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:188
+msgid "Quotes"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:357
+msgid "Quotes Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:345
+msgid "Quotes Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:204
+#: inc/elementor-widgets/travelfic-popular-tours.php:137
+msgid "Random"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:197
+msgid "Rattings"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:212
+msgid "Read More URL"
+msgstr ""
+
+#: inc/customizer-settings.php:674
+msgid "Reddit"
+msgstr ""
+
+#: inc/customizer/customizer-header-rander.php:250
+msgid "Register"
+msgstr ""
+
+#: inc/customizer-settings.php:189
+msgid "Register URL"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:160
+#: inc/elementor-widgets/travelfic-slider-hero.php:191
+msgid "Repeater List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:461
+msgid "Review Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:188
+msgid "Review Details"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:449
+msgid "Review Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:397
+#: inc/elementor-widgets/travelfic-section-heading.php:156
+msgid "Right"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:236
+#: inc/elementor-widgets/travelfic-slider-hero.php:667
+msgid "Search Box"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:984
+msgid "Search Button Typo"
+msgstr ""
+
+#: inc/class/class-template-list.php:262
+msgid "Search for templates"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:874
+msgid "Search Form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:656
+msgid "Search Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:722
+msgid "Search Tab"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:734
+msgid "Search Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:131
+#: inc/elementor-widgets/travelfic-hotel-location.php:131
+#: inc/elementor-widgets/travelfic-hotels.php:116
+#: inc/elementor-widgets/travelfic-latest-news.php:252
+#: inc/elementor-widgets/travelfic-testimonials.php:235
+#: inc/elementor-widgets/travelfic-tour-destination.php:131
+msgid "Section Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:324
+#: inc/elementor-widgets/travelfic-latest-news.php:345
+msgid "Section Button Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:312
+#: inc/elementor-widgets/travelfic-latest-news.php:359
+msgid "Section Button Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:347
+#: inc/elementor-widgets/travelfic-latest-news.php:374
+msgid "Section Button Hover Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:335
+#: inc/elementor-widgets/travelfic-latest-news.php:388
+msgid "Section Button Hover Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:300
+#: inc/elementor-widgets/travelfic-latest-news.php:330
+msgid "Section Button Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:225
+msgid "Section Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:240
+#: inc/elementor-widgets/travelfic-latest-news.php:245
+msgid "Section Styles"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:286
+#: inc/elementor-widgets/travelfic-hotel-location.php:286
+#: inc/elementor-widgets/travelfic-hotels.php:287
+#: inc/elementor-widgets/travelfic-latest-news.php:314
+#: inc/elementor-widgets/travelfic-testimonials.php:297
+#: inc/elementor-widgets/travelfic-tour-destination.php:286
+msgid "Section Subtitle Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:271
+#: inc/elementor-widgets/travelfic-hotel-location.php:271
+#: inc/elementor-widgets/travelfic-hotels.php:275
+#: inc/elementor-widgets/travelfic-latest-news.php:299
+#: inc/elementor-widgets/travelfic-testimonials.php:282
+#: inc/elementor-widgets/travelfic-tour-destination.php:271
+msgid "Section Subtitle Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:255
+#: inc/elementor-widgets/travelfic-hotel-location.php:255
+#: inc/elementor-widgets/travelfic-hotels.php:262
+#: inc/elementor-widgets/travelfic-latest-news.php:283
+#: inc/elementor-widgets/travelfic-testimonials.php:266
+#: inc/elementor-widgets/travelfic-tour-destination.php:255
+msgid "Section Title Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:240
+#: inc/elementor-widgets/travelfic-hotel-location.php:240
+#: inc/elementor-widgets/travelfic-hotels.php:250
+#: inc/elementor-widgets/travelfic-latest-news.php:268
+#: inc/elementor-widgets/travelfic-testimonials.php:251
+#: inc/elementor-widgets/travelfic-tour-destination.php:240
+msgid "Section Title Typography"
+msgstr ""
+
+#: travelfic-toolkit.php:243
+msgid "See Library"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:114
+msgid "Select a form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:169
+msgid "Select Apartment Location"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:144
+msgid "Select Form"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotel-location.php:169
+msgid "Select Hotel Location"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-tour-destination.php:169
+msgid "Select Tour Destinations"
+msgstr ""
+
+#: inc/customizer-settings.php:37 inc/customizer-settings.php:499
+msgid "Settings"
+msgstr ""
+
+#: inc/class/class-template-list.php:244
+msgid "Settings Import"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:125
+msgid "Show"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:123
+msgid "Show Suffix"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:361
+#: inc/elementor-widgets/travelfic-hotel-location.php:361
+#: inc/elementor-widgets/travelfic-tour-destination.php:361
+msgid "Single Button Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:345
+#: inc/elementor-widgets/travelfic-hotel-location.php:345
+#: inc/elementor-widgets/travelfic-tour-destination.php:345
+msgid "Single Destination Title"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:330
+#: inc/elementor-widgets/travelfic-hotel-location.php:330
+#: inc/elementor-widgets/travelfic-tour-destination.php:330
+msgid "Single Destination Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:266
+msgid "Slider Control"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:274
+msgid "Slider Height(px)"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:138
+msgid "Slider Image"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:118
+#: inc/elementor-widgets/travelfic-testimonials.php:98
+msgid "Slider Items"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:305
+msgid "Slider Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:161
+msgid "Slider Subtitle"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:171
+msgid "Slider Text"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:151
+msgid "Slider Title"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:340
+msgid "Social Icons"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:157
+msgid "Social Media"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:213
+msgid "Split"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:246
+msgid "Start"
+msgstr ""
+
+#: inc/customizer-settings.php:220
+msgid "Sticky Settings"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:233
+#: inc/elementor-widgets/travelfic-apartment-location.php:208
+#: inc/elementor-widgets/travelfic-cf7-form.php:154
+#: inc/elementor-widgets/travelfic-hotel-location.php:208
+#: inc/elementor-widgets/travelfic-tour-destination.php:208
+msgid "Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:284
+msgid "Sub Title"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:452
+msgid "Sub title"
+msgstr ""
+
+#: inc/customizer-settings.php:364 inc/customizer-settings.php:455
+msgid "Submenu Background"
+msgstr ""
+
+#: inc/customizer-settings.php:377 inc/customizer-settings.php:467
+msgid "Submenu Text Color"
+msgstr ""
+
+#: inc/customizer-settings.php:390 inc/customizer-settings.php:479
+msgid "Submenu Text Hover Color"
+msgstr ""
+
+#: inc/customizer-settings.php:347
+msgid "Submenu Typography"
+msgstr ""
+
+#: inc/class/class-template-list.php:230
+msgid "Submit & Build My Website"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:106
+msgid "Subscribe to "
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:134
+#: inc/elementor-widgets/travelfic-apartment-location.php:156
+#: inc/elementor-widgets/travelfic-hotel-location.php:156
+#: inc/elementor-widgets/travelfic-hotels.php:148
+#: inc/elementor-widgets/travelfic-latest-news.php:163
+#: inc/elementor-widgets/travelfic-testimonials.php:134
+#: inc/elementor-widgets/travelfic-tour-destination.php:156
+msgid "SubTitle"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:301
+#: inc/elementor-widgets/travelfic-slider-hero.php:474
+msgid "Subtitle Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:289
+msgid "Subtitle Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:241
+msgid "Suffix"
+msgstr ""
+
+#: inc/class/class-template-list.php:82
+msgid "Sync Library"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:758
+msgid "Tab Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:822
+msgid "Tab Border Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:744
+msgid "Tab Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:105
+msgid "Team Members"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:147
+msgid "Testimonial Background"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:136
+msgid "Testimonials"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:212
+msgid "Testimonials List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:577
+#: inc/elementor-widgets/travelfic-slider-hero.php:619
+msgid "Text Color"
+msgstr ""
+
+#: inc/customizer/customizer-class.php:134
+msgid "Text Transform"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:95
+msgid "TFT Heading"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:141
+msgid "The best hotels to explore"
+msgstr ""
+
+#: travelfic-toolkit.php:170
+msgid ""
+"The shortest flight in the world is a 1 minute 14-second connecting flight "
+"between Westray and Papa Westray in Scotland’s Orkney Islands"
+msgstr ""
+
+#. Author of the plugin
+msgid "themefic"
+msgstr ""
+
+#: inc/customizer-settings.php:536
+msgid "This is a Footer Template Width."
+msgstr ""
+
+#: inc/customizer-settings.php:78
+msgid "This is a Header Template Width."
+msgstr ""
+
+#: inc/customizer-settings.php:570
+msgid "This is a Page Template Width."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:122
+#: inc/elementor-widgets/travelfic-apartment-location.php:144
+#: inc/elementor-widgets/travelfic-apartment-location.php:229
+#: inc/elementor-widgets/travelfic-hotel-location.php:144
+#: inc/elementor-widgets/travelfic-hotel-location.php:229
+#: inc/elementor-widgets/travelfic-hotels.php:139
+#: inc/elementor-widgets/travelfic-hotels.php:177
+#: inc/elementor-widgets/travelfic-icon-with-text.php:131
+#: inc/elementor-widgets/travelfic-icon-with-text.php:367
+#: inc/elementor-widgets/travelfic-latest-news.php:151
+#: inc/elementor-widgets/travelfic-latest-news.php:201
+#: inc/elementor-widgets/travelfic-latest-news.php:526
+#: inc/elementor-widgets/travelfic-latest-news.php:610
+#: inc/elementor-widgets/travelfic-latest-news.php:668
+#: inc/elementor-widgets/travelfic-popular-tours.php:134
+#: inc/elementor-widgets/travelfic-popular-tours.php:188
+#: inc/elementor-widgets/travelfic-section-heading.php:103
+#: inc/elementor-widgets/travelfic-section-heading.php:178
+#: inc/elementor-widgets/travelfic-slider-hero.php:337
+#: inc/elementor-widgets/travelfic-team.php:257
+#: inc/elementor-widgets/travelfic-testimonials.php:122
+#: inc/elementor-widgets/travelfic-testimonials.php:402
+#: inc/elementor-widgets/travelfic-testimonials.php:578
+#: inc/elementor-widgets/travelfic-tour-destination.php:144
+#: inc/elementor-widgets/travelfic-tour-destination.php:229
+msgid "Title"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:273
+#: inc/elementor-widgets/travelfic-hotels.php:486
+#: inc/elementor-widgets/travelfic-icon-with-text.php:383
+#: inc/elementor-widgets/travelfic-section-heading.php:194
+#: inc/elementor-widgets/travelfic-slider-hero.php:387
+#: inc/elementor-widgets/travelfic-testimonials.php:425
+#: inc/elementor-widgets/travelfic-testimonials.php:607
+#: inc/elementor-widgets/travelfic-testimonials.php:764
+#: inc/elementor-widgets/travelfic-testimonials.php:850
+msgid "Title Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:394
+msgid "Title Color Hover"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:377
+msgid "Title Style"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:134
+msgid "Title Suffix"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:257
+msgid "Title Suffix Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:261
+#: inc/elementor-widgets/travelfic-hotels.php:474
+msgid "Title Typography"
+msgstr ""
+
+#: inc/class/class-template-list.php:136 inc/class/class-template-list.php:149
+#: inc/class/class-template-list.php:164 inc/class/class-template-list.php:179
+#: inc/class/class-template-list.php:194 inc/class/class-template-list.php:209
+#: inc/class/class-template-list.php:224
+msgid "To ensure a perfect demo installation, please confirm the followings"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-tour-destination.php:146
+msgid "Top destinations"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotel-location.php:146
+msgid "Top Hotel Locations"
+msgstr ""
+
+#: inc/customizer-settings.php:125
+msgid "Topbar Background Color"
+msgstr ""
+
+#: inc/customizer-settings.php:138
+msgid "Topbar Text Color"
+msgstr ""
+
+#: inc/class/class-template-list.php:271
+#: inc/elementor-widgets/travelfic-slider-hero.php:101
+msgid "Tour"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:590
+#: inc/elementor-widgets/travelfic-tour-destination.php:590
+msgid "Tour Destination Image"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-tour-destination.php:99
+msgid "Tour Destinations"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:350
+msgid "Tour Image"
+msgstr ""
+
+#: inc/class/class-template-list.php:247
+msgid "Tour Import"
+msgstr ""
+
+#: inc/class/class-template-list.php:255
+msgid "Tourfic Active"
+msgstr ""
+
+#: inc/class/class-template-list.php:249
+msgid "Tourfic Install"
+msgstr ""
+
+#: inc/class/class-template-list.php:415
+msgid "Tourfic Settings"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:162
+#: inc/elementor-widgets/travelfic-popular-tours.php:120
+msgid "Tours"
+msgstr ""
+
+#: inc/customizer-settings.php:259
+msgid "Transparent Header Logo"
+msgstr ""
+
+#: inc/customizer-settings.php:405 inc/customizer-settings.php:409
+msgid "Transparent Header Settings"
+msgstr ""
+
+#: travelfic-toolkit.php:173
+msgid ""
+"Travelers usually tend to book accommodation and flight tickets roughly "
+"three months prior to the trip date"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:27
+msgid "Travelfic About Us"
+msgstr ""
+
+#: inc/elementor-widgets.php:112
+msgid "Travelfic Addons"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-apartment-location.php:27
+msgid "Travelfic Apartment Location"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:27
+msgid "Travelfic CF7 Forms"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-section-heading.php:27
+msgid "Travelfic Heading"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotel-location.php:27
+msgid "Travelfic Hotel Location"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:30
+msgid "Travelfic Hotels, Tours & Apartment"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:27
+msgid "Travelfic Icon With Text"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:27
+msgid "Travelfic Latest News"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-popular-tours.php:30
+msgid "Travelfic Popular Tours"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:29
+msgid "Travelfic Slider Hero"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-team.php:30
+msgid "Travelfic Team Members"
+msgstr ""
+
+#: inc/class/class-template-list.php:44 inc/class/class-template-list.php:45
+msgid "Travelfic Template List"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:27
+msgid "Travelfic Testimonials"
+msgstr ""
+
+#. Name of the plugin
+msgid "Travelfic Toolkit"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Travelfic Toolkit allows you to add extra functionality to the Travelfic "
+"WordPress theme's Customizer, Widgets Section, Single Tour, Single Hotel "
+"area etc. This toolkit improves the overall design and performance of your "
+"hotel or travel booking website developed using the Travelfic theme."
+msgstr ""
+
+#. %s is replaced with "theme name & link"
+#: travelfic-toolkit.php:210 travelfic-toolkit.php:229
+#, php-format
+msgid "Travelfic Toolkit requires %s to be activated."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-tour-destination.php:27
+msgid "Travelfic Tour Destinations"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:106
+msgid "TravelPayouts Flight"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:107
+msgid "TravelPayouts Hotel"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-slider-hero.php:246
+msgid "Turn On to active the Searchbox"
+msgstr ""
+
+#: inc/customizer-settings.php:609 inc/elementor-widgets/travelfic-team.php:183
+#: inc/elementor-widgets/travelfic-team.php:191
+msgid "Twitter"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:126
+#: inc/elementor-widgets/travelfic-slider-hero.php:255
+msgid "Type"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-cf7-form.php:171
+#: inc/elementor-widgets/travelfic-cf7-form.php:259
+#: inc/elementor-widgets/travelfic-latest-news.php:538
+#: inc/elementor-widgets/travelfic-latest-news.php:574
+#: inc/elementor-widgets/travelfic-latest-news.php:680
+#: inc/elementor-widgets/travelfic-latest-news.php:723
+#: inc/elementor-widgets/travelfic-latest-news.php:766
+#: inc/elementor-widgets/travelfic-popular-tours.php:198
+#: inc/elementor-widgets/travelfic-popular-tours.php:225
+#: inc/elementor-widgets/travelfic-popular-tours.php:252
+#: inc/elementor-widgets/travelfic-section-heading.php:187
+#: inc/elementor-widgets/travelfic-section-heading.php:213
+#: inc/elementor-widgets/travelfic-section-heading.php:250
+#: inc/elementor-widgets/travelfic-slider-hero.php:360
+#: inc/elementor-widgets/travelfic-slider-hero.php:371
+#: inc/elementor-widgets/travelfic-slider-hero.php:411
+#: inc/elementor-widgets/travelfic-slider-hero.php:465
+#: inc/elementor-widgets/travelfic-slider-hero.php:944
+#: inc/elementor-widgets/travelfic-team.php:267
+#: inc/elementor-widgets/travelfic-team.php:294
+#: inc/elementor-widgets/travelfic-team.php:321
+#: inc/elementor-widgets/travelfic-testimonials.php:415
+#: inc/elementor-widgets/travelfic-testimonials.php:452
+#: inc/elementor-widgets/travelfic-testimonials.php:488
+#: inc/elementor-widgets/travelfic-testimonials.php:591
+#: inc/elementor-widgets/travelfic-testimonials.php:634
+#: inc/elementor-widgets/travelfic-testimonials.php:676
+#: inc/elementor-widgets/travelfic-testimonials.php:718
+msgid "Typography"
+msgstr ""
+
+#: inc/customizer/customizer-class.php:139
+msgid "Uppercase"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:693
+#: inc/elementor-widgets/travelfic-latest-news.php:853
+msgid "View All"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:223
+#: inc/elementor-widgets/travelfic-latest-news.php:225
+msgid "View ALL URL"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-hotels.php:923
+#: inc/elementor-widgets/travelfic-hotels.php:1138
+msgid "View details"
+msgstr ""
+
+#: inc/class/class-template-list.php:406
+msgid "Visit Your Website"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-latest-news.php:153
+msgid "We share our experiences, tips and travel stories to inspire"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:176
+msgid ""
+"Welcome to VICTORIA, where comfort meets elegance. Personalized service and "
+"attention to detail ensure a truly exceptional stay. Stay in luxury, dine "
+"exquisitely, and relax in the spa. With us, you can create unforgettable "
+"memories.\n"
+"\n"
+"                \"Creating memorable moments is our passion. Welcome to our "
+"hotel, where comfort, elegance, and genuine hospitality meet.\""
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-testimonials.php:124
+msgid "What client’s say?"
+msgstr ""
+
+#: inc/class/class-template-list.php:242
+msgid "What kind of travel site do you envision creating?"
+msgstr ""
+
+#: inc/class/class-template-list.php:253
+msgid "Widget Import"
+msgstr ""
+
+#: inc/class/class-template-list.php:257
+msgid "Woocommerce Active"
+msgstr ""
+
+#: inc/class/class-template-list.php:251
+msgid "Woocommerce Install"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:146
+msgid "Years of Experience"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:432
+msgid "Years of Experience Color"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-about-us.php:426
+msgid "Years of Experience Typography"
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:151
+msgid "Yes"
+msgstr ""
+
+#: inc/customizer-settings.php:553
+msgid "You are able to change footer Copyright text."
+msgstr ""
+
+#: inc/elementor-widgets/travelfic-icon-with-text.php:133
+msgid "Your Heading Text Here"
+msgstr ""
+
+#: inc/customizer-settings.php:622
+msgid "Youtube"
+msgstr ""
+
+#: inc/customizer-settings.php:546
+msgid ""
+"© Copyright 2023 Tourfic Development Site by Themefic All Rights Reserved."
+msgstr ""

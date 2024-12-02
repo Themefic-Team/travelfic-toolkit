@@ -1,0 +1,244 @@
+.footer {
+  padding: 72px 0;
+  background-image: url(../images/footer-banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: $color-white;
+  font-family: $font-ubuntu;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.38px;
+  @media #{$max1199} {
+    padding: 60px 0;
+  }
+  @media #{$max991} {
+    padding: 50px 0;
+  }
+  @media #{$max767} {
+    padding: 40px 0;
+  }
+  &__widget {
+    &__row {
+      @include d-flex();
+      @include justify-content(space-between);
+      @media #{$max991} {
+        gap: 30px;
+      }
+      @media #{$max767} {
+        gap: 20px;
+      }
+      @media #{$max575} {
+        flex-direction: column;
+      }
+    }
+  }
+  &__title {
+    font-family: $font-ubuntu;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 27.58px;
+    padding-bottom: 15px;
+    margin-bottom: 32px;
+    position: relative;
+    @media #{$max991} {
+      font-size: 20px;
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+    }
+    @media #{$max767} {
+      font-size: 18px;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: $color-white;
+    }
+  }
+  &__menu {
+    a {
+      font-family: $font-ubuntu;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: normal;
+      color: $color-white;
+      display: block;
+     padding-bottom: 15px;
+      @include transition(0.2s);
+     
+      @media #{$max767} {
+        font-size: 15px;
+        padding-bottom: 10px;
+      }
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__column {
+    &--contact {
+      @include d-flex();
+      flex-direction: column;
+      gap: 32px;
+      max-width: 205px;
+      font-family: $font-ubuntu;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      @media #{$max991} {
+        gap: 20px;
+      }
+      @media #{$max767} {
+        font-size: 15px;
+        line-height: 24px;
+      }
+      @media #{$max575} {
+        max-width: 100%;
+      }
+      a {
+        color: $color-white;
+      }
+    }
+    &--title {
+      margin-bottom: 0px;
+      padding-bottom: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &__logo {
+    max-width: 205px;
+  }
+  &__form {
+    @include d-flex();
+    flex-direction: column;
+    gap: 16px;
+    &__input {
+      min-width: 473px;
+      width: 100%;
+      min-height: 52px;
+      background: #203453;
+      @include bd-radius(1000px);
+      padding: 16px 32px;
+      color: $color-white;
+      font-family: $font-ubuntu;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 18.38px;
+      @media #{$max1199} {
+        min-width: 100%;
+      }
+      @media #{$max767} {
+       
+        min-height: 45px;
+        padding: 10px 25px;
+        font-size: 15px;
+      }
+      &::placeholder {
+        color: $color-white;
+      }
+    }
+    &__button {
+      width: fit-content;
+      min-width: 174px;
+      padding: 0;
+      min-height: 50px;
+      background: $color-secondary;
+      @media #{$max575} {
+        min-height: 45px;
+        font-size: 15px;
+      }
+      &:hover {
+        background: $color-primary;
+      }
+    }
+  }
+}
+
+// footer bottom
+.footer-bottom {
+  font-family: $font-ubuntu;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13.79px;
+  color: $color-white;
+  overflow: hidden;
+  &__inner {
+    @include d-flex();
+    align-items: center;
+    @media #{$max767} {
+      align-items: inherit;
+    }
+  }
+  &__copyright {
+    background: $color-dark-blue3;
+    flex: 2;
+    padding: 16px 0;
+    text-align: center;
+    position: relative;
+    @media #{$max767} {
+      flex: 1;
+      padding: 12px 5px;
+      padding-left: 0;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      right: 100%;
+      padding-right: 100%;
+      top: 0;
+      background: $color-dark-blue3;
+      width: 100vw;
+      height: 100%;
+      z-index: 99;
+    }
+  }
+  &__menu {
+    background: $color-secondary;
+    flex: 0.8;
+    padding: 16px 0;
+    text-align: center;
+    position: relative;
+    @media #{$max767} {
+      flex: 1;
+      padding: 12px 5px;
+      padding-right: 0;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      padding-right: 100%;
+      top: 0;
+      background: $color-secondary;
+      width: 100vw;
+      height: 100%;
+      z-index: 99;
+    }
+  }
+  &__nav {
+    @include d-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    gap: 22px;
+    @media #{$max767} {
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    a {
+      color: $color-white;
+    }
+  }
+}

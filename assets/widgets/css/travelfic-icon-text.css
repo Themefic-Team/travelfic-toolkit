@@ -1,0 +1,89 @@
+.tft-icon-text-wrapper .icon_outter {
+  background: radial-gradient(
+    52.1% 52.66% at 80.79% 21.03%,
+    #f88664 6.09%,
+    #ff4e18 100%
+  );
+  box-shadow: 0px 18px 80px rgba(0, 0, 0, 0.12);
+  width: 126px;
+  height: 126px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100% 0% 100% 100%;
+  margin: 0 auto;
+}
+.tft-icon-text-wrapper .tft-icon-text-items {
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+.tft-icon-text-wrapper .tft-icon-text-items .tft-icon-text-single {
+  flex-basis: 31.33%;
+}
+.tft-icon-text-wrapper img {
+  height: 48px;
+  width: 48px;
+  object-fit: cover;
+}
+.tft-icon-text-wrapper .tft-icon-text-single {
+  border: 1px solid #ededf0;
+  box-shadow: 0px 32px 64px rgba(90, 91, 106, 0.08);
+  border-radius: 16px;
+  transition: all 0.6s ease;
+  cursor: pointer;
+}
+.tft-icon-text-wrapper .tft-icon-text-single:hover {
+  background: #1d2a3b;
+  transition: all 0.6s ease;
+  border-radius: 20px;
+}
+.tft-icon-text-wrapper .tft-icon-text-single:hover h3 {
+  color: #fff;
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single i {
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single:hover i {
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single:hover p {
+  color: #fff;
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single h3 {
+  margin-top: 20px;
+  transition: all 0.6s ease;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.tft-icon-text-wrapper .tft-icon-text-single h3:hover {
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single p {
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single p:hover {
+  transition: all 0.6s ease;
+}
+.tft-icon-text-wrapper .tft-icon-text-single-inner {
+  padding: 64px 40px;
+}
+
+@media (max-width: 767px) {
+  .tft-icon-text-wrapper .tft-icon-text-items {
+    row-gap: 20px;
+  }
+  .tft-icon-text-wrapper .tft-icon-text-items .tft-icon-text-single {
+    flex-basis: 100%;
+    margin: 10px 0px !important;
+  }
+  .tft-icon-text-wrapper .tft-icon-text-items .icon_outter {
+    width: 90px;
+    height: 90px;
+  }
+  .tft-icon-text-wrapper .tft-icon-text-items img {
+    height: 35px;
+    width: 35px;
+  }
+}
