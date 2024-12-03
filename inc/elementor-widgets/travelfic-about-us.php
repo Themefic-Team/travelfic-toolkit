@@ -1,5 +1,6 @@
 <?php
-class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
+class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
+{
 
     /**
      * Get widget name.
@@ -10,7 +11,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access public
      * @return string Widget name.
      */
-    public function get_name() {
+    public function get_name()
+    {
         return 'tft-about-us';
     }
 
@@ -23,8 +25,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access public
      * @return string Widget title.
      */
-    public function get_title() {
-        return esc_html__( 'Travelfic About Us', 'travelfic-toolkit' );
+    public function get_title()
+    {
+        return esc_html__('Travelfic About Us', 'travelfic-toolkit');
     }
 
     /**
@@ -36,7 +39,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access public
      * @return string Widget icon.
      */
-    public function get_icon() {
+    public function get_icon()
+    {
         return 'eicon-call-to-action';
     }
 
@@ -49,7 +53,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access public
      * @return string Widget help URL.
      */
-    public function get_custom_help_url() {
+    public function get_custom_help_url()
+    {
         return 'https://developers.elementor.com/docs/widgets/';
     }
 
@@ -62,7 +67,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access public
      * @return array Widget categories.
      */
-    public function get_categories() {
+    public function get_categories()
+    {
         return ['travelfic'];
     }
 
@@ -75,11 +81,13 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @access public
      * @return array Widget keywords.
      */
-    public function get_keywords() {
+    public function get_keywords()
+    {
         return ['travelfic', 'about', 'about us', 'tft'];
     }
 
-    public function get_style_depends(){
+    public function get_style_depends()
+    {
         return ['travelfic-toolkit-about-us'];
     }
 
@@ -91,12 +99,13 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
      * @since 1.0.0
      * @access protected
      */
-    protected function register_controls() {
+    protected function register_controls()
+    {
 
         $this->start_controls_section(
             'tft-about-us',
             [
-                'label' => __( 'About Us', 'travelfic-toolkit' ),
+                'label' => __('About Us', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -107,54 +116,55 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             'tft_about_style',
             [
                 'type'    => \Elementor\Controls_Manager::SELECT,
-                'label'   => __( 'Design', 'travelfic-toolkit' ),
+                'label'   => __('Design', 'travelfic-toolkit'),
                 'default' => 'design-1',
                 'options' => [
-                    'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
+                    'design-1' => __('Design 1', 'travelfic-toolkit'),
+                    'design-2' => __('Design 2', 'travelfic-toolkit'),
                 ],
             ]
         );
         // Design 1 fields
         $this->add_control(
-			'about_us_title',
-			[
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
-                'default' => __( 'Enjoy an extraordinary retreat with us', 'travelfic-toolkit' ),
+            'about_us_title',
+            [
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'label' => esc_html__('Title', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter your title', 'travelfic-toolkit'),
+                'default' => __('Enjoy an extraordinary retreat with us', 'travelfic-toolkit'),
                 'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                    'tft_about_style' => ['design-1', 'design-2'],
                 ],
-			]
-		);
+            ]
+        );
         $this->add_control(
-			'about_us_subtitle',
-			[
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
-                'default' => __( 'about us', 'travelfic-toolkit' ),
+            'about_us_subtitle',
+            [
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'label' => esc_html__('SubTitle', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter your SubTitle', 'travelfic-toolkit'),
+                'default' => __('about us', 'travelfic-toolkit'),
                 'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                    'tft_about_style' => ['design-1', 'design-2'],
                 ],
-			]
-		);
+            ]
+        );
         $this->add_control(
-			'about_us_experience',
-			[
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__( 'Years of Experience', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Enter Years of Experience', 'travelfic-toolkit' ),
-                'default' => __( '15+', 'travelfic-toolkit' ),
+            'about_us_experience',
+            [
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label' => esc_html__('Years of Experience', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter Years of Experience', 'travelfic-toolkit'),
+                'default' => __('15+', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
-			]
-		);
+            ]
+        );
         $this->add_control(
             'about_us_image',
             [
-                'label'   => __( 'About Us Image', 'travelfic-toolkit' ),
+                'label'   => __('About Us Image', 'travelfic-toolkit'),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -163,65 +173,125 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
+                    'tft_about_style' => ['design-1', 'design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_circle_image',
+            [
+                'label'   => __('About Us Circle Image', 'travelfic-toolkit'),
+                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'tft_about_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_content',
+            [
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
+                'label' => esc_html__('Descriptions', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter your descriptions', 'travelfic-toolkit'),
+                'default' => __('Welcome to VICTORIA, where comfort meets elegance. Personalized service and attention to detail ensure a truly exceptional stay. Stay in luxury, dine exquisitely, and relax in the spa. With us, you can create unforgettable memories.
+                "Creating memorable moments is our passion. Welcome to our hotel, where comfort, elegance, and genuine hospitality meet."', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => ['design-1', 'design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_quotes',
+            [
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
+                'label' => esc_html__('Quotes', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter your descriptions', 'travelfic-toolkit'),
+                'default' => __('"Creating memorable moments is our passion. Welcome to our hotel, where comfort, elegance, and genuine hospitality meet."', 'travelfic-toolkit'),
+                'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
                 ],
             ]
         );
         $this->add_control(
-			'about_us_content',
-			[
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'label' => esc_html__( 'Descriptions', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Enter your descriptions', 'travelfic-toolkit' ),
-                'default' => __( 'Welcome to VICTORIA, where comfort meets elegance. Personalized service and attention to detail ensure a truly exceptional stay. Stay in luxury, dine exquisitely, and relax in the spa. With us, you can create unforgettable memories.
+            'about_us_author',
+            [
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label' => esc_html__('Author Details', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Add Author Details', 'travelfic-toolkit'),
+                'default' => __('CEO of VICTORIA', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => 'design-1',
+                ],
+            ]
+        );
 
-                "Creating memorable moments is our passion. Welcome to our hotel, where comfort, elegance, and genuine hospitality meet."', 'travelfic-toolkit' ),
-                'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
-                ],
-			]
-		);
+        $about_list_repeater = new \Elementor\Repeater();
+        $about_list_repeater->add_control(
+            'about_list_title',
+            [
+                'label'       => __('About List Title', 'themefic_themedev'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('Easy & Modern Customer Solution', 'themefic_themedev'),
+                'label_block' => true,
+            ]
+        );
         $this->add_control(
-			'about_us_quotes',
-			[
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
-				'label' => esc_html__( 'Quotes', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Enter your descriptions', 'travelfic-toolkit' ),
-                'default' => __( '"Creating memorable moments is our passion. Welcome to our hotel, where comfort, elegance, and genuine hospitality meet."', 'travelfic-toolkit' ),
-                'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+            'about_list_content',
+            [
+                'label'   => __('About List Content', 'themefic_themedev'),
+                'type'    => \Elementor\Controls_Manager::REPEATER,
+                'fields'  => $about_list_repeater->get_controls(),
+                'default' => [
+                    [
+                        'about_list_title' => 'Easy & Modern Customer Solution',
+                    ],
                 ],
-			]
-		);
+                'title_field' => '{{{ about_list_title }}}',
+                'condition'   => [
+                    'tft_about_style' => 'design-2',
+                ],
+            ]
+        );
+
         $this->add_control(
-			'about_us_author',
-			[
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => esc_html__( 'Author Details', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Add Author Details', 'travelfic-toolkit' ),
-                'default' => __( 'CEO of VICTORIA', 'travelfic-toolkit' ),
-                'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+            'readme_label',
+            [
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'label' => esc_html__('Read More Label', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter read more label', 'travelfic-toolkit'),
+                'default' => __('About Us', 'travelfic-toolkit'),
+                'label_block' => true,
+                'dynamic' => [
+                    'active' => true,
                 ],
-			]
-		);
+                'condition' => [
+                    'tft_about_style' => ['design-2'],
+                ],
+            ]
+        );
         $this->add_control(
-			'readme_link',
-			[
-				'type' => \Elementor\Controls_Manager::URL,
-				'label' => esc_html__( 'Read More URL', 'travelfic-toolkit' ),
-				'placeholder' => esc_html__( 'Enter Link', 'travelfic-toolkit' ),
-				'default' => [
-					'url' => '#',
-					'is_external' => true,
-					'nofollow' => true,
-				],
-				'label_block' => true,
-                'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+            'readme_link',
+            [
+                'type' => \Elementor\Controls_Manager::URL,
+                'label' => esc_html__('Read More URL', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter Link', 'travelfic-toolkit'),
+                'default' => [
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
-			]
-		);
+                'label_block' => true,
+                'condition' => [
+                    'tft_about_style' => ['design-1', 'design-2'],
+                ],
+            ]
+        );
 
 
         $this->end_controls_section();
@@ -230,35 +300,35 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->start_controls_section(
             'tour_destination_style',
             [
-                'label' => __( 'Style', 'travelfic-toolkit' ),
+                'label' => __('Style', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
 
-        // Design 1 Styles start
+        // Design Styles start
         $this->add_control(
-			'content_positon',
-			[
-				'label' => esc_html__( 'Content Position', 'travelfic-toolkit' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'start',
-				'options' => [
-					'start' => esc_html__( 'Start', 'travelfic-toolkit' ),
-					'center' => esc_html__( 'Center', 'travelfic-toolkit' ),
-					'end' => esc_html__( 'End', 'travelfic-toolkit' ),
-				],
-				'selectors' => [
-					'{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content' => 'justify-content: {{VALUE}};',
-				],
-			]
-		);
+            'content_positon',
+            [
+                'label' => esc_html__('Content Position', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'start',
+                'options' => [
+                    'start' => esc_html__('Start', 'travelfic-toolkit'),
+                    'center' => esc_html__('Center', 'travelfic-toolkit'),
+                    'end' => esc_html__('End', 'travelfic-toolkit'),
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content' => 'justify-content: {{VALUE}};',
+                ],
+            ]
+        );
 
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_title_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3',
-                'label'    => __( 'Title Typography', 'travelfic-toolkit' ),
+                'label'    => __('Title Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -270,14 +340,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_sec_title_color',
             [
-                'label'     => __( 'Title Color', 'travelfic-toolkit' ),
+                'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#595349',
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                    'tft_about_style' => ['design-1', 'design-2'],
                 ],
             ]
         );
@@ -286,7 +356,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             [
                 'name'     => 'about_us_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6',
-                'label'    => __( 'Subtitle Typography', 'travelfic-toolkit' ),
+                'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -298,14 +368,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_sec_subtitle_color',
             [
-                'label'     => __( 'Subtitle Color', 'travelfic-toolkit' ),
+                'label'     => __('Subtitle Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                    'tft_about_style' => ['design-1', 'design-2'],
                 ],
             ]
         );
@@ -314,7 +384,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             [
                 'name'     => 'about_us_sec_content_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p',
-                'label'    => __( 'Content Typography', 'travelfic-toolkit' ),
+                'label'    => __('Content Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -326,14 +396,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_sec_content_color',
             [
-                'label'     => __( 'Content Color', 'travelfic-toolkit' ),
+                'label'     => __('Content Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
+                    'tft_about_style' => ['design-1', 'design-2'],
                 ],
             ]
         );
@@ -342,7 +412,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             [
                 'name'     => 'about_us_sec_quotes_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-quotes',
-                'label'    => __( 'Quotes Typography', 'travelfic-toolkit' ),
+                'label'    => __('Quotes Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -354,7 +424,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_sec_quotes_color',
             [
-                'label'     => __( 'Quotes Color', 'travelfic-toolkit' ),
+                'label'     => __('Quotes Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
@@ -370,7 +440,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             [
                 'name'     => 'about_us_sec_author_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .tft-about-us-author',
-                'label'    => __( 'Author Typography', 'travelfic-toolkit' ),
+                'label'    => __('Author Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -407,7 +477,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_sec_author_color',
             [
-                'label'     => __( 'Author Color', 'travelfic-toolkit' ),
+                'label'     => __('Author Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
@@ -423,13 +493,13 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             [
                 'name'     => 'about_us_sec_years_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .years-of-experience .tft-experience-years h2',
-                'label'    => __( 'Years of Experience Typography', 'travelfic-toolkit' ),
+                'label'    => __('Years of Experience Typography', 'travelfic-toolkit'),
             ]
         );
         $this->add_control(
             'about_us_years_color',
             [
-                'label'     => __( 'Years of Experience Color', 'travelfic-toolkit' ),
+                'label'     => __('Years of Experience Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
@@ -443,7 +513,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_section_button',
             [
-                'label'     => __( 'Button Style', 'travelfic-toolkit' ),
+                'label'     => __('Button Style', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -453,7 +523,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
             [
                 'name'     => 'about_us_sec_button_typo',
                 'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a',
-                'label'    => __( 'Button Typography', 'travelfic-toolkit' ),
+                'label'    => __('Button Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -465,7 +535,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_button_bg',
             [
-                'label'     => __( 'Button Background', 'travelfic-toolkit' ),
+                'label'     => __('Button Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -479,7 +549,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_button_color',
             [
-                'label'     => __( 'Button Color', 'travelfic-toolkit' ),
+                'label'     => __('Button Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
@@ -495,7 +565,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_button_hover_bg',
             [
-                'label'     => __( 'Button Hover Background', 'travelfic-toolkit' ),
+                'label'     => __('Button Hover Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#917242',
                 'selectors' => [
@@ -509,7 +579,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
         $this->add_control(
             'about_us_button_hover_color',
             [
-                'label'     => __( 'Button Hover Color', 'travelfic-toolkit' ),
+                'label'     => __('Button Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
@@ -521,101 +591,164 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
     }
 
 
-    protected function render() {
+    protected function render()
+    {
         $settings = $this->get_settings_for_display();
 
         // Design
-        if ( !empty( $settings['tft_about_style'] ) ) {
+        if (!empty($settings['tft_about_style'])) {
             $tft_design = $settings['tft_about_style'];
         }
 
-        if ( !empty( $settings['about_us_title'] ) ) {
+        if (!empty($settings['about_us_title'])) {
             $tft_sec_title = $settings['about_us_title'];
         }
-        if ( !empty( $settings['about_us_subtitle'] ) ) {
+        if (!empty($settings['about_us_subtitle'])) {
             $tft_sec_subtitle = $settings['about_us_subtitle'];
         }
-        if ( !empty( $settings['about_us_content'] ) ) {
+        if (!empty($settings['about_us_content'])) {
             $tft_sec_content = $settings['about_us_content'];
         }
-        if ( !empty( $settings['about_us_quotes'] ) ) {
+        if (!empty($settings['about_us_quotes'])) {
             $tft_sec_quotes = $settings['about_us_quotes'];
         }
-        if ( !empty( $settings['about_us_author'] ) ) {
+        if (!empty($settings['about_us_author'])) {
             $tft_sec_author = $settings['about_us_author'];
         }
-        if ( !empty( $settings['about_us_image'] ) ) {
+        if (!empty($settings['about_us_image'])) {
             $tft_about_us_image = $settings['about_us_image'];
         }
-        if ( !empty( $settings['about_us_experience'] ) ) {
+        if (!empty($settings['about_us_circle_image'])) {
+            $tft_about_us_circle_image = $settings['about_us_circle_image'];
+        }
+        if (!empty($settings['about_us_experience'])) {
             $tft_about_us_experience = $settings['about_us_experience'];
         }
 
-    if("design-1"==$tft_design){
-    ?>
+        if (!empty($settings['readme_label'])) {
+            $tft_about_us_button_text = $settings['readme_label'];
+        }
 
-	<div class="tft-about-us-wrapper tft-customizer-typography">
-    	<div class="tft-about-us tft-row">
-            <div class="tft-about-us-grid">
-                <div class="tft-about-us-content">
-                    <?php
-                    if(!empty($tft_sec_subtitle)){ ?>
-                        <h6><?php echo esc_html( $tft_sec_subtitle ); ?></h6>
-                    <?php }
+        if ("design-1" == $tft_design) {
+?>
 
-                    if(!empty($tft_sec_title)){ ?>
-                        <h3><?php echo esc_html( $tft_sec_title ); ?></h3>
-                    <?php }
+            <div class="tft-about-us-wrapper tft-customizer-typography">
+                <div class="tft-about-us tft-row">
+                    <div class="tft-about-us-grid">
+                        <div class="tft-about-us-content">
+                            <?php
+                            if (!empty($tft_sec_subtitle)) { ?>
+                                <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                            <?php }
 
-                    if(!empty($tft_sec_content)){ ?>
-                        <p><?php echo wp_kses_post($tft_sec_content); ?></p>
-                    <?php } ?>
+                            if (!empty($tft_sec_title)) { ?>
+                                <h3><?php echo esc_html($tft_sec_title); ?></h3>
+                            <?php }
 
-                    <?php if(!empty($tft_sec_quotes)){ ?>
-                        <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
-                    <?php } ?>
+                            if (!empty($tft_sec_content)) { ?>
+                                <p><?php echo wp_kses_post($tft_sec_content); ?></p>
+                            <?php } ?>
 
-                    <?php if(!empty($tft_sec_author)){ ?>
-                        <p class="tft-about-us-author"><?php echo esc_html($tft_sec_author); ?></p>
-                    <?php } ?>
+                            <?php if (!empty($tft_sec_quotes)) { ?>
+                                <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
+                            <?php } ?>
 
-                    <div class="read-more">
-                        <a href="<?php echo esc_url($settings['readme_link']['url']); ?>">
-                            <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
-                                <path d="M56.7071 8.86336C57.0976 8.47283 57.0976 7.83967 56.7071 7.44914L50.3431 1.08518C49.9526 0.694658 49.3195 0.694658 48.9289 1.08518C48.5384 1.47571 48.5384 2.10887 48.9289 2.4994L54.5858 8.15625L48.9289 13.8131C48.5384 14.2036 48.5384 14.8368 48.9289 15.2273C49.3195 15.6178 49.9526 15.6178 50.3431 15.2273L56.7071 8.86336ZM0 9.15625H56V7.15625H0V9.15625Z" fill="#B58E53"/>
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="tft-about-us-image">
-                    <?php
-                    if(!empty($tft_about_us_experience)){ ?>
-                    <div class="years-of-experience">
-                        <img class="experience-badge" src="<?php echo esc_url( TRAVELFIC_TOOLKIT_URL.'assets/app/img/years-experience.png' ); ?>" alt="">
-                        <div class="tft-experience-years">
-                            <h2><?php echo esc_html( $tft_about_us_experience ); ?></h2>
+                            <?php if (!empty($tft_sec_author)) { ?>
+                                <p class="tft-about-us-author"><?php echo esc_html($tft_sec_author); ?></p>
+                            <?php } ?>
+
+                            <div class="read-more">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>">
+                                    <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
+                                            <path d="M56.7071 8.86336C57.0976 8.47283 57.0976 7.83967 56.7071 7.44914L50.3431 1.08518C49.9526 0.694658 49.3195 0.694658 48.9289 1.08518C48.5384 1.47571 48.5384 2.10887 48.9289 2.4994L54.5858 8.15625L48.9289 13.8131C48.5384 14.2036 48.5384 14.8368 48.9289 15.2273C49.3195 15.6178 49.9526 15.6178 50.3431 15.2273L56.7071 8.86336ZM0 9.15625H56V7.15625H0V9.15625Z" fill="#B58E53" />
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tft-about-us-image">
+                            <?php
+                            if (!empty($tft_about_us_experience)) { ?>
+                                <div class="years-of-experience">
+                                    <img class="experience-badge" src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/years-experience.png'); ?>" alt="">
+                                    <div class="tft-experience-years">
+                                        <h2><?php echo esc_html($tft_about_us_experience); ?></h2>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <?php
+                            if (!empty($tft_about_us_image['url'])) { ?>
+                                <div class="tft-about-image">
+                                    <img src="<?php echo esc_url($tft_about_us_image['url']); ?>" alt="About Us Image">
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
-                    <?php } ?>
-                    <?php
-                    if(!empty($tft_about_us_image['url'])){ ?>
-                    <div class="tft-about-image">
-                        <img src="<?php echo esc_url($tft_about_us_image['url']); ?>" alt="About Us Image">
-                    </div>
-                    <?php } ?>
                 </div>
             </div>
-        </div>
-    </div>
-    <?php } ?>
+        <?php } elseif ("design-2" == $tft_design) { ?>
+            <div class="tft-about-design-2 tft-customizer-typography tft-section-space">
+                <div class="tft-about-us tft-row">
+                    <div class="tft-about-us-grid">
+                        <div class="tft-about-us-image">
+                            <?php if (!empty($tft_about_us_image['url'])) { ?>
+                                <div class="tft-about-image">
+                                    <div class="tft-about-curbe-image">
+                                        <img src="<?php echo esc_url($tft_about_us_image['url']); ?>" alt="About Us Image">
+                                    </div>
+                                    <div class="tft-about-circle-image">
+                                        <img src="<?php echo esc_url($tft_about_us_circle_image['url']); ?>" alt="About Us Circle Image">
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <div class="tft-about-us-content tft-heading-content">
+                            <?php if (!empty($tft_sec_subtitle)) { ?>
+                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <?php }
+                            if (!empty($tft_sec_title)) { ?>
+                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <?php }
+                            if (!empty($tft_sec_content)) { ?>
+                                <div class="tft-section-content">
+                                    <?php echo wp_kses_post($tft_sec_content); ?>
+                                </div>
+                            <?php } ?>
 
+                            <div class="tft-about-us-list">
+                                <ul>
+                                    <?php foreach ($settings['about_list_content'] as $list): ?>
+                                        <li>
+                                            <div class="icon">
+                                                <i class="fa-regular fa-circle-check"></i>
+                                            </div>
+                                            <div class="text">
+                                                <?php echo esc_html($list['about_list_title']); ?>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                            <div class="tft-about-us-button">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tragaway-btn">
+                                    <?php echo esc_html($tft_about_us_button_text); ?>
+                                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tft-about-us-shape">
+                    <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/plane shape.png'); ?>" alt="About us shape">
+                </div>
+            </div>
 <?php
-}
+        }
+    }
 }

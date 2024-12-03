@@ -71,9 +71,10 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 	{
 		return ['travelfic'];
 	}
-	public function get_style_depends() {
-        return ['travelfic-toolkit-team'];
-    }
+	public function get_style_depends()
+	{
+		return ['travelfic-toolkit-team'];
+	}
 
 	/**
 	 * Get widget keywords.
@@ -104,6 +105,44 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			[
 				'label' => __('Team Members', 'travelfic-toolkit'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'tft_team_style',
+			[
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'label'   => __('Design', 'travelfic-toolkit'),
+				'default' => 'design-1',
+				'options' => [
+					'design-1' => __('Design 1', 'travelfic-toolkit'),
+					'design-2' => __('Design 2', 'travelfic-toolkit'),
+				],
+			]
+		);
+
+		$this->add_control(
+			'team_title',
+			[
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'label' => esc_html__('Title', 'travelfic-toolkit'),
+				'placeholder' => esc_html__('Enter your title', 'travelfic-toolkit'),
+				'default' => __('Meet Our Tour Guide', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
+			]
+		);
+		$this->add_control(
+			'team_subtitle',
+			[
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'label' => esc_html__('SubTitle', 'travelfic-toolkit'),
+				'placeholder' => esc_html__('Enter your SubTitle', 'travelfic-toolkit'),
+				'default' => __('Our Professional Teams', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
 			]
 		);
 		$repeater = new \Elementor\Repeater();
@@ -154,12 +193,12 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$repeater->add_control(
 			'more_options',
 			[
-				'label' => __( 'Social Media', 'travelfic-toolkit' ),
+				'label' => __('Social Media', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
 		);
-		
+
 		$repeater->add_control(
 			'member_social_fb',
 			[
@@ -206,182 +245,192 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-            'team_style_section',
-            [
-                'label' => __( 'Item List', 'travelfic-toolkit' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
+			'team_style_section',
+			[
+				'label' => __('Item List', 'travelfic-toolkit'),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
 		$this->add_control(
-            'team_card_head',
-            [
-                'label'     => __( 'Card Style', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
+			'team_card_head',
+			[
+				'label'     => __('Card Style', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+			]
+		);
 		$this->add_responsive_control(
-            'team_card_padding',
-            [
-                'label'      => __( 'Padding', 'travelfic-toolkit' ),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '{{WRAPPER}} .member-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+			'team_card_padding',
+			[
+				'label'      => __('Padding', 'travelfic-toolkit'),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors'  => [
+					'{{WRAPPER}} .member-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_control(
-            'team_card_border_radius',
-            [
-                'label'     => __( 'Border Radius', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::SLIDER,
-                'range'     => [
-                    'px' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-                'default'   => [
-                    'unit' => 'px',
-                    'size' => 8,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tft_team_wrapper .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
+			'team_card_border_radius',
+			[
+				'label'     => __('Border Radius', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'default'   => [
+					'unit' => 'px',
+					'size' => 8,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .tft_team_wrapper .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 		$this->add_control(
-            'team_card_title',
-            [
-                'label'     => __( 'Title', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
+			'team_card_title',
+			[
+				'label'     => __('Title', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+			]
+		);
 		$this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'icon-team_card_title_typo',
-                'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title',
-                'label'    => __( 'Typography', 'travelfic-toolkit' ),
-            ]
-        );
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'icon-team_card_title_typo',
+				'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+			]
+		);
 		$this->add_control(
-            'team_card_title_color',
-            [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
-                'selectors' => [
-                    '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title' => 'color: {{VALUE}} !important',
-                ],
-            ]
-        );
+			'team_card_title_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#1D2A3B',
+				'selectors' => [
+					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title' => 'color: {{VALUE}} !important',
+				],
+			]
+		);
 		$this->add_control(
-            'team_card_subtitle',
-            [
-                'label'     => __( 'Sub Title', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
+			'team_card_subtitle',
+			[
+				'label'     => __('Sub Title', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+			]
+		);
 		$this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'icon-team_card_subtitle_typo',
-                'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle',
-                'label'    => __( 'Typography', 'travelfic-toolkit' ),
-            ]
-        );
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'icon-team_card_subtitle_typo',
+				'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+			]
+		);
 		$this->add_control(
-            'team_card_subtitle_color',
-            [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
-                'selectors' => [
-                    '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
+			'team_card_subtitle_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#1D2A3B',
+				'selectors' => [
+					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle' => 'color: {{VALUE}}',
+				],
+			]
+		);
 		$this->add_control(
-            'team_card_content',
-            [
-                'label'     => __( 'Content', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
+			'team_card_content',
+			[
+				'label'     => __('Content', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+			]
+		);
 		$this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'team_card_content_typo',
-                'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content',
-                'label'    => __( 'Typography', 'travelfic-toolkit' ),
-            ]
-        );
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'team_card_content_typo',
+				'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+			]
+		);
 		$this->add_control(
-            'team_card_content_color',
-            [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
-                'selectors' => [
-                    '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
+			'team_card_content_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#1D2A3B',
+				'selectors' => [
+					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content' => 'color: {{VALUE}}',
+				],
+			]
+		);
 		$this->end_controls_section();
 
 		$this->start_controls_section(
-            'team_icon',
-            [
-                'label' => __( 'Social Icons', 'travelfic-toolkit' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-            'team_icon_color',
-            [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} .tft_team_wrapper .tft-single-member .social-media a' => 'color: {{VALUE}} !important',
-                ],
-            ]
-        );
-        $this->add_control(
-            'team_icon_color_bg',
-            [
-                'label'     => __( 'Color Background', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
-                'selectors' => [
-                    '{{WRAPPER}} .tft_team_wrapper .tft-single-member .social-media a' => 'background-color: {{VALUE}} !important',
-                ],
-            ]
-        );
+			'team_icon',
+			[
+				'label' => __('Social Icons', 'travelfic-toolkit'),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'team_icon_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#fff',
+				'selectors' => [
+					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .social-media a' => 'color: {{VALUE}} !important',
+				],
+			]
+		);
+		$this->add_control(
+			'team_icon_color_bg',
+			[
+				'label'     => __('Color Background', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'default'   => '#F15D30',
+				'selectors' => [
+					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .social-media a' => 'background-color: {{VALUE}} !important',
+				],
+			]
+		);
 	}
 
 	protected function render()
 	{
-		$settings = $this->get_settings_for_display(); ?>
 
+		$settings = $this->get_settings_for_display();
 
+		if (!empty($settings['tft_team_style'])) {
+			$tft_design = $settings['tft_team_style'];
+		}
+		if (!empty($settings['team_title'])) {
+			$tft_sec_title = $settings['team_title'];
+		}
+		if (!empty($settings['team_subtitle'])) {
+			$tft_sec_subtitle = $settings['team_subtitle'];
+		}
+?>
 
-		<?php if ($settings['members_list']) : ?>
+		<?php if ('design-1' == $tft_design) : ?>
 			<div class="tft_team_wrapper tft-customizer-typography">
 				<div class="tft-team-members tft-flex tft-f-cg-40 tft-f-rw-40 tft-f-sb">
 					<?php foreach ($settings['members_list'] as $item) : ?>
 						<div class="tft-single-member tft-card-default">
 							<div class="team-members-inner tft-flex align-center">
-								<?php 
-								if(!empty($item['member_img']['url'])){ ?>
-								<div class="member_img">
-									<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
-								</div>
+								<?php
+								if (!empty($item['member_img']['url'])) { ?>
+									<div class="member_img">
+										<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
+									</div>
 								<?php } ?>
 								<div class="member-details">
 									<h3 class="tft-title"> <?php echo esc_html($item['member_name']); ?> </h3>
@@ -389,26 +438,26 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 									<p class="tft-content"><?php echo esc_html($item['member_details']); ?></p>
 
 									<div class="social-media">
-										<?php if ( $item['member_social_fb'] !== '' ) {?>
-											<a href="<?php echo esc_url( $item['member_social_fb'] ); ?>">
+										<?php if ($item['member_social_fb'] !== '') { ?>
+											<a href="<?php echo esc_url($item['member_social_fb']); ?>">
 												<i class="fab fa-facebook-f"></i>
 											</a>
-										<?php }?>
-										<?php if ( $item['member_social_ld'] !== '' ) {?>
-											<a href="<?php echo esc_url( $item['member_social_ld'] ); ?>">
+										<?php } ?>
+										<?php if ($item['member_social_ld'] !== '') { ?>
+											<a href="<?php echo esc_url($item['member_social_ld']); ?>">
 												<i class="fab fa-linkedin-in"></i>
 											</a>
-										<?php }?>
-										<?php if ( $item['member_social_tw'] !== '' ) {?>
-											<a href="<?php echo esc_url( $item['member_social_tw'] ); ?>">
-											<i class="fab fa-twitter"></i>
+										<?php } ?>
+										<?php if ($item['member_social_tw'] !== '') { ?>
+											<a href="<?php echo esc_url($item['member_social_tw']); ?>">
+												<i class="fab fa-twitter"></i>
 											</a>
-										<?php }?>
-										<?php if ( $item['member_social_insta'] !== '' ) {?>
-											<a href="<?php echo esc_url( $item['member_social_insta'] ); ?>">
-											<i class="fab fa-instagram"></i>
+										<?php } ?>
+										<?php if ($item['member_social_insta'] !== '') { ?>
+											<a href="<?php echo esc_url($item['member_social_insta']); ?>">
+												<i class="fab fa-instagram"></i>
 											</a>
-										<?php }?>
+										<?php } ?>
 									</div>
 								</div>
 							</div>
@@ -417,7 +466,106 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 
 				</div>
 			</div>
-		<?php endif ?>
+		<?php elseif ('design-2' == $tft_design):  ?>
+			<div class="tft-team-wrapper-v2 tft-customizer-typography">
+				<div class="container">
+					<div class="tft-heading-content">
+						<?php if (!empty($tft_sec_subtitle)) { ?>
+							<h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+						<?php }
+						if (!empty($tft_sec_title)) { ?>
+							<h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+						<?php } ?>
+					</div>
+					<div class="tft-team-members">
+						<?php foreach ($settings['members_list'] as $item) : ?>
+							<div class="tft-single-member tft-card-default">
+								<div class="team-members-inner">
+									<?php
+									if (!empty($item['member_img']['url'])) { ?>
+										<div class="member_img">
+											<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
+										</div>
+									<?php } ?>
+									<div class="member-details">
+										<div class="social-media-icons">
+											<button class="share-btn" id="shareButons">
+												<i class="ri-share-line"></i>
+											</button>
+											<div class="social-media">
+												<?php if ($item['member_social_fb'] !== '') { ?>
+													<a href="<?php echo esc_url($item['member_social_fb']); ?>">
+														<i class="fab fa-facebook-f"></i>
+													</a>
+												<?php } ?>
+												<?php if ($item['member_social_ld'] !== '') { ?>
+													<a href="<?php echo esc_url($item['member_social_ld']); ?>">
+														<i class="fab fa-linkedin-in"></i>
+													</a>
+												<?php } ?>
+												<?php if ($item['member_social_tw'] !== '') { ?>
+													<a href="<?php echo esc_url($item['member_social_tw']); ?>">
+														<i class="fab fa-twitter"></i>
+													</a>
+												<?php } ?>
+												<?php if ($item['member_social_insta'] !== '') { ?>
+													<a href="<?php echo esc_url($item['member_social_insta']); ?>">
+														<i class="fab fa-instagram"></i>
+													</a>
+												<?php } ?>
+											</div>
+										</div>
+										<h3 class="tft-subtitle"> <?php echo esc_html($item['member_designation']); ?> </h3>
+										<p class="tft-title"><?php echo esc_html($item['member_name']); ?></p>
+									</div>
+								</div>
+							</div>
+						<?php endforeach ?>
+					</div>
+				</div>
+				<div class="tft_team_bottom_shape">
+					<img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/team-banner-shape.png'); ?>" alt="Team background shape">
+				</div>
+			</div>
+		<?php endif; ?>
+
+		<script>
+			jQuery(document).ready(function($) {
+				$(".tft-team-wrapper-v2 .tft-team-members").slick({
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 2,
+					autoplay: true,
+					autoplaySpeed: 6000,
+					speed: 1500,
+					dots: true,
+					arrows: false,
+					pauseOnFocus: false,
+					pauseOnHover: false,
+				});
+
+				$(".share-btn").on("click", function(e) {
+					e.stopPropagation(); 
+					$(this)
+						.closest(".social-media-icons")
+						.find(".social-media")
+						.toggleClass("active");
+				});
+
+				
+				$(".social-media").on("click", function(e) {
+					e.stopPropagation();
+				});
+
+				
+				$(document).on("click", function(e) {
+					console.log("clicked outside");
+					if (!$(e.target).closest(".social-media-icons").length) {
+						$(".social-media").removeClass("active"); 
+					}
+				});
+			})
+		</script>
 
 <?php }
 }

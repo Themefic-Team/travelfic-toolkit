@@ -1,4 +1,4 @@
-.mh-btn {
+.tragaway-btn {
   display: block;
   min-height: 55px;
   background: $color-primary;
@@ -13,6 +13,7 @@
   @include justify-content(center);
   @include bd-radius(100px);
   @include transition(.3s);
+  gap: 5px;
   min-width: 180px;
   padding: 0;
   cursor: pointer;
@@ -23,6 +24,9 @@
   }
   &:hover{
     background: $color-secondary;
+    color: $color-white;
+  }
+  &:focus{
     color: $color-white;
   }
 }

@@ -120,6 +120,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
                 'options' => [
                     'design-1' => __( 'Design 1', 'travelfic-toolkit' ),
                     'design-2'  => __( 'Design 2', 'travelfic-toolkit' ),
+                    'design-3'  => __( 'Design 3', 'travelfic-toolkit' ),
                 ],
             ]
         );
@@ -140,27 +141,40 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base{
         $this->add_control(
 			'des_title',
 			[
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label' => esc_html__( 'Title', 'travelfic-toolkit' ),
 				'placeholder' => esc_html__( 'Enter your title', 'travelfic-toolkit' ),
                 'default' => __( 'Top destinations', 'travelfic-toolkit' ),
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2', 'design-3'], 
                 ],
 			]
 		);
         $this->add_control(
 			'des_subtitle',
 			[
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label' => esc_html__( 'SubTitle', 'travelfic-toolkit' ),
 				'placeholder' => esc_html__( 'Enter your SubTitle', 'travelfic-toolkit' ),
                 'default' => __( 'Destinations', 'travelfic-toolkit' ),
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
                 ],
 			]
 		);
+
+        $this->add_control(
+            'des_description',
+            [
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
+                'label' => esc_html__('Destination Descriptions', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter your descriptions', 'travelfic-toolkit'),
+                'default' => __('We offer amazing properties that are full of character, situated in beautiful neighborhoods so you can feel right at home anywhere in the world travel society for healthy life backup.', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => ['design-3'],
+                ],
+            ]
+        );
 
         // Tour
         $this->add_control(

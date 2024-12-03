@@ -581,7 +581,7 @@ class Travelfic_Customizer_Header
                         </div>
                     </div>
                     <div class="tft-design-3__content-right">
-                        <?php if(!empty($design_3_topbar)): ?>
+                        <?php if (!empty($design_3_topbar)): ?>
                             <div class="tft-design-3__topbar">
                                 <div class="tft-design-3__topbar-left">
                                     <ul class="tft-design-3__topbar-list">
@@ -675,33 +675,43 @@ class Travelfic_Customizer_Header
                                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
                                             </svg>
-
                                         </a>
+                                        <!-- <div class="tft-design-3__bottom__right__list__item--search">
+                                          
+                                            <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+                                             
+                                                <input type="search" name="s" class="tft-design-3__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
+                                              
+                                                <button type="submit" class="tft-design-3__bottom__right__list__item--search__button">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                            </form>
+                                        </div> -->
                                     </li>
                                 </ul>
                                 <div class="tft-design-3__topbar-right mobile-view">
                                     <ul class="tft-design-3__topbar-list">
-                                        <li class="tft-design-3__topbar-list-item">
+                                        <!-- <li class="tft-design-3__topbar-list-item">
                                             <select name="language" id="language" class="tft-design-3__topbar-list-select">
-                                                <option value="en"><?php echo esc_html_e('English', 'travelfic-toolkit'); ?></option>
-                                                <option value="nl"><?php echo esc_html_e('Dutch', 'travelfic-toolkit'); ?></option>
-                                                <option value="ar"><?php echo esc_html_e('Arabic', 'travelfic-toolkit'); ?></option>
+                                                <option value="en"></?php echo esc_html_e('English', 'travelfic-toolkit'); ?></option>
+                                                <option value="nl"></?php echo esc_html_e('Dutch', 'travelfic-toolkit'); ?></option>
+                                                <option value="ar"></?php echo esc_html_e('Arabic', 'travelfic-toolkit'); ?></option>
                                             </select>
-                                        </li>
+                                        </li> -->
                                         <?php if (!is_user_logged_in()) : ?>
                                             <li class="tft-design-3__topbar-list-item">
-                                                <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-design-3__topbar-list-link" aria-label="Login"><?php echo esc_html($design_3_login_label); ?></a>
+                                                <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-design-3__topbar-list-link" aria-label="Login" style="color: #000!important"><?php echo esc_html($design_3_login_label); ?></a>
                                             </li>
                                         <?php else : ?>
                                             <li class="tft-design-3__topbar-list-item">
-                                                <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-design-3__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
+                                                <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-design-3__topbar-list-link" aria-label="My Account" style="color: #000!important "><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
                                             </li>
                                         <?php endif; ?>
                                     </ul>
                                 </div>
                                 <?php if (!empty($design_3_discover_label)): ?>
                                     <div class="tft-design-3__bottom__right__button">
-                                        <a href="<?php echo esc_url($design_3_discover_url); ?>" class="mh-btn" aria-label="Discover">
+                                        <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tragaway-btn" aria-label="Discover">
                                             <?php echo esc_html($design_3_discover_label); ?>
                                         </a>
                                     </div>
@@ -746,7 +756,7 @@ class Travelfic_Customizer_Header
 
             <?php if (!empty($design_3_discover_label)): ?>
                 <div class="tft-design-3__bottom__right__button">
-                    <a href="<?php echo esc_url($design_3_discover_url); ?>" class="mh-btn" aria-label="Discover">
+                    <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tragaway-btn" aria-label="Discover">
                         <?php echo esc_html($design_3_discover_label); ?>
                     </a>
                 </div>
