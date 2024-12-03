@@ -114,6 +114,23 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
             ]
         );
 
+        // Design 1 fields
+        $this->add_control(
+			'slider_navs',
+			[
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'label' => esc_html__( 'Slider Navs', 'travelfic-toolkit' ),
+				'options' => [
+                    'true' => __( 'True', 'travelfic-toolkit' ),
+                    'false'  => __( 'False', 'travelfic-toolkit' ),
+                ],
+                'default' => 'true',
+                'condition' => [
+                    'testimonial_style' => 'design-1', // Show this control only when testimonial_style is 'design-2'
+                ],
+			]
+		);
+
         // Design 2 fields
         $this->add_control(
 			'des_title',
@@ -1011,6 +1028,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
         $tft_testimonial_bg = $settings['testimonial_bg'];
     }
 
+    $tft_testimonial_navs = !empty($settings['slider_navs']) && 'true'==$settings['slider_navs'] ? 'true' : 'false'; 
+
     ?>
 
     <?php if ( $settings['testimonials_section'] && "design-1"==$tft_design ){ ?>
@@ -1057,7 +1076,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base {
                     pauseOnHover: true,
                     infinite: true,
                     cssEase: "linear",
-                    arrows: true,
+                    arrows: <?php echo $tft_testimonial_navs; ?>,
                     prevArrow:
                         "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
                     nextArrow:
