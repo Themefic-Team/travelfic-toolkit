@@ -245,6 +245,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="customizer-import-btn" style="display: none;"><?php esc_html_e("Customizer Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-hotel-import-btn" style="display: none;"><?php esc_html_e("Hotel Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-tour-import-btn" style="display: none;"><?php esc_html_e("Tour Import", "travelfic-toolkit"); ?></span>
+                        <span class="demo-car-import-btn" style="display: none;"><?php esc_html_e("Car Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-page-import-btn" style="display: none;"><?php esc_html_e("Pages Import", "travelfic-toolkit"); ?></span>
                         <span class="plug-tourfic-btn" style="display: none;"><?php esc_html_e("Tourfic Install", "travelfic-toolkit"); ?></span>
                         <span class="plug-cf7-btn" style="display: none;"><?php esc_html_e("CF7 Install", "travelfic-toolkit"); ?></span>
