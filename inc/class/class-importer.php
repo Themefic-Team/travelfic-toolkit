@@ -257,7 +257,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 // Add top-level menu items.
                 $menu_item_data = array(
                     'menu-item-title' => $menu_item['title'],
-                    'menu-item-url' => $template_key==1 ? str_replace("https://hotelic.tourfic.site",site_url(),$menu_item['url']) : str_replace("https://travelic.tourfic.site",site_url(),$menu_item['url']),
+                    'menu-item-url' => $template_key==1 || $template_key==4 ? str_replace("https://hotelic.tourfic.site",site_url(),$menu_item['url']) : str_replace("https://travelic.tourfic.site",site_url(),$menu_item['url']),
                     'menu-item-object' => 'custom',
                     'menu-item-parent' => 0,
                     'menu-item-type' => 'custom',
@@ -272,7 +272,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
                             'menu-item-title' => $sub_menu_item['title'],
-                            'menu-item-url' => $template_key==1 ? str_replace("https://hotelic.tourfic.site",site_url(),$sub_menu_item['url']) : str_replace("https://travelic.tourfic.site",site_url(),$sub_menu_item['url']),
+                            'menu-item-url' => $template_key==1 || $template_key==4 ? str_replace("https://hotelic.tourfic.site",site_url(),$sub_menu_item['url']) : str_replace("https://travelic.tourfic.site",site_url(),$sub_menu_item['url']),
                             'menu-item-object' => 'custom',
                             'menu-item-parent-id' => $menu_item_id,
                             'menu-item-type' => 'custom',
@@ -1804,8 +1804,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
             
-            $dummy_tours_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/car-data.csv';
-            $dummy_tours_fields = array(
+            $dummy_cars_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/car-data.csv';
+            $dummy_cars_fields = array(
                 'id',
                 'post_title',
                 'post_slug',
@@ -1903,9 +1903,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 'post_date',
             );
             
-            if ( isset( $dummy_tours_files ) ) {
-                $column_mapping_data = $dummy_tours_fields;
-                $csv_data            = array_map( 'str_getcsv', file( $dummy_tours_files ) );
+            if ( isset( $dummy_cars_files ) ) {
+                $column_mapping_data = $dummy_cars_fields;
+                $csv_data            = array_map( 'str_getcsv', file( $dummy_cars_files ) );
                 
                 //skip the first row
                 array_shift( $csv_data );
