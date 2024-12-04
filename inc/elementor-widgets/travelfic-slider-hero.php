@@ -1615,7 +1615,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                     <!-- slider button -->
                                     <?php if (!empty($slider['slider_bttn_txt'])) : ?>
                                         <a href="<?php echo esc_url($slider['slider_bttn_url']['url']); ?>"
-                                            class="tft-hero-design-4__slider__item__content--link tragaway-btn"
+                                            class="tft-hero-design-4__slider__item__content--link tft-btn"
                                             <?php echo esc_attr($target_blank); ?>>
                                             <?php echo esc_html($slider['slider_bttn_txt']); ?>
                                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>

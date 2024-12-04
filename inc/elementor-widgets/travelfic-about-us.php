@@ -692,7 +692,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-2" == $tft_design) { ?>
-            <div class="tft-about-design-2 tft-customizer-typography tft-section-space">
+            <div class="tft-about-design-2 tft-customizer-typography tft-section-space-top tft-section-small-bottom-space">
                 <div class="tft-about-us tft-row">
                     <div class="tft-about-us-grid">
                         <div class="tft-about-us-image">
@@ -735,7 +735,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 </ul>
                             </div>
                             <div class="tft-about-us-button">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tragaway-btn">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn">
                                     <?php echo esc_html($tft_about_us_button_text); ?>
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>

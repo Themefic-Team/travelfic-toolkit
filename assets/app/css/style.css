@@ -90,7 +90,7 @@ main {
 }
 
 .container {
-  max-width: 1678px;
+  max-width: 1220px;
   margin: 0 auto;
   padding: 0;
 }
@@ -110,7 +110,7 @@ h6 {
   margin: 0px;
 }
 
-.tragaway-btn {
+.tft-btn {
   display: block;
   min-height: 55px;
   background: #FA6400;
@@ -148,17 +148,17 @@ h6 {
   cursor: pointer;
 }
 @media only screen and (max-width: 767.98px) {
-  .tragaway-btn {
+  .tft-btn {
     min-height: 45px;
     font-size: 15px;
     min-width: 160px;
   }
 }
-.tragaway-btn:hover {
+.tft-btn:hover {
   background: #0e3dd8;
   color: #ffffff;
 }
-.tragaway-btn:focus {
+.tft-btn:focus {
   color: #ffffff;
 }
 
@@ -266,6 +266,20 @@ h6 {
   }
 }
 
+.tft-section-small-bottom-space {
+  padding-bottom: 80px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-section-small-bottom-space {
+    padding-bottom: 60px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-section-small-bottom-space {
+    padding-bottom: 40px;
+  }
+}
+
 .tft-heading-content h3 {
   color: #FA6400;
   font-family: "Ubuntu", sans-serif;
@@ -288,7 +302,7 @@ h6 {
   font-style: normal;
   font-weight: 700;
   line-height: 58px;
-  margin-bottom: 46px;
+  margin-bottom: 30px;
   max-width: 613px;
   position: relative;
 }
@@ -296,14 +310,12 @@ h6 {
   .tft-heading-content h2 {
     font-size: 40px;
     line-height: 50px;
-    margin-bottom: 40px;
   }
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-heading-content h2 {
     font-size: 35px;
     line-height: 45px;
-    margin-bottom: 30px;
   }
 }
 @media only screen and (max-width: 991.98px) {
@@ -337,7 +349,7 @@ h6 {
 }
 @media only screen and (max-width: 767.98px) {
   .tft-heading-content h2::after {
-    width: 280px;
+    width: 250px;
   }
 }
 .tft-heading-content p {
@@ -355,6 +367,10 @@ h6 {
     line-height: 24px;
     margin-bottom: 24px;
   }
+}
+
+.tft-heading-content p:empty {
+  display: none;
 }
 
 .footer {
@@ -1032,6 +1048,9 @@ h6 {
     background: transparent;
   }
 }
+.tft-design-3__container {
+  max-width: 1678px;
+}
 @media only screen and (max-width: 991.98px) {
   .tft-design-3__container {
     padding: 0;
@@ -1707,6 +1726,7 @@ h6 {
 .tft-hero-design-4__container {
   position: relative;
   width: 100%;
+  max-width: 1678px;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design-4__container {
@@ -2072,6 +2092,9 @@ h6 {
   .tft-travel {
     padding: 40px 0;
   }
+}
+.tft-travel .container {
+  max-width: 1678px;
 }
 .tft-travel__form__fieldset {
   background: transparent;
@@ -2561,7 +2584,7 @@ h6 {
 }
 
 .tft-team-wrapper-v2 .container {
-  max-width: 1221px;
+  max-width: 1220px;
   margin: auto;
 }
 @media only screen and (max-width: 1399.98px) {
@@ -2572,6 +2595,21 @@ h6 {
 .tft-team-wrapper-v2 .tft-heading-content {
   text-align: center;
   margin-bottom: 70px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-team-wrapper-v2 .tft-heading-content {
+    margin-bottom: 60px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-team-wrapper-v2 .tft-heading-content {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-heading-content {
+    margin-bottom: 40px;
+  }
 }
 .tft-team-wrapper-v2 .tft-heading-content h2 {
   margin-left: auto;
@@ -2596,8 +2634,8 @@ h6 {
   margin: 0 -15px !important;
 }
 .tft-team-wrapper-v2 .tft-team-members .slick-slide {
-  margin: 0 12px !important;
-  box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+  margin: 0 15px !important;
+  box-shadow: none !important;
 }
 .tft-team-wrapper-v2 .tft-team-members .slick-dots {
   display: -webkit-box;
@@ -2664,6 +2702,11 @@ h6 {
   border-radius: 15px;
   background: #ffffff;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member {
+    padding-bottom: 20px;
+  }
+}
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member_img img {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -2682,6 +2725,11 @@ h6 {
   line-height: normal;
   margin-bottom: 20px;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details h3 {
+    font-size: 15px;
+  }
+}
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p {
   color: #060d1c;
   font-family: "Brygada 1918", serif;
@@ -2691,10 +2739,20 @@ h6 {
   line-height: normal;
   margin-bottom: 0;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p {
+    font-size: 20px;
+  }
+}
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons {
   margin-top: -30px;
   padding-bottom: 30px;
   position: relative;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons {
+    margin-top: -25px;
+  }
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons button {
   padding: 16px;
@@ -2703,6 +2761,11 @@ h6 {
   border: 0;
   box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
   cursor: pointer;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons button {
+    padding: 12px;
+  }
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons button i {
   color: #ffffff;
@@ -2730,9 +2793,464 @@ h6 {
   color: #ffffff;
 }
 .tft-team-wrapper-v2 .tft_team_bottom_shape {
-  margin-top: -220px;
+  margin-top: -320px;
   z-index: -1;
   position: relative;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-team-wrapper-v2 .tft_team_bottom_shape {
+    margin-top: -250px;
+  }
+}
+@media only screen and (max-width: 1399.98px) {
+  .tft-team-wrapper-v2 .tft_team_bottom_shape {
+    margin-top: -180px;
+  }
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-team-wrapper-v2 .tft_team_bottom_shape {
+    margin-top: -130px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft_team_bottom_shape {
+    display: none;
+  }
+}
+
+.tft-testimonials-design-3 {
+  padding: 169px 0 172px;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-testimonials-design-3 {
+    padding: 130px 0 60px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 48px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content {
+    gap: 30px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content {
+  min-width: 408px;
+  max-width: 408px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content {
+    min-width: inherit;
+    max-width: inherit;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content .tft-slider-arrows {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content .tft-slider-arrows .tft-arrow {
+  width: 70px;
+  height: 70px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  background: #ffffff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content .tft-slider-arrows .tft-arrow {
+    width: 50px;
+    height: 50px;
+    border-color: #686e7a;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content .tft-slider-arrows .tft-arrow i {
+  color: #686e7a;
+  font-size: 16px;
+  line-height: normal;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content .tft-slider-arrows .tft-arrow:hover {
+  background-color: #FA6400;
+  border-color: #FA6400;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-heading-content .tft-slider-arrows .tft-arrow:hover i {
+  color: #ffffff;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders {
+  max-width: 764px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders {
+    max-width: 100%;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  flex: 1;
+  background: #ffffff;
+  padding: 40px;
+  box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial {
+    padding: 35px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial {
+    padding: 30px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial {
+    padding: 25px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review {
+  margin: 0;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p {
+  color: #686e7a;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p {
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #f0f0f0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 15px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author {
+    margin-top: 35px;
+    padding-top: 30px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author {
+    margin-top: 30px;
+    padding-top: 25px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-image {
+  width: 55px;
+  height: 55px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-image {
+    width: 45px;
+    height: 45px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-image img {
+  height: 100%;
+  width: 100%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4 {
+  color: #060d1c;
+  font-family: "Brygada 1918", serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 7px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4 {
+    font-size: 16px;
+  }
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p {
+  color: #686e7a;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.tft-destination-design-3 .tft-destination-content {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-destination-design-3 .tft-destination-content {
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-destination-design-3 .tft-destination-content {
+    gap: 20px;
+  }
+}
+.tft-destination-design-3 .tft-destination-content .tft-heading-content {
+  flex-basis: 596px;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-destination-design-3 .tft-destination-content .tft-heading-content {
+    flex-basis: calc(40% - 15px);
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-heading-content {
+    flex-basis: calc(50% - 10px);
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-heading-content {
+    flex-basis: 100%;
+  }
+}
+.tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-section-content {
+  max-width: 490px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-section-content {
+    max-width: 100%;
+  }
+}
+.tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-section-content p {
+  margin-bottom: 30px;
+}
+.tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-btn {
+  height: 50px;
+  padding: 16px 36px;
+  background: #f2f2f2;
+  color: #060d1c;
+}
+.tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-btn:hover {
+  background: #FA6400;
+  color: #ffffff;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination {
+  flex-basis: 288px;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-destination-design-3 .tft-destination-content .tft-single-destination {
+    flex-basis: calc(30% - 15px);
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-single-destination {
+    flex-basis: calc(50% - 10px);
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-single-destination {
+    flex-basis: 100%;
+  }
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination:nth-child(5) {
+  flex-basis: 596px;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-destination-design-3 .tft-destination-content .tft-single-destination:nth-child(5) {
+    flex-basis: calc(40% - 15px);
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-single-destination:nth-child(5) {
+    flex-basis: calc(50% - 10px);
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-single-destination:nth-child(5) {
+    flex-basis: 100%;
+  }
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail {
+  height: 300px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: 1;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.87) 88%);
+  width: 100%;
+  height: 100%;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  z-index: -1;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content {
+  position: absolute;
+  bottom: 35px;
+  left: 35px;
+  color: white;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a {
+  color: #ffffff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a h3 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a:hover {
+  color: #FA6400;
+}
+.tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content p {
+  margin-bottom: 0;
+  color: #fff;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.tft-section-wrapper .tft-section-title h2 {
+  position: relative;
+}
+.tft-section-wrapper .tft-section-title h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 335px;
+  height: 34px;
+  background: rgba(255, 107, 0, 0.1);
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-section-wrapper .tft-section-title h2::after {
+    height: 30px;
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-section-wrapper .tft-section-title h2::after {
+    width: 250px;
+  }
+}
+
+.tft-gallery-wrapper .tft-gallery-grid {
+  padding: 0 !important;
+}
+.tft-gallery-wrapper .tft-gallery-grid .tft-gallery-item .tft-gallery-popup-btn {
+  visibility: hidden;
+  -webkit-transition: all 0 ease;
+  -moz-transition: all 0 ease;
+  -o-transition: all 0 ease;
+  transition: all 0 ease;
+}
+.tft-gallery-wrapper .tft-gallery-grid .tft-gallery-item .tft-gallery-popup-btn .elementor-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  cursor: pointer;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-gallery-wrapper .tft-gallery-grid .tft-gallery-item .tft-gallery-popup-btn .elementor-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-gallery-wrapper .tft-gallery-grid .tft-gallery-item .tft-gallery-popup-btn .elementor-icon-wrapper {
+    width: 60px;
+    height: 60px;
+  }
+}
+.tft-gallery-wrapper .tft-gallery-grid .tft-gallery-item:hover .tft-gallery-popup-btn {
+  visibility: visible;
 }
 
 /*# sourceMappingURL=style.css.map */

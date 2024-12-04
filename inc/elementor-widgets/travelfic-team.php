@@ -542,26 +542,43 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 					arrows: false,
 					pauseOnFocus: false,
 					pauseOnHover: false,
+					responsive: [{
+							breakpoint: 991,
+							settings: {
+								slidesToShow: 2,
+								slidesToScroll: 2,
+								infinite: true,
+								dots: true
+							}
+						},
+						{
+							breakpoint: 600,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1
+							}
+						},
+					]
 				});
 
 				$(".share-btn").on("click", function(e) {
-					e.stopPropagation(); 
+					e.stopPropagation();
 					$(this)
 						.closest(".social-media-icons")
 						.find(".social-media")
 						.toggleClass("active");
 				});
 
-				
+
 				$(".social-media").on("click", function(e) {
 					e.stopPropagation();
 				});
 
-				
+
 				$(document).on("click", function(e) {
 					console.log("clicked outside");
 					if (!$(e.target).closest(".social-media-icons").length) {
-						$(".social-media").removeClass("active"); 
+						$(".social-media").removeClass("active");
 					}
 				});
 			})
