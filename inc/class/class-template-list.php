@@ -271,7 +271,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <li class="active" data-value="all"><?php esc_html_e("All", "travelfic-toolkit"); ?></li>
                                 <li data-value="tour"><?php esc_html_e("Tour", "travelfic-toolkit"); ?></li>
                                 <li data-value="hotel"><?php esc_html_e("Hotel", "travelfic-toolkit"); ?></li>
-                                <li data-value="apartment"><?php esc_html_e("Apartment", "travelfic-toolkit"); ?></li>
+                                <li data-value="car"><?php esc_html_e("Car", "travelfic-toolkit"); ?></li>
                             </ul>
                         </div>
                     </div>
