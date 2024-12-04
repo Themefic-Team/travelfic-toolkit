@@ -2822,6 +2822,7 @@ h6 {
   padding: 169px 0 172px;
   background-repeat: no-repeat;
   overflow-x: hidden;
+  background-size: cover;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-testimonials-design-3 {
@@ -3219,6 +3220,15 @@ h6 {
   .tft-section-wrapper .tft-section-title h2::after {
     width: 250px;
   }
+}
+
+.tft-travelling-service .tft-section-title h2 {
+  position: relative;
+}
+.tft-travelling-service .tft-section-title h2::after {
+  left: 0%;
+  transform: translateX(0%);
+  bottom: -5px;
 }
 
 .tft-gallery-wrapper .tft-gallery-grid {

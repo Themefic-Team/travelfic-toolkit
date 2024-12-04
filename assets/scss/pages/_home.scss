@@ -849,7 +849,7 @@
   padding: 169px 0 172px;
   background-repeat: no-repeat;
   overflow-x: hidden;
-  // background-size: cover;
+  background-size: cover;
   @media #{$max1199} {
     padding: 130px 0 60px;
   }
@@ -1151,6 +1151,19 @@
     }
   }
 }
+.tft-travelling-service {
+  .tft-section-title {
+    h2 {
+      position: relative;
+      &::after {
+        left: 0%;
+        transform: translateX(0%);
+        bottom: -5px;
+      }
+    }
+  }
+}
+
 // tft gallery wrapper
 .tft-gallery-wrapper {
   .tft-gallery-grid {

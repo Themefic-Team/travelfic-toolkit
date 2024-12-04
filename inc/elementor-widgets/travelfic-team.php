@@ -467,7 +467,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				</div>
 			</div>
 		<?php elseif ('design-2' == $tft_design):  ?>
-			<div class="tft-team-wrapper-v2 tft-customizer-typography">
+			<div class="tft-team-wrapper-v2 tft-customizer-typography tft-section-space-top">
 				<div class="container">
 					<div class="tft-heading-content">
 						<?php if (!empty($tft_sec_subtitle)) { ?>
