@@ -711,7 +711,7 @@ class Travelfic_Customizer_Header
                                 </div>
                                 <?php if (!empty($design_3_discover_label)): ?>
                                     <div class="tft-design-3__bottom__right__button">
-                                        <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tragaway-btn" aria-label="Discover">
+                                        <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tft-btn" aria-label="Discover">
                                             <?php echo esc_html($design_3_discover_label); ?>
                                         </a>
                                     </div>
@@ -756,7 +756,7 @@ class Travelfic_Customizer_Header
 
             <?php if (!empty($design_3_discover_label)): ?>
                 <div class="tft-design-3__bottom__right__button">
-                    <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tragaway-btn" aria-label="Discover">
+                    <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tft-btn" aria-label="Discover">
                         <?php echo esc_html($design_3_discover_label); ?>
                     </a>
                 </div>

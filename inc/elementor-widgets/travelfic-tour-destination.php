@@ -110,15 +110,29 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             ]
         );
 
-        // Tour
+        // tour destination get categories
         $categories = get_categories(array(
             'taxonomy'   => 'tour_destination',
             'hide_empty' => true,
         ));
+
         $category_options = array();
         foreach ($categories as $category) {
             $category_options[$category->term_id] = $category->name;
         }
+
+        // tour attractions get categories
+        $attraction_categories = get_categories(array(
+            'taxonomy'   => 'tour_attraction',
+            'hide_empty' => true,
+        ));
+
+
+        $attractions_cat_options = array();
+        foreach ($attraction_categories as $cat) {
+            $attractions_cat_options[$cat->term_id] = $cat->name;
+        }
+
         // Design
         $this->add_control(
             'des_style',
@@ -130,9 +144,12 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     'design-1' => __('Design 1', 'travelfic-toolkit'),
                     'design-2'  => __('Design 2', 'travelfic-toolkit'),
                     'design-3'  => __('Design 3', 'travelfic-toolkit'),
+                    'design-4'  => __('Design 4', 'travelfic-toolkit'),
                 ],
             ]
         );
+        // Tour
+
         // Design 2 fields
         $this->add_control(
             'location_section_bg',
@@ -155,7 +172,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Enter your title', 'travelfic-toolkit'),
                 'default' => __('Top destinations', 'travelfic-toolkit'),
                 'condition' => [
-                    'des_style' => ['design-2', 'design-3'],
+                    'des_style' => ['design-2', 'design-3', 'design-4'],
                 ],
             ]
         );
@@ -167,7 +184,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Enter your SubTitle', 'travelfic-toolkit'),
                 'default' => __('Destinations', 'travelfic-toolkit'),
                 'condition' => [
-                    'des_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2', 'design-3', 'design-4'], // Show this control only when des_style is 'design-2'
                 ],
             ]
         );
@@ -228,6 +245,25 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'multiple' => true,
                 'label_block' => true,
                 'separator'   => 'after',
+                'condition' => [
+                    'des_style' => ['design-1', 'design-2', 'design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'attractions_cat_id',
+            [
+                'label' => __('Select Tour Attractions', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
+                'options' => $attractions_cat_options,
+                'default' => '',
+                'multiple' => true,
+                'label_block' => true,
+                'separator'   => 'after',
+                'condition' => [
+                    'des_style' => ['design-4'],
+                ],
             ]
         );
 
@@ -585,6 +621,13 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         } else {
             $cat_ids = $settings['categories_id'];
         }
+        if (!empty($settings['attractions_cat_id'])) {
+            $attraction_cat_ids = $settings['attractions_cat_id'];
+            intval($attraction_cat_ids);
+        } else {
+            $attraction_cat_ids = $settings['attractions_cat_id'];
+        }
+
 
         // Design
         if (!empty($settings['des_style'])) {
@@ -601,7 +644,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             $tft_sec_content = $settings['des_description'];
         }
 
-        if(!empty($settings['readme_url'])) {
+        if (!empty($settings['readme_url'])) {
             $tft_readme_url = $settings['readme_url'];
         }
 
@@ -609,20 +652,21 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             $tft_location_section_bg = $settings['location_section_bg'];
         }
 
-        $taxonomy = 'tour_destination';
+        $taxonomy = ('design-4' === $tft_design) ? 'tour_attraction' : 'tour_destination';
+        $included = ('design-4' === $tft_design) ? $attraction_cat_ids : $cat_ids;
+
         $show_count = 0;
         $orderby = 'name';
         $pad_counts = 0;
         $hierarchical = 1;
         $title = '';
         $empty = 0;
-        $included = $cat_ids;
 
         $args = array(
             'taxonomy'     => $taxonomy,
             'orderby'      => $orderby,
             'order'        => $order,
-            'number' => $post_per_page,
+            'number'       => $post_per_page,
             'show_count'   => $show_count,
             'pad_counts'   => $pad_counts,
             'hierarchical' => $hierarchical,
@@ -630,7 +674,25 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             'include'      => $included,
             'hide_empty'   => $empty,
         );
-        $all_destination_categories = get_categories($args);
+
+        if ('design-4' === $tft_design) {
+         
+            $all_attraction_posts = get_posts($args);
+            
+            if (!empty($all_attraction_posts)) {
+                error_log(print_r($all_attraction_posts, true));
+            } else {
+                // error_log('No attraction posts found.');
+            }
+        } else {
+            $all_destination_categories = get_categories($args);
+            if (!empty($all_destination_categories)) {
+                // error_log(print_r($all_destination_categories, true));
+            } else {
+                // error_log('No destination categories found.');
+            }
+        }
+
         if ("design-1" == $tft_design) {
 ?>
 
@@ -820,6 +882,36 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                             }
                         } ?>
 
+                    </div>
+                </div>
+            </div>
+        <?php } elseif ("design-4" == $tft_design) { ?>
+            <div class="tft-destination-design-3 tft-section-space" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
+                <div class="container">
+                    <div class="tft-destination-content">
+                        <div class="tft-heading-content">
+                            <?php if (!empty($tft_sec_subtitle)) { ?>
+                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <?php }
+                            if (!empty($tft_sec_title)) { ?>
+                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <?php } ?>
+                        </div>
+                        <?php
+                        foreach ($all_attraction_posts as $post) {
+                            error_log(print_r($post->ID, true));
+
+                        ?>
+                            <div class="tft-single-destination">
+                                <div class="tft-destination-thumbnail">
+                                    <div class="tft-desination-content">
+                                        <!-- <a href="</?php echo esc_url(get_term_link($post->post_slug, 'tour_attraction')); ?>" class="tft-destination-content">
+                                                <h3></?php echo esc_html($post->post_title); ?></h3>
+                                            </a> -->
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

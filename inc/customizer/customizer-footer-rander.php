@@ -29,11 +29,11 @@ class Travelfic_Customizer_Footer
     public static function travelfic_toolkit_footer_third_design($travelfic_footer)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
-        $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright 2023 Tourfic Development Site by Themefic All Rights Reserved.');
+        $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright 2024 Tourfic Development Site by Themefic All Rights Reserved.');
         ob_start();
     ?>
         <!-- footer -->
-        <footer class="footer">
+        <footer class="footer" style="background-image: url();">
             <div class="container">
                 <?php if (is_active_sidebar('footer_sideabr  ')) : ?>
                     <?php dynamic_sidebar('footer_sideabr  '); ?>
@@ -46,18 +46,21 @@ class Travelfic_Customizer_Footer
             <div class="container">
                 <div class="footer-bottom__inner">
                     <div class="footer-bottom__copyright">
-                        <p>&copy; <?php echo date('Y'); ?> <?php echo esc_html(get_theme_mod('footer_copyright', '')); ?></p>
+                        <p><?php echo esc_html($design_2_copyright); ?></p>
                     </div>
                     <div class="footer-bottom__menu">
-                        <?php
-                        wp_nav_menu(
-                            array(
-                                'theme_location' => 'footer-menu',
-                                'container'      => false,
-                                'menu_class'     => 'footer-bottom__nav',
-                            )
-                        );
-                        ?>
+                        <ul class="footer-bottom__nav">
+                            <li>
+                                <a href="#">
+                                    <?php echo __('Privacy Policy', 'travelfic-toolkit') ?>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <?php echo __('View on Maps', 'travelfic-toolkit') ?>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

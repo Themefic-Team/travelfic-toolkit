@@ -886,7 +886,6 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             <?php endwhile; ?>
                         <?php endif; ?>
@@ -1001,7 +1000,6 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                         </div>
                                     </div>
                                 </div>
-
                             <?php endwhile; ?>
                         <?php endif; ?>
                     </div>
