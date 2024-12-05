@@ -373,6 +373,12 @@ h6 {
   display: none;
 }
 
+.tft-no-reapeat {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
 .footer {
   padding: 72px 0;
   background-image: url(../images/footer-banner.png);
@@ -2409,7 +2415,7 @@ h6 {
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-design-2 {
-    padding-bottom: 40px;
+    padding-bottom: 0px;
   }
 }
 .tft-about-design-2 .tft-about-us-grid {
@@ -2438,6 +2444,35 @@ h6 {
   min-width: 491px;
   position: relative;
 }
+.tft-about-design-2 .tft-about-us-grid .tft-about-image::before {
+  content: "";
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 10px;
+  height: 150px;
+  background-color: #FA6400;
+  z-index: 1;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-about-design-2 .tft-about-us-grid .tft-about-image::before {
+    display: none;
+  }
+}
+.tft-about-design-2 .tft-about-us-grid .tft-about-image::after {
+  content: "";
+  position: absolute;
+  left: 61px;
+  top: 106px;
+  width: 10px;
+  height: 246px;
+  background-color: #ffffff;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-about-design-2 .tft-about-us-grid .tft-about-image::after {
+    display: none;
+  }
+}
 @media only screen and (max-width: 767.98px) {
   .tft-about-design-2 .tft-about-us-grid .tft-about-image {
     min-width: auto;
@@ -2446,6 +2481,12 @@ h6 {
 .tft-about-design-2 .tft-about-us-grid .tft-about-image .tft-about-curbe-image {
   max-width: 441px;
   position: relative;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-about-design-2 .tft-about-us-grid .tft-about-image .tft-about-curbe-image {
+    margin: auto;
+    max-width: 500px;
+  }
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-image .tft-about-curbe-image img {
   width: 100%;
@@ -2500,6 +2541,12 @@ h6 {
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content {
   flex: 1;
   max-width: 669px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-about-design-2 .tft-about-us-grid .tft-about-us-content {
+    max-width: 500px;
+    margin: auto;
+  }
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list {
   padding: 44px 0 44px 69px;
@@ -2711,6 +2758,19 @@ h6 {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
+  max-height: 296px;
+  width: 100%;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member_img img {
+    height: 220px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member_img img {
+    height: 100%;
+    max-height: 280px;
+  }
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details {
   text-align: center;
@@ -3093,6 +3153,11 @@ h6 {
 .tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-section-content p {
   margin-bottom: 30px;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-section-content p {
+    margin-bottom: 24px;
+  }
+}
 .tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-btn {
   height: 50px;
   padding: 16px 36px;
@@ -3102,6 +3167,11 @@ h6 {
 .tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-btn:hover {
   background: #FA6400;
   color: #ffffff;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-destination-design-3 .tft-destination-content .tft-heading-content .tft-btn {
+    margin-bottom: 15px;
+  }
 }
 .tft-destination-design-3 .tft-destination-content .tft-single-destination {
   flex-basis: 288px;
@@ -3230,6 +3300,23 @@ h6 {
   transform: translateX(0%);
   bottom: -5px;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-travelling-service .tft-service-list .elementor-image-box-wrapper {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 20px;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+}
 
 .tft-gallery-wrapper .tft-gallery-grid {
   padding: 0 !important;
@@ -3261,6 +3348,574 @@ h6 {
 }
 .tft-gallery-wrapper .tft-gallery-grid .tft-gallery-item:hover .tft-gallery-popup-btn {
   visibility: visible;
+}
+
+.tft-icon-design-2 {
+  background-position: bottom;
+}
+@media only screen and (max-width: 1399.98px) {
+  .tft-icon-design-2 {
+    background-position: left;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 {
+    background-position: bottom;
+  }
+}
+.tft-icon-design-2 .container {
+  max-width: 1129px;
+}
+.tft-icon-design-2 .container .tft-heading-content {
+  text-align: center;
+  margin-bottom: 70px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-icon-design-2 .container .tft-heading-content {
+    margin-bottom: 60px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 .container .tft-heading-content {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-icon-design-2 .container .tft-heading-content {
+    margin-bottom: 40px;
+  }
+}
+.tft-icon-design-2 .container .tft-heading-content h2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tft-icon-design-2 .container .tft-heading-content h2::after {
+  width: 195px;
+  height: 34px;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media only screen and (max-width: 1399.98px) {
+  .tft-icon-design-2 .container .tft-heading-content h2::after {
+    top: 15px;
+  }
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-icon-design-2 .container .tft-heading-content h2::after {
+    width: 160px;
+    height: 30px;
+    top: 13px;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items {
+    gap: 30px;
+    padding-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items {
+    padding-bottom: 120px;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single {
+  max-width: 299px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single {
+    width: calc(50% - 15px);
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter {
+  width: 160px;
+  height: 160px;
+  border: 2px dashed transparent;
+  margin: auto;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter {
+    width: 140px;
+    height: 140px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter {
+    width: 120px;
+    height: 120px;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  background-color: #ffffff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  box-shadow: drop-shadow(0px 5px 35px #f9eee5);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
+    width: 105px;
+    height: 105px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
+    width: 95px;
+    height: 95px;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #060d1c;
+  font-family: "Brygada 1918", serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title {
+    font-size: 22px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-details {
+  margin-bottom: 0;
+  color: #686e7a;
+  font-family: "Ubuntu", sans-serif;
+  line-height: 26px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-details {
+    font-size: 15px;
+    max-width: 340px;
+    margin: auto;
+  }
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single:hover .icon_outter {
+  border: 2px dashed #FA6400;
+}
+
+.tft-design-3-blog .container .tft-heading-content {
+  text-align: center;
+  margin-bottom: 70px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-heading-content {
+    margin-bottom: 60px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-heading-content {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-heading-content {
+    margin-bottom: 20px;
+  }
+}
+.tft-design-3-blog .container .tft-heading-content h2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tft-design-3-blog .container .tft-heading-content h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tft-design-3-blog .container .tft-blog-gird-section {
+  grid-template-columns: 1fr 1fr;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section {
+    gap: 25px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section {
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section {
+    grid: inherit;
+    grid-template-columns: 100%;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-col-item {
+  grid-column: span 1;
+  grid-row: auto;
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item {
+  padding: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item {
+    gap: 20px;
+    padding: 20px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail {
+  line-height: 0;
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  width: 100%;
+  max-height: 400px;
+  min-height: 400px;
+  object-fit: cover;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+    max-height: 270px;
+    min-height: 270px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+    max-height: 250px;
+    min-height: 250px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+    max-height: 200px;
+    min-height: 200px;
+  }
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+    max-height: inherit;
+    min-height: inherit;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details {
+  flex: 1;
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+  color: #060d1c;
+  font-family: "Brygada 1918", serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 34px;
+  margin: 25px 0 30px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+    margin: 24px 0;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+    margin: 20px 0;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a {
+  display: contents;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover, .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:focus,
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a :visited {
+  color: #FA6400;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
+  display: inline-flex;
+  color: #FA6400;
+  background: rgba(250, 100, 0, 0.09);
+  min-height: 50px;
+  min-width: 170px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
+    min-width: 160px;
+    min-height: 45px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover {
+  background: #FA6400;
+  color: #ffffff;
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
+    gap: 20px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 10px;
+  color: #686e7a;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
+    gap: 8px;
+    font-size: 15px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 {
+  grid-template-columns: 40.5%;
+  grid-template-rows: auto;
+  gap: 24px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 {
+    grid-template-columns: 50%;
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 {
+    grid: inherit;
+    grid-template-columns: 100%;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 35px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item {
+    gap: 20px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail {
+  max-width: 240px;
+  min-width: 240px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail {
+    max-width: inherit;
+    min-width: inherit;
+    width: 100%;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail img {
+  min-height: auto;
+  max-height: inherit;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail img {
+    min-height: 270px;
+    max-height: 270px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail img {
+    min-height: 250px;
+    max-height: 250px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail img {
+    min-height: inherit;
+    max-height: inherit;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item .tft-blog-thumbnail img {
+    min-height: 250px;
+    max-height: 250px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(1) {
+  grid-column: span 1;
+  grid-row: span 2;
+  flex-direction: column;
+  gap: 30px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(1) {
+    gap: 20px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(1) .tft-content-details .tft-title {
+  font-size: 30px;
+  line-height: 40px;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(1) .tft-content-details .tft-title {
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(1) .tft-content-details .tft-title {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(1) .tft-blog-thumbnail {
+  max-width: 100%;
+  min-width: 100%;
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+.tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(3) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3-blog .container .tft-blog-gird-section.blog-grid-item-3 .tft-col-item:nth-child(3) {
+    grid-column: auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

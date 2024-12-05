@@ -159,3 +159,9 @@
 .tft-heading-content p:empty {
   display: none;
 }
+
+.tft-no-reapeat {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}

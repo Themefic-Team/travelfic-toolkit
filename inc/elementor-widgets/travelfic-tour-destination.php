@@ -202,15 +202,13 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'readme_link',
+            'readme_url',
             [
                 'type' => \Elementor\Controls_Manager::URL,
                 'label' => esc_html__('Read More URL', 'travelfic-toolkit'),
                 'placeholder' => esc_html__('Enter Link', 'travelfic-toolkit'),
                 'default' => [
                     'url' => '#',
-                    'is_external' => true,
-                    'nofollow' => true,
                 ],
                 'label_block' => true,
                 'condition' => [
@@ -603,6 +601,10 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             $tft_sec_content = $settings['des_description'];
         }
 
+        if(!empty($settings['readme_url'])) {
+            $tft_readme_url = $settings['readme_url'];
+        }
+
         if (!empty($settings['location_section_bg'])) {
             $tft_location_section_bg = $settings['location_section_bg'];
         }
@@ -785,7 +787,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 </div>
                             <?php }
                             if (!empty($settings['readme_label'])) { ?>
-                                <a href="<?php echo esc_url($settings['readme_url']); ?>" class="tft-btn" target="_blank">
+                                <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn" target="_blank">
                                     <?php echo esc_html($settings['readme_label']); ?>
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
