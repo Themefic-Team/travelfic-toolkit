@@ -127,7 +127,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             'hide_empty' => true,
         ));
 
-
+        // tour attractions store categories in array
         $attractions_cat_options = array();
         foreach ($attraction_categories as $cat) {
             $attractions_cat_options[$cat->term_id] = $cat->name;
@@ -675,24 +675,31 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             'hide_empty'   => $empty,
         );
 
+        // get all posts based on the taxonomy
         if ('design-4' === $tft_design) {
-         
-            $all_attraction_posts = get_posts($args);
-            
-            if (!empty($all_attraction_posts)) {
-                error_log(print_r($all_attraction_posts, true));
-            } else {
-                // error_log('No attraction posts found.');
+            $tax_query = [];
+            if (!empty($included)) {
+                $tax_query[] = [
+                    'taxonomy' => 'tour_attraction',
+                    'field' => 'term_id',
+                    'terms' => $included,
+                    'include_children' => false,
+                ];
             }
+
+            $args = [
+                'post_type' => 'tf_tours',
+                'order_by' => $orderby ?? 'name',
+                'order' => $order ?? 'DESC',
+                'post_per_page' => $post_per_page ?? 5,
+                'tax_query' => $tax_query,
+            ];
+
+            $all_attraction_posts = get_posts($args);
         } else {
             $all_destination_categories = get_categories($args);
-            if (!empty($all_destination_categories)) {
-                // error_log(print_r($all_destination_categories, true));
-            } else {
-                // error_log('No destination categories found.');
-            }
         }
-
+        // design 1
         if ("design-1" == $tft_design) {
 ?>
 
@@ -747,6 +754,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     } ?>
                 </div>
             </div>
+            <!-- design 2 -->
         <?php } elseif ("design-2" == $tft_design) { ?>
             <div class="tft-destination-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
                 <div class="tft-destination-header">
@@ -832,6 +840,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     }(jQuery));
                 </script>
             </div>
+            <!-- design 3 -->
         <?php } elseif ("design-3" == $tft_design) { ?>
             <div class="tft-destination-design-3 tft-section-space" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
                 <div class="container">
@@ -885,35 +894,159 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     </div>
                 </div>
             </div>
+            <!-- design 4 -->
         <?php } elseif ("design-4" == $tft_design) { ?>
-            <div class="tft-destination-design-3 tft-section-space" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
+            <div class="tft-destination-design-4 tft-section-space-bottom" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
                 <div class="container">
-                    <div class="tft-destination-content">
-                        <div class="tft-heading-content">
-                            <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                            <?php }
-                            if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
-                            <?php } ?>
-                        </div>
-                        <?php
-                        foreach ($all_attraction_posts as $post) {
-                            error_log(print_r($post->ID, true));
-
-                        ?>
-                            <div class="tft-single-destination">
-                                <div class="tft-destination-thumbnail">
-                                    <div class="tft-desination-content">
-                                        <!-- <a href="</?php echo esc_url(get_term_link($post->post_slug, 'tour_attraction')); ?>" class="tft-destination-content">
-                                                <h3></?php echo esc_html($post->post_title); ?></h3>
-                                            </a> -->
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- heading content -->
+                    <div class="tft-heading-content">
+                        <?php if (!empty($tft_sec_subtitle)) { ?>
+                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                        <?php }
+                        if (!empty($tft_sec_title)) { ?>
+                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
+                    <div class="tft-destination-content">
+                        <div class="tft-destination-slider">
+                            <?php
+                            foreach ($all_attraction_posts as $post) {
+                                $post_id = $post->ID;
+
+                                // get average rating
+                                $tf_comments = get_comments(array('post_id' => $post_id, 'status' => 'approve'));
+                                $tf_average_rating = 0;
+
+                                if ($tf_comments) {
+                                    $tf_comments_meta = get_comment_meta($tf_comments[0]->comment_ID, 'tf_comment_meta', true);
+                                    if (!empty($tf_comments_meta) && is_array($tf_comments_meta)) {
+                                        $tf_total_rating = array_sum($tf_comments_meta);
+                                        $tf_category_count = count($tf_comments_meta);
+                                        $tf_average_rating = $tf_category_count > 0 ? $tf_total_rating / $tf_category_count : 0;
+                                    }
+                                }
+
+                                // get tour meta data
+                                $tf_serialized_data = get_post_meta($post_id, 'tf_tours_opt', true);
+                                $tf_total_price = 0;
+
+                                if ($tf_serialized_data) {
+                                    $tf_unserialized_data =  maybe_unserialize($tf_serialized_data);
+                                    // get featured
+                                    $tf_featured = $tf_unserialized_data['tour_as_featured'] ?: false;
+                                    $tf_featured_text = $tf_unserialized_data['featured_text'] ?: 'Featured';
+
+                                    // get total price
+                                    $tf_pricing = $tf_unserialized_data['pricing'];
+                                    if ($tf_pricing === 'group') {
+                                        $tf_total_price = $tf_unserialized_data['group_price'] ?: 0;
+                                    } elseif ($tf_pricing === 'person') {
+                                        $tf_adult_price = $tf_unserialized_data['adult_price'] ?: 0;
+                                        $tf_child_price = $tf_unserialized_data['child_price'] ?: 0;
+                                        $tf_total_price = min($tf_adult_price, $tf_child_price);
+                                    }
+
+                                    // get location
+                                    $tf_location = maybe_unserialize($tf_unserialized_data['location']) ?: [];
+                                }
+
+                            ?>
+                                <!-- single destination -->
+                                <div class="tft-single-destination">
+                                    <!-- destination thumbnail -->
+                                    <div class="tft-destination-thumbnail">
+                                        <?php echo get_the_post_thumbnail($post_id, 'full'); ?>
+                                        <div class="tft-destination-featured">
+                                            <?php echo $tf_featured ? '<span class="tft-featured">' . esc_html($tf_featured_text) . '</span>' : ''; ?>
+                                        </div>
+                                    </div>
+                                    <!-- destination content -->
+                                    <div class="tft-destination-content">
+                                        <!-- destination top info -->
+                                        <div class="tft-destination-top-info">
+                                            <!-- destination rating -->
+                                            <?php echo tf_review_star_rating((float) $tf_average_rating);  ?>
+                                            <!-- destination location -->
+                                            <span class="tft-desination-location">
+                                                <i class="ri-map-pin-line"></i>
+                                                <span><?php echo esc_html($tf_location['address']); ?></span>
+                                            </span>
+                                            <!-- destination title -->
+                                            <h2 class="tft-desination-title">
+                                                <a href="<?php echo get_the_permalink($post_id); ?>"><?php echo get_the_title($post_id); ?></a>
+                                            </h2>
+                                        </div>
+
+                                        <!-- destination bottom info -->
+                                        <div class="tft-desination-bottom-info">
+                                            <!-- destination price -->
+                                            <div class="tft-desination-price">
+                                                <span class="tft-desination-price-title"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
+                                                <span class="tft-desination-price-value">
+                                                    <?php echo '$', $tf_total_price; ?>
+                                                </span>
+                                            </div>
+                                            <!-- destination button -->
+                                            <div class="tft-desination-btn">
+                                                <a href="<?php echo get_the_permalink($post_id); ?>" class="tft-btn">
+                                                    <?php echo esc_html__('Explore', 'travelfic-toolkit'); ?>
+                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+
+                        </div>
+                        <!-- destination slider navigation -->
+                        <div class="tft-destination-slider-nav">
+                            <button type="button" class="tft-prev-slide">
+                                <i class="ri-arrow-left-line"></i>
+                            </button>
+                            <button type="button" class="tft-next-slide">
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
+                <script>
+                    // Destination Slider
+                    (function($) {
+                        $(document).ready(function() {
+                            //Your Code Inside
+                            $('.tft-destination-slider').slick({
+                                dots: false,
+                                arrows: true,
+                                infinite: true,
+                                speed: 300,
+                                autoplaySpeed: 2000,
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                prevArrow: '.tft-destination-slider-nav .tft-prev-slide',
+                                nextArrow: '.tft-destination-slider-nav .tft-next-slide',
+                                responsive: [{
+                                        breakpoint: 1024,
+                                        settings: {
+                                            slidesToShow: 2,
+                                            slidesToScroll: 1,
+                                            infinite: true,
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 580,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    }
+                                ]
+                            });
+                        });
+
+                    }(jQuery));
+                </script>
             </div>
         <?php } ?>
 <?php

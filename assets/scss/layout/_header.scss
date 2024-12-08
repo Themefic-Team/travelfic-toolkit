@@ -390,7 +390,8 @@
 .tft-design-3 {
   background: $color-blue;
   // min-height: 151px;
-  overflow: hidden;
+  // overflow: hidden;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   @media #{$max991} {
     min-height: auto;
     background: transparent;
@@ -455,13 +456,29 @@
       flex: 1;
       position: relative;
       background: $color-white;
-      clip-path: polygon(3.5% 0%, 2000% 0, 100% 100%, 0% 100%);
-      padding-left: 50px;
+      // clip-path: polygon(3.5% 0%, 2000% 0, 100% 100%, 0% 100%);
+      margin-left: 52px;
       @media #{$max991} {
         flex: inherit;
         width: 100%;
         padding-left: 0;
         clip-path: none;
+        margin-left: 0;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        left: -52px;
+        padding-right: 0;
+        top: 0;
+        background-color: $color-white;
+        width: 100vw;
+        height: 100%;
+        clip-path: polygon(2.5% 0%, 2000% 0, 100% 100%, 0% 100%);
+        z-index: -1;
+        @media #{$max991} {
+          display: none;
+        }
       }
       &::after {
         content: "";
@@ -704,6 +721,15 @@
           @include justify-content(flex-start);
         }
         .menu-item {
+          &.menu-item-has-children {
+            position: relative;
+            &:hover {
+              .sub-menu {
+                visibility: visible;
+              }
+            }
+          }
+
           a {
             font-family: $font-ubuntu;
             font-size: 14px;
@@ -715,6 +741,28 @@
             text-transform: uppercase;
             &:hover {
               color: $color-primary;
+            }
+          }
+          ul.sub-menu {
+            position: absolute;
+            z-index: 9;
+            background: $color-white;
+            box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
+            margin: 0;
+            padding: 10px 20px;
+            min-width: 170px;
+            border-radius: 1px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            top: 30px;
+            visibility: hidden;
+            @include transition(0.1s);
+            @media #{$max991} {
+              position: relative;
+              background: transparent;
+              box-shadow: unset;
+              display: none;
             }
           }
         }
@@ -808,17 +856,24 @@
       list-style-type: none;
       padding: 0;
       margin: 0;
-      a {
-        padding: 7px 25px;
-        text-decoration: none;
-        font-size: 16px;
-        color: white;
-        display: block;
-        transition: 0.3s;
-        &:hover {
-          color: $color-primary;
+      .menu-item{
+        position: relative;
+        a {
+          padding: 7px 25px;
+          text-decoration: none;
+          font-size: 16px;
+          color: white;
+          display: block;
+          transition: 0.3s;
+          &:hover {
+            color: $color-primary;
+          }
+        }
+        .sub-menu {
+          display: none;
         }
       }
+     
     }
   }
   &.open {
@@ -831,5 +886,24 @@
       display: block;
       margin: 20px 25px;
     }
+  }
+}
+.tft-design-3 .menu-item-has-children:after {
+  content: "\f078";
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: bold;
+  text-rendering: auto;
+  margin-left: 7px;
+  line-height: normal;
+  font-family: "Font Awesome 5 Free";
+  z-index: 99;
+  position: absolute;
+  top: 8px;
+  @media #{$max991} {
+    position: absolute;
+    right: 20px;
+    color: white;
+    top: 14px;
   }
 }

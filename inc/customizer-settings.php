@@ -721,6 +721,69 @@ function travelfic_toolkit_customize_register($wp_customize)
         'priority' => 10,
     ));
 
+    // footer bottom menu
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'copyright_text', array(
+        'sanitize_callback' => 'sanitize_text_field',
+        'default' => __('© Copyright 2024 Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit'),
+    ));
+
+    $wp_customize->add_control($travelfic_toolkit_prefix . 'copyright_text', array(
+        'type' => 'textarea',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __('Footer Copyright Text', 'travelfic-toolkit'),
+        'description' => __('You are able to change footer Copyright text.', 'travelfic-toolkit'),
+        'priority' => 10,
+    ));
+
+    // footer bottom menu 1
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_menu_label_1', array(
+        'sanitize_callback' => 'sanitize_text_field',
+        'default' => __('Privacy Policy', 'travelfic-toolkit'),
+    ));
+
+    $wp_customize->add_control($travelfic_toolkit_prefix . 'footer_menu_label_1', array(
+        'type' => 'text',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __('Footer Bottom Menu Label 1', 'travelfic-toolkit'),
+        'description' => __('Set the label for the first menu.', 'travelfic-toolkit'),
+    ));
+
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_menu_url_1', array(
+        'sanitize_callback' => 'esc_url_raw',
+        'default' => '#',
+    ));
+
+    $wp_customize->add_control($travelfic_toolkit_prefix . 'footer_menu_url_1', array(
+        'type' => 'url',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __('Footer Bottom Menu URL 1', 'travelfic-toolkit'),
+        'description' => __('Add the first footer URL.', 'travelfic-toolkit'),
+    ));
+
+    // Adding URL Field 2
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_menu_label_2', array(
+        'sanitize_callback' => 'sanitize_text_field',
+        'default' => __('View on Maps', 'travelfic-toolkit'),
+    ));
+
+    $wp_customize->add_control($travelfic_toolkit_prefix . 'footer_menu_label_2', array(
+        'type' => 'text',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __('Footer Bottom Menu Label 2', 'travelfic-toolkit'),
+        'description' => __('Set the label for the second menu.', 'travelfic-toolkit'),
+    ));
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_menu_url_2', array(
+        'sanitize_callback' => 'esc_url_raw',
+        'default' => '#',
+    ));
+
+    $wp_customize->add_control($travelfic_toolkit_prefix . 'footer_menu_url_2', array(
+        'type' => 'url',
+        'section' => 'travelfic_customizer_footer',
+        'label' => __('Footer Bottom Menu URL 2', 'travelfic-toolkit'),
+        'description' => __('Add the second footer URL.', 'travelfic-toolkit'),
+    ));
+
     /* Footer Layout Selection End*/
 
     /* Page Layout Selection Start*/

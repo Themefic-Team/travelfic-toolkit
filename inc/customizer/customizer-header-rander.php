@@ -739,7 +739,7 @@ class Travelfic_Customizer_Header
         </header>
 
         <!-- Mobile Sidenav -->
-        <div class="mobile-sidenav" id="mobile-sidenav">
+        <div class="mobile-sidenav tft-design-3" id="mobile-sidenav">
             <button class="mobile-sidenav__close" id="close-mobile-menu">&times;</button>
             <nav class="mobile-sidenav__nav">
                 <?php

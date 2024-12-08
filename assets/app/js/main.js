@@ -13,7 +13,7 @@
 
     // Open the sidenav
     $("#mobile-menu-toggle").on("click", function () {
-      $("#mobile-sidenav").addClass("open");
+      $("#mobile-sidenav").toggleClass("open");
     });
 
     // Close the sidenav
@@ -25,6 +25,23 @@
     $(document).on("click", function (e) {
       if (!$(e.target).closest("#mobile-sidenav, #mobile-menu-toggle").length) {
         $("#mobile-sidenav").removeClass("open");
+      }
+    });
+
+    // submenu toggle
+    $(".tft-design-3 .menu-item-has-children").click(function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+  
+      // Get the current submenu
+      var $submenu = $(this).children('.sub-menu');
+    
+      // Toggle visibility of the current submenu and hide others
+      if ($submenu.is(":visible")) {
+        $submenu.fadeOut();
+      } else {
+        $(".mobile-sidenav__nav ul.sub-menu").fadeOut(); // Hide all other submenus
+        $submenu.fadeIn(); // Show the current submenu
       }
     });
 
