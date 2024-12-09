@@ -649,12 +649,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'condition' => [
                     'slider_style' => 'design-2', 
                 ],
-                'fields_options' => [
-                    'typography' => ['default' => 'yes'],
-                    'font_family' => [
-                        'default' => 'Cormorant Garamond',
-                    ],
-                ]
             ]
         );
 
@@ -1528,6 +1522,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
+
+        $this->end_controls_section();
     }
 
     protected function render()

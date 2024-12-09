@@ -269,14 +269,13 @@ footer.tft-design-3 {
     line-height: 18.38px;
     border: 0;
     margin-top: 16px;
-    @media #{$max1199} {
-      max-width: 100%;
-    }
+  
     @media #{$max767} {
       min-height: 45px;
       padding: 10px 25px;
       font-size: 15px;
       margin-top: 12px;
+      max-width: 100%;
     }
     &::placeholder {
       color: $color-white;

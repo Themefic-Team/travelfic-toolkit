@@ -254,11 +254,86 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'sec_title_style',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'sec_title_typography',
+                'selector' => '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h2',
+                'label'    => __('Title Style', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'sec_title_color',
+            [
+                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'sec_sub_title_style',
+            [
+                'label'     => __('Sub Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'sec_sub_title_typography',
+                'selector' => '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h3',
+                'label'    => __('Sub Title Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'sec_sub_title_color',
+            [
+                'label'     => __('Sub Title Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+
+        $this->add_control(
             'icon_text_card',
             [
                 'label'     => __('Card Style', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
 
@@ -279,6 +354,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors'  => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_control(
@@ -289,6 +367,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-items .tft-icon-text-single' => 'background: {{VALUE}};',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
                 ],
             ]
         );
@@ -301,6 +382,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-items .tft-icon-text-single:hover' => 'background: {{VALUE}};',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
 
@@ -310,6 +394,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'label'     => __('Icon Style', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
 
@@ -330,14 +417,50 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                         'max' => 100,
                     ],
                 ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 46, // Your default value here
-                ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
+        );
+
+        $this->add_control(
+            'icon_image_box',
+            [
+                'label'     => __('Item Icon Box Style', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'icon_box_inner',
+            [
+                'label' => esc_html__('Icon Inner Width & Height)', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 200,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-design-2 .icon_outter .img-box' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+
         );
 
         $this->add_responsive_control(
@@ -362,6 +485,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .icon_outter' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-icon-design-2 .icon_outter' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -387,6 +511,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .icon_outter' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-icon-design-2 .icon_outter' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -399,6 +524,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon i' => 'color: {{VALUE}};',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_control(
@@ -410,6 +538,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single:hover .tft-icon i' => 'color: {{VALUE}};',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
 
@@ -419,6 +550,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'label'   => __('Icon Outter Gradient 1', 'travelfic-toolkit'),
                 'type'    => \Elementor\Controls_Manager::COLOR,
                 'default' => '#FF4E18',
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_control(
@@ -427,6 +561,23 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'label'   => __('Icon Outter Gradient 2', 'travelfic-toolkit'),
                 'type'    => \Elementor\Controls_Manager::COLOR,
                 'default' => '#F88664',
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'icon_outer_border_color',
+            [
+                'label'   => __('Icon Hover Outer Border', 'travelfic-toolkit'),
+                'type'    => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single:hover .icon_outter' => 'border-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
             ]
         );
 
@@ -436,14 +587,22 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'label'     => __('Title', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ]
             ]
         );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'icon-text_title',
-                'selector' => '{{WRAPPER}} .tft-icon-text-wrapper .tft-title',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-title',
+                ],
                 'label'    => __('Title Style', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_control(
@@ -451,9 +610,12 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3BCC',
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
                 ],
             ]
         );
@@ -466,6 +628,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single:hover .tft-title' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_control(
@@ -474,14 +639,23 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'label'     => __('Content', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'icon-text_content',
-                'selector' => '{{WRAPPER}} .tft-icon-text-wrapper .tft-details',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-text-wrapper .tft-details',
+                    '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single .tft-details',
+                ],
                 'label'    => __('Content Style', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
         $this->add_control(
@@ -489,9 +663,12 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'label'     => __('Content Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3BCC',
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single .tft-details' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single .tft-details' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
                 ],
             ]
         );
@@ -504,8 +681,86 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single:hover .tft-details' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'tft_icon_style' => ['design-1'],
+                ],
             ]
         );
+
+        // design 2
+        $this->add_control(
+            'heading_id_design_2',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ]
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'icon-text_title_design_2',
+                'selector' =>'{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single h3',
+                'label'    => __('Title Style', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'title_color_design_2',
+            [
+                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selector' => [
+                    '{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single h3' => 'color: {{VALUE}}',
+                ],
+
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'content_id_design_2',
+            [
+                'label'     => __('Content', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'icon-text_content_design_2',
+                'selector' => '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single p',
+                'label'    => __('Content Style', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'content_color_design_2',
+            [
+                'label'     => __('Content Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single p' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()

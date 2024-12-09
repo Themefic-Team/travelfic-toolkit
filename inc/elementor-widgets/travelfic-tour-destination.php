@@ -308,9 +308,11 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-single-destination .tft-destination-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-1', 'design-3'],
                 ],
             ]
         );
@@ -320,6 +322,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Title', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'des_style' => ['design-1','design-2'],
+                ],
             ]
         );
         // Design 2 Styles start
@@ -327,30 +332,26 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sec_title_typo',
-                'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3',
+                'selectors' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3',
+                   
                 'label'    => __('Section Title Typography', 'travelfic-toolkit'),
-                'fields_options' => [
-                    'typography' => ['default' => 'yes'],
-                    'font_family' => [
-                        'default' => 'Cormorant Garamond',
-                    ],
-                ],
+
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2'],
                 ],
             ]
         );
+
         $this->add_control(
             'tour_destination_sec_title_color',
             [
                 'label'     => __('Section Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#595349',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2'],
                 ],
             ]
         );
@@ -360,14 +361,8 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'name'     => 'tour_destination_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6',
                 'label'    => __('Section Subtitle Typography', 'travelfic-toolkit'),
-                'fields_options' => [
-                    'typography' => ['default' => 'yes'],
-                    'font_family' => [
-                        'default' => 'Josefin Sans',
-                    ],
-                ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2'],
                 ],
             ]
         );
@@ -376,12 +371,11 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'label'     => __('Section Subtitle Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#B58E53',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h6' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'des_style' => ['design-2'],
                 ],
             ]
         );
@@ -404,12 +398,11 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'label'     => __('Card Overley Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => 'rgba(0, 0, 0, .4)',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-2 .tft-single-destination .tft-destination-thumbnail::before' => 'background-color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
+                    'des_style' => ['design-2'],
                 ],
             ]
         );
@@ -593,7 +586,6 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-wrapper .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
                 ],
@@ -602,6 +594,345 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        // design 3
+        $this->add_control(
+            'tour_destination_header_design_3',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_design_3_sec_title_typo',
+                'selector' =>  '{{WRAPPER}} .tft-heading-content h2',
+                'label'    => __('Section Title Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_desig_3_sec_title_color',
+            [
+                'label'     => __('Section Title Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h2' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_subtitle',
+            [
+                'label'     => __('Sub title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_sub_title',
+                'selector' => '{{WRAPPER}} .tft-heading-content h3',
+                'label'    => __('Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_sub_title_color',
+            [
+                'label'     => __('Subtitle Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_content_design_3',
+            [
+                'label'     => __('Content', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_content_design_3',
+                'selector' => '{{WRAPPER}} .tft-heading-content p',
+                'label'    => __('Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_content_color_design_3',
+            [
+                'label'     => __('Content Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        //Buttons
+        $this->add_control(
+            'tour_destination_buttons_style',
+            [
+                'label'     => __('Button Style', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'tour_destination_button_margin_',
+            [
+                'label'      => __('Margin', 'travelfic-toolkit'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'tour_destination_button_padding_',
+            [
+                'label'      => __('Padding', 'travelfic-toolkit'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('button_style_tabs_');
+
+        $this->start_controls_tab(
+            'tour_destination_button_normal_',
+            [
+                'label' => __('Normal', 'travelfic-toolkit'),
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_button_typography',
+                'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-btn',
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_button_text_color',
+            [
+                'label'     => __('Text Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-btn' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_button_background_color',
+            [
+                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-btn' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // Hover state tab
+        $this->start_controls_tab(
+            'tour_destination_button_hover',
+            [
+                'label' => __('Hover', 'travelfic-toolkit'),
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_button_hover_color',
+            [
+                'label'     => __('Text Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-btn:hover' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_button_background_hover_color',
+            [
+                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-btn:hover' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_control(
+            'tour_destination_post_card',
+            [
+                'label'     => __('Post Card', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_card_opacity',
+            [
+                'label'     => __('Card Overley Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_card_title_typography',
+                'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3',
+                
+                'label'    => __('Card Title Typography', 'travelfic-toolkit'),
+
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_card_title_color',
+            [
+                'label'     => __('Card Title Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_card_title_hover_color',
+            [
+                'label'     => __('Card Title Hover Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3:hover' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'tour_destination_card_para_typography',
+                'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content p',
+                'label'    => __('Card Paragraph Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_card_para_color',
+            [
+                'label'     => __('Card Paragraph Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content p' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_section();
     }
 
 

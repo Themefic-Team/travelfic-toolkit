@@ -169,6 +169,14 @@ function travelfic_toolkit_customizer_style()
     $travelfic_transparent_submenu_hover = get_theme_mod($travelfic_kit_pre . 'transparent_submenu_text_hover_color');
     $travelfic_transparent_menu_color = get_theme_mod($travelfic_kit_pre . 'transparent_menu_color');
     $travelfic_transparent_menu_hover_color = get_theme_mod($travelfic_kit_pre . 'transparent_menu_hover_color');
+
+    // footer customizer style
+    $travelfic_footer_bg_color = get_theme_mod($travelfic_kit_pre . 'footer_bg_color');
+    $travelfic_footer_text_color = get_theme_mod($travelfic_kit_pre . 'footer_text_color');
+    $travelfic_footer_btm_left_bg = get_theme_mod($travelfic_kit_pre . 'footer_bottom_left_bg_color');
+    $travelfic_footer_btm_left_text = get_theme_mod($travelfic_kit_pre . 'footer_bottom_left_text_color');
+    $travelfic_footer_btm_right_bg = get_theme_mod($travelfic_kit_pre . 'footer_bottom_right_bg_color');
+    $travelfic_footer_btm_right_text = get_theme_mod($travelfic_kit_pre . 'footer_bottom_right_text_color');
 ?>
 
     <style>
@@ -276,6 +284,40 @@ function travelfic_toolkit_customizer_style()
             fill: <?php echo esc_attr($travelfic_design1_topbar_color) . ' !important'; ?>;
             stroke: <?php echo esc_attr($travelfic_design1_topbar_color) . ' !important'; ?>;
         }
+
+
+        /* Footer */
+        footer.tft-design-3{
+            background: <?php echo esc_attr($travelfic_footer_bg_color) . ' !important'; ?>;
+        }
+        footer.tft-design-3 a,
+        footer.tft-design-3 p,
+        footer.tft-design-3 li,
+        footer.tft-design-3 span,
+        footer.tft-design-3 h1,
+        footer.tft-design-3 h2,
+        footer.tft-design-3 h3,
+        footer.tft-design-3 h4,
+        footer.tft-design-3 h5,
+        footer.tft-design-3 h6{
+            color: <?php echo esc_attr($travelfic_footer_text_color) . ' !important'; ?>;
+        }
+
+        .footer-bottom .footer-bottom__copyright,
+        .footer-bottom__copyright::after {
+            background: <?php echo esc_attr($travelfic_footer_btm_left_bg) . ' !important'; ?>;
+        }
+        .footer-bottom .footer-bottom__copyright p{
+            color: <?php echo esc_attr($travelfic_footer_btm_left_text) . ' !important'; ?>;
+        }
+        .footer-bottom .footer-bottom__menu,
+        .footer-bottom__menu::after {
+            background: <?php echo esc_attr($travelfic_footer_btm_right_bg) . ' !important'; ?>;
+        }
+        .footer-bottom__nav a {
+            color: <?php echo esc_attr($travelfic_footer_btm_right_text) . ' !important'; ?>;
+        }
+
     </style>
 
 <?php

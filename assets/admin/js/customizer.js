@@ -165,12 +165,14 @@
             // show design 3 settings
             $('li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_2"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_2"]').show();
 
+            $('li[id*="customize-control-travelfic_customizer_settings_footer_design_2_section_opt"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_text_color"],li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_text_color"]').hide();
+
           }
           else if ('design2' === value) {
-            $('li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_2"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_2"]').hide();
+            $('li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_2"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_2"], li[id*="customize-control-travelfic_customizer_settings_footer_design_2_section_opt"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_text_color"],li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_text_color"]').hide();
             
           } else {
-            $('li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_2"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_2"]').hide();
+            $('li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_2"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_2"], li[id*="customize-control-travelfic_customizer_settings_footer_design_2_section_opt"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_text_color"],li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_text_color"]').hide();
           }
         }
     
@@ -187,15 +189,16 @@
       function tab_toggleFields(value) {
         
         if ('design' === value) {
-          $('li[id*="customize-control-travelfic_customizer_settings_footer_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_text_color"] ').show();
+          const footerDesign = $('#customize-control-travelfic_customizer_settings_footer_design_select input').val();
+          console.log(footerDesign);
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_text_color"], li[id*="customize-control-travelfic_customizer_settings_footer_design_2_section_opt"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_text_color"],li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_text_color"]').show();
           
           $('li[id*="customize-control-travelfic_customizer_settings_footer_width"], li[id*="customize-control-travelfic_customizer_settings_footer_design_select"], li[id*="customize-control-travelfic_customizer_settings_copyright_text"] ').hide();
           $('li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_1"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_label_2"], li[id*="customize-control-travelfic_customizer_settings_footer_menu_url_2"]').hide();
         } else {
-      
-          $('li[id*="customize-control-travelfic_customizer_settings_footer_width"], li[id*="customize-control-travelfic_customizer_settings_footer_design_select"], li[id*="customize-control-travelfic_customizer_settings_copyright_text"] ').show();
           
-          $('li[id*="customize-control-travelfic_customizer_settings_footer_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_text_color"] ').hide();
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_width"], li[id*="customize-control-travelfic_customizer_settings_footer_design_select"], li[id*="customize-control-travelfic_customizer_settings_copyright_text"] ').show();
+          $('li[id*="customize-control-travelfic_customizer_settings_footer_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_text_color"], li[id*="customize-control-travelfic_customizer_settings_footer_design_2_section_opt"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_left_text_color"],li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_bg_color"], li[id*="customize-control-travelfic_customizer_settings_footer_bottom_right_text_color"] ').hide();
           footerDesign();
         }
       }

@@ -181,7 +181,10 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			[
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'label' => __('Member Details', 'travelfic-toolkit'),
-				'default' => 'A There are many variatio of passage of Lorem for a Ipsum available '
+				'default' => 'A There are many variatio of passage of Lorem for a Ipsum available ',
+				'condition' => [
+					'tft_team_style' => 'design-1',
+				],
 			]
 		);
 		$repeater->add_control(
@@ -245,6 +248,91 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->end_controls_section();
 
 		$this->start_controls_section(
+			'team_top_section',
+			[
+				'label' => __('Top Section', 'travelfic-toolkit'),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+		$this->add_control(
+			'team_sec_title',
+			[
+				'label'     => __('Title', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'team_sec_title_typo',
+				'selector' => '{{WRAPPER}} .tft-heading-content h2',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_sec_title_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tft-heading-content h2' => 'color: {{VALUE}} !important',
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+		$this->add_control(
+			'team_sec_subtitle',
+			[
+				'label'     => __('Sub Title', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'team_sec_subtitle_typo',
+				'selector' => '{{WRAPPER}} .tft-heading-content h3',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_sec_subtitle_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tft-heading-content h3' => 'color: {{VALUE}} !important',
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
 			'team_style_section',
 			[
 				'label' => __('Item List', 'travelfic-toolkit'),
@@ -267,6 +355,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'size_units' => ['px', '%', 'em'],
 				'selectors'  => [
 					'{{WRAPPER}} .member-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -287,6 +376,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .tft_team_wrapper .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -298,12 +388,29 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'separator' => 'after',
 			]
 		);
+		// design 1
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_title_typo',
-				'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title',
+				'selectors' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title',
+					
 				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-1',
+				]
+			]
+		);
+		// design 2
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'icon-team_card_title_typo_design_2',
+				'selector' =>'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				]
 			]
 		);
 		$this->add_control(
@@ -311,9 +418,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			[
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'default'   => '#1D2A3B',
 				'selectors' => [
 					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p' => 'color: {{VALUE}} !important',
 				],
 			]
 		);
@@ -325,12 +432,30 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'separator' => 'after',
 			]
 		);
+
+		// design 1
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_subtitle_typo',
 				'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle',
 				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-1',
+				],
+			]
+		);
+
+		// design 2
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name'     => 'icon-team_card_subtitle_typo_desing_2',
+				'selector' => '{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details h3',
+				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				]
 			]
 		);
 		$this->add_control(
@@ -341,6 +466,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'default'   => '#1D2A3B',
 				'selectors' => [
 					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-subtitle' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details h3' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -350,6 +476,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Content', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
+				'condition' => [
+					'tft_team_style' => 'design-1',
+				],
 			]
 		);
 		$this->add_group_control(
@@ -358,6 +487,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'name'     => 'team_card_content_typo',
 				'selector' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content',
 				'label'    => __('Typography', 'travelfic-toolkit'),
+				'condition' => [
+					'tft_team_style' => 'design-1',
+				],
 			]
 		);
 		$this->add_control(
@@ -368,6 +500,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'default'   => '#1D2A3B',
 				'selectors' => [
 					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-content' => 'color: {{VALUE}}',
+				],
+				'condition' => [
+					'tft_team_style' => 'design-1',
 				],
 			]
 		);
@@ -388,6 +523,8 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'default'   => '#fff',
 				'selectors' => [
 					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .social-media a' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .social-media-icons button i' => 'color: {{VALUE}} !important',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .social-media-icons .social-media a' => 'color: {{VALUE}} !important',
 				],
 			]
 		);
@@ -399,9 +536,55 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'default'   => '#F15D30',
 				'selectors' => [
 					'{{WRAPPER}} .tft_team_wrapper .tft-single-member .social-media a' => 'background-color: {{VALUE}} !important',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .social-media-icons button' => 'background-color: {{VALUE}} !important',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .social-media-icons button' => 'background-color: {{VALUE}} !important',
 				],
 			]
 		);
+		$this->end_controls_section();
+
+		// navigations
+		$this->start_controls_section(
+			'team_slider_nav',
+			[
+				'label' => __('Slider Navigation', 'travelfic-toolkit'),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
+			]
+		);
+
+		$this->add_control(
+			'team_slider_nav_button',
+			[
+				'label'     => __('Nav Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .slick-dots li button' => 'background-color: {{VALUE}} !important;',
+				],
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
+			]
+		);
+		$this->add_control(
+			'team_slider_nav_button_active',
+			[
+				'label'     => __('Nav Active Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .slick-dots li.slick-active button' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .slick-dots li.slick-active' => 'border-color: {{VALUE}} !important;',
+				],
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
+			]
+		);
+
+
+		$this->end_controls_section();
 	}
 
 	protected function render()
