@@ -250,13 +250,13 @@ if (!function_exists('tf_review_star_rating')) {
 
         $output = '<span class="tft-desination-rating">';
         for ($i = 0; $i < $full_star; $i++) {
-            $output .= '<i class="ri-star-line"></i>';
+            $output .= '<i class="ri-star-fill"></i>';
         }
         if ($half_star) {
             $output .= '<i class="ri-star-half-line"></i>'; 
         }
         for ($i = 0; $i < $empty_star; $i++) {
-            $output .= '<i class="ri-star-fill"></i>'; 
+            $output .= '<i class="ri-star-line"></i>'; 
         }
         $output .= '</span>';
         return $output;

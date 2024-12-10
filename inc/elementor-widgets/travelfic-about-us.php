@@ -316,6 +316,17 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'about_us_title_head',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => ['design-1'],
+                ],
+            ]
+        );
         // design 1
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
@@ -329,18 +340,6 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             ]
         );
 
-        // design 2
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'about_us_sec_title_2_typo',
-                'selector' => '{{WRAPPER}} .tft-heading-content h2',
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'tft_about_style' => 'design-2',
-                ],
-            ]
-        );
 
         $this->add_control(
             'about_us_sec_title_color',
@@ -349,8 +348,21 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h3' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-about-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
                 ],
+                'condition' => [
+                    'tft_about_style' => 'design-1',
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_sub_title_head',
+            [
+                'label'     => __('Sub Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => ['design-1'],
+                ]
             ]
         );
 
@@ -359,22 +371,10 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_subtitle_typo',
-                'selectors' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6',
                 'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1',
-                ],
-            ]
-        );
-        // design 2
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'about_us_sec_subtitle_2_typo',
-                'selectors' => '{{WRAPPER}} .tft-heading-content h3',
-                'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'tft_about_style' => 'design-2',
                 ],
             ]
         );
@@ -386,33 +386,33 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content h6' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-about-design-2 .tft-about-us-content h3' => 'color: {{VALUE}}',
                 ],
-            ]
-        );
-
-        // design 1
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'about_us_sec_content_typo',
-                'selectors' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p',
-                'label'    => __('Content Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1',
                 ],
             ]
         );
 
-        // design 2
+        $this->add_control(
+            'about_us_content_head',
+            [
+                'label'     => __('Content', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => ['design-1'],
+                ]
+            ]
+        );
+        // design 1
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'about_us_sec_content_2_typo',
-                'selectors' => '{{WRAPPER}} .tft-heading-content p',
+                'name'     => 'about_us_sec_content_typo',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p',
                 'label'    => __('Content Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'tft_about_style' => 'design-2',
+                    'tft_about_style' => 'design-1',
                 ],
             ]
         );
@@ -424,7 +424,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content p' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-heading-content p' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-1',
                 ],
             ]
         );
@@ -547,6 +549,122 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             ]
         );
 
+        // design 2 style settings
+        $this->add_control(
+            'about_us_design2_title_head',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => ['design-2'],
+                ]
+            ]
+        );
+     
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_design2_sec_title_typo',
+                'selector' => '{{WRAPPER}} .tft-heading-content h2',
+                'label'    => __('Title Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => 'design-2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'about_us_design2_sec_title_color',
+            [
+                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-2', 
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_design2_sub_title_head',
+            [
+                'label'     => __('Sub Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => 'design-2',
+                ]
+            ]
+        );
+
+        // design 2
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_design2_sec_subtitle_typo',
+                'selector' => '{{WRAPPER}} .tft-about-design-2 .tft-heading-content h3',
+                'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => 'design-2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'about_us_design2_sec_subtitle_color',
+            [
+                'label'     => __('Subtitle Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-design-2 .tft-about-us-content h3' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-2', 
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'about_us_design2_content_head',
+            [
+                'label'     => __('Content', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => 'design-2',
+                ]
+            ]
+        );
+        
+        // design 2
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_design2_sec_content_typo',
+                'selector' => '{{WRAPPER}} .tft-about-design-2 .tft-heading-content p',
+                'label'    => __('Content Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => 'design-2',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'about_us_design2_sec_content_color',
+            [
+                'label'     => __('Content Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-design-2 .tft-heading-content p' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-2', 
+                ],
+            ]
+        );
+
 
         $this->add_control(
             'about_us_button_style',
@@ -593,7 +711,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selectors' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a',
+                'selector' => '{{WRAPPER}} .tft-about-us-wrapper .tft-about-us-grid .tft-about-us-content .read-more a',
                 'condition' => [
                     'tft_about_style' => 'design-1',
                 ],
@@ -604,9 +722,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'button_typography',
-                'selectors' => '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-button a',
-                
+                'name'     => 'about_us_button_typography',
+                'selector' => '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-button a',
                 'condition' => [
                     'tft_about_style' => 'design-2',
                 ],
@@ -614,7 +731,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'button_text_color',
+            'about_us_button_text_color',
             [
                 'label'     => __('Text Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -628,7 +745,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'button_background_color',
+            'about_us_button_background_color',
             [
                 'label'     => __('Background Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -644,14 +761,14 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
 
         // Hover state tab
         $this->start_controls_tab(
-            'button_hover',
+            'about_us_button_hover',
             [
                 'label' => __('Hover', 'travelfic-toolkit'),
             ]
         );
 
         $this->add_control(
-            'button_hover_color',
+            'about_us_button_hover_color',
             [
                 'label'     => __('Text Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -664,7 +781,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'button_background_hover_color',
+            'about_us_button_background_hover_color',
             [
                 'label'     => __('Background Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -678,6 +795,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
 
         $this->end_controls_tab();
 
+        $this->end_controls_tabs();
 
         // design 2 
         $this->add_control(
@@ -691,27 +809,15 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ],
             ]
         );
+    
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'about_us_sec_list_typo',
-                'selectors' => '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text',
+                'name'     => 'about_us_design2_sec_list_typo',
+                'selector' => '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
                 'label'    => __('List Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'tft_about_style' => 'design-2', 
-                ],
-            ]
-        );
-
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'about_us_sec_list_typo',
-                'selectors' => '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
-                'label'    => __('List Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'tft_about_style' => 'design-2', 
+                    'tft_about_style' => 'design-2',
                 ],
             ]
         );
@@ -729,10 +835,21 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'about_us_sec_list_icon_typo',
+                'selector' => '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
+                'label'    => __('Icon Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'tft_about_style' => 'design-2',
+                ],
+            ]
+        );
         $this->add_control(
             'about_us_sec_list_icon_color',
             [
-                'label'     => __('List Icon Color', 'travelfic-toolkit'),
+                'label'     => __('Icon Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i' => 'color: {{VALUE}}',

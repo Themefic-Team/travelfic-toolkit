@@ -852,7 +852,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'tour_destination_card_opacity',
+            'tour_destination_design3_card_opacity',
             [
                 'label'     => __('Card Overley Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -871,7 +871,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'name'     => 'tour_destination_card_title_typography',
                 'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3',
                 
-                'label'    => __('Card Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Title Typography', 'travelfic-toolkit'),
 
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -881,7 +881,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_card_title_color',
             [
-                'label'     => __('Card Title Color', 'travelfic-toolkit'),
+                'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3' => 'color: {{VALUE}}',
@@ -894,7 +894,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_card_title_hover_color',
             [
-                'label'     => __('Card Title Hover Color', 'travelfic-toolkit'),
+                'label'     => __('Title Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3:hover' => 'color: {{VALUE}}',
@@ -910,7 +910,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'name'     => 'tour_destination_card_para_typography',
                 'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content p',
-                'label'    => __('Card Paragraph Typography', 'travelfic-toolkit'),
+                'label'    => __('Paragraph Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
                 ],
@@ -919,7 +919,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_card_para_color',
             [
-                'label'     => __('Card Paragraph Color', 'travelfic-toolkit'),
+                'label'     => __('Paragraph Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content p' => 'color: {{VALUE}}',
@@ -1347,32 +1347,32 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     (function($) {
                         $(document).ready(function() {
                             //Your Code Inside
-                            $('.tft-destination-slider').slick({
-                                dots: false,
-                                arrows: true,
-                                infinite: true,
-                                speed: 300,
-                                autoplaySpeed: 2000,
-                                slidesToShow: 3,
-                                slidesToScroll: 1,
-                                prevArrow: '.tft-destination-slider-nav .tft-prev-slide',
-                                nextArrow: '.tft-destination-slider-nav .tft-next-slide',
-                                responsive: [{
-                                        breakpoint: 1024,
-                                        settings: {
-                                            slidesToShow: 2,
-                                            slidesToScroll: 1,
-                                            infinite: true,
-                                        }
-                                    },
-                                    {
-                                        breakpoint: 580,
-                                        settings: {
-                                            slidesToShow: 1,
-                                            slidesToScroll: 1
-                                        }
-                                    }
-                                ]
+                            $('.tft-destination-design-4 .tft-destination-slider').slick({
+                              dots: false,
+                              arrows: true,
+                              infinite: true,
+                              speed: 300,
+                              autoplaySpeed: 2000,
+                              slidesToShow: 3,
+                              slidesToScroll: 1,
+                              prevArrow: '.tft-destination-design-4 .tft-prev-slide',
+                              nextArrow: '.tft-destination-design-4 .tft-next-slide',
+                              responsive: [{
+                                      breakpoint: 1024,
+                                      settings: {
+                                          slidesToShow: 2,
+                                          slidesToScroll: 1,
+                                          infinite: true,
+                                      }
+                                  },
+                                  {
+                                      breakpoint: 620,
+                                      settings: {
+                                          slidesToShow: 1,
+                                          slidesToScroll: 1
+                                      }
+                                  }
+                              ]
                             });
                         });
 

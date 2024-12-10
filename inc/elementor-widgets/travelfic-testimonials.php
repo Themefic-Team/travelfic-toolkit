@@ -271,8 +271,19 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-testimonials-design-2' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-2', // Show this control only when testimonial_style is 'design-2'
+                    'testimonial_style' => ['design-2', 'design-3'], // Show this control only when testimonial_style is 'design-2'
                 ],
+            ]
+        );
+        $this->add_control(
+            'tft_testimonials_title_head',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-2',
+                ]
             ]
         );
         $this->add_group_control(
@@ -280,7 +291,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             [
                 'name'     => 'tft_testimonials_sec_title_typo',
                 'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h3',
-                'label'    => __('Section Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -295,7 +306,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'tft_testimonials_sec_title_color',
             [
-                'label'     => __('Section Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h3' => 'color: {{VALUE}}',
@@ -305,12 +316,24 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        $this->add_control(
+            'tft_testimonials_sub_title_head',
+            [
+                'label'     => __('Subtitle', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-2',
+                ]
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_testimonials_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-testimonials-design-2 .tft-testimonial-top-header h6',
-                'label'    => __('Section Subtitle Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -325,7 +348,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'tft_testimonials_sec_subtitle_color',
             [
-                'label'     => __('Section Subtitle Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
@@ -338,12 +361,23 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         );
 
         // design 3 
+        $this->add_control(
+            'tft_design_3_title_head',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                ]
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_design_3_sec_title_typo',
                 'selector' => '{{WRAPPER}} .tft-heading-content h2',
-                'label'    => __('Section Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => ['design-3'], 
                 ],
@@ -352,7 +386,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'tft_design_3_sec_title_color',
             [
-                'label'     => __('Section Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-heading-content h2' => 'color: {{VALUE}}',
@@ -362,12 +396,23 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'tft_design_3_sub_title_head',
+            [
+                'label'     => __('Subtitle', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                ]
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_design_3_sec_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-heading-content h3',
-                'label'    => __('Section Subtitle Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => ['design-3'],
                 ],
@@ -376,7 +421,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'tft_design_3_sec_subtitle_color',
             [
-                'label'     => __('Section Subtitle Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-heading-content h3' => 'color: {{VALUE}}',
@@ -386,12 +431,23 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'tft_design_3_content_head',
+            [
+                'label'     => __('Content', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                ]
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_design_3_sec_content_typo',
                 'selector' => '{{WRAPPER}} .tft-heading-content p',
-                'label'    => __('Section Content Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => ['design-3'],
                 ],
@@ -400,7 +456,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'tft_design_3_sec_content_color',
             [
-                'label'     => __('Section Content Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-heading-content p' => 'color: {{VALUE}}',
@@ -1262,9 +1318,17 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'tft_testimonials_nav_icon_head',
+            [
+                'label'     => __('Icon', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_control(
             'testimonials_icon_nav_icon_color',
             [
-                'label'     => __('Icon Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-slide-default button.slick-arrow i' => 'color: {{VALUE}} !important',
@@ -1275,7 +1339,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'testimonials_icon_nav_icon_color_hover',
             [
-                'label'     => __('Icon Hover', 'travelfic-toolkit'),
+                'label'     => __('Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-slide-default button.slick-arrow:hover i' => 'color: {{VALUE}} !important',
@@ -1284,9 +1348,17 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'tft_testimonials_nav_head',
+            [
+                'label'     => __('Nav', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_control(
             'testimonials_nav_color',
             [
-                'label'     => __('Nav Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-slide-default button.slick-arrow' => 'background-color: {{VALUE}} !important',
@@ -1297,7 +1369,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_control(
             'testimonials_icon_nav_color_hover',
             [
-                'label'     => __('Nav Hover', 'travelfic-toolkit'),
+                'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-slide-default button.slick-arrow:hover' => 'background-color: {{VALUE}} !important',

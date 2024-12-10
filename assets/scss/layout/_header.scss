@@ -390,7 +390,7 @@
 .tft-design-3 {
   background: $color-blue;
   // min-height: 151px;
-  // overflow: hidden;
+  overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   @media #{$max991} {
     min-height: auto;

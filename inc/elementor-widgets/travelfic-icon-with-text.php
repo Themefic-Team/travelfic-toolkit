@@ -246,13 +246,12 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
 
         // Style Section
         $this->start_controls_section(
-            'icon_text_style_section',
+            'icon_text_section_style',
             [
-                'label' => __('Item List', 'travelfic-toolkit'),
+                'label' => __('Section Style', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-
         $this->add_control(
             'sec_title_style',
             [
@@ -324,7 +323,16 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->end_controls_section();
 
+
+        $this->start_controls_section(
+            'icon_text_item_style',
+            [
+                'label' => __('Item List', 'travelfic-toolkit'),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
         $this->add_control(
             'icon_text_card',
             [
@@ -703,7 +711,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'icon-text_title_design_2',
-                'selector' =>'{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single h3',
+                'selector' => '{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single h3',
                 'label'    => __('Title Style', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-2'],
