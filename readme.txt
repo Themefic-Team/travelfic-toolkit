@@ -142,7 +142,7 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 = 1.1.4 - 10 December 2024 =
 
-- Added: Added: Car rental theme demo introduced.
+- Added: Car rental theme demo import feature.
 - Improvement: Updated Elementor Widgets.
 
 = 1.1.3 – 27 November 2024 =
