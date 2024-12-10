@@ -140,9 +140,10 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.1.3 - 27 November 2024 =
+= 1.1.3 - 10 December 2024 =
 
 - Added: Added: Car rental widgets introduced.
+- Added: Added: Car rental theme demo introduced.
 - Improvement: Updated and refined widgets for the car rental feature.
 
 = 1.1.2 - 30 October 2024 =
