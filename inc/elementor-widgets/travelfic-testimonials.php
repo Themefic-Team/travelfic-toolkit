@@ -254,7 +254,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->start_controls_section(
             'tft_style_section',
             [
-                'label' => __('Section Style', 'travelfic-toolkit'),
+                'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'testimonial_style' => ['design-2', 'design-3'], // Show this control only when testimonial_style is 'design-2'
@@ -299,7 +299,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-2', 
+                    'testimonial_style' => 'design-2',
                 ],
             ]
         );
@@ -379,7 +379,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selector' => '{{WRAPPER}} .tft-heading-content h2',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-3'], 
+                    'testimonial_style' => ['design-3'],
                 ],
             ]
         );
@@ -462,7 +462,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-heading-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-3'], 
+                    'testimonial_style' => ['design-3'],
                 ],
             ]
         );
@@ -1056,14 +1056,14 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->start_controls_section(
             'testimonials_style_3_section',
             [
-                'label' => __('Team Style', 'travelfic-toolkit'),
+                'label' => __('Team', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'testimonial_style' => 'design-3',
                 ],
             ]
         );
-     
+
         $this->add_control(
             'testimonials_card_3_color',
             [
@@ -1092,7 +1092,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-testimonials-design-3 .tft-testimonials-slides .tft-single-testimonial' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-3', 
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -1128,7 +1128,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selector' => '{{WRAPPER}} .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => 'design-3', 
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -1177,7 +1177,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-3', 
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -1212,7 +1212,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-3', 
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -1223,7 +1223,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => 'design-3', 
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -1242,7 +1242,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-3', 
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -1252,7 +1252,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->start_controls_section(
             'testimonials_nav_style',
             [
-                'label' => __('Nav Style', 'travelfic-toolkit'),
+                'label' => __('Nav', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1266,7 +1266,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                         'min' => 0,
                     ],
                 ],
-                'default' => [  
+                'default' => [
                     'size' => 70,
                 ],
                 'selectors' => [
@@ -1291,7 +1291,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-testimonials-selector button.slick-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
-                    
+
                 ],
             ]
         );
@@ -1377,6 +1377,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        $this->end_controls_section();
     }
 
     private function testimonials_rattings($rate)
@@ -1407,6 +1409,18 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         }
         if (!empty($settings['testimonial_bg'])) {
             $tft_testimonial_bg = $settings['testimonial_bg'];
+        }
+
+        // Items per page
+        $slideToShow = 2;
+        $postCount = isset($settings['testimonials_section']) ? count($settings['testimonials_section']) : 0;
+
+        // Disable slider class
+        $tftSliderDisable = false;
+        $tftDisableClass = '';
+        if ($postCount <= $slideToShow) {
+            $tftSliderDisable = true;
+            $tftDisableClass = 'tft-slider-disable';
         }
 
 ?>
@@ -1594,16 +1608,18 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                 </div>
                             <?php } ?>
 
-                            <div class="tft-slider-arrows">
-                                <button type="button" class="tft-slider-prev tft-arrow">
-                                    <i class="ri-arrow-left-line"></i>
-                                </button>
-                                <button type="button" class="tft-slider-next tft-arrow">
-                                    <i class="ri-arrow-right-line"></i>
-                                </button>
-                            </div>
+                            <?php if ($tftSliderDisable == false): ?>
+                                <div class="tft-slider-arrows">
+                                    <button type="button" class="tft-slider-prev tft-arrow">
+                                        <i class="ri-arrow-left-line"></i>
+                                    </button>
+                                    <button type="button" class="tft-slider-next tft-arrow">
+                                        <i class="ri-arrow-right-line"></i>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                        <div class="tft-testimonials-sliders">
+                        <div class="tft-testimonials-sliders  <?php echo esc_attr($tftDisableClass); ?>">
                             <div class="tft-testimonials-slides">
                                 <?php if ($settings['testimonials_section']) {
                                     foreach ($settings['testimonials_section'] as $item) { ?>
@@ -1640,39 +1656,41 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 (function($) {
                     $(document).ready(function() {
                         //Your Code Inside
-                        $('.tft-testimonials-design-3 .tft-testimonials-slides').slick({
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                            dots: false,
-                            arrows: true,
-                            speed: 300,
-                            autoplaySpeed: 2000,
-                            prevArrow: $('.tft-slider-prev'),
-                            nextArrow: $('.tft-slider-next'),
-                            responsive: [{
-                                    breakpoint: 1199,
-                                    settings: {
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1
-                                    }
-                                },
-                                {
-                                    breakpoint: 991,
-                                    settings: {
-                                        slidesToShow: 2,
-                                        slidesToScroll: 2
-                                    }
-                                },
-                                {
-                                    breakpoint: 767,
-                                    settings: {
-                                        slidesToShow: 1,
-                                        slidesToScroll: 1
-                                    }
-                                },
+                        <?php if ($tftSliderDisable == false): ?>
+                            $('.tft-testimonials-design-3 .tft-testimonials-slides').slick({
+                                slidesToShow: <?php echo esc_attr($slideToShow); ?>,
+                                slidesToScroll: 1,
+                                dots: false,
+                                arrows: true,
+                                speed: 300,
+                                autoplaySpeed: 2000,
+                                prevArrow: $('.tft-slider-prev'),
+                                nextArrow: $('.tft-slider-next'),
+                                responsive: [{
+                                        breakpoint: 1199,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 991,
+                                        settings: {
+                                            slidesToShow: 2,
+                                            slidesToScroll: 2
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 767,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    },
 
-                            ]
-                        });
+                                ]
+                            });
+                        <?php endif; ?>
                     });
 
                 }(jQuery));

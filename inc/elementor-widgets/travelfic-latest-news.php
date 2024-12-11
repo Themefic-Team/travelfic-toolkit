@@ -251,14 +251,14 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         $this->start_controls_section(
             'blog_design_2_section_style',
             [
-                'label' => __('Section Styles', 'travelfic-toolkit'),
+                'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
         $this->add_control(
             'blog_section_bg',
             [
-                'label'     => __('Section Background', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#FAEEDC',
                 'selectors' => [
@@ -276,7 +276,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'name'     => 'blog_section_title_typo',
                 'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h3',
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -290,12 +290,23 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         );
 
         // design 3
+        $this->add_control(
+            'blog_section_design3_title_head',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'blog_style' => ['design-3'],
+                ],
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_title_typo_design_3',
                 'selector' => '{{WRAPPER}} .tft-design-3-blog .container .tft-heading-content h2',
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'blog_style' => 'design-3', // Show this control only when blog_style is 'design-3'
                 ],
@@ -305,7 +316,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         $this->add_control(
             'blog_section_title_color',
             [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h3' => 'color: {{VALUE}}',
@@ -317,12 +328,13 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             ]
         );
         // design 2
+   
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_subtitle_typo',
                 'selector' => '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h6',
-                'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
                     'font_family' => [
@@ -335,12 +347,23 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             ]
         );
         // design 3
+        $this->add_control(
+            'blog_section_design3_subtitle_head',
+            [
+                'label'     => __('Sub Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'blog_style' => ['design-3'],
+                ],
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_subtitle_typo_design_3',
                 'selector' => '{{WRAPPER}} .tft-heading-content h3',
-                'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'blog_style' => 'design-3', // Show this control only when blog_style is 'design-3'
                 ],
@@ -349,7 +372,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         $this->add_control(
             'blog_section_subtitle_color',
             [
-                'label'     => __('Subtitle Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-design-2-blog .tft-blog-header h6' => 'color: {{VALUE}}',

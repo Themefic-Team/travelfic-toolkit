@@ -248,7 +248,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->start_controls_section(
             'icon_text_section_style',
             [
-                'label' => __('Section Style', 'travelfic-toolkit'),
+                'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -268,7 +268,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'name'     => 'sec_title_typography',
                 'selector' => '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h2',
-                'label'    => __('Title Style', 'travelfic-toolkit'),
+                'label'    => __('Title', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-2'],
                 ],
@@ -277,7 +277,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'sec_title_color',
             [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
@@ -304,7 +304,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'name'     => 'sec_sub_title_typography',
                 'selector' => '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h3',
-                'label'    => __('Sub Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-2'],
                 ],
@@ -313,7 +313,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'sec_sub_title_color',
             [
-                'label'     => __('Sub Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
@@ -336,7 +336,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'icon_text_card',
             [
-                'label'     => __('Card Style', 'travelfic-toolkit'),
+                'label'     => __('Card', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
@@ -384,7 +384,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'list_card_bg_color_hover',
             [
-                'label'     => __('List Background Hover', 'travelfic-toolkit'),
+                'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#1D2A3B',
                 'selectors' => [
@@ -399,7 +399,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'icon_id',
             [
-                'label'     => __('Icon Style', 'travelfic-toolkit'),
+                'label'     => __('Icon', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
@@ -412,7 +412,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'icon_size',
             [
-                'label' => esc_html__('Icon Size)', 'travelfic-toolkit'),
+                'label' => esc_html__('Size)', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -437,7 +437,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'icon_image_box',
             [
-                'label'     => __('Item Icon Box Style', 'travelfic-toolkit'),
+                'label'     => __('Icon Box', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
@@ -448,7 +448,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_responsive_control(
             'icon_box_inner',
             [
-                'label' => esc_html__('Icon Inner Width & Height)', 'travelfic-toolkit'),
+                'label' => esc_html__('Icon Inner Width & Height', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -526,7 +526,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'icon_color',
             [
-                'label'     => __('Icon Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -540,7 +540,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'icon_color_hover',
             [
-                'label'     => __('Icon Color Hover', 'plugin-domain'),
+                'label'     => __('Hover', 'plugin-domain'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -607,7 +607,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-title',
                 ],
-                'label'    => __('Title Style', 'travelfic-toolkit'),
+                'label'    => __('Title', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-1'],
                 ],
@@ -616,7 +616,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-title' => 'color: {{VALUE}}',
@@ -630,7 +630,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'title_color_hover',
             [
-                'label'     => __('Title Color Hover', 'travelfic-toolkit'),
+                'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -660,7 +660,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-details',
                     '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single .tft-details',
                 ],
-                'label'    => __('Content Style', 'travelfic-toolkit'),
+                'label'    => __('Content', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-1'],
                 ],
@@ -669,7 +669,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'content_color',
             [
-                'label'     => __('Content Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-text-wrapper .tft-icon-text-single .tft-details' => 'color: {{VALUE}}',
@@ -683,7 +683,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'content_color_hover',
             [
-                'label'     => __('Content Color Hover', 'travelfic-toolkit'),
+                'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
@@ -712,7 +712,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'name'     => 'icon-text_title_design_2',
                 'selector' => '{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single h3',
-                'label'    => __('Title Style', 'travelfic-toolkit'),
+                'label'    => __('Title', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-2'],
                 ],
@@ -721,7 +721,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'title_color_design_2',
             [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selector' => [
                     '{{WRAPPER}} .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single h3' => 'color: {{VALUE}}',
@@ -748,7 +748,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'name'     => 'icon-text_content_design_2',
                 'selector' => '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single p',
-                'label'    => __('Content Style', 'travelfic-toolkit'),
+                'label'    => __('Content', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_icon_style' => ['design-2'],
                 ],
@@ -757,7 +757,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'content_color_design_2',
             [
-                'label'     => __('Content Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-icon-design-2 .tft-icon-text-single p' => 'color: {{VALUE}}',

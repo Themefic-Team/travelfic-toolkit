@@ -97,6 +97,11 @@ main {
 .container.tft-fullwidth-container {
   max-width: 100%;
 }
+@media only screen and (max-width: 1199.98px) {
+  .container.tft-fullwidth-container {
+    padding: 0 15px;
+  }
+}
 @media only screen and (max-width: 1760px) {
   .container {
     padding: 0 15px;
@@ -1226,14 +1231,14 @@ footer.tft-design-3 input[type=submit]:hover {
 .tft-design-3__content-right::before {
   content: "";
   position: absolute;
-  left: -52px;
+  left: -48px;
   padding-right: 0;
   top: 0;
   background-color: #ffffff;
-  width: 100vw;
   height: 100%;
-  clip-path: polygon(2.5% 0%, 2000% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
   z-index: -1;
+  width: 205px;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3__content-right::before {
@@ -1682,6 +1687,9 @@ footer.tft-design-3 input[type=submit]:hover {
     gap: 15px;
   }
 }
+.tft-design-3__bottom__right__list__item {
+  position: relative;
+}
 .tft-design-3__bottom__right__list__item--link {
   display: block;
   width: 45px;
@@ -1718,6 +1726,68 @@ footer.tft-design-3 input[type=submit]:hover {
   .tft-design-3__bottom__right__list__item--link svg {
     width: 16px;
     height: 16px;
+  }
+}
+.tft-design-3__bottom__right__list__item--search {
+  position: absolute;
+  left: -100px;
+  transform: translateY(40px);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  visibility: hidden;
+}
+.tft-design-3__bottom__right__list__item--search .search-form {
+  min-width: 250px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3__bottom__right__list__item--search .search-form {
+    min-width: 200px;
+  }
+}
+.tft-design-3__bottom__right__list__item--search input[type=search] {
+  border: 0;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #000000;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3__bottom__right__list__item--search input[type=search] {
+    padding: 6px 12px;
+  }
+}
+.tft-design-3__bottom__right__list__item--search__button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: #FA6400;
+  color: #ffffff;
+  font-size: 14px;
+  height: 100%;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+.tft-design-3__bottom__right__list__item--search.active {
+  visibility: visible;
+  transform: translateY(26px);
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3__bottom__right__list__item--search.active {
+    transform: translateY(18px);
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-design-3__bottom__right__list__item--search.active {
+    transform: translateY(8px);
   }
 }
 @media only screen and (max-width: 575.98px) {
@@ -1791,11 +1861,11 @@ footer.tft-design-3 input[type=submit]:hover {
 .mobile-sidenav.open {
   left: 0;
 }
-.mobile-sidenav .mh-header__bottom__right__button {
+.mobile-sidenav .tft-design-3__bottom__right__button {
   display: none;
 }
 @media only screen and (max-width: 575.98px) {
-  .mobile-sidenav .mh-header__bottom__right__button {
+  .mobile-sidenav .tft-design-3__bottom__right__button {
     display: block;
     margin: 20px 25px;
   }
@@ -2055,7 +2125,7 @@ footer.tft-design-3 input[type=submit]:hover {
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  line-height: 48px;
+  line-height: 45px;
   border: 1px solid #d6dff0;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -2789,6 +2859,30 @@ footer.tft-design-3 input[type=submit]:hover {
     padding: 0 15px;
   }
 }
+.tft-team-wrapper-v2 .container.tft-slider-disable {
+  overflow: initial;
+}
+.tft-team-wrapper-v2 .container.tft-slider-disable .tft-heading-content {
+  margin-bottom: 70px;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-team-wrapper-v2 .container.tft-slider-disable .tft-heading-content {
+    margin-bottom: 60px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-team-wrapper-v2 .container.tft-slider-disable .tft-heading-content {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-wrapper-v2 .container.tft-slider-disable .tft-heading-content {
+    margin-bottom: 40px;
+  }
+}
+.tft-team-wrapper-v2 .container.tft-slider-disable .tft-team-members {
+  padding-bottom: 60px;
+}
 .tft-team-wrapper-v2 .tft-heading-content {
   text-align: center;
   margin-bottom: 40px;
@@ -2823,6 +2917,16 @@ footer.tft-design-3 input[type=submit]:hover {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   gap: 24px;
   padding-bottom: 30px;
   overflow: visible;
@@ -2891,7 +2995,6 @@ footer.tft-design-3 input[type=submit]:hover {
   background: #FA6400;
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member {
-  flex: 1;
   padding: 30px;
   padding-bottom: 40px;
   -webkit-border-radius: 15px;
@@ -2910,16 +3013,17 @@ footer.tft-design-3 input[type=submit]:hover {
   -moz-border-radius: 15px;
   border-radius: 15px;
   max-height: 296px;
+  min-height: 296px;
   width: 100%;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member_img img {
-    height: 220px;
+    min-height: 220px;
   }
 }
 @media only screen and (max-width: 575.98px) {
   .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member_img img {
-    height: 100%;
+    min-height: 100%;
     max-height: 280px;
   }
 }
@@ -3269,6 +3373,18 @@ footer.tft-design-3 input[type=submit]:hover {
   font-weight: 400;
   line-height: normal;
   margin-bottom: 0;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders.tft-slider-disable {
+  overflow: initial;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders.tft-slider-disable .slick-track {
+  width: 100%;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders.tft-slider-disable .slick-list {
+  width: 100%;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders.tft-slider-disable .slick-dots {
+  display: none;
 }
 
 .tft-destination-design-3 .tft-destination-content {
@@ -4356,6 +4472,18 @@ footer.tft-design-3 input[type=submit]:hover {
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn:hover {
   background: #FA6400;
   color: #ffffff;
+}
+.tft-destination-design-4 .tft-destination-slider.tft-slider-disable,
+.tft-popular-hotels-wrapper-2 .tft-destination-slider.tft-slider-disable {
+  overflow: initial;
+}
+.tft-destination-design-4 .tft-destination-slider.tft-slider-disable .slick-track,
+.tft-popular-hotels-wrapper-2 .tft-destination-slider.tft-slider-disable .slick-track {
+  width: 100%;
+}
+.tft-destination-design-4 .tft-destination-slider.tft-slider-disable .slick-list,
+.tft-popular-hotels-wrapper-2 .tft-destination-slider.tft-slider-disable .slick-list {
+  width: 100%;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-destination-design-4 .tft-destination-slider-nav,

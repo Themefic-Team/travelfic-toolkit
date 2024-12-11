@@ -145,7 +145,7 @@
           @include box-circle();
           width: 45px;
           height: 45px;
-          line-height: 48px;
+          line-height: 45px;
           border: 1px solid #d6dff0;
           @include transition(0.3s);
           @media #{$max991} {
@@ -705,6 +705,25 @@
     @media #{$max1399} {
       padding: 0 15px;
     }
+    &.tft-slider-disable {
+      overflow: initial;
+      .tft-heading-content{
+        margin-bottom: 70px;
+        @media #{$max1199} {
+          margin-bottom: 60px;
+        }
+        @media #{$max991} {
+          margin-bottom: 50px;
+        }
+        @media #{$max767} {
+          margin-bottom: 40px;
+        }
+      }
+      .tft-team-members {
+        padding-bottom:60px;
+      }
+     
+    }
   }
   .tft-heading-content {
     text-align: center;
@@ -729,6 +748,8 @@
   }
   .tft-team-members {
     @include d-flex();
+    @include align-items(center);
+    @include justify-content(center);
     gap: 24px;
     padding-bottom: 30px;
     overflow: visible;
@@ -771,7 +792,6 @@
     }
 
     .tft-single-member {
-      flex: 1;
       padding: 30px;
       padding-bottom: 40px;
       @include bd-radius(15px);
@@ -785,12 +805,13 @@
           @include bd-radius(15px);
           // margin-bottom: 54px;
           max-height: 296px;
+          min-height: 296px;
           width: 100%;
           @media #{$max767} {
-            height: 220px;
+            min-height: 220px;
           }
           @media #{$max575} {
-            height: 100%;
+            min-height: 100%;
             max-height: 280px;
           }
         }
@@ -1050,6 +1071,18 @@
               }
             }
           }
+        }
+      }
+      &.tft-slider-disable {
+        overflow: initial;
+        .slick-track {
+          width: 100%;
+        }
+        .slick-list {
+          width: 100%;
+        }
+        .slick-dots{
+          display: none;
         }
       }
     }
@@ -1709,10 +1742,10 @@
     max-width: 1221px;
     margin: 0 auto;
     overflow: hidden;
-    
+
     .slick-track {
       @include d-flex();
-      @include justify-content(center); 
+      @include justify-content(center);
       // width: 100%!important;
     }
     .slick-list {
@@ -1860,6 +1893,15 @@
       }
     }
 
+    &.tft-slider-disable {
+      overflow: initial;
+      .slick-track {
+        width: 100%;
+      }
+      .slick-list {
+        width: 100%;
+      }
+    }
   }
   .tft-destination-slider-nav {
     @media #{$max991} {
@@ -1894,7 +1936,6 @@
       @media #{$max767} {
         width: 40px;
         height: 40px;
-  
       }
       &:hover {
         background: $color-primary;

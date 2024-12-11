@@ -291,7 +291,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 		$this->add_control(
 			'suffix_title_color',
 			[
-				'label' => __('Title Suffix Color', 'travelfic-toolkit'),
+				'label' => __('Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#F15D30',
 				'selectors' => [

@@ -468,14 +468,15 @@
       &::before {
         content: "";
         position: absolute;
-        left: -52px;
+        left: -48px;
         padding-right: 0;
         top: 0;
         background-color: $color-white;
-        width: 100vw;
+        // width: 100vw;
         height: 100%;
-        clip-path: polygon(2.5% 0%, 2000% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
         z-index: -1;
+        width: 205px;
         @media #{$max991} {
           display: none;
         }
@@ -783,6 +784,7 @@
           gap: 15px;
         }
         &__item {
+          position: relative;
           &--link {
             display: block;
             width: 45px;
@@ -801,6 +803,54 @@
               @media #{$max991} {
                 width: 16px;
                 height: 16px;
+              }
+            }
+          }
+          &--search {
+            position: absolute;
+            left: -100px;
+            transform: translateY(40px);
+            @include transition(0.3s);
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            visibility: hidden;
+            .search-form {
+              min-width: 250px;
+              @media #{$max767} {
+                min-width: 200px;
+              }
+            }
+            input[type="search"] {
+              border: 0;
+              padding: 10px 12px;
+              font-size: 14px;
+              color: $color-black;
+              @include bd-radius(0);
+              @media #{$max767} {
+                padding: 6px 12px;
+              }
+            }
+            &__button {
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              border: 0;
+              background: $color-primary;
+              color: $color-white;
+              font-size: 14px;
+              height: 100%;
+              @include bd-radius(0);
+              cursor: pointer;
+            
+            }
+            &.active {
+              visibility: visible;
+              transform: translateY(26px);
+              @media #{$max991} {
+                transform: translateY(18px);
+              }
+              @media #{$max767} {
+                transform: translateY(8px);
               }
             }
           }
@@ -856,7 +906,7 @@
       list-style-type: none;
       padding: 0;
       margin: 0;
-      .menu-item{
+      .menu-item {
         position: relative;
         a {
           padding: 7px 25px;
@@ -873,14 +923,13 @@
           display: none;
         }
       }
-     
     }
   }
   &.open {
     left: 0;
   }
 
-  .mh-header__bottom__right__button {
+  .tft-design-3__bottom__right__button {
     display: none;
     @media #{$max575} {
       display: block;

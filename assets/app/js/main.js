@@ -28,6 +28,13 @@
       }
     });
 
+
+    // search field
+    $("#tftSearchBtn").on("click", function () {
+      $("#tftSearchForm").toggleClass("active");
+    });
+
+
     // submenu toggle
     $(".tft-design-3 .menu-item-has-children").click(function (e) {
       e.preventDefault();

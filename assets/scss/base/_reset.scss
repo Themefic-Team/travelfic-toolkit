@@ -95,6 +95,9 @@ main {
   padding: 0;
   &.tft-fullwidth-container{
     max-width: 100%;
+    @media #{$max1199} {
+      padding: 0 15px;
+    }
   }
   @media #{$max1760} {
     padding: 0 15px;

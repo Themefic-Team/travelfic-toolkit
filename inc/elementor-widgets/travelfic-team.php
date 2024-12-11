@@ -394,7 +394,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			[
 				'name'     => 'icon-team_card_title_typo',
 				'selectors' => '{{WRAPPER}} .tft_team_wrapper .tft-single-member .member-details .tft-title',
-					
+
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-1',
@@ -406,7 +406,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_title_typo_design_2',
-				'selector' =>'{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p',
+				'selector' => '{{WRAPPER}} .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -601,6 +601,20 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		if (!empty($settings['team_subtitle'])) {
 			$tft_sec_subtitle = $settings['team_subtitle'];
 		}
+
+
+		// Items per page
+		$slideToShow = 3;
+		$postCount = isset($settings['members_list']) ? count($settings['members_list']) : 0;
+
+		// Disable slider class
+		$tftSliderDisable = false;
+		$tftDisableClass = '';
+		if ($postCount <= $slideToShow) {
+			$tftSliderDisable = true;
+			$tftDisableClass = 'tft-slider-disable';
+		}
+
 ?>
 
 		<?php if ('design-1' == $tft_design) : ?>
@@ -651,7 +665,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			</div>
 		<?php elseif ('design-2' == $tft_design):  ?>
 			<div class="tft-team-wrapper-v2 tft-customizer-typography tft-section-space-top">
-				<div class="container">
+				<div class="container <?php echo esc_attr($tftDisableClass); ?>">
 					<div class="tft-heading-content">
 						<?php if (!empty($tft_sec_subtitle)) { ?>
 							<h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
@@ -714,35 +728,39 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 
 		<script>
 			jQuery(document).ready(function($) {
-				$(".tft-team-wrapper-v2 .tft-team-members").slick({
-					infinite: true,
-					slidesToShow: 3,
-					slidesToScroll: 2,
-					autoplay: true,
-					autoplaySpeed: 6000,
-					speed: 1500,
-					dots: true,
-					arrows: false,
-					pauseOnFocus: false,
-					pauseOnHover: false,
-					responsive: [{
-							breakpoint: 991,
-							settings: {
-								slidesToShow: 2,
-								slidesToScroll: 2,
-								infinite: true,
-								dots: true
-							}
-						},
-						{
-							breakpoint: 600,
-							settings: {
-								slidesToShow: 1,
-								slidesToScroll: 1
-							}
-						},
-					]
-				});
+				<?php if ($tftSliderDisable == false) : ?>
+					$(".tft-team-wrapper-v2 .tft-team-members").slick({
+						infinite: true,
+						slidesToShow: <?php echo esc_attr($slideToShow); ?>,
+						slidesToScroll: 2,
+						autoplay: true,
+						autoplaySpeed: 6000,
+						speed: 1500,
+						dots: true,
+						arrows: false,
+						pauseOnFocus: false,
+						pauseOnHover: false,
+						responsive: [{
+								breakpoint: 991,
+								settings: {
+									slidesToShow: 2,
+									slidesToScroll: 2,
+									infinite: true,
+									dots: true
+								}
+							},
+							{
+								breakpoint: 600,
+								settings: {
+									slidesToShow: 1,
+									slidesToScroll: 1
+								}
+							},
+						]
+					});
+
+				<?php endif; ?>
+
 
 				$(".share-btn").on("click", function(e) {
 					e.stopPropagation();

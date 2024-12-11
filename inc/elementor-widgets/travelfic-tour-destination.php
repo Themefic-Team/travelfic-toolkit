@@ -144,7 +144,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     'design-1' => __('Design 1', 'travelfic-toolkit'),
                     'design-2'  => __('Design 2', 'travelfic-toolkit'),
                     'design-3'  => __('Design 3', 'travelfic-toolkit'),
-                    'design-4'  => __('Design 4', 'travelfic-toolkit'),
+                    // 'design-4'  => __('Design 4', 'travelfic-toolkit'),
                 ],
             ]
         );
@@ -839,18 +839,38 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
 
         $this->end_controls_tabs();
 
-        $this->add_control(
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'tour_destination_post_card',
             [
-                'label'     => __('Post Card', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
+                'label'     => __('Card', 'travelfic-toolkit'),
+                'tab'      => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
                     'des_style' => ['design-3'],
                 ],
             ]
         );
-
+        $this->add_control(
+            'tour_destination_design3_border_radius',
+            [
+                'label'     => __('Border Radius', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'des_style' => 'design-3', 
+                ],
+            ]
+        );
         $this->add_control(
             'tour_destination_design3_card_opacity',
             [
@@ -865,13 +885,26 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             ]
         );
 
+        // title
+        $this->add_control(
+            'tour_destination_card_title_heading',
+            [
+                'label'     => __('Title', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => 'design-3'
+                ]
+            ]
+        );
+ 
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_title_typography',
                 'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3',
                 
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
 
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -881,7 +914,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_card_title_color',
             [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3' => 'color: {{VALUE}}',
@@ -894,7 +927,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_card_title_hover_color',
             [
-                'label'     => __('Title Hover Color', 'travelfic-toolkit'),
+                'label'     => __('Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3:hover' => 'color: {{VALUE}}',
@@ -905,12 +938,24 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             ]
         );
 
+        // paragraph
+        $this->add_control(
+            'tour_destination_card_para_heading',
+            [
+                'label'     => __('Paragraph', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => 'design-3'
+                ]
+            ]
+        );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_para_typography',
                 'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content p',
-                'label'    => __('Paragraph Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
                 ],
@@ -919,7 +964,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_card_para_color',
             [
-                'label'     => __('Paragraph Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content p' => 'color: {{VALUE}}',
@@ -929,8 +974,6 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 ],
             ]
         );
-
-        $this->end_controls_tab();
 
         $this->end_controls_section();
     }
