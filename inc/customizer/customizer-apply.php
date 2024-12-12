@@ -161,6 +161,10 @@ $travelfic_transparent_menu_hover_color = get_theme_mod($travelfic_kit_pre.'tran
         line-height: <?php echo !empty($travelfic_menu_line_height) ? esc_attr( $travelfic_menu_line_height.'px !important' ) : esc_attr('24px !important'); ?>;
         text-transform: <?php echo !empty($travelfic_menu_texttransform) ? esc_attr( $travelfic_menu_texttransform ) : esc_attr('none'); ?>;
     }
+    .site--brand-logo a,
+    .tft-design-2 .tft-menus-section .tft-flex .tft-logo .logo-text a{
+        color: <?php echo !empty($travelfic_menu_color) ? esc_attr( $travelfic_menu_color. ' !important' ) : esc_attr('#222'); ?>; 
+    }
     .tft-site-header .tft-site-navigation > ul > li:hover > a,
     .tft-design-2 .tft-menus-section .tft-site-navigation > ul > li:hover > a {
         color: <?php echo !empty($travelfic_menu_color_hover) ? esc_attr( $travelfic_menu_color_hover. ' !important' ) : esc_attr('#F15D30 !important'); ?>;
