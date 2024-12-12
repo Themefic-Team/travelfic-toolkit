@@ -29,6 +29,8 @@ class Travelfic_Customizer_Footer
     public static function travelfic_toolkit_footer_third_design($travelfic_footer)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
+        $travelfic_footer_back_image = !empty(get_theme_mod($travelfic_prefix . 'footer_3_bg_image')) ? get_theme_mod($travelfic_prefix . 'footer_3_bg_image') : '';
+        
         $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright 2024 Tourfic Development Site by Themefic All Rights Reserved.');
         $travelfic_menu_1_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_1', 'Privacy Policy');
         $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_2', '#');
@@ -37,7 +39,7 @@ class Travelfic_Customizer_Footer
         ob_start();
     ?>
         <!-- footer -->
-        <footer class="footer tft-design-3" style="background-image: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/footer-banner.png'); ?>);">
+        <footer class="footer tft-footer-design-3" style="background-image: url(<?php echo esc_url($travelfic_footer_back_image); ?>);">
             <div class="container <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
                 <div class="footer__widget">
                     <div class="footer__widget__row">

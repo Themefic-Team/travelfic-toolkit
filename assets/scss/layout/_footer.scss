@@ -9,6 +9,7 @@
   font-weight: 400;
   line-height: 18.38px;
   z-index: 1;
+  position: relative;
   @media #{$max1199} {
     padding: 60px 0;
   }
@@ -18,17 +19,7 @@
   @media #{$max767} {
     padding: 40px 0;
   }
-  // &::after{
-  //   content: '';
-  //   position: absolute;
-  //   background: $color-dark-blue;
-  //   left: 0;
-  //   top: 0;
-  //   width: 100%;
-  //   height: 100%;
-  //   opacity: 0.6;
-  //   z-index: -1;
-  // }
+  
   &__widget {
     &__row {
       @include d-flex();
@@ -90,12 +81,14 @@
     margin-bottom: 16px;
     @media #{$max767} {
       font-size: 16px;
+      margin-bottom: 10px;
     }
   }
   p {
     margin-bottom: 0;
     @media #{$max767} {
-      font-size: 15px;
+      font-size: 14px;
+      line-height: 22px;
     }
   }
   .wp-block-list {
@@ -127,6 +120,9 @@
   }
 
   .tft-footer-section {
+    @media #{$max767} {
+      margin-bottom: 0;
+    }
     &:first-child {
       max-width: 205px;
       font-family: $font-ubuntu;
@@ -204,6 +200,9 @@
     }
     p {
       margin-bottom: 0;
+      @media #{$max767} {
+        line-height: 18px;
+      }
     }
   }
   &__menu {
@@ -214,7 +213,7 @@
     position: relative;
     @media #{$max767} {
       flex: 1;
-      padding: 12px 5px;
+      padding: 12px 8px;
       padding-right: 0;
     }
     &::after {
@@ -254,7 +253,7 @@
 
 footer.tft-design-,
 footer.tft-design-2,
-footer.tft-design-3 {
+footer.tft-footer-design-3 {
   input[type="email"],
   input[type="text"] {
     max-width: 320px;
@@ -304,5 +303,18 @@ footer.tft-design-3 {
     &:hover {
       background: $color-primary !important;
     }
+  }
+}
+footer.tft-footer-design-3{
+  &::after{
+    content: '';
+    position: absolute;
+    background: #101f36d5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .95;
   }
 }

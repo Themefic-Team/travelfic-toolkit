@@ -206,8 +206,8 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             'readme_label',
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'label' => esc_html__('Read More Label', 'travelfic-toolkit'),
-                'placeholder' => esc_html__('Enter read more label', 'travelfic-toolkit'),
+                'label' => esc_html__('Button Label', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter button label', 'travelfic-toolkit'),
                 'default' => __('View All Destination', 'travelfic-toolkit'),
                 'label_block' => true,
                 'dynamic' => [
@@ -222,8 +222,8 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             'readme_url',
             [
                 'type' => \Elementor\Controls_Manager::URL,
-                'label' => esc_html__('Read More URL', 'travelfic-toolkit'),
-                'placeholder' => esc_html__('Enter Link', 'travelfic-toolkit'),
+                'label' => esc_html__('Button URL', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Enter button url', 'travelfic-toolkit'),
                 'default' => [
                     'url' => '#',
                 ],

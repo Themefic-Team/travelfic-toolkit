@@ -103,6 +103,8 @@ function travelfic_toolkit_customize_register($wp_customize)
         'priority' => 11,
     )));
 
+
+
     // Topbar Enable/Disable
 
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_2_topbar', array(
@@ -223,6 +225,21 @@ function travelfic_toolkit_customize_register($wp_customize)
 
     $wp_customize->add_control(new Travelfic_Toolkit_Sec_Section_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_3_section_opt', array(
         'label'    => __('Design 3 Settings', 'travelfic-toolkit'),
+        'section'  => 'travelfic_customizer_header',
+        'priority' => 11,
+    )));
+
+    // Loader Enable/Disable
+
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_3_loader', array(
+        'default'           => 'design3',
+        'sanitize_callback' => $travelfic_theme_style == 'travelfic' || $travelfic_theme_style == 'travelfic-child' ? 'travelfic_checkbox_sanitize' : 'ultimate_hotel_booking_checkbox_sanitize',
+        "transport" => "refresh",
+        "default" => 1
+    ));
+
+    $wp_customize->add_control(new Travelfic_Toolkit_Switcher_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_3_loader', array(
+        'label'    => __('Enable Loader?', 'travelfic-toolkit'),
         'section'  => 'travelfic_customizer_header',
         'priority' => 11,
     )));
@@ -708,6 +725,29 @@ function travelfic_toolkit_customize_register($wp_customize)
         'priority' => 10,
     ));
 
+    // Footer background image upload
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_3_bg_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_3_bg_image', array(
+        'label'       => __('Footer Background Image', 'travelfic-toolkit'),
+        'section'     => 'travelfic_customizer_footer',
+    )));
+
+    // Footer background overlay color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_3_bg_overlay_color', array(
+        'default'           => '#101F36', 
+        'sanitize_callback' => 'sanitize_hex_color',
+
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_3_bg_overlay_color', array(
+        'label'       => __('Background Overlay Color', 'travelfic-toolkit'),
+        'section'     => 'travelfic_customizer_footer',
+    )));
+
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'copyright_text', array(
         'sanitize_callback' => 'sanitize_text_field',
         'default' => __('© Copyright 2024 Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit'),
@@ -751,7 +791,7 @@ function travelfic_toolkit_customize_register($wp_customize)
     // $wp_customize->add_setting($travelfic_toolkit_prefix . 'footer_bg_overlay_color', array(
     //     'default'           => '#000000', // Default black
     //     'sanitize_callback' => 'sanitize_hex_color',
-        
+
     // ));
 
     // $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $travelfic_toolkit_prefix . 'footer_bg_overlay_color', array(

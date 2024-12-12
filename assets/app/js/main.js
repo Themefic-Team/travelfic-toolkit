@@ -11,30 +11,6 @@
       }
     });
 
-    // Open the sidenav
-    $("#mobile-menu-toggle").on("click", function () {
-      $("#mobile-sidenav").toggleClass("open");
-    });
-
-    // Close the sidenav
-    $("#close-mobile-menu").on("click", function () {
-      $("#mobile-sidenav").removeClass("open");
-    });
-
-    // Close sidenav when clicking outside
-    $(document).on("click", function (e) {
-      if (!$(e.target).closest("#mobile-sidenav, #mobile-menu-toggle").length) {
-        $("#mobile-sidenav").removeClass("open");
-      }
-    });
-
-
-    // search field
-    $("#tftSearchBtn").on("click", function () {
-      $("#tftSearchForm").toggleClass("active");
-    });
-
-
     // submenu toggle
     $(".tft-design-3 .menu-item-has-children").click(function (e) {
       e.preventDefault();
@@ -52,19 +28,7 @@
       }
     });
 
-    // Hero slider
-    $(".tft-hero-design-4__slider").slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 6000,
-      speed: 1500,
-      dots: true,
-      arrows: false,
-      pauseOnFocus: false,
-      pauseOnHover: false,
-    });
+  
 
     // Share button for mobile
     function initializeMobileShare() {
@@ -106,5 +70,89 @@
     setTimeout(function () {
       $("#loader").fadeOut(500, function () {});
     }, 500);
+    
   });
 })(jQuery);
+
+
+/**
+ * 
+ * Sidebar
+ * 
+*/
+
+ const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+ const mobileSidenav = document.getElementById("mobile-sidenav");
+ const closeMobileMenu = document.getElementById("close-mobile-menu");
+
+//  Toggle the sidenav
+ mobileMenuToggle.addEventListener("click", function () {
+   mobileSidenav.classList.toggle("open");
+ });
+
+ // Close the sidenav
+ closeMobileMenu.addEventListener("click", function () {
+   mobileSidenav.classList.remove("open");
+ });
+
+/**
+ * 
+ * Search Form
+ * 
+*/
+ // Select the button and the form
+ const tftSearchBtn = document.getElementById("tftSearchBtn");
+ const tftSearchForm = document.getElementById("tftSearchForm");
+
+//  Toggle the form
+ tftSearchBtn.addEventListener("click", function (event) {
+     event.stopPropagation();
+     tftSearchForm.classList.toggle("active");
+ });
+
+ tftSearchForm.addEventListener("click", function (event) {
+     event.stopPropagation();
+ });
+
+ /**
+ * 
+ * Team Social Icons
+ * 
+*/
+ const shareButtons = document.querySelectorAll(".share-btn");
+ const socialMediaIcons = document.querySelectorAll(".social-media");
+
+//  Toggle social media icons
+ shareButtons.forEach((button) => {
+     button.addEventListener("click", function (e) {
+         e.stopPropagation();
+         const socialMedia = this.closest(".social-media-icons").querySelector(".social-media");
+         socialMedia.classList.toggle("active");
+     });
+ });
+
+ socialMediaIcons.forEach((icon) => {
+     icon.addEventListener("click", function (e) {
+         e.stopPropagation();
+     });
+ });
+
+
+/**
+ * 
+ * Click outside
+ * 
+*/
+document.body.addEventListener("click", function (e) {
+  // Check if the clicked element is outside the search form
+   tftSearchForm.classList.remove("active");
+
+  //  Check if the clicked element is outside the mobile sidenav
+   if (!mobileSidenav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+     mobileSidenav.classList.remove("open");
+   }
+  //  Check if the clicked element is outside the social media icons
+   socialMediaIcons.forEach((icon) => {
+     icon.classList.remove("active");
+   });
+});

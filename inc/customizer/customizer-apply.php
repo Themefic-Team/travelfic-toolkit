@@ -171,12 +171,17 @@ function travelfic_toolkit_customizer_style()
     $travelfic_transparent_menu_hover_color = get_theme_mod($travelfic_kit_pre . 'transparent_menu_hover_color');
 
     // footer customizer style
+    $travelfic_footer_back_image = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_image');
+    $travelfic_footer_back_overlay = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_overlay_color');
     $travelfic_footer_bg_color = get_theme_mod($travelfic_kit_pre . 'footer_bg_color');
     $travelfic_footer_text_color = get_theme_mod($travelfic_kit_pre . 'footer_text_color');
     $travelfic_footer_btm_left_bg = get_theme_mod($travelfic_kit_pre . 'footer_bottom_left_bg_color');
     $travelfic_footer_btm_left_text = get_theme_mod($travelfic_kit_pre . 'footer_bottom_left_text_color');
     $travelfic_footer_btm_right_bg = get_theme_mod($travelfic_kit_pre . 'footer_bottom_right_bg_color');
     $travelfic_footer_btm_right_text = get_theme_mod($travelfic_kit_pre . 'footer_bottom_right_text_color');
+ 
+    empty($travelfic_footer_back_image) ? $travelfic_footer_back_overlay = 'transparent' :  $travelfic_footer_bg_color = '';
+
 ?>
 
     <style>
@@ -287,19 +292,22 @@ function travelfic_toolkit_customizer_style()
 
 
         /* Footer */
-        footer.tft-design-3{
+        footer.tft-footer-design-3{
             background: <?php echo esc_attr($travelfic_footer_bg_color) . ' !important'; ?>;
         }
-        footer.tft-design-3 a,
-        footer.tft-design-3 p,
-        footer.tft-design-3 li,
-        footer.tft-design-3 span,
-        footer.tft-design-3 h1,
-        footer.tft-design-3 h2,
-        footer.tft-design-3 h3,
-        footer.tft-design-3 h4,
-        footer.tft-design-3 h5,
-        footer.tft-design-3 h6{
+        footer.tft-footer-design-3::after{
+            background: <?php echo esc_attr($travelfic_footer_back_overlay) . ' !important'; ?>;
+        }
+        footer.tft-footer-design-3 a,
+        footer.tft-footer-design-3 p,
+        footer.tft-footer-design-3 li,
+        footer.tft-footer-design-3 span,
+        footer.tft-footer-design-3 h1,
+        footer.tft-footer-design-3 h2,
+        footer.tft-footer-design-3 h3,
+        footer.tft-footer-design-3 h4,
+        footer.tft-footer-design-3 h5,
+        footer.tft-footer-design-3 h6{
             color: <?php echo esc_attr($travelfic_footer_text_color) . ' !important'; ?>;
         }
 

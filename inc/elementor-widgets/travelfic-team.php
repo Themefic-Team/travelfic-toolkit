@@ -760,28 +760,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 					});
 
 				<?php endif; ?>
-
-
-				$(".share-btn").on("click", function(e) {
-					e.stopPropagation();
-					$(this)
-						.closest(".social-media-icons")
-						.find(".social-media")
-						.toggleClass("active");
-				});
-
-
-				$(".social-media").on("click", function(e) {
-					e.stopPropagation();
-				});
-
-
-				$(document).on("click", function(e) {
-					console.log("clicked outside");
-					if (!$(e.target).closest(".social-media-icons").length) {
-						$(".social-media").removeClass("active");
-					}
-				});
 			})
 		</script>
 

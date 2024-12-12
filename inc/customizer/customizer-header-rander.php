@@ -521,7 +521,8 @@ class Travelfic_Customizer_Header
         }
 
         // design 3 header settings
-        $design_3_topbar = get_theme_mod($travelfic_prefix . 'header_design_3_topbar', '1');
+        $design_3_loader = get_theme_mod($travelfic_prefix . 'header_design_3_loader', 0);
+        $design_3_topbar = get_theme_mod($travelfic_prefix . 'header_design_3_topbar', 1);
         $design_3_top_header_bg = get_theme_mod($travelfic_prefix . 'design_3_top_header_bg', '#1342E0');
         $design_3_top_header_text_color = get_theme_mod($travelfic_prefix . 'design_3_top_header_text_color', '#fff');
         $design_3_location = get_theme_mod($travelfic_prefix . 'design_3_location', '4b, Walse Street , USA');
@@ -538,9 +539,17 @@ class Travelfic_Customizer_Header
         ob_start();
 
     ?>
+
+
+        <!-- Loader -->
+        <?php if ($design_3_loader): ?>
+            <div id="loader" class="tft-design-3__loader">
+                <div class="tft-design-3__loader--spinner"></div>
+            </div>
+        <?php endif; ?>
         <!-- header-->
         <header class="tft-design-3 <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
-            <div class="container tft-design-3__container <?php echo esc_attr(apply_filters('travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
+            <div class="tft-design-3__container <?php echo esc_attr(apply_filters('travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
                 <div class="tft-design-3__content">
                     <div class="tft-design-3__content-left">
                         <!-- Logo -->
@@ -664,23 +673,21 @@ class Travelfic_Customizer_Header
                             <div class="tft-design-3__bottom__right">
                                 <ul class="tft-design-3__bottom__right__list">
                                     <li class="tft-design-3__bottom__right__list__item">
-                                        <a href="<?php echo esc_url('/cart'); ?>" class="tft-design-3__bottom__right__list__item--link" aria-label="View Cart">
+                                        <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-design-3__bottom__right__list__item--link" aria-label="View Cart">
                                             <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
                                             </svg>
                                         </a>
                                     </li>
                                     <li class="tft-design-3__bottom__right__list__item">
-                                        <a href="#" class="tft-design-3__bottom__right__list__item--link" aria-label="Search" id="tftSearchBtn">
+                                        <a href="javascript:void(0);" class="tft-design-3__bottom__right__list__item--link" aria-label="Search" id="tftSearchBtn">
                                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
                                             </svg>
                                         </a>
                                         <div class="tft-design-3__bottom__right__list__item--search" id="tftSearchForm">
                                             <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-                                             
                                                 <input type="search" name="s" class="tft-design-3__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
-                                              
                                                 <button type="submit" class="tft-design-3__bottom__right__list__item--search__button">
                                                     <i class="fa-solid fa-magnifying-glass"></i>
                                                 </button>
