@@ -371,6 +371,17 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         public static function travelfic_toolkit_parse_import_data( $import_array ) {
             $sidebars_data = $import_array[0];
             $widget_data = $import_array[1];
+
+            $sidebars_widget_data = array(
+                "tft-sidebar" => array(),
+                "footer_sideabr" => array(),
+                "tf_archive_booking_sidebar" => array(),
+                "tf_search_result" => array(),
+                "wp_inactive_widgets" => array(),
+                "array_version" => 3
+            );
+            update_option('sidebars_widgets', $sidebars_widget_data);
+            
             $current_sidebars = get_option( 'sidebars_widgets' );
             $new_widgets = array( );
 
