@@ -2290,6 +2290,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     );
     
                     $post_id = wp_insert_post( $post_data );
+                    if(!empty($post_id)){
+                        update_post_meta($post_id, 'tf_search_car_rent', 120);
+                        update_post_meta($post_id, 'tf_search_driver_age', 24);
+                    }
         
                     //assign or create taxonomies to the imported cars
                     if (!empty($taxonomies)) {
