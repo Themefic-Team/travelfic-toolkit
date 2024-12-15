@@ -587,6 +587,48 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        // Title Backdrop
+        $this->add_control(
+            'about_us_design2_title_backdrop',
+            [
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
+                'default' => 'yes',
+                'condition' => [
+                    'tft_about_style' => 'design-2', 
+                ],
+            ]
+        );
+        $this->add_control(
+            'about_us_design2_title_backdrop_head',
+            [
+                'label'     => __('Title Backdrop', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_about_style' => ['design-2'],
+                    'about_us_design2_title_backdrop' => 'yes',
+                ]
+            ]
+        );
+        $this->add_control(
+            'about_us_design2_title_backdrop_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-about-design-2 .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_about_style' => 'design-2', 
+                    'about_us_design2_title_backdrop' => 'yes',
+                ],
+            ]
+        );
+       
+
+        // sub title
         $this->add_control(
             'about_us_design2_sub_title_head',
             [
@@ -941,7 +983,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         if (!empty($settings['readme_label'])) {
             $tft_about_us_button_text = $settings['readme_label'];
         }
-
+        $section_title_backdrop = $settings['about_us_design2_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
+    
         if ("design-1" == $tft_design) {
 ?>
 
@@ -1022,7 +1065,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
                                 <div class="tft-section-content">

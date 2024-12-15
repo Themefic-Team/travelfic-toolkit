@@ -294,6 +294,46 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			]
 		);
 
+		// Title Backdrop
+		$this->add_control(
+			'team_sec_title_backdrop',
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
+				'default' => 'yes',
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_sec_title_backdrop_head',
+			[
+				'label'     => __('Title Backdrop', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'after',
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+					'team_sec_title_backdrop' => 'yes',
+				]
+			]
+		);
+		$this->add_control(
+			'team_sec_title_backdrop_color',
+			[
+				'label'     => __('Color', 'travelfic-toolkit'),
+				'type'      => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+					'team_sec_title_backdrop' => 'yes',
+				],
+			]
+		);
+
+		// Sub Title
 		$this->add_control(
 			'team_sec_subtitle',
 			[
@@ -331,6 +371,99 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		);
 
 		$this->end_controls_section();
+
+		// slider control settings check
+		$this->start_controls_section(
+			'team_slider_control',
+			[
+				'label' => __('Slider Control', 'travelfic-toolkit'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
+
+			]
+		);
+		$this->add_control(
+			'team_design3_slider_slidetoshow',
+			[
+				'label'       => __('Slide To Show', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 15,
+				'step' => 1,
+				'default' => 3,
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design3_slider_slidetoscroll',
+			[
+				'label'       => __('Slide To Scroll', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 10,
+				'step' => 1,
+				'default' => 1,
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design3_slider_autoplay',
+			[
+				'label'       => __('Autoplay', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'yes',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design3_slider_autoplay_speed',
+			[
+				'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 6000,
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design3_slider_autoplay_interval',
+			[
+				'label' => esc_html__('Autoplay Interval', 'travelfic-toolkit'),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 1500,
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design3_slider_loop',
+			[
+				'label' => esc_html__('Loop', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'no',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+
+		$this->end_controls_section();
+
 
 		$this->start_controls_section(
 			'team_style_section',
@@ -598,13 +731,14 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		if (!empty($settings['team_title'])) {
 			$tft_sec_title = $settings['team_title'];
 		}
+		$section_title_backdrop = $settings['team_sec_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
 		if (!empty($settings['team_subtitle'])) {
 			$tft_sec_subtitle = $settings['team_subtitle'];
 		}
 
 
 		// Items per page
-		$slideToShow = 3;
+		$slideToShow = !empty($settings['team_design3_slider_slidetoshow']) ? $settings['team_design3_slider_slidetoshow'] : 3;
 		$postCount = isset($settings['members_list']) ? count($settings['members_list']) : 0;
 
 		// Disable slider class
@@ -614,6 +748,13 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			$tftSliderDisable = true;
 			$tftDisableClass = 'tft-slider-disable';
 		}
+
+		// slider control settings check
+		$design2_slide_to_scroll = !empty($settings['team_design3_slider_slidetoscroll']) ? $settings['team_design3_slider_slidetoscroll'] : 0;
+		$design2_slider_autoplay = !empty($settings['team_design3_slider_autoplay']) ? 'true' : 'false';
+		$design2_slider_autoplay_speed = !empty($settings['team_design3_slider_autoplay_speed']) ? $settings['team_design3_slider_autoplay_speed']['size'] : 0;
+		$design2_slider_autoplay_interval = !empty($settings['team_design3_slider_autoplay_interval']) ? $settings['team_design3_slider_autoplay_interval']['size'] : 0;
+		$design2_slider_loop = !empty($settings['team_design3_slider_loop']) ? 'true' : 'false';
 
 ?>
 
@@ -671,7 +812,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 							<h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
 						<?php }
 						if (!empty($tft_sec_title)) { ?>
-							<h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+							<h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
 						<?php } ?>
 					</div>
 					<div class="tft-team-members">
@@ -730,12 +871,12 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			jQuery(document).ready(function($) {
 				<?php if ($tftSliderDisable == false) : ?>
 					$(".tft-team-wrapper-v2 .tft-team-members").slick({
-						infinite: true,
 						slidesToShow: <?php echo esc_attr($slideToShow); ?>,
-						slidesToScroll: 2,
-						autoplay: true,
-						autoplaySpeed: 6000,
-						speed: 1500,
+						slidesToScroll: <?php echo esc_attr($design2_slide_to_scroll); ?>,
+						infinite: <?php echo esc_attr($design2_slider_loop); ?>,
+						autoplay: <?php echo esc_attr($design2_slider_autoplay); ?>,
+						autoplaySpeed: <?php echo esc_attr($design2_slider_autoplay_speed); ?>,
+						speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
 						dots: true,
 						arrows: false,
 						pauseOnFocus: false,

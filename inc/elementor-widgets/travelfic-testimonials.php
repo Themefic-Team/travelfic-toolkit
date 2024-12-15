@@ -249,6 +249,71 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         );
         $this->end_controls_section();
 
+        // slider control settings check
+        $this->start_controls_section(
+            'testimonial_slider_control',
+            [
+                'label' => __('Slider Control', 'travelfic-toolkit'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'testimonial_style' => ['design-3'],
+                ],
+
+            ]
+        );
+
+        $this->add_control(
+            'testimonial_design3_slider_autoplay',
+            [
+                'label'       => __('Autoplay', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'yes',
+                'condition'   => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonial_design3_slider_autoplay_speed',
+            [
+                'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 6000,
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonial_design3_slider_autoplay_interval',
+            [
+                'label' => esc_html__('Autoplay Interval', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 1500,
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonial_design3_slider_loop',
+            [
+                'label' => esc_html__('Loop', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'no',
+                'condition'   => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
+        );
+
+
+        $this->end_controls_section();
+
         // Style Section
 
         $this->start_controls_section(
@@ -396,6 +461,47 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
             ]
         );
+        // Title Backdrop
+        $this->add_control(
+            'tft_design_3_title_backdrop',
+            [
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
+                'default' => 'yes',
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_design_3_title_backdrop_head',
+            [
+                'label'     => __('Title Backdrop', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => ['design-3'],
+                    'tft_design_3_title_backdrop' => 'yes',
+                ]
+            ]
+        );
+        $this->add_control(
+            'tft_design_3_title_backdrop_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                    'tft_design_3_title_backdrop' => 'yes',
+                ],
+            ]
+        );
+
+
+        // design 3 subtitle
         $this->add_control(
             'tft_design_3_sub_title_head',
             [
@@ -1401,6 +1507,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         if (!empty($settings['des_title'])) {
             $tft_sec_title = $settings['des_title'];
         }
+        $section_title_backdrop = $settings['tft_design_3_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
         if (!empty($settings['des_subtitle'])) {
             $tft_sec_subtitle = $settings['des_subtitle'];
         }
@@ -1422,6 +1529,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             $tftSliderDisable = true;
             $tftDisableClass = 'tft-slider-disable';
         }
+
+        // slider control settings check
+        $design3_slider_autoplay = !empty($settings['testimonial_design3_slider_autoplay']) ? 'true' : 'false';
+        $design3_slider_autoplay_speed = !empty($settings['testimonial_design3_slider_autoplay_speed']) ? $settings['testimonial_design3_slider_autoplay_speed']['size'] : 0;
+        $design3_slider_autoplay_interval = !empty($settings['testimonial_design3_slider_autoplay_interval']) ? $settings['testimonial_design3_slider_autoplay_interval']['size'] : 0;
+        $design3_slider_loop = !empty($settings['testimonial_design3_slider_loop']) ? 'true' : 'false';
 
 ?>
 
@@ -1600,7 +1713,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                 <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
                                 <div class="tft-section-content">
@@ -1662,8 +1775,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                 slidesToScroll: 1,
                                 dots: false,
                                 arrows: true,
-                                speed: 300,
-                                autoplaySpeed: 2000,
+                                infinite: <?php echo esc_attr($design3_slider_loop); ?>,
+                                autoplay: <?php echo esc_attr($design3_slider_autoplay); ?>,
+                                autoplaySpeed: <?php echo esc_attr($design3_slider_autoplay_speed); ?>,
+                                speed: <?php echo esc_attr($design3_slider_autoplay_interval); ?>,
                                 prevArrow: $('.tft-slider-prev'),
                                 nextArrow: $('.tft-slider-next'),
                                 responsive: [{

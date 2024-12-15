@@ -543,9 +543,9 @@ class Travelfic_Customizer_Header
 
         <!-- Loader -->
         <?php if ($design_3_loader): ?>
-            <div id="loader" class="tft-design-3__loader">
+            <!-- <div id="loader" class="tft-design-3__loader">
                 <div class="tft-design-3__loader--spinner"></div>
-            </div>
+            </div> -->
         <?php endif; ?>
         <!-- header-->
         <header class="tft-design-3 <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">

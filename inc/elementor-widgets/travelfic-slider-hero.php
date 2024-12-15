@@ -583,14 +583,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                    ],
-                ],
                 'default' => [
-                    'unit' => 'px',
                     'size' => 6000,
                 ],
                 'condition' => [
@@ -1633,7 +1626,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
         }
 
+        // slider control settings check
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
+        $design4_slider_autoplay = !empty($settings['design4_slider_autoplay']) ? 'true' : 'false';
+        $design4_slider_autoplay_speed = !empty($settings['design4_slider_autoplay_speed']) ? $settings['design4_slider_autoplay_speed']['size'] : 0;
+        $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? $settings['design4_slider_autoplay_interval']['size'] : 0;
+        $design4_slider_loop = !empty($settings['design4_slider_loop']) ? 'true' : 'false';
+        $design4_slider_animation = !empty($settings['design4_slider_animation']) ? 'true' : 'false';
+     
 
         if ("design-2" == $tft_design) {
 ?>
@@ -1773,12 +1773,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     $(document).ready(function() {
                         // Hero slider
                         $(".tft-hero-design-4__slider").slick({
-                            infinite: true,
                             slidesToShow: 1,
                             slidesToScroll: 1,
-                            autoplay: true,
-                            autoplaySpeed: 6000,
-                            speed: 1500,
+                            infinite: <?php echo esc_attr($design4_slider_loop); ?>,
+                            autoplay: <?php echo esc_attr($design4_slider_autoplay); ?>,
+                            autoplaySpeed: <?php echo esc_attr($design4_slider_autoplay_speed); ?>,
+                            speed: <?php echo esc_attr($design4_slider_autoplay_interval); ?>,
+                            fade: <?php echo esc_attr($design4_slider_animation); ?>,
                             dots: true,
                             arrows: false,
                             pauseOnFocus: false,

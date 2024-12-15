@@ -288,6 +288,46 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             ]
         );
 
+        // Title Backdrop
+        $this->add_control(
+            'sec_title_backdrop',
+            [
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
+                'default' => 'yes',
+                'condition' => [
+                    'tft_icon_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+            'sec_title_backdrop_head',
+            [
+                'label'     => __('Title Backdrop', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                    'sec_title_backdrop' => 'yes',
+                ]
+            ]
+        );
+        $this->add_control(
+            'sec_title_backdrop_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_icon_style' => 'design-2',
+                    'sec_title_backdrop' => 'yes',
+                ],
+            ]
+        );
+
+        // Sub Title
         $this->add_control(
             'sec_sub_title_style',
             [
@@ -783,6 +823,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         if (!empty($settings['sec_title'])) {
             $tft_sec_title = $settings['sec_title'];
         }
+        $section_title_backdrop = $settings['sec_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
         if (!empty($settings['sec_subtitle'])) {
             $tft_sec_subtitle = $settings['sec_subtitle'];
         }
@@ -798,7 +839,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                             <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-icon-text-items tft-section-space-bottom">

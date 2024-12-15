@@ -612,7 +612,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'name'     => 'tour_destination_design_3_sec_title_typo',
                 'selector' =>  '{{WRAPPER}} .tft-heading-content h2',
-                'label'    => __('Section Title Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
                 ],
@@ -620,9 +620,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'tour_destination_desig_3_sec_title_color',
+            'tour_destination_design3_sec_title_color',
             [
-                'label'     => __('Section Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-heading-content h2' => 'color: {{VALUE}}',
@@ -632,6 +632,46 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+          // Title Backdrop
+          $this->add_control(
+            'tour_destination_design3_title_backdrop',
+            [
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
+                'default' => 'yes',
+                'condition' => [
+                    'des_style' => 'design-3', 
+                ],
+            ]
+        );
+        $this->add_control(
+            'tour_destination_design3_title_backdrop_head',
+            [
+                'label'     => __('Title Backdrop', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'des_style' => 'design-3',
+                    'tour_destination_design3_title_backdrop' => 'yes',
+                ]
+            ]
+        );
+        $this->add_control(
+            'tour_destination_design3_title_backdrop_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-3', 
+                    'tour_destination_design3_title_backdrop' => 'yes',
+                ],
+            ]
+        );
+        // Sub title
         $this->add_control(
             'tour_destination_subtitle',
             [
@@ -657,7 +697,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_sub_title_color',
             [
-                'label'     => __('Subtitle Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-heading-content h3' => 'color: {{VALUE}}',
@@ -693,7 +733,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_content_color_design_3',
             [
-                'label'     => __('Content Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .tft-heading-content h3' => 'color: {{VALUE}}',
@@ -1011,6 +1051,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         if (!empty($settings['des_title'])) {
             $tft_sec_title = $settings['des_title'];
         }
+
+        $section_title_backdrop = $settings['tour_destination_design3_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
+
         if (!empty($settings['des_subtitle'])) {
             $tft_sec_subtitle = $settings['des_subtitle'];
         }
@@ -1073,6 +1116,10 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         } else {
             $all_destination_categories = get_categories($args);
         }
+
+
+
+
         // design 1
         if ("design-1" == $tft_design) {
 ?>
@@ -1224,7 +1271,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
                                 <div class="tft-section-content">

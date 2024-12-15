@@ -804,6 +804,46 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+          // Title Backdrop
+          $this->add_control(
+            'popular_section_design2_title_backdrop',
+            [
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
+                'default' => 'yes',
+                'condition' => [
+                    'tft_hotels_style' => 'design-2', 
+                ],
+            ]
+        );
+        $this->add_control(
+            'popular_section_design2_title_backdrop_head',
+            [
+                'label'     => __('Title Backdrop', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'tft_hotels_style' => ['design-2'],
+                    'popular_section_design2_title_backdrop' => 'yes',
+                ]
+            ]
+        );
+        $this->add_control(
+            'popular_section_design2_title_backdrop_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'tft_hotels_style' => 'design-2', 
+                    'popular_section_design2_title_backdrop' => 'yes',
+                ],
+            ]
+        );
+
         // subtitle head
         $this->add_control(
             'popular_section_design2_subtitle_head',
@@ -1547,12 +1587,11 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         $query = new \WP_Query($args);
         $featured_query = new \WP_Query($featured_args);
 
-        if (!empty($settings['tft_section_title'])) {
-            $tft_sec_title = $settings['tft_section_title'];
-        }
-        if (!empty($settings['tft_section_subtitle'])) {
-            $tft_sec_subtitle = $settings['tft_section_subtitle'];
-        }
+
+        $tft_sec_title = !empty($settings['tft_section_title']) ? $settings['tft_section_title'] : '';
+        $section_title_backdrop = $settings['popular_section_design2_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
+        $tft_sec_subtitle = !empty($settings['tft_section_subtitle']) ? $settings['tft_section_subtitle'] : '';
+       
         if (!empty($settings['tft_posts_section_bg'])) {
             $tft_posts_sec_bg = $settings['tft_posts_section_bg'];
         }
@@ -2098,7 +2137,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-destination-content">
