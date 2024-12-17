@@ -107,6 +107,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             'all'   => __('All', 'travelfic-toolkit'),
             'hotel' => __('Hotel', 'travelfic-toolkit'),
             'tour'  => __('Tour', 'travelfic-toolkit'),
+            'apartment'  => __('Apartment', 'travelfic-toolkit'),
             'carrentals'  => __('Car', 'travelfic-toolkit'),
         );
 
@@ -440,6 +441,41 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'    => __('Apartment Tab Title', 'travelfic-toolkit'),
                 'multiple' => true,
                 'default'  => __('Apartment', 'travelfic-toolkit'),
+                'conditions' => [
+                    'relation' => 'or',
+                    'terms' => [
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'all',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => 'contains',
+                            'value' => 'apartment',
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => [],
+                        ],
+                        [
+                            'name' => 'type',
+                            'operator' => '==',
+                            'value' => '',
+                        ],
+                    ],
+                ],
+                'label_block' => true,
+            ]
+        );
+        $this->add_control(
+            'car_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
+                'label'    => __('Car Tab Title', 'travelfic-toolkit'),
+                'multiple' => true,
+                'default'  => __('Car', 'travelfic-toolkit'),
                 'conditions' => [
                     'relation' => 'or',
                     'terms' => [
@@ -1625,6 +1661,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         if (!empty($settings['apt_tab_title'])) {
             $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
         }
+        if (!empty($settings['car_tab_title'])) {
+            $car_tab_title = 'car_tab_title="' . $settings['car_tab_title'] . '" ';
+        }
 
         // slider control settings check
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
@@ -1633,7 +1672,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? $settings['design4_slider_autoplay_interval']['size'] : 0;
         $design4_slider_loop = !empty($settings['design4_slider_loop']) ? 'true' : 'false';
         $design4_slider_animation = !empty($settings['design4_slider_animation']) ? 'true' : 'false';
-     
+
 
         if ("design-2" == $tft_design) {
 ?>
@@ -1645,7 +1684,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
-                            <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . 'design="2"]'); ?>
+                            <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title .$car_tab_title . 'design="2"]'); ?>
                         </div>
                     <?php } ?>
                 </div>
@@ -1660,7 +1699,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
-                            <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . 'design="3"]'); ?>
+                            <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . 'design="3"]'); ?>
                         </div>
                     <?php } ?>
                 </div>
@@ -1764,9 +1803,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     </div>
                 </div>
             </section>
-            <?php if ($settings['search_box_switcher'] == 'yes') {
-                echo do_shortcode('[tf_travel_form]');
-            } ?>
+            <?php if ($settings['search_box_switcher'] == 'yes') { ?>
+                <div class="tft-search-form">
+                    <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . 'design="4"]'); ?>
+                </div>
+            <?php } ?>
             <script>
                 (function($) {
                     "use strict";
