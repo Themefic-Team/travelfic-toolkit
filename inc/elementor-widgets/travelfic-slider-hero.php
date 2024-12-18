@@ -1651,19 +1651,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             $tft_banner_image = $settings['banner_image'];
         }
 
-        $tour_tab_title = $hotel_tab_title = $apt_tab_title = '';
-        if (!empty($settings['tour_tab_title'])) {
-            $tour_tab_title = 'tour_tab_title="' . $settings['tour_tab_title'] . '" ';
-        }
-        if (!empty($settings['hotel_tab_title'])) {
-            $hotel_tab_title = 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ';
-        }
-        if (!empty($settings['apt_tab_title'])) {
-            $apt_tab_title = 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ';
-        }
-        if (!empty($settings['car_tab_title'])) {
-            $car_tab_title = 'car_tab_title="' . $settings['car_tab_title'] . '" ';
-        }
+        $tour_tab_title = !empty($settings['tour_tab_title']) ? 'tour_tab_title="' . $settings['tour_tab_title'] . '" ' : '';
+        $hotel_tab_title = !empty($settings['hotel_tab_title']) ? 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ' : '';
+        $apt_tab_title = !empty($settings['apt_tab_title']) ? 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ' : '';
+        $car_tab_title = !empty($settings['car_tab_title']) ? 'car_tab_title="' . $settings['car_tab_title'] . '" ' : '';
 
         // slider control settings check
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
