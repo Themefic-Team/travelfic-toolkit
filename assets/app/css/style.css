@@ -730,7 +730,6 @@ input[type=submit].tft-form-btn:focus {
   background: #132847;
   flex: 2;
   padding: 16px 0;
-  text-align: center;
   position: relative;
 }
 @media only screen and (max-width: 767.98px) {
@@ -1834,6 +1833,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children {
   position: relative;
+  margin-right: 20px;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children:hover .sub-menu {
   visibility: visible;
@@ -1851,8 +1851,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   display: flex;
   flex-direction: column;
   gap: 7px;
-  top: 30px;
-  visibility: hidden;
+  top: 25px;
+  display: none;
   transform: translateY(40px);
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -2077,7 +2077,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: #101f36;
+  background-color: #fff;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2096,15 +2096,36 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   justify-content: center;
   z-index: 1000;
 }
-.tft-design-3__loader--spinner {
-  border: 10px solid #ffffff;
-  border-top: 10px solid #FA6400;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
+.tft-design-3__loader .svg-calLoader {
+  width: 230px;
+  height: 230px;
+  transform-origin: 115px 115px;
+  animation: 1.4s linear infinite loader-spin;
+}
+.tft-design-3__loader .cal-loader__plane {
+  fill: #FA6400;
+}
+.tft-design-3__loader .cal-loader__path {
+  stroke: #FA6400;
+  animation: 1.4s ease-in-out infinite loader-path;
 }
 
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader-path {
+  0% {
+    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
+  }
+  50% {
+    stroke-dasharray: 0, 450, 10, 30, 10, 30, 10, 30, 10;
+  }
+  100% {
+    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
+  }
+}
 .mobile-sidenav {
   position: fixed;
   top: 0;
@@ -2907,7 +2928,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-about-design-2 {
   padding-bottom: 104px;
   position: relative;
-  /* z-index: 1; */
   overflow-x: hidden;
 }
 @media only screen and (max-width: 1399.98px) {

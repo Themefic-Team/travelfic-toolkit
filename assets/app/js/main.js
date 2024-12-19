@@ -28,6 +28,12 @@
       }
     });
 
+    // Hover over parent to show the submenu
+    $('.tft-design-3 .menu-item-has-children').hover(function() {
+      $(this).children('ul.sub-menu').stop(true, true).slideDown(100);
+    }, function() {
+      $(this).children('ul.sub-menu').stop(true, true).slideUp(100);
+    });
   
 
     // Share button for mobile
