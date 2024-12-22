@@ -278,7 +278,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 
                     <div class="travelfic-templates-list">
                         <?php 
-                        $travelfic_sync_templates_list =  !empty(get_option('travelfic_template_sync__schudle_option')) ? get_option('travelfic_template_sync__schudle_option') : '';
+                        $travelfic_sync_templates_list =  !empty(get_option('travelfic_template_sync__schudle_data')) ? get_option('travelfic_template_sync__schudle_data') : '';
                         if(!empty($travelfic_sync_templates_list)){
                         foreach($travelfic_sync_templates_list as $single_temp){
                             if(empty($single_temp['coming_soon'])){

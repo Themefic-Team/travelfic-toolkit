@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Travelfic_Toolkit_Template_SYNC {
 
-    private $api_url = 'https://api.tourfic.site/';
+    private $api_url = 'https://api.themefic.com/tourfic/api/';
     private $args = array();
     private $responsed = false; 
     private $error_message = ''; 
@@ -16,7 +16,7 @@ class Travelfic_Toolkit_Template_SYNC {
     
         add_action( 'wp_ajax_travelfic-template-list-sync', array( $this, 'travelfic_template_sync__schudle_callback' ) );
         
-        if( empty(get_option('travelfic_template_sync__schudle_option')) ){
+        if( empty(get_option('travelfic_template_sync__schudle_data')) ){
             add_action('init', array($this, 'travelfic_template_sync__schudle_callback'));
         }
     }
@@ -38,7 +38,7 @@ class Travelfic_Toolkit_Template_SYNC {
             // API request successful, handle the response content
             $data = wp_remote_retrieve_body($response);
             $this->responsed = json_decode($data, true); 
-            update_option( 'travelfic_template_sync__schudle_option', $this->responsed);
+            update_option( 'travelfic_template_sync__schudle_data', $this->responsed);
             
         } 
     }
