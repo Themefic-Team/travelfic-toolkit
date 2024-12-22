@@ -260,6 +260,33 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
 
             ]
+        );$this->add_control(
+            'testimonial_design3_slider_slidetoshow',
+            [
+                'label'       => __('Slide To Show', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 15,
+                'step' => 1,
+                'default' => 2,
+                'condition'   => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonial_design3_slider_slidetoscroll',
+            [
+                'label'       => __('Slide To Scroll', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 10,
+                'step' => 1,
+                'default' => 1,
+                'condition'   => [
+                    'testimonial_style' => 'design-3',
+                ],
+            ]
         );
 
         $this->add_control(
@@ -1519,7 +1546,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         }
 
         // Items per page
-        $slideToShow = 2;
+        $slideToShow = !empty($settings['testimonial_design3_slider_slidetoshow']) ? $settings['testimonial_design3_slider_slidetoshow'] : 2;
         $postCount = isset($settings['testimonials_section']) ? count($settings['testimonials_section']) : 0;
 
         // Disable slider class
@@ -1531,6 +1558,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         }
 
         // slider control settings check
+        $design3_slide_to_scroll = !empty($settings['testimonial_design3_slider_slidetoscroll']) ? $settings['testimonial_design3_slider_slidetoscroll'] : 1;
         $design3_slider_autoplay = !empty($settings['testimonial_design3_slider_autoplay']) ? 'true' : 'false';
         $design3_slider_autoplay_speed = !empty($settings['testimonial_design3_slider_autoplay_speed']) ? $settings['testimonial_design3_slider_autoplay_speed']['size'] : 0;
         $design3_slider_autoplay_interval = !empty($settings['testimonial_design3_slider_autoplay_interval']) ? $settings['testimonial_design3_slider_autoplay_interval']['size'] : 0;
@@ -1772,13 +1800,13 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                         <?php if ($tftSliderDisable == false): ?>
                             $('.tft-testimonials-design-3 .tft-testimonials-slides').slick({
                                 slidesToShow: <?php echo esc_attr($slideToShow); ?>,
-                                slidesToScroll: 1,
-                                dots: false,
-                                arrows: true,
+                                slidesToScroll: <?php echo esc_attr($design3_slide_to_scroll); ?>,
                                 infinite: <?php echo esc_attr($design3_slider_loop); ?>,
                                 autoplay: <?php echo esc_attr($design3_slider_autoplay); ?>,
                                 autoplaySpeed: <?php echo esc_attr($design3_slider_autoplay_speed); ?>,
                                 speed: <?php echo esc_attr($design3_slider_autoplay_interval); ?>,
+                                dots: false,
+                                arrows: true,
                                 prevArrow: $('.tft-slider-prev'),
                                 nextArrow: $('.tft-slider-next'),
                                 responsive: [{

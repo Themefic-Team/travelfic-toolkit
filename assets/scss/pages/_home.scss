@@ -700,8 +700,6 @@
 // team v2
 .tft-team-wrapper-v2 {
   .container {
-    max-width: 1220px;
-    margin: auto;
     overflow: hidden;
     @media #{$max1399} {
       padding: 0 15px;
@@ -746,13 +744,16 @@
       }
     }
   }
+  .tft-team-content {
+    position: relative;
+  }
+
   .tft-team-members {
     @include d-flex();
     @include align-items(center);
     @include justify-content(center);
     gap: 24px;
     padding-bottom: 30px;
-    overflow: visible;
     .slick-list {
       margin: 0 -12px !important;
       padding: 30px 0;
@@ -797,6 +798,7 @@
       @include bd-radius(15px);
       background: $color-white;
       box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+      flex-basis: calc(33.33% - 16px);
       @media #{$max767} {
         padding-bottom: 20px;
       }
@@ -1713,7 +1715,7 @@
 .tft-popular-hotels-wrapper-2 {
   margin-bottom: -30px;
   .container {
-    max-width: 1521px;
+    overflow: hidden;
   }
   .tft-heading-content {
     text-align: center;
@@ -1739,12 +1741,20 @@
   .tft-destination-content {
     position: relative;
   }
+  .slick-dotted.slick-slider {
+    padding-bottom: 30px;
+    @media #{$max991} {
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+    }
+    @media #{$max767} {
+      margin-bottom: 50px;
+      padding-bottom: 10px;
+    }
+  }
   .tft-destination-slider {
     display: flex;
     gap: 24px;
-    max-width: 1221px;
-    margin: 0 auto;
-    overflow: hidden;
 
     .slick-track {
       @include d-flex();
@@ -1759,6 +1769,38 @@
     .slick-slide {
       margin: 0 12px !important;
       height: auto;
+    }
+   
+    .slick-dots {
+      @include d-flex();
+      @include justify-content(center);
+      @include align-items(center);
+      margin-top: 50px;
+      li {
+        width: 30px;
+        height: 30px;
+        border: 2px dashed transparent;
+        text-align: center;
+        border-radius: 100px;
+        @include d-flex();
+        @include justify-content(center);
+        @include align-items(center);
+        button {
+          width: 10px;
+          height: 10px;
+          background: #e8d9cf;
+          border-radius: 50%;
+          &::before {
+            display: none;
+          }
+        }
+        &.slick-active {
+          border-color: $color-primary;
+          button {
+            background: $color-primary;
+          }
+        }
+      }
     }
     .tft-single-destination {
       @include bd-radius(15px);
@@ -1906,50 +1948,66 @@
       }
     }
   }
-  .tft-destination-slider-nav {
-    @media #{$max991} {
-      @include d-flex();
-      @include align-items(center);
-      @include justify-content(center);
-      gap: 15px;
-      margin-top: 30px;
+}
+.tft-destination-slider-nav,
+.tft-team-slider-nav,
+.tft-hero-slider-nav {
+  @media #{$max991} {
+    @include d-flex();
+    @include align-items(center);
+    @include justify-content(center);
+    gap: 15px;
+    margin-top: 30px;
+  }
+  button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: $color-white;
+    border: 1px solid #efefef;
+    width: 70px;
+    height: 70px;
+    @include bd-radius(100px);
+    @include d-flex();
+    @include justify-content(center);
+    @include align-items(center);
+    cursor: pointer;
+    @media #{$max1199} {
+      width: 50px;
+      height: 50px;
     }
-    button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: $color-white;
-      border: 1px solid #efefef;
-      width: 70px;
-      height: 70px;
-      @include bd-radius(100px);
-      @include d-flex();
-      @include justify-content(center);
-      @include align-items(center);
-      cursor: pointer;
-      @media #{$max1199} {
-        width: 50px;
-        height: 50px;
-      }
-      @media #{$max991} {
-        width: 45px;
-        height: 45px;
-        position: relative;
-      }
-      @media #{$max767} {
-        width: 40px;
-        height: 40px;
-      }
-      &:hover {
-        background: $color-primary;
-        color: $color-white;
-      }
-      &.tft-prev-slide {
-        left: 0;
-      }
-      &.tft-next-slide {
-        right: 0;
-      }
+    @media #{$max991} {
+      width: 45px;
+      height: 45px;
+      position: relative;
+    }
+    @media #{$max767} {
+      width: 40px;
+      height: 40px;
+    }
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      border-color: $color-primary;
+    }
+    &.tft-prev-slide {
+      left: 0;
+    }
+    &.tft-next-slide {
+      right: 0;
     }
   }
+}
+
+.tft-box-hidden {
+  overflow: hidden;
+  max-width: 1221px;
+  margin: auto;
+}
+.tft-container-width {
+  max-width: 1521px;
+  margin: auto;
+}
+.tft-team-slider-nav {
+  margin-top: 0;
 }

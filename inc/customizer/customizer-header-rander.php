@@ -540,15 +540,14 @@ class Travelfic_Customizer_Header
 
     ?>
 
-
         <!-- Loader -->
         <?php if ($design_3_loader): ?>
-            <div id="loader" class="tft-design-3__loader">
+            <!-- <div id="loader" class="tft-design-3__loader">
                 <svg class="svg-calLoader" xmlns="http://www.w3.org/2000/svg" width="230" height="230">
                     <path class="cal-loader__path" d="M86.429 40c63.616-20.04 101.511 25.08 107.265 61.93 6.487 41.54-18.593 76.99-50.6 87.643-59.46 19.791-101.262-23.577-107.142-62.616C29.398 83.441 59.945 48.343 86.43 40z" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10 10 10 10 10 10 432" stroke-dashoffset="77" />
                     <path class="cal-loader__plane" d="M141.493 37.93c-1.087-.927-2.942-2.002-4.32-2.501-2.259-.824-3.252-.955-9.293-1.172-4.017-.146-5.197-.23-5.47-.37-.766-.407-1.526-1.448-7.114-9.773-4.8-7.145-5.344-7.914-6.327-8.976-1.214-1.306-1.396-1.378-3.79-1.473-1.036-.04-2-.043-2.153-.002-.353.1-.87.586-1 .952-.139.399-.076.71.431 2.22.241.72 1.029 3.386 1.742 5.918 1.644 5.844 2.378 8.343 2.863 9.705.206.601.33 1.1.275 1.125-.24.097-10.56 1.066-11.014 1.032a3.532 3.532 0 0 1-1.002-.276l-.487-.246-2.044-2.613c-2.234-2.87-2.228-2.864-3.35-3.309-.717-.287-2.82-.386-3.276-.163-.457.237-.727.644-.737 1.152-.018.39.167.805 1.916 4.373 1.06 2.166 1.964 4.083 1.998 4.27.04.179.004.521-.076.75-.093.228-1.109 2.064-2.269 4.088-1.921 3.34-2.11 3.711-2.123 4.107-.008.25.061.557.168.725.328.512.72.644 1.966.676 1.32.029 2.352-.236 3.05-.762.222-.171 1.275-1.313 2.412-2.611 1.918-2.185 2.048-2.32 2.45-2.505.241-.111.601-.232.82-.271.267-.058 2.213.201 5.912.8 3.036.48 5.525.894 5.518.914 0 .026-.121.306-.27.638-.54 1.198-1.515 3.842-3.35 9.021-1.029 2.913-2.107 5.897-2.4 6.62-.703 1.748-.725 1.833-.594 2.286.137.46.45.833.872 1.012.41.177 3.823.24 4.37.085.852-.25 1.44-.688 2.312-1.724 1.166-1.39 3.169-3.948 6.771-8.661 5.8-7.583 6.561-8.49 7.387-8.702.233-.065 2.828-.056 5.784.011 5.827.138 6.64.09 8.62-.5 2.24-.67 4.035-1.65 5.517-3.016 1.136-1.054 1.135-1.014.207-1.962-.357-.38-.767-.777-.902-.893z" class="cal-loader__plane" fill="#fff" />
                 </svg>
-            </div>
+            </div> -->
         <?php endif; ?>
         <!-- header-->
         <header class="tft-design-3 <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
@@ -586,11 +585,7 @@ class Travelfic_Customizer_Header
                             <?php }
                             } ?>
                         </div>
-                        <div class="tft-design-3__bars" id="mobile-menu-toggle">
-                            <span class="tft-design-3__bars--icon"></span>
-                            <span class="tft-design-3__bars--icon"></span>
-                            <span class="tft-design-3__bars--icon"></span>
-                        </div>
+
                     </div>
                     <div class="tft-design-3__content-right">
                         <?php if (!empty($design_3_topbar)): ?>
@@ -676,13 +671,6 @@ class Travelfic_Customizer_Header
                             <div class="tft-design-3__bottom__right">
                                 <ul class="tft-design-3__bottom__right__list">
                                     <li class="tft-design-3__bottom__right__list__item">
-                                        <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-design-3__bottom__right__list__item--link" aria-label="View Cart">
-                                            <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li class="tft-design-3__bottom__right__list__item">
                                         <a href="javascript:void(0);" class="tft-design-3__bottom__right__list__item--link" aria-label="Search" id="tftSearchBtn">
                                             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
@@ -696,6 +684,13 @@ class Travelfic_Customizer_Header
                                                 </button>
                                             </form>
                                         </div>
+                                    </li>
+                                    <li class="tft-design-3__bottom__right__list__item">
+                                        <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-design-3__bottom__right__list__item--link" aria-label="View Cart">
+                                            <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
+                                            </svg>
+                                        </a>
                                     </li>
                                 </ul>
                                 <div class="tft-design-3__topbar-right mobile-view">
@@ -742,6 +737,15 @@ class Travelfic_Customizer_Header
                             </div>
 
                         </div>
+                        <div class="tft-design-3__bars" id="mobile-menu-toggle">
+                            <!-- <span class="tft-design-3__bars--icon"></span>
+                            <span class="tft-design-3__bars--icon"></span>
+                            <span class="tft-design-3__bars--icon"></span>
+                             -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M4 5.33301H28V7.99967H4V5.33301ZM4 14.6663H28V17.333H4V14.6663ZM4 23.9997H28V26.6663H4V23.9997Z" fill="#060D1C" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -762,15 +766,95 @@ class Travelfic_Customizer_Header
                 );
                 ?>
             </nav>
+            <div class="mobile-sidenav__middle">
+                <ul>
+                    <!-- Login -->
+                    <?php if (!is_user_logged_in()) : ?>
+                        <li class="tft-design-3__topbar-list-item">
+                            <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-design-3__topbar-list-link" aria-label="Login"><?php echo esc_html($design_3_login_label); ?></a>
+                        </li>
+                    <?php else : ?>
+                        <li class="tft-design-3__topbar-list-item">
+                            <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-design-3__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
+                        </li>
+                    <?php endif; ?>
+                    <!-- Discover -->
+                    <?php if (!empty($design_3_discover_label)): ?>
+                        <li class="tft-design-3__bottom__right__button">
+                            <a href="<?php echo esc_url($design_3_discover_url); ?>" class="color-white" aria-label="Discover">
+                                <?php echo esc_html($design_3_discover_label); ?>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
 
-            <?php if (!empty($design_3_discover_label)): ?>
-                <div class="tft-design-3__bottom__right__button">
-                    <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tft-btn" aria-label="Discover">
-                        <?php echo esc_html($design_3_discover_label); ?>
-                    </a>
+                <div class="tf-flex">
+                    <div class="tft-design-3__bottom__right__list__item">
+                        <a href="javascript:void(0);" class="tft-design-3__bottom__right__list__item--link" aria-label="Search" id="tftMobileSearchBtn">
+                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
+                            </svg>
+                        </a>
+                        <div class="tft-design-3__bottom__right__list__item--search" id="tftMobileSearchForm">
+                            <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+                                <input type="search" name="s" class="tft-design-3__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
+                                <button type="submit" class="tft-design-3__bottom__right__list__item--search__button">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tft-design-3__bottom__right__list__item">
+                        <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-design-3__bottom__right__list__item--link" aria-label="View Cart">
+                            <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-            <?php endif; ?>
+            </div>
 
+            <div class="mobile-sidenav__bottom">
+                <?php if (!empty($design_3_topbar)): ?>
+                    <ul class="tft-design-3__topbar-list">
+                        <!-- Location -->
+                        <?php if (!empty($design_3_location)): ?>
+                            <li class="tft-design-3__topbar-list-item">
+                                <a href="#" class="tft-design-3__topbar-list-link" aria-label="Location">
+                                    <svg width="12" height="17" viewBox="0 0 12 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.25 15.625C3.625 13.5938 0 8.75 0 6C0 2.6875 2.65625 0 6 0C9.3125 0 12 2.6875 12 6C12 8.75 8.34375 13.5938 6.71875 15.625C6.34375 16.0938 5.625 16.0938 5.25 15.625ZM6 8C7.09375 8 8 7.125 8 6C8 4.90625 7.09375 4 6 4C4.875 4 4 4.90625 4 6C4 7.125 4.875 8 6 8Z" fill="white" />
+                                    </svg>
+                                    <span class="tft-design-3__topbar-list-text"><?php echo esc_html($design_3_location); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <!-- Email -->
+                        <?php if (!empty($design_3_email)): ?>
+                            <li class="tft-design-3__topbar-list-item">
+                                <a href="mailto:<?php echo esc_html($design_3_email); ?>" class="tft-design-3__topbar-list-link" aria-label="Email">
+                                    <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.9292 5.91694C21.0917 5.78454 21.3333 5.9084 21.3333 6.11768V14.852C21.3333 15.9839 20.4375 16.9021 19.3333 16.9021H2C0.895833 16.9021 0 15.9839 0 14.852V6.12195C0 5.9084 0.2375 5.78881 0.404167 5.92121C1.3375 6.66438 2.575 7.60828 6.825 10.7731C7.70417 11.4309 9.1875 12.8147 10.6667 12.8062C12.1542 12.819 13.6667 11.4053 14.5125 10.7731C18.7625 7.60828 19.9958 6.6601 20.9292 5.91694ZM10.6667 11.4352C11.6333 11.4522 13.025 10.188 13.725 9.66694C19.2542 5.5539 19.675 5.19513 20.95 4.17007C21.1917 3.97787 21.3333 3.6789 21.3333 3.36284V2.55133C21.3333 1.4195 20.4375 0.501221 19.3333 0.501221H2C0.895833 0.501221 0 1.4195 0 2.55133V3.36284C0 3.6789 0.141667 3.9736 0.383333 4.17007C1.65833 5.19086 2.07917 5.5539 7.60833 9.66694C8.30833 10.188 9.7 11.4522 10.6667 11.4352Z" fill="white" />
+                                    </svg>
+                                    <span class="tft-design-3__topbar-list-text"><?php echo esc_html($design_3_email); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <!-- Phone -->
+                        <?php if (!empty($design_3_phone)): ?>
+                            <li class="tft-design-3__topbar-list-item">
+                                <a href="tel:<?php echo esc_html($design_3_phone); ?>" class="tft-design-3__topbar-list-link" aria-label="Phone">
+                                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.0437 12.0907L12.5437 10.5531C12.3941 10.4878 12.228 10.474 12.0701 10.5139C11.9123 10.5537 11.7714 10.6451 11.6686 10.7741L10.1186 12.7153C7.68598 11.5396 5.72828 9.53289 4.58132 7.03931L6.47511 5.45044C6.60126 5.34527 6.69055 5.20083 6.72945 5.03899C6.76836 4.87714 6.75477 4.70672 6.69074 4.5535L5.19071 0.965738C5.12043 0.800575 4.99613 0.665726 4.83925 0.584441C4.68237 0.503157 4.50273 0.480533 4.33132 0.520471L1.08126 1.28928C0.915998 1.3284 0.76855 1.42378 0.662983 1.55986C0.557415 1.69594 0.499962 1.86468 0.5 2.03854C0.5 10.2552 6.99699 16.9021 15.0003 16.9021C15.1699 16.9022 15.3346 16.8434 15.4674 16.7352C15.6002 16.6269 15.6933 16.4758 15.7315 16.3063L16.4815 12.9748C16.5202 12.7982 16.4977 12.6134 16.4178 12.452C16.3379 12.2906 16.2056 12.1629 16.0437 12.0907Z" fill="white" />
+                                    </svg>
+                                    <span class="tft-design-3__topbar-list-text"><?php echo esc_html($design_3_phone); ?></span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
 
         </div>
 <?php

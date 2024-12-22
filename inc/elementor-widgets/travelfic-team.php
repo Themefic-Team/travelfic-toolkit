@@ -247,6 +247,114 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		);
 		$this->end_controls_section();
 
+		// slider control settings check
+		$this->start_controls_section(
+			'team_slider_control',
+			[
+				'label' => __('Slider Control', 'travelfic-toolkit'),
+				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'tft_team_style' => ['design-2'],
+				],
+
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_slidetoshow',
+			[
+				'label'       => __('Slide To Show', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 15,
+				'step' => 1,
+				'default' => 3,
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_slidetoscroll',
+			[
+				'label'       => __('Slide To Scroll', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::NUMBER,
+				'min' => 1,
+				'max' => 10,
+				'step' => 1,
+				'default' => 1,
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_navigation',
+			[
+				'label'       => __('Navigation', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SELECT,
+				'default'     => 'dots',
+				'options'     => [
+					'none' => __('None', 'travelfic-toolkit'),
+					'dots' => __('Dots', 'travelfic-toolkit'),
+					'arrows' => __('Arrows', 'travelfic-toolkit'),
+				],
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_autoplay',
+			[
+				'label'       => __('Autoplay', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'yes',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_autoplay_speed',
+			[
+				'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 6000,
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_autoplay_interval',
+			[
+				'label' => esc_html__('Autoplay Interval', 'travelfic-toolkit'),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 1500,
+				],
+				'condition' => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_loop',
+			[
+				'label' => esc_html__('Loop', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'no',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+
+		$this->end_controls_section();
+
 		$this->start_controls_section(
 			'team_top_section',
 			[
@@ -372,97 +480,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 
 		$this->end_controls_section();
 
-		// slider control settings check
-		$this->start_controls_section(
-			'team_slider_control',
-			[
-				'label' => __('Slider Control', 'travelfic-toolkit'),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-				'condition' => [
-					'tft_team_style' => ['design-2'],
-				],
 
-			]
-		);
-		$this->add_control(
-			'team_design3_slider_slidetoshow',
-			[
-				'label'       => __('Slide To Show', 'travelfic-toolkit'),
-				'type'        => \Elementor\Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 15,
-				'step' => 1,
-				'default' => 3,
-				'condition'   => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-		$this->add_control(
-			'team_design3_slider_slidetoscroll',
-			[
-				'label'       => __('Slide To Scroll', 'travelfic-toolkit'),
-				'type'        => \Elementor\Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 10,
-				'step' => 1,
-				'default' => 1,
-				'condition'   => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-		$this->add_control(
-			'team_design3_slider_autoplay',
-			[
-				'label'       => __('Autoplay', 'travelfic-toolkit'),
-				'type'        => \Elementor\Controls_Manager::SWITCHER,
-				'default'     => 'yes',
-				'condition'   => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-		$this->add_control(
-			'team_design3_slider_autoplay_speed',
-			[
-				'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
-				'type' => \Elementor\Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 6000,
-				],
-				'condition' => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-		$this->add_control(
-			'team_design3_slider_autoplay_interval',
-			[
-				'label' => esc_html__('Autoplay Interval', 'travelfic-toolkit'),
-				'type' => \Elementor\Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 1500,
-				],
-				'condition' => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-		$this->add_control(
-			'team_design3_slider_loop',
-			[
-				'label' => esc_html__('Loop', 'travelfic-toolkit'),
-				'type'        => \Elementor\Controls_Manager::SWITCHER,
-				'default'     => 'no',
-				'condition'   => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-
-
-		$this->end_controls_section();
 
 
 		$this->start_controls_section(
@@ -731,14 +749,14 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		if (!empty($settings['team_title'])) {
 			$tft_sec_title = $settings['team_title'];
 		}
-		$section_title_backdrop = $settings['team_sec_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
+		$section_title_backdrop = $settings['team_sec_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
 		if (!empty($settings['team_subtitle'])) {
 			$tft_sec_subtitle = $settings['team_subtitle'];
 		}
 
 
 		// Items per page
-		$slideToShow = !empty($settings['team_design3_slider_slidetoshow']) ? $settings['team_design3_slider_slidetoshow'] : 3;
+		$slideToShow = !empty($settings['team_design2_slider_slidetoshow']) ? $settings['team_design2_slider_slidetoshow'] : 3;
 		$postCount = isset($settings['members_list']) ? count($settings['members_list']) : 0;
 
 		// Disable slider class
@@ -750,11 +768,20 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		}
 
 		// slider control settings check
-		$design2_slide_to_scroll = !empty($settings['team_design3_slider_slidetoscroll']) ? $settings['team_design3_slider_slidetoscroll'] : 0;
-		$design2_slider_autoplay = !empty($settings['team_design3_slider_autoplay']) ? 'true' : 'false';
-		$design2_slider_autoplay_speed = !empty($settings['team_design3_slider_autoplay_speed']) ? $settings['team_design3_slider_autoplay_speed']['size'] : 0;
-		$design2_slider_autoplay_interval = !empty($settings['team_design3_slider_autoplay_interval']) ? $settings['team_design3_slider_autoplay_interval']['size'] : 0;
-		$design2_slider_loop = !empty($settings['team_design3_slider_loop']) ? 'true' : 'false';
+		$design2_slide_to_scroll = !empty($settings['team_design2_slider_slidetoscroll']) ? $settings['team_design2_slider_slidetoscroll'] : 1;
+
+		$design2_slider_nav = $settings['team_design2_slider_navigation'];
+
+		$design2_slider_arrows = ("arrows" === $design2_slider_nav) ? 'true' : 'false';
+		$design2_slider_dots = ("dots" === $design2_slider_nav) ? 'true' : 'false';
+
+		$slider_box_hidden = ("true" === $design2_slider_arrows) ? ' tft-box-hidden' : '';
+		$container_max_width = ("true" === $design2_slider_arrows) ? ' tft-container-width' : '';
+
+		$design2_slider_autoplay = !empty($settings['team_design2_slider_autoplay']) ? 'true' : 'false';
+		$design2_slider_autoplay_speed = !empty($settings['team_design2_slider_autoplay_speed']) ? $settings['team_design2_slider_autoplay_speed']['size'] : 0;
+		$design2_slider_autoplay_interval = !empty($settings['team_design2_slider_autoplay_interval']) ? $settings['team_design2_slider_autoplay_interval']['size'] : 0;
+		$design2_slider_loop = !empty($settings['team_design2_slider_loop']) ? 'true' : 'false';
 
 ?>
 
@@ -806,61 +833,75 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			</div>
 		<?php elseif ('design-2' == $tft_design):  ?>
 			<div class="tft-team-wrapper-v2 tft-customizer-typography tft-section-space-top">
-				<div class="container <?php echo esc_attr($tftDisableClass); ?>">
+				<div class="container<?php echo esc_attr($tftDisableClass . $container_max_width); ?>">
 					<div class="tft-heading-content">
 						<?php if (!empty($tft_sec_subtitle)) { ?>
 							<h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
 						<?php }
 						if (!empty($tft_sec_title)) { ?>
-							<h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+							<h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
 						<?php } ?>
 					</div>
-					<div class="tft-team-members">
-						<?php foreach ($settings['members_list'] as $item) : ?>
-							<div class="tft-single-member tft-card-default">
-								<div class="team-members-inner">
-									<?php
-									if (!empty($item['member_img']['url'])) { ?>
-										<div class="member_img">
-											<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
-										</div>
-									<?php } ?>
-									<div class="member-details">
-										<div class="social-media-icons">
-											<button class="share-btn" id="shareButons">
-												<i class="ri-share-line"></i>
-											</button>
-											<div class="social-media">
-												<?php if ($item['member_social_fb'] !== '') { ?>
-													<a href="<?php echo esc_url($item['member_social_fb']); ?>">
-														<i class="fab fa-facebook-f"></i>
-													</a>
-												<?php } ?>
-												<?php if ($item['member_social_ld'] !== '') { ?>
-													<a href="<?php echo esc_url($item['member_social_ld']); ?>">
-														<i class="fab fa-linkedin-in"></i>
-													</a>
-												<?php } ?>
-												<?php if ($item['member_social_tw'] !== '') { ?>
-													<a href="<?php echo esc_url($item['member_social_tw']); ?>">
-														<i class="fab fa-twitter"></i>
-													</a>
-												<?php } ?>
-												<?php if ($item['member_social_insta'] !== '') { ?>
-													<a href="<?php echo esc_url($item['member_social_insta']); ?>">
-														<i class="fab fa-instagram"></i>
-													</a>
-												<?php } ?>
+					<div class="tft-team-content">
+						<div class="tft-team-members <?php echo esc_attr($slider_box_hidden); ?>">
+							<?php foreach ($settings['members_list'] as $item) : ?>
+								<div class="tft-single-member tft-card-default">
+									<div class="team-members-inner">
+										<?php
+										if (!empty($item['member_img']['url'])) { ?>
+											<div class="member_img">
+												<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
 											</div>
+										<?php } ?>
+										<div class="member-details">
+											<div class="social-media-icons">
+												<button class="share-btn" id="shareButons">
+													<i class="ri-share-line"></i>
+												</button>
+												<div class="social-media">
+													<?php if ($item['member_social_fb'] !== '') { ?>
+														<a href="<?php echo esc_url($item['member_social_fb']); ?>">
+															<i class="fab fa-facebook-f"></i>
+														</a>
+													<?php } ?>
+													<?php if ($item['member_social_ld'] !== '') { ?>
+														<a href="<?php echo esc_url($item['member_social_ld']); ?>">
+															<i class="fab fa-linkedin-in"></i>
+														</a>
+													<?php } ?>
+													<?php if ($item['member_social_tw'] !== '') { ?>
+														<a href="<?php echo esc_url($item['member_social_tw']); ?>">
+															<i class="fab fa-twitter"></i>
+														</a>
+													<?php } ?>
+													<?php if ($item['member_social_insta'] !== '') { ?>
+														<a href="<?php echo esc_url($item['member_social_insta']); ?>">
+															<i class="fab fa-instagram"></i>
+														</a>
+													<?php } ?>
+												</div>
+											</div>
+											<h3 class="tft-subtitle"> <?php echo esc_html($item['member_designation']); ?> </h3>
+											<p class="tft-title"><?php echo esc_html($item['member_name']); ?></p>
 										</div>
-										<h3 class="tft-subtitle"> <?php echo esc_html($item['member_designation']); ?> </h3>
-										<p class="tft-title"><?php echo esc_html($item['member_name']); ?></p>
 									</div>
 								</div>
+							<?php endforeach ?>
+						</div>
+						<!-- slider navigation -->
+						<?php if ($tftSliderDisable == false && 'true' === $design2_slider_arrows): ?>
+							<div class="tft-team-slider-nav">
+								<button type="button" class="tft-prev-slide">
+									<i class="ri-arrow-left-line"></i>
+								</button>
+								<button type="button" class="tft-next-slide">
+									<i class="ri-arrow-right-line"></i>
+								</button>
 							</div>
-						<?php endforeach ?>
+						<?php endif; ?>
 					</div>
 				</div>
+
 				<div class="tft_team_bottom_shape">
 					<img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/team-banner-shape.png'); ?>" alt="Team background shape">
 				</div>
@@ -877,17 +918,18 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 						autoplay: <?php echo esc_attr($design2_slider_autoplay); ?>,
 						autoplaySpeed: <?php echo esc_attr($design2_slider_autoplay_speed); ?>,
 						speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
-						dots: true,
-						arrows: false,
+						dots: <?php echo esc_attr($design2_slider_dots); ?>,
+						arrows: <?php echo esc_attr($design2_slider_arrows); ?>,
+						prevArrow: '.tft-team-wrapper-v2 .tft-prev-slide',
+						nextArrow: '.tft-team-wrapper-v2 .tft-next-slide',
 						pauseOnFocus: false,
 						pauseOnHover: false,
+
 						responsive: [{
 								breakpoint: 991,
 								settings: {
 									slidesToShow: 2,
 									slidesToScroll: 2,
-									infinite: true,
-									dots: true
 								}
 							},
 							{

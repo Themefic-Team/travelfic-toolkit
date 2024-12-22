@@ -604,6 +604,22 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'design4_slider_navigation',
+            [
+                'label'       => __('Navigation', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SELECT,
+                'default'     => 'dots',
+                'options'     => [
+                    'none' => __('None', 'travelfic-toolkit'),
+                    'dots' => __('Dots', 'travelfic-toolkit'),
+                    'arrows' => __('Arrows', 'travelfic-toolkit'),
+                ],
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                ],
+            ]
+        );
+        $this->add_control(
             'design4_slider_autoplay',
             [
                 'label'       => __('Autoplay', 'travelfic-toolkit'),
@@ -669,7 +685,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'hero_style_section',
             [
-                'label' => __('Slider Style', 'travelfic-toolkit'),
+                'label' => __('Slider', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -1113,34 +1129,168 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
 
+        $this->end_controls_section();
+        $this->end_controls_tabs();
+
         // slider social style
-        $this->add_control(
+        $this->start_controls_section(
             'slider_social_style',
             [
                 'label'     => __('Social', 'travelfic-toolkit'),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'slider_social_label_head',
+            [
+                'label'     => __('Label', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'slider_style' => ['design-4'], // Show this control only when des_style is 'design-4'
+                    'slider_style' => ['design-4'],
                 ],
             ]
         );
         $this->add_control(
-            'slider_social_color',
+            'slider_social_label_color',
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'border-color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link i'   => 'color: {{VALUE}} !important;',
                     '{{WRAPPER}} .tft-hero-design-4__social__label'   => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-4'], // Show this control only when des_style is 'design-4'
+                    'slider_style' => ['design-4'],
                 ],
             ]
         );
+
+        $this->add_control(
+            'slider_social_icon_head',
+            [
+                'label'     => __('Icon', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+        $this->start_controls_tabs('social_icon_tabs_');
+
+        $this->start_controls_tab(
+            'social_icon_normal_',
+            [
+                'label' => __('Normal', 'travelfic-toolkit'),
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'slider_social_icon_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link i'   => 'color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'slider_social_icon_back',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'background: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'slider_social_icon_border',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'social_icon_hover_',
+            [
+                'label' => __('Hover', 'travelfic-toolkit'),
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'slider_social_hover_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FA6400',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover i'   => 'color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'slider_social_hover_back',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FA6400',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'background: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'slider_social_hover_border',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#FA6400',
+                'selectors' => [
+                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'border-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'slider_style' => ['design-4'],
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
 
         $this->end_controls_tabs();
 
@@ -1656,8 +1806,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $apt_tab_title = !empty($settings['apt_tab_title']) ? 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ' : '';
         $car_tab_title = !empty($settings['car_tab_title']) ? 'car_tab_title="' . $settings['car_tab_title'] . '" ' : '';
 
-        // slider control settings check
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
+        // slider control settings check
+
+        $design2_slider_nav = $settings['design4_slider_navigation'];
+
+        $design2_slider_arrows = ("arrows" === $design2_slider_nav) ? 'true' : 'false';
+        $design2_slider_dots = ("dots" === $design2_slider_nav) ? 'true' : 'false';
         $design4_slider_autoplay = !empty($settings['design4_slider_autoplay']) ? 'true' : 'false';
         $design4_slider_autoplay_speed = !empty($settings['design4_slider_autoplay_speed']) ? $settings['design4_slider_autoplay_speed']['size'] : 0;
         $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? $settings['design4_slider_autoplay_interval']['size'] : 0;
@@ -1675,7 +1830,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
-                            <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title .$car_tab_title . 'design="2"]'); ?>
+                            <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . 'design="2"]'); ?>
                         </div>
                     <?php } ?>
                 </div>
@@ -1732,6 +1887,16 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    <?php if ('true' === $design2_slider_arrows): ?>
+                        <div class="tft-hero-slider-nav">
+                            <button type="button" class="tft-prev-slide">
+                                <i class="ri-arrow-left-line"></i>
+                            </button>
+                            <button type="button" class="tft-next-slide">
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </div>
+                    <?php endif; ?>
 
                     <!-- hero banner social -->
                     <?php if ($social_media_switcher): ?>
@@ -1812,8 +1977,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             autoplaySpeed: <?php echo esc_attr($design4_slider_autoplay_speed); ?>,
                             speed: <?php echo esc_attr($design4_slider_autoplay_interval); ?>,
                             fade: <?php echo esc_attr($design4_slider_animation); ?>,
-                            dots: true,
-                            arrows: false,
+                            dots: <?php echo esc_attr($design2_slider_dots) ?>,
+                            arrows: <?php echo esc_attr($design2_slider_arrows) ?>,
+                            prevArrow: '.tft-hero-slider-nav .tft-prev-slide',
+                            nextArrow: '.tft-hero-slider-nav .tft-next-slide',
                             pauseOnFocus: false,
                             pauseOnHover: false,
                         });
@@ -1938,14 +2105,17 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             <script>
                 jQuery(document).ready(function($) {
                     $(".tft-hero-design-4__slider").slick({
-                        infinite: true,
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 6000,
-                        speed: 1500,
-                        dots: true,
-                        arrows: false,
+                        infinite: <?php echo esc_attr($design4_slider_loop); ?>,
+                        autoplay: <?php echo esc_attr($design4_slider_autoplay); ?>,
+                        autoplaySpeed: <?php echo esc_attr($design4_slider_autoplay_speed); ?>,
+                        speed: <?php echo esc_attr($design4_slider_autoplay_interval); ?>,
+                        fade: <?php echo esc_attr($design4_slider_animation); ?>,
+                        dots: <?php echo esc_attr($design2_slider_dots) ?>,
+                        arrows: <?php echo esc_attr($design2_slider_arrows) ?>,
+                        prevArrow: '.tft-hero-slider-nav .tft-prev-slide',
+                        nextArrow: '.tft-hero-slider-nav .tft-next-slide',
                         pauseOnFocus: false,
                         pauseOnHover: false,
                     });

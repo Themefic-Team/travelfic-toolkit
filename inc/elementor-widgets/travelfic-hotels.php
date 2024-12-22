@@ -1,5 +1,7 @@
 <?php
+
 use \Tourfic\Classes\Hotel\Pricing as Hotel_Price;
+
 class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 {
 
@@ -251,6 +253,114 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 ],
             ]
         );
+
+        $this->end_controls_section();
+
+        // slider control settings check
+        $this->start_controls_section(
+            'team_slider_control',
+            [
+                'label' => __('Slider Control', 'travelfic-toolkit'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'tft_hotels_style' => ['design-2'],
+                ],
+
+            ]
+        );
+        $this->add_control(
+            'tft_hotels_design2_slider_slidetoshow',
+            [
+                'label'       => __('Slide To Show', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 15,
+                'step' => 1,
+                'default' => 3,
+                'condition'   => [
+                    'tft_hotels_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_hotels_design2_slider_slidetoscroll',
+            [
+                'label'       => __('Slide To Scroll', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 10,
+                'step' => 1,
+                'default' => 1,
+                'condition'   => [
+                    'tft_hotels_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+			'tft_hotels_design2_slider_navigation',
+			[
+				'label'       => __('Navigation', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SELECT,
+				'default'     => 'arrows',
+				'options'     => [
+					'none' => __('None', 'travelfic-toolkit'),
+					'dots' => __('Dots', 'travelfic-toolkit'),
+					'arrows' => __('Arrows', 'travelfic-toolkit'),
+				],
+				'condition'   => [
+					'tft_hotels_style' => 'design-2',
+				],
+			]
+		);
+        $this->add_control(
+            'tft_hotels_design2_slider_autoplay',
+            [
+                'label'       => __('Autoplay', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'yes',
+                'condition'   => [
+                    'tft_hotels_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_hotels_design2_slider_autoplay_speed',
+            [
+                'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 6000,
+                ],
+                'condition' => [
+                    'tft_hotels_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_hotels_design2_slider_autoplay_interval',
+            [
+                'label' => esc_html__('Autoplay Interval', 'travelfic-toolkit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => 1500,
+                ],
+                'condition' => [
+                    'tft_hotels_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_hotels_design2_slider_loop',
+            [
+                'label' => esc_html__('Loop', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'no',
+                'condition'   => [
+                    'tft_hotels_style' => 'design-2',
+                ],
+            ]
+        );
+
 
         $this->end_controls_section();
 
@@ -805,15 +915,15 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             ]
         );
 
-          // Title Backdrop
-          $this->add_control(
+        // Title Backdrop
+        $this->add_control(
             'popular_section_design2_title_backdrop',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
                 'default' => 'yes',
                 'condition' => [
-                    'tft_hotels_style' => 'design-2', 
+                    'tft_hotels_style' => 'design-2',
                 ],
             ]
         );
@@ -838,7 +948,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_hotels_style' => 'design-2', 
+                    'tft_hotels_style' => 'design-2',
                     'popular_section_design2_title_backdrop' => 'yes',
                 ],
             ]
@@ -1589,16 +1699,16 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 
 
         $tft_sec_title = !empty($settings['tft_section_title']) ? $settings['tft_section_title'] : '';
-        $section_title_backdrop = $settings['popular_section_design2_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
+        $section_title_backdrop = $settings['popular_section_design2_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
         $tft_sec_subtitle = !empty($settings['tft_section_subtitle']) ? $settings['tft_section_subtitle'] : '';
-       
+
         if (!empty($settings['tft_posts_section_bg'])) {
             $tft_posts_sec_bg = $settings['tft_posts_section_bg'];
         }
 
         $tft_posts_tabs = !empty($settings['tft_posts_type']) ? $settings['tft_posts_type'] : 'alls';
 
-        $slideToShow = 3;
+        $slideToShow = !empty($settings['tft_hotels_design2_slider_slidetoshow']) ? $settings['tft_hotels_design2_slider_slidetoshow'] : 3;
         $postCount = 0;
         // get count posts
         if ($query->have_posts()):
@@ -1615,6 +1725,23 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             $tftSliderDisable = true;
             $tftDisableClass = 'tft-slider-disable';
         }
+
+
+        // slider control settings check
+        $design2_slide_to_scroll = !empty($settings['tft_hotels_design2_slider_slidetoscroll']) ? $settings['tft_hotels_design2_slider_slidetoscroll'] : 1;
+
+        $design2_slider_nav = $settings['tft_hotels_design2_slider_navigation'];
+
+		$design2_slider_arrows = ("arrows" === $design2_slider_nav) ? 'true' : 'false';
+		$design2_slider_dots = ("dots" === $design2_slider_nav) ? 'true' : 'false';
+
+		$slider_box_hidden = ("true" === $design2_slider_arrows) ? ' tft-box-hidden' : '';
+		$container_max_width = ("true" === $design2_slider_arrows) ? ' tft-container-width' : '';
+
+        $design2_slider_autoplay = !empty($settings['tft_hotels_design2_slider_autoplay']) ? 'true' : 'false';
+        $design2_slider_autoplay_speed = !empty($settings['tft_hotels_design2_slider_autoplay_speed']) ? $settings['tft_hotels_design2_slider_autoplay_speed']['size'] : 0;
+        $design2_slider_autoplay_interval = !empty($settings['tft_hotels_design2_slider_autoplay_interval']) ? $settings['tft_hotels_design2_slider_autoplay_interval']['size'] : 0;
+        $design2_slider_loop = !empty($settings['tft_hotels_design2_slider_loop']) ? 'true' : 'false';
 ?>
         <?php if ('design-1' == $tft_design): ?>
             <div class="tft-popular-hotels-wrapper tft-customizer-typography" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
@@ -2130,18 +2257,18 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         <?php endif;
         if ('design-2' == $tft_design): ?>
             <div class="tft-popular-hotels-wrapper-2 tft-customizer-typography tft-section-space-bottom" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
-                <div class="container">
+                <div class="container<?php echo esc_attr($container_max_width); ?>">
                     <!-- heading content -->
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
                             <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-destination-content">
-                        <div class="tft-destination-slider <?php echo esc_attr($tftDisableClass); ?>">
+                        <div class="tft-destination-slider <?php echo esc_attr($tftDisableClass . $slider_box_hidden); ?>">
                             <?php if ($query->have_posts()): ?>
                                 <?php while ($query->have_posts()):
                                     $query->the_post();
@@ -2298,7 +2425,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             endif; ?>
                         </div>
                         <!-- destination slider navigation -->
-                        <?php if ($tftSliderDisable == false): ?>
+                        <?php if ($tftSliderDisable == false && 'true' === $design2_slider_arrows): ?>
                             <div class="tft-destination-slider-nav">
                                 <button type="button" class="tft-prev-slide">
                                     <i class="ri-arrow-left-line"></i>
@@ -2317,18 +2444,19 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                         $(document).ready(function() {
                             //Your Code Inside
                             $('.tft-popular-hotels-wrapper-2 .tft-destination-slider').slick({
-                                dots: false,
-                                arrows: true,
-                                speed: 300,
-                                autoplaySpeed: 2000,
                                 slidesToShow: <?php echo esc_attr($slideToShow); ?>,
-                                slidesToScroll: 1,
+                                slidesToScroll: <?php echo esc_attr($design2_slide_to_scroll); ?>,
+                                infinite: <?php echo esc_attr($design2_slider_loop); ?>,
+                                autoplay: <?php echo esc_attr($design2_slider_autoplay); ?>,
+                                autoplaySpeed: <?php echo esc_attr($design2_slider_autoplay_speed); ?>,
+                                speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
+                                dots: <?php echo esc_attr($design2_slider_dots); ?>,
+                                arrows: <?php echo esc_attr($design2_slider_arrows); ?>,
                                 cssEase: 'linear',
                                 pauseOnFocus: false,
                                 pauseOnHover: false,
                                 prevArrow: '.tft-popular-hotels-wrapper-2 .tft-prev-slide',
                                 nextArrow: '.tft-popular-hotels-wrapper-2 .tft-next-slide',
-                                infinite: true,
                                 responsive: [{
                                         breakpoint: 1024,
                                         settings: {

@@ -231,7 +231,7 @@
   &__nav {
     @include d-flex();
     @include align-items(center);
-    @include justify-content(center);
+    @include justify-content(end);
     gap: 22px;
     @media #{$max767} {
       justify-content: center;
