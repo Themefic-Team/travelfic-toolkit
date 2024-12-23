@@ -636,7 +636,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'default' => [
-                    'size' => 6000,
+                    'size' => 3000,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                        'step' => 100   
+                    ],
                 ],
                 'condition' => [
                     'slider_style' => 'design-4',
@@ -650,6 +657,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'default' => [
                     'size' => 1500,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                        'step' => 100   
+                    ],
                 ],
                 'condition' => [
                     'slider_style' => 'design-4',
@@ -671,6 +685,63 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             'design4_slider_animation',
             [
                 'label' => esc_html__('Animation', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'yes',
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                ],
+            ]
+        );
+        $this->add_control(
+            'design4_slider_adaptive_height',
+            [
+                'label' => esc_html__('Adaptive Height', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'yes',
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'design4_slider_pause_on_hover',
+            [
+                'label' => esc_html__('Pause On Hover', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'no',
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                ],
+            ]
+        );
+        $this->add_control(
+            'design4_slider_pause_on_focus',
+            [
+                'label' => esc_html__('Pause On Focus', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'no',
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                ],
+            ]
+        );
+        $this->add_control(
+            'design4_slider_rtl',
+            [
+                'label' => esc_html__('RTL', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::SWITCHER,
+                'default'     => 'no',
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                    'design4_slider_loop!' => 'yes',
+                ],
+            ]
+        );
+        $this->add_control(
+            'design4_slider_draggable',
+            [
+                'label' => esc_html__('Draggable', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
                 'default'     => 'yes',
                 'condition'   => [
@@ -1809,15 +1880,20 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
         // slider control settings check
 
-        $design2_slider_nav = $settings['design4_slider_navigation'];
+        $design4_slider_nav = $settings['design4_slider_navigation'];
 
-        $design2_slider_arrows = ("arrows" === $design2_slider_nav) ? 'true' : 'false';
-        $design2_slider_dots = ("dots" === $design2_slider_nav) ? 'true' : 'false';
-        $design4_slider_autoplay = !empty($settings['design4_slider_autoplay']) ? 'true' : 'false';
+        $design4_slider_arrows = ("arrows" === $design4_slider_nav) ? 'true' : 'false';
+        $design4_slider_dots = ("dots" === $design4_slider_nav) ? 'true' : 'false';
+        $design4_slider_autoplay = ('yes' === $settings['design4_slider_autoplay']) ? 'true' : 'false';
         $design4_slider_autoplay_speed = !empty($settings['design4_slider_autoplay_speed']) ? $settings['design4_slider_autoplay_speed']['size'] : 0;
         $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? $settings['design4_slider_autoplay_interval']['size'] : 0;
-        $design4_slider_loop = !empty($settings['design4_slider_loop']) ? 'true' : 'false';
-        $design4_slider_animation = !empty($settings['design4_slider_animation']) ? 'true' : 'false';
+        $design4_slider_loop = ('yes' === $settings['design4_slider_loop']) ? 'true' : 'false';
+        $design4_slider_animation = ('yes' === $settings['design4_slider_animation']) ? 'true' : 'false';
+        $design4_slider_adaptive_height = ('yes' === $settings['design4_slider_adaptive_height']) ? 'true' : 'false';
+        $design4_slider_pause_on_hover = ('yes' === $settings['design4_slider_pause_on_hover']) ? 'true' : 'false';
+        $design4_slider_pause_on_focus = ('yes' === $settings['design4_slider_pause_on_focus']) ? 'true' : 'false';
+        $design4_slider_rtl = ('yes' === $settings['design4_slider_rtl']) ? 'true' : 'false';
+        $design4_slider_draggable = ('yes' === $settings['design4_slider_draggable']) ? 'true' : 'false';
 
 
         if ("design-2" == $tft_design) {
@@ -1887,7 +1963,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <?php if ('true' === $design2_slider_arrows): ?>
+                    <?php if ('true' === $design4_slider_arrows): ?>
                         <div class="tft-hero-slider-nav">
                             <button type="button" class="tft-prev-slide">
                                 <i class="ri-arrow-left-line"></i>
@@ -1977,12 +2053,15 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             autoplaySpeed: <?php echo esc_attr($design4_slider_autoplay_speed); ?>,
                             speed: <?php echo esc_attr($design4_slider_autoplay_interval); ?>,
                             fade: <?php echo esc_attr($design4_slider_animation); ?>,
-                            dots: <?php echo esc_attr($design2_slider_dots) ?>,
-                            arrows: <?php echo esc_attr($design2_slider_arrows) ?>,
+                            dots: <?php echo esc_attr($design4_slider_dots) ?>,
+                            arrows: <?php echo esc_attr($design4_slider_arrows) ?>,
+                            adaptiveHeight: <?php echo esc_attr($design4_slider_adaptive_height); ?>,
+                            pauseOnHover: <?php echo esc_attr($design4_slider_pause_on_hover); ?>,
+                            pauseOnFocus: <?php echo esc_attr($design4_slider_pause_on_focus); ?>,
+                            rtl: <?php echo esc_attr($design4_slider_rtl); ?>,
+                            draggable: <?php echo esc_attr($design4_slider_draggable); ?>,
                             prevArrow: '.tft-hero-slider-nav .tft-prev-slide',
                             nextArrow: '.tft-hero-slider-nav .tft-next-slide',
-                            pauseOnFocus: false,
-                            pauseOnHover: false,
                         });
                     });
                 })(jQuery);
@@ -2112,12 +2191,15 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                         autoplaySpeed: <?php echo esc_attr($design4_slider_autoplay_speed); ?>,
                         speed: <?php echo esc_attr($design4_slider_autoplay_interval); ?>,
                         fade: <?php echo esc_attr($design4_slider_animation); ?>,
-                        dots: <?php echo esc_attr($design2_slider_dots) ?>,
-                        arrows: <?php echo esc_attr($design2_slider_arrows) ?>,
+                        dots: <?php echo esc_attr($design4_slider_dots) ?>,
+                        arrows: <?php echo esc_attr($design4_slider_arrows) ?>,
+                        adaptiveHeight: <?php echo esc_attr($design4_slider_adaptive_height); ?>,
+                        pauseOnHover: <?php echo esc_attr($design4_slider_pause_on_hover); ?>,
+                        pauseOnFocus: <?php echo esc_attr($design4_slider_pause_on_focus); ?>,
+                        rtl: <?php echo esc_attr($design4_slider_rtl); ?>,
+                        draggable: <?php echo esc_attr($design4_slider_draggable); ?>,
                         prevArrow: '.tft-hero-slider-nav .tft-prev-slide',
                         nextArrow: '.tft-hero-slider-nav .tft-next-slide',
-                        pauseOnFocus: false,
-                        pauseOnHover: false,
                     });
                 });
             </script>

@@ -3642,6 +3642,66 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-slide {
   margin: 0 12px !important;
 }
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dotted.slick-slider {
+  padding-bottom: 20px;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li {
+  width: 30px;
+  height: 30px;
+  border: 2px dashed transparent;
+  text-align: center;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button {
+  width: 10px;
+  height: 10px;
+  background: #e8d9cf;
+  border-radius: 50%;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button::before {
+  display: none;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active {
+  border-color: #FA6400;
+}
+.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active button {
+  background: #FA6400;
+}
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides {
   display: -webkit-box;
   display: -moz-box;
@@ -5020,6 +5080,90 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-team-slider-nav button.tft-next-slide,
 .tft-hero-slider-nav button.tft-next-slide {
   right: 0;
+}
+
+@media only screen and (max-width: 1399.98px) {
+  .tft-hero-slider-nav {
+    margin-top: 0;
+    position: absolute;
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .tft-hero-slider-nav {
+    bottom: -80px;
+  }
+}
+.tft-hero-slider-nav button {
+  background: transparent;
+  width: 60px;
+  height: 60px;
+  border-color: #ffffff;
+}
+@media only screen and (max-width: 1399.98px) {
+  .tft-hero-slider-nav button {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    transform: initial;
+    top: 0;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-hero-slider-nav button {
+    width: 45px;
+    height: 45px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-hero-slider-nav button {
+    width: 40px;
+    height: 40px;
+  }
+}
+.tft-hero-slider-nav button i {
+  color: #ffffff;
+  font-size: 20px;
+}
+.tft-hero-slider-nav button:hover {
+  background: #FA6400;
+  color: #ffffff;
+  border-color: #FA6400;
+}
+.tft-hero-slider-nav button.tft-prev-slide {
+  left: 80px;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-hero-slider-nav button.tft-prev-slide {
+    left: 100px;
+  }
+}
+@media only screen and (max-width: 1399.98px) {
+  .tft-hero-slider-nav button.tft-prev-slide {
+    left: 0;
+  }
+}
+.tft-hero-slider-nav button.tft-next-slide {
+  right: 80px;
+}
+@media only screen and (max-width: 1760px) {
+  .tft-hero-slider-nav button.tft-next-slide {
+    right: 100px;
+  }
+}
+@media only screen and (max-width: 1399.98px) {
+  .tft-hero-slider-nav button.tft-next-slide {
+    right: 0;
+  }
 }
 
 .tft-box-hidden {

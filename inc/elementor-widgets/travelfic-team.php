@@ -273,6 +273,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				],
 			]
 		);
+
 		$this->add_control(
 			'team_design2_slider_slidetoscroll',
 			[
@@ -320,8 +321,15 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label' => esc_html__('Autoplay Speed', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 6000,
-				],
+                    'size' => 3000,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                        'step' => 100   
+                    ],
+                ],
 				'condition' => [
 					'tft_team_style' => 'design-2',
 				],
@@ -333,8 +341,15 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label' => esc_html__('Autoplay Interval', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'default' => [
-					'size' => 1500,
-				],
+                    'size' => 1500,
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                        'step' => 100   
+                    ],
+                ],
 				'condition' => [
 					'tft_team_style' => 'design-2',
 				],
@@ -346,6 +361,64 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label' => esc_html__('Loop', 'travelfic-toolkit'),
 				'type'        => \Elementor\Controls_Manager::SWITCHER,
 				'default'     => 'no',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+		$this->add_control(
+			'team_design2_slider_adaptive_height',
+			[
+				'label' => esc_html__('Adaptive Height', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'yes',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+
+		$this->add_control(
+			'team_design2_slider_pause_on_hover',
+			[
+				'label' => esc_html__('Pause On Hover', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'no',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_pause_on_focus',
+			[
+				'label' => esc_html__('Pause On Focus', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'no',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_rtl',
+			[
+				'label' => esc_html__('RTL', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'no',
+				'condition'   => [
+					'tft_team_style' => 'design-2',
+					'team_design2_slider_loop!' => 'yes',
+				],
+			]
+		);
+		$this->add_control(
+			'team_design2_slider_draggable',
+			[
+				'label' => esc_html__('Draggable', 'travelfic-toolkit'),
+				'type'        => \Elementor\Controls_Manager::SWITCHER,
+				'default'     => 'yes',
 				'condition'   => [
 					'tft_team_style' => 'design-2',
 				],
@@ -778,11 +851,16 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$slider_box_hidden = ("true" === $design2_slider_arrows) ? ' tft-box-hidden' : '';
 		$container_max_width = ("true" === $design2_slider_arrows) ? ' tft-container-width' : '';
 
-		$design2_slider_autoplay = !empty($settings['team_design2_slider_autoplay']) ? 'true' : 'false';
+		$design2_slider_autoplay = ("yes" === $settings['team_design2_slider_autoplay']) ? 'true' : 'false';
 		$design2_slider_autoplay_speed = !empty($settings['team_design2_slider_autoplay_speed']) ? $settings['team_design2_slider_autoplay_speed']['size'] : 0;
 		$design2_slider_autoplay_interval = !empty($settings['team_design2_slider_autoplay_interval']) ? $settings['team_design2_slider_autoplay_interval']['size'] : 0;
-		$design2_slider_loop = !empty($settings['team_design2_slider_loop']) ? 'true' : 'false';
-
+		$design2_slider_loop = ('yes' === $settings['team_design2_slider_loop']) ? 'true' : 'false';
+		$design2_slider_adaptive_height = ('yes' === $settings['team_design2_slider_adaptive_height']) ? 'true' : 'false';
+		$design2_slider_pause_on_hover = ('yes' === $settings['team_design2_slider_pause_on_hover']) ? 'true' : 'false';
+		$design2_slider_pause_on_focus = ('yes' === $settings['team_design2_slider_pause_on_focus']) ? 'true' : 'false';
+		$design2_slider_rtl = ('yes' === $settings['team_design2_slider_rtl']) ? 'true' : 'false';
+		$design2_slider_draggable = ('yes' === $settings['team_design2_slider_draggable']) ? 'true' : 'false';
+	
 ?>
 
 		<?php if ('design-1' == $tft_design) : ?>
@@ -828,7 +906,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 							</div>
 						</div>
 					<?php endforeach ?>
-
+					
 				</div>
 			</div>
 		<?php elseif ('design-2' == $tft_design):  ?>
@@ -920,11 +998,13 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 						speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
 						dots: <?php echo esc_attr($design2_slider_dots); ?>,
 						arrows: <?php echo esc_attr($design2_slider_arrows); ?>,
+						adaptiveHeight: <?php echo esc_attr($design2_slider_adaptive_height); ?>,
+						pauseOnHover: <?php echo esc_attr($design2_slider_pause_on_hover); ?>,
+						pauseOnFocus: <?php echo esc_attr($design2_slider_pause_on_focus); ?>,
+						rtl: <?php echo esc_attr($design2_slider_rtl); ?>,
+						draggable: <?php echo esc_attr($design2_slider_draggable); ?>,
 						prevArrow: '.tft-team-wrapper-v2 .tft-prev-slide',
 						nextArrow: '.tft-team-wrapper-v2 .tft-next-slide',
-						pauseOnFocus: false,
-						pauseOnHover: false,
-
 						responsive: [{
 								breakpoint: 991,
 								settings: {

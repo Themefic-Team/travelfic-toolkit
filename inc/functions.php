@@ -245,22 +245,20 @@ if (!function_exists('tf_review_star_rating')) {
     function tf_review_star_rating($tf_rating)
     {
         $full_star = floor($tf_rating);
-        $half_star = ($tf_rating - $full_star) >= 0.5 ? 1 : 0; 
-        $empty_star = 5 - $full_star - $half_star; 
+        $half_star = ($tf_rating - $full_star) >= 0.5 ? 1 : 0;
+        $empty_star = 5 - $full_star - $half_star;
 
         $output = '<span class="tft-desination-rating">';
         for ($i = 0; $i < $full_star; $i++) {
             $output .= '<i class="ri-star-fill"></i>';
         }
         if ($half_star) {
-            $output .= '<i class="ri-star-half-line"></i>'; 
+            $output .= '<i class="ri-star-half-line"></i>';
         }
         for ($i = 0; $i < $empty_star; $i++) {
-            $output .= '<i class="ri-star-line"></i>'; 
+            $output .= '<i class="ri-star-line"></i>';
         }
         $output .= '</span>';
         return $output;
     }
 }
-
-
