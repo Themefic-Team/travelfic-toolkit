@@ -201,7 +201,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'separator' => 'before',
 			]
 		);
-
 		$repeater->add_control(
 			'member_social_fb',
 			[

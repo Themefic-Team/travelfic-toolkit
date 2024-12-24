@@ -4,12 +4,12 @@
  * Plugin URI: https://tourfic.site/travelfic/
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
- * Version: 1.1.2
- * Tested up to: 6.6
+ * Version: 1.1.7
+ * Tested up to: 6.7
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.23.3
+ * Elementor tested up to: 3.25
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -23,7 +23,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.1.2' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.1.7' );
 
 /**
  * Include file from plugin if it is not available in theme
@@ -129,7 +129,7 @@ function travelfic_toolkit_enqueue_customizer_scripts() {
     wp_enqueue_script( 'travelfic-toolkit-select2', TRAVELFIC_TOOLKIT_URL . 'assets/admin/lib/select2/select2.min.js', array('jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
 
     wp_enqueue_style( 'travelfic-toolkit', TRAVELFIC_TOOLKIT_URL . 'assets/admin/css/style.css', array(), TRAVELFIC_TOOLKIT_VERSION );
-    wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer.js', array( 'jquery', 'customize-controls' ), time(), true );
+    wp_enqueue_script( 'travelfic-toolkit-script', TRAVELFIC_TOOLKIT_URL . 'assets/admin/js/customizer.js', array( 'jquery', 'customize-controls' ), TRAVELFIC_TOOLKIT_VERSION, true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'travelfic_toolkit_enqueue_customizer_scripts' );
 
@@ -145,9 +145,9 @@ add_action( 'customize_preview_init', 'travelfic_toolkit_enqueue_customizer_prev
 
 add_action( 'wp_enqueue_scripts', 'travelfic_toolkit_front_page_script' );
 function travelfic_toolkit_front_page_script() {
-    wp_enqueue_script( 'travelfic-toolkit-fontend', TRAVELFIC_TOOLKIT_URL . 'assets/app/js/main.js', array( 'jquery'), time(), true );
-    wp_enqueue_style( 'travelfic-toolkit-css', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/style.css', false, time() );
-    // wp_enqueue_style( 'travelfic-toolkit-desgin-2', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/design-2.css', false, TRAVELFIC_TOOLKIT_VERSION );
+    wp_enqueue_script( 'travelfic-toolkit-fontend', TRAVELFIC_TOOLKIT_URL . 'assets/app/js/main.js', array( 'jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
+    wp_enqueue_style( 'travelfic-toolkit-css', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/style.css', false, TRAVELFIC_TOOLKIT_VERSION );
+    wp_enqueue_style( 'travelfic-toolkit-desgin-2', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/design-2.css', false, TRAVELFIC_TOOLKIT_VERSION );
 }
 
 /**

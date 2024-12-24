@@ -1,5 +1,4 @@
 (function ($) {
-
     // Heading Typography Selection
     wp.customize.control( 'travelfic_customizer_settings_heading_font_family', function( control ) {
       control.container.find( 'select' ).select2({
@@ -213,7 +212,6 @@
 
 
     // Image Select Input Bind
-
     wp.customize.controlConstructor['image_select'] = wp.customize.Control.extend({
         ready: function() {
             var control = this;

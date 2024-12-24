@@ -245,6 +245,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="customizer-import-btn" style="display: none;"><?php esc_html_e("Customizer Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-hotel-import-btn" style="display: none;"><?php esc_html_e("Hotel Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-tour-import-btn" style="display: none;"><?php esc_html_e("Tour Import", "travelfic-toolkit"); ?></span>
+                        <span class="demo-car-import-btn" style="display: none;"><?php esc_html_e("Car Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-page-import-btn" style="display: none;"><?php esc_html_e("Pages Import", "travelfic-toolkit"); ?></span>
                         <span class="plug-tourfic-btn" style="display: none;"><?php esc_html_e("Tourfic Install", "travelfic-toolkit"); ?></span>
                         <span class="plug-cf7-btn" style="display: none;"><?php esc_html_e("CF7 Install", "travelfic-toolkit"); ?></span>
@@ -270,14 +271,14 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <li class="active" data-value="all"><?php esc_html_e("All", "travelfic-toolkit"); ?></li>
                                 <li data-value="tour"><?php esc_html_e("Tour", "travelfic-toolkit"); ?></li>
                                 <li data-value="hotel"><?php esc_html_e("Hotel", "travelfic-toolkit"); ?></li>
-                                <li data-value="apartment"><?php esc_html_e("Apartment", "travelfic-toolkit"); ?></li>
+                                <li data-value="car"><?php esc_html_e("Car", "travelfic-toolkit"); ?></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="travelfic-templates-list">
                         <?php 
-                        $travelfic_sync_templates_list =  !empty(get_option('travelfic_template_sync__schudle_option')) ? get_option('travelfic_template_sync__schudle_option') : '';
+                        $travelfic_sync_templates_list =  !empty(get_option('travelfic_template_sync__schudle_data')) ? get_option('travelfic_template_sync__schudle_data') : '';
                         if(!empty($travelfic_sync_templates_list)){
                         foreach($travelfic_sync_templates_list as $single_temp){
                             if(empty($single_temp['coming_soon'])){

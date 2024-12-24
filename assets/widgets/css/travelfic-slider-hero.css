@@ -307,8 +307,10 @@
 .tft-hero-design-3{
   background: #b8c5d2;
   height: 540px;
-  margin: 24px 24px 86px 24px;
-  border-radius: 16px;
+  margin: 0 0 86px 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .tft-hero-design-3 .tft-hero-content-box{
   position: absolute;

@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) exit; // Exit if accessed directly 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly 
 
 /**
  * travelfic Theme Customizer
@@ -45,7 +45,6 @@ function travelfic_toolkit_customize_register($wp_customize)
     /* Header Tab Selection End*/
 
     /* Header Image Selection Start*/
-
     $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
         'default'           => 'design1',
         'sanitize_callback' => 'travelfic_toolkit_sanitize_radio',
@@ -1009,7 +1008,6 @@ function travelfic_toolkit_customize_register($wp_customize)
     //     "section" => "travelfic_social_share",
     //     "type" => "url",
     // ]);
-
     /* -----------------*/
     /* Social Share End */
     /* ---------------- */
@@ -1023,7 +1021,6 @@ function travelfic_toolkit_customize_register($wp_customize)
         $sanitized_value['line-height'] = absint($value['line-height']);
         $sanitized_value['font-size'] = absint($value['font-size']);
         $sanitized_value['text-transform'] = sanitize_text_field($value['text-transform']);
-
         return $sanitized_value;
     }
 

@@ -3,7 +3,7 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 6.7
-Stable tag: 1.1.3
+Stable tag: 1.1.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -140,7 +140,24 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.1.3 - 27 November 2024 =
+= 1.1.7 - 22 December 2024 =
+
+- Improved: Updated demos for Car, Apartment, Tour, and Hotel.
+
+= 1.1.6 - 15 December 2024 =
+
+- Fixed: Resolved the car rental search issue.
+
+= 1.1.5 - 12 December 2024 =
+
+- Improved: Car rental theme demo.
+
+= 1.1.4 - 10 December 2024 =
+
+- Added: Car rental theme demo introduced.
+- Improvement: Updated Elementor Widgets.
+
+= 1.1.3 – 27 November 2024 =
 
 - Added: Added: Car rental widgets introduced.
 - Improvement: Updated and refined widgets for the car rental feature.
