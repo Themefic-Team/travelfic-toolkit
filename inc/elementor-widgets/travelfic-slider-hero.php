@@ -139,6 +139,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ]
             ]
         );
+        $repeater = new \Elementor\Repeater();
         $repeater->add_control(
             'slider_title',
             [
@@ -311,6 +312,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
+            'hotel_tab_title',
+            [
+                'type'     => \Elementor\Controls_Manager::TEXT,
                 'label'    => __('Hotel Tab Title', 'travelfic-toolkit'),
                 'multiple' => true,
                 'default'  => __('Hotel', 'travelfic-toolkit'),
@@ -1421,16 +1425,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_search_tab_color_active',
             [
-
                 'label'     => __('Active Tab Color', 'travelfic-toolkit'),
-
-                'label'     => __( 'Active Tab Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                ],
                 'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'slider_style' => 'design-1', 
                 ],
-            ]
+            ],
         );
         $this->add_control(
             'slider_search_tab_background_active',
@@ -1595,7 +1595,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'name'     => 'slider_search_input_style',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'selector' => '{{WRAPPER}} .tft-search-box .tf_input-inner div, .tf_homepage-booking input, .tf_homepage-booking ::placeholder, .tft-search-box .tf_input-inner',
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                'condition' => [
+                    'slider_style' => 'design-1',
+                ]
+            ]
+        );
         $this->add_control(
             'slider_search_input_color',
             [
@@ -1709,14 +1713,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'search_button_text_color',
             [
-
                 'label'     => __('Button Color', 'travelfic-toolkit'),
-
-                'label'     => __( 'Button Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                ],
                 'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    'slider_style' => 'design-1', 
                 ],
             ]
         );
