@@ -368,17 +368,6 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_control(
-            'testimonial_design3_slider_adaptive_height',
-            [
-                'label' => esc_html__('Adaptive Height', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'default'     => 'yes',
-                'condition'   => [
-                    'testimonial_style' => 'design-3',
-                ],
-            ]
-        );
 
         $this->add_control(
             'testimonial_design3_slider_pause_on_hover',
@@ -1657,7 +1646,6 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $design3_slider_autoplay_speed = !empty($settings['testimonial_design3_slider_autoplay_speed']) ? $settings['testimonial_design3_slider_autoplay_speed']['size'] : 0;
         $design3_slider_autoplay_interval = !empty($settings['testimonial_design3_slider_autoplay_interval']) ? $settings['testimonial_design3_slider_autoplay_interval']['size'] : 0;
         $design3_slider_loop = ('yes' === $settings['testimonial_design3_slider_loop']) ? 'true' : 'false';
-        $design3_slider_adaptive_height = ('yes' === $settings['testimonial_design3_slider_adaptive_height']) ? 'true' : 'false';
         $design3_slider_pause_on_hover = ('yes' === $settings['testimonial_design3_slider_pause_on_hover']) ? 'true' : 'false';
         $design3_slider_pause_on_focus = ('yes' === $settings['testimonial_design3_slider_pause_on_focus']) ? 'true' : 'false';
         $design3_slider_rtl = ('yes' === $settings['testimonial_design3_slider_rtl']) ? 'true' : 'false';
@@ -1906,7 +1894,6 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                 speed: <?php echo esc_attr($design3_slider_autoplay_interval); ?>,
                                 dots: <?php echo esc_attr($design3_slider_dots); ?>,
                                 arrows: <?php echo esc_attr($design3_slider_arrows); ?>,
-                                adaptiveHeight: <?php echo esc_attr($design3_slider_adaptive_height); ?>,
                                 pauseOnHover: <?php echo esc_attr($design3_slider_pause_on_hover); ?>,
                                 pauseOnFocus: <?php echo esc_attr($design3_slider_pause_on_focus); ?>,
                                 rtl: <?php echo esc_attr($design3_slider_rtl); ?>,

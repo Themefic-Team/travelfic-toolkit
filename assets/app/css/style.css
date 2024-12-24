@@ -1549,6 +1549,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   transform: skewX(-16deg);
   z-index: -1;
 }
+@media only screen and (max-width: 991.98px) {
+  .tft-design-3__topbar::after {
+    transform: skewX(-20deg);
+  }
+}
 @media only screen and (max-width: 767.98px) {
   .tft-design-3__topbar::after {
     display: none;
@@ -1863,20 +1868,19 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: absolute;
   z-index: 9;
   background: #ffffff;
-  box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
   margin: 0;
-  padding: 10px 20px;
+  padding: 8px 12px;
   min-width: 220px;
-  border-radius: 1px;
   display: flex;
   flex-direction: column;
   gap: 7px;
   top: 25px;
   display: none;
   transform: translateY(40px);
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -2618,7 +2622,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     transform: none;
     flex-direction: row;
     width: 100%;
-    margin-bottom: -130px;
+    margin-bottom: -120px;
   }
 }
 @media only screen and (max-width: 575.98px) {
@@ -2629,7 +2633,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     transform: none;
     flex-direction: row;
     width: 100%;
-    margin-bottom: -100px;
+    margin-bottom: -85px;
   }
 }
 .tft-hero-design-4 .slick-dots li {

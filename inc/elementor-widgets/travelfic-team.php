@@ -368,18 +368,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		);
 
 		$this->add_control(
-			'team_design2_slider_adaptive_height',
-			[
-				'label' => esc_html__('Adaptive Height', 'travelfic-toolkit'),
-				'type'        => \Elementor\Controls_Manager::SWITCHER,
-				'default'     => 'yes',
-				'condition'   => [
-					'tft_team_style' => 'design-2',
-				],
-			]
-		);
-
-		$this->add_control(
 			'team_design2_slider_pause_on_hover',
 			[
 				'label' => esc_html__('Pause On Hover', 'travelfic-toolkit'),
@@ -855,7 +843,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$design2_slider_autoplay_speed = !empty($settings['team_design2_slider_autoplay_speed']) ? $settings['team_design2_slider_autoplay_speed']['size'] : 0;
 		$design2_slider_autoplay_interval = !empty($settings['team_design2_slider_autoplay_interval']) ? $settings['team_design2_slider_autoplay_interval']['size'] : 0;
 		$design2_slider_loop = ('yes' === $settings['team_design2_slider_loop']) ? 'true' : 'false';
-		$design2_slider_adaptive_height = ('yes' === $settings['team_design2_slider_adaptive_height']) ? 'true' : 'false';
 		$design2_slider_pause_on_hover = ('yes' === $settings['team_design2_slider_pause_on_hover']) ? 'true' : 'false';
 		$design2_slider_pause_on_focus = ('yes' === $settings['team_design2_slider_pause_on_focus']) ? 'true' : 'false';
 		$design2_slider_rtl = ('yes' === $settings['team_design2_slider_rtl']) ? 'true' : 'false';
@@ -998,7 +985,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 						speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
 						dots: <?php echo esc_attr($design2_slider_dots); ?>,
 						arrows: <?php echo esc_attr($design2_slider_arrows); ?>,
-						adaptiveHeight: <?php echo esc_attr($design2_slider_adaptive_height); ?>,
 						pauseOnHover: <?php echo esc_attr($design2_slider_pause_on_hover); ?>,
 						pauseOnFocus: <?php echo esc_attr($design2_slider_pause_on_focus); ?>,
 						rtl: <?php echo esc_attr($design2_slider_rtl); ?>,

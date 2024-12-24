@@ -262,3 +262,13 @@ if (!function_exists('tf_review_star_rating')) {
         return $output;
     }
 }
+
+
+if (!function_exists('tf_print')) {
+    function tf_print($data)
+    {
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    }
+}

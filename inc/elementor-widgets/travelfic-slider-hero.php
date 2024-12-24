@@ -487,7 +487,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                         [
                             'name' => 'type',
                             'operator' => 'contains',
-                            'value' => 'apartment',
+                            'value' => 'carrentals',
                         ],
                         [
                             'name' => 'type',
@@ -692,17 +692,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
-        $this->add_control(
-            'design4_slider_adaptive_height',
-            [
-                'label' => esc_html__('Adaptive Height', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'default'     => 'yes',
-                'condition'   => [
-                    'slider_style' => 'design-4',
-                ],
-            ]
-        );
+
 
         $this->add_control(
             'design4_slider_pause_on_hover',
@@ -1876,7 +1866,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $hotel_tab_title = !empty($settings['hotel_tab_title']) ? 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ' : '';
         $apt_tab_title = !empty($settings['apt_tab_title']) ? 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ' : '';
         $car_tab_title = !empty($settings['car_tab_title']) ? 'car_tab_title="' . $settings['car_tab_title'] . '" ' : '';
-
+  
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
         // slider control settings check
 
@@ -1889,7 +1879,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? $settings['design4_slider_autoplay_interval']['size'] : 0;
         $design4_slider_loop = ('yes' === $settings['design4_slider_loop']) ? 'true' : 'false';
         $design4_slider_animation = ('yes' === $settings['design4_slider_animation']) ? 'true' : 'false';
-        $design4_slider_adaptive_height = ('yes' === $settings['design4_slider_adaptive_height']) ? 'true' : 'false';
         $design4_slider_pause_on_hover = ('yes' === $settings['design4_slider_pause_on_hover']) ? 'true' : 'false';
         $design4_slider_pause_on_focus = ('yes' === $settings['design4_slider_pause_on_focus']) ? 'true' : 'false';
         $design4_slider_rtl = ('yes' === $settings['design4_slider_rtl']) ? 'true' : 'false';
@@ -2055,7 +2044,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             fade: <?php echo esc_attr($design4_slider_animation); ?>,
                             dots: <?php echo esc_attr($design4_slider_dots) ?>,
                             arrows: <?php echo esc_attr($design4_slider_arrows) ?>,
-                            adaptiveHeight: <?php echo esc_attr($design4_slider_adaptive_height); ?>,
+                
                             pauseOnHover: <?php echo esc_attr($design4_slider_pause_on_hover); ?>,
                             pauseOnFocus: <?php echo esc_attr($design4_slider_pause_on_focus); ?>,
                             rtl: <?php echo esc_attr($design4_slider_rtl); ?>,
@@ -2193,7 +2182,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                         fade: <?php echo esc_attr($design4_slider_animation); ?>,
                         dots: <?php echo esc_attr($design4_slider_dots) ?>,
                         arrows: <?php echo esc_attr($design4_slider_arrows) ?>,
-                        adaptiveHeight: <?php echo esc_attr($design4_slider_adaptive_height); ?>,
                         pauseOnHover: <?php echo esc_attr($design4_slider_pause_on_hover); ?>,
                         pauseOnFocus: <?php echo esc_attr($design4_slider_pause_on_focus); ?>,
                         rtl: <?php echo esc_attr($design4_slider_rtl); ?>,
