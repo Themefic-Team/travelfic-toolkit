@@ -127,6 +127,40 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             'hero_slider',
             [
                 'label' => __('Slider Items', 'travelfic-toolkit'),
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'slider_style',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __('Design', 'travelfic-toolkit'),
+                'default' => 'design-1',
+                'options' => [
+                    'design-1' => __('Design 1', 'travelfic-toolkit'),
+                    'design-2'  => __('Design 2', 'travelfic-toolkit'),
+                    'design-3'  => __('Design 3', 'travelfic-toolkit'),
+                    'design-4'  => __('Design 4', 'travelfic-toolkit'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'banner_title',
+            [
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'label' => esc_html__('Banner Title', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Banner title', 'travelfic-toolkit'),
+                'default' => __('Embark on extraordinary voyages and explorations', 'travelfic-toolkit'),
+                'condition' => [
+                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
+                ],
+            ]
+        );
+        $this->add_control(
+            'banner_image',
+            [
+                'label'   => __('Banner Image', 'travelfic-toolkit'),
                 'type'    => \Elementor\Controls_Manager::MEDIA,
                 'dynamic' => [
                     'active' => true,
@@ -135,11 +169,26 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'slider_style' => 'design-1',
-                ]
+                    'slider_style' => ['design-2', 'design-3', 'design-4'], // Show this control only when des_style is 'design-2'
+                ],
             ]
         );
+
+        // Design-1 Repeater
         $repeater = new \Elementor\Repeater();
+        $repeater->add_control(
+            'slider_image',
+            [
+                'label'   => __('Slider Image', 'travelfic-toolkit'),
+                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
         $repeater->add_control(
             'slider_title',
             [
@@ -192,8 +241,66 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'fields'      => $repeater->get_controls(),
                 'title_field' => '{{{ slider_title }}}',
                 'condition'   => [
-                    'slider_style' => 'design-1', // Add condition for Design 1 here
-                    'slider_style' => 'design-4', // Add condition for Design 1 here
+                    'slider_style' => ['design-1'],
+                ],
+            ]
+        );
+
+        // Design-4 Repeater
+        $design4_repeater = new \Elementor\Repeater();
+        $design4_repeater->add_control(
+            'design4_slider_title',
+            [
+                'label'       => __('Slider Title', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('Discover The World', 'travelfic-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+        $design4_repeater->add_control(
+            'design4_slider_subtitle',
+            [
+                'label'       => __('Slider Subtitle', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('Experience Central Park via Air Trips', 'travelfic-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+        $design4_repeater->add_control(
+            'design4_slider_bttn_txt',
+            [
+                'label'       => __('Slider Text', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('Explore Now', 'travelfic-toolkit'),
+                'label_block' => true,
+            ]
+        );
+
+        $design4_repeater->add_control(
+            'design4_slider_bttn_url',
+            [
+                'label'       => __('Button URL', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::URL,
+                'default'     => [
+                    'url' => '#',
+                ],
+                'label_block' => true,
+                'dynamic'     => ['active' => true],
+
+            ]
+        );
+
+        $this->add_control(
+            'design4_hero_slider_list',
+            [
+                'label'       => __('Repeater List', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::REPEATER,
+                'fields'      => $design4_repeater->get_controls(),
+                'title_field' => '{{{ design4_slider_title }}}',
+                'condition'   => [
+                    'slider_style' => ['design-4'],
                 ],
             ]
         );
@@ -207,6 +314,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Hero Social Content', 'themefic_themedev'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition'   => [
+                    'slider_style' => 'design-4',
+                ],
             ]
         );
 
@@ -261,6 +371,16 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     [
                         'social_media_label' => 'facebook',
                     ],
+                    [
+                        'social_media_label' => 'twitter',
+                    ],
+                    [
+                        'social_media_label' => 'linkedin',
+                    ],
+                    [
+                        'social_media_label' => 'instagram',
+                    ],
+
                 ],
                 'title_field' => '{{{ social_media_label }}}',
                 'condition'   => [
@@ -590,7 +710,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'px' => [
                         'min' => 100,
                         'max' => 1000,
-                        'step' => 100   
+                        'step' => 100
                     ],
                 ],
                 'condition' => [
@@ -610,7 +730,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'px' => [
                         'min' => 100,
                         'max' => 1000,
-                        'step' => 100   
+                        'step' => 100
                     ],
                 ],
                 'condition' => [
@@ -623,7 +743,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Loop', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'default'     => 'no',
+                'default'     => 'yes',
                 'condition'   => [
                     'slider_style' => 'design-4',
                 ],
@@ -634,7 +754,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Animation', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'default'     => 'yes',
+                'default'     => 'no',
                 'condition'   => [
                     'slider_style' => 'design-4',
                 ],
@@ -1034,7 +1154,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Text Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'color: {{VALUE}};',
@@ -1049,7 +1168,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Background Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn' => 'background-color: {{VALUE}};',
                     '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'background-color: {{VALUE}};',
@@ -1078,7 +1196,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Text Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn:hover' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link:hover' => 'color: {{VALUE}};',
@@ -1094,7 +1211,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Background Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#D83B0B',
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn:hover' => 'background-color: {{VALUE}};',
                     '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link:hover' => 'background-color: {{VALUE}};',
@@ -1125,7 +1241,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}} !important;',
                     '{{WRAPPER}} .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}} !important;',
@@ -1261,7 +1376,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#FA6400',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover i'   => 'color: {{VALUE}} !important;',
                 ],
@@ -1275,7 +1389,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#FA6400',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'background: {{VALUE}} !important;',
                 ],
@@ -1289,7 +1402,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#FA6400',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'border-color: {{VALUE}} !important;',
                 ],
@@ -1428,7 +1540,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Active Tab Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'condition' => [
-                    'slider_style' => 'design-1', 
+                    'slider_style' => 'design-1',
                 ],
             ],
         );
@@ -1716,7 +1828,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Button Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'condition' => [
-                    'slider_style' => 'design-1', 
+                    'slider_style' => 'design-1',
                 ],
             ]
         );
@@ -1806,7 +1918,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $hotel_tab_title = !empty($settings['hotel_tab_title']) ? 'hotel_tab_title="' . $settings['hotel_tab_title'] . '" ' : '';
         $apt_tab_title = !empty($settings['apt_tab_title']) ? 'apartment_tab_title="' . $settings['apt_tab_title'] . '" ' : '';
         $car_tab_title = !empty($settings['car_tab_title']) ? 'car_tab_title="' . $settings['car_tab_title'] . '" ' : '';
-  
+
         $social_media_switcher = !empty($settings['social_media_switcher']) ? $settings['social_media_switcher'] : false;
         // slider control settings check
 
@@ -1860,31 +1972,31 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <div class="container tft-hero-design-4__container">
                     <!-- hero banner slider -->
                     <div class="tft-hero-design-4__slider">
-                        <?php foreach ($settings['hero_slider_list'] as $slider):
-                            $target_blank = $slider['slider_bttn_url']['is_external'] ? 'target="_blank"' : '';
+                        <?php foreach ($settings['design4_hero_slider_list'] as $slider):
+                            $target_blank = $slider['design4_slider_bttn_url']['is_external'] ? 'target="_blank"' : '';
                         ?>
                             <!-- slider item -->
                             <div class="tft-hero-design-4__slider__item">
                                 <div class="tft-hero-design-4__slider__item__content">
                                     <!-- slider subtitle -->
-                                    <?php if (!empty($slider['slider_subtitle'])) : ?>
+                                    <?php if (!empty($slider['design4_slider_subtitle'])) : ?>
                                         <h2 class="tft-hero-design-4__slider__item__content--subtitle">
-                                            <?php echo esc_html($slider['slider_subtitle']); ?>
+                                            <?php echo esc_html($slider['design4_slider_subtitle']); ?>
                                         </h2>
                                     <?php endif; ?>
 
                                     <!-- slider title -->
-                                    <?php if (!empty($slider['slider_title'])): ?>
+                                    <?php if (!empty($slider['design4_slider_title'])): ?>
                                         <h1 class="tft-hero-design-4__slider__item__content--title">
-                                            <?php echo esc_html($slider['slider_title']); ?>
+                                            <?php echo esc_html($slider['design4_slider_title']); ?>
                                         </h1>
                                     <?php endif; ?>
                                     <!-- slider button -->
-                                    <?php if (!empty($slider['slider_bttn_txt'])) : ?>
-                                        <a href="<?php echo esc_url($slider['slider_bttn_url']['url']); ?>"
+                                    <?php if (!empty($slider['design4_slider_bttn_txt'])) : ?>
+                                        <a href="<?php echo esc_url($slider['design4_slider_bttn_url']['url']); ?>"
                                             class="tft-hero-design-4__slider__item__content--link tft-btn"
                                             <?php echo esc_attr($target_blank); ?>>
-                                            <?php echo esc_html($slider['slider_bttn_txt']); ?>
+                                            <?php echo esc_html($slider['design4_slider_bttn_txt']); ?>
                                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                         </a>
                                     <?php endif; ?>
@@ -1927,7 +2039,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                         $social_icon = 'fa-facebook-f';
                                                         break;
                                                     case 'twitter':
-                                                        $social_icon = 'fa-twitter';
+                                                        $social_icon = 'fa-x-twitter';
                                                         break;
                                                     case 'linkedin':
                                                         $social_icon = 'fa-linkedin-in';
@@ -1984,7 +2096,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             fade: <?php echo esc_attr($design4_slider_animation); ?>,
                             dots: <?php echo esc_attr($design4_slider_dots) ?>,
                             arrows: <?php echo esc_attr($design4_slider_arrows) ?>,
-                
+
                             pauseOnHover: <?php echo esc_attr($design4_slider_pause_on_hover); ?>,
                             pauseOnFocus: <?php echo esc_attr($design4_slider_pause_on_focus); ?>,
                             rtl: <?php echo esc_attr($design4_slider_rtl); ?>,
@@ -1998,12 +2110,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
             <?php
         } else {
+
             if ($settings['hero_slider_list']) { ?>
                 <!-- Slider Hero section -->
                 <div class="hero--slider-wrapper tft-hero-design-1"> <!-- tft-customizer-typography -->
                     <?php $rand_number = wp_rand(100, 99999999); ?>
                     <div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>">
-                        <?php foreach ($settings['hero_slider_list'] as $item): ?>
+                        <?php foreach ($settings['hero_slider_list'] as $item): 
+                            ?>
                             <div class="tft-hero-single-item">
                                 <div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url($item['slider_image']['url']); ?>);">
                                     <div class="tft-container tft-hero-single-item-inner">
@@ -2024,7 +2138,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                             <div class="slider-button">
                                                 <?php
                                                 if (!empty($item['slider_bttn_url'])) { ?>
-                                                    <a class="bttn tft-bttn-primary" href="<?php echo esc_url($item['slider_bttn_url']) ?>">
+                                                    <a class="bttn tft-bttn-primary" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php
