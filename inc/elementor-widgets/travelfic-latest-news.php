@@ -253,6 +253,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'blog_style' => 'design-2',
+                ]
             ]
         );
         $this->add_control(

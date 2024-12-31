@@ -250,6 +250,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
             [
                 'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'tft_icon_style' => ['design-2'],
+                ],
             ]
         );
         $this->add_control(

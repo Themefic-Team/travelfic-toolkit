@@ -940,7 +940,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-2', 'design-3'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
                 ]
             ]
         );
@@ -1284,7 +1284,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-design-4__social__label'   => 'color: {{VALUE}} !important;',
                 ],
@@ -1322,7 +1321,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-design-4__social__list__item--link i'   => 'color: {{VALUE}} !important;',
                 ],
@@ -1349,7 +1347,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'border-color: {{VALUE}} !important;',
                 ],
