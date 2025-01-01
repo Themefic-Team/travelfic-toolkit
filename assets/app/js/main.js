@@ -76,7 +76,7 @@ function SubMenuHandleEvents() {
       .off("click")
       .hover(
         function () {
-          jQuery(this).children("ul.sub-menu").stop(true, true).slideDown(100);
+          jQuery(this).children("ul.sub-menu").css("transform", "translateY(5px)").stop(true, true).slideDown(100);
         },
         function () {
           jQuery(this).children("ul.sub-menu").stop(true, true).slideUp(100);

@@ -598,7 +598,7 @@ header.tft-design-2 {
       background: $linear-gradient;
       width: auto;
       height: 100%;
-      transform: skewX(-16deg);
+      transform: skewX(-19deg);
       z-index: -1;
       @media #{$max991} {
         transform: skewX(-20deg);
@@ -834,7 +834,7 @@ header.tft-design-2 {
               background: $color-white;
               box-shadow: 0px 4px 16px 0px rgba(2,28,53,0.2);
               margin: 0;
-              padding: 8px 12px;
+              padding: 8px 16px;
               min-width: 220px;
               display: flex;
               flex-direction: column;
@@ -855,13 +855,23 @@ header.tft-design-2 {
                 box-shadow: unset;
                 display: none;
               }
+              .menu-item{
+                a{
+                  display: inline-block;
+                  padding: 4px 0;
+                }
+              }
 
-              // Make sure child submenus inside this submenu are also visible on hover
+              
               .menu-item-has-children {
+                &::after {
+                  top: 12px;
+                 
+                }
                 &:hover {
                   .sub-menu {
                     visibility: visible;
-                    transform: translateY(0px);
+                    transform: translateY(10px);
                   }
                 }
               }
@@ -877,6 +887,7 @@ header.tft-design-2 {
             color: $color-black;
             @include transition(0.1s);
             text-transform: uppercase;
+            padding: 24px 0;
             &:hover {
               color: $color-primary;
             }
@@ -1176,6 +1187,7 @@ header.tft-design-2 {
   z-index: 99;
   position: absolute;
   top: 8px;
+  height: 100%;
   @media #{$max1199} {
     position: absolute;
     right: 20px;

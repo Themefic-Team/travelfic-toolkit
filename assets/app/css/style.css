@@ -1546,7 +1546,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: linear-gradient(0deg, #1342e0, #1342e0), linear-gradient(0deg, #0e3dd8, #0e3dd8);
   width: auto;
   height: 100%;
-  transform: skewX(-16deg);
+  transform: skewX(-19deg);
   z-index: -1;
 }
 @media only screen and (max-width: 991.98px) {
@@ -1870,7 +1870,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: #ffffff;
   box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
   margin: 0;
-  padding: 8px 12px;
+  padding: 8px 16px;
   min-width: 220px;
   display: flex;
   flex-direction: column;
@@ -1899,9 +1899,16 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     display: none;
   }
 }
+.tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item a {
+  display: inline-block;
+  padding: 4px 0;
+}
+.tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children::after {
+  top: 12px;
+}
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children:hover .sub-menu {
   visibility: visible;
-  transform: translateY(0px);
+  transform: translateY(10px);
 }
 .tft-design-3__bottom__nav--list .menu-item a {
   font-family: "Ubuntu", sans-serif;
@@ -1915,6 +1922,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
   text-transform: uppercase;
+  padding: 24px 0;
 }
 .tft-design-3__bottom__nav--list .menu-item a:hover {
   color: #FA6400;
@@ -2273,6 +2281,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   z-index: 99;
   position: absolute;
   top: 8px;
+  height: 100%;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-design-3 .menu-item-has-children:after {
@@ -5227,13 +5236,4 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   color: #FA6400;
 }
 
-
-/* Travelfic Toolkit Container */
-.travelfic-kit-container{
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-
-.tft-archive-transparent-header .tf-template-3 .tf-hero-section-wrap .tf-container .tf-hero-content .tf-wish-and-share {
-  margin-top: 161px;
-}
+/*# sourceMappingURL=style.css.map */
