@@ -41,20 +41,27 @@ $linear-gradient2:linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 
 //Media Query
 // ================================ //
 
+$min992: "only screen and (min-width: 992px)";
+$min576: "only screen and (min-width: 576px)";
+
 $max1920: "only screen and (max-width: 1920px)";
 $max1850: "only screen and (max-width: 1850px)";
 $max1800: "only screen and (max-width: 1800px)";
 $max1760: "only screen and (max-width: 1760px)";
 $max1680: "only screen and (max-width: 1680px)";
+$max1650: "only screen and (max-width: 1650px)";
 $max1480: "only screen and (max-width: 1480px)";
 $max1399: "only screen and (max-width: 1399.98px)";
 $max1366: "only screen and (max-width: 1366px)";
 $max1280: "only screen and (max-width: 1280px)";
+$max1200: "only screen and (max-width: 1200px)";
 $max1199: "only screen and (max-width: 1199.98px)";
 $max1024: "only screen and (max-width: 1024.98px)";
 $max991: "only screen and (max-width: 991.98px)";
 $max767: "only screen and (max-width: 767.98px)";
+$max640: "only screen and (max-width: 640px)";
 $max575: "only screen and (max-width: 575.98px)";
 $max480: "only screen and (max-width: 480px)";
 $max375: "only screen and (max-width: 375.98px)";
-$max340: "only screen and (max-width: 374.98px)";
+$max340: "only screen and (max-width: 340px)";
+$max320: "only screen and (max-width: 320px)";

@@ -65,7 +65,7 @@
           
           if ('design3' === value) {
             // show design 3 settings
-            $('li[id*="travelfic_customizer_settings_header_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"] , li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_design_3_top_header_text_color"], li[id*="customize-control-travelfic_customizer_settings_header_design_3_loader"]').show();
+            $('li[id*="travelfic_customizer_settings_header_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"] , li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_design_3_top_header_text_color"]').show();
 
              // hide design 2 settings
             $('li[id*="travelfic_customizer_settings_header_design_2_topbar"], li[id*="travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_design_2_top_header_color"], li[id*="travelfic_customizer_settings_header_design_2_section_opt"],li[id*="travelfic_customizer_settings_design_2_phone"],li[id*="travelfic_customizer_settings_design_2_email"], li[id*="travelfic_customizer_settings_design_2_registration_url"], li[id*="travelfic_customizer_settings_design_2_login_url"]').hide();
@@ -76,14 +76,14 @@
             $('li[id*="travelfic_customizer_settings_header_design_2_topbar"], li[id*="travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_design_2_top_header_color"], li[id*="travelfic_customizer_settings_header_design_2_section_opt"],li[id*="travelfic_customizer_settings_design_2_phone"],li[id*="travelfic_customizer_settings_design_2_email"], li[id*="travelfic_customizer_settings_design_2_registration_url"], li[id*="travelfic_customizer_settings_design_2_login_url"]').show();
 
             // hide design 3 settings
-            $('li[id*="travelfic_customizer_settings_header_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"] , li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_header_design_3_loader"]').hide();
+            $('li[id*="travelfic_customizer_settings_header_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"] , li[id*="travelfic_customizer_settings_design_3_discover_url"]').hide();
             
             // Topbar bg site for settings tab
             $('li[id*="travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_design_2_top_header_color"]').hide();
           } else {
 
             // hide design 3 settings
-            $('li[id*="customize-control-travelfic_customizer_settings_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"] , li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_design_3_top_header_text_color"], li[id*="customize-control-travelfic_customizer_settings_design_3_loader"]').hide();
+            $('li[id*="customize-control-travelfic_customizer_settings_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"] , li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_design_3_top_header_text_color"]').hide();
             
             $('li[id*="travelfic_customizer_settings_header_design_2_topbar"], li[id*="travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_header_design_2_section_opt"],li[id*="travelfic_customizer_settings_design_2_phone"],li[id*="travelfic_customizer_settings_design_2_email"], li[id*="travelfic_customizer_settings_design_2_registration_url"], li[id*="travelfic_customizer_settings_design_2_login_url"]').hide();
           }
@@ -113,7 +113,7 @@
           $('li[id*="customize-control-travelfic_customizer_settings_design_2_top_header_color"], li[id*="customize-control-travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_header_design_2_topbar"], li[id*="travelfic_customizer_settings_header_design_2_section_opt"],li[id*="travelfic_customizer_settings_design_2_phone"],li[id*="travelfic_customizer_settings_design_2_email"], li[id*="travelfic_customizer_settings_design_2_registration_url"], li[id*="travelfic_customizer_settings_design_2_login_url"]').hide();
           
            // Design 3 settings hide for design tab
-          $('li[id*="customize-control-travelfic_customizer_settings_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"], li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_design_3_top_header_text_color"], li[id*="customize-control-travelfic_customizer_settings_header_design_3_loader"]').hide();
+          $('li[id*="customize-control-travelfic_customizer_settings_design_3_location"], li[id*="travelfic_customizer_settings_header_design_3_topbar"], li[id*="travelfic_customizer_settings_design_3_top_header_bg"], li[id*="travelfic_customizer_settings_design_3_top_header_color"], li[id*="travelfic_customizer_settings_header_design_3_section_opt"],li[id*="travelfic_customizer_settings_design_3_phone"],li[id*="travelfic_customizer_settings_design_3_email"], li[id*="travelfic_customizer_settings_design_3_login_label"], li[id*="travelfic_customizer_settings_design_3_login_url"], li[id*="travelfic_customizer_settings_design_3_discover_label"], li[id*="travelfic_customizer_settings_design_3_discover_url"], li[id*="customize-control-travelfic_customizer_settings_design_3_top_header_text_color"]').hide();
           
 
           // Transparent Header Design settings hide for settings Design Tab
@@ -255,64 +255,29 @@
   // Typography Trigger & Input Bind
   wp.customize.controlConstructor['typography'] = wp.customize.Control.extend({
     ready: function () {
-        var control = this;
-
-        control.container.on('change', 'input, select', function () {
-            control.settings.default['value'] = control.getValue();
-            control.setting.set(control.getValue());
-        });
+      var control = this;
+      control.container.on('change', 'input, select', function () {
+        control.settings.default['value'] = control.getValue();
+        control.setting.set(control.getValue());
+      });
     },
 
     getValue: function () {
-        var control = this,
-            value = {};
+      var control = this, value = {};
+      control.container.find('input, select').each(function () {
+        var input = $(this),
+        settingId = input.data('customize-setting-link'),
+        inputValue = '';
+        if ('SELECT' === input.prop('tagName')) {
+          inputValue = input.find('option:selected').val() || '';
+        } else {
+          inputValue = input.val() || '';
+        }
+        value[settingId] = inputValue;
+      });
 
-        control.container.find('input, select').each(function () {
-            var input = $(this),
-                settingId = input.data('customize-setting-link'),
-                inputValue = '';
-
-            if ('SELECT' === input.prop('tagName')) {
-                inputValue = input.find('option:selected').val();
-            } else {
-                inputValue = input.val();
-            }
-
-            value[settingId] = inputValue;
-        });
-
-        return value;
+      return value;
     }
   });
 
-
-  // footer backgroun image toggle
-  
-
 })(jQuery);
-// jQuery(document).ready(function ($) {
-//   // Function to toggle visibility of footer fields based on the checkbox state
-//   function toggleFooterFields() {
-//       // Get the value of the checkbox
-//       var isChecked = wp.customize('_customize-input-travelfic_customizer_settings_footer_bg_image_toggle')();
-
-//       // Toggle visibility of the fields
-//       if (isChecked) {
-//           $('#customize-control-travelfic_toolkit_prefix_footer_bg_image').show();
-//           $('#customize-control-travelfic_toolkit_prefix_footer_bg_overlay_color').show();
-//       } else {
-//           $('#customize-control-travelfic_toolkit_prefix_footer_bg_image').hide();
-//           $('#customize-control-travelfic_toolkit_prefix_footer_bg_overlay_color').hide();
-//       }
-//   }
-
-//   // Bind the toggle function to the checkbox setting in the Customizer
-//   wp.customize('_customize-input-travelfic_customizer_settings_footer_bg_image_toggle', function (value) {
-//       value.bind(function () {
-//           toggleFooterFields();
-//       });
-//   });
-
-//   // Run the toggle function on page load to apply the saved state
-//   toggleFooterFields();
-// });

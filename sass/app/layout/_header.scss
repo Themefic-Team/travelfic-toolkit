@@ -4,63 +4,79 @@ header.tft-design-2 {
     background: $tft_secondary_color;
     padding-top: 10px;
     padding-bottom: 10px;
+
     .tft-flex {
       justify-content: space-between;
       align-items: center;
+
       @media #{$max767} {
         flex-wrap: wrap;
       }
+
       .tft-contact-info {
         @media #{$max767} {
           width: 100%;
         }
+
         ul {
           margin: 0;
           padding: 0;
           display: flex;
+
           @media #{$max767} {
             justify-content: center;
             flex-wrap: wrap;
           }
+
           li {
             display: inline-flex;
             color: $tft_white;
             margin-left: 24px;
             align-items: center;
             font-weight: 400;
+
             svg {
               margin-right: 8px;
             }
+
             a {
               text-decoration: none;
               color: $tft_white;
               transition: 0.3s all ease;
             }
           }
+
           li:first-child {
             margin: 0px;
           }
         }
       }
+
       .tft-social-share {
         margin-top: 7px;
+
         @media #{$max767} {
           width: 100%;
           text-align: center;
           margin-top: 10px;
         }
+
         ul {
           margin: 0;
           padding: 0;
+
           li {
             display: inline-block;
             margin-left: 20px;
+
             @media #{$max767} {
               margin: 0px 5px;
             }
           }
+
           li:first-child {
             margin: 0px;
+
             @media #{$max767} {
               margin: 0px 5px;
             }
@@ -69,23 +85,29 @@ header.tft-design-2 {
       }
     }
   }
+
   .tft-menus-section {
     background: $tft_white;
     padding-top: 31px;
     padding-bottom: 31px;
+
     .tft-flex {
       justify-content: space-between;
       align-items: center;
+
       .tft-menu {
         max-width: 33%;
         width: 100%;
+
         ul {
           margin: 0;
           padding: 0;
           list-style: none;
+
           li {
             margin-right: 32px;
             display: inline-block;
+
             a {
               text-decoration: none;
               color: $tft_grey;
@@ -94,6 +116,7 @@ header.tft-design-2 {
               font-weight: 600;
               padding: 0px !important;
             }
+
             .sub-menu {
               li {
                 margin: 0px;
@@ -102,44 +125,54 @@ header.tft-design-2 {
               }
             }
           }
-          li.current_page_item > a {
+
+          li.current_page_item>a {
             color: $tft_primary_color;
           }
+
           li:last-child {
             margin: 0px;
           }
         }
+
         ul.sub-menu {
           background: #fcf4e8;
           box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
           padding: 8px;
+
           li {
             background-color: #fff;
             margin-bottom: 4px !important;
             padding: 10px !important;
             transition: 0.3s all ease;
+
             &:hover {
               background: #faeedc;
             }
+
             &:last-child {
               margin-bottom: 0px !important;
             }
           }
         }
       }
+
       .tft-logo {
         max-width: 33%;
         width: 100%;
         text-align: center;
+
         @media #{$max991} {
           max-width: 50%;
           text-align: left;
         }
+
         a.custom-logo-link {
           img {
             width: 160px;
           }
         }
+
         .logo-text {
           a {
             text-decoration: none;
@@ -151,15 +184,19 @@ header.tft-design-2 {
           }
         }
       }
+
       .tft-account {
         max-width: 33%;
         width: 100%;
         text-align: right;
+
         ul {
           margin: 0;
           padding: 0;
+
           li {
             display: inline-block;
+
             a {
               padding: 12px 32px;
               color: $tft_grey;
@@ -169,12 +206,15 @@ header.tft-design-2 {
               text-decoration: none;
               display: inline-block;
               transition: 0.3s all ease;
+
               &:hover {
                 color: $tft_primary_color;
               }
             }
+
             a.login {
               border: 1px solid $tft_primary_color;
+
               &:hover {
                 background: #917242;
                 color: #fdf9f3;
@@ -186,10 +226,12 @@ header.tft-design-2 {
       }
     }
   }
+
   .tft-menus-section.tft-header-mobile {
     .tft-main-header-wrapper {
       min-height: auto;
       padding: 0 32px;
+
       .tft-header-left {
         .logo-text {
           a {
@@ -197,6 +239,7 @@ header.tft-design-2 {
           }
         }
       }
+
       .tft-header-center {
         .tft-mobile_menubar {
           i {
@@ -205,16 +248,19 @@ header.tft-design-2 {
         }
       }
     }
+
     .tft-mobile-main-menu {
       .tft-site-navigation {
         background-color: #fcf4e8;
         top: 31px;
         padding: 50px 0px 45px 0px;
+
         ul {
           li {
             display: block;
             width: 100%;
             border: 0px solid;
+
             a {
               color: $tft_grey;
               font-size: 16px;
@@ -223,8 +269,10 @@ header.tft-design-2 {
               line-height: 130%;
               padding: 8px 32px !important;
             }
+
             ul {
               background-color: #fcf4e8;
+
               li {
                 a {
                   color: $tft_grey;
@@ -237,12 +285,15 @@ header.tft-design-2 {
             }
           }
         }
+
         .tft-social-share {
           ul {
             margin: 32px 0px 0px 32px;
+
             li {
               display: inline-block;
               width: auto;
+
               a {
                 display: inline-block;
                 padding: 5px !important;
@@ -253,6 +304,7 @@ header.tft-design-2 {
       }
     }
   }
+
   .tft-menus-section.tft_has_transparent {
     position: absolute;
     left: 0;
@@ -260,6 +312,7 @@ header.tft-design-2 {
     z-index: 99;
     background: rgba(48, 40, 28, 0.3);
     backdrop-filter: blur(15px);
+
     .tft-menu {
       ul {
         li {
@@ -269,6 +322,7 @@ header.tft-design-2 {
         }
       }
     }
+
     .tft-logo {
       .logo-text {
         a {
@@ -276,6 +330,7 @@ header.tft-design-2 {
         }
       }
     }
+
     .tft-account {
       ul {
         li {
@@ -294,6 +349,7 @@ header.tft-design-2 {
           }
         }
       }
+
       .tft-header-center {
         .tft-mobile_menubar {
           i {
@@ -303,33 +359,40 @@ header.tft-design-2 {
       }
     }
   }
+
   .tft-footer-sections {
     padding-top: 64px;
     padding-bottom: 32px;
     background-color: $tft_secondary_color;
     color: #faeedc;
+
     a {
       color: #faeedc;
     }
+
     .tft-grid {
       display: flex;
       justify-content: space-between;
       align-content: flex-start;
       flex-wrap: nowrap;
       gap: 83px;
+
       @media #{$max991} {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
       }
+
       @media #{$max575} {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 0px;
       }
+
       .tft-footer-section {
         width: 100%;
       }
+
       h2 {
         font-size: 32px;
         font-style: normal;
@@ -338,13 +401,16 @@ header.tft-design-2 {
         margin-bottom: 24px;
         line-height: 32px;
       }
+
       ul {
         margin: 0;
         padding: 0;
+
         li {
           display: block;
           padding-bottom: 8px;
           margin: 0;
+
           a {
             text-decoration: none;
             display: block;
@@ -352,22 +418,27 @@ header.tft-design-2 {
             font-size: 16px;
             font-style: normal;
             font-weight: 600;
+
             &:hover {
               color: $tft_white !important;
             }
           }
         }
+
         li:last-child {
           padding-bottom: 0px;
         }
       }
+
       p {
         margin: 0;
       }
     }
+
     .tft-footer-copyright {
       border-top: 0.5px solid #99948d;
       margin-top: 32px;
+
       p {
         font-size: 16px;
         font-style: normal;
@@ -377,6 +448,7 @@ header.tft-design-2 {
         padding-top: 32px;
         color: #99948d;
         text-align: center;
+
         a {
           text-decoration: none;
           color: #99948d;
@@ -392,6 +464,7 @@ header.tft-design-2 {
   // min-height: 151px;
   // overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
   @media #{$max767} {
     min-height: auto;
     background: transparent;
@@ -399,27 +472,35 @@ header.tft-design-2 {
 
   // container
   &__container {
+
     // max-width: 1678px;
     @media #{$max991} {
       padding: 0;
     }
+
     &.tft-fullwidth-container {
       padding-left: 0;
       padding-right: 0;
+
       .tft-design-3__content-left {
         padding-left: 32px;
+
         @media #{$max991} {
           padding-left: 15px;
         }
       }
+
       .tft-design-3__topbar {
         padding-left: 32px;
+
         @media #{$max991} {
           padding-left: 0;
         }
       }
+
       .tft-design-3__bottom {
         padding-right: 32px;
+
         @media #{$max991} {
           padding-right: 15px;
         }
@@ -430,15 +511,18 @@ header.tft-design-2 {
   // logo
   &__logo {
     line-height: 0;
+
     a {
       text-decoration: none;
       font-size: 32px;
       font-style: normal;
       font-weight: 700;
       color: $color-white;
+
       &:hover {
         color: $color-white;
       }
+
       img {
         @media #{$max991} {
           max-width: 160px;
@@ -451,6 +535,7 @@ header.tft-design-2 {
   &__content {
     @include d-flex();
     @include align-items(center);
+
     // @media #{$max991} {
     //   flex-direction: column-reverse;
     //   width: 100%;
@@ -461,28 +546,36 @@ header.tft-design-2 {
       max-width: 500px;
       flex: 1;
       padding-left: 6.3%;
+
       @media #{$max1850} {
         padding-left: 5%;
       }
+
       @media #{$max1760} {
         max-width: 450px;
       }
+
       @media #{$max1680} {
         max-width: 350px;
         padding-left: 3%;
       }
+
       @media #{$max1480} {
         max-width: 300px;
       }
+
       @media #{$max1399} {
         max-width: 260px;
       }
+
       @media #{$max1199} {
         max-width: 250px;
       }
+
       @media #{$max991} {
         max-width: 240px;
       }
+
       @media #{$max767} {
         @include d-flex();
         @include justify-content(space-between);
@@ -495,12 +588,14 @@ header.tft-design-2 {
         flex-basis: 30%;
       }
     }
+
     // header right
     &-right {
       flex: 1;
       position: relative;
       background: $color-white;
       margin-left: 52px;
+
       @media #{$max991} {
         padding-left: 0;
         clip-path: none;
@@ -511,6 +606,7 @@ header.tft-design-2 {
         @include justify-content(end);
         padding-right: 15px;
       }
+
       &::before {
         content: "";
         position: absolute;
@@ -523,12 +619,14 @@ header.tft-design-2 {
         clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
         z-index: -1;
         width: 205px;
+
         @media #{$max991} {
           width: 150px;
           left: -35px;
           z-index: 1;
         }
       }
+
       // &::after {
       //   content: "";
       //   position: absolute;
@@ -557,23 +655,29 @@ header.tft-design-2 {
     margin-left: 30px;
     z-index: 99;
     padding-right: 8%;
+
     @media #{$max1850} {
       padding-right: 4%;
     }
+
     @media #{$max1760} {
       padding-right: 3%;
     }
+
     @media #{$max1480} {
       padding-right: 15px;
     }
+
     @media #{$max1399} {
       padding-left: 15px;
       margin-left: 30px;
       min-height: 45px;
     }
+
     @media #{$max1366} {
       padding-left: 5px;
     }
+
     @media #{$max991} {
       padding-left: 0;
       min-height: 40px;
@@ -583,12 +687,15 @@ header.tft-design-2 {
       margin-right: -15px;
       padding-right: 0;
     }
+
     @media #{$max767} {
       display: none;
     }
+
     @media #{$max575} {
       @include justify-content(center);
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -600,26 +707,33 @@ header.tft-design-2 {
       height: 100%;
       transform: skewX(-19deg);
       z-index: -1;
+
       @media #{$max991} {
         transform: skewX(-20deg);
       }
+
       @media #{$max767} {
         display: none;
       }
     }
+
     &-right {
       @media #{$max991} {
         display: none;
       }
+
       &.mobile-view {
         display: none;
+
         @media #{$max991} {
           display: block;
+
           a,
           select {
             color: $color-black;
           }
         }
+
         .tft-design-3__topbar-list-item:first-child {
           @media #{$max575} {
             display: block;
@@ -627,43 +741,53 @@ header.tft-design-2 {
         }
       }
     }
+
     &-left {
       @media #{$max991} {
         padding: 10px 15px;
       }
+
       @media #{$max575} {
         flex: 1;
       }
     }
+
     &-list {
       @include d-flex();
       @include align-items(center);
       gap: 30px;
+
       @media #{$max1399} {
         gap: 20px;
         @include align-items(baseline);
       }
+
       @media #{$max991} {
         gap: 15px;
       }
+
       @media #{$max575} {
         @include justify-content(space-between);
       }
+
       &-item {
         @media #{$max1399} {
           max-height: 24px;
           min-height: 24px;
         }
+
         @media #{$max1199} {
           max-height: initial;
           min-height: initial;
         }
+
         // &:first-child {
         //   @media #{$max575} {
         //     display: none;
         //   }
         // }
       }
+
       &-link {
         @include d-flex();
         @include align-items(center);
@@ -673,23 +797,29 @@ header.tft-design-2 {
         font-size: 16px;
         line-height: 18.38px;
         font-family: $font-ubuntu;
+
         &:hover {
           color: $color-white;
         }
+
         &:visited {
           color: $color-white;
         }
+
         @media #{$max1399} {
           font-size: 15px;
         }
+
         @media #{$max991} {
           font-size: 14px;
           line-height: 18px;
           gap: 8px;
+
           svg {
             width: 15px;
           }
         }
+
         svg {
           @media #{$max575} {
             width: 14px;
@@ -697,9 +827,11 @@ header.tft-design-2 {
           }
         }
       }
+
       &:hover {
         color: $color-white;
       }
+
       &:focus {
         color: $color-white;
         outline: none;
@@ -715,11 +847,13 @@ header.tft-design-2 {
         border: 0;
         color: $color-white;
         cursor: pointer;
+
         &:focus {
           color: $color-white;
           outline: none;
           box-shadow: none;
         }
+
         option {
           color: $color-black;
           cursor: pointer;
@@ -730,6 +864,7 @@ header.tft-design-2 {
 
   &__bars {
     display: none;
+
     @media #{$max1199} {
       position: absolute;
       min-height: 20px;
@@ -740,6 +875,7 @@ header.tft-design-2 {
       z-index: 999;
       display: block;
       line-height: 0;
+
       &--icon {
         width: 30px;
         height: 2px;
@@ -747,14 +883,17 @@ header.tft-design-2 {
         position: absolute;
         top: 0;
         cursor: pointer;
+
         &:nth-child(2) {
           top: 8px;
         }
+
         &:nth-child(3) {
           top: 17px;
         }
       }
     }
+
     @media #{$max991} {
       position: relative;
       right: inherit;
@@ -770,13 +909,16 @@ header.tft-design-2 {
     @include align-items(center);
     @include justify-content(space-between);
     padding-right: 8%;
+
     @media #{$max1850} {
       padding-right: 4%;
       padding-left: 30px;
     }
+
     @media #{$max1760} {
       padding-right: 3%;
     }
+
     @media #{$max1480} {
       padding: 15px 15px 15px 35px;
       gap: 20px;
@@ -788,32 +930,40 @@ header.tft-design-2 {
       @include justify-content(end);
       padding: 10px 60px 10px 15px;
     }
+
     @media #{$max991} {
       padding: 8px 15px 8px 15px;
       gap: inherit;
     }
+
     @media #{$max767} {
       display: none;
     }
+
     &__nav {
       min-width: 754px;
+
       @media #{$max1680} {
         min-width: auto;
       }
+
       @media #{$max1199} {
         display: none;
       }
-   
+
       &--list {
         @include d-flex();
         gap: 32px;
+
         @media #{$max1680} {
           gap: 30px;
           @include justify-content(end);
         }
+
         @media #{$max1199} {
           @include justify-content(center);
         }
+
         .menu-item {
           &.menu-item-has-children {
             position: relative;
@@ -832,7 +982,7 @@ header.tft-design-2 {
               position: absolute;
               z-index: 9;
               background: $color-white;
-              box-shadow: 0px 4px 16px 0px rgba(2,28,53,0.2);
+              box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
               margin: 0;
               padding: 8px 16px;
               min-width: 220px;
@@ -849,25 +999,28 @@ header.tft-design-2 {
               @media #{$max1399} {
                 left: -100px;
               }
+
               @media #{$max1199} {
                 position: relative;
                 background: transparent;
                 box-shadow: unset;
                 display: none;
               }
-              .menu-item{
-                a{
+
+              .menu-item {
+                a {
                   display: inline-block;
                   padding: 4px 0;
                 }
               }
 
-              
+
               .menu-item-has-children {
                 &::after {
                   top: 12px;
-                 
+
                 }
+
                 &:hover {
                   .sub-menu {
                     visibility: visible;
@@ -888,6 +1041,7 @@ header.tft-design-2 {
             @include transition(0.1s);
             text-transform: uppercase;
             padding: 24px 0;
+
             &:hover {
               color: $color-primary;
             }
@@ -895,25 +1049,32 @@ header.tft-design-2 {
         }
       }
     }
+
     &__right {
       @include d-flex();
       @include align-items(center);
       gap: 30px;
+
       @media #{$max1480} {
         gap: 20px;
       }
+
       @media #{$max1199} {
         gap: 15px;
       }
+
       &__list {
         @include d-flex();
         @include align-items(center);
         gap: 24px;
+
         @media #{$max1199} {
           gap: 15px;
         }
+
         &__item {
           position: relative;
+
           &--link {
             display: block;
             width: 45px;
@@ -924,14 +1085,17 @@ header.tft-design-2 {
             background: $color-white;
             border: 1px dashed #060d1c;
             @include box-circle();
+
             @media #{$max1199} {
               width: 40px;
               height: 40px;
             }
+
             @media #{$max991} {
               width: 35px;
               height: 35px;
             }
+
             svg {
               @media #{$max991} {
                 width: 16px;
@@ -939,6 +1103,7 @@ header.tft-design-2 {
               }
             }
           }
+
           &--search {
             position: absolute;
             left: -100px;
@@ -946,25 +1111,31 @@ header.tft-design-2 {
             @include transition(0.3s);
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
             visibility: hidden;
+
             @media #{$max767} {
               left: 0;
             }
+
             .search-form {
               min-width: 250px;
+
               @media #{$max767} {
                 min-width: 200px;
               }
             }
+
             input[type="search"] {
               border: 0;
               padding: 10px 12px;
               font-size: 14px;
               color: $color-black;
               @include bd-radius(0);
+
               @media #{$max767} {
                 padding: 6px 12px;
               }
             }
+
             &__button {
               position: absolute;
               right: 0;
@@ -978,18 +1149,23 @@ header.tft-design-2 {
               @include bd-radius(0);
               cursor: pointer;
             }
+
             &.active {
               visibility: visible;
               transform: translateY(20px);
+
               @media #{$max1399} {
                 transform: translateY(17px);
               }
+
               @media #{$max1199} {
                 transform: translateY(15px);
               }
+
               @media #{$max991} {
                 transform: translateY(9px);
               }
+
               @media #{$max767} {
                 transform: translateY(8px);
               }
@@ -997,15 +1173,18 @@ header.tft-design-2 {
           }
         }
       }
+
       &__button {
         @media #{$max575} {
           display: none;
         }
+
         .tft-btn {
           @media #{$max1366} {
             min-width: 150px;
             min-height: 50px;
           }
+
           @media #{$max991} {
             min-height: 38px;
             font-size: 14px;
@@ -1013,8 +1192,10 @@ header.tft-design-2 {
           }
         }
       }
+
       &__box {
         line-height: 15px;
+
         @media #{$max575} {
           display: none;
         }
@@ -1022,66 +1203,9 @@ header.tft-design-2 {
     }
   }
 
-  // loader
-  &__loader {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    @include d-flex();
-    @include align-items(center);
-    @include justify-content(center);
-    z-index: 1000;
-    // &--spinner {
-    //   --d: 22px;
-    //   width: 4px;
-    //   height: 4px;
-    //   border-radius: 50%;
-    //   color: $color-primary;
-    //   box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
-    //     calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
-    //     calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
-    //     calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
-    //     calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
-    //     calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
-    //     calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
-    //   animation: loaderAnimation 1s infinite steps(8);
-    // }
-    .svg-calLoader {
-      width: 230px;
-      height: 230px;
-      transform-origin: 115px 115px;
-      animation: 1.4s linear infinite loader-spin;
-    }
-
-    .cal-loader__plane {
-      fill: $color-primary;
-    }
-
-    .cal-loader__path {
-      stroke: $color-primary;
-      animation: 1.4s ease-in-out infinite loader-path;
-    }
-  }
 }
 
-@keyframes loader-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@keyframes loader-path {
-  0% {
-    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
-  }
-  50% {
-    stroke-dasharray: 0, 450, 10, 30, 10, 30, 10, 30, 10;
-  }
-  100% {
-    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
-  }
-}
 // mobile sidenav
 .mobile-sidenav {
   position: fixed;
@@ -1093,6 +1217,7 @@ header.tft-design-2 {
   overflow-x: hidden;
   transition: 0.5s ease;
   z-index: 1000;
+
   &__close {
     position: absolute;
     top: 10px;
@@ -1104,14 +1229,18 @@ header.tft-design-2 {
     cursor: pointer;
     padding: 0;
   }
+
   &__nav {
     margin-top: 70px;
+
     &--list {
       list-style-type: none;
       padding: 0;
       margin: 0;
+
       .menu-item {
         position: relative;
+
         a {
           padding: 7px 25px;
           text-decoration: none;
@@ -1119,62 +1248,76 @@ header.tft-design-2 {
           color: white;
           display: block;
           transition: 0.3s;
+
           &:hover {
             color: $color-primary;
           }
         }
+
         .sub-menu {
           display: none;
         }
       }
     }
   }
+
   &.open {
     left: 0;
   }
 
   .tft-design-3__bottom__right__button {
     display: none;
+
     @media #{$max575} {
       display: block;
     }
   }
+
   &__middle {
     padding: 0px 25px;
     display: none;
+
     @media #{$max767} {
       display: block;
     }
+
     ul {
       li {
         padding-top: 7px;
         padding-bottom: 7px;
+
         a {
           color: $color-white;
           font-size: 15px;
         }
       }
     }
+
     .tf-flex {
       margin: 10px 0;
       gap: 15px;
+
       .tft-design-3__bottom__right__list__item--link {
         border-color: $color-white;
         background: transparent;
+
         path {
           fill: $color-white;
         }
       }
     }
   }
+
   &__bottom {
     display: none;
     padding: 15px 25px;
+
     @media #{$max767} {
       display: block;
     }
   }
 }
+
 .tft-design-3 .menu-item-has-children:after {
   content: "\f078";
   display: inline-block;
@@ -1188,6 +1331,7 @@ header.tft-design-2 {
   position: absolute;
   top: 8px;
   height: 100%;
+
   @media #{$max1199} {
     position: absolute;
     right: 20px;

@@ -103,3 +103,30 @@ main {
     padding: 0 15px;
   }
 }
+
+
+.tft-w-padding{
+  padding-left: 200px;
+  padding-right: 200px;
+
+  @media #{$max1366}{
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+.tft-l-padding{
+  padding-left: 200px;
+  @media #{$max1366}{
+    padding-left: 32px;
+  }
+}
+.tft-fullwidth-container{
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.tft_has_sticky{
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
