@@ -127,7 +127,7 @@ function travelfic_toolkit_customizer_style()
     $travelfic_kit_pre = 'travelfic_customizer_settings_';
 
 
-    // global colors
+    // global Colors
     $travelfic_primary_color = get_theme_mod($travelfic_kit_pre . 'primary_color', '#fa6400');
     $travelfic_secondary_color = get_theme_mod($travelfic_kit_pre . 'secondary_color', '#0e3dd8');
     $travelfic_text_color = get_theme_mod($travelfic_kit_pre . 'text_color', '#686e7a');
@@ -136,6 +136,11 @@ function travelfic_toolkit_customizer_style()
     $travelfic_blue_color = get_theme_mod($travelfic_kit_pre . 'blue_color', '#07245f');
     $travelfic_black_color = get_theme_mod($travelfic_kit_pre . 'black_color', '#000000');
     $travelfic_white_color = get_theme_mod($travelfic_kit_pre . 'white_color', '#ffffff');
+
+    // Global Fonts
+    $travelfic_heading_font_family = !empty(get_theme_mod($travelfic_kit_pre . 'heading_font_family', '')) ? str_replace('_', ' ', get_theme_mod($travelfic_kit_pre . 'heading_font_family', '')) : '';
+    $travelfic_body_font_family = !empty(get_theme_mod($travelfic_kit_pre . 'body_font_family', '')) ? str_replace('_', ' ', get_theme_mod($travelfic_kit_pre . 'body_font_family', '')) : '';
+
 
     $travelfic_menu_color = get_theme_mod($travelfic_kit_pre . 'menu_color', '#222');
     $menu_typo_values = get_theme_mod($travelfic_kit_pre . 'header_menu_typo', array(
@@ -205,9 +210,11 @@ function travelfic_toolkit_customizer_style()
             --blue-color: <?php echo esc_attr($travelfic_blue_color) ?>;
             --black-color: <?php echo esc_attr($travelfic_black_color) ?>;
             --white-color: <?php echo esc_attr($travelfic_white_color) ?>;
+            --heading-font: <?php echo esc_attr($travelfic_heading_font_family) ?>;
+            --body-font: <?php echo esc_attr($travelfic_body_font_family) ?>;
         }
 
-        a{
+        a {
             color: var(--link-color);
         }
 

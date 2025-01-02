@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 * {
   margin: 0px;
   padding: 0px;
@@ -322,6 +321,7 @@ h6 {
 
 .tft-heading-content h3 {
   font-family: "Ubuntu", sans-serif;
+  color: var(--primary-color);
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
@@ -336,7 +336,7 @@ h6 {
 }
 .tft-heading-content h2 {
   color: var(--heading-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -2439,7 +2439,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-design-4__slider__item__content--title {
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 100px;
   font-weight: 500;
   line-height: 117px;
@@ -2895,7 +2895,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-travel__form__field .field--title {
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 60px;
   font-weight: 500;
   line-height: 70.2px;
@@ -3477,7 +3477,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p {
   color: var(--heading-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -3843,7 +3843,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4 {
   color: var(--heading-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -4307,7 +4307,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   margin-top: 20px;
   margin-bottom: 20px;
   color: var(--heading-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: normal;
@@ -4446,7 +4446,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
   color: var(--heading-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 34px;
@@ -4472,6 +4472,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
+  color: var(--heading-color);
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover, .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:focus,
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a :visited {
@@ -4936,7 +4937,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title {
   color: var(--heading-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -4954,6 +4955,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  color: var(--heading-color);
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover {
@@ -4997,7 +4999,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-value,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-value {
   color: var(--primary-color);
-  font-family: "Brygada 1918", serif;
+  font-family: "Brygada 1918", sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: normal;

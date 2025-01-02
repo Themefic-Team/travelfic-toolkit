@@ -1591,6 +1591,7 @@
             a {
               display: contents;
               @include transition(0.1s);
+              color: $color-black2;
               &:hover,
               &:focus,
               :visited {
@@ -1704,6 +1705,7 @@
             .tft-title {
               font-size: 30px;
               line-height: 40px;
+              
               @media #{$max991} {
                 font-size: 22px;
                 line-height: 30px;
@@ -1923,6 +1925,7 @@
             -webkit-box-orient: vertical;
             a {
               @include transition(0.2s);
+              color: $color-black2;
               &:hover {
                 color: $color-primary;
               }

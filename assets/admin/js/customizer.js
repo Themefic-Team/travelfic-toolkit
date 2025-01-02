@@ -1,21 +1,21 @@
 (function ($) {
-    // Heading Typography Selection
-    wp.customize.control( 'travelfic_customizer_settings_heading_font_family', function( control ) {
-      control.container.find( 'select' ).select2({
-        placeholder: 'Select Fonts Family',
-        allowClear: true
+    // Typography Selection Helper Function
+    function initializeTypographySelect(controlID, placeholderText) {
+      wp.customize.control(controlID, function(control) {
+        control.container.find('select').select2({
+          placeholder: placeholderText,
+          allowClear: true
+        });
       });
-    });
+    }
 
-    // Body Typography Selection
-    wp.customize.control( 'travelfic_customizer_settings_body_font_family', function( control ) {
-      control.container.find( 'select' ).select2({
-        placeholder: 'Select Fonts Family',
-        allowClear: true
-      });
-    });
+    // Initialize Heading Typography Selection
+    initializeTypographySelect('travelfic_customizer_settings_heading_font_family', 'Select Fonts Family');
 
-    // Header Builder Tabs
+    // Initialize Body Typography Selection
+    initializeTypographySelect('travelfic_customizer_settings_body_font_family', 'Select Fonts Family');
+
+
 
     // Sticky Design
     const makeStickyDesign = () => {
