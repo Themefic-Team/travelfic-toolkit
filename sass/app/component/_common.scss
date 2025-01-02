@@ -82,7 +82,6 @@
 
 .tft-heading-content {
   h3 {
-    color: $color-primary;
     font-family: $font-ubuntu;
     font-size: 16px;
     font-weight: 500;
@@ -231,7 +230,7 @@ label.tft-form-label {
 
 input[type="submit"].tft-form-btn {
   height: 55px;
-  background: $color-primary!important;
+
   font-family: $font-ubuntu;
   font-size: 16px;
   font-weight: 500;

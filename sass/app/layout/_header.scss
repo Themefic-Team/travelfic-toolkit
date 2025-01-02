@@ -967,7 +967,7 @@ header.tft-design-2 {
         .menu-item {
           &.menu-item-has-children {
             position: relative;
-            margin-right: 20px;
+            padding-right: 20px;
 
             // Hover over parent to show the submenu
             &:hover {
@@ -1010,7 +1010,7 @@ header.tft-design-2 {
               .menu-item {
                 a {
                   display: inline-block;
-                  padding: 4px 0;
+                  padding: 10px 0;
                 }
               }
 
@@ -1213,7 +1213,7 @@ header.tft-design-2 {
   left: -100%;
   height: 100%;
   width: 280px;
-  background-color: $color-dark-blue;
+  background-color: $color-blue;
   overflow-x: hidden;
   transition: 0.5s ease;
   z-index: 1000;
@@ -1324,13 +1324,14 @@ header.tft-design-2 {
   font-size: 0.6rem;
   font-weight: bold;
   text-rendering: auto;
-  margin-left: 7px;
+  margin-left: 0px;
   line-height: normal;
   font-family: "Font Awesome 5 Free";
   z-index: 99;
   position: absolute;
-  top: 8px;
+  top: 9px;
   height: 100%;
+  right: 3px;
 
   @media #{$max1199} {
     position: absolute;
