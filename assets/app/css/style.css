@@ -1941,7 +1941,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children {
   position: relative;
-  margin-right: 20px;
+  padding-right: 20px;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children:hover .sub-menu {
   visibility: visible;
@@ -1984,7 +1984,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item a {
   display: inline-block;
-  padding: 4px 0;
+  padding: 10px 0;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children::after {
   top: 12px;
@@ -2300,19 +2300,20 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 
-.tft-design-3 .menu-item-has-children:after {
-  content: "\f078";
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: bold;
-  text-rendering: auto;
-  margin-left: 7px;
-  line-height: normal;
-  font-family: "Font Awesome 5 Free";
-  z-index: 99;
-  position: absolute;
-  top: 8px;
-  height: 100%;
+.tft-design-3 .menu-item-has-children::after {
+	content: "\f078";
+	display: inline-block;
+	font-size: .6rem;
+	font-weight: bold;
+	text-rendering: auto;
+	margin-left: 0;
+	line-height: normal;
+	font-family: "Font Awesome 5 Free";
+	z-index: 99;
+	position: absolute;
+	top: 9px;
+	height: 100%;
+	right: 3px;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-design-3 .menu-item-has-children:after {
