@@ -9,21 +9,27 @@
   @include d-flex();
   @include align-items(center);
   overflow: hidden;
+
   @media #{$max1366} {
     min-height: 700px;
   }
+
   @media #{$max1199} {
     min-height: 650px;
   }
+
   @media #{$max991} {
     min-height: 600px;
   }
+
   @media #{$max767} {
     min-height: 500px;
   }
+
   @media #{$max575} {
     min-height: 450px;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -34,70 +40,96 @@
     background: $linear-gradient2;
     z-index: -1;
   }
+
   &__container {
     position: relative;
     width: 100%;
     max-width: 1678px;
+
     @media #{$max1199} {
       width: 100%;
     }
   }
+
   // slider
   &__slider {
     position: relative;
     top: 50%;
+
+    @media #{$max575} {
+      &.slick-dotted.slick-slider {
+        margin-bottom: 90px;
+      }
+    }
+
     &__item {
       @include d-flex();
       @include align-items(center);
       @include justify-content(center);
       color: $color-white;
+
+      @media #{$max767} {
+        @include align-items(flex-start);
+      }
+
       &__content {
         text-align: center;
+
         &--subtitle {
           font-family: $font-caveat;
           font-size: 36px;
           font-weight: 400;
           line-height: 45.36px;
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+
           @media #{$max1199} {
             font-size: 32px;
             line-height: 40px;
           }
+
           @media #{$max991} {
             font-size: 28px;
             line-height: 38px;
           }
+
           @media #{$max767} {
-            font-size: 24px;
-            line-height: 32px;
+            font-size: 18px;
+            line-height: normal;
           }
         }
+
         &--title {
           font-family: $font-brygada;
           font-size: 100px;
           font-weight: 500;
           line-height: 117px;
           margin: 14px 0 35px;
+
           @media #{$max1199} {
             font-size: 80px;
             line-height: 90px;
           }
+
           @media #{$max991} {
             font-size: 65px;
             line-height: 70px;
           }
+
           @media #{$max767} {
-            font-size: 50px;
-            line-height: 65px;
+            font-size: 48px;
+            line-height: 58px;
             margin-bottom: 20px;
           }
         }
+
         &--link {
           padding: 0 42px;
           gap: 5px;
+
           @media #{$max767} {
             padding: 0 30px;
           }
+
           i {
             line-height: 18px;
           }
@@ -118,9 +150,11 @@
     @include align-items(center);
     color: $color-white;
     gap: 20px;
+
     @media #{$max1760} {
       left: 35px;
     }
+
     @media #{$max1199} {
       background: #07245f;
       left: -60px;
@@ -129,14 +163,17 @@
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
     }
+
     // social list
     &__list {
       @include d-flex();
       gap: 20px;
       flex-direction: column;
+
       @media #{$max991} {
         gap: 10px;
       }
+
       &__item {
         &--link {
           @include d-flex();
@@ -148,18 +185,22 @@
           line-height: 45px;
           border: 1px solid #d6dff0;
           @include transition(0.3s);
+
           @media #{$max991} {
             width: 30px;
             height: 30px;
             line-height: normal;
           }
+
           &:hover {
             background: $color-primary;
             border-color: $color-primary;
           }
+
           i {
             font-size: 14px;
             color: $color-white;
+
             @media #{$max991} {
               font-size: 12px;
             }
@@ -167,11 +208,13 @@
         }
       }
     }
+
     // divider
     &__divider {
       width: 1px;
       height: 100px;
       background: $color-gray;
+
       @media #{$max767} {
         height: 80px;
       }
@@ -203,6 +246,7 @@
     padding: 10px 6px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+
     @media #{$max1199} {
       display: block;
     }
@@ -223,9 +267,11 @@
     z-index: 99;
     flex-direction: column;
     align-items: end;
+
     @media #{$max1760} {
       right: 0;
     }
+
     @media #{$max991} {
       right: 0;
       bottom: 0px;
@@ -235,6 +281,7 @@
       width: 100%;
       margin-bottom: -120px;
     }
+
     @media #{$max575} {
       right: 0;
       bottom: 10px;
@@ -242,8 +289,9 @@
       transform: none;
       flex-direction: row;
       width: 100%;
-      margin-bottom: -85px;
+      margin-bottom: -100px;
     }
+
     li {
       width: 30px;
       height: 30px;
@@ -253,13 +301,16 @@
       @include align-items(center);
       @include justify-content(center);
       cursor: pointer;
+
       @media #{$max767} {
         width: 25px;
         height: 25px;
       }
+
       &.slick-active {
         border-color: $color-white;
       }
+
       button {
         width: 10px;
         height: 10px;
@@ -269,10 +320,12 @@
         font-size: 0;
         cursor: pointer;
         @include bd-radius(0);
+
         @media #{$max767} {
           width: 9px;
           height: 9px;
         }
+
         &:before {
           display: none;
         }
@@ -285,18 +338,23 @@
 .tft-travel {
   padding: 80px 0;
   background-color: $color-secondary;
+
   @media #{$max1199} {
     padding: 60px 0;
   }
+
   @media #{$max991} {
     padding: 50px 0;
   }
+
   @media #{$max767} {
     padding: 40px 0;
   }
+
   .container {
     max-width: 1678px;
   }
+
   &__form {
     &__fieldset {
       background: transparent;
@@ -306,9 +364,11 @@
       @include align-items(center);
       @include justify-content(space-between);
       gap: 70px;
+
       @media #{$max1366} {
         gap: 40px;
       }
+
       @media #{$max1199} {
         max-width: 800px;
         margin: auto;
@@ -321,38 +381,47 @@
         margin: auto;
         gap: 30px;
       }
+
       &__left {
         max-width: 310px;
         flex: 1;
+
         @media #{$max1366} {
           max-width: 300px;
         }
+
         @media #{$max1199} {
           max-width: 100%;
           width: 100%;
         }
       }
+
       &__middle {
         flex: 1;
         @include d-flex();
         @include align-items(center);
         @include justify-content(space-between);
+
         @media #{$max1199} {
           width: 100%;
         }
+
         @media #{$max767} {
           display: grid;
           gap: 40px;
           grid-template-columns: repeat(2, 1fr);
           width: 100%;
         }
+
         @media #{$max575} {
           width: 100%;
         }
+
         @media #{$max340} {
           gap: 25px;
         }
       }
+
       &__right {
         max-width: 180px;
         flex: 1;
@@ -363,6 +432,7 @@
       background: #ffffff2e;
       width: 1px;
       height: 100px;
+
       @media #{$max767} {
         display: none;
       }
@@ -374,49 +444,60 @@
       gap: 20px;
       color: $color-white;
       position: relative;
+
       @media #{$max1366} {
         gap: 16px;
       }
+
       @media #{$max767} {
         gap: 12px;
       }
+
       .field--title {
         font-family: $font-brygada;
         font-size: 60px;
         font-weight: 500;
         line-height: 70.2px;
+
         @media #{$max1366} {
           font-size: 50px;
           line-height: 60.2px;
         }
+
         @media #{$max991} {
           font-size: 40px;
           line-height: 1;
         }
+
         @media #{$max340} {
           font-size: 35px;
         }
       }
+
       .form--span {
         display: block;
         font-family: $font-ubuntu;
         font-size: 18px;
         font-weight: 400;
         line-height: 26px;
+
         @media #{$max991} {
           font-size: 15px;
           line-height: 22px;
         }
       }
+
       .form--span__bold {
         font-weight: bold;
       }
+
       &__incdec {
         span {
           &.form--span {
             font-size: 24px;
             line-height: 27.58px;
             text-align: center;
+
             @media #{$max991} {
               font-size: 20px;
               line-height: 22.98px;
@@ -427,29 +508,35 @@
 
       &__icon {
         line-height: 0;
+
         svg {
           @media #{$max1366} {
             width: 38px;
             height: auto;
           }
+
           @media #{$max991} {
             width: 35px;
             height: auto;
           }
+
           @media #{$max767} {
             width: 30px;
             height: auto;
           }
         }
       }
+
       .icon--location {
         position: absolute;
         top: 17px;
         right: 22px;
+
         @media #{$max767} {
           top: 12px;
           right: 16px;
         }
+
         svg {
           @media #{$max1366} {
             width: 12px;
@@ -467,10 +554,12 @@
       opacity: 0.5;
       margin-bottom: 28px;
       display: block;
+
       @media #{$max991} {
         font-size: 18px;
         margin-bottom: 18px;
       }
+
       @media #{$max767} {
         font-size: 16px;
         margin-bottom: 12px;
@@ -488,10 +577,12 @@
       line-height: 18.38px;
       padding: 16px 25px 21px;
       @include bd-radius(5px);
+
       @media #{$max767} {
         font-size: 14px;
         padding: 12px 16px 16px;
       }
+
       &::placeholder {
         color: $color-white;
       }
@@ -503,6 +594,7 @@
       padding: 0;
       cursor: pointer;
       border: 0;
+
       &:hover {
         background: $color-blue;
       }
@@ -516,20 +608,25 @@
   position: relative;
   // z-index: 1;
   overflow-x: hidden;
+
   @media #{$max1399} {
     padding-bottom: 100px;
     padding-left: 15px;
     padding-right: 15px;
   }
+
   @media #{$max1199} {
     padding-bottom: 80px;
   }
+
   @media #{$max991} {
     padding-bottom: 60px;
   }
+
   @media #{$max767} {
     padding-bottom: 0px;
   }
+
   .tft-about-us-grid {
     @include d-flex();
     @include justify-content(center);
@@ -541,6 +638,7 @@
       max-width: 600px;
       margin: auto;
     }
+
     .tft-about-image {
       min-width: 491px;
       position: relative;
@@ -554,10 +652,12 @@
         height: 150px;
         background-color: $color-primary;
         z-index: 1;
+
         @media #{$max767} {
           display: none;
         }
       }
+
       &::after {
         content: "";
         position: absolute;
@@ -566,28 +666,35 @@
         width: 10px;
         height: 246px;
         background-color: $color-white;
+
         @media #{$max767} {
           display: none;
         }
       }
+
       @media #{$max767} {
         min-width: auto;
       }
+
       .tft-about-curbe-image {
         max-width: 441px;
         position: relative;
+
         @media #{$max767} {
           margin: auto;
           max-width: 500px;
         }
+
         img {
           width: 100%;
           border-bottom-left-radius: 1000px;
           border-bottom-right-radius: 1000px;
+
           @media #{$max767} {
-            border-radius: 0;
+            @include bd-radius(20px);
           }
         }
+
         &::after {
           content: "";
           position: absolute;
@@ -597,77 +704,103 @@
           height: 100%;
           border-radius: 0px 0px 1000px 1000px;
           border: 1px solid rgba(0, 0, 0, 0.05);
+
           @media #{$max767} {
             display: none;
           }
         }
       }
+
       .tft-about-circle-image {
         position: absolute;
         right: -89px;
         bottom: -20px;
+
         @media #{$max1199} {
           right: -50px;
         }
+
         @media #{$max991} {
           right: -40px;
         }
+
         @media #{$max767} {
           display: none;
         }
+
         img {
           @include box-circle();
         }
       }
     }
+
     .tft-about-us-content {
       flex: 1;
       max-width: 669px;
+
       @media #{$max767} {
         max-width: 500px;
         margin: auto;
       }
+
       .tft-about-us-list {
         padding: 44px 0 44px 69px;
         border-top: 1px solid rgba(0, 0, 0, 0.05);
+
         @media #{$max1199} {
           padding: 30px;
         }
+
         @media #{$max991} {
           padding: 24px 0;
         }
+
         ul {
           li {
             @include d-flex();
             gap: 15px;
             margin-bottom: 20px;
+
+            @media #{$max1199} {
+              @include align-items(center);
+            }
+
             @media #{$max767} {
               gap: 10px;
               margin-bottom: 15px;
             }
+
             &:last-child {
               margin-bottom: 0;
             }
+
             .icon {
+              @media #{$max767} {
+                line-height: 0;
+              }
+
               i {
                 color: $color-primary;
                 font-size: 18px;
-                font-style: normal;
                 font-weight: 400;
                 line-height: 28px;
+
                 @media #{$max767} {
                   font-size: 16px;
                   line-height: normal;
+                  margin-top: 2px;
                 }
               }
             }
+
             .text {
               color: $color-black;
               font-family: $font-ubuntu;
               font-size: 18px;
-              font-style: normal;
+
               font-weight: 400;
               line-height: normal;
+
               @media #{$max767} {
                 font-size: 16px;
               }
@@ -675,20 +808,25 @@
           }
         }
       }
+
       .tft-about-us-button {
         padding-left: 69px;
+
         @media #{$max1199} {
           padding-left: 30px;
         }
+
         @media #{$max991} {
           padding-left: 0;
         }
+
         a {
           min-width: 160px;
         }
       }
     }
   }
+
   .tft-about-us-shape {
     position: absolute;
     right: -150px;
@@ -701,49 +839,59 @@
 .tft-team-wrapper-v2 {
   .container {
     overflow: hidden;
+
     @media #{$max1399} {
       padding: 0 15px;
     }
+
     &.tft-slider-disable {
       overflow: initial;
+
       .tft-heading-content {
         margin-bottom: 70px;
+
         @media #{$max1199} {
           margin-bottom: 60px;
         }
+
         @media #{$max991} {
           margin-bottom: 50px;
         }
+
         @media #{$max767} {
           margin-bottom: 40px;
         }
       }
+
       .tft-team-members {
         padding-bottom: 60px;
       }
     }
   }
+
   .tft-heading-content {
     text-align: center;
     margin-bottom: 40px;
+
     @media #{$max1199} {
       margin-bottom: 30px;
     }
+
     @media #{$max991} {
       margin-bottom: 20px;
     }
-    @media #{$max767} {
-      margin-bottom: 10px;
-    }
+
     h2 {
       margin-left: auto;
       margin-right: auto;
+
       &::after {
         left: 50%;
         transform: translateX(-50%);
       }
     }
   }
+
   .tft-team-content {
     position: relative;
   }
@@ -754,17 +902,25 @@
     @include justify-content(center);
     gap: 24px;
     padding-bottom: 30px;
+
     .slick-list {
       margin: 0 -12px !important;
       padding: 30px 0;
     }
+
     .slick-slide {
       margin: 0 12px !important;
+
+      @media #{$max767} {
+        margin: 15px 7.5px !important;
+      }
     }
+
     .slick-dots {
       @include d-flex();
       @include justify-content(center);
       @include align-items(center);
+
       li {
         width: 30px;
         height: 30px;
@@ -774,17 +930,21 @@
         @include d-flex();
         @include justify-content(center);
         @include align-items(center);
+
         button {
           width: 10px;
           height: 10px;
           background: #e8d9cf;
           border-radius: 50%;
+
           &::before {
             display: none;
           }
         }
+
         &.slick-active {
           border-color: $color-primary;
+
           button {
             background: $color-primary;
           }
@@ -799,9 +959,12 @@
       background: $color-white;
       box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
       flex-basis: calc(33.33% - 16px);
+
       @media #{$max767} {
+        padding: 16px;
         padding-bottom: 20px;
       }
+
       .member_img {
         img {
           @include bd-radius(15px);
@@ -809,64 +972,79 @@
           max-height: 296px;
           min-height: 296px;
           width: 100%;
+
           @media #{$max767} {
             min-height: 220px;
           }
+
           @media #{$max575} {
             min-height: 100%;
             max-height: 280px;
           }
         }
       }
+
       .member-details {
         text-align: center;
         padding: 0;
+
         h3 {
           color: $color-primary;
           font-family: $font-ubuntu;
           font-size: 16px;
-          font-style: normal;
+
           font-weight: 400;
           line-height: normal;
           margin-bottom: 20px;
+
           @media #{$max767} {
             font-size: 15px;
+            margin-bottom: 10px;
           }
         }
+
         p {
           color: $color-black2;
           font-family: $font-brygada;
           font-size: 24px;
-          font-style: normal;
+
           font-weight: 700;
           line-height: normal;
           margin-bottom: 0;
+
           @media #{$max767} {
             font-size: 20px;
           }
         }
+
         .social-media-icons {
           margin-top: -30px;
           padding-bottom: 30px;
           position: relative;
+
           @media #{$max767} {
             margin-top: -25px;
           }
+
           button {
             padding: 16px;
             border-radius: 5px;
             background: $color-primary;
             border: 0;
             box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
+
             @media #{$max767} {
               padding: 12px;
             }
+
             cursor: pointer;
+
             i {
               color: $color-white;
               font-size: 18px;
             }
           }
+
           .social-media {
             background: $color-primary;
             width: fit-content;
@@ -879,9 +1057,11 @@
             left: 50%;
             transform: translateX(-50%);
             display: none;
+
             &.active {
               display: flex;
             }
+
             a {
               color: $color-white;
             }
@@ -890,19 +1070,24 @@
       }
     }
   }
+
   .tft_team_bottom_shape {
     margin-top: -320px;
     z-index: -1;
     position: relative;
+
     @media #{$max1760} {
       margin-top: -250px;
     }
+
     @media #{$max1399} {
       margin-top: -180px;
     }
+
     @media #{$max1199} {
       margin-top: -130px;
     }
+
     @media #{$max767} {
       display: none;
     }
@@ -915,9 +1100,11 @@
   background-repeat: no-repeat;
   overflow-x: hidden;
   background-size: cover;
+
   @media #{$max1199} {
     padding: 100px 0 60px;
   }
+
   .tft-testimonials-content {
     @include d-flex();
     @include align-items(center);
@@ -927,73 +1114,102 @@
     @media #{$max991} {
       flex-wrap: wrap;
     }
+
     @media #{$max991} {
       gap: 0px;
     }
+
     .tft-heading-content {
       min-width: 408px;
       max-width: 408px;
       padding: 30px 0;
+
       @media #{$max991} {
         min-width: inherit;
         max-width: inherit;
         padding-bottom: 0;
       }
-      .tft-slider-arrows {
+      p{
+        @media #{$max991} {
+          margin-bottom: 0;
+        }
+      }
+     
+    }
+    .tft-slider-arrows {
+      @include d-flex();
+      gap: 20px;
+      @media #{$max991} {
+        display: none;
+      }
+      .tft-arrow {
+        width: 70px;
+        height: 70px;
         @include d-flex();
-        gap: 20px;
-        .tft-arrow {
-          width: 70px;
-          height: 70px;
-          @include d-flex();
-          @include justify-content(center);
-          @include align-items(center);
-          background: $color-white;
-          @include transition(0.3s);
-          @include box-circle();
-          cursor: pointer;
-          border: 1px solid transparent;
-          @media #{$max1199} {
-            width: 50px;
-            height: 50px;
-            border-color: $color-gray2;
-          }
+        @include justify-content(center);
+        @include align-items(center);
+        background: $color-white;
+        @include transition(0.3s);
+        @include box-circle();
+        cursor: pointer;
+        border: 1px solid transparent;
+
+        @media #{$max1199} {
+          width: 50px;
+          height: 50px;
+          border-color: $color-gray2;
+        }
+
+        i {
+          color: $color-gray2;
+          font-size: 16px;
+          line-height: normal;
+        }
+
+        &:hover {
+          background-color: $color-primary;
+          border-color: $color-primary;
+
           i {
-            color: $color-gray2;
-            font-size: 16px;
-            line-height: normal;
+            color: $color-white;
           }
-          &:hover {
-            background-color: $color-primary;
-            border-color: $color-primary;
-            i {
-              color: $color-white;
-            }
-          }
+        }
+      }
+      &--mobile{
+        display: none;
+        @media #{$max991} {
+          @include d-flex();
+          margin: auto;
         }
       }
     }
     .tft-testimonials-sliders {
       max-width: 764px;
       overflow: hidden;
+
       @media #{$max1199} {
         max-width: 100%;
       }
+
       .slick-list {
         margin: 0 -12px !important;
         padding: 30px 0;
       }
+
       .slick-slide {
         margin: 0 12px !important;
       }
+
       .slick-dotted.slick-slider {
         padding-bottom: 20px;
       }
+
       .slick-dots {
         @include d-flex();
         @include justify-content(center);
         @include align-items(center);
         margin-top: 50px;
+
         li {
           width: 30px;
           height: 30px;
@@ -1003,57 +1219,70 @@
           @include d-flex();
           @include justify-content(center);
           @include align-items(center);
+
           button {
             width: 10px;
             height: 10px;
             background: #e8d9cf;
             border-radius: 50%;
+
             &::before {
               display: none;
             }
           }
+
           &.slick-active {
             border-color: $color-primary;
+
             button {
               background: $color-primary;
             }
           }
         }
       }
+
       .tft-testimonials-slides {
         @include d-flex();
         gap: 24px;
+
         .tft-single-testimonial {
           @include bd-radius(15px);
           flex: 1;
           background: $color-white;
           padding: 40px;
           box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+
           @media #{$max1199} {
             padding: 35px;
           }
+
           @media #{$max991} {
             padding: 30px;
           }
+
           @media #{$max767} {
             padding: 25px;
           }
+
           .tft-testimonials-inner {
             .testimonial-review {
               margin: 0;
+
               p {
                 color: $color-gray2;
                 font-family: $font-ubuntu;
                 font-size: 16px;
-                font-style: normal;
+
                 font-weight: 400;
                 line-height: 28px;
+
                 @media #{$max767} {
                   font-size: 15px;
                   line-height: 26px;
                 }
               }
             }
+
             .testimonial-author {
               margin-top: 40px;
               padding-top: 30px;
@@ -1061,45 +1290,53 @@
               @include d-flex();
               @include align-items(center);
               gap: 15px;
+
               @media #{$max991} {
                 margin-top: 35px;
                 padding-top: 30px;
               }
+
               @media #{$max767} {
                 margin-top: 30px;
                 padding-top: 25px;
               }
+
               .testimonial-author-image {
                 width: 55px;
                 height: 55px;
+
                 @media #{$max767} {
                   width: 45px;
                   height: 45px;
                 }
+
                 img {
                   height: 100%;
                   width: 100%;
                   @include bd-radius(50%);
                 }
               }
+
               .testimonial-author-info {
                 h4 {
                   color: $color-black2;
                   font-family: $font-brygada;
                   font-size: 18px;
-                  font-style: normal;
+
                   font-weight: 700;
                   line-height: normal;
                   margin-bottom: 7px;
+
                   @media #{$max767} {
                     font-size: 16px;
                   }
                 }
+
                 p {
                   color: $color-gray2;
                   font-family: $font-ubuntu;
                   font-size: 14px;
-                  font-style: normal;
+
                   font-weight: 400;
                   line-height: normal;
                   margin-bottom: 0;
@@ -1109,14 +1346,18 @@
           }
         }
       }
+
       &.tft-slider-disable {
         overflow: initial;
+
         .slick-track {
           width: 100%;
         }
+
         .slick-list {
           width: 100%;
         }
+
         .slick-dots {
           display: none;
         }
@@ -1130,73 +1371,83 @@
   .tft-destination-content {
     @include d-flex();
     gap: 24px;
+
     @media #{$max1760} {
       gap: 20px;
     }
+
     @media #{$max991} {
       gap: 20px;
     }
+    @media #{$max767} {
+      @include align-items(center);
+    }
+
     .tft-heading-content {
       flex-basis: calc(608px - 12px);
+
       @media #{$max1760} {
         flex-basis: calc(40% - 15px);
       }
+
       @media #{$max991} {
         flex-basis: calc(50% - 10px);
       }
+
       @media #{$max767} {
         flex-basis: 100%;
       }
+
       .tft-section-content {
         max-width: 490px;
+
         @media #{$max767} {
           max-width: 100%;
         }
+
         p {
           margin-bottom: 30px;
+
           @media #{$max767} {
-            margin-bottom: 24px;
+            margin-bottom: 10px;
           }
         }
       }
-      .tft-btn {
-        height: 50px;
-        padding: 16px 36px;
-        background: #f2f2f2;
-        color: $color-black2;
-        &:hover {
-          background: $color-primary;
-          color: $color-white;
-        }
-        @media #{$max767} {
-          margin-bottom: 15px;
-        }
-      }
+
+      
     }
+
     .tft-single-destination {
       flex-basis: 288px;
+
       @media #{$max1760} {
         flex-basis: calc(30% - 15px);
       }
+
       @media #{$max991} {
         flex-basis: calc(50% - 10px);
       }
+
       @media #{$max575} {
         flex-basis: 100%;
       }
 
       &:nth-child(5) {
         flex-basis: calc(608px - 12px);
+
         @media #{$max1760} {
           flex-basis: calc(40% - 15px);
         }
+
         @media #{$max991} {
           flex-basis: calc(50% - 10px);
         }
+
         @media #{$max575} {
           flex-basis: 100%;
         }
       }
+
       .tft-destination-thumbnail {
         height: 300px;
         @include bd-radius(15px);
@@ -1205,50 +1456,77 @@
         background-size: cover;
         background-position: center center;
         z-index: 1;
+
         &::after {
           content: "";
           position: absolute;
           left: 0;
           top: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.87) 88%
-          );
+          background: linear-gradient(180deg,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 0, 0, 0.87) 88%);
           width: 100%;
           height: 100%;
           @include bd-radius(15px);
           z-index: -1;
         }
+
         .tft-desination-content {
           position: absolute;
           bottom: 35px;
           left: 35px;
           color: white;
+
           a {
             color: $color-white;
             @include transition(0.3s);
+
             h3 {
               font-family: $font-ubuntu;
               font-size: 24px;
-              font-style: normal;
               font-weight: 500;
               line-height: normal;
               margin-bottom: 10px;
             }
+
             &:hover {
               color: $color-primary;
             }
           }
+
           p {
             margin-bottom: 0;
             color: #fff;
             font-family: $font-ubuntu;
             font-size: 14px;
-            font-style: normal;
             font-weight: 400;
             line-height: normal;
           }
+        }
+      }
+    }
+
+    .tft-btn {
+      height: 50px;
+      padding: 16px 36px;
+      background: #f2f2f2;
+      color: $color-black2;
+
+      &:hover {
+        background: $color-primary;
+        color: $color-white;
+      }
+
+      @media #{$max767} {
+        display: none;
+      }
+
+      &--mobile{
+        display: none;
+
+        @media #{$max767} {
+          display: block;
+          margin: 10px auto 0;
         }
       }
     }
@@ -1259,6 +1537,7 @@
   .tft-section-title {
     h2 {
       position: relative;
+
       &::after {
         content: "";
         position: absolute;
@@ -1268,10 +1547,12 @@
         width: 335px;
         height: 34px;
         background: rgba(255, 107, 0, 0.1);
+
         @media #{$max991} {
           height: 30px;
           width: 300px;
         }
+
         @media #{$max767} {
           width: 250px;
         }
@@ -1285,6 +1566,7 @@
   .tft-section-title {
     h2 {
       position: relative;
+
       &::after {
         left: 0%;
         transform: translateX(0%);
@@ -1292,6 +1574,7 @@
       }
     }
   }
+
   .tft-service-list {
     .elementor-image-box-wrapper {
       @media #{$max767} {
@@ -1308,25 +1591,30 @@
 .tft-gallery-wrapper {
   .tft-gallery-grid {
     padding: 0 !important;
+
     .tft-gallery-item {
       .tft-gallery-popup-btn {
         visibility: hidden;
         @include transition(0);
+
         .elementor-icon-wrapper {
           width: 100px;
           height: 100px;
           margin: auto;
           cursor: pointer;
+
           @media #{$max991} {
             width: 80px;
             height: 80px;
           }
+
           @media #{$max767} {
             width: 60px;
             height: 60px;
           }
         }
       }
+
       &:hover {
         .tft-gallery-popup-btn {
           visibility: visible;
@@ -1339,38 +1627,49 @@
 // tft icon design 2
 .tft-icon-design-2 {
   background-position: bottom;
+
   @media #{$max1399} {
     background-position: left;
   }
+
   @media #{$max991} {
     background-position: bottom;
   }
+
   .container {
     max-width: 1129px;
+
     .tft-heading-content {
       text-align: center;
       margin-bottom: 70px;
+
       @media #{$max1199} {
         margin-bottom: 60px;
       }
+
       @media #{$max991} {
         margin-bottom: 50px;
       }
+
       @media #{$max767} {
         margin-bottom: 40px;
       }
+
       h2 {
         margin-left: auto;
         margin-right: auto;
+
         &::after {
           width: 195px;
           height: 34px;
           top: 30px;
           left: 50%;
           transform: translateX(-50%);
+
           @media #{$max1399} {
             top: 15px;
           }
+
           @media #{$max1199} {
             width: 160px;
             height: 30px;
@@ -1379,27 +1678,34 @@
         }
       }
     }
+
     .tft-icon-text-items {
       @include d-flex();
       @include align-items(center);
       @include justify-content(space-between);
+
       @media #{$max1199} {
         gap: 30px;
         padding-bottom: 80px;
       }
+
       @media #{$max991} {
         padding-bottom: 120px;
       }
+
       .tft-icon-text-single {
         max-width: 299px;
+
         @media #{$max991} {
           width: calc(50% - 15px);
           max-width: 100%;
         }
+
         @media #{$max767} {
           max-width: 100%;
           width: 100%;
         }
+
         .icon_outter {
           width: 160px;
           height: 160px;
@@ -1410,14 +1716,17 @@
           @include align-items(center);
           @include justify-content(center);
           @include transition(0.3s);
+
           @media #{$max1199} {
             width: 140px;
             height: 140px;
           }
+
           @media #{$max991} {
             width: 120px;
             height: 120px;
           }
+
           .img-box {
             width: 120px;
             height: 120px;
@@ -1428,16 +1737,19 @@
             @include d-flex();
             @include align-items(center);
             @include justify-content(center);
+
             @media #{$max1199} {
               width: 105px;
               height: 105px;
             }
+
             @media #{$max991} {
               width: 95px;
               height: 95px;
             }
           }
         }
+
         .tft-title {
           margin-top: 20px;
           margin-bottom: 20px;
@@ -1446,28 +1758,33 @@
           font-size: 24px;
           font-weight: 700;
           line-height: normal;
+
           @media #{$max991} {
             font-size: 22px;
             margin-top: 18px;
             margin-bottom: 18px;
           }
+
           @media #{$max767} {
             font-size: 20px;
             margin-top: 15px;
             margin-bottom: 15px;
           }
         }
+
         .tft-details {
           margin-bottom: 0;
           color: $color-gray2;
           font-family: $font-ubuntu;
           line-height: 26px;
+
           @media #{$max767} {
             font-size: 15px;
             max-width: 340px;
             margin: auto;
           }
         }
+
         &:hover {
           .icon_outter {
             border: 2px dashed $color-primary;
@@ -1484,24 +1801,30 @@
     .tft-heading-content {
       text-align: center;
       margin-bottom: 70px;
+
       @media #{$max1199} {
         margin-bottom: 60px;
       }
+
       @media #{$max991} {
         margin-bottom: 50px;
       }
+
       @media #{$max767} {
         margin-bottom: 20px;
       }
+
       h2 {
         margin-left: auto;
         margin-right: auto;
+
         &::after {
           left: 50%;
           transform: translateX(-50%);
         }
       }
     }
+
     .tft-blog-gird-section {
       // grid-template-columns: 1fr 1fr;
       // @media #{$max991} {
@@ -1523,14 +1846,17 @@
       grid-template-columns: 40.5%;
       grid-template-rows: auto;
       gap: 24px;
+
       @media #{$max1199} {
         grid-template-columns: 50%;
         grid-template-columns: auto auto;
       }
+
       @media #{$max767} {
         grid: inherit;
         grid-template-columns: 100%;
       }
+
       .tft-post-single-item {
         padding: 30px;
         @include bd-radius(15px);
@@ -1539,38 +1865,51 @@
         display: flex;
         flex-direction: column;
         gap: 30px;
+
         @media #{$max1199} {
           gap: 20px;
           padding: 20px;
         }
+
+        @media #{$max767} {
+          padding: 16px;
+        }
+
         .tft-blog-thumbnail {
           line-height: 0;
+
           img {
             @include bd-radius(15px);
             width: 100%;
             max-height: 400px;
             min-height: 400px;
             object-fit: cover;
+
             @media #{$max1199} {
               max-height: 270px;
               min-height: 270px;
             }
+
             @media #{$max991} {
               max-height: 250px;
               min-height: 250px;
             }
+
             @media #{$max767} {
               max-height: 200px;
               min-height: 200px;
             }
+
             @media #{$max575} {
               max-height: inherit;
               min-height: inherit;
             }
           }
         }
+
         .tft-content-details {
           flex: 1;
+
           .tft-title {
             color: $color-black2;
             font-family: $font-brygada;
@@ -1582,30 +1921,37 @@
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+
             @media #{$max1199} {
               margin: 24px 0;
             }
+
             @media #{$max991} {
               margin: 20px 0;
             }
+
             a {
               display: contents;
               @include transition(0.1s);
+
               &:hover,
               &:focus,
               :visited {
                 color: $color-primary;
               }
             }
+
             @media #{$max991} {
               font-size: 22px;
               line-height: 30px;
             }
+
             @media #{$max767} {
               font-size: 20px;
               line-height: 28px;
             }
           }
+
           .tft-read-more {
             a {
               display: inline-flex;
@@ -1613,25 +1959,31 @@
               background: rgba(250, 100, 0, 0.09);
               min-height: 50px;
               min-width: 170px;
+
               @media #{$max767} {
                 min-width: 160px;
                 min-height: 45px;
               }
+
               &:hover {
                 background: $color-primary;
                 color: $color-white;
               }
             }
           }
+
           .tft-post-meta {
             @include d-flex();
             gap: 30px;
+
             @media #{$max1199} {
               gap: 20px;
             }
+
             @media #{$max767} {
               gap: 20px;
             }
+
             .tft-meta {
               @include d-flex();
               @include align-items(center);
@@ -1639,10 +1991,11 @@
               color: $color-gray2;
               font-family: $font-ubuntu;
               font-size: 16px;
-              font-style: normal;
+
               font-weight: 400;
               line-height: normal;
               margin-bottom: 0;
+
               @media #{$max991} {
                 gap: 8px;
                 font-size: 15px;
@@ -1651,25 +2004,31 @@
           }
         }
       }
+
       .tft-col-item {
         @include d-flex();
         @include align-items(center);
         flex-direction: row;
         gap: 35px;
+
         @media #{$max991} {
           gap: 20px;
         }
+
         .tft-blog-thumbnail {
           max-width: 240px;
           min-width: 240px;
+
           @media #{$max991} {
             max-width: inherit;
             min-width: inherit;
             width: 100%;
           }
+
           img {
             min-height: auto;
             max-height: inherit;
+
             // @media #{$max1199} {
             //   min-height: 270px;
             //   max-height: 270px;
@@ -1678,10 +2037,12 @@
               min-height: 250px;
               max-height: 250px;
             }
+
             @media #{$max767} {
               min-height: inherit;
               max-height: inherit;
             }
+
             @media #{$max480} {
               min-height: 250px;
               max-height: 250px;
@@ -1697,43 +2058,53 @@
           flex-direction: column;
           gap: 30px;
           margin-top: 0;
+
           @media #{$max991} {
             gap: 20px;
           }
+
           .tft-content-details {
             .tft-title {
               font-size: 30px;
               line-height: 40px;
+
               @media #{$max991} {
                 font-size: 22px;
                 line-height: 30px;
               }
+
               @media #{$max767} {
                 font-size: 20px;
                 line-height: 28px;
               }
             }
           }
+
           .tft-blog-thumbnail {
             max-width: 100%;
             min-width: 100%;
           }
         }
+
         &:nth-child(2) {
           grid-column: 2;
           grid-row: 1;
+
           @media #{$max991} {
             grid-column: auto;
             grid-row: auto;
           }
         }
+
         &:nth-child(3) {
           grid-column: 2;
           grid-row: 2;
+
           @media #{$max991} {
             grid-column: 1;
             grid-row: auto;
           }
+
           @media #{$max767} {
             grid-column: auto;
           }
@@ -1748,44 +2119,60 @@
 .tft-destination-design-4,
 .tft-popular-hotels-wrapper-2 {
   margin-bottom: -30px;
+
   .container {
     overflow: hidden;
+
+    @media #{$max640} {
+      padding: 0;
+    }
   }
+
   .tft-heading-content {
     text-align: center;
     margin-bottom: 40px;
+
     @media #{$max1199} {
       margin-bottom: 30px;
     }
+
     @media #{$max991} {
       margin-bottom: 20px;
     }
+
     @media #{$max767} {
       margin-bottom: 10px;
     }
+
     h2 {
       margin-left: auto;
       margin-right: auto;
+
       &::after {
         left: 50%;
         transform: translateX(-50%);
       }
     }
   }
+
   .tft-destination-content {
     position: relative;
   }
+
   .slick-dotted.slick-slider {
     padding-bottom: 30px;
+
     @media #{$max991} {
       margin-bottom: 50px;
       padding-bottom: 20px;
     }
+
     @media #{$max767} {
       margin-bottom: 50px;
       padding-bottom: 10px;
     }
   }
+
   .tft-destination-slider {
     display: flex;
     gap: 24px;
@@ -1795,14 +2182,19 @@
       @include justify-content(center);
       // width: 100%!important;
     }
+
     .slick-list {
       margin: 0 -12px !important;
       padding: 30px 0;
-      // width: 100%;
     }
+
     .slick-slide {
       margin: 0 12px !important;
       height: auto;
+
+      @media #{$max640} {
+        margin: 15px 7.5px !important;
+      }
     }
 
     .slick-dots {
@@ -1810,6 +2202,7 @@
       @include justify-content(center);
       @include align-items(center);
       margin-top: 50px;
+
       li {
         width: 30px;
         height: 30px;
@@ -1819,23 +2212,28 @@
         @include d-flex();
         @include justify-content(center);
         @include align-items(center);
+
         button {
           width: 10px;
           height: 10px;
           background: #e8d9cf;
           border-radius: 50%;
+
           &::before {
             display: none;
           }
         }
+
         &.slick-active {
           border-color: $color-primary;
+
           button {
             background: $color-primary;
           }
         }
       }
     }
+
     .tft-single-destination {
       @include bd-radius(15px);
       background: $color-white;
@@ -1844,20 +2242,31 @@
       @include d-flex();
       flex-direction: column;
       flex: 1;
+
+      @media #{$max767} {
+        padding: 16px;
+      }
+
       .tft-destination-thumbnail {
         position: relative;
         line-height: 0;
+
         img {
-          min-height: 280px;
-          max-height: 280px;
+          height: 280px;
           width: 100%;
           object-fit: cover;
           @include bd-radius(15px);
+
+          @media #{$max640} {
+            height: 200px;
+          }
         }
+
         .tft-destination-featured {
           position: absolute;
           left: 30px;
           top: 30px;
+
           .tft-featured {
             @include bd-radius(100px);
             padding: 8px 16px 7px 16px;
@@ -1865,41 +2274,50 @@
             color: $color-white;
             font-family: $font-ubuntu;
             font-size: 13px;
-            font-style: normal;
+
             font-weight: 700;
             line-height: normal;
             text-transform: uppercase;
           }
         }
       }
+
       .tft-destination-content {
         @include d-flex();
         @include justify-content(space-between);
         flex-direction: column;
         flex: 1;
+
         .tft-destination-top-info {
           margin-top: 20px;
           margin-bottom: 30px;
+          @media #{$max767} {
+            margin-bottom: 20px;
+          }
           .tft-desination-rating {
             @include d-flex();
             @include align-items(center);
             gap: 5px;
+
             i {
               color: $color-primary;
               font-size: 14px;
             }
           }
+
           .tft-desination-location {
             display: block;
             color: $color-gray2;
             font-size: 16px;
             margin-top: 8px;
+
             i {
               color: $color-primary;
               float: left;
               margin-right: 6px;
               margin-top: 1px;
             }
+
             span {
               overflow: hidden;
               display: -webkit-box;
@@ -1912,7 +2330,7 @@
             color: $color-black2;
             font-family: $font-brygada;
             font-size: 24px;
-            font-style: normal;
+
             font-weight: 700;
             line-height: 34px;
             margin-bottom: 0px;
@@ -1921,14 +2339,17 @@
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+
             a {
               @include transition(0.2s);
+
               &:hover {
                 color: $color-primary;
               }
             }
           }
         }
+
         .tft-desination-bottom-info {
           @include bd-radius(15px);
           border: 1px solid $color-light-white;
@@ -1937,6 +2358,10 @@
           @include justify-content(space-between);
           gap: 10px;
           padding: 30px;
+
+          @media #{$max767} {
+            padding: 16px;
+          }
 
           .tft-desination-price {
             .tft-desination-price-title {
@@ -1948,6 +2373,7 @@
               line-height: normal;
               margin-bottom: 10px;
             }
+
             .tft-desination-price-value {
               color: $color-primary;
               font-family: $font-brygada;
@@ -1956,12 +2382,14 @@
               line-height: normal;
             }
           }
+
           .tft-desination-btn {
             .tft-btn {
               background: rgba(250, 100, 0, 0.1);
               color: $color-primary;
               min-width: 136px;
               min-height: 50px;
+
               &:hover {
                 background: $color-primary;
                 color: $color-white;
@@ -1974,15 +2402,18 @@
 
     &.tft-slider-disable {
       overflow: initial;
+
       .slick-track {
         width: 100%;
       }
+
       .slick-list {
         width: 100%;
       }
     }
   }
 }
+
 .tft-destination-slider-nav,
 .tft-team-slider-nav,
 .tft-hero-slider-nav {
@@ -1993,6 +2424,11 @@
     gap: 15px;
     margin-top: 30px;
   }
+
+  @media #{$max640} {
+    margin-top: 45px;
+  }
+
   button {
     position: absolute;
     top: 50%;
@@ -2006,50 +2442,60 @@
     @include justify-content(center);
     @include align-items(center);
     cursor: pointer;
+
     @media #{$max1199} {
       width: 50px;
       height: 50px;
     }
+
     @media #{$max991} {
       width: 45px;
       height: 45px;
       position: relative;
     }
+
     @media #{$max767} {
       width: 40px;
       height: 40px;
     }
+
     &:hover {
       background: $color-primary;
       color: $color-white;
       border-color: $color-primary;
     }
+
     &.tft-prev-slide {
       left: 0;
     }
+
     &.tft-next-slide {
       right: 0;
     }
   }
 }
+
 .tft-hero-slider-nav {
   @media #{$max1399} {
-   margin-top: 0;
-   position: absolute;
-   left: 50%;
-   bottom: -100px;
-   transform: translateX(-50%);
-   @include d-flex();
-   gap: 15px;
+    margin-top: 0;
+    position: absolute;
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+    @include d-flex();
+    gap: 15px;
   }
+
   @media #{$max480} {
     bottom: -80px;
-   }
+  }
+
   button {
     background: transparent;
     width: 60px;
     height: 60px;
     border-color: $color-white;
+
     @media #{$max1399} {
       width: 50px;
       height: 50px;
@@ -2057,43 +2503,53 @@
       transform: initial;
       top: 0;
     }
+
     @media #{$max991} {
       width: 45px;
       height: 45px;
-    
+
     }
+
     @media #{$max767} {
       width: 40px;
       height: 40px;
-     
+
     }
+
     i {
       color: $color-white;
       font-size: 20px;
     }
+
     &:hover {
       background: $color-primary;
       color: $color-white;
       border-color: $color-primary;
     }
+
     &.tft-prev-slide {
       left: 80px;
+
       @media #{$max1760} {
         left: 100px;
       }
+
       @media #{$max1399} {
         left: 0;
       }
     }
+
     &.tft-next-slide {
       right: 80px;
+
       @media #{$max1760} {
         right: 100px;
       }
+
       @media #{$max1399} {
         right: 0;
       }
-   
+
     }
   }
 }
@@ -2103,10 +2559,12 @@
   max-width: 1221px;
   margin: auto;
 }
+
 .tft-container-width {
   max-width: 1521px;
   margin: auto;
 }
+
 .tft-team-slider-nav {
   margin-top: 0;
 }

@@ -31,6 +31,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_ajax_travelfic-demo-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-widget-import', array( $this, 'prepare_travelfic_widgets_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-menu-import', array( $this, 'prepare_travelfic_menus_imports' ) );
+			add_action( 'wp_ajax_travelfic-demo-elementor-settings-import', array( $this, 'prepare_travelfic_elementor_settings_imports' ) );
 		}
 
 		/**

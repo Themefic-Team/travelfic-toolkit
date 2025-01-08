@@ -33,11 +33,9 @@
     padding: 80px 0;
   }
   @media #{$max991} {
-    padding: 60px 0;
+    padding: 72px 0;
   }
-  @media #{$max767} {
-    padding: 40px 0;
-  }
+
 }
 .tft-section-space-top {
   padding-top: 120px;
@@ -48,10 +46,7 @@
     padding-top: 80px;
   }
   @media #{$max991} {
-    padding-top: 60px;
-  }
-  @media #{$max767} {
-    padding-top: 40px;
+    padding-top: 72px;
   }
 }
 .tft-section-space-bottom {
@@ -63,20 +58,14 @@
     padding-bottom: 80px;
   }
   @media #{$max991} {
-    padding-bottom: 60px;
-  }
-  @media #{$max767} {
-    padding-bottom: 40px;
+    padding-bottom: 72px;
   }
 }
 
 .tft-section-small-bottom-space {
   padding-bottom: 80px;
   @media #{$max1199} {
-    padding-bottom: 60px;
-  }
-  @media #{$max767} {
-    padding-bottom: 40px;
+    padding-bottom: 72px;
   }
 }
 
@@ -91,7 +80,7 @@
     margin-bottom: 17px;
     @media #{$max767} {
       font-size: 15px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
   }
   h2 {

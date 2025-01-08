@@ -111,7 +111,7 @@
                             text-decoration: none;
                             color: $tft_grey;
                             font-size: 16px;
-                            font-style: normal;
+                        
                             font-weight: 600;
                             padding: 0px !important;
                         }
@@ -176,7 +176,7 @@
                     a {
                         text-decoration: none;
                         font-size: 32px;
-                        font-style: normal;
+                    
                         font-weight: 700;
                         line-height: normal;
                         color: $tft_grey;
@@ -200,7 +200,7 @@
                             padding: 12px 32px;
                             color: $tft_grey;
                             font-size: 16px;
-                            font-style: normal;
+                        
                             font-weight: 700;
                             text-decoration: none;
                             display: inline-block;
@@ -263,7 +263,7 @@
                         a {
                             color: $tft_grey;
                             font-size: 16px;
-                            font-style: normal;
+                        
                             font-weight: 600;
                             line-height: 130%;
                             padding: 8px 32px !important;
@@ -276,7 +276,7 @@
                                 a {
                                     color: $tft_grey;
                                     font-size: 16px;
-                                    font-style: normal;
+                                
                                     font-weight: 600;
                                     line-height: 130%;
                                 }
@@ -395,7 +395,7 @@
 
             h2 {
                 font-size: 32px;
-                font-style: normal;
+            
                 font-weight: 700;
                 color: $tft_primary_color;
                 margin-bottom: 24px;
@@ -416,7 +416,7 @@
                         display: block;
                         color: #FAEEDC;
                         font-size: 16px;
-                        font-style: normal;
+                    
                         font-weight: 600;
 
                         &:hover {
@@ -441,7 +441,7 @@
 
             p {
                 font-size: 16px;
-                font-style: normal;
+            
                 font-weight: 400;
                 line-height: 130%;
                 margin: 0;
@@ -467,7 +467,7 @@
 #tf-cf7-contact-form p {
     font-family: Josefin Sans;
     font-size: 16px;
-    font-style: normal;
+
     font-weight: 600;
     line-height: 130%;
     /* 20.8px */
@@ -495,7 +495,7 @@
 #tf-cf7-contact-form textarea::placeholder {
     font-family: Josefin Sans;
     font-size: 16px;
-    font-style: normal;
+
     font-weight: 400;
     line-height: 130%;
     color: #C1BFBB;
@@ -510,7 +510,7 @@
     gap: 8px;
     font-family: Josefin Sans;
     font-size: 16px;
-    font-style: normal;
+
     font-weight: 700;
     line-height: 150%;
     text-align: center;
