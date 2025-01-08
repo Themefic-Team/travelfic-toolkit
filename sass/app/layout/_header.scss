@@ -744,7 +744,7 @@ header.tft-design-2 {
 
     &-left {
       @media #{$max991} {
-        padding: 10px 15px;
+        padding: 10px 15px 10px 0;
       }
 
       @media #{$max575} {
@@ -920,7 +920,7 @@ header.tft-design-2 {
     }
 
     @media #{$max1480} {
-      padding: 15px 15px 15px 35px;
+      padding: 15px;
       gap: 20px;
       @include justify-content(space-between);
     }
@@ -942,6 +942,7 @@ header.tft-design-2 {
 
     &__nav {
       min-width: 754px;
+      flex: 1;
 
       @media #{$max1680} {
         min-width: auto;
@@ -954,10 +955,12 @@ header.tft-design-2 {
       &--list {
         @include d-flex();
         gap: 32px;
-
+        row-gap: 10px;
         @media #{$max1680} {
           gap: 30px;
-          @include justify-content(end);
+        }
+        @media #{$max1366} {
+          gap: 20px;
         }
 
         @media #{$max1199} {
@@ -985,6 +988,7 @@ header.tft-design-2 {
               box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
               margin: 0;
               padding: 8px 16px;
+              width: max-content;
               min-width: 220px;
               display: flex;
               flex-direction: column;
@@ -1056,10 +1060,6 @@ header.tft-design-2 {
       gap: 30px;
 
       @media #{$max1480} {
-        gap: 20px;
-      }
-
-      @media #{$max1199} {
         gap: 15px;
       }
 
@@ -1067,8 +1067,10 @@ header.tft-design-2 {
         @include d-flex();
         @include align-items(center);
         gap: 24px;
-
-        @media #{$max1199} {
+        @media #{$max1366} {
+          gap: 20px;
+        }
+        @media #{$max1480} {
           gap: 15px;
         }
 
@@ -1085,7 +1087,10 @@ header.tft-design-2 {
             background: $color-white;
             border: 1px dashed #060d1c;
             @include box-circle();
-
+            @media #{$max1480} {
+              width: 42px;
+              height: 42px;
+            }
             @media #{$max1199} {
               width: 40px;
               height: 40px;
@@ -1181,8 +1186,9 @@ header.tft-design-2 {
 
         .tft-btn {
           @media #{$max1366} {
-            min-width: 150px;
-            min-height: 50px;
+            min-width: 140px;
+            min-height: 45px;
+            font-size: 15px;
           }
 
           @media #{$max991} {

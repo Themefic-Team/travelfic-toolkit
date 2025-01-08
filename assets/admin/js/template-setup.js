@@ -319,6 +319,7 @@
             $(".widget-import-btn").click();
         }
     });
+    
     // Widgets importer
     $(document).on('click', '.widget-import-btn', function (e) {
         if ($.inArray("widgets", travelfic_imports_data) !== -1) {
@@ -378,6 +379,7 @@
 
     // Demo Pages importer
     $(document).on('click', '.demo-page-import-btn', function (e) {
+        
         if ($.inArray("demo", travelfic_imports_data) !== -1) {
             $('.demo-importing-loader .loader-heading .loader-label').text("Demo Pages importing...");
             $.ajax({

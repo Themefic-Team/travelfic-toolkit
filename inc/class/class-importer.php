@@ -2451,6 +2451,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 			}
 		}
+
+
 	}
 }
 

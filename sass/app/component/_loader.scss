@@ -6,7 +6,7 @@
   @include d-flex();
   @include align-items(center);
   @include justify-content(center);
-  z-index: 1000;
+  z-index: 999999;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
