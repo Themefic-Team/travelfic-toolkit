@@ -2464,18 +2464,21 @@ if (! class_exists('Travelfic_Template_Importer')) {
                         $room_post_id = wp_insert_post($post_data);
                         update_post_meta($room_post_id, 'tf_room_opt', $room);
 
-                        //insert thumbnail if has 'room_preview_img' key which return url
-                        if (! empty($room['room_preview_img'])) {
-                            $attachment_id = attachment_url_to_postid($room['room_preview_img']);
-                            if (! empty($attachment_id)) {
-                                set_post_thumbnail($room_post_id, $attachment_id);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+						//insert thumbnail if has 'room_preview_img' key which return url
+						if ( ! empty( $room['room_preview_img'] ) ) {
+							$attachment_id = attachment_url_to_postid( $room['room_preview_img'] );
+							if ( ! empty( $attachment_id ) ) {
+								set_post_thumbnail( $room_post_id, $attachment_id );
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+
+	}
 }
 
 new Travelfic_Template_Importer();
