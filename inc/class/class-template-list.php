@@ -339,6 +339,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                             <?php } ?>
                         <?php } } ?>
                     </div>
+<!-- 
+                    <div class="test mt-4">
+                        <button id="elementor-global-settings" class="tft-btn elementor-global-settings">Click here</button>
+                    </div> -->
                 </div>
             </div>
 			<?php
