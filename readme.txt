@@ -3,7 +3,7 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 6.7
-Stable tag: 1.1.6
+Stable tag: 1.1.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,11 +14,13 @@ A companion plugin to the Travelfic and Ultimate Hotel Booking with which you ca
 
 ## THE BEST HOTEL BOOKING, TOUR BOOKING AND TRAVEL BOOKING WORDPRESS THEME - TRAVELFIC and ULTIMATE HOTEL BOOKING
 
-👉 Theme Live Demo Link: [Click Here](https://tourfic.site/travelfic/)
+👉 Theme Live Demo Link: [Click Here](https://theme-demo.themefic.com/?utm_source=wp_readme&utm_medium=toolkit_top_slot&utm_campaign=demo_link)
 👉 Our Travel Booking Engine: [Tourfic](https://wordpress.org/plugins/tourfic/)
-👉 Video Guide on [Youtube](https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N).
-👉 Our [Documentation](https://themefic.com/docs/tourfic/).
-👉 Join Our [Facebook Group](https://www.facebook.com/groups/tourfic).
+👉 Explore Pro: [Play with Backend Options](https://app.instawp.io/launch?t=tourfic-backend-demo&d=v2)
+👉 Video Guide on [Youtube](https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N)
+👉 Our [Documentation](https://themefic.com/docs/tourfic/?utm_source=wp_readme&utm_medium=toolkit_top_slot&utm_campaign=plugin_docs)
+👉 Get Support: [Click Here](https://portal.themefic.com/support/?utm_source=wp_readme&utm_medium=toolkit_top_slot&utm_campaign=plugin_support)
+👉 Join Our [Facebook Group](https://www.facebook.com/groups/tourfic)
 
 **Tourfic Toolkit** enhances the [Travelfic and Ultimate Hotel Booking WordPress theme](https://wordpress.org/themes/travelfic/) by adding functionality to the Customizer, Widgets Section, Single Tour, Single Hotel areas, and more. This toolkit boosts your travel or hotel booking website's design and performance by incorporating built-in demo templates.
 
@@ -32,7 +34,7 @@ The Travelfic and Ultimate Hotel Booking Theme is a free Hotel Booking WordPress
 
 Additionally, the Travelfic and Ultimate Hotel Booking Theme works seamlessly with the Tourfic plugin, offering extra options and versatility for crafting your travel & hotel booking site.
 
-> Check the [Demo](https://tourfic.site/travelfic)
+> Check the [Demo](https://theme-demo.themefic.com)
 
 = 🎉  WIDGETS, SECTIONS & FEATURES OF TRAVELFIC and ULTIMATE HOTEL BOOKING = 
 
@@ -85,9 +87,15 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 ###  Our Plugins
 
-* [Ultimate Before After Image Slider & Gallery - BEAF](https://wordpress.org/plugins/beaf-before-and-after-gallery)
+* [Tourfic – Ultimate Hotel Booking, Travel Booking & Apartment Booking WordPress Plugin](https://wordpress.org/plugins/tourfic)
 * [Ultimate Addons For Contact Form 7](https://wordpress.org/plugins/ultimate-addons-for-contact-form-7/)
-* [Onepage / Direct Checkout for WooCommerce - Instantio](https://wordpress.org/plugins/instantio)
+* [Instantio – WooCommerce Quick Checkout | Floating Cart, Side Cart & Popup Cart](https://wordpress.org/plugins/instantio)
+* [Hydra Booking – All in One Appointment Scheduling and Booking Calendar Solution](https://wordpress.org/plugins/hydra-booking)
+
+###  Our Themes
+
+* [Travelfic – Ultimate Travel Booking WordPress Theme](https://wordpress.org/themes/travelfic/)
+* [Ultimate Hotel Booking WordPress Theme](https://wordpress.org/themes/ultimate-hotel-booking/)
 
 == Installation ==
 
@@ -140,9 +148,18 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
+= 1.1.8 - 31 December 2024 =
+
+- Updated: Refined the readme.txt file and plugin information.
+- Compatibility: Ensured compatibility with Elementor 3.26.3.
+
+= 1.1.7 - 22 December 2024 =
+
+- Improved: Updated demos for Car, Apartment, Tour, and Hotel.
+
 = 1.1.6 - 15 December 2024 =
 
-- Fixed: Fixed: Resolved the car rental search issue.
+- Fixed: Resolved the car rental search issue.
 
 = 1.1.5 - 12 December 2024 =
 
