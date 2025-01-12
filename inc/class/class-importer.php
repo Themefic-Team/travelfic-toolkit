@@ -508,6 +508,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
         public function prepare_travelfic_hotel_imports()
         {
 
+            error_log('Calling hotel...');
             check_ajax_referer('updates', '_ajax_nonce');
 
             $hotels_post = array(
@@ -1134,7 +1135,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
          */
         public function prepare_travelfic_tour_imports()
         {
-
+            error_log('Calling tour...');
             check_ajax_referer('updates', '_ajax_nonce');
 
             $tours_post = array(
@@ -1831,6 +1832,8 @@ if (! class_exists('Travelfic_Template_Importer')) {
          */
         public function prepare_travelfic_car_imports()
         {
+
+            error_log('Calling car...');
             check_ajax_referer('updates', '_ajax_nonce');
 
             $tours_post = array(
