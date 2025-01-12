@@ -83,155 +83,154 @@ if (! class_exists('Travelfic_Template_Importer')) {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key($_POST['template_version']) : 1;
 
-            var_dump("working....");
+        
+            $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
+            $forms_files = wp_remote_get( $demo_forms_data_url );
+            $forms_imported_data = wp_remote_retrieve_body($forms_files);
+            if (!empty($forms_imported_data)) {
+                $forms_imported_data = json_decode( $forms_imported_data, true );
+                foreach($forms_imported_data as $form){
 
-            // $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
-            // $forms_files = wp_remote_get( $demo_forms_data_url );
-            // $forms_imported_data = wp_remote_retrieve_body($forms_files);
-            // if (!empty($forms_imported_data)) {
-            //     $forms_imported_data = json_decode( $forms_imported_data, true );
-            //     foreach($forms_imported_data as $form){
+                    $form_title = !empty($form['title']) ? $form['title'] : '';
+                    $form_properties = !empty($form['properties']) ? json_decode($form['properties'],true) : '';
+                    // tf_var_dump($form_properties);
+                    if ( class_exists( 'WPCF7' ) ) {
+                        $contact_form = WPCF7_ContactForm::get_template(
+                            array( 
+                                'title' => $form_title,
+                            )
+                        ); 
+                        $contact_form->set_properties($form_properties);
+                        $contact_form->save();
+                    }
+                }
+            }
 
-            //         $form_title = !empty($form['title']) ? $form['title'] : '';
-            //         $form_properties = !empty($form['properties']) ? json_decode($form['properties'],true) : '';
-            //         // tf_var_dump($form_properties);
-            //         if ( class_exists( 'WPCF7' ) ) {
-            //             $contact_form = WPCF7_ContactForm::get_template(
-            //                 array( 
-            //                     'title' => $form_title,
-            //                 )
-            //             ); 
-            //             $contact_form->set_properties($form_properties);
-            //             $contact_form->save();
-            //         }
-            //     }
-            // }
+            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            $pages_files = wp_remote_get( $demo_data_url );
+            $imported_data = wp_remote_retrieve_body($pages_files);
+            if (!empty($imported_data)) {
+                $imported_data = json_decode( $imported_data, true );
+                foreach($imported_data as $page){
+                    $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
+                    $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
+                    $title = !empty($page['title']) ? $page['title'] : '';
+                    $content = !empty($page['content']) ? $page['content'] : '';
+                    $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
+                    $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
+                    $pages_images = $page['media_urls'];
+                    if(!empty($pages_images)){
+                        $media_urls = explode(", ", $pages_images);
+                        $update_media_url = [];
+                        foreach($media_urls as $media){
+                            if(!empty($media)){
+                                // Download the image file
+                                $page_image_data = file_get_contents( $media );
+                                $page_filename   = basename( $media );
+                                $page_upload_dir = wp_upload_dir();
+                                $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
 
-            // $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
-            // $pages_files = wp_remote_get( $demo_data_url );
-            // $imported_data = wp_remote_retrieve_body($pages_files);
-            // if (!empty($imported_data)) {
-            //     $imported_data = json_decode( $imported_data, true );
-            //     foreach($imported_data as $page){
-            //         $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
-            //         $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
-            //         $title = !empty($page['title']) ? $page['title'] : '';
-            //         $content = !empty($page['content']) ? $page['content'] : '';
-            //         $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
-            //         $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
-            //         $pages_images = $page['media_urls'];
-            //         if(!empty($pages_images)){
-            //             $media_urls = explode(", ", $pages_images);
-            //             $update_media_url = [];
-            //             foreach($media_urls as $media){
-            //                 if(!empty($media)){
-            //                     // Download the image file
-            //                     $page_image_data = file_get_contents( $media );
-            //                     $page_filename   = basename( $media );
-            //                     $page_upload_dir = wp_upload_dir();
-            //                     $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+                                // Save the image file to the uploads directory
+                                file_put_contents( $page_image_path, $page_image_data );
 
-            //                     // Save the image file to the uploads directory
-            //                     file_put_contents( $page_image_path, $page_image_data );
+                                if (file_exists($page_image_path)) {
+                                    // Create the attachment for the uploaded image
+                                    $page_attachment = array(
+                                        'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                                        'post_mime_type' => 'image/jpeg',
+                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                                        'post_content'   => '',
+                                        'post_status'    => 'inherit'
+                                    );
+                                    // Insert the attachment
+                                    $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
 
-            //                     if (file_exists($page_image_path)) {
-            //                         // Create the attachment for the uploaded image
-            //                         $page_attachment = array(
-            //                             'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-            //                             'post_mime_type' => 'image/jpeg',
-            //                             'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
-            //                             'post_content'   => '',
-            //                             'post_status'    => 'inherit'
-            //                         );
-            //                         // Insert the attachment
-            //                         $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+                                    // Include the necessary file for media_handle_sideload().
+                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
 
-            //                         // Include the necessary file for media_handle_sideload().
-            //                         require_once(ABSPATH . 'wp-admin/includes/image.php');
+                                    // Generate the attachment metadata
+                                    $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
+                                    wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
 
-            //                         // Generate the attachment metadata
-            //                         $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
-            //                         wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
+                                    $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
+                                }
+                            }
+                        }
+                        foreach ($update_media_url as $key => $value) {
+                            // Replace the keys in the string
+                            $elementor_content = str_replace($value, $key, $elementor_content);
+                        }
+                    }
+                    if(!empty($tft_header_bg)){
+                        // Download the image file
+                        $page_image_data = file_get_contents( $tft_header_bg );
+                        $page_filename   = basename( $tft_header_bg );
+                        $page_upload_dir = wp_upload_dir();
+                        $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
 
-            //                         $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
-            //                     }
-            //                 }
-            //             }
-            //             foreach ($update_media_url as $key => $value) {
-            //                 // Replace the keys in the string
-            //                 $elementor_content = str_replace($value, $key, $elementor_content);
-            //             }
-            //         }
-            //         if(!empty($tft_header_bg)){
-            //             // Download the image file
-            //             $page_image_data = file_get_contents( $tft_header_bg );
-            //             $page_filename   = basename( $tft_header_bg );
-            //             $page_upload_dir = wp_upload_dir();
-            //             $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+                        // Save the image file to the uploads directory
+                        file_put_contents( $page_image_path, $page_image_data );
 
-            //             // Save the image file to the uploads directory
-            //             file_put_contents( $page_image_path, $page_image_data );
+                        if (file_exists($page_image_path)) {
+                            // Create the attachment for the uploaded image
+                            $page_attachment = array(
+                                'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                                'post_mime_type' => 'image/jpeg',
+                                'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                                'post_content'   => '',
+                                'post_status'    => 'inherit'
+                            );
+                            // Insert the attachment
+                            $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
 
-            //             if (file_exists($page_image_path)) {
-            //                 // Create the attachment for the uploaded image
-            //                 $page_attachment = array(
-            //                     'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-            //                     'post_mime_type' => 'image/jpeg',
-            //                     'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
-            //                     'post_content'   => '',
-            //                     'post_status'    => 'inherit'
-            //                 );
-            //                 // Insert the attachment
-            //                 $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+                            // Include the necessary file for media_handle_sideload().
+                            require_once(ABSPATH . 'wp-admin/includes/image.php');
 
-            //                 // Include the necessary file for media_handle_sideload().
-            //                 require_once(ABSPATH . 'wp-admin/includes/image.php');
+                            // Generate the attachment metadata
+                            $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
+                            wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
 
-            //                 // Generate the attachment metadata
-            //                 $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
-            //                 wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
+                            $tft_header_bg = wp_get_attachment_url($page_attachment_id);
+                        }
+                    }
 
-            //                 $tft_header_bg = wp_get_attachment_url($page_attachment_id);
-            //             }
-            //         }
+                    // Create a new page programmatically
+                    $new_page = array(
+                        'post_title' => $title,
+                        'post_content' => $content,
+                        'post_status' => 'publish',
+                        'post_type' => 'page'
+                    );
 
-            //         // Create a new page programmatically
-            //         $new_page = array(
-            //             'post_title' => $title,
-            //             'post_content' => $content,
-            //             'post_status' => 'publish',
-            //             'post_type' => 'page'
-            //         );
+                    // Insert the page into the database
+                    $new_page_id = wp_insert_post($new_page);
+                    if(!empty($is_front)){
+                        update_option( 'page_on_front', $new_page_id );
+                        update_option( 'show_on_front', 'page' );
+                    }
 
-            //         // Insert the page into the database
-            //         $new_page_id = wp_insert_post($new_page);
-            //         if(!empty($is_front)){
-            //             update_option( 'page_on_front', $new_page_id );
-            //             update_option( 'show_on_front', 'page' );
-            //         }
+                    if(!empty($is_blog)){
+                        update_option( 'page_for_posts', $new_page_id );
+                    }
 
-            //         if(!empty($is_blog)){
-            //             update_option( 'page_for_posts', $new_page_id );
-            //         }
+                    if(!empty($page['_wp_page_template'])){
+                        update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
+                        update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
+                        update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
+                        update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
+                        update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
+                        update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
+                        update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
+                        update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                        update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
+                        update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                    }
+                }
 
-            //         if(!empty($page['_wp_page_template'])){
-            //             update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
-            //             update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
-            //             update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
-            //             update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
-            //             update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
-            //             update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
-            //             update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-            //             update_post_meta($new_page_id, '_elementor_data', $elementor_content);
-            //             update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
-            //             update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
-            //         }
-            //     }
-
-            //     delete_option('_elementor_global_css');
-            //     delete_option('elementor-custom-breakpoints-files');
-            //     die();
-            // }
+                delete_option('_elementor_global_css');
+                delete_option('elementor-custom-breakpoints-files');
+                die();
+            }
 
 
 
@@ -508,7 +507,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
         public function prepare_travelfic_hotel_imports()
         {
 
-            error_log('Calling hotel...');
+         
             check_ajax_referer('updates', '_ajax_nonce');
 
             $hotels_post = array(
@@ -1135,7 +1134,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
          */
         public function prepare_travelfic_tour_imports()
         {
-            error_log('Calling tour...');
+           
             check_ajax_referer('updates', '_ajax_nonce');
 
             $tours_post = array(
@@ -1833,7 +1832,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
         public function prepare_travelfic_car_imports()
         {
 
-            error_log('Calling car...');
+           
             check_ajax_referer('updates', '_ajax_nonce');
 
             $tours_post = array(
