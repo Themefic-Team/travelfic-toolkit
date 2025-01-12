@@ -231,7 +231,7 @@ h6 {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 99999;
+  z-index: 99991;
 }
 
 .tft-section-space {
@@ -3193,6 +3193,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+  max-width: 350px;
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content {
   flex: 1;
@@ -4348,6 +4349,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+}
+.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box img {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {

@@ -119,6 +119,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
                     $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
                     $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
+                    
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
                         $update_media_url = [];
@@ -137,7 +138,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
                                     // Create the attachment for the uploaded image
                                     $page_attachment = array(
                                         'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                        'post_mime_type' => 'image/jpeg',
+                                        'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
                                         'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
                                         'post_content'   => '',
                                         'post_status'    => 'inherit'
@@ -175,7 +176,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
                             // Create the attachment for the uploaded image
                             $page_attachment = array(
                                 'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                'post_mime_type' => 'image/jpeg',
+                                'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
                                 'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
                                 'post_content'   => '',
                                 'post_status'    => 'inherit'
@@ -231,42 +232,7 @@ if (! class_exists('Travelfic_Template_Importer')) {
                 delete_option('elementor-custom-breakpoints-files');
                 die();
             }
-
-
-
-            $demo_data_url = TRAVELFIC_TOOLKIT_URL . 'inc/demo/elementor_global_settings.json';
-            $settings_files = wp_remote_get($demo_data_url);
-            $imported_data = wp_remote_retrieve_body($settings_files);
-
-            if (!empty($imported_data)) {
-                $imported_data = json_decode($imported_data, true);
-
-                if (! is_array($imported_data)) {
-                    return false;
-                }
-
-                $breakpoints_data = $imported_data['breakpoints'] ?? [];
-                // $elementor_settings = get_option( 'elementor' );
-
-                // var_dump($elementor_settings);
-                exit();
-
-
-                foreach ($breakpoints_data as $key => $data) {
-                    if (isset($data['value'])) {
-                        // Update or add the breakpoint
-                        $current_breakpoints[$key] = [
-                            'value'    => $data['value'],
-                            'default'  => $data['default_value'] ?? $data['value'],
-                            'enabled'  => $data['is_enabled'] ?? false,
-                        ];
-                    }
-                }
-
-                // $elementor_settings['settings']['breakpoints'] = $current_breakpoints;
-
-                exit();
-            }
+            
         }
 
         /**

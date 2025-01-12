@@ -1199,7 +1199,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 if (!empty($meta['image'])) {
                                     $cat_image = $meta['image'];
                                 } else {
-                                    $cat_image = 'https://via.placeholder.com/450x600';
+                                    $cat_image = 'https://theme-demo.themefic.com/wp-content/uploads/2025/01/placeholder-450x600-1.jpg';
                                 }
                         ?>
                                 <div class="tft-single-destination">
@@ -1293,7 +1293,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 if (!empty($meta['image'])) {
                                     $cat_image = $meta['image'];
                                 } else {
-                                    $cat_image = 'https://via.placeholder.com/450x600';
+                                    $cat_image = 'https://theme-demo.themefic.com/wp-content/uploads/2025/01/placeholder-450x600-1.jpg';
                                 }
                         ?>
                                 <div class="tft-single-destination">
