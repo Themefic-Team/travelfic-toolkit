@@ -1222,7 +1222,7 @@ header.tft-design-2 {
   background-color: $color-dark-blue;
   overflow-x: hidden;
   transition: 0.5s ease;
-  z-index: 1000;
+  z-index: 99999;
 
   &__close {
     position: absolute;

@@ -646,7 +646,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         if(!empty($meta['image'])){
                             $cat_image = $meta['image'];
                         } else{
-                            $cat_image = 'https://theme-demo.themefic.com/wp-content/uploads/2025/01/placeholder-450x600-1.jpg';
+                            $cat_image = 'https://via.placeholder.com/450x600';
                         }
                     ?>
                     <div class="tft-single-destination">

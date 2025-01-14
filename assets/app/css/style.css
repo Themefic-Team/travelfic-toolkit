@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -125,13 +131,6 @@ main {
 .tft-fullwidth-container {
   padding-left: 32px;
   padding-right: 32px;
-}
-
-.tft_has_sticky {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 999;
 }
 
 /**Font Size & Font Family**/
@@ -2197,7 +2196,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background-color: #101f36;
   overflow-x: hidden;
   transition: 0.5s ease;
-  z-index: 1000;
+  z-index: 99999;
 }
 .mobile-sidenav__close {
   position: absolute;
@@ -3187,7 +3186,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  max-width: 350px;
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content {
   flex: 1;
