@@ -272,3 +272,34 @@ if (!function_exists('tf_print')) {
         echo '</pre>';
     }
 }
+
+
+add_action('wp_head', function () {
+    global $post;
+    if (!$post) return;
+
+    // Get the Elementor data
+    $elementor_content = get_post_meta($post->ID, '_elementor_data', true);
+
+    if (!empty($elementor_content)) {
+        // Decode the Elementor content JSON
+        $decoded_elementor_data = json_decode($elementor_content, true);
+
+
+        // Iterate through the sections to find the one with the title you're looking for
+        foreach ($decoded_elementor_data as $section) {
+
+            if (isset($section['settings']['background_background']) && $section['settings']['background_background'] === 'classic') {
+                // Check if the section has a background image
+                if (isset($section['settings']['background_image']['url'])) {
+                    $background_image_url = $section['settings']['background_image']['url'];
+                    echo '<style>
+                        .elementor-element-' . esc_attr($section['id']) . ' {
+                            background-image: url("' . esc_url($background_image_url) . '");
+                        }
+                    </style>';
+                }
+            }
+        }
+    }
+});

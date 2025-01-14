@@ -2387,7 +2387,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         $tf_featured_text = !empty($option_meta['featured_text']) ? $option_meta['featured_text'] : 'Featured';
 
                                         // pricing
-                                        $tf_pricing = $option_meta['pricing'];
+                                        $tf_pricing = !empty($option_meta['pricing']) ? $option_meta['pricing'] : '';
+
+
                                         if ($tf_pricing === 'group') {
                                             $tf_total_price = $option_meta['group_price'] ?? 0;
                                         } else {
