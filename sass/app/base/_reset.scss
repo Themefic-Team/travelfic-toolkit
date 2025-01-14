@@ -1,3 +1,8 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
@@ -118,10 +123,4 @@ main {
 .tft-fullwidth-container{
   padding-left: 32px;
   padding-right: 32px;
-}
-.tft_has_sticky{
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 999;
 }

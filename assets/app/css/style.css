@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -125,13 +131,6 @@ main {
 .tft-fullwidth-container {
   padding-left: 32px;
   padding-right: 32px;
-}
-
-.tft_has_sticky {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 999;
 }
 
 /**Font Size & Font Family**/
@@ -1929,7 +1928,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: #ffffff;
   box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
   margin: 0;
-  padding: 8px 16px;
+  padding: 8px 0px;
   width: max-content;
   min-width: 220px;
   display: flex;
@@ -1960,11 +1959,18 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item a {
-  display: inline-block;
-  padding: 10px 0;
+  display: block;
+  padding: 10px 16px;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children::after {
-  top: 12px;
+  top: 50%;
+  right: 12px;
+  height: auto;
+  transform: rotate(-90deg) translateX(56%);
+}
+.tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children .sub-menu {
+  left: 100%;
+  top: 0;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children:hover .sub-menu {
   visibility: visible;
@@ -2197,7 +2203,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background-color: #101f36;
   overflow-x: hidden;
   transition: 0.5s ease;
-  z-index: 1000;
+  z-index: 99999;
 }
 .mobile-sidenav__close {
   position: absolute;
@@ -3187,7 +3193,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  max-width: 350px;
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content {
   flex: 1;
