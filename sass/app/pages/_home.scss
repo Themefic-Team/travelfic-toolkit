@@ -1738,9 +1738,7 @@
             @include d-flex();
             @include align-items(center);
             @include justify-content(center);
-            img{
-              @include box-circle();
-            }
+          
             @media #{$max1199} {
               width: 105px;
               height: 105px;

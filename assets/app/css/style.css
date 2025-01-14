@@ -1,10 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -4349,11 +4343,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-}
-.tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box img {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
