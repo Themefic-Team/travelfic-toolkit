@@ -148,11 +148,38 @@ function travelfic_toolkit_customize_register($wp_customize)
     // Header background color
     $wp_customize->add_setting($travelfic_toolkit_prefix . "header_bg_color", [
         "transport" => "refresh",
-        "sanitize_callback" => "sanitize_hex_color"
+        "sanitize_callback" => "sanitize_hex_color",
+        'default' => '#07245f',
     ]);
     $wp_customize->add_control($travelfic_toolkit_prefix . "header_bg_color", [
         "label" => __("Header Background", "travelfic-toolkit"),
         'priority' => 11,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+    // Header Button background color
+    $wp_customize->add_setting($travelfic_toolkit_prefix . "design_3_header_btn_bg_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color",
+        'default' => '#fa6400',
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_3_header_btn_bg_color", [
+        "label" => __("Header Button Background", "travelfic-toolkit"),
+        'priority' => 12,
+        "section" => "travelfic_customizer_header",
+        "type" => "color",
+    ]);
+
+      // Header Button Hover background color
+      $wp_customize->add_setting($travelfic_toolkit_prefix . "design_3_header_btn_hover_bg_color", [
+        "transport" => "refresh",
+        "sanitize_callback" => "sanitize_hex_color",
+        'default' => '#0e3dd8',
+    ]);
+    $wp_customize->add_control($travelfic_toolkit_prefix . "design_3_header_btn_hover_bg_color", [
+        "label" => __("Header Button Hover", "travelfic-toolkit"),
+        'priority' => 13,
         "section" => "travelfic_customizer_header",
         "type" => "color",
     ]);

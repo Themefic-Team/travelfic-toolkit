@@ -1928,7 +1928,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: #ffffff;
   box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
   margin: 0;
-  padding: 8px 16px;
+  padding: 8px 0px;
   width: max-content;
   min-width: 220px;
   display: flex;
@@ -1959,11 +1959,18 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item a {
-  display: inline-block;
-  padding: 10px 0;
+  display: block;
+  padding: 10px 16px;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children::after {
-  top: 12px;
+  top: 50%;
+  right: 12px;
+  height: auto;
+  transform: rotate(-90deg) translateX(56%);
+}
+.tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children .sub-menu {
+  left: 100%;
+  top: 0;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children:hover .sub-menu {
   visibility: visible;
