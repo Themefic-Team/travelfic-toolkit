@@ -340,7 +340,6 @@ if ('5' === $travelfic_template_version) {
 
             // Output the generated CSS
             if (!empty($custom_css)) {
-                // error_log(print_r($custom_css, true));
                 echo '<style>' . $custom_css . '</style>';
             }
         }
