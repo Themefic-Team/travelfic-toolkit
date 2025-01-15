@@ -537,6 +537,9 @@
     
         $('.demo-importing-loader .loader-heading .loader-label').text("Tour, Hotel, Car Demo importing...");
         $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("We are almost done...");
+
+        console.log(template_all_types);
+
         template_all_types.forEach (function(type, index) {
             $.ajax({
                 type: 'post',

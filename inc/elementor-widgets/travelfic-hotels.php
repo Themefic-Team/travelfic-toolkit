@@ -2438,7 +2438,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         <!-- destination thumbnail -->
                                         <div class="tft-destination-thumbnail">
                                             <?php
-                                            $tft_hotel_image = !empty(get_the_post_thumbnail_url(get_the_ID())) ? esc_url(get_the_post_thumbnail_url(get_the_ID())) : esc_url('https://theme-demo.themefic.com/wp-content/uploads/2025/01/placeholder-450x600-1.jpg');
+                                            $tft_hotel_image = !empty(get_the_post_thumbnail_url(get_the_ID())) ? esc_url(get_the_post_thumbnail_url(get_the_ID())) : esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png');
                                             error_log(print_r($tft_hotel_image, true));
                                             ?>
                                             <img src="<?php echo esc_url($tft_hotel_image); ?>" alt="post thumbnail">
