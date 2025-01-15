@@ -274,32 +274,75 @@ if (!function_exists('tf_print')) {
 }
 
 
-add_action('wp_head', function () {
-    global $post;
-    if (!$post) return;
 
-    // Get the Elementor data
-    $elementor_content = get_post_meta($post->ID, '_elementor_data', true);
+// Load elementor background image based on travelfic template version
 
-    if (!empty($elementor_content)) {
-        // Decode the Elementor content JSON
-        $decoded_elementor_data = json_decode($elementor_content, true);
+$travelfic_template_version = get_option('travelfic_template_version');
 
+if ('5' === $travelfic_template_version) {
+    add_action('wp_head', 'travelfic_load_elementor_background_image');
 
-        // Iterate through the sections to find the one with the title you're looking for
-        foreach ($decoded_elementor_data as $section) {
+    function travelfic_load_elementor_background_image()
+    {
 
-            if (isset($section['settings']['background_background']) && $section['settings']['background_background'] === 'classic') {
-                // Check if the section has a background image
-                if (isset($section['settings']['background_image']['url'])) {
-                    $background_image_url = $section['settings']['background_image']['url'];
-                    echo '<style>
-                        .elementor-element-' . esc_attr($section['id']) . ' {
-                            background-image: url("' . esc_url($background_image_url) . '");
+        global $post;
+        if (!$post) return;
+
+        // get elementor data and set section background image 
+        $elementor_content = get_post_meta($post->ID, '_elementor_data', true);
+
+        if (!empty($elementor_content)) {
+            $decoded_elementor_data = json_decode($elementor_content, true);
+
+            $custom_css = '';
+
+            if (!function_exists('find_background_images_with_ids')) {
+                function find_background_images_with_ids($section, &$styles = [],  $allowed_ids = [])
+                {
+                    // Check if the section has a background image
+                    if (
+                        isset($section['settings']['background_background']) && $section['settings']['background_background'] === 'classic' &&
+                        isset($section['id']) &&
+                        (empty($allowed_ids) || in_array($section['id'], $allowed_ids))
+                    ) {
+                        if (isset($section['settings']['background_image']['url'])) {
+                            $styles[] = [
+                                'id' => $section['id'],
+                                'url' => $section['settings']['background_image']['url'],
+                            ];
                         }
-                    </style>';
+                    }
+
+                    // Check for nested elements
+                    if (isset($section['elements']) && is_array($section['elements'])) {
+                        foreach ($section['elements'] as $element) {
+                            find_background_images_with_ids($element, $styles, $allowed_ids);
+                        }
+                    }
                 }
+            }
+
+            // Define allowed section IDs for background images
+            $allowed_ids  = ['ee8cb50', '22c3630', '148ca43', '99b082f', '85c5d54', '8868479', '8635b55'];
+
+            // Collect all background images with their IDs
+            $styles = [];
+            foreach ($decoded_elementor_data as $section) {
+                find_background_images_with_ids($section, $styles, $allowed_ids);
+            }
+
+            // Generate CSS for each section
+            foreach ($styles as $style) {
+                $custom_css .= '.elementor-element-' . esc_attr($style['id']) . ' {
+                background-image: url("' . esc_url($style['url']) . '");
+            }';
+            }
+
+            // Output the generated CSS
+            if (!empty($custom_css)) {
+                // error_log(print_r($custom_css, true));
+                echo '<style>' . $custom_css . '</style>';
             }
         }
     }
-});
+}

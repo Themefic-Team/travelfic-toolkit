@@ -76,6 +76,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
 
+            update_option( 'travelfic_template_version', $template_key );
 
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
             $forms_files = wp_remote_get( $demo_forms_data_url );
@@ -99,8 +100,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
 
-            // $demo_data_url = 'https://api.themefic.com/tourfic/demos/v' . $template_key . '/pages.json';
-            $demo_data_url = TRAVELFIC_TOOLKIT_URL . 'inc/demo/pages.json';
+            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v' . $template_key . '/pages.json';
+            // $demo_data_url = TRAVELFIC_TOOLKIT_URL . 'inc/demo/pages.json';
             $pages_files = wp_remote_get($demo_data_url);
             $imported_data = wp_remote_retrieve_body($pages_files);
             if (!empty($imported_data)) {
@@ -219,78 +220,17 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
                         update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
 
-
-
-                        // get elementor data and set section background image 
-                        $elementor_content = get_post_meta($new_page_id, '_elementor_data', true);
-
-                        if (!empty($elementor_content)) {
-                            $decoded_elementor_data = json_decode($elementor_content, true);
-
-                            // Start a variable to collect the CSS
-                            $custom_css = '';
-
-                            // Recursive function to search for background_image
-                            function find_background_image($section)
-                            {
-                                if (isset($section['settings']['background_background']) && $section['settings']['background_background'] === 'classic') {
-                                    // Check if the section has a background image
-                                    if (isset($section['settings']['background_image']['url'])) {
-                                        return $section['settings']['background_image']['url'];
-                                    }
-                                }
-
-                                // If not found, check if there are nested elements
-                                if (isset($section['elements']) && is_array($section['elements'])) {
-                                    foreach ($section['elements'] as $element) {
-                                        $background_image_url = find_background_image($element);
-                                        if ($background_image_url) {
-                                            return $background_image_url;
-                                        }
-                                    }
-                                }
-
-                                return null;
-                            }
-
-                            // Loop through the sections and find background images
-                            foreach ($decoded_elementor_data as $section) {
-                                $background_image_url = find_background_image($section);
-
-                                if ($background_image_url) {
-                                    // Log the background image URL for debugging
-                                    error_log(print_r($background_image_url, true));
-
-                                    // Append the CSS for this section
-                                    $custom_css .= '.elementor-element-' . esc_attr($section['id']) . ' {
-                                        background-image: url("' . esc_url($background_image_url) . '");
-                                        background-size: cover;
-                                        background-position: center center;
-                                        background-repeat: no-repeat;
-                                    }';
-                                }
-                            }
-
-                            // If any CSS was generated, output it
-                            if (!empty($custom_css)) {
-                                echo '<style>' . $custom_css . '</style>';
-                            }
-                        }
-
-
                         // Clear Elementor cache
                         delete_post_meta($new_page_id, '_elementor_global_css', true);
                         delete_post_meta($new_page_id, 'elementor-custom-breakpoints-files', true);
                         delete_post_meta($new_page_id, '_elementor_element_cache', true);
-                        delete_post_meta($new_page_id, '_elementor_css', true);
-
+               
                         // Regenerate CSS for the new page
                         \Elementor\Core\Files\CSS\Post::create($new_page_id)->update();
                     }
                 }
 
-                delete_option('_elementor_global_css');
-		        delete_option('elementor-custom-breakpoints-files');
+
                 die();
             }
 		}
