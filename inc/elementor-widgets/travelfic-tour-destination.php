@@ -323,7 +323,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'des_style' => ['design-1','design-2'],
+                    'des_style' => ['design-1', 'design-2'],
                 ],
             ]
         );
@@ -333,7 +333,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'name'     => 'tour_destination_sec_title_typo',
                 'selectors' => '{{WRAPPER}} .tft-destination-design-2 .tft-destination-header h3',
-                   
+
                 'label'    => __('Section Title Typography', 'travelfic-toolkit'),
 
                 'condition' => [
@@ -633,15 +633,15 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             ]
         );
 
-          // Title Backdrop
-          $this->add_control(
+        // Title Backdrop
+        $this->add_control(
             'tour_destination_design3_title_backdrop',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
                 'default' => 'yes',
                 'condition' => [
-                    'des_style' => 'design-3', 
+                    'des_style' => 'design-3',
                 ],
             ]
         );
@@ -666,7 +666,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'des_style' => 'design-3', 
+                    'des_style' => 'design-3',
                     'tour_destination_design3_title_backdrop' => 'yes',
                 ],
             ]
@@ -907,7 +907,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'des_style' => 'design-3', 
+                    'des_style' => 'design-3',
                 ],
             ]
         );
@@ -937,13 +937,13 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 ]
             ]
         );
- 
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_title_typography',
                 'selector' => '{{WRAPPER}} .tft-destination-design-3 .tft-desination-content a h3',
-                
+
                 'label'    => __('Typography', 'travelfic-toolkit'),
 
                 'condition' => [
@@ -1052,7 +1052,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             $tft_sec_title = $settings['des_title'];
         }
 
-        $section_title_backdrop = $settings['tour_destination_design3_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
+        $section_title_backdrop = $settings['tour_destination_design3_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
 
         if (!empty($settings['des_subtitle'])) {
             $tft_sec_subtitle = $settings['des_subtitle'];
@@ -1199,7 +1199,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 if (!empty($meta['image'])) {
                                     $cat_image = $meta['image'];
                                 } else {
-                                    $cat_image = 'https://via.placeholder.com/450x600';
+                                    $cat_image = 'https://theme-demo.themefic.com/wp-content/uploads/2025/01/placeholder-450x600-1.jpg';
                                 }
                         ?>
                                 <div class="tft-single-destination">
@@ -1271,7 +1271,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
                                 <div class="tft-section-content">
@@ -1288,13 +1288,12 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                         <?php
                         foreach ($all_destination_categories as $cat) {
                             if ($cat->category_parent == 0) {
-
                                 $category_id = $cat->term_id;
                                 $meta = get_term_meta($cat->term_id, 'tf_tour_destination', true);
                                 if (!empty($meta['image'])) {
                                     $cat_image = $meta['image'];
                                 } else {
-                                    $cat_image = 'https://via.placeholder.com/450x600';
+                                    $cat_image = 'https://theme-demo.themefic.com/wp-content/uploads/2025/01/placeholder-450x600-1.jpg';
                                 }
                         ?>
                                 <div class="tft-single-destination">
@@ -1308,10 +1307,14 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
 
                                     </div>
                                 </div>
-                        <?php } else {
-                            }
-                        } ?>
-
+                            <?php }
+                        }
+                        if (!empty($settings['readme_label'])) { ?>
+                            <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn tft-btn--mobile" target="_blank">
+                                <?php echo esc_html($settings['readme_label']); ?>
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -1438,31 +1441,31 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                         $(document).ready(function() {
                             //Your Code Inside
                             $('.tft-destination-design-4 .tft-destination-slider').slick({
-                              dots: false,
-                              arrows: true,
-                              infinite: true,
-                              speed: 300,
-                              autoplaySpeed: 2000,
-                              slidesToShow: 3,
-                              slidesToScroll: 1,
-                              prevArrow: '.tft-destination-design-4 .tft-prev-slide',
-                              nextArrow: '.tft-destination-design-4 .tft-next-slide',
-                              responsive: [{
-                                      breakpoint: 1024,
-                                      settings: {
-                                          slidesToShow: 2,
-                                          slidesToScroll: 1,
-                                          infinite: true,
-                                      }
-                                  },
-                                  {
-                                      breakpoint: 620,
-                                      settings: {
-                                          slidesToShow: 1,
-                                          slidesToScroll: 1
-                                      }
-                                  }
-                              ]
+                                dots: false,
+                                arrows: true,
+                                infinite: true,
+                                speed: 300,
+                                autoplaySpeed: 2000,
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                                prevArrow: '.tft-destination-design-4 .tft-prev-slide',
+                                nextArrow: '.tft-destination-design-4 .tft-next-slide',
+                                responsive: [{
+                                        breakpoint: 1024,
+                                        settings: {
+                                            slidesToShow: 2,
+                                            slidesToScroll: 1,
+                                            infinite: true,
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 620,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    }
+                                ]
                             });
                         });
 

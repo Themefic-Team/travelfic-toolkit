@@ -1,21 +1,21 @@
 (function ($) {
-    // Typography Selection Helper Function
-    function initializeTypographySelect(controlID, placeholderText) {
-      wp.customize.control(controlID, function(control) {
-        control.container.find('select').select2({
-          placeholder: placeholderText,
-          allowClear: true
-        });
+    // Heading Typography Selection
+    wp.customize.control( 'travelfic_customizer_settings_heading_font_family', function( control ) {
+      control.container.find( 'select' ).select2({
+        placeholder: 'Select Fonts Family',
+        allowClear: true
       });
-    }
+    });
 
-    // Initialize Heading Typography Selection
-    initializeTypographySelect('travelfic_customizer_settings_heading_font_family', 'Select Fonts Family');
+    // Body Typography Selection
+    wp.customize.control( 'travelfic_customizer_settings_body_font_family', function( control ) {
+      control.container.find( 'select' ).select2({
+        placeholder: 'Select Fonts Family',
+        allowClear: true
+      });
+    });
 
-    // Initialize Body Typography Selection
-    initializeTypographySelect('travelfic_customizer_settings_body_font_family', 'Select Fonts Family');
-
-
+    // Header Builder Tabs
 
     // Sticky Design
     const makeStickyDesign = () => {
@@ -107,7 +107,7 @@
         if ('design' === value) {
           $('li[id*="travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_design_2_top_header_color"], li[id*="customize-control-travelfic_customizer_settings_header_section_opt"], li[id*="customize-control-travelfic_customizer_settings_menu_color"], li[id*="customize-control-travelfic_customizer_settings_menu_hover_color"], li[id*="customize-control-travelfic_customizer_settings_submenu_bg"], li[id*="customize-control-travelfic_customizer_settings_submenu_text_color"], li[id*="customize-control-travelfic_customizer_settings_submenu_text_hover_color"], li[id*="customize-control-travelfic_customizer_settings_header_menu_typo"], li[id*="customize-control-travelfic_customizer_settings_header_submenu_typo"] ').show();
           
-          $('li[id*="customize-control-travelfic_customizer_settings_header_design_select"], li[id*="customize-control-travelfic_customizer_settings_header_sticky_section_opt"], #customize-control-travelfic_customizer_settings_stiky_header, li[id*="customize-control-travelfic_customizer_settings_transparent_header"], li[id*="customize-control-travelfic_customizer_settings_header_width"]').hide();
+          $('li[id*="customize-control-travelfic_customizer_settings_header_design_select"], li[id*="customize-control-travelfic_customizer_settings_header_sticky_section_opt"], #customize-control-travelfic_customizer_settings_stiky_header, li[id*="customize-control-travelfic_customizer_settings_transparent_header"], li[id*="customize-control-travelfic_customizer_settings_header_width"],li[id*="customize-control-travelfic_customizer_settings_design_3_header_btn_bg_color"], li[id*="customize-control-travelfic_customizer_settings_design_3_header_btn_hover_bg_color"]').hide();
 
           // Design 2 settings hide for design tab
           $('li[id*="customize-control-travelfic_customizer_settings_design_2_top_header_color"], li[id*="customize-control-travelfic_customizer_settings_design_2_top_header_bg"], li[id*="travelfic_customizer_settings_header_design_2_topbar"], li[id*="travelfic_customizer_settings_header_design_2_section_opt"],li[id*="travelfic_customizer_settings_design_2_phone"],li[id*="travelfic_customizer_settings_design_2_email"], li[id*="travelfic_customizer_settings_design_2_registration_url"], li[id*="travelfic_customizer_settings_design_2_login_url"]').hide();
@@ -120,6 +120,12 @@
           $('li[id*="travelfic_customizer_settings_transparent_showing"], li[id*="travelfic_customizer_settings_trasnparent_logo"]').hide();
 
           $('li[id*="customize-control-travelfic_customizer_settings_transparent_menu_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_menu_hover_color"], li[id*="customize-control-travelfic_customizer_settings_header_bg_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_header_section_opt"], li[id*="customize-control-travelfic_customizer_settings_transparent_header_bg_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_bg"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_text_color"], li[id*="customize-control-travelfic_customizer_settings_transparent_submenu_text_hover_color"]').show();
+
+
+          const headerDesign = $('input[name="travelfic_customizer_settings_header_design_select"]:checked').val();
+          if ('design3' === headerDesign) {
+            $('li[id*="customize-control-travelfic_customizer_settings_design_3_header_btn_bg_color"], li[id*="customize-control-travelfic_customizer_settings_design_3_header_btn_hover_bg_color"]').show();
+          }
 
           makeStickyDesign();
 

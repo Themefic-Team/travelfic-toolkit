@@ -998,10 +998,12 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 								}
 							},
 							{
-								breakpoint: 600,
+								breakpoint: 640,
 								settings: {
 									slidesToShow: 1,
-									slidesToScroll: 1
+									slidesToScroll: 1,
+									centerMode: true,
+									adaptiveHeight: false,
 								}
 							},
 						]

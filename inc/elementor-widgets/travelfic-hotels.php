@@ -2387,7 +2387,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         $tf_featured_text = !empty($option_meta['featured_text']) ? $option_meta['featured_text'] : 'Featured';
 
                                         // pricing
-                                        $tf_pricing = $option_meta['pricing'];
+                                        $tf_pricing = !empty($option_meta['pricing']) ? $option_meta['pricing'] : '';
+
+
                                         if ($tf_pricing === 'group') {
                                             $tf_total_price = $option_meta['group_price'] ?? 0;
                                         } else {
@@ -2450,10 +2452,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 <!-- destination rating -->
                                                 <?php echo tf_review_star_rating((float) $tf_average_rating);  ?>
                                                 <!-- destination location -->
-                                                <span class="tft-desination-location">
-                                                    <i class="ri-map-pin-line"></i>
-                                                    <span><?php echo esc_html($tf_location); ?></span>
-                                                </span>
+                                                <?php if(!empty($tf_location)): ?>
+                                                    <span class="tft-desination-location">
+                                                        <i class="ri-map-pin-line"></i>
+                                                        <span><?php echo esc_html($tf_location); ?></span>
+                                                    </span> 
+                                                <?php endif; ?>
                                                 <!-- destination title -->
                                                 <h2 class="tft-desination-title">
                                                     <a href="<?php echo esc_url(get_the_permalink()) ?>">
@@ -2534,10 +2538,11 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         }
                                     },
                                     {
-                                        breakpoint: 620,
+                                        breakpoint: 640,
                                         settings: {
                                             slidesToShow: 1,
-                                            slidesToScroll: 1
+                                            slidesToScroll: 1,
+                                            centerMode: true
                                         }
                                     }
                                 ]

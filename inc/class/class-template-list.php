@@ -116,9 +116,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                             </div>
                             <div class="hover">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                                <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" fill="#EBF5FF"/>
-                                <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="#CFE5FC"/>
-                                <path d="M15.9994 14.8149L20.1475 10.6667L21.3327 11.8519L17.1846 16.0001L21.3327 20.1482L20.1475 21.3334L15.9994 17.1853L11.8512 21.3334L10.666 20.1482L14.8142 16.0001L10.666 11.8519L11.8512 10.6667L15.9994 14.8149Z" fill="#27333F"/>
+                                    <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" fill="#EBF5FF"/>
+                                    <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="#CFE5FC"/>
+                                    <path d="M15.9994 14.8149L20.1475 10.6667L21.3327 11.8519L17.1846 16.0001L21.3327 20.1482L20.1475 21.3334L15.9994 17.1853L11.8512 21.3334L10.666 20.1482L14.8142 16.0001L10.666 11.8519L11.8512 10.6667L15.9994 14.8149Z" fill="#27333F"/>
+                                </svg>
                             </div>
                             </svg>
                         </div>
@@ -246,6 +247,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="demo-hotel-import-btn" style="display: none;"><?php esc_html_e("Hotel Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-tour-import-btn" style="display: none;"><?php esc_html_e("Tour Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-car-import-btn" style="display: none;"><?php esc_html_e("Car Import", "travelfic-toolkit"); ?></span>
+                        <span class="demo-tragaway-import-btn" style="display: none;"><?php esc_html_e("Tragaway Import", "travelfic-toolkit"); ?></span>
                         <span class="demo-page-import-btn" style="display: none;"><?php esc_html_e("Pages Import", "travelfic-toolkit"); ?></span>
                         <span class="plug-tourfic-btn" style="display: none;"><?php esc_html_e("Tourfic Install", "travelfic-toolkit"); ?></span>
                         <span class="plug-cf7-btn" style="display: none;"><?php esc_html_e("CF7 Install", "travelfic-toolkit"); ?></span>
@@ -337,7 +339,6 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 </div>
                             <?php } ?>
                         <?php } } ?>
-
                     </div>
                 </div>
             </div>

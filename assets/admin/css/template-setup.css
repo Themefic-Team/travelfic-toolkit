@@ -839,3 +839,23 @@ body.admin_page_travelfic-template-list {
         grid-template-columns: 1fr;
     }
 }
+
+#elementor-global-settings{
+    display: inline-block;
+    border-radius: 8px;
+    border: 1px solid #003C79;
+    color: white;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 14px 32px;
+    margin: 0;
+    cursor: pointer;
+    transition: .3s all ease;
+    background: #003C79;
+    height: 52px;
+    box-sizing: border-box;
+    margin-top: 50px;
+}

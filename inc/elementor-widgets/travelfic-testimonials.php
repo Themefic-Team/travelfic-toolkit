@@ -328,7 +328,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'px' => [
                         'min' => 100,
                         'max' => 1000,
-                        'step' => 100   
+                        'step' => 100
                     ],
                 ],
                 'condition' => [
@@ -348,7 +348,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'px' => [
                         'min' => 100,
                         'max' => 1000,
-                        'step' => 100   
+                        'step' => 100
                     ],
                 ],
                 'condition' => [
@@ -1837,7 +1837,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             <?php } ?>
 
                             <?php if ($tftSliderDisable == false && 'true' === $design3_slider_arrows): ?>
-                                <div class="tft-slider-arrows">
+                                <div class="tft-slider-arrows tft-slider-arrows--desktop">
                                     <button type="button" class="tft-slider-prev tft-arrow">
                                         <i class="ri-arrow-left-line"></i>
                                     </button>
@@ -1876,6 +1876,17 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                 } ?>
                             </div>
                         </div>
+                        <!-- responsive view -->
+                        <?php if ($tftSliderDisable == false && 'true' === $design3_slider_arrows): ?>
+                            <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                                <button type="button" class="tft-slider-prev tft-arrow">
+                                    <i class="ri-arrow-left-line"></i>
+                                </button>
+                                <button type="button" class="tft-slider-next tft-arrow">
+                                    <i class="ri-arrow-right-line"></i>
+                                </button>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

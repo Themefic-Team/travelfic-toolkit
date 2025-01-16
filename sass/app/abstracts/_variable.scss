@@ -1,11 +1,11 @@
-// @import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 // ================================ //
 // font family variable
 // ================================ //
 
 $font-ubuntu: "Ubuntu", sans-serif;
 $font-caveat: "Caveat", cursive;
-$font-brygada: "Brygada 1918", sans-serif;
+$font-brygada: "Brygada 1918", serif;
 
 // ================================ //
 // color variable
@@ -15,15 +15,18 @@ $tft_primary_color : #B58E53;
 $tft_secondary_color : #595349;
 $tft_white : #FDF9F3;
 $tft_grey : #595349;
-$color-primary: var(--primary-color);
-$color-secondary: var(--secondary-color);
-$color-blue: var(--blue-color);
-$color-black: var(--black-color);
-$color-black2: var(--heading-color);
-$color-white: var(--white-color);
+$color-primary: #FA6400;
+$color-secondary: #0e3dd8;
+$color-blue: #07245f;
+$color-dark-blue: #101f36;
+$color-dark-blue2: #203453;
+$color-dark-blue3:#132847;
+$color-black: #000000;
+$color-black2: #060d1c;
+$color-white: #ffffff;
 $color-light-white: #efefef;
 $color-gray: #D9D9D9;
-$color-gray2: var(--text-color);
+$color-gray2: #686e7a;
 
 
 // ================================ //
