@@ -133,6 +133,24 @@ main {
   padding-right: 32px;
 }
 
+.single input#submit {
+  background: #FA6400;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.single input#submit:hover {
+  background-color: #0e3dd8;
+}
+
+.comment-form-cookies-consent input {
+  width: auto;
+}
+.comment-form-cookies-consent label {
+  cursor: pointer;
+}
+
 /**Font Size & Font Family**/
 h1,
 h2,
@@ -1324,6 +1342,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3 {
   background: #07245f;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: relative;
+  z-index: 99991;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-design-3 {
@@ -2311,6 +2331,15 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     right: 20px;
     color: white;
     top: 14px;
+  }
+}
+
+.search-results .tft-design-3 {
+  margin-bottom: 50px;
+}
+@media only screen and (max-width: 767.98px) {
+  .search-results .tft-design-3 {
+    margin-bottom: 40px;
   }
 }
 
@@ -5769,6 +5798,23 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 #tf-cf7-contact-form input::focus,
 #tf-cf7-contact-form textarea::focus {
   border: 2px solid #99948D !important;
+}
+
+.tf_template_3_global_layouts .footer .container {
+  max-width: 1220px !important;
+}
+@media only screen and (max-width: 1760px) {
+  .tf_template_3_global_layouts .footer .container {
+    padding: 0 15px !important;
+  }
+}
+.tf_template_3_global_layouts .footer-bottom .container {
+  max-width: 1220px !important;
+}
+@media only screen and (max-width: 1760px) {
+  .tf_template_3_global_layouts .footer-bottom .container {
+    padding: 0 15px !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

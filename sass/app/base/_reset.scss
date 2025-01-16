@@ -14,6 +14,7 @@ body {
   font-weight: 400;
   overflow-x: hidden;
 }
+
 main {
   margin-bottom: 56px;
 }
@@ -52,6 +53,7 @@ ul {
   margin: 0px;
   padding: 0px;
 }
+
 li {
   list-style: none;
 }
@@ -93,34 +95,60 @@ main {
   max-width: 1220px;
   margin: 0 auto;
   padding: 0;
-  &.tft-fullwidth-container{
+
+  &.tft-fullwidth-container {
     max-width: 100%;
+
     @media #{$max1199} {
       padding: 0 15px;
     }
   }
+
   @media #{$max1760} {
     padding: 0 15px;
   }
 }
 
 
-.tft-w-padding{
+.tft-w-padding {
   padding-left: 200px;
   padding-right: 200px;
 
-  @media #{$max1366}{
+  @media #{$max1366} {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
-.tft-l-padding{
+
+.tft-l-padding {
   padding-left: 200px;
-  @media #{$max1366}{
+
+  @media #{$max1366} {
     padding-left: 32px;
   }
 }
-.tft-fullwidth-container{
+
+.tft-fullwidth-container {
   padding-left: 32px;
   padding-right: 32px;
 }
+
+.single {
+  input#submit {
+    background: $color-primary;
+    @include transition(.3s);
+    &:hover {
+      background-color: $color-secondary;
+    }
+  }
+}
+
+.comment-form-cookies-consent {
+  input {
+    width: auto;
+  }
+  label{
+    cursor: pointer;
+  }
+}
+

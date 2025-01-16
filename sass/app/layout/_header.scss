@@ -464,6 +464,8 @@ header.tft-design-2 {
   // min-height: 151px;
   // overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: relative;
+  z-index: 99991;
 
   @media #{$max767} {
     min-height: auto;
@@ -472,7 +474,6 @@ header.tft-design-2 {
 
   // container
   &__container {
-
     // max-width: 1678px;
     @media #{$max991} {
       padding: 0;
@@ -1356,5 +1357,14 @@ header.tft-design-2 {
     right: 20px;
     color: white;
     top: 14px;
+  }
+}
+
+.search-results{
+  .tft-design-3{
+    margin-bottom: 50px;
+    @media #{$max767} {
+      margin-bottom: 40px;
+    }
   }
 }

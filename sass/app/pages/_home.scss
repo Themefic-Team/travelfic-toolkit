@@ -1157,11 +1157,11 @@
         @media #{$max1199} {
           width: 50px;
           height: 50px;
-          border-color: $color-gray2;
+          border-color: $color-text;
         }
 
         i {
-          color: $color-gray2;
+          color: $color-text;
           font-size: 16px;
           line-height: normal;
         }
@@ -1269,7 +1269,7 @@
               margin: 0;
 
               p {
-                color: $color-gray2;
+                color: $color-text;
                 font-family: $font-ubuntu;
                 font-size: 16px;
 
@@ -1333,7 +1333,7 @@
                 }
 
                 p {
-                  color: $color-gray2;
+                  color: $color-text;
                   font-family: $font-ubuntu;
                   font-size: 14px;
 
@@ -1774,7 +1774,7 @@
 
         .tft-details {
           margin-bottom: 0;
-          color: $color-gray2;
+          color: $color-text;
           font-family: $font-ubuntu;
           line-height: 26px;
 
@@ -1988,7 +1988,7 @@
               @include d-flex();
               @include align-items(center);
               gap: 10px;
-              color: $color-gray2;
+              color: $color-text;
               font-family: $font-ubuntu;
               font-size: 16px;
 
@@ -2307,7 +2307,7 @@
 
           .tft-desination-location {
             display: block;
-            color: $color-gray2;
+            color: $color-text;
             font-size: 16px;
             margin-top: 8px;
 
@@ -2366,7 +2366,7 @@
           .tft-desination-price {
             .tft-desination-price-title {
               display: block;
-              color: $color-gray2;
+              color: $color-text;
               font-family: $font-ubuntu;
               font-size: 14px;
               font-weight: 400;
