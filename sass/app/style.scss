@@ -1,0 +1,25 @@
+// Abstract Styles
+
+@import "./abstracts/mixins";
+@import "./abstracts/variable";
+
+//Base Styles
+@import "./base/reset";
+@import "./base/typography";
+
+//Component
+@import "./component/button";
+@import "./component/common";
+@import "./component/loader";
+
+
+//Layout
+@import "./layout/footer";
+@import "./layout/header";
+
+//Pages Styles
+@import "./pages/home";
+@import "./pages/about";
+@import "./pages/contact";             
+@import "./pages/design-2";             
+@import "./pages/single";             

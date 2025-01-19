@@ -76,6 +76,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
 
+            update_option('travelfic_template_version', $template_key);
 
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
             $forms_files = wp_remote_get( $demo_forms_data_url );
@@ -130,7 +131,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                     // Create the attachment for the uploaded image
                                     $page_attachment = array(
                                         'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                        'post_mime_type' => 'image/jpeg',
+                                        'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
                                         'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
                                         'post_content'   => '',
                                         'post_status'    => 'inherit'
@@ -168,7 +169,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             // Create the attachment for the uploaded image
                             $page_attachment = array(
                                 'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                'post_mime_type' => 'image/jpeg',
+                                'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
                                 'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
                                 'post_content'   => '',
                                 'post_status'    => 'inherit'
