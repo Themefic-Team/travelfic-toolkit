@@ -1,0 +1,32 @@
+.tft-btn {
+  display: block;
+  min-height: 55px;
+  background: $color-primary;
+  font-family: $font-ubuntu;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18.38px;
+  text-align: left;
+  color: $color-white;
+  @include inline-flex();
+  @include align-items(center);
+  @include justify-content(center);
+  @include bd-radius(100px);
+  @include transition(.3s);
+  gap: 5px;
+  min-width: 180px;
+  padding: 0;
+  cursor: pointer;
+  @media #{$max767} {
+    min-height: 45px;
+    font-size: 15px;
+    min-width: 160px;
+  }
+  &:hover{
+    background: $color-secondary;
+    color: $color-white;
+  }
+  &:focus{
+    color: $color-white;
+  }
+}
