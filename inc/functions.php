@@ -273,16 +273,14 @@ if (!function_exists('tf_print')) {
     }
 }
 
-
-
 // Load elementor background image based on travelfic template version
 
 $travelfic_template_version = get_option('travelfic_template_version');
 
 if ('5' === $travelfic_template_version) {
-    add_action('wp_head', 'travelfic_load_elementor_background_image');
+    add_action('wp_head', 'travelfic_load_custom_style');
 
-    function travelfic_load_elementor_background_image()
+    function travelfic_load_custom_style()
     {
 
         global $post;
@@ -343,5 +341,48 @@ if ('5' === $travelfic_template_version) {
                 echo '<style>' . $custom_css . '</style>';
             }
         }
+
+        echo '<style>
+            .tft-single-post p, 
+            .tft-single-page p, 
+            .tft-single-post a, 
+            .tft-right-sidebar a {
+                color: #686e7a;
+            }
+            .tft-single-post h1, 
+            .tft-single-post h2, 
+            .tft-single-post h3, 
+            .tft-single-post h4, 
+            .tft-single-post h5, 
+            .tft-single-post h6, 
+            .tft-single-post li {
+                color: #060d1c;
+            }
+            .tf-bottom-booking-bar .tf-bottom-booking-field-icon,
+            .tf-archive-search-box-wrapper .tf-driver-location-box .tf-submit-button button,
+            .tf-archive-car-section .tf-archive-car-details-warper .tf-archive-header .tf-archive-view ul li.active,
+            .tf-single-car-section .tf-single-car-details-warper .tf-car-booking-form .tf-date-select-box .tf-form-submit-btn button{
+                background: #fa6400;
+            }
+            .tf-archive-search-box-wrapper .tf-driver-location-box .tf-submit-button button:hover,
+            .tf-single-car-section .tf-single-car-details-warper .tf-car-booking-form .tf-date-select-box .tf-form-submit-btn button:hover{
+                background:#0e3dd8;
+            }
+            .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn button, .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn a.view-more{
+                border-color: #fa6400;
+                color:#fa6400;
+            }
+            .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn button:hover, .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn a.view-more:hover {
+                border: 1px solid #fa6400;
+                background: #fa6400;
+            }
+            .tf-single-car-section .tf-review-section .tf-review-form-container .tf-review-submit input[type="submit"]{
+                background: #fa6400!important;
+                transition: all 0.3s linear;
+            }
+            .tf-single-car-section .tf-review-section .tf-review-form-container .tf-review-submit input[type="submit"]:hover{
+                background: #0e3dd8!important;
+            }
+        </style>';
     }
 }
