@@ -15,6 +15,7 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
 // Define a custom control for image selection
 
 
+
 function travelfic_toolkit_customize_register($wp_customize)
 {
     $travelfic_toolkit_prefix = "travelfic_customizer_settings_";
@@ -23,6 +24,8 @@ function travelfic_toolkit_customize_register($wp_customize)
 
     // Customizer Class Include
     require_once(dirname(__FILE__) . '/customizer/customizer-class.php');
+
+
 
 
     /* Header Tab Selection Start*/
@@ -41,29 +44,6 @@ function travelfic_toolkit_customize_register($wp_customize)
         ),
         'priority' => 10,
     )));
-
-    /* Header Tab Selection End*/
-
-    /* Header Image Selection Start*/
-    $wp_customize->add_setting($travelfic_toolkit_prefix . 'header_design_select', array(
-        'default'           => 'design1',
-        'sanitize_callback' => 'travelfic_toolkit_sanitize_radio',
-        "transport" => "refresh",
-    ));
-
-    $wp_customize->add_control(new Travelfic_Toolkit_Image_Select_Control($wp_customize, $travelfic_toolkit_prefix . 'header_design_select', array(
-        'label'    => __('Header Design Option', 'travelfic-toolkit'),
-        'section'  => 'travelfic_customizer_header',
-        'choices'  => array(
-            'design1' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/header-1.png'),
-            'design2' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/header-2.png'),
-            'design3' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/header-3.png'),
-
-        ),
-        'priority' => 10,
-    )));
-
-    /* Header Image Selection End*/
 
 
     /* Header Layout Selection Start*/
@@ -908,48 +888,7 @@ function travelfic_toolkit_customize_register($wp_customize)
         'priority' => 10,
     ));
 
-    // Loader Enable/Disable
-    $wp_customize->add_setting($travelfic_toolkit_prefix . 'page_loader', array(
-        'sanitize_callback' => $travelfic_theme_style == 'travelfic' || $travelfic_theme_style == 'travelfic-child' ? 'travelfic_checkbox_sanitize' : 'ultimate_hotel_booking_checkbox_sanitize',
-        "transport" => "refresh",
-        "default" => true
-    ));
-
-    $wp_customize->add_control(new Travelfic_Toolkit_Switcher_Control($wp_customize, $travelfic_toolkit_prefix . 'page_loader', array(
-        'label'    => __('Enable Loader?', 'travelfic-toolkit'),
-        'section'  => 'travelfic_customizer_page',
-        'priority' => 11,
-    )));
-
-    // Loader background
-    $wp_customize->add_setting($travelfic_toolkit_prefix . 'page_loader_background', array(
-        'default' => '#fff',
-        'sanitize_callback' => 'sanitize_hex_color',
-    ));
-
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $travelfic_toolkit_prefix . 'page_loader_background', array(
-        'label'    => __('Background Color', 'travelfic-toolkit'),
-        'section'  => 'travelfic_customizer_page',
-        'priority' => 11,
-        'active_callback' => function() use ($wp_customize, $travelfic_toolkit_prefix) {
-            return $wp_customize->get_setting($travelfic_toolkit_prefix . 'page_loader')->value();
-        },
-    )));
-
-    // Loader background
-    $wp_customize->add_setting($travelfic_toolkit_prefix . 'page_loader_color', array(
-        'default' => '#FA6400',
-        'sanitize_callback' => 'sanitize_hex_color',
-    ));
-
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $travelfic_toolkit_prefix . 'page_loader_color', array(
-        'label'    => __('Loader Color', 'travelfic-toolkit'),
-        'section'  => 'travelfic_customizer_page',
-        'priority' => 11,
-        'active_callback' => function() use ($wp_customize, $travelfic_toolkit_prefix) {
-        return $wp_customize->get_setting($travelfic_toolkit_prefix . 'page_loader')->value();
-    },
-    )));
+    
 
 
     /* Page Layout Selection End*/
@@ -1100,3 +1039,248 @@ function travelfic_toolkit_customize_register($wp_customize)
 }
 
 add_action("customize_register", "travelfic_toolkit_customize_register");
+
+
+
+
+// add Kirki fields
+add_action('init', function(){
+    
+    // return if Kirki doesn't exist
+    if(!class_exists('travelfic_Kirki')){
+        return;
+    }
+
+    // prefix
+    $prefix = 'travelfic_customizer_settings_';
+
+
+    /**
+     * 
+     * Global Theme Options
+     * 
+    */
+
+
+    /* scroll to top section start*/
+
+    // separator line
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'     => 'custom',
+        'settings' => $prefix . 'page_loader_separator_line',
+        'section'  => 'travelfic_customizer_scroll_to_top',
+        'default'  => '<hr style="border-top: 1px solid #D1D5DB; margin: 0 -22px 20px;">',
+        'tab' => 'general',
+    ));
+
+   
+    // Loader Enable/Disable
+    new \Kirki\Pro\Field\HeadlineToggle([
+        'settings' => $prefix . 'page_loader',
+        'label'    => esc_html__('Loader', 'travelfic'),
+        'section'  => 'travelfic_customizer_scroll_to_top',
+        'tab' => 'general',
+        'default'  => true,
+        'priority'    => 15,
+    ]);
+
+    // loader head
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'page_loader_head',
+        'section'     => 'travelfic_customizer_scroll_to_top',
+        'default'     => '<h2 class="travelfic-customizer-heading tf-mb-12">' . esc_html__('Loader', 'travelfic') . '</h2>',
+        'priority'    => 14,
+        'tab'         => 'design',
+    ]);
+
+    // icon background color
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'color',
+        'settings'    => $prefix . 'page_loader_background',
+        'label'       => esc_html__('Background', 'travelfic'),
+        'section'     => 'travelfic_customizer_scroll_to_top',
+        'tab'         => 'design',
+        'default'     => '#fff',
+        'priority'    => 16,
+    
+    ));
+    // icon color
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'color',
+        'settings'    => $prefix . 'page_loader_color',
+        'label'       => esc_html__('Color', 'travelfic'),
+        'section'     => 'travelfic_customizer_scroll_to_top',
+        'tab'         => 'design',
+        'default'     => '#FA6400',
+        'priority'    => 17,
+        
+    ));
+
+  
+
+    /**
+     * 
+     * Header Theme Options
+     * 
+    */
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'radio-image',
+        'settings'    => $prefix . 'header_design_select',
+        'label'       => esc_html__('Design Presets', 'travelfic'),
+        'section'     => 'travelfic_customizer_header',
+        'default'     => 'design1',
+        'priority' => 11,
+        'choices'     => [
+            'design1' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/header-1.png'),
+            'design2' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/header-2.png'),
+            'design3' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/header-3.png'),
+        ],
+    ]);
+
+ 
+    /**
+     * 
+     * Tourfic Theme Options
+     * 
+    */
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'       => 'kirki-padding',
+        'settings'   => $prefix . 'tourfic_border_radius',
+        'section'    => 'travelfic_customizer_tourfic',
+        'label'      => esc_html__('Border Radius', 'travelfic'),
+        'default'     => [
+            'top'    => 3,
+            'right'  => 3,
+            'bottom' => 3,
+            'left'   => 3,
+        ],
+        'choices'    => [
+            'units' => "PX",
+        ],
+    ));
+
+    /**
+     * 
+     * Social Theme Options
+     * 
+    */
+    
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_head',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<h2 class="travelfic-customizer-heading tf-mb-12">' . esc_html__('Social Content', 'travelfic') . '</h2>',
+        'priority'    => 10,
+    ]);
+
+    //facebook
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_facebook',
+        'label'       => esc_html__('Facebook', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+       
+    ));
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_twitter_before_separator_line',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12 tf-pt-12"></div>',
+    ]);
+
+    //twitter
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_twitter',
+        'label'       => esc_html__('Twitter', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+    
+    ));
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_twitter_after_separator_line',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12 tf-pt-12"></div>',
+    ]);
+
+    //twitter
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_youtube',
+        'label'       => esc_html__('Youtube', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+    
+    ));
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_linkedin_before_separator_line',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12 tf-pt-12"></div>',
+    ]);
+
+    //linkedin
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_linkedin',
+        'label'       => esc_html__('Linkedin', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+    ));
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_linkedin_after_separator_line',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12 tf-pt-12"></div>',
+    ]);
+
+    //instagram
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_instagram',
+        'label'       => esc_html__('Instagram', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+    ));
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_pinterest_before_separator_line',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12 tf-pt-12"></div>',
+    ]);
+
+    //pinterest
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_pinterest',
+        'label'       => esc_html__('Pinterest', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+    ));
+
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'social_pinterest_after_separator_line',
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12 tf-pt-12"></div>',
+    ]);
+
+     //instagram
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'url',
+        'settings'    => $prefix . 'social_reddit',
+        'label'       => esc_html__('Reddit', 'travelfic'),
+        'section'     => 'travelfic_customizer_social',
+        'default'     => '#',
+    ));
+   
+});
