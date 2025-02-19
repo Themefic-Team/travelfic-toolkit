@@ -174,7 +174,7 @@ function travelfic_toolkit_customizer_style()
 
     // footer customizer style
     $travelfic_footer_back_image = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_image');
-    $travelfic_footer_back_overlay = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_overlay_color');
+    $travelfic_footer_back_overlay = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_overlay');
     $travelfic_footer_bg_color = get_theme_mod($travelfic_kit_pre . 'footer_bg_color');
     $travelfic_footer_text_color = get_theme_mod($travelfic_kit_pre . 'footer_text_color');
     $travelfic_footer_btm_left_bg = get_theme_mod($travelfic_kit_pre . 'footer_bottom_left_bg_color');
