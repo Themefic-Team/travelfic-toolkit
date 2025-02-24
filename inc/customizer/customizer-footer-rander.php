@@ -6,7 +6,7 @@ class Travelfic_Customizer_Footer
     public static function travelfic_toolkit_footer_second_design($travelfic_footer)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
-        $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright 2023 Tourfic Development Site by Themefic All Rights Reserved.');
+        $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
         ob_start();
 ?>
         <footer class="tft-design-2">
@@ -15,9 +15,7 @@ class Travelfic_Customizer_Footer
                     <?php dynamic_sidebar('footer_sideabr'); ?>
                 </div>
                 <div class="tft-footer-copyright">
-                    <p>
-                        <?php echo esc_html($design_2_copyright); ?>
-                    </p>
+                    <p><?php echo do_shortcode(esc_html($design_2_copyright)); ?></p>
                 </div>
             </div>
         </footer>
@@ -31,11 +29,12 @@ class Travelfic_Customizer_Footer
         $travelfic_prefix = 'travelfic_customizer_settings_';
         $travelfic_footer_back_image = !empty(get_theme_mod($travelfic_prefix . 'footer_3_bg_image')) ? get_theme_mod($travelfic_prefix . 'footer_3_bg_image') : '';
         
-        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright 2024 Tourfic Development Site by Themefic All Rights Reserved.');
+        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
         $travelfic_menu_1_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_1', 'Privacy Policy');
         $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_2', '#');
         $travelfic_menu_2_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_2', 'View on Maps');
         $travelfic_menu_2_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_2', '#');
+
         ob_start();
     ?>
         <!-- footer -->
@@ -56,7 +55,7 @@ class Travelfic_Customizer_Footer
             <div class="container">
                 <div class="footer-bottom__inner">
                     <div class="footer-bottom__copyright">
-                        <p><?php echo esc_html($travelfic_copyright); ?></p>
+                        <p><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
                     </div>
                     <div class="footer-bottom__menu">
                         <ul class="footer-bottom__nav">

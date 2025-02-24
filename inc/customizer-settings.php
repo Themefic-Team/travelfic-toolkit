@@ -754,7 +754,7 @@ add_action('init', function () {
     // header button background
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'header_button_color',
+        'settings'    => $prefix . 'header_button_colors',
         'label'       => esc_html__('Button Background', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',
@@ -802,8 +802,8 @@ add_action('init', function () {
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => '!=',
+                'value'    => 'design1',
             ],
         ],
     ]);
@@ -815,13 +815,12 @@ add_action('init', function () {
         'label'    => esc_html__('Background', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
         'tab'      => 'design',
-        'default'  => '#1342E0',
         'priority' => 15,
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => '!=',
+                'value'    => 'design1',
             ],
         ],
     ));
@@ -837,8 +836,8 @@ add_action('init', function () {
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => '!=',
+                'value'    => 'design1',
             ],
         ],
     ]);
@@ -849,13 +848,12 @@ add_action('init', function () {
         'label'    => esc_html__('Color', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
         'tab'      => 'design',
-        'default'  => '#ffffff',
         'priority' => 17,
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => '!=',
+                'value'    => 'design1',
             ],
         ],
     ));
@@ -917,7 +915,7 @@ add_action('init', function () {
 
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'header_menu_color',
+        'settings'    => $prefix . 'header_menu_colors',
         'label'       => esc_html__('Color', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',
@@ -1104,7 +1102,7 @@ add_action('init', function () {
     // transparent header submenu color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'transparent_submenu_bg_color',
+        'settings'    => $prefix . 'transparent_submenu_colors',
         'label'       => esc_html__('Submenu Color', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',
