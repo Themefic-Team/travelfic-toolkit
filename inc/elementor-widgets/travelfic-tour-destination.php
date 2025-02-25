@@ -1405,9 +1405,11 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                         <div class="tft-desination-bottom-info">
                                             <!-- destination price -->
                                             <div class="tft-desination-price">
-                                                <span class="tft-desination-price-title"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
+                                                <span class="tft-desination-price-title">
+                                                <?php echo esc_html__('From ', 'travelfic-toolkit') . get_woocommerce_currency(); ?>
+                                                </span>
                                                 <span class="tft-desination-price-value">
-                                                    <?php echo '$', $tf_total_price; ?>
+                                                    <?php echo get_woocommerce_currency_symbol(), $tf_total_price; ?>
                                                 </span>
                                             </div>
                                             <!-- destination button -->
