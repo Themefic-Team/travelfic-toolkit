@@ -267,6 +267,7 @@
     z-index: 99;
     flex-direction: column;
     align-items: end;
+    bottom: inherit;
 
     @media #{$max1760} {
       right: 0;

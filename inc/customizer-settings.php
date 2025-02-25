@@ -895,8 +895,8 @@ add_action('init', function () {
         'priority'    => 20,
     ]);
 
-    travelfic_add_font_size_field($prefix . 'menu_font_size', 'Font Size', 'travelfic_customizer_header', '16');
-    travelfic_add_line_height_field($prefix . 'menu_font_line_height', 'travelfic_customizer_header', '1.2');
+    travelfic_add_font_size_field($prefix . 'menu_font_size', 'Font Size', 'travelfic_customizer_header');
+    travelfic_add_line_height_field($prefix . 'menu_font_line_height', 'travelfic_customizer_header');
     travelfic_add_letter_spacing_field($prefix . 'menu_font_letter_space', 'travelfic_customizer_header');
     travelfic_add_section_divider($prefix . 'section_divider', 'travelfic_customizer_header');
     travelfic_add_text_transform_field($prefix . 'menu_font_transform', 'travelfic_customizer_header');
@@ -989,8 +989,8 @@ add_action('init', function () {
         'priority'    => 27,
     ]);
 
-    travelfic_add_font_size_field($prefix . 'submenu_font_size', 'Font Size', 'travelfic_customizer_header', '16');
-    travelfic_add_line_height_field($prefix . 'submenu_font_line_height', 'travelfic_customizer_header', '1.2');
+    travelfic_add_font_size_field($prefix . 'submenu_font_size', 'Font Size', 'travelfic_customizer_header');
+    travelfic_add_line_height_field($prefix . 'submenu_font_line_height', 'travelfic_customizer_header');
     travelfic_add_letter_spacing_field($prefix . 'submenu_font_letter_space', 'travelfic_customizer_header');
     travelfic_add_section_divider($prefix . 'section_divider', 'travelfic_customizer_header');
     travelfic_add_text_transform_field($prefix . 'submenu_font_transform', 'travelfic_customizer_header');
@@ -1124,7 +1124,7 @@ add_action('init', function () {
         'priority'    => 38,
         'required'    => [
             [
-                'setting'  => $prefix . 'stiky_header',
+                'setting'  => $prefix . 'sticky_header',
                 'operator' => '==',
                 'value'    => true,
             ],
@@ -1134,7 +1134,7 @@ add_action('init', function () {
     //Sticky Header Background color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'color',
-        'settings'    => $prefix . 'stiky_header_bg_color',
+        'settings'    => $prefix . 'sticky_header_bg_color',
         'label'       => esc_html__('Background', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'default'     => '#ffffff',
@@ -1155,13 +1155,13 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'stiky_header_menu_text_color_separator_line',
+        'settings'    => $prefix . 'sticky_header_menu_text_color_separator_line',
         'section'     => 'travelfic_customizer_header',
         'priority'   => 41,
         'tab'      => 'design',
         'required' => [
             [
-                'setting'  => $prefix . 'stiky_header',
+                'setting'  => $prefix . 'sticky_header',
                 'operator' => '==',
                 'value'    => true,
             ],
@@ -1171,7 +1171,7 @@ add_action('init', function () {
     // Sticky Header Menu Color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'color',
-        'settings'    => $prefix . 'stiky_header_menu_text_color',
+        'settings'    => $prefix . 'sticky_header_menu_text_color',
         'label'       => esc_html__('Menu', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'default'     => '#000000',

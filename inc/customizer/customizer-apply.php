@@ -127,7 +127,11 @@ function travelfic_toolkit_customizer_style()
     $travelfic_kit_pre = 'travelfic_customizer_settings_';
 
 
-    // header
+    /**
+     * 
+     * Header Settings 
+     * 
+    */
     $travelfic_header_bg_color = get_theme_mod($travelfic_kit_pre . 'header_bg_color');
 
     // header menu
@@ -137,8 +141,6 @@ function travelfic_toolkit_customizer_style()
     $travelfic_menu_texttransform = sanitize_text_field(get_theme_mod($travelfic_kit_pre . 'menu_font_transform', 'lowercase'));
     $travelfic_menu_decoration = sanitize_text_field(get_theme_mod($travelfic_kit_pre . 'menu_font_decoration', 'inherit'));
     $travelfic_menu_colors = get_theme_mod($travelfic_kit_pre . 'header_menu_colors', []);
-
-    error_log(print_r($travelfic_menu_colors, true));
     if(is_array($travelfic_menu_colors) && !empty($travelfic_menu_colors)){
         $travelfic_menu_color = $travelfic_menu_colors['normal'] ? $travelfic_menu_colors['normal'] : '#222';
         $travelfic_menu_color_hover = $travelfic_menu_colors['hover'] ? $travelfic_menu_colors['hover'] : '#F15D30';
@@ -167,11 +169,11 @@ function travelfic_toolkit_customizer_style()
     }
     
     // header sticky
-    $travelfic_sticky_bg_color = get_theme_mod($travelfic_kit_pre . 'stiky_header_bg_color', '#FDF9F3');
-    $travelfic_sticky_bg_blur = get_theme_mod($travelfic_kit_pre . 'stiky_header_blur', '24');
-    $travelfic_sticky_menu_color = get_theme_mod($travelfic_kit_pre . 'stiky_header_menu_text_color', '#595349');
-    $stiky_bg_opacity = get_theme_mod($travelfic_kit_pre . 'stiky_header_background_opacity', '100%');
-    $stiky_bg_padding = get_theme_mod($travelfic_kit_pre . 'stiky_header_padding', []);
+    $travelfic_sticky_bg_color = get_theme_mod($travelfic_kit_pre . 'sticky_header_bg_color', '#FDF9F3');
+    $travelfic_sticky_bg_blur = get_theme_mod($travelfic_kit_pre . 'sticky_header_blur', '24');
+    $travelfic_sticky_menu_color = get_theme_mod($travelfic_kit_pre . 'sticky_header_menu_text_color', '#595349');
+    $stiky_bg_opacity = get_theme_mod($travelfic_kit_pre . 'sticky_header_background_opacity', '100%');
+    $stiky_bg_padding = get_theme_mod($travelfic_kit_pre . 'sticky_header_padding', []);
     $stiky_bg_padding_top = $stiky_bg_padding['top'] ?? 0;
     $stiky_bg_padding_right = $stiky_bg_padding['right'] ?? 0;
     $stiky_bg_padding_bottom = $stiky_bg_padding['bottom'] ?? 0;
@@ -193,14 +195,16 @@ function travelfic_toolkit_customizer_style()
     // transparent header
     $travelfic_transparent_submenu_bg = get_theme_mod($travelfic_kit_pre . 'transparent_submenu_bg');
     $travelfic_transparent_submenu_colors = get_theme_mod($travelfic_kit_pre . 'transparent_submenu_colors', []);
-
     if(is_array($travelfic_transparent_submenu_colors) && !empty($travelfic_transparent_submenu_colors)){
         $travelfic_transparent_submenu_text = $travelfic_transparent_submenu_colors['normal'] ? $travelfic_transparent_submenu_colors['normal'] : '';
         $travelfic_transparent_submenu_hover = $travelfic_transparent_submenu_colors['hover'] ? $travelfic_transparent_submenu_colors['hover'] : '';
     }
 
 
-    // footer customizer style
+    /**
+     * 
+     * Footer Settings
+    */
     $travelfic_footer_back_image = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_image');
     $travelfic_footer_back_overlay = get_theme_mod($travelfic_kit_pre . 'footer_3_bg_overlay');
     $travelfic_footer_bg_color = get_theme_mod($travelfic_kit_pre . 'footer_bg_color');
