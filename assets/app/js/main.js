@@ -136,14 +136,18 @@ const mobileSidenav = document.getElementById("mobile-sidenav");
 const closeMobileMenu = document.getElementById("close-mobile-menu");
 
 //  Toggle the sidenav
-mobileMenuToggle.addEventListener("click", function () {
-  mobileSidenav.classList.toggle("open");
-});
+if(mobileMenuToggle && mobileSidenav) {
+  mobileMenuToggle.addEventListener("click", function () {
+    mobileSidenav.classList.toggle("open");
+  });
+}
 
 // Close the sidenav
-closeMobileMenu.addEventListener("click", function () {
-  mobileSidenav.classList.remove("open");
-});
+if(closeMobileMenu && mobileSidenav) {
+  closeMobileMenu.addEventListener("click", function () {
+    mobileSidenav.classList.remove("open");
+  });
+}
 
 /**
  *
@@ -152,14 +156,16 @@ closeMobileMenu.addEventListener("click", function () {
  */
 
 const toggleSearchForm = (button, form) => {
-  button.addEventListener("click", function (event) {
-    event.stopPropagation();
-    form.classList.toggle("active");
-  });
+  if(button && form) {
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+      form.classList.toggle("active");
+    });
 
-  form.addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
+    form.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  }
 };
 
 toggleSearchForm(document.getElementById("tftSearchBtn"), document.getElementById("tftSearchForm"));
