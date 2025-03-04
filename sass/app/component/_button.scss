@@ -1,9 +1,9 @@
 .tft-btn {
   display: block;
   min-height: 55px;
-  background: $color-primary;
+  background: $primary-color;
   font-family: $font-ubuntu;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 18.38px;
   text-align: left;
@@ -19,11 +19,11 @@
   cursor: pointer;
   @media #{$max767} {
     min-height: 45px;
-    font-size: 15px;
+    font-size: 0.938rem;
     min-width: 160px;
   }
   &:hover{
-    background: $color-secondary;
+    background: $secondary-color;
     color: $color-white;
   }
   &:focus{

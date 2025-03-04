@@ -9,10 +9,10 @@ html {
 }
 
 body {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
   overflow-x: hidden;
+  @media #{$max767} {
+    font-size: 0.938rem;
+  }
 }
 main {
   margin-bottom: 56px;
@@ -32,6 +32,9 @@ p {
 a {
   text-decoration: none;
 
+  &:focus {
+    border: 0;
+  }
   &:hover {
     text-decoration: none;
   }
@@ -89,7 +92,6 @@ main {
 }
 
 .container {
-  // max-width: 1678px;
   max-width: 1220px;
   margin: 0 auto;
   padding: 0;

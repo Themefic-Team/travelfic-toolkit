@@ -77,46 +77,48 @@
 
         &--subtitle {
           font-family: $font-caveat;
-          font-size: 36px;
+          font-size: 2.25rem;
           font-weight: 400;
           line-height: 45.36px;
           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+          text-transform: capitalize;
 
           @media #{$max1199} {
-            font-size: 32px;
+            font-size: 2rem;
             line-height: 40px;
           }
 
           @media #{$max991} {
-            font-size: 28px;
+            font-size: 1.75rem;
             line-height: 38px;
           }
 
           @media #{$max767} {
-            font-size: 18px;
+            font-size: 1.125rem;
             line-height: normal;
           }
         }
 
         &--title {
           font-family: $font-brygada;
-          font-size: 100px;
+          font-size: 6.25rem;
           font-weight: 500;
           line-height: 117px;
           margin: 14px 0 35px;
+          text-transform: capitalize;
 
           @media #{$max1199} {
-            font-size: 80px;
+            font-size: 5rem;
             line-height: 90px;
           }
 
           @media #{$max991} {
-            font-size: 65px;
+            font-size: 4.063rem;
             line-height: 70px;
           }
 
           @media #{$max767} {
-            font-size: 48px;
+            font-size: 3rem;
             line-height: 58px;
             margin-bottom: 20px;
           }
@@ -156,7 +158,7 @@
     }
 
     @media #{$max1199} {
-      background: #07245f;
+      background: $secondary-color;
       left: -60px;
       gap: 10px;
       padding: 14px 8px;
@@ -183,7 +185,7 @@
           width: 45px;
           height: 45px;
           line-height: 45px;
-          border: 1px solid #d6dff0;
+          border: 1px solid $border-color;
           @include transition(0.3s);
 
           @media #{$max991} {
@@ -193,16 +195,16 @@
           }
 
           &:hover {
-            background: $color-primary;
-            border-color: $color-primary;
+            background: $primary-color;
+            border-color: $primary-color;
           }
 
           i {
-            font-size: 14px;
+            font-size: 0.875rem;
             color: $color-white;
 
             @media #{$max991} {
-              font-size: 12px;
+              font-size: 0.75rem;
             }
           }
         }
@@ -213,8 +215,7 @@
     &__divider {
       width: 1px;
       height: 100px;
-      background: $color-gray;
-
+      background: $border-color;
       @media #{$max767} {
         height: 80px;
       }
@@ -223,13 +224,12 @@
     &__label {
       text-transform: uppercase;
       font-family: $font-ubuntu;
-      font-size: 16px;
       font-weight: 500;
-      line-height: 18.38px;
+      line-height: 18px;
       letter-spacing: 0.23em;
       writing-mode: tb-rl;
       transform: rotate(180deg);
-      color: white;
+      color: $color-white;
     }
   }
 
@@ -335,279 +335,10 @@
   }
 }
 
-// travel form
-.tft-travel {
-  padding: 80px 0;
-  background-color: $color-secondary;
-
-  @media #{$max1199} {
-    padding: 60px 0;
-  }
-
-  @media #{$max991} {
-    padding: 50px 0;
-  }
-
-  @media #{$max767} {
-    padding: 40px 0;
-  }
-
-  .container {
-    max-width: 1678px;
-  }
-
-  &__form {
-    &__fieldset {
-      background: transparent;
-      border: 0;
-      padding: 0;
-      @include d-flex();
-      @include align-items(center);
-      @include justify-content(space-between);
-      gap: 70px;
-
-      @media #{$max1366} {
-        gap: 40px;
-      }
-
-      @media #{$max1199} {
-        max-width: 800px;
-        margin: auto;
-        flex-direction: column;
-        @include align-items(start);
-      }
-
-      @media #{$max767} {
-        max-width: 450px;
-        margin: auto;
-        gap: 30px;
-      }
-
-      &__left {
-        max-width: 310px;
-        flex: 1;
-
-        @media #{$max1366} {
-          max-width: 300px;
-        }
-
-        @media #{$max1199} {
-          max-width: 100%;
-          width: 100%;
-        }
-      }
-
-      &__middle {
-        flex: 1;
-        @include d-flex();
-        @include align-items(center);
-        @include justify-content(space-between);
-
-        @media #{$max1199} {
-          width: 100%;
-        }
-
-        @media #{$max767} {
-          display: grid;
-          gap: 40px;
-          grid-template-columns: repeat(2, 1fr);
-          width: 100%;
-        }
-
-        @media #{$max575} {
-          width: 100%;
-        }
-
-        @media #{$max340} {
-          gap: 25px;
-        }
-      }
-
-      &__right {
-        max-width: 180px;
-        flex: 1;
-      }
-    }
-
-    &__divider {
-      background: #ffffff2e;
-      width: 1px;
-      height: 100px;
-
-      @media #{$max767} {
-        display: none;
-      }
-    }
-
-    &__field {
-      @include d-flex();
-      @include align-items(center);
-      gap: 20px;
-      color: $color-white;
-      position: relative;
-
-      @media #{$max1366} {
-        gap: 16px;
-      }
-
-      @media #{$max767} {
-        gap: 12px;
-      }
-
-      .field--title {
-        font-family: $font-brygada;
-        font-size: 60px;
-        font-weight: 500;
-        line-height: 70.2px;
-
-        @media #{$max1366} {
-          font-size: 50px;
-          line-height: 60.2px;
-        }
-
-        @media #{$max991} {
-          font-size: 40px;
-          line-height: 1;
-        }
-
-        @media #{$max340} {
-          font-size: 35px;
-        }
-      }
-
-      .form--span {
-        display: block;
-        font-family: $font-ubuntu;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 26px;
-
-        @media #{$max991} {
-          font-size: 15px;
-          line-height: 22px;
-        }
-      }
-
-      .form--span__bold {
-        font-weight: bold;
-      }
-
-      &__incdec {
-        span {
-          &.form--span {
-            font-size: 24px;
-            line-height: 27.58px;
-            text-align: center;
-
-            @media #{$max991} {
-              font-size: 20px;
-              line-height: 22.98px;
-            }
-          }
-        }
-      }
-
-      &__icon {
-        line-height: 0;
-
-        svg {
-          @media #{$max1366} {
-            width: 38px;
-            height: auto;
-          }
-
-          @media #{$max991} {
-            width: 35px;
-            height: auto;
-          }
-
-          @media #{$max767} {
-            width: 30px;
-            height: auto;
-          }
-        }
-      }
-
-      .icon--location {
-        position: absolute;
-        top: 17px;
-        right: 22px;
-
-        @media #{$max767} {
-          top: 12px;
-          right: 16px;
-        }
-
-        svg {
-          @media #{$max1366} {
-            width: 12px;
-          }
-        }
-      }
-    }
-
-    &__label {
-      font-family: $font-ubuntu;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 22.98px;
-      color: $color-white;
-      opacity: 0.5;
-      margin-bottom: 28px;
-      display: block;
-
-      @media #{$max991} {
-        font-size: 18px;
-        margin-bottom: 18px;
-      }
-
-      @media #{$max767} {
-        font-size: 16px;
-        margin-bottom: 12px;
-      }
-    }
-
-    input[type="text"] {
-      width: 100%;
-      background: #2051f5;
-      color: $color-white;
-      border: 0;
-      font-family: $font-ubuntu;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 18.38px;
-      padding: 16px 25px 21px;
-      @include bd-radius(5px);
-
-      @media #{$max767} {
-        font-size: 14px;
-        padding: 12px 16px 16px;
-      }
-
-      &::placeholder {
-        color: $color-white;
-      }
-    }
-
-    button[type="submit"] {
-      @include bd-radius(5px);
-      gap: 15px;
-      padding: 0;
-      cursor: pointer;
-      border: 0;
-
-      &:hover {
-        background: $color-blue;
-      }
-    }
-  }
-}
-
 // about us design 2
 .tft-about-design-2 {
   padding-bottom: 104px;
   position: relative;
-  // z-index: 1;
   overflow-x: hidden;
 
   @media #{$max1399} {
@@ -651,7 +382,7 @@
         top: 40px;
         width: 10px;
         height: 150px;
-        background-color: $color-primary;
+        background-color: $primary-color;
         z-index: 1;
 
         @media #{$max767} {
@@ -781,29 +512,22 @@
               }
 
               i {
-                color: $color-primary;
-                font-size: 18px;
-                font-weight: 400;
-                line-height: 28px;
-
+                color: $primary-color;
+                font-size: 1.125rem;
                 @media #{$max767} {
-                  font-size: 16px;
-                  line-height: normal;
+                  font-size: 1rem;
                   margin-top: 2px;
                 }
               }
             }
 
             .text {
-              color: $color-black;
+              color: $heading-color;
               font-family: $font-ubuntu;
-              font-size: 18px;
-
-              font-weight: 400;
+              font-size: 1.125rem;
               line-height: normal;
-
               @media #{$max767} {
-                font-size: 16px;
+                font-size: 1rem;
               }
             }
           }
@@ -935,7 +659,7 @@
         button {
           width: 10px;
           height: 10px;
-          background: #e8d9cf;
+          background: $light-background;
           border-radius: 50%;
 
           &::before {
@@ -944,10 +668,10 @@
         }
 
         &.slick-active {
-          border-color: $color-primary;
+          border-color: $primary-color;
 
           button {
-            background: $color-primary;
+            background: $primary-color;
           }
         }
       }
@@ -969,7 +693,6 @@
       .member_img {
         img {
           @include bd-radius(15px);
-          // margin-bottom: 54px;
           max-height: 296px;
           min-height: 296px;
           width: 100%;
@@ -990,31 +713,31 @@
         padding: 0;
 
         h3 {
-          color: $color-primary;
+          color: $primary-color;
           font-family: $font-ubuntu;
-          font-size: 16px;
+          font-size: 1rem;
 
           font-weight: 400;
           line-height: normal;
           margin-bottom: 20px;
 
           @media #{$max767} {
-            font-size: 15px;
+            font-size: 0.938rem;
             margin-bottom: 10px;
           }
         }
 
         p {
-          color: $color-black2;
+          color: $heading-color;
           font-family: $font-brygada;
-          font-size: 24px;
+          font-size: 1.5rem;
 
           font-weight: 700;
           line-height: normal;
           margin-bottom: 0;
 
           @media #{$max767} {
-            font-size: 20px;
+            font-size: 1.25rem;
           }
         }
 
@@ -1030,7 +753,7 @@
           button {
             padding: 16px;
             border-radius: 5px;
-            background: $color-primary;
+            background: $primary-color;
             border: 0;
             box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
 
@@ -1042,12 +765,12 @@
 
             i {
               color: $color-white;
-              font-size: 18px;
+              font-size: 1.125rem;
             }
           }
 
           .social-media {
-            background: $color-primary;
+            background: $primary-color;
             width: fit-content;
             padding: 7px 25px;
             @include bd-radius(4px);
@@ -1158,18 +881,17 @@
         @media #{$max1199} {
           width: 50px;
           height: 50px;
-          border-color: $color-gray2;
+          border-color: $body-color;
         }
 
         i {
-          color: $color-gray2;
-          font-size: 16px;
-          line-height: normal;
+          color: $body-color;
+          font-size: 1rem;
         }
 
         &:hover {
-          background-color: $color-primary;
-          border-color: $color-primary;
+          background-color: $primary-color;
+          border-color: $primary-color;
 
           i {
             color: $color-white;
@@ -1224,7 +946,7 @@
           button {
             width: 10px;
             height: 10px;
-            background: #e8d9cf;
+            background: $light-background;
             border-radius: 50%;
 
             &::before {
@@ -1233,10 +955,10 @@
           }
 
           &.slick-active {
-            border-color: $color-primary;
+            border-color: $primary-color;
 
             button {
-              background: $color-primary;
+              background: $primary-color;
             }
           }
         }
@@ -1268,20 +990,6 @@
           .tft-testimonials-inner {
             .testimonial-review {
               margin: 0;
-
-              p {
-                color: $color-gray2;
-                font-family: $font-ubuntu;
-                font-size: 16px;
-
-                font-weight: 400;
-                line-height: 28px;
-
-                @media #{$max767} {
-                  font-size: 15px;
-                  line-height: 26px;
-                }
-              }
             }
 
             .testimonial-author {
@@ -1310,7 +1018,6 @@
                   width: 45px;
                   height: 45px;
                 }
-
                 img {
                   height: 100%;
                   width: 100%;
@@ -1320,26 +1027,16 @@
 
               .testimonial-author-info {
                 h4 {
-                  color: $color-black2;
                   font-family: $font-brygada;
-                  font-size: 18px;
-
-                  font-weight: 700;
-                  line-height: normal;
-                  margin-bottom: 7px;
-
+                  font-size: 1.125rem;
+                  margin-bottom: 0;
                   @media #{$max767} {
-                    font-size: 16px;
+                    font-size: 1rem;
                   }
                 }
 
                 p {
-                  color: $color-gray2;
-                  font-family: $font-ubuntu;
-                  font-size: 14px;
-
-                  font-weight: 400;
-                  line-height: normal;
+                  font-size: 0.875rem;
                   margin-bottom: 0;
                 }
               }
@@ -1476,31 +1173,30 @@
           position: absolute;
           bottom: 35px;
           left: 35px;
-          color: white;
+          color: $color-white;
 
           a {
             color: $color-white;
             @include transition(0.3s);
 
             h3 {
-              font-family: $font-ubuntu;
-              font-size: 24px;
+              font-size: 1.5rem;
               font-weight: 500;
               line-height: normal;
               margin-bottom: 10px;
+              color: $color-white;
+              text-transform: capitalize;
             }
 
             &:hover {
-              color: $color-primary;
+              color: $primary-color;
             }
           }
 
           p {
             margin-bottom: 0;
-            color: #fff;
-            font-family: $font-ubuntu;
-            font-size: 14px;
-            font-weight: 400;
+            color: $color-white;
+            font-size: 0.875rem;
             line-height: normal;
           }
         }
@@ -1511,10 +1207,10 @@
       height: 50px;
       padding: 16px 36px;
       background: #f2f2f2;
-      color: $color-black2;
+      color: $heading-color;
 
       &:hover {
-        background: $color-primary;
+        background: $primary-color;
         color: $color-white;
       }
 
@@ -1754,20 +1450,18 @@
         .tft-title {
           margin-top: 20px;
           margin-bottom: 20px;
-          color: $color-black2;
           font-family: $font-brygada;
-          font-size: 24px;
-          font-weight: 700;
+          font-size: 1.5rem;
           line-height: normal;
 
           @media #{$max991} {
-            font-size: 22px;
+            font-size: 1.375rem;
             margin-top: 18px;
             margin-bottom: 18px;
           }
 
           @media #{$max767} {
-            font-size: 20px;
+            font-size: 1.25rem;
             margin-top: 15px;
             margin-bottom: 15px;
           }
@@ -1775,12 +1469,8 @@
 
         .tft-details {
           margin-bottom: 0;
-          color: $color-gray2;
-          font-family: $font-ubuntu;
-          line-height: 26px;
 
           @media #{$max767} {
-            font-size: 15px;
             max-width: 340px;
             margin: auto;
           }
@@ -1788,7 +1478,7 @@
 
         &:hover {
           .icon_outter {
-            border: 2px dashed $color-primary;
+            border: 2px dashed $primary-color;
           }
         }
       }
@@ -1827,22 +1517,6 @@
     }
 
     .tft-blog-gird-section {
-      // grid-template-columns: 1fr 1fr;
-      // @media #{$max991} {
-      //   gap: 25px;
-      // }
-      // @media #{$max767} {
-      //   gap: 20px;
-      // }
-      // @media #{$max575} {
-      //   grid: inherit;
-      //   grid-template-columns: 100%;
-      // }
-      // .tft-col-item {
-      //   grid-column: span 1;
-      //   grid-row: auto;
-      // }
-      //
       display: grid;
       grid-template-columns: 40.5%;
       grid-template-rows: auto;
@@ -1912,10 +1586,9 @@
           flex: 1;
 
           .tft-title {
-            color: $color-black2;
+            color: $heading-color;
             font-family: $font-brygada;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 1.5rem;
             line-height: 34px;
             margin: 25px 0 30px;
             overflow: hidden;
@@ -1933,22 +1606,23 @@
 
             a {
               display: contents;
+              color: inherit;
               @include transition(0.1s);
 
               &:hover,
               &:focus,
               :visited {
-                color: $color-primary;
+                color: $primary-color;
               }
             }
 
             @media #{$max991} {
-              font-size: 22px;
+              font-size: 1.375rem;
               line-height: 30px;
             }
 
             @media #{$max767} {
-              font-size: 20px;
+              font-size: 1.25rem;
               line-height: 28px;
             }
           }
@@ -1956,7 +1630,7 @@
           .tft-read-more {
             a {
               display: inline-flex;
-              color: $color-primary;
+              color: $primary-color;
               background: rgba(250, 100, 0, 0.09);
               min-height: 50px;
               min-width: 170px;
@@ -1967,7 +1641,7 @@
               }
 
               &:hover {
-                background: $color-primary;
+                background: $primary-color;
                 color: $color-white;
               }
             }
@@ -1989,17 +1663,11 @@
               @include d-flex();
               @include align-items(center);
               gap: 10px;
-              color: $color-gray2;
-              font-family: $font-ubuntu;
-              font-size: 16px;
-
-              font-weight: 400;
               line-height: normal;
               margin-bottom: 0;
-
               @media #{$max991} {
                 gap: 8px;
-                font-size: 15px;
+                font-size: 0.938rem;
               }
             }
           }
@@ -2030,10 +1698,6 @@
             min-height: auto;
             max-height: inherit;
 
-            // @media #{$max1199} {
-            //   min-height: 270px;
-            //   max-height: 270px;
-            // }
             @media #{$max991} {
               min-height: 250px;
               max-height: 250px;
@@ -2066,16 +1730,16 @@
 
           .tft-content-details {
             .tft-title {
-              font-size: 30px;
+              font-size: 1.875rem;
               line-height: 40px;
 
               @media #{$max991} {
-                font-size: 22px;
+                font-size: 1.375rem;
                 line-height: 30px;
               }
 
               @media #{$max767} {
-                font-size: 20px;
+                font-size: 1.25rem;
                 line-height: 28px;
               }
             }
@@ -2181,7 +1845,6 @@
     .slick-track {
       @include d-flex();
       @include justify-content(center);
-      // width: 100%!important;
     }
 
     .slick-list {
@@ -2217,7 +1880,7 @@
         button {
           width: 10px;
           height: 10px;
-          background: #e8d9cf;
+          background: $light-background;
           border-radius: 50%;
 
           &::before {
@@ -2226,10 +1889,10 @@
         }
 
         &.slick-active {
-          border-color: $color-primary;
+          border-color: $primary-color;
 
           button {
-            background: $color-primary;
+            background: $primary-color;
           }
         }
       }
@@ -2271,11 +1934,10 @@
           .tft-featured {
             @include bd-radius(100px);
             padding: 8px 16px 7px 16px;
-            background: $color-primary;
+            background: $primary-color;
             color: $color-white;
             font-family: $font-ubuntu;
-            font-size: 13px;
-
+            font-size: 0.813rem;
             font-weight: 700;
             line-height: normal;
             text-transform: uppercase;
@@ -2301,19 +1963,20 @@
             gap: 5px;
 
             i {
-              color: $color-primary;
-              font-size: 14px;
+              color: $primary-color;
+              font-size: 0.875rem;
             }
           }
 
           .tft-desination-location {
             display: block;
-            color: $color-gray2;
-            font-size: 16px;
+            color: $body-color;
+            font-size: 1rem;
             margin-top: 8px;
+            text-transform: capitalize;
 
             i {
-              color: $color-primary;
+              color: $primary-color;
               float: left;
               margin-right: 6px;
               margin-top: 1px;
@@ -2328,11 +1991,8 @@
           }
 
           .tft-desination-title {
-            color: $color-black2;
             font-family: $font-brygada;
-            font-size: 24px;
-
-            font-weight: 700;
+            font-size: 1.5rem;
             line-height: 34px;
             margin-bottom: 0px;
             margin-top: 20px;
@@ -2343,9 +2003,10 @@
 
             a {
               @include transition(0.2s);
-
+              color: inherit;
+              text-transform: capitalize;
               &:hover {
-                color: $color-primary;
+                color: $primary-color;
               }
             }
           }
@@ -2367,32 +2028,31 @@
           .tft-desination-price {
             .tft-desination-price-title {
               display: block;
-              color: $color-gray2;
-              font-family: $font-ubuntu;
-              font-size: 14px;
-              font-weight: 400;
+              font-size: 0.875rem;
               line-height: normal;
               margin-bottom: 10px;
+              text-transform: none;
             }
 
             .tft-desination-price-value {
-              color: $color-primary;
+              color: $primary-color;
               font-family: $font-brygada;
-              font-size: 20px;
-              font-weight: 700;
+              font-size: 1.25rem;
               line-height: normal;
+              text-transform: none;
             }
           }
 
           .tft-desination-btn {
             .tft-btn {
               background: rgba(250, 100, 0, 0.1);
-              color: $color-primary;
+              color: $primary-color;
               min-width: 136px;
               min-height: 50px;
+              text-transform: capitalize;
 
               &:hover {
-                background: $color-primary;
+                background: $primary-color;
                 color: $color-white;
               }
             }
@@ -2435,7 +2095,7 @@
     top: 50%;
     transform: translateY(-50%);
     background: $color-white;
-    border: 1px solid #efefef;
+    border: 1px solid $border-color;
     width: 70px;
     height: 70px;
     @include bd-radius(100px);
@@ -2461,9 +2121,9 @@
     }
 
     &:hover {
-      background: $color-primary;
+      background: $primary-color;
       color: $color-white;
-      border-color: $color-primary;
+      border-color: $primary-color;
     }
 
     &.tft-prev-slide {
@@ -2519,13 +2179,13 @@
 
     i {
       color: $color-white;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
 
     &:hover {
-      background: $color-primary;
+      background: $primary-color;
       color: $color-white;
-      border-color: $color-primary;
+      border-color: $primary-color;
     }
 
     &.tft-prev-slide {

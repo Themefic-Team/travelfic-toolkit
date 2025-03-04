@@ -4,10 +4,6 @@
   background-repeat: no-repeat;
   background-position: center center;
   color: $color-white;
-  font-family: $font-ubuntu;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 18.38px;
   z-index: 1;
   position: relative;
   @media #{$max1199} {
@@ -37,20 +33,19 @@
   }
   h2.wp-block-heading,
   h3.wp-block-heading {
-    font-family: $font-ubuntu;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 27.58px;
     padding-bottom: 15px;
     margin-bottom: 32px;
     position: relative;
     @media #{$max991} {
-      font-size: 20px;
+      font-size: 1.25rem;
       margin-bottom: 25px;
       padding-bottom: 12px;
     }
     @media #{$max767} {
-      font-size: 18px;
+      font-size: 1.125rem;
       margin-bottom: 18px;
       padding-bottom: 8px;
     }
@@ -73,42 +68,36 @@
   }
   h4.wp-block-heading {
     color: $color-white;
-    font-family: $font-ubuntu;
-    font-size: 18px;
-    font-style: normal;
+    font-size: 1.125rem;
     font-weight: 500;
     line-height: normal;
     margin-bottom: 16px;
     @media #{$max767} {
-      font-size: 16px;
+      font-size: 1rem;
       margin-bottom: 10px;
     }
   }
   p {
     margin-bottom: 0;
     @media #{$max767} {
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 22px;
     }
   }
   .wp-block-list {
     li {
       a {
-        font-family: $font-ubuntu;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: normal;
         color: $color-white;
         display: block;
-        padding-bottom: 15px;
+        padding-bottom: 8px;
         @include transition(0.2s);
 
         @media #{$max767} {
-          font-size: 15px;
-          padding-bottom: 10px;
+          font-size: 0.938rem;
+          padding-bottom: 5px;
         }
         &:hover {
-          color: $color-primary;
+          color: $primary-color;
         }
       }
       &:last-child {
@@ -125,12 +114,8 @@
     }
     &:first-child {
       max-width: 205px;
-      font-family: $font-ubuntu;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 26px;
       @media #{$max767} {
-        font-size: 15px;
+        font-size: 0.938rem;
         line-height: 24px;
       }
       @media #{$max575} {
@@ -164,8 +149,7 @@
 // footer bottom
 .footer-bottom {
   font-family: $font-ubuntu;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 0.75rem;
   line-height: 13.79px;
   color: $color-white;
   overflow: hidden;
@@ -206,7 +190,7 @@
     }
   }
   &__menu {
-    background: $color-secondary;
+    background: $secondary-color;
     flex: 0.8;
     padding: 16px 0;
     text-align: center;
@@ -222,7 +206,7 @@
       left: 100%;
       padding-right: 100%;
       top: 0;
-      background: $color-secondary;
+      background: $secondary-color;
       width: 100vw;
       height: 100%;
       z-index: 99;
@@ -245,7 +229,7 @@
       color: $color-white;
       @include transition(0.2s);
       &:hover {
-        color: $color-primary;
+        color: $primary-color;
       }
     }
   }
@@ -262,9 +246,6 @@ footer.tft-footer-design-3 {
     @include bd-radius(1000px);
     padding: 16px 32px;
     color: $color-white;
-    font-family: $font-ubuntu;
-    font-size: 16px;
-    font-weight: 400;
     line-height: 18.38px;
     border: 0;
     margin-top: 16px;
@@ -272,7 +253,7 @@ footer.tft-footer-design-3 {
     @media #{$max767} {
       min-height: 45px;
       padding: 10px 25px;
-      font-size: 15px;
+      font-size: 0.938rem;
       margin-top: 12px;
       max-width: 100%;
     }
@@ -285,7 +266,7 @@ footer.tft-footer-design-3 {
     min-width: 174px;
     padding: 0;
     height: 50px;
-    background: $color-secondary !important;
+    background: $secondary-color !important;
     border: 0;
     color: $color-white;
     text-align: center;
@@ -296,10 +277,10 @@ footer.tft-footer-design-3 {
     }
     @media #{$max575} {
       min-height: 45px;
-      font-size: 15px;
+      font-size: 0.938rem;
     }
     &:hover {
-      background: $color-primary !important;
+      background: $primary-color !important;
     }
   }
 }

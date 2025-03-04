@@ -1,6 +1,6 @@
 .tft-design-2 {
     .tft-top-header {
-        background: $tft_secondary_color;
+        background: $secondary-color;
         padding-top: 10px;
         padding-bottom: 10px;
 
@@ -29,7 +29,7 @@
 
                     li {
                         display: inline-flex;
-                        color: $tft_white;
+                        color: $highlights-background;
                         margin-left: 24px;
                         align-items: center;
                         font-weight: 400;
@@ -40,7 +40,7 @@
 
                         a {
                             text-decoration: none;
-                            color: $tft_white;
+                            color: $highlights-background;
                             transition: .3s all ease;
                         }
                     }
@@ -86,7 +86,7 @@
     }
 
     .tft-menus-section {
-        background: $tft_white;
+        background: $highlights-background;
         padding-top: 31px;
         padding-bottom: 31px;
 
@@ -110,7 +110,7 @@
                         a {
                             text-decoration: none;
                             color: $tft_grey;
-                            font-size: 16px;
+                            font-size: 1rem;
                         
                             font-weight: 600;
                             padding: 0px !important;
@@ -126,7 +126,7 @@
                     }
 
                     li.current_page_item>a {
-                        color: $tft_primary_color;
+                        color: $primary-color;
                     }
 
                     li:last-child {
@@ -140,7 +140,7 @@
                     padding: 8px;
 
                     li {
-                        background-color: #fff;
+                        background-color: $color-white;
                         margin-bottom: 4px !important;
                         padding: 10px !important;
                         transition: .3s all ease;
@@ -175,7 +175,7 @@
                 .logo-text {
                     a {
                         text-decoration: none;
-                        font-size: 32px;
+                        font-size: 2rem;
                     
                         font-weight: 700;
                         line-height: normal;
@@ -199,7 +199,7 @@
                         a {
                             padding: 12px 32px;
                             color: $tft_grey;
-                            font-size: 16px;
+                            font-size: 1rem;
                         
                             font-weight: 700;
                             text-decoration: none;
@@ -207,12 +207,12 @@
                             transition: .3s all ease;
 
                             &:hover {
-                                color: $tft_primary_color;
+                                color: $primary-color;
                             }
                         }
 
                         a.login {
-                            border: 1px solid $tft_primary_color;
+                            border: 1px solid $primary-color;
 
                             &:hover {
                                 background: #917242;
@@ -262,7 +262,7 @@
 
                         a {
                             color: $tft_grey;
-                            font-size: 16px;
+                            font-size: 1rem;
                         
                             font-weight: 600;
                             line-height: 130%;
@@ -275,7 +275,7 @@
                             li {
                                 a {
                                     color: $tft_grey;
-                                    font-size: 16px;
+                                    font-size: 1rem;
                                 
                                     font-weight: 600;
                                     line-height: 130%;
@@ -316,7 +316,7 @@
             ul {
                 li {
                     a {
-                        color: $tft_white;
+                        color: $highlights-background;
                     }
                 }
             }
@@ -325,7 +325,7 @@
         .tft-logo {
             .logo-text {
                 a {
-                    color: $tft_white;
+                    color: $highlights-background;
                 }
             }
         }
@@ -334,7 +334,7 @@
             ul {
                 li {
                     a {
-                        color: $tft_white;
+                        color: $highlights-background;
                     }
                 }
             }
@@ -344,7 +344,7 @@
             .tft-header-left {
                 .logo-text {
                     a {
-                        color: $tft_white;
+                        color: $highlights-background;
                     }
                 }
             }
@@ -352,7 +352,7 @@
             .tft-header-center {
                 .tft-mobile_menubar {
                     i {
-                        color: $tft_white;
+                        color: $highlights-background;
                     }
                 }
             }
@@ -362,7 +362,7 @@
     .tft-footer-sections {
         padding-top: 64px;
         padding-bottom: 32px;
-        background-color: $tft_secondary_color;
+        background-color: $secondary-color;
         color: #FAEEDC;
 
         a {
@@ -394,10 +394,10 @@
             }
 
             h2 {
-                font-size: 32px;
+                font-size: 2rem;
             
                 font-weight: 700;
-                color: $tft_primary_color;
+                color: $primary-color;
                 margin-bottom: 24px;
                 line-height: 32px;
             }
@@ -415,12 +415,12 @@
                         text-decoration: none;
                         display: block;
                         color: #FAEEDC;
-                        font-size: 16px;
+                        font-size: 1rem;
                     
                         font-weight: 600;
 
                         &:hover {
-                            color: $tft_white !important;
+                            color: $highlights-background !important;
                         }
                     }
                 }
@@ -440,7 +440,7 @@
             margin-top: 32px;
 
             p {
-                font-size: 16px;
+                font-size: 1rem;
             
                 font-weight: 400;
                 line-height: 130%;
@@ -466,7 +466,7 @@
 
 #tf-cf7-contact-form p {
     font-family: Josefin Sans;
-    font-size: 16px;
+    font-size: 1rem;
 
     font-weight: 600;
     line-height: 130%;
@@ -494,7 +494,7 @@
 #tf-cf7-contact-form input::placeholder,
 #tf-cf7-contact-form textarea::placeholder {
     font-family: Josefin Sans;
-    font-size: 16px;
+    font-size: 1rem;
 
     font-weight: 400;
     line-height: 130%;
@@ -509,7 +509,7 @@
     align-items: flex-end;
     gap: 8px;
     font-family: Josefin Sans;
-    font-size: 16px;
+    font-size: 1rem;
 
     font-weight: 700;
     line-height: 150%;

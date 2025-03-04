@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+:root {
+  --tft-border-color: var(--border-color);
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -10,10 +14,12 @@ html {
 }
 
 body {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
   overflow-x: hidden;
+}
+@media only screen and (max-width: 767.98px) {
+  body {
+    font-size: 0.938rem;
+  }
 }
 
 main {
@@ -33,6 +39,9 @@ p {
 
 a {
   text-decoration: none;
+}
+a:focus {
+  border: 0;
 }
 a:hover {
   text-decoration: none;
@@ -146,13 +155,13 @@ h6 {
 .tft-btn {
   display: block;
   min-height: 55px;
-  background: #FA6400;
+  background: var(--primary-color);
   font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 18.38px;
   text-align: left;
-  color: #ffffff;
+  color: var(--color-white);
   display: -webkit-inline-box;
   display: -moz-inline-box;
   display: -webkit-inline-flex;
@@ -183,16 +192,16 @@ h6 {
 @media only screen and (max-width: 767.98px) {
   .tft-btn {
     min-height: 45px;
-    font-size: 15px;
+    font-size: 0.938rem;
     min-width: 160px;
   }
 }
 .tft-btn:hover {
-  background: #0e3dd8;
-  color: #ffffff;
+  background: var(--secondary-color);
+  color: var(--color-white);
 }
 .tft-btn:focus {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .tft-w-padding {
@@ -224,7 +233,7 @@ h6 {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 99991;
+  z-index: 99999;
 }
 
 .tft-section-space {
@@ -294,53 +303,48 @@ h6 {
 }
 
 .tft-heading-content h3 {
-  color: #FA6400;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: normal;
-  text-transform: uppercase;
   margin-bottom: 17px;
+  text-transform: uppercase;
+  color: var(--primary-color);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-heading-content h3 {
-    font-size: 15px;
+    font-size: 0.938rem;
     margin-bottom: 8px;
   }
 }
 .tft-heading-content h2 {
-  color: #060d1c;
-  font-family: "Brygada 1918", serif;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
+  font-size: 3rem;
   line-height: 58px;
   margin-bottom: 30px;
   max-width: 613px;
   position: relative;
+  text-transform: capitalize;
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-heading-content h2 {
-    font-size: 40px;
+    font-size: 2.5rem;
     line-height: 50px;
   }
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-heading-content h2 {
-    font-size: 35px;
+    font-size: 2.188rem;
     line-height: 45px;
   }
 }
 @media only screen and (max-width: 991.98px) {
   .tft-heading-content h2 {
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 42px;
     margin-bottom: 24px;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-heading-content h2 {
-    font-size: 28px;
+    font-size: 1.75rem;
     line-height: 40px;
     margin-bottom: 20px;
   }
@@ -369,18 +373,10 @@ h6 {
   display: none;
 }
 .tft-heading-content p {
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 26px;
   margin-bottom: 40px;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-heading-content p {
-    font-size: 15px;
-    line-height: 24px;
     margin-bottom: 24px;
   }
 }
@@ -415,14 +411,8 @@ textarea.tft-form-control {
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #dbe0f1;
-  background: #ffffff;
+  background: var(--color-white);
   padding: 17px 25px 18px;
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }
 @media only screen and (max-width: 991.98px) {
   input[type=text].tft-form-control,
@@ -441,7 +431,7 @@ textarea.tft-form-control {
   input[type=datetime-local].tft-form-control,
   input[type=color].tft-form-control,
   textarea.tft-form-control {
-    font-size: 15px;
+    font-size: 0.938rem;
     padding: 12px 20px;
   }
 }
@@ -456,14 +446,10 @@ textarea.tft-form-control {
 }
 
 label.tft-form-label {
-  color: #060d1c;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
   margin-bottom: 25px;
   display: block;
+  font-weight: 500;
 }
 @media only screen and (max-width: 991.98px) {
   label.tft-form-label {
@@ -481,13 +467,12 @@ label.tft-form-label .tft-form-control {
 
 input[type=submit].tft-form-btn {
   height: 55px;
-  background: #FA6400 !important;
+  background: var(--primary-color) !important;
   font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 18.38px;
-  color: #ffffff;
-  border-color: #FA6400;
+  color: var(--color-white);
+  border-color: var(--primary-color);
   -webkit-border-radius: 9999px;
   -moz-border-radius: 9999px;
   border-radius: 9999px;
@@ -501,17 +486,17 @@ input[type=submit].tft-form-btn {
 }
 @media only screen and (max-width: 767.98px) {
   input[type=submit].tft-form-btn {
-    font-size: 15px;
+    font-size: 0.938rem;
     min-width: 160px;
     height: 50px;
   }
 }
 input[type=submit].tft-form-btn:hover {
-  background: #0e3dd8 !important;
-  color: #ffffff;
+  background: var(--secondary-color) !important;
+  color: var(--color-white);
 }
 input[type=submit].tft-form-btn:focus {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .tft-page__loader {
@@ -570,11 +555,7 @@ input[type=submit].tft-form-btn:focus {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  color: #ffffff;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 18.38px;
+  color: var(--color-white);
   z-index: 1;
   position: relative;
 }
@@ -623,8 +604,7 @@ input[type=submit].tft-form-btn:focus {
 }
 .footer h2.wp-block-heading,
 .footer h3.wp-block-heading {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: 27.58px;
   padding-bottom: 15px;
@@ -634,7 +614,7 @@ input[type=submit].tft-form-btn:focus {
 @media only screen and (max-width: 991.98px) {
   .footer h2.wp-block-heading,
   .footer h3.wp-block-heading {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-bottom: 25px;
     padding-bottom: 12px;
   }
@@ -642,7 +622,7 @@ input[type=submit].tft-form-btn:focus {
 @media only screen and (max-width: 767.98px) {
   .footer h2.wp-block-heading,
   .footer h3.wp-block-heading {
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-bottom: 18px;
     padding-bottom: 8px;
   }
@@ -655,7 +635,7 @@ input[type=submit].tft-form-btn:focus {
   left: 0;
   width: 60px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 .footer h3.wp-block-heading {
   padding-bottom: 0;
@@ -665,17 +645,15 @@ input[type=submit].tft-form-btn:focus {
   display: none;
 }
 .footer h4.wp-block-heading {
-  color: #ffffff;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
-  font-style: normal;
+  color: var(--color-white);
+  font-size: 1.125rem;
   font-weight: 500;
   line-height: normal;
   margin-bottom: 16px;
 }
 @media only screen and (max-width: 767.98px) {
   .footer h4.wp-block-heading {
-    font-size: 16px;
+    font-size: 1rem;
     margin-bottom: 10px;
   }
 }
@@ -684,18 +662,14 @@ input[type=submit].tft-form-btn:focus {
 }
 @media only screen and (max-width: 767.98px) {
   .footer p {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 22px;
   }
 }
 .footer .wp-block-list li a {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: normal;
-  color: #ffffff;
+  color: var(--color-white);
   display: block;
-  padding-bottom: 15px;
+  padding-bottom: 8px;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -703,12 +677,12 @@ input[type=submit].tft-form-btn:focus {
 }
 @media only screen and (max-width: 767.98px) {
   .footer .wp-block-list li a {
-    font-size: 15px;
-    padding-bottom: 10px;
+    font-size: 0.938rem;
+    padding-bottom: 5px;
   }
 }
 .footer .wp-block-list li a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 .footer .wp-block-list li:last-child a {
   padding-bottom: 0;
@@ -720,14 +694,10 @@ input[type=submit].tft-form-btn:focus {
 }
 .footer .tft-footer-section:first-child {
   max-width: 205px;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
 }
 @media only screen and (max-width: 767.98px) {
   .footer .tft-footer-section:first-child {
-    font-size: 15px;
+    font-size: 0.938rem;
     line-height: 24px;
   }
 }
@@ -737,7 +707,7 @@ input[type=submit].tft-form-btn:focus {
   }
 }
 .footer .tft-footer-section:first-child a {
-  color: #ffffff;
+  color: var(--color-white);
 }
 .footer .tft-footer-section:first-child p:last-child {
   margin-bottom: 0;
@@ -762,10 +732,9 @@ input[type=submit].tft-form-btn:focus {
 
 .footer-bottom {
   font-family: "Ubuntu", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 0.75rem;
   line-height: 13.79px;
-  color: #ffffff;
+  color: var(--color-white);
   overflow: hidden;
 }
 .footer-bottom__inner {
@@ -815,7 +784,7 @@ input[type=submit].tft-form-btn:focus {
   }
 }
 .footer-bottom__menu {
-  background: #0e3dd8;
+  background: var(--secondary-color);
   flex: 0.8;
   padding: 16px 0;
   text-align: center;
@@ -834,7 +803,7 @@ input[type=submit].tft-form-btn:focus {
   left: 100%;
   padding-right: 100%;
   top: 0;
-  background: #0e3dd8;
+  background: var(--secondary-color);
   width: 100vw;
   height: 100%;
   z-index: 99;
@@ -869,14 +838,14 @@ input[type=submit].tft-form-btn:focus {
   }
 }
 .footer-bottom__nav a {
-  color: #ffffff;
+  color: var(--color-white);
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 .footer-bottom__nav a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 
 footer.tft-design- input[type=email],
@@ -892,10 +861,7 @@ footer.tft-footer-design-3 input[type=text] {
   -moz-border-radius: 1000px;
   border-radius: 1000px;
   padding: 16px 32px;
-  color: #ffffff;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  color: var(--color-white);
   line-height: 18.38px;
   border: 0;
   margin-top: 16px;
@@ -909,7 +875,7 @@ footer.tft-footer-design-3 input[type=text] {
   footer.tft-footer-design-3 input[type=text] {
     min-height: 45px;
     padding: 10px 25px;
-    font-size: 15px;
+    font-size: 0.938rem;
     margin-top: 12px;
     max-width: 100%;
   }
@@ -920,7 +886,7 @@ footer.tft-design-2 input[type=email]::placeholder,
 footer.tft-design-2 input[type=text]::placeholder,
 footer.tft-footer-design-3 input[type=email]::placeholder,
 footer.tft-footer-design-3 input[type=text]::placeholder {
-  color: #ffffff;
+  color: var(--color-white);
 }
 footer.tft-design- input[type=submit],
 footer.tft-design-2 input[type=submit],
@@ -929,9 +895,9 @@ footer.tft-footer-design-3 input[type=submit] {
   min-width: 174px;
   padding: 0;
   height: 50px;
-  background: #0e3dd8 !important;
+  background: var(--secondary-color) !important;
   border: 0;
-  color: #ffffff;
+  color: var(--color-white);
   text-align: center;
   margin-top: 16px;
   -webkit-border-radius: 9999px;
@@ -950,13 +916,13 @@ footer.tft-footer-design-3 input[type=submit] {
   footer.tft-design-2 input[type=submit],
   footer.tft-footer-design-3 input[type=submit] {
     min-height: 45px;
-    font-size: 15px;
+    font-size: 0.938rem;
   }
 }
 footer.tft-design- input[type=submit]:hover,
 footer.tft-design-2 input[type=submit]:hover,
 footer.tft-footer-design-3 input[type=submit]:hover {
-  background: #FA6400 !important;
+  background: var(--primary-color) !important;
 }
 
 footer.tft-footer-design-3::after {
@@ -972,7 +938,7 @@ footer.tft-footer-design-3::after {
 }
 
 header.tft-design-2 .tft-top-header {
-  background: #595349;
+  background: var(--secondary-color);
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -1003,7 +969,7 @@ header.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul {
 }
 header.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li {
   display: inline-flex;
-  color: #FDF9F3;
+  color: var(--highlights-background);
   margin-left: 24px;
   align-items: center;
   font-weight: 400;
@@ -1012,8 +978,7 @@ header.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li svg {
   margin-right: 8px;
 }
 header.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li a {
-  text-decoration: none;
-  color: #FDF9F3;
+  color: var(--highlights-background);
   transition: 0.3s all ease;
 }
 header.tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li:first-child {
@@ -1051,7 +1016,7 @@ header.tft-design-2 .tft-top-header .tft-flex .tft-social-share ul li:first-chil
   }
 }
 header.tft-design-2 .tft-menus-section {
-  background: #FDF9F3;
+  background: var(--highlights-background);
   padding-top: 31px;
   padding-bottom: 31px;
 }
@@ -1073,10 +1038,7 @@ header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li {
   display: inline-block;
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li a {
-  text-decoration: none;
   color: #595349;
-  font-size: 16px;
-  font-style: normal;
   font-weight: 600;
   padding: 0px !important;
 }
@@ -1086,7 +1048,7 @@ header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li .sub-menu li {
   padding: 5px 10px;
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li.current_page_item > a {
-  color: #B58E53;
+  color: var(--primary-color);
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
   margin: 0px;
@@ -1097,7 +1059,7 @@ header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu {
   padding: 8px;
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu li {
-  background-color: #fff;
+  background-color: var(--color-white);
   margin-bottom: 4px !important;
   padding: 10px !important;
   transition: 0.3s all ease;
@@ -1123,9 +1085,7 @@ header.tft-design-2 .tft-menus-section .tft-flex .tft-logo a.custom-logo-link im
   width: 160px;
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-logo .logo-text a {
-  text-decoration: none;
-  font-size: 32px;
-  font-style: normal;
+  font-size: 2rem;
   font-weight: 700;
   line-height: normal;
   color: #595349;
@@ -1145,18 +1105,17 @@ header.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li {
 header.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a {
   padding: 12px 32px;
   color: #595349;
-  font-size: 16px;
-  font-style: normal;
+  font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
   transition: 0.3s all ease;
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a:hover {
-  color: #B58E53;
+  color: var(--primary-color);
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
-  border: 1px solid #B58E53;
+  border: 1px solid var(--primary-color);
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
   background: #917242;
@@ -1185,7 +1144,7 @@ header.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .
 }
 header.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li a {
   color: #595349;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
@@ -1196,7 +1155,7 @@ header.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .
 }
 header.tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul li a {
   color: #595349;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 600;
   line-height: 130%;
@@ -1221,24 +1180,24 @@ header.tft-design-2 .tft-menus-section.tft_has_transparent {
   backdrop-filter: blur(15px);
 }
 header.tft-design-2 .tft-menus-section.tft_has_transparent .tft-menu ul li a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 header.tft-design-2 .tft-menus-section.tft_has_transparent .tft-logo .logo-text a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 header.tft-design-2 .tft-menus-section.tft_has_transparent .tft-account ul li a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 header.tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-left .logo-text a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 header.tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 header.tft-design-2 .tft-footer-sections {
   padding-top: 64px;
   padding-bottom: 32px;
-  background-color: #595349;
+  background-color: var(--secondary-color);
   color: #faeedc;
 }
 header.tft-design-2 .tft-footer-sections a {
@@ -1269,10 +1228,10 @@ header.tft-design-2 .tft-footer-sections .tft-grid .tft-footer-section {
   width: 100%;
 }
 header.tft-design-2 .tft-footer-sections .tft-grid h2 {
-  font-size: 32px;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 700;
-  color: #B58E53;
+  color: var(--primary-color);
   margin-bottom: 24px;
   line-height: 32px;
 }
@@ -1289,12 +1248,12 @@ header.tft-design-2 .tft-footer-sections .tft-grid ul li a {
   text-decoration: none;
   display: block;
   color: #faeedc;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 600;
 }
 header.tft-design-2 .tft-footer-sections .tft-grid ul li a:hover {
-  color: #FDF9F3 !important;
+  color: var(--highlights-background) !important;
 }
 header.tft-design-2 .tft-footer-sections .tft-grid ul li:last-child {
   padding-bottom: 0px;
@@ -1307,7 +1266,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright {
   margin-top: 32px;
 }
 header.tft-design-2 .tft-footer-sections .tft-footer-copyright p {
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 130%;
@@ -1368,14 +1327,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   line-height: 0;
 }
 .tft-design-3__logo a {
-  text-decoration: none;
-  font-size: 32px;
-  font-style: normal;
+  font-size: 2rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--color-white);
 }
 .tft-design-3__logo a:hover {
-  color: #ffffff;
+  color: var(--color-white);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3__logo a img {
@@ -1465,7 +1422,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__content-right {
   flex: 1;
   position: relative;
-  background: #ffffff;
+  background: var(--color-white);
   margin-left: 52px;
 }
 @media only screen and (max-width: 991.98px) {
@@ -1499,7 +1456,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   left: -48px;
   padding-right: 0;
   top: 0;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   height: 100%;
   clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
   z-index: -1;
@@ -1629,7 +1586,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
   .tft-design-3__topbar-right.mobile-view a,
   .tft-design-3__topbar-right.mobile-view select {
-    color: #000000;
+    color: var(--body-text-color);
   }
 }
 @media only screen and (max-width: 575.98px) {
@@ -1710,26 +1667,22 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-align-items: center;
   align-items: center;
   gap: 10.5px;
-  color: #ffffff;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18.38px;
-  font-family: "Ubuntu", sans-serif;
+  color: var(--color-white);
 }
 .tft-design-3__topbar-list-link:hover {
-  color: #ffffff;
+  color: var(--color-white);
 }
 .tft-design-3__topbar-list-link:visited {
-  color: #ffffff;
+  color: var(--color-white);
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-design-3__topbar-list-link {
-    font-size: 15px;
+    font-size: 0.938rem;
   }
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3__topbar-list-link {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 18px;
     gap: 8px;
   }
@@ -1744,10 +1697,10 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-3__topbar-list:hover {
-  color: #ffffff;
+  color: var(--color-white);
 }
 .tft-design-3__topbar-list:focus {
-  color: #ffffff;
+  color: var(--color-white);
   outline: none;
   box-shadow: none;
 }
@@ -1757,16 +1710,16 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__topbar-list-select {
   background: transparent;
   border: 0;
-  color: #ffffff;
+  color: var(--color-white);
   cursor: pointer;
 }
 .tft-design-3__topbar-list-select:focus {
-  color: #ffffff;
+  color: var(--color-white);
   outline: none;
   box-shadow: none;
 }
 .tft-design-3__topbar-list-select option {
-  color: #000000;
+  color: var(--heading-color);
   cursor: pointer;
 }
 .tft-design-3__bars {
@@ -1787,7 +1740,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   .tft-design-3__bars--icon {
     width: 30px;
     height: 2px;
-    background: #000000;
+    background: var(--heading-color);
     position: absolute;
     top: 0;
     cursor: pointer;
@@ -1925,7 +1878,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu {
   position: absolute;
   z-index: 9;
-  background: #ffffff;
+  background: var(--color-white);
   box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
   margin: 0;
   padding: 8px 0px;
@@ -1961,6 +1914,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item a {
   display: block;
   padding: 10px 16px;
+  text-transform: capitalize;
 }
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item-has-children::after {
   top: 50%;
@@ -1977,21 +1931,19 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   transform: translateY(10px);
 }
 .tft-design-3__bottom__nav--list .menu-item a {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 16.09px;
-  text-align: left;
-  color: #000000;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--body-text-color);
   -webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
   text-transform: uppercase;
   padding: 24px 0;
+  text-transform: capitalize;
 }
 .tft-design-3__bottom__nav--list .menu-item a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 .tft-design-3__bottom__right {
   display: -webkit-box;
@@ -2059,7 +2011,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background: #ffffff;
+  background: var(--color-white);
   border: 1px dashed #060d1c;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -2107,6 +2059,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3__bottom__right__list__item--search .search-form {
   min-width: 250px;
+  font-weight: 500;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-design-3__bottom__right__list__item--search .search-form {
@@ -2116,8 +2069,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__bottom__right__list__item--search input[type=search] {
   border: 0;
   padding: 10px 12px;
-  font-size: 14px;
-  color: #000000;
+  font-size: 0.875rem;
+  color: var(--body-text-color);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -2133,9 +2086,9 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 50%;
   transform: translateY(-50%);
   border: 0;
-  background: #FA6400;
-  color: #ffffff;
-  font-size: 14px;
+  background: var(--primary-color);
+  color: var(--color-white);
+  font-size: 0.875rem;
   height: 100%;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2175,13 +2128,13 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   .tft-design-3__bottom__right__button .tft-btn {
     min-width: 140px;
     min-height: 45px;
-    font-size: 15px;
+    font-size: 0.938rem;
   }
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3__bottom__right__button .tft-btn {
     min-height: 38px;
-    font-size: 14px;
+    font-size: 0.875rem;
     min-width: 130px;
   }
 }
@@ -2209,8 +2162,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: absolute;
   top: 10px;
   right: 20px;
-  font-size: 36px;
-  color: white;
+  font-size: 2.25rem;
+  color: var(--color-white);
   background: none;
   border: none;
   cursor: pointer;
@@ -2229,14 +2182,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .mobile-sidenav__nav--list .menu-item a {
   padding: 7px 25px;
-  text-decoration: none;
-  font-size: 16px;
-  color: white;
+  color: var(--color-white);
   display: block;
   transition: 0.3s;
 }
 .mobile-sidenav__nav--list .menu-item a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 .mobile-sidenav__nav--list .menu-item .sub-menu {
   display: none;
@@ -2266,19 +2217,19 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   padding-bottom: 7px;
 }
 .mobile-sidenav__middle ul li a {
-  color: #ffffff;
-  font-size: 15px;
+  color: var(--color-white);
+  font-size: 0.938rem;
 }
 .mobile-sidenav__middle .tf-flex {
   margin: 10px 0;
   gap: 15px;
 }
 .mobile-sidenav__middle .tf-flex .tft-design-3__bottom__right__list__item--link {
-  border-color: #ffffff;
+  border-color: var(--color-white);
   background: transparent;
 }
 .mobile-sidenav__middle .tf-flex .tft-design-3__bottom__right__list__item--link path {
-  fill: #ffffff;
+  fill: var(--color-white);
 }
 .mobile-sidenav__bottom {
   display: none;
@@ -2309,7 +2260,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   .tft-design-3 .menu-item-has-children:after {
     position: absolute;
     right: 20px;
-    color: white;
+    color: var(--color-white);
     top: 14px;
   }
 }
@@ -2405,7 +2356,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  color: #ffffff;
+  color: var(--color-white);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design-4__slider__item {
@@ -2421,51 +2372,53 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-hero-design-4__slider__item__content--subtitle {
   font-family: "Caveat", cursive;
-  font-size: 36px;
+  font-size: 2.25rem;
   font-weight: 400;
   line-height: 45.36px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  text-transform: capitalize;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design-4__slider__item__content--subtitle {
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 40px;
   }
 }
 @media only screen and (max-width: 991.98px) {
   .tft-hero-design-4__slider__item__content--subtitle {
-    font-size: 28px;
+    font-size: 1.75rem;
     line-height: 38px;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design-4__slider__item__content--subtitle {
-    font-size: 18px;
+    font-size: 1.125rem;
     line-height: normal;
   }
 }
 .tft-hero-design-4__slider__item__content--title {
   font-family: "Brygada 1918", serif;
-  font-size: 100px;
+  font-size: 6.25rem;
   font-weight: 500;
   line-height: 117px;
   margin: 14px 0 35px;
+  text-transform: capitalize;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design-4__slider__item__content--title {
-    font-size: 80px;
+    font-size: 5rem;
     line-height: 90px;
   }
 }
 @media only screen and (max-width: 991.98px) {
   .tft-hero-design-4__slider__item__content--title {
-    font-size: 65px;
+    font-size: 4.063rem;
     line-height: 70px;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design-4__slider__item__content--title {
-    font-size: 48px;
+    font-size: 3rem;
     line-height: 58px;
     margin-bottom: 20px;
   }
@@ -2505,7 +2458,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  color: #ffffff;
+  color: var(--color-white);
   gap: 20px;
 }
 @media only screen and (max-width: 1760px) {
@@ -2515,7 +2468,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design-4__social {
-    background: #07245f;
+    background: var(--secondary-color);
     left: -60px;
     gap: 10px;
     padding: 14px 8px;
@@ -2561,7 +2514,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   width: 45px;
   height: 45px;
   line-height: 45px;
-  border: 1px solid #d6dff0;
+  border: 1px solid var(--tft-border-color);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -2575,22 +2528,22 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-design-4__social__list__item--link:hover {
-  background: #FA6400;
-  border-color: #FA6400;
+  background: var(--primary-color);
+  border-color: var(--primary-color);
 }
 .tft-hero-design-4__social__list__item--link i {
-  font-size: 14px;
-  color: #ffffff;
+  font-size: 0.875rem;
+  color: var(--color-white);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-hero-design-4__social__list__item--link i {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 }
 .tft-hero-design-4__social__divider {
   width: 1px;
   height: 100px;
-  background: #D9D9D9;
+  background: var(--tft-border-color);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design-4__social__divider {
@@ -2600,13 +2553,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-hero-design-4__social__label {
   text-transform: uppercase;
   font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
   font-weight: 500;
-  line-height: 18.38px;
+  line-height: 18px;
   letter-spacing: 0.23em;
   writing-mode: tb-rl;
   transform: rotate(180deg);
-  color: white;
+  color: var(--color-white);
 }
 .tft-hero-design-4__mobile--share {
   display: none;
@@ -2712,12 +2664,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-design-4 .slick-dots li.slick-active {
-  border-color: #ffffff;
+  border-color: var(--color-white);
 }
 .tft-hero-design-4 .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: #ffffff;
+  background: var(--color-white);
   border: 0;
   padding: 0;
   font-size: 0;
@@ -2734,316 +2686,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-hero-design-4 .slick-dots li button:before {
   display: none;
-}
-
-.tft-travel {
-  padding: 80px 0;
-  background-color: #0e3dd8;
-}
-@media only screen and (max-width: 1199.98px) {
-  .tft-travel {
-    padding: 60px 0;
-  }
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-travel {
-    padding: 50px 0;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel {
-    padding: 40px 0;
-  }
-}
-.tft-travel .container {
-  max-width: 1678px;
-}
-.tft-travel__form__fieldset {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -moz-box-pack: justify;
-  -ms-flex-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  gap: 70px;
-}
-@media only screen and (max-width: 1366px) {
-  .tft-travel__form__fieldset {
-    gap: 40px;
-  }
-}
-@media only screen and (max-width: 1199.98px) {
-  .tft-travel__form__fieldset {
-    max-width: 800px;
-    margin: auto;
-    flex-direction: column;
-    -webkit-box-align: start;
-    -moz-box-align: start;
-    -ms-flex-align: start;
-    -webkit-align-items: start;
-    align-items: start;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__fieldset {
-    max-width: 450px;
-    margin: auto;
-    gap: 30px;
-  }
-}
-.tft-travel__form__fieldset__left {
-  max-width: 310px;
-  flex: 1;
-}
-@media only screen and (max-width: 1366px) {
-  .tft-travel__form__fieldset__left {
-    max-width: 300px;
-  }
-}
-@media only screen and (max-width: 1199.98px) {
-  .tft-travel__form__fieldset__left {
-    max-width: 100%;
-    width: 100%;
-  }
-}
-.tft-travel__form__fieldset__middle {
-  flex: 1;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -moz-box-pack: justify;
-  -ms-flex-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-}
-@media only screen and (max-width: 1199.98px) {
-  .tft-travel__form__fieldset__middle {
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__fieldset__middle {
-    display: grid;
-    gap: 40px;
-    grid-template-columns: repeat(2, 1fr);
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 575.98px) {
-  .tft-travel__form__fieldset__middle {
-    width: 100%;
-  }
-}
-@media only screen and (max-width: 340px) {
-  .tft-travel__form__fieldset__middle {
-    gap: 25px;
-  }
-}
-.tft-travel__form__fieldset__right {
-  max-width: 180px;
-  flex: 1;
-}
-.tft-travel__form__divider {
-  background: rgba(255, 255, 255, 0.1803921569);
-  width: 1px;
-  height: 100px;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__divider {
-    display: none;
-  }
-}
-.tft-travel__form__field {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  gap: 20px;
-  color: #ffffff;
-  position: relative;
-}
-@media only screen and (max-width: 1366px) {
-  .tft-travel__form__field {
-    gap: 16px;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__field {
-    gap: 12px;
-  }
-}
-.tft-travel__form__field .field--title {
-  font-family: "Brygada 1918", serif;
-  font-size: 60px;
-  font-weight: 500;
-  line-height: 70.2px;
-}
-@media only screen and (max-width: 1366px) {
-  .tft-travel__form__field .field--title {
-    font-size: 50px;
-    line-height: 60.2px;
-  }
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-travel__form__field .field--title {
-    font-size: 40px;
-    line-height: 1;
-  }
-}
-@media only screen and (max-width: 340px) {
-  .tft-travel__form__field .field--title {
-    font-size: 35px;
-  }
-}
-.tft-travel__form__field .form--span {
-  display: block;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 26px;
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-travel__form__field .form--span {
-    font-size: 15px;
-    line-height: 22px;
-  }
-}
-.tft-travel__form__field .form--span__bold {
-  font-weight: bold;
-}
-.tft-travel__form__field__incdec span.form--span {
-  font-size: 24px;
-  line-height: 27.58px;
-  text-align: center;
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-travel__form__field__incdec span.form--span {
-    font-size: 20px;
-    line-height: 22.98px;
-  }
-}
-.tft-travel__form__field__icon {
-  line-height: 0;
-}
-@media only screen and (max-width: 1366px) {
-  .tft-travel__form__field__icon svg {
-    width: 38px;
-    height: auto;
-  }
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-travel__form__field__icon svg {
-    width: 35px;
-    height: auto;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__field__icon svg {
-    width: 30px;
-    height: auto;
-  }
-}
-.tft-travel__form__field .icon--location {
-  position: absolute;
-  top: 17px;
-  right: 22px;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__field .icon--location {
-    top: 12px;
-    right: 16px;
-  }
-}
-@media only screen and (max-width: 1366px) {
-  .tft-travel__form__field .icon--location svg {
-    width: 12px;
-  }
-}
-.tft-travel__form__label {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 22.98px;
-  color: #ffffff;
-  opacity: 0.5;
-  margin-bottom: 28px;
-  display: block;
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-travel__form__label {
-    font-size: 18px;
-    margin-bottom: 18px;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form__label {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-}
-.tft-travel__form input[type=text] {
-  width: 100%;
-  background: #2051f5;
-  color: #ffffff;
-  border: 0;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 18.38px;
-  padding: 16px 25px 21px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-travel__form input[type=text] {
-    font-size: 14px;
-    padding: 12px 16px 16px;
-  }
-}
-.tft-travel__form input[type=text]::placeholder {
-  color: #ffffff;
-}
-.tft-travel__form button[type=submit] {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  gap: 15px;
-  padding: 0;
-  cursor: pointer;
-  border: 0;
-}
-.tft-travel__form button[type=submit]:hover {
-  background: #07245f;
 }
 
 .tft-about-design-2 {
@@ -3106,7 +2748,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 40px;
   width: 10px;
   height: 150px;
-  background-color: #FA6400;
+  background-color: var(--primary-color);
   z-index: 1;
 }
 @media only screen and (max-width: 767.98px) {
@@ -3121,7 +2763,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 106px;
   width: 10px;
   height: 246px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-design-2 .tft-about-us-grid .tft-about-image::after {
@@ -3253,28 +2895,24 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i {
-  color: #FA6400;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 28px;
+  color: var(--primary-color);
+  font-size: 1.125rem;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i {
-    font-size: 16px;
-    line-height: normal;
+    font-size: 1rem;
     margin-top: 2px;
   }
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text {
-  color: #000000;
+  color: var(--heading-color);
   font-family: "Ubuntu", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 1.125rem;
   line-height: normal;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 .tft-about-design-2 .tft-about-us-grid .tft-about-us-content .tft-about-us-button {
@@ -3433,17 +3071,17 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-team-wrapper-v2 .tft-team-members .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: #e8d9cf;
+  background: var(--light-background);
   border-radius: 50%;
 }
 .tft-team-wrapper-v2 .tft-team-members .slick-dots li button::before {
   display: none;
 }
 .tft-team-wrapper-v2 .tft-team-members .slick-dots li.slick-active {
-  border-color: #FA6400;
+  border-color: var(--primary-color);
 }
 .tft-team-wrapper-v2 .tft-team-members .slick-dots li.slick-active button {
-  background: #FA6400;
+  background: var(--primary-color);
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member {
   padding: 30px;
@@ -3451,7 +3089,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  background: #ffffff;
+  background: var(--color-white);
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
   flex-basis: calc(33.33% - 16px);
 }
@@ -3485,30 +3123,30 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   padding: 0;
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details h3 {
-  color: #FA6400;
+  color: var(--primary-color);
   font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: normal;
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details h3 {
-    font-size: 15px;
+    font-size: 0.938rem;
     margin-bottom: 10px;
   }
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p {
-  color: #060d1c;
+  color: var(--heading-color);
   font-family: "Brygada 1918", serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: normal;
   margin-bottom: 0;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details p {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons {
@@ -3524,7 +3162,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons button {
   padding: 16px;
   border-radius: 5px;
-  background: #FA6400;
+  background: var(--primary-color);
   border: 0;
   box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
   cursor: pointer;
@@ -3535,11 +3173,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons button i {
-  color: #ffffff;
-  font-size: 18px;
+  color: var(--color-white);
+  font-size: 1.125rem;
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons .social-media {
-  background: #FA6400;
+  background: var(--primary-color);
   width: fit-content;
   padding: 7px 25px;
   -webkit-border-radius: 4px;
@@ -3557,7 +3195,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   display: flex;
 }
 .tft-team-wrapper-v2 .tft-team-members .tft-single-member .member-details .social-media-icons .social-media a {
-  color: #ffffff;
+  color: var(--color-white);
 }
 .tft-team-wrapper-v2 .tft_team_bottom_shape {
   margin-top: -320px;
@@ -3671,7 +3309,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  background: #ffffff;
+  background: var(--color-white);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -3686,20 +3324,19 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   .tft-testimonials-design-3 .tft-testimonials-content .tft-slider-arrows .tft-arrow {
     width: 50px;
     height: 50px;
-    border-color: #686e7a;
+    border-color: var(--body-text-color);
   }
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-slider-arrows .tft-arrow i {
-  color: #686e7a;
-  font-size: 16px;
-  line-height: normal;
+  color: var(--body-text-color);
+  font-size: 1rem;
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-slider-arrows .tft-arrow:hover {
-  background-color: #FA6400;
-  border-color: #FA6400;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-slider-arrows .tft-arrow:hover i {
-  color: #ffffff;
+  color: var(--color-white);
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-slider-arrows--mobile {
   display: none;
@@ -3779,17 +3416,17 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: #e8d9cf;
+  background: var(--light-background);
   border-radius: 50%;
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button::before {
   display: none;
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active {
-  border-color: #FA6400;
+  border-color: var(--primary-color);
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active button {
-  background: #FA6400;
+  background: var(--primary-color);
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides {
   display: -webkit-box;
@@ -3805,7 +3442,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -moz-border-radius: 15px;
   border-radius: 15px;
   flex: 1;
-  background: #ffffff;
+  background: var(--color-white);
   padding: 40px;
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
 }
@@ -3826,19 +3463,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review {
   margin: 0;
-}
-.tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p {
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p {
-    font-size: 15px;
-    line-height: 26px;
-  }
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author {
   margin-top: 40px;
@@ -3887,24 +3511,17 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   border-radius: 50%;
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4 {
-  color: #060d1c;
   font-family: "Brygada 1918", serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: normal;
-  margin-bottom: 7px;
+  font-size: 1.125rem;
+  margin-bottom: 0;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p {
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: normal;
+  font-size: 0.875rem;
   margin-bottom: 0;
 }
 .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders.tft-slider-disable {
@@ -4046,42 +3663,41 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: absolute;
   bottom: 35px;
   left: 35px;
-  color: white;
+  color: var(--color-white);
 }
 .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a {
-  color: #ffffff;
+  color: var(--color-white);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a h3 {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: normal;
   margin-bottom: 10px;
+  color: var(--color-white);
+  text-transform: capitalize;
 }
 .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 .tft-destination-design-3 .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content p {
   margin-bottom: 0;
-  color: #fff;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  color: var(--color-white);
+  font-size: 0.875rem;
   line-height: normal;
 }
 .tft-destination-design-3 .tft-destination-content .tft-btn {
   height: 50px;
   padding: 16px 36px;
   background: #f2f2f2;
-  color: #060d1c;
+  color: var(--heading-color);
 }
 .tft-destination-design-3 .tft-destination-content .tft-btn:hover {
-  background: #FA6400;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--color-white);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-destination-design-3 .tft-destination-content .tft-btn {
@@ -4328,7 +3944,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   width: 120px;
   height: 120px;
   margin: auto;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -4365,41 +3981,35 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title {
   margin-top: 20px;
   margin-bottom: 20px;
-  color: #060d1c;
   font-family: "Brygada 1918", serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.5rem;
   line-height: normal;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title {
-    font-size: 22px;
+    font-size: 1.375rem;
     margin-top: 18px;
     margin-bottom: 18px;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-title {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-top: 15px;
     margin-bottom: 15px;
   }
 }
 .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-details {
   margin-bottom: 0;
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  line-height: 26px;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single .tft-details {
-    font-size: 15px;
     max-width: 340px;
     margin: auto;
   }
 }
 .tft-icon-design-2 .container .tft-icon-text-items .tft-icon-text-single:hover .icon_outter {
-  border: 2px dashed #FA6400;
+  border: 2px dashed var(--primary-color);
 }
 
 .tft-design-3-blog .container .tft-heading-content {
@@ -4509,10 +4119,9 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   flex: 1;
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
-  color: #060d1c;
+  color: var(--heading-color);
   font-family: "Brygada 1918", serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.5rem;
   line-height: 34px;
   margin: 25px 0 30px;
   overflow: hidden;
@@ -4532,6 +4141,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a {
   display: contents;
+  color: inherit;
   -webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
@@ -4539,23 +4149,23 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover, .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:focus,
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a :visited {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
-    font-size: 22px;
+    font-size: 1.375rem;
     line-height: 30px;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 28px;
   }
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
   display: inline-flex;
-  color: #FA6400;
+  color: var(--primary-color);
   background: rgba(250, 100, 0, 0.09);
   min-height: 50px;
   min-width: 170px;
@@ -4567,8 +4177,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover {
-  background: #FA6400;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--color-white);
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
   display: -webkit-box;
@@ -4602,17 +4212,13 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-align-items: center;
   align-items: center;
   gap: 10px;
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
   line-height: normal;
   margin-bottom: 0;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3-blog .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
     gap: 8px;
-    font-size: 15px;
+    font-size: 0.938rem;
   }
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item {
@@ -4681,18 +4287,18 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
-  font-size: 30px;
+  font-size: 1.875rem;
   line-height: 40px;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
-    font-size: 22px;
+    font-size: 1.375rem;
     line-height: 30px;
   }
 }
 @media only screen and (max-width: 767.98px) {
   .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-design-3-blog .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 28px;
   }
 }
@@ -4878,7 +4484,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: #e8d9cf;
+  background: var(--light-background);
   border-radius: 50%;
 }
 .tft-destination-design-4 .tft-destination-slider .slick-dots li button::before,
@@ -4887,18 +4493,18 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-destination-design-4 .tft-destination-slider .slick-dots li.slick-active,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .slick-dots li.slick-active {
-  border-color: #FA6400;
+  border-color: var(--primary-color);
 }
 .tft-destination-design-4 .tft-destination-slider .slick-dots li.slick-active button,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .slick-dots li.slick-active button {
-  background: #FA6400;
+  background: var(--primary-color);
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  background: #ffffff;
+  background: var(--color-white);
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
   padding: 30px;
   display: -webkit-box;
@@ -4948,10 +4554,10 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -moz-border-radius: 100px;
   border-radius: 100px;
   padding: 8px 16px 7px 16px;
-  background: #FA6400;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--color-white);
   font-family: "Ubuntu", sans-serif;
-  font-size: 13px;
+  font-size: 0.813rem;
   font-weight: 700;
   line-height: normal;
   text-transform: uppercase;
@@ -5000,19 +4606,20 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-rating i,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-rating i {
-  color: #FA6400;
-  font-size: 14px;
+  color: var(--primary-color);
+  font-size: 0.875rem;
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location {
   display: block;
-  color: #686e7a;
-  font-size: 16px;
+  color: var(--body-text-color);
+  font-size: 1rem;
   margin-top: 8px;
+  text-transform: capitalize;
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location i,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location i {
-  color: #FA6400;
+  color: var(--primary-color);
   float: left;
   margin-right: 6px;
   margin-top: 1px;
@@ -5026,10 +4633,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title {
-  color: #060d1c;
   font-family: "Brygada 1918", serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 1.5rem;
   line-height: 34px;
   margin-bottom: 0px;
   margin-top: 20px;
@@ -5044,10 +4649,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  color: inherit;
+  text-transform: capitalize;
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info {
@@ -5083,32 +4690,31 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-title,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-title {
   display: block;
-  color: #686e7a;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 0.875rem;
   line-height: normal;
   margin-bottom: 10px;
+  text-transform: none;
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-value,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-value {
-  color: #FA6400;
+  color: var(--primary-color);
   font-family: "Brygada 1918", serif;
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 1.25rem;
   line-height: normal;
+  text-transform: none;
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn {
   background: rgba(250, 100, 0, 0.1);
-  color: #FA6400;
+  color: var(--primary-color);
   min-width: 136px;
   min-height: 50px;
+  text-transform: capitalize;
 }
 .tft-destination-design-4 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn:hover,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn:hover {
-  background: #FA6400;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: var(--color-white);
 }
 .tft-destination-design-4 .tft-destination-slider.tft-slider-disable,
 .tft-popular-hotels-wrapper-2 .tft-destination-slider.tft-slider-disable {
@@ -5160,8 +4766,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #ffffff;
-  border: 1px solid #efefef;
+  background: var(--color-white);
+  border: 1px solid var(--tft-border-color);
   width: 70px;
   height: 70px;
   -webkit-border-radius: 100px;
@@ -5213,9 +4819,9 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-destination-slider-nav button:hover,
 .tft-team-slider-nav button:hover,
 .tft-hero-slider-nav button:hover {
-  background: #FA6400;
-  color: #ffffff;
-  border-color: #FA6400;
+  background: var(--primary-color);
+  color: var(--color-white);
+  border-color: var(--primary-color);
 }
 .tft-destination-slider-nav button.tft-prev-slide,
 .tft-team-slider-nav button.tft-prev-slide,
@@ -5253,7 +4859,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: transparent;
   width: 60px;
   height: 60px;
-  border-color: #ffffff;
+  border-color: var(--color-white);
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-hero-slider-nav button {
@@ -5277,13 +4883,13 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-slider-nav button i {
-  color: #ffffff;
-  font-size: 20px;
+  color: var(--color-white);
+  font-size: 1.25rem;
 }
 .tft-hero-slider-nav button:hover {
-  background: #FA6400;
-  color: #ffffff;
-  border-color: #FA6400;
+  background: var(--primary-color);
+  color: var(--color-white);
+  border-color: var(--primary-color);
 }
 .tft-hero-slider-nav button.tft-prev-slide {
   left: 80px;
@@ -5352,8 +4958,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  border-color: #dbe0f1 !important;
-  background: #fcfcfc;
+  border-color: var(--tft-border-color) !important;
+  background: var(--color-white);
   box-shadow: 0px 9px 12px 0px rgba(14, 19, 35, 0.02);
   -webkit-box-pack: center;
   -moz-box-pack: center;
@@ -5363,14 +4969,14 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 
 .tft-contact-form a {
-  color: #0e3dd8;
+  color: var(--secondary-color);
 }
 .tft-contact-form a:hover {
-  color: #FA6400;
+  color: var(--primary-color);
 }
 
 .tft-design-2 .tft-top-header {
-  background: #595349;
+  background: var(--secondary-color);
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -5401,7 +5007,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li {
   display: inline-flex;
-  color: #FDF9F3;
+  color: var(--highlights-background);
   margin-left: 24px;
   align-items: center;
   font-weight: 400;
@@ -5411,7 +5017,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li a {
   text-decoration: none;
-  color: #FDF9F3;
+  color: var(--highlights-background);
   transition: 0.3s all ease;
 }
 .tft-design-2 .tft-top-header .tft-flex .tft-contact-info ul li:first-child {
@@ -5449,7 +5055,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-2 .tft-menus-section {
-  background: #FDF9F3;
+  background: var(--highlights-background);
   padding-top: 31px;
   padding-bottom: 31px;
 }
@@ -5473,7 +5079,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li a {
   text-decoration: none;
   color: #595349;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   padding: 0px !important;
 }
@@ -5483,7 +5089,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   padding: 5px 10px;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li.current_page_item > a {
-  color: #B58E53;
+  color: var(--primary-color);
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul li:last-child {
   margin: 0px;
@@ -5494,7 +5100,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   padding: 8px;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu li {
-  background-color: #fff;
+  background-color: var(--color-white);
   margin-bottom: 4px !important;
   padding: 10px !important;
   transition: 0.3s all ease;
@@ -5521,7 +5127,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-logo .logo-text a {
   text-decoration: none;
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
   line-height: normal;
   color: #595349;
@@ -5541,17 +5147,17 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a {
   padding: 12px 32px;
   color: #595349;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
   display: inline-block;
   transition: 0.3s all ease;
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a:hover {
-  color: #B58E53;
+  color: var(--primary-color);
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login {
-  border: 1px solid #B58E53;
+  border: 1px solid var(--primary-color);
 }
 .tft-design-2 .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
   background: #917242;
@@ -5580,7 +5186,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li a {
   color: #595349;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 130%;
   padding: 8px 32px !important;
@@ -5590,7 +5196,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-design-2 .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul li a {
   color: #595349;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 130%;
 }
@@ -5614,24 +5220,24 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   backdrop-filter: blur(15px);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-menu ul li a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-logo .logo-text a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-account ul li a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-left .logo-text a {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 .tft-design-2 .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
-  color: #FDF9F3;
+  color: var(--highlights-background);
 }
 .tft-design-2 .tft-footer-sections {
   padding-top: 64px;
   padding-bottom: 32px;
-  background-color: #595349;
+  background-color: var(--secondary-color);
   color: #FAEEDC;
 }
 .tft-design-2 .tft-footer-sections a {
@@ -5662,9 +5268,9 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   width: 100%;
 }
 .tft-design-2 .tft-footer-sections .tft-grid h2 {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
-  color: #B58E53;
+  color: var(--primary-color);
   margin-bottom: 24px;
   line-height: 32px;
 }
@@ -5681,11 +5287,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   text-decoration: none;
   display: block;
   color: #FAEEDC;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
 .tft-design-2 .tft-footer-sections .tft-grid ul li a:hover {
-  color: #FDF9F3 !important;
+  color: var(--highlights-background) !important;
 }
 .tft-design-2 .tft-footer-sections .tft-grid ul li:last-child {
   padding-bottom: 0px;
@@ -5698,7 +5304,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   margin-top: 32px;
 }
 .tft-design-2 .tft-footer-sections .tft-footer-copyright p {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 130%;
   margin: 0;
@@ -5718,7 +5324,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 
 #tf-cf7-contact-form p {
   font-family: Josefin Sans;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 130%;
   /* 20.8px */
@@ -5745,7 +5351,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 #tf-cf7-contact-form input::placeholder,
 #tf-cf7-contact-form textarea::placeholder {
   font-family: Josefin Sans;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 130%;
   color: #C1BFBB;
@@ -5759,7 +5365,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   align-items: flex-end;
   gap: 8px;
   font-family: Josefin Sans;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   line-height: 150%;
   text-align: center;

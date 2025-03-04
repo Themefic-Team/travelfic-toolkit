@@ -21,7 +21,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 99991;
+  z-index: 99999;
 }
 
 .tft-section-space {
@@ -71,43 +71,38 @@
 
 .tft-heading-content {
   h3 {
-    color: $color-primary;
-    font-family: $font-ubuntu;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
-    line-height: normal;
-    text-transform: uppercase;
     margin-bottom: 17px;
+    text-transform: uppercase;
+    color: $primary-color;
     @media #{$max767} {
-      font-size: 15px;
+      font-size: 0.938rem;
       margin-bottom: 8px;
     }
   }
   h2 {
-    color: $color-black2;
-    font-family: $font-brygada;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
+    font-size: 3rem;
     line-height: 58px;
     margin-bottom: 30px;
     max-width: 613px;
     position: relative;
+    text-transform: capitalize;
     @media #{$max1399} {
-      font-size: 40px;
+      font-size: 2.5rem;
       line-height: 50px;
     }
     @media #{$max1199} {
-      font-size: 35px;
+      font-size: 2.188rem;
       line-height: 45px;
     }
     @media #{$max991} {
-      font-size: 32px;
+      font-size: 2rem;
       line-height: 42px;
       margin-bottom: 24px;
     }
     @media #{$max767} {
-      font-size: 28px;
+      font-size: 1.75rem;
       line-height: 40px;
       margin-bottom: 20px;
     }
@@ -134,17 +129,8 @@
     }
   }
   p {
-    color: $color-gray2;
-    font-family: $font-ubuntu;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 26px;
     margin-bottom: 40px;
-
     @media #{$max767} {
-      font-size: 15px;
-      line-height: 24px;
       margin-bottom: 24px;
     }
   }
@@ -180,14 +166,8 @@ textarea.tft-form-control {
   border: 1px solid #dbe0f1;
   background: $color-white;
   padding: 17px 25px 18px;
-  color: $color-gray2;
-  font-family: $font-ubuntu;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
   @media #{$max991} {
-    font-size: 15px;
+    font-size: 0.938rem;
     padding: 12px 20px;
   }
 }
@@ -199,14 +179,10 @@ textarea.tft-form-control {
 }
 
 label.tft-form-label {
-  color: $color-black2;
-  font-family: $font-ubuntu;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
   line-height: normal;
   margin-bottom: 25px;
   display: block;
+  font-weight: 500;
   @media #{$max991} {
     margin-bottom: 20px;
   }
@@ -220,13 +196,12 @@ label.tft-form-label {
 
 input[type="submit"].tft-form-btn {
   height: 55px;
-  background: $color-primary!important;
+  background: $primary-color!important;
   font-family: $font-ubuntu;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 18.38px;
   color: $color-white;
-  border-color: $color-primary;
+  border-color: $primary-color;
   @include bd-radius(9999px);
   @include transition(0.3s);
   cursor: pointer;
@@ -234,12 +209,12 @@ input[type="submit"].tft-form-btn {
   min-width: 180px;
   
   @media #{$max767} {
-    font-size: 15px;
+    font-size: 0.938rem;
     min-width: 160px;
     height: 50px;
   }
   &:hover{
-    background: $color-secondary!important;
+    background: $secondary-color!important;
     color: $color-white;
   }
   &:focus{
