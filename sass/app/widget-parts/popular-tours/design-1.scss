@@ -1,0 +1,159 @@
+// popular tours design 1
+.tft-popular-tour-wrapper {
+    @media #{$max991} {
+        width: 90%;
+        margin: auto;
+    }
+
+    .tft-popular-tour-items {
+        justify-content: space-between;
+
+        .tft-popular-single-item {
+            border-radius: 20px;
+            transition: all 0.3s ease;
+
+            .tft-popular-single-item-inner {
+                box-shadow: 1px 18px 40px rgba(29, 42, 59, 0.06);
+                border-radius: 20px;
+
+                .tft-popular-thumbnail {
+                    position: relative;
+
+                    a {
+                        display: block;
+
+                        img {
+                            height: 300px;
+                            width: 100%;
+                            object-fit: cover;
+                            border-top-left-radius: 20px;
+                            border-top-right-radius: 20px;
+                        }
+                    }
+
+                    .tft-ratings {
+                        position: absolute;
+                        top: 25px;
+                        right: 25px;
+                        background: rgba(255, 255, 255, 0.5);
+                        backdrop-filter: blur(12px);
+                        border-radius: 10px;
+                        padding: 8px 12px;
+                        font-weight: 600;
+                        color: #1D2A3A;
+
+                        span {
+                            font-size: 14px;
+                        }
+
+                    }
+                }
+
+                .tft-popular-item-info {
+                    padding: 15px 20px;
+
+                    p {
+                        margin-bottom: 5px;
+                        font-size: 28px;
+                        margin-top: 5px;
+                    }
+
+                    .tft-popular-sub-info {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        column-gap: 10px;
+
+                        p {
+                            font-size: 14px;
+                            margin-bottom: 5px;
+
+                            i {
+                                margin-right: 3px;
+                            }
+                        }
+
+                        .tft-popular-tour-duration {
+                            min-width: 80px;
+                        }
+                    }
+
+                    .tft-popular-item-price {
+                        .tft-pricing-info {
+                            font-size: 16px;
+                            font-weight: 700;
+                        }
+
+                        .tft-meta-table {
+                            font-size: 14px;
+                            font-weight: 400;
+                        }
+
+                        h3 {
+                            font-weight: 500;
+                            font-size: 24px;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        .slick-list {
+            margin: 0 -30px !important;
+
+            &.draggable {
+                padding: 0px !important;
+
+                .slick-track {
+                    padding: 85px 0px;
+                    margin: 0;
+
+                    .slick-slide {
+                        margin: 0 30px !important;
+
+                        @media #{$max991} {
+                            margin: 0 10px !important;
+                        }
+
+                        &.slick-current {
+                            &.slick-active {
+                                &.slick-center {
+                                    transform: scale(1.2);
+                                    transition: all 0.3s ease;
+
+                                    @media #{$max991} {
+                                        transform: scale(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .slick-arrow {
+            backdrop-filter: blur(12px);
+            padding: 25px;
+            border-radius: 50px;
+            z-index: 99;
+            height: 40px;
+            width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: 0.3s;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            .slick-prev:before,
+            .slick-next:before {
+                display: none;
+            }
+        }
+    }
+}

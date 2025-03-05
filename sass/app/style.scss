@@ -18,8 +18,43 @@
 @import "./layout/header";
 
 //Pages Styles
-
 @import "./pages/home";
 @import "./pages/about";
 @import "./pages/contact";             
 @import "./pages/design-2";             
+
+
+/** Widget Parts Start **/
+
+// hero slider
+@import './widget-parts/slider-hero/design-1', 
+        './widget-parts/slider-hero/design-2', 
+        './widget-parts/slider-hero/design-3',
+        './widget-parts/slider-hero/design-4';
+
+// about us
+@import './widget-parts/about-us/design-1', 
+        './widget-parts/about-us/design-2';
+
+// car brand
+@import './widget-parts/car-brand/design-1.scss';
+
+// cf7 form
+@import './widget-parts/cf7-form/design-1.scss';
+
+// popular tours
+@import './widget-parts/popular-tours/design-1.scss';
+
+// team
+@import './widget-parts/team/design-1', 
+        './widget-parts/team/design-2';
+
+// testimonials
+@import './widget-parts/testimonials/design-1', 
+        './widget-parts/testimonials/design-2', 
+        './widget-parts/testimonials/design-3';
+
+// Tour Destination
+@import './widget-parts/tour-destination/design-1', 
+        './widget-parts/tour-destination/design-2', 
+        './widget-parts/tour-destination/design-3';

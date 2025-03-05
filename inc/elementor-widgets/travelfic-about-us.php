@@ -1002,7 +1002,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                             <?php }
 
                             if (!empty($tft_sec_content)) { ?>
-                                <p><?php echo wp_kses_post($tft_sec_content); ?></p>
+                                <?php echo wp_kses_post($tft_sec_content); ?>
                             <?php } ?>
 
                             <?php if (!empty($tft_sec_quotes)) { ?>

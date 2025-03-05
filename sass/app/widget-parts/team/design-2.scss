@@ -1,0 +1,257 @@
+// team design 2
+.tft-team-wrapper-v2 {
+    .container {
+        overflow: hidden;
+
+        @media #{$max1399} {
+            padding: 0 15px;
+        }
+
+        &.tft-slider-disable {
+            overflow: initial;
+
+            .tft-heading-content {
+                margin-bottom: 70px;
+
+                @media #{$max1199} {
+                    margin-bottom: 60px;
+                }
+
+                @media #{$max991} {
+                    margin-bottom: 50px;
+                }
+
+                @media #{$max767} {
+                    margin-bottom: 40px;
+                }
+            }
+
+            .tft-team-members {
+                padding-bottom: 60px;
+            }
+        }
+    }
+
+    .tft-heading-content {
+        text-align: center;
+        margin-bottom: 40px;
+
+        @media #{$max1199} {
+            margin-bottom: 30px;
+        }
+
+        @media #{$max991} {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-left: auto;
+            margin-right: auto;
+
+            &::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    .tft-team-content {
+        position: relative;
+    }
+
+    .tft-team-members {
+        @include d-flex();
+        @include align-items(center);
+        @include justify-content(center);
+        gap: 24px;
+        padding-bottom: 30px;
+
+        .slick-list {
+            margin: 0 -12px !important;
+            padding: 30px 0;
+        }
+
+        .slick-slide {
+            margin: 0 12px !important;
+
+            @media #{$max767} {
+                margin: 15px 7.5px !important;
+            }
+        }
+
+        .slick-dots {
+            @include d-flex();
+            @include justify-content(center);
+            @include align-items(center);
+
+            li {
+                width: 30px;
+                height: 30px;
+                border: 2px dashed transparent;
+                text-align: center;
+                border-radius: 100px;
+                @include d-flex();
+                @include justify-content(center);
+                @include align-items(center);
+
+                button {
+                    width: 10px;
+                    height: 10px;
+                    background: $light-background;
+                    border-radius: 50%;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                &.slick-active {
+                    border-color: $primary-color;
+
+                    button {
+                        background: $primary-color;
+                    }
+                }
+            }
+        }
+
+        .tft-single-member {
+            padding: 30px;
+            padding-bottom: 40px;
+            @include bd-radius(15px);
+            background: $color-white;
+            box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+            flex-basis: calc(33.33% - 16px);
+
+            @media #{$max767} {
+                padding: 16px;
+                padding-bottom: 20px;
+            }
+
+            .member_img {
+                img {
+                    @include bd-radius(15px);
+                    max-height: 296px;
+                    min-height: 296px;
+                    width: 100%;
+
+                    @media #{$max767} {
+                        min-height: 220px;
+                    }
+
+                    @media #{$max575} {
+                        min-height: 100%;
+                        max-height: 280px;
+                    }
+                }
+            }
+
+            .member-details {
+                text-align: center;
+                padding: 0;
+
+                h3 {
+                    color: $primary-color;
+                    font-family: $font-ubuntu;
+                    font-size: 1rem;
+
+                    font-weight: 400;
+                    line-height: normal;
+                    margin-bottom: 20px;
+
+                    @media #{$max767} {
+                        font-size: 0.938rem;
+                        margin-bottom: 10px;
+                    }
+                }
+
+                p {
+                    color: $heading-color;
+                    font-family: $font-brygada;
+                    font-size: 1.5rem;
+
+                    font-weight: 700;
+                    line-height: normal;
+                    margin-bottom: 0;
+
+                    @media #{$max767} {
+                        font-size: 1.25rem;
+                    }
+                }
+
+                .social-media-icons {
+                    margin-top: -30px;
+                    padding-bottom: 30px;
+                    position: relative;
+
+                    @media #{$max767} {
+                        margin-top: -25px;
+                    }
+
+                    button {
+                        padding: 16px;
+                        border-radius: 5px;
+                        background: $primary-color;
+                        border: 0;
+                        box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
+
+                        @media #{$max767} {
+                            padding: 12px;
+                        }
+
+                        cursor: pointer;
+
+                        i {
+                            color: $color-white;
+                            font-size: 1.125rem;
+                        }
+                    }
+
+                    .social-media {
+                        background: $primary-color;
+                        width: fit-content;
+                        padding: 7px 25px;
+                        @include bd-radius(4px);
+                        display: flex;
+                        gap: 15px;
+                        position: absolute;
+                        top: -40px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        display: none;
+
+                        &.active {
+                            display: flex;
+                        }
+
+                        a {
+                            color: $color-white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tft_team_bottom_shape {
+        margin-top: -320px;
+        z-index: -1;
+        position: relative;
+
+        @media #{$max1760} {
+            margin-top: -250px;
+        }
+
+        @media #{$max1399} {
+            margin-top: -180px;
+        }
+
+        @media #{$max1199} {
+            margin-top: -130px;
+        }
+
+        @media #{$max767} {
+            display: none;
+        }
+    }
+}

@@ -1144,31 +1144,30 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 <div class="tft-destination-title">
                                     <?php echo '<a href="' . esc_url(get_term_link($cat->slug, 'tour_destination')) . '">' . esc_html($cat->name) . '</a>'; ?>
                                 </div>
-
+                                
                                 <div class="tft-destination-details">
-                                    <div class="tft-destination-details">
-                                        <ul>
-                                            <?php
-                                            $args2 = array(
-                                                'taxonomy'     => $taxonomy,
-                                                'child_of'     => 0,
-                                                'parent'       => $category_id,
-                                                'orderby'      => $orderby,
-                                                'show_count'   => $show_count,
-                                                'pad_counts'   => $pad_counts,
-                                                'hierarchical' => $hierarchical,
-                                                'title_li'     => $title,
-                                                'hide_empty'   => $empty,
-                                            );
-                                            $sub_cats = get_categories($args2);
-                                            if ($sub_cats) {
-                                                foreach ($sub_cats as $sub_category) { ?>
-                                                    <li><a href="<?php echo esc_url(get_term_link($sub_category->slug, 'tour_destination')); ?>"><?php echo esc_html($sub_category->name); ?></a></li>
-                                            <?php }
-                                            } ?>
-                                        </ul>
-                                    </div>
+                                    <ul>
+                                        <?php
+                                        $args2 = array(
+                                            'taxonomy'     => $taxonomy,
+                                            'child_of'     => 0,
+                                            'parent'       => $category_id,
+                                            'orderby'      => $orderby,
+                                            'show_count'   => $show_count,
+                                            'pad_counts'   => $pad_counts,
+                                            'hierarchical' => $hierarchical,
+                                            'title_li'     => $title,
+                                            'hide_empty'   => $empty,
+                                        );
+                                        $sub_cats = get_categories($args2);
+                                        if ($sub_cats) {
+                                            foreach ($sub_cats as $sub_category) { ?>
+                                                <li><a href="<?php echo esc_url(get_term_link($sub_category->slug, 'tour_destination')); ?>"><?php echo esc_html($sub_category->name); ?></a></li>
+                                        <?php }
+                                        } ?>
+                                    </ul>
                                 </div>
+                               
                             </div>
                     <?php } else {
                         }
