@@ -39,7 +39,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_global_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
-            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/settings.json';
+            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/settings-v2.json';
             $settings_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($settings_files);
             if (!empty($imported_data)) {
@@ -978,7 +978,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             'post_title'   => $post_title,
                             'post_content' => $post_content,
                             'post_status'  => 'publish',
-                            'post_author'  => 1,
+                            'author'  => get_current_user_id(),
                             'post_date'    => $post_date,
                             'meta_input'   => $post_meta,
                             'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -1693,7 +1693,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'post_title'   => $post_title,
                         'post_content' => $post_content,
                         'post_status'  => 'publish',
-                        'post_author'  => 1,
+                        'author'  => get_current_user_id(),
                         'post_date'    => $post_date,
                         'meta_input'   => $post_meta,
                         'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -2295,7 +2295,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'post_title'   => $post_title,
                         'post_content' => $post_content,
                         'post_status'  => 'publish',
-                        'post_author'  => 1,
+                        'author'  => get_current_user_id(),
                         'post_date'    => $post_date,
                         'meta_input'   => $post_meta,
                         'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -2426,6 +2426,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					}
 
 					$current_user_id = get_current_user_id();
+                    $room_ids = array();
 					foreach ( $rooms as $room ) {
 						$post_data        = array(
 							'post_type'    => 'tf_room',
@@ -2438,6 +2439,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 						$room_post_id = wp_insert_post( $post_data );
 						update_post_meta( $room_post_id, 'tf_room_opt', $room );
+                        $room_ids[] = $room_post_id;
 
 						//insert thumbnail if has 'room_preview_img' key which return url
 						if ( ! empty( $room['room_preview_img'] ) ) {
@@ -2448,6 +2450,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						}
 					}
 
+                    $meta['tf_rooms'] = $room_ids;
+                    update_post_meta( $post_id, 'tf_hotels_opt', $meta );
 				}
 			}
 		}
