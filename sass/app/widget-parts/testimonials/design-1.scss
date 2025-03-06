@@ -84,13 +84,22 @@
                 border: 1px solid #1D2A3B33;
                 color: #F15D30;
 
+                @media #{$max767} {
+                    top: -36px;
+                }
+
                 &::before {
                     display: none;
                 }
+
             }
 
             .slick-prev {
                 left: 90%;
+
+                @media #{$max767} {
+                    left: 75%;
+                }
             }
 
             .slick-next {

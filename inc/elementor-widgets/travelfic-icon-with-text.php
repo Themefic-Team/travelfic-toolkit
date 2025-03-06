@@ -882,14 +882,13 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                                     <?php
                                     if (!empty($item['box_image']['url'])) : ?>
                                         <img src="<?php echo esc_url($item['box_image']['url']); ?> " alt="">
-                                        <?php else :
+                                    <?php else :
                                         if (!empty($item['box_icon']['value'])) : ?>
                                             <div class="tft-icon">
                                                 <?php \Elementor\Icons_Manager::render_icon($item['box_icon'], ['aria-hidden' => 'true']); ?>
                                             </div>
-                                    <?php endif;
-                                    endif;
-                                    ?>
+                                        <?php endif;
+                                    endif;?>
                                 </div>
                                 <h3 class="tft-title">
                                     <?php echo esc_html($item['box_title']); ?>

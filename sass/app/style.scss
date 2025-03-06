@@ -42,6 +42,19 @@
 // cf7 form
 @import './widget-parts/cf7-form/design-1.scss';
 
+// hotels
+@import './widget-parts/hotels/design-1', 
+        './widget-parts/hotels/design-2';
+
+// icon with text
+@import './widget-parts/icon-with-text/design-1', 
+'./widget-parts/icon-with-text/design-2';
+
+// latest news
+@import './widget-parts/latest-news/design-1', 
+        './widget-parts/latest-news/design-2', 
+        './widget-parts/latest-news/design-3';
+
 // popular tours
 @import './widget-parts/popular-tours/design-1.scss';
 
