@@ -136,14 +136,18 @@ const mobileSidenav = document.getElementById("mobile-sidenav");
 const closeMobileMenu = document.getElementById("close-mobile-menu");
 
 //  Toggle the sidenav
-mobileMenuToggle.addEventListener("click", function () {
-  mobileSidenav.classList.toggle("open");
-});
+if(mobileMenuToggle && mobileSidenav) {
+  mobileMenuToggle.addEventListener("click", function () {
+    mobileSidenav.classList.toggle("open");
+  });
+}
 
 // Close the sidenav
-closeMobileMenu.addEventListener("click", function () {
-  mobileSidenav.classList.remove("open");
-});
+if(closeMobileMenu && mobileSidenav) {
+  closeMobileMenu.addEventListener("click", function () {
+    mobileSidenav.classList.remove("open");
+  });
+}
 
 /**
  *
@@ -152,14 +156,16 @@ closeMobileMenu.addEventListener("click", function () {
  */
 
 const toggleSearchForm = (button, form) => {
-  button.addEventListener("click", function (event) {
-    event.stopPropagation();
-    form.classList.toggle("active");
-  });
+  if(button && form) {
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
+      form.classList.toggle("active");
+    });
 
-  form.addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
+    form.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  }
 };
 
 toggleSearchForm(document.getElementById("tftSearchBtn"), document.getElementById("tftSearchForm"));
@@ -174,21 +180,29 @@ const shareButtons = document.querySelectorAll(".share-btn");
 const socialMediaIcons = document.querySelectorAll(".social-media");
 
 //  Toggle social media icons
-shareButtons.forEach((button) => {
-  button.addEventListener("click", function (e) {
-    e.stopPropagation();
-    const socialMedia = this.closest(".social-media-icons").querySelector(
-      ".social-media"
-    );
-    socialMedia.classList.toggle("active");
+if(shareButtons){
+  shareButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const socialMedia = this.closest(".social-media-icons").querySelector(
+        ".social-media"
+      );
+      if(socialMedia){
+        socialMedia.classList.toggle("active");
+      }
+    });
   });
-});
+}
 
-socialMediaIcons.forEach((icon) => {
-  icon.addEventListener("click", function (e) {
-    e.stopPropagation();
+
+if(socialMediaIcons){
+  socialMediaIcons.forEach((icon) => {
+    icon.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
   });
-});
+}
+
 
 /**
  *
@@ -197,18 +211,27 @@ socialMediaIcons.forEach((icon) => {
  */
 document.body.addEventListener("click", function (e) {
   // Check if the clicked element is outside the search form
-  document.getElementById("tftSearchForm").classList.remove("active");
-  document.getElementById("tftMobileSearchForm").classList.remove("active");
+  const searchForm = document.getElementById("tftSearchForm");
+  const mobileSearchForm = document.getElementById("tftMobileSearchForm");
+
+  if(searchForm){
+    searchForm.classList.remove("active");
+  }
+
+  if(mobileSearchForm){
+    mobileSearchForm.classList.remove("active");
+  }
 
   //  Check if the clicked element is outside the mobile sidenav
-  if (
-    !mobileSidenav.contains(e.target) &&
-    !mobileMenuToggle.contains(e.target)
-  ) {
-    mobileSidenav.classList.remove("open");
+  if(mobileSidenav && mobileMenuToggle){
+    if (!mobileSidenav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+      mobileSidenav.classList.remove("open");
+    }
   }
-  //  Check if the clicked element is outside the social media icons
-  socialMediaIcons.forEach((icon) => {
-    icon.classList.remove("active");
-  });
+
+  if(socialMediaIcons){
+    socialMediaIcons.forEach((icon) => {
+      icon.classList.remove("active");
+    });
+  }
 });
