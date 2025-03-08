@@ -499,6 +499,35 @@ body.admin_page_travelfic-template-list {
     background: #003C79;
     height: 8px;
 }
+/* Log box styling */
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .tf-import-log-box {
+    margin-top: 20px;
+    height: 200px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-family: monospace;
+    font-size: 12px;
+    text-align: left;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .tf-import-log-content {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .tf-import-log-content li{
+    margin: 0;
+    padding: 3px 5px;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .tf-import-log-content li:nth-child(odd){
+    background: #f1f1f1;
+}
+.travelfic-template-list-wrapper .travelfic-template-demo-importing .demo-importing-loader .tf-import-log-content li:nth-child(even){
+    background: #e1e1e1;
+}
 .travelfic-import-confirmaiton-msg{
     position: fixed;
     left: 0;

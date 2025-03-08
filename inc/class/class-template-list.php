@@ -376,6 +376,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 
                             </div>
                         </div>
+
+                        <div class="tf-import-log-boxss">
+                            <ul class="tf-import-log-contentss"></ul>
+                        </div>
                     </div>
                     <div class="importing-img">
                         <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/demo-importing.gif'); ?>" alt="">
