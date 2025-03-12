@@ -1809,7 +1809,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         $design2_slider_draggable = ('yes' === $settings['tft_hotels_design2_slider_draggable']) ? 'true' : 'false';
 ?>
         <?php if ('design-1' == $tft_design): ?>
-            <div class="tft-popular-hotels-wrapper tft-customizer-typography" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
+            <div class="tft-popular-hotels-design__one tft-customizer-typography" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
                 <div class="tft-popular-hotel-header">
                     <div class="tft-hotel-header">
                         <?php
@@ -2321,7 +2321,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             </div>
         <?php endif;
         if ('design-2' == $tft_design): ?>
-            <div class="tft-popular-hotels-wrapper-2 tft-customizer-typography tft-section-space-bottom" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
+            <div class="tft-popular-hotels-design__two tft-customizer-typography tft-section-space-bottom" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
                 <div class="container<?php echo esc_attr($container_max_width); ?>">
                     <!-- heading content -->
                     <div class="tft-heading-content">
@@ -2513,7 +2513,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     (function($) {
                         $(document).ready(function() {
                             //Your Code Inside
-                            $('.tft-popular-hotels-wrapper-2 .tft-destination-slider').slick({
+                            $('.tft-popular-hotels-design__two .tft-destination-slider').slick({
                                 slidesToShow: <?php echo esc_attr($slideToShow); ?>,
                                 slidesToScroll: <?php echo esc_attr($design2_slide_to_scroll); ?>,
                                 infinite: <?php echo esc_attr($design2_slider_loop); ?>,
@@ -2527,8 +2527,8 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 rtl: <?php echo esc_attr($design2_slider_rtl); ?>,
                                 draggable: <?php echo esc_attr($design2_slider_draggable); ?>,
                                 cssEase: 'linear',
-                                prevArrow: '.tft-popular-hotels-wrapper-2 .tft-prev-slide',
-                                nextArrow: '.tft-popular-hotels-wrapper-2 .tft-next-slide',
+                                prevArrow: '.tft-popular-hotels-design__two .tft-prev-slide',
+                                nextArrow: '.tft-popular-hotels-design__two .tft-next-slide',
                                 responsive: [{
                                         breakpoint: 1024,
                                         settings: {

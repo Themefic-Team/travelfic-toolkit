@@ -20,54 +20,41 @@
 //Pages Styles
 @import "./pages/home";
 @import "./pages/about";
-@import "./pages/contact";             
-@import "./pages/design-2";             
+@import "./pages/contact";
+@import "./pages/design-2";
 
 
 /** Widget Parts Start **/
 
 // hero slider
-@import './widget-parts/slider-hero/design-1', 
-        './widget-parts/slider-hero/design-2', 
-        './widget-parts/slider-hero/design-3',
-        './widget-parts/slider-hero/design-4';
+@import './widget-parts/slider-hero';
 
 // about us
-@import './widget-parts/about-us/design-1', 
-        './widget-parts/about-us/design-2';
+@import './widget-parts/about-us';
 
 // car brand
-@import './widget-parts/car-brand/design-1.scss';
+@import './widget-parts/car-brand';
 
 // cf7 form
-@import './widget-parts/cf7-form/design-1.scss';
+@import './widget-parts/cf7-form';
 
 // hotels
-@import './widget-parts/hotels/design-1', 
-        './widget-parts/hotels/design-2';
+@import './widget-parts/hotels';
 
 // icon with text
-@import './widget-parts/icon-with-text/design-1', 
-'./widget-parts/icon-with-text/design-2';
+@import './widget-parts/icon-with-text';
 
 // latest news
-@import './widget-parts/latest-news/design-1', 
-        './widget-parts/latest-news/design-2', 
-        './widget-parts/latest-news/design-3';
+@import './widget-parts/latest-news';
 
 // popular tours
-@import './widget-parts/popular-tours/design-1.scss';
+@import './widget-parts/popular-tours';
 
 // team
-@import './widget-parts/team/design-1', 
-        './widget-parts/team/design-2';
+@import './widget-parts/team';
 
 // testimonials
-@import './widget-parts/testimonials/design-1', 
-        './widget-parts/testimonials/design-2', 
-        './widget-parts/testimonials/design-3';
+@import './widget-parts/testimonials';
 
 // Tour Destination
-@import './widget-parts/tour-destination/design-1', 
-        './widget-parts/tour-destination/design-2', 
-        './widget-parts/tour-destination/design-3';
+@import './widget-parts/tour-destination';

@@ -1,0 +1,427 @@
+.tft-about-us-design{
+    &__one {
+        padding-top: 30px;
+        .tft-about-us-grid {
+            display: grid;
+            grid-template-columns: 35% 65%;
+
+            @media #{$max991} {
+                grid-template-columns: 45% 55%;
+            }
+
+            @media #{$max767} {
+                display: flow-root;
+            }
+
+            .tft-about-us-content {
+                @include d-flex();
+                flex-direction: column;
+
+                @media #{$max767} {
+                    margin-bottom: 16px;
+                }
+
+                h6 {
+                    font-family: 'Josefin Sans';
+                    font-size: 1rem;
+                    font-weight: 700;
+                    line-height: 130%;
+                    letter-spacing: 0.16px;
+                    text-transform: uppercase;
+                    color: #B58E53;
+                    margin-top: 0px;
+                    margin-bottom: 8px;
+                }
+
+                h3 {
+                    font-size: 56px;
+                    font-weight: 700;
+                    line-height: 120%;
+                    color: #595349;
+                    margin-top: 0px;
+                    margin-bottom: 32px;
+
+                    @media #{$max991} {
+                        font-size: 32px;
+                    }
+                }
+
+                p {
+                    font-size: 18px;
+                    color: #99948D;
+
+                    &.tft-about-us-quotes,
+                    &.tft-about-us-author {
+                        font-size: 1rem;
+                        padding-right: 55px;
+                        margin-top: 2px;
+                    }
+
+                    &.tft-about-us-author {
+                        font-weight: 600;
+                    }
+
+                    &:empty {
+                        display: none;
+                    }
+                }
+
+                .read-more {
+                    a {
+                        width: 156px;
+                        height: 156px;
+                        border: 1px solid #B58E53;
+                        display: inline-block;
+                        border-radius: 50%;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        color: #B58E53;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        transition: .3s all ease;
+
+                        @media #{$max991} {
+                            width: 90px;
+                            height: 90px;
+                        }
+
+                        svg {
+                            @media #{$max991} {
+                                width: 36px;
+                            }
+                        }
+
+                        &:hover {
+                            background: #917242;
+                            border-color: #917242;
+                            color: #FDF9F3;
+
+                            svg {
+                                @media #{$max991} {
+                                    width: 36px;
+                                }
+
+                                path {
+                                    fill: #FDF9F3;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .tft-about-us-image {
+                position: relative;
+
+                .years-of-experience {
+                    position: absolute;
+                    display: inline-block;
+                    top: 0;
+                    z-index: 99;
+                    left: 30px;
+
+                    @media #{$max1199} {
+                        left: 30px;
+                    }
+
+                    @media #{$max991} {
+                        width: 145px;
+                        left: 50px;
+                    }
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+
+                    .experience-badge {
+                        animation: rotation 14s infinite linear;
+                    }
+
+                    .tft-experience-years {
+                        position: absolute;
+                        content: "";
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        h2 {
+                            font-size: 52px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 120%;
+                            color: #99948D;
+                            margin: 0;
+                            height: 64%;
+
+                            @media #{$max991} {
+                                font-size: 32px;
+                            }
+                        }
+                    }
+                }
+
+                .tft-about-image {
+                    padding-left: 100px;
+
+                    @media #{$max767} {
+                        padding-left: 0px;
+                    }
+
+                    img {
+                        width: 100%;
+                        margin-top: 80px;
+
+                        @media #{$max767} {
+                            margin-top: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__two {
+
+        padding-bottom: 104px;
+        position: relative;
+        overflow-x: hidden;
+
+        @media #{$max1399} {
+            padding-bottom: 100px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        @media #{$max1199} {
+            padding-bottom: 80px;
+        }
+
+        @media #{$max991} {
+            padding-bottom: 60px;
+        }
+
+        @media #{$max767} {
+            padding-bottom: 0px;
+        }
+
+        .tft-about-us-grid {
+            @include d-flex();
+            @include justify-content(center);
+            gap: 59px;
+
+            @media #{$max991} {
+                flex-direction: column-reverse;
+                gap: 40px;
+                max-width: 600px;
+                margin: auto;
+            }
+
+            .tft-about-image {
+                min-width: 491px;
+                position: relative;
+
+                @media #{$max767} {
+                    min-width: auto;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 40px;
+                    top: 40px;
+                    width: 10px;
+                    height: 150px;
+                    background-color: $primary-color;
+                    z-index: 1;
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 61px;
+                    top: 106px;
+                    width: 10px;
+                    height: 246px;
+                    background-color: $color-white;
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+                }
+
+
+
+                .tft-about-curbe-image {
+                    max-width: 441px;
+                    position: relative;
+
+                    @media #{$max767} {
+                        margin: auto;
+                        max-width: 500px;
+                    }
+
+                    img {
+                        width: 100%;
+                        border-bottom-left-radius: 1000px;
+                        border-bottom-right-radius: 1000px;
+
+                        @media #{$max767} {
+                            @include bd-radius(20px);
+                        }
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 50px;
+                        top: 50px;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0px 0px 1000px 1000px;
+                        border: 1px solid rgba(0, 0, 0, 0.05);
+
+                        @media #{$max767} {
+                            display: none;
+                        }
+                    }
+                }
+
+                .tft-about-circle-image {
+                    position: absolute;
+                    right: -89px;
+                    bottom: -20px;
+
+                    @media #{$max1199} {
+                        right: -50px;
+                    }
+
+                    @media #{$max991} {
+                        right: -40px;
+                    }
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+
+                    img {
+                        @include box-circle();
+                    }
+                }
+            }
+
+            .tft-about-us-content {
+                flex: 1;
+                max-width: 669px;
+
+                @media #{$max767} {
+                    max-width: 500px;
+                    margin: auto;
+                }
+
+                .tft-about-us-list {
+                    padding: 44px 0 44px 69px;
+                    border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+                    @media #{$max1199} {
+                        padding: 30px;
+                    }
+
+                    @media #{$max991} {
+                        padding: 24px 0;
+                    }
+
+                    ul {
+                        li {
+                            @include d-flex();
+                            gap: 15px;
+                            margin-bottom: 20px;
+
+                            @media #{$max1199} {
+                                @include align-items(center);
+                            }
+
+                            @media #{$max767} {
+                                gap: 10px;
+                                margin-bottom: 15px;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            .icon {
+                                @media #{$max767} {
+                                    line-height: 0;
+                                }
+
+                                i {
+                                    color: $primary-color;
+                                    font-size: 1.125rem;
+
+                                    @media #{$max767} {
+                                        font-size: 1rem;
+                                        margin-top: 2px;
+                                    }
+                                }
+                            }
+
+                            .text {
+                                color: $heading-color;
+                                font-family: $font-ubuntu;
+                                font-size: 1.125rem;
+                                line-height: normal;
+
+                                @media #{$max767} {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .tft-about-us-button {
+                    padding-left: 69px;
+
+                    @media #{$max1199} {
+                        padding-left: 30px;
+                    }
+
+                    @media #{$max991} {
+                        padding-left: 0;
+                    }
+
+                    a {
+                        min-width: 160px;
+                    }
+                }
+            }
+        }
+
+        .tft-about-us-shape {
+            position: absolute;
+            right: -150px;
+            bottom: 0;
+            z-index: -1;
+        }
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

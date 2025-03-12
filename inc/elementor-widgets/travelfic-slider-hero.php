@@ -1936,7 +1936,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
         if ("design-2" == $tft_design) {
 ?>
-            <div class="tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-design__two tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
@@ -1950,7 +1950,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-3" == $tft_design) { ?>
-            <div class="tft-hero-design-3" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-design__three tft-hero-design-3" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content-box">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
@@ -1965,7 +1965,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-4" == $tft_design) { ?>
-            <section class="tft-hero-design-4" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
+            <section class="tft-hero-design__four" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
                 <div class="container tft-hero-design-4__container">
                     <!-- hero banner slider -->
                     <div class="tft-hero-design-4__slider">
@@ -2110,7 +2110,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
             if ($settings['hero_slider_list']) { ?>
                 <!-- Slider Hero section -->
-                <div class="hero--slider-wrapper tft-hero-design-1"> <!-- tft-customizer-typography -->
+                <div class="tft-hero-design__one tft-hero-design-1"> 
                     <?php $rand_number = wp_rand(100, 99999999); ?>
                     <div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>">
                         <?php foreach ($settings['hero_slider_list'] as $item): 
@@ -2118,7 +2118,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             <div class="tft-hero-single-item">
                                 <div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url($item['slider_image']['url']); ?>);">
                                     <div class="tft-container tft-hero-single-item-inner">
-                                        <div class=" slider-inner-info">
+                                        <div class="slider-inner-info">
                                             <div class="tft-slider-title">
                                                 <h1 class="tft-title title-large">
                                                     <?php
@@ -2159,8 +2159,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     </div>
                 </div>
                 <?php if ($settings['search_box_switcher'] == 'yes'):
-
-
                 ?>
                     <div class="tft-search-box tft-hero-design-1">
                         <div class="tft-search-box-inner">

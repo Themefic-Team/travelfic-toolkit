@@ -1654,7 +1654,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
 ?>
 
         <?php if ($settings['testimonials_section'] && "design-1" == $tft_design) { ?>
-            <div class="tft-testimonials-wrapper tft-customizer-typography">
+            <div class="tft-testimonials-design__one tft-customizer-typography">
                 <div class="tft-testimonials-selector tft-slide-default">
                     <?php if ($settings['testimonials_section']) {
                         foreach ($settings['testimonials_section'] as $item) { ?>
@@ -1724,7 +1724,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             </script>
         <?php } elseif ($settings['testimonials_section'] && "design-2" == $tft_design) { ?>
 
-            <div class="tft-testimonials-design-2">
+            <div class="tft-testimonials-design__two">
                 <div class="tft-testimonial-top-header">
                     <?php
                     if (!empty($tft_sec_subtitle)) { ?>
@@ -1820,7 +1820,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 }(jQuery));
             </script>
         <?php } elseif ($settings['testimonials_section'] && "design-3" == $tft_design) { ?>
-            <div class="tft-testimonials-design-3" style="background-image: url(<?php echo !empty($tft_testimonial_bg['url']) ? esc_url($tft_testimonial_bg['url']) : ''; ?>);">
+            <div class="tft-testimonials-design__three" style="background-image: url(<?php echo !empty($tft_testimonial_bg['url']) ? esc_url($tft_testimonial_bg['url']) : ''; ?>);">
                 <div class="container">
                     <div class="tft-testimonials-content">
                         <div class="tft-heading-content">
@@ -1896,7 +1896,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     $(document).ready(function() {
                         //Your Code Inside
                         <?php if ($tftSliderDisable == false): ?>
-                            $('.tft-testimonials-design-3 .tft-testimonials-slides').slick({
+                            $('.tft-testimonials-design__three .tft-testimonials-slides').slick({
                                 slidesToShow: <?php echo esc_attr($slideToShow); ?>,
                                 slidesToScroll: <?php echo esc_attr($design3_slide_to_scroll); ?>,
                                 infinite: <?php echo esc_attr($design3_slider_loop); ?>,

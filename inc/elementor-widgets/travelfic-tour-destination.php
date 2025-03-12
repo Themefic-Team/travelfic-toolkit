@@ -1123,7 +1123,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         if ("design-1" == $tft_design) {
 ?>
 
-            <div class="tft-destination-wrapper tft-customizer-typography">
+            <div class="tft-destination-design__one tft-customizer-typography">
                 <div class="tft-destination tft-row">
                     <?php
                     foreach ($all_destination_categories as $cat) {
@@ -1175,7 +1175,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             </div>
             <!-- design 2 -->
         <?php } elseif ("design-2" == $tft_design) { ?>
-            <div class="tft-destination-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
+            <div class="tft-destination-design__two" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
                 <div class="tft-destination-header">
                     <?php
                     if (!empty($tft_sec_subtitle)) { ?>
@@ -1261,7 +1261,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             </div>
             <!-- design 3 -->
         <?php } elseif ("design-3" == $tft_design) { ?>
-            <div class="tft-destination-design-3 tft-section-space" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
+            <div class="tft-destination-design__three tft-section-space" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
                 <div class="container">
                     <div class="tft-destination-content">
                         <div class="tft-heading-content">

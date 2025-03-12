@@ -850,7 +850,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 ?>
 
 		<?php if ('design-1' == $tft_design) : ?>
-			<div class="tft_team_wrapper tft-customizer-typography">
+			<div class="tft-team-design__one tft-customizer-typography">
 				<div class="tft-team-members tft-flex tft-f-cg-40 tft-f-rw-40 tft-f-sb">
 					<?php foreach ($settings['members_list'] as $item) : ?>
 						<div class="tft-single-member tft-card-default">
@@ -896,7 +896,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				</div>
 			</div>
 		<?php elseif ('design-2' == $tft_design):  ?>
-			<div class="tft-team-wrapper-v2 tft-customizer-typography tft-section-space-top">
+			<div class="tft-team-design__two tft-customizer-typography tft-section-space-top">
 				<div class="container<?php echo esc_attr($tftDisableClass . $container_max_width); ?>">
 					<div class="tft-heading-content">
 						<?php if (!empty($tft_sec_subtitle)) { ?>
@@ -975,7 +975,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		<script>
 			jQuery(document).ready(function($) {
 				<?php if ($tftSliderDisable == false) : ?>
-					$(".tft-team-wrapper-v2 .tft-team-members").slick({
+					$(".tft-team-design__two .tft-team-members").slick({
 						slidesToShow: <?php echo esc_attr($slideToShow); ?>,
 						slidesToScroll: <?php echo esc_attr($design2_slide_to_scroll); ?>,
 						infinite: <?php echo esc_attr($design2_slider_loop); ?>,

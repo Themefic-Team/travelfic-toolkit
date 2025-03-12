@@ -319,7 +319,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 
 		?>
 
-		<div class="tft-popular-tour-wrapper tft-customizer-typography">
+		<div class="tft-popular-tour-design__one tft-customizer-typography">
 			<div class="tft-popular-tour-items tft-popular-tour-selector">
 
 				<?php if ($query->have_posts()): ?>

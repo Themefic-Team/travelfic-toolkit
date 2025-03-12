@@ -988,8 +988,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         if ("design-1" == $tft_design) {
 ?>
 
-            <div class="tft-about-us-wrapper tft-customizer-typography">
-                <div class="tft-about-us tft-row">
+            <div class="tft-about-us-design__one tft-customizer-typography">
+                <div class="tft-about-us__inner tft-row">
                     <div class="tft-about-us-grid">
                         <div class="tft-about-us-content">
                             <?php
@@ -1045,8 +1045,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-2" == $tft_design) { ?>
-            <div class="tft-about-design-2 tft-customizer-typography tft-section-space-top tft-section-small-bottom-space">
-                <div class="tft-about-us tft-row">
+            <div class="tft-about-us-design__two tft-customizer-typography tft-section-space-top tft-section-small-bottom-space">
+                <div class="tft-about-us__inner tft-row">
                     <div class="tft-about-us-grid">
                         <div class="tft-about-us-image">
                             <?php if (!empty($tft_about_us_image['url'])) { ?>

@@ -835,7 +835,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
 ?>
 
         <?php if ($settings['icon_text_list'] && "design-2" == $tft_design) : ?>
-            <div class="tft-icon-design-2 tft-no-reapeat tft-customizer-typography tft-section-space" style="background-image: url(<?php echo esc_url($tft_sec_bg_image['url']); ?>)">
+            <div class="tft-icon-text-design__two tft-no-reapeat tft-customizer-typography tft-section-space" style="background-image: url(<?php echo esc_url($tft_sec_bg_image['url']); ?>)">
                 <div class="container">
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
@@ -869,7 +869,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php elseif ($settings['icon_text_list']): ?>
-            <div class="tft-icon-text-wrapper tft-customizer-typography">
+            <div class="tft-icon-text-design__one tft-customizer-typography">
                 <div class="tft-icon-text-items tft-flex">
                     <?php foreach ($settings['icon_text_list'] as $item): ?>
 

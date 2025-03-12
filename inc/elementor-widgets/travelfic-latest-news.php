@@ -1227,7 +1227,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             $tft_sec_subtitle = $settings['tft_section_subtitle'];
         }
         if ("design-3" == $design) { ?>
-            <div class="tft-design-3-blog">
+            <div class="tft-latest-posts-design__three">
                 <div class="container">
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
@@ -1277,7 +1277,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             </div>
         <?php
         } else if ("design-2" == $design) { ?>
-            <div class="tft-design-2-blog">
+            <div class="tft-latest-posts-design__two">
                 <div class="tft-blog-header">
                     <div class="tft-news-header">
                         <?php
@@ -1361,7 +1361,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 }
             </style>
 
-            <div class="tft-latest-posts-wrapper tft-customizer-typography">
+            <div class="tft-latest-posts-design__one tft-customizer-typography">
                 <div class="tft-latest-posts">
                     <div id="items-count-<?php echo esc_html($items_count); ?>" class="tft-latest-post-items">
                         <?php if ($query->have_posts()) : ?>
