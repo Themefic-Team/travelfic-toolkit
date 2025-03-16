@@ -1,0 +1,23 @@
+#tft-site-main-body {
+    .tf-archive-template {
+        &__one {
+            .tf-car-archive-result {
+                &.tf-car-lists-widgets{
+                    .tf-car-result {
+                        &.grid-view {
+                            .tf-single-car-view {
+                                width: calc(33.33% - 22px);
+                                @media #{$max991}{
+                                    width: calc(50% - 16px);
+                                }
+                                @media #{$max640}{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

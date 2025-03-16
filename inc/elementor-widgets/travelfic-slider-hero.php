@@ -605,7 +605,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-2' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__two' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-2'], // Show this control only when des_style is 'design-2'
@@ -634,7 +634,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'size' => 540, // Your default value here
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-3' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__three' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => 'design-3', // Show this control only when des_style is 'design-2'
@@ -663,7 +663,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'size' => 800, // Your default value here
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => 'design-4', // Show this control only when des_style is 'design-4'
@@ -853,7 +853,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-hero-design-2 .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -877,7 +877,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'selectors'  => [
                     '{{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '{{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
 
             ]
@@ -909,7 +909,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'hero_slider_title',
-                'selector' => '{{WRAPPER}} .tft-hero-design-3 .tft-hero-content-box h1, {{WRAPPER}} .tft-hero-design-4__slider__item__content--title',
+                'selector' => '{{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1, {{WRAPPER}} .tft-hero-design__four__slider__item__content--title',
                 'label'    => __('Title Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'slider_style' => ['design-3', 'design-4'],
@@ -925,9 +925,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-2 .tft-hero-content h1' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-3 .tft-hero-content-box h1' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-4 .tft-hero-design-4__slider__item__content--title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}} !important',
                 ],
             ]
@@ -1057,7 +1057,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'name'     => 'slider_sub_title',
                 'selectors' => [
                     '{{WRAPPER}} .tft-sub-title p',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--subtitle',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle',
                 ],
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
@@ -1073,7 +1073,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-sub-title p' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--subtitle' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1101,7 +1101,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '{{WRAPPER}} .slider-button .bttn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1116,7 +1116,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '{{WRAPPER}} .slider-button .bttn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1141,7 +1141,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'name'     => 'button_typography',
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1156,7 +1156,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1170,7 +1170,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1198,7 +1198,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn:hover' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
@@ -1213,7 +1213,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .slider-button .bttn:hover' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--link:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
@@ -1244,8 +1244,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}} !important;',
                     '{{WRAPPER}} .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-hero-design-4 .slick-dots li button'   => 'background-color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-hero-design-4 .slick-dots li.slick-active'   => 'border-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four .slick-dots li button'   => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
@@ -1285,7 +1285,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__label'   => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__label'   => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1322,7 +1322,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link i'   => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link i'   => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1335,7 +1335,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'background: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'background: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1348,7 +1348,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'border-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'border-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1374,7 +1374,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover i'   => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover i'   => 'color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1387,7 +1387,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'background: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover'   => 'background: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1400,7 +1400,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'border-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover'   => 'border-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1936,7 +1936,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
         if ("design-2" == $tft_design) {
 ?>
-            <div class="tft-hero-design__two tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-design__two tft-hero-wrapper" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
@@ -1950,7 +1950,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-3" == $tft_design) { ?>
-            <div class="tft-hero-design__three tft-hero-design-3" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-design__three tft-hero-wrapper" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content-box">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
@@ -1965,33 +1965,33 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-4" == $tft_design) { ?>
-            <section class="tft-hero-design__four" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
-                <div class="container tft-hero-design-4__container">
+            <section class="tft-hero-design__four tft-hero-wrapper" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
+                <div class="container tft-hero-design__four__container">
                     <!-- hero banner slider -->
-                    <div class="tft-hero-design-4__slider">
+                    <div class="tft-hero-design__four__slider">
                         <?php foreach ($settings['design4_hero_slider_list'] as $slider):
                             $target_blank = $slider['design4_slider_bttn_url']['is_external'] ? 'target="_blank"' : '';
                         ?>
                             <!-- slider item -->
-                            <div class="tft-hero-design-4__slider__item">
-                                <div class="tft-hero-design-4__slider__item__content">
+                            <div class="tft-hero-design__four__slider__item">
+                                <div class="tft-hero-design__four__slider__item__content">
                                     <!-- slider subtitle -->
                                     <?php if (!empty($slider['design4_slider_subtitle'])) : ?>
-                                        <h2 class="tft-hero-design-4__slider__item__content--subtitle">
+                                        <h2 class="tft-hero-design__four__slider__item__content--subtitle font-caveat">
                                             <?php echo esc_html($slider['design4_slider_subtitle']); ?>
                                         </h2>
                                     <?php endif; ?>
 
                                     <!-- slider title -->
                                     <?php if (!empty($slider['design4_slider_title'])): ?>
-                                        <h1 class="tft-hero-design-4__slider__item__content--title">
+                                        <h1 class="tft-hero-design__four__slider__item__content--title font-brygada">
                                             <?php echo esc_html($slider['design4_slider_title']); ?>
                                         </h1>
                                     <?php endif; ?>
                                     <!-- slider button -->
                                     <?php if (!empty($slider['design4_slider_bttn_txt'])) : ?>
                                         <a href="<?php echo esc_url($slider['design4_slider_bttn_url']['url']); ?>"
-                                            class="tft-hero-design-4__slider__item__content--link tft-btn"
+                                            class="tft-hero-design__four__slider__item__content--link tft-btn font-ubuntu"
                                             <?php echo esc_attr($target_blank); ?>>
                                             <?php echo esc_html($slider['design4_slider_bttn_txt']); ?>
                                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
@@ -2002,7 +2002,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                         <?php endforeach; ?>
                     </div>
                     <?php if ('true' === $design4_slider_arrows): ?>
-                        <div class="tft-hero-slider-nav">
+                        <div class="tft-hero-design__four__slider--nav">
                             <button type="button" class="tft-prev-slide">
                                 <i class="ri-arrow-left-line"></i>
                             </button>
@@ -2014,20 +2014,20 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
                     <!-- hero banner social -->
                     <?php if ($social_media_switcher): ?>
-                        <div class="tft-hero-design-4__social">
+                        <div class="tft-hero-design__four__social">
                             <!-- List of social media items -->
-                            <ul class="tft-hero-design-4__social__list">
+                            <ul class="tft-hero-design__four__social__list">
                                 <?php foreach ($settings['social_media_list'] as $social):
                                     $target_blank = $social['social_media_url']['is_external'] ? 'target="_blank"' : '';
                                     $social_media_name = isset($social['social_media_label']) ? $social['social_media_label'] : '';
                                 ?>
                                     <!-- social media item-->
-                                    <li class="tft-hero-design-4__social__list__item">
+                                    <li class="tft-hero-design__four__social__list__item">
                                         <a href="<?php echo esc_url($social['social_media_url']['url']); ?>"
-                                            class="tft-hero-design-4__social__list__item--link"
+                                            class="tft-hero-design__four__social__list__item--link"
                                             <?php echo esc_attr($target_blank); ?>
                                             aria-label="<?php echo esc_attr('Visit ' . $social_media_name . ' page'); ?>">
-                                            <span class="tft-hero-design-4__social-icon">
+                                            <span class="tft-hero-design__four__social-icon">
                                                 <?php
 
                                                 $social_icon = '';
@@ -2053,20 +2053,20 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                 <?php endforeach; ?>
                             </ul>
 
-                            <div class="tft-hero-design-4__social__divider"></div>
+                            <div class="tft-hero-design__four__social__divider"></div>
                             <!-- social share label -->
                             <?php if (!empty($settings['social_share_label'])): ?>
-                                <h4 class="tft-hero-design-4__social__label">
+                                <h4 class="tft-hero-design__four__social__label">
                                     <?php echo esc_html($settings['social_share_label']); ?>
                                 </h4>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
 
-                    <div class="tft-hero-design-4__mobile--share">
+                    <div class="tft-hero-design__four__mobile--share">
                         <!-- social share label -->
                         <?php if (!empty($settings['social_share_label'])): ?>
-                            <h4 class="tft-hero-design-4__social__label">
+                            <h4 class="tft-hero-design__four__social__label">
                                 <?php echo esc_html($settings['social_share_label']); ?>
                             </h4>
                         <?php endif; ?>
@@ -2083,7 +2083,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     "use strict";
                     $(document).ready(function() {
                         // Hero slider
-                        $(".tft-hero-design-4__slider").slick({
+                        $(".tft-hero-design__four__slider").slick({
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             infinite: <?php echo esc_attr($design4_slider_loop); ?>,
@@ -2110,7 +2110,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
             if ($settings['hero_slider_list']) { ?>
                 <!-- Slider Hero section -->
-                <div class="tft-hero-design__one tft-hero-design-1"> 
+                <div class="tft-hero-design__one tft-hero-wrapper"> 
                     <?php $rand_number = wp_rand(100, 99999999); ?>
                     <div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>">
                         <?php foreach ($settings['hero_slider_list'] as $item): 
@@ -2160,7 +2160,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
                 <?php if ($settings['search_box_switcher'] == 'yes'):
                 ?>
-                    <div class="tft-search-box tft-hero-design-1">
+                    <div class="tft-search-box tft-hero-design__one">
                         <div class="tft-search-box-inner">
                             <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . ']'); ?>
                         </div>
@@ -2221,7 +2221,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         if (\Elementor\Plugin::$instance->editor->is_edit_mode()) : ?>
             <script>
                 jQuery(document).ready(function($) {
-                    $(".tft-hero-design-4__slider").slick({
+                    $(".tft-hero-design__four__slider").slick({
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         infinite: <?php echo esc_attr($design4_slider_loop); ?>,

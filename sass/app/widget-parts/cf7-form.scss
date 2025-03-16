@@ -51,10 +51,10 @@
                 .wpcf7-submit {
                     padding: 12px 24px;
                     border-radius: 4px;
-                    font-size: 16px;
+                    font-size: 1rem;
                     font-weight: 700;
                     background: #F15D30;
-                    color: #fff;
+                    color:$color-white;
 
                     &:hover {
                         background: #f94700;
@@ -79,7 +79,7 @@
             .wpcf7-submit {
                 padding: 12px 16px;
                 width: 100%;
-                color: #fff;
+                color:$color-white;
             }
         }
 

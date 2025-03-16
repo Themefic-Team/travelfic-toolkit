@@ -173,7 +173,6 @@ header.tft-design-2 {
           a {
             font-size: 2rem;
             font-weight: 700;
-            line-height: normal;
             color: $tft_grey;
           }
         }
@@ -257,7 +256,6 @@ header.tft-design-2 {
             a {
               color: $tft_grey;
               font-size: 1rem;
-              font-style: normal;
               font-weight: 600;
               line-height: 130%;
               padding: 8px 32px !important;
@@ -270,7 +268,6 @@ header.tft-design-2 {
                 a {
                   color: $tft_grey;
                   font-size: 1rem;
-                  font-style: normal;
                   font-weight: 600;
                   line-height: 130%;
                 }
@@ -388,7 +385,6 @@ header.tft-design-2 {
 
       h2 {
         font-size: 2rem;
-        font-style: normal;
         font-weight: 700;
         color: $primary-color;
         margin-bottom: 24px;
@@ -409,7 +405,6 @@ header.tft-design-2 {
             display: block;
             color: #faeedc;
             font-size: 1rem;
-            font-style: normal;
             font-weight: 600;
 
             &:hover {
@@ -434,7 +429,6 @@ header.tft-design-2 {
 
       p {
         font-size: 1rem;
-        font-style: normal;
         font-weight: 400;
         line-height: 130%;
         margin: 0;

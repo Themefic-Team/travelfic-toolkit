@@ -7,6 +7,7 @@
 $font-ubuntu: "Ubuntu", sans-serif;
 $font-caveat: "Caveat", cursive;
 $font-brygada: "Brygada 1918", serif;
+$font-josefin: 'Josefin Sans';
 
 // ================================ //
 // color variable
@@ -39,6 +40,26 @@ $linear-gradient: linear-gradient(0deg, #1342e0, #1342e0),
   linear-gradient(0deg, #0e3dd8, #0e3dd8);
 $linear-gradient2:linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 57, 204, 0.03) 125.37%);
 
+
+// ================================ //
+// Font Family
+// ================================ //
+
+.font-ubuntu {
+  font-family: $font-ubuntu;
+}
+
+.font-caveat {
+  font-family: $font-caveat;
+}
+
+.font-brygada {
+  font-family: $font-brygada;
+}
+
+.font-josefin {
+  font-family: $font-josefin;
+}
 
 // ================================ //
 //Media Query

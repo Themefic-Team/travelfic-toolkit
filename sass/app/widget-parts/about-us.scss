@@ -1,6 +1,7 @@
-.tft-about-us-design{
+.tft-about-us-design {
     &__one {
         padding-top: 30px;
+
         .tft-about-us-grid {
             display: grid;
             grid-template-columns: 35% 65%;
@@ -25,7 +26,7 @@
                     font-family: 'Josefin Sans';
                     font-size: 1rem;
                     font-weight: 700;
-                    line-height: 130%;
+                    line-height: 1.3;
                     letter-spacing: 0.16px;
                     text-transform: uppercase;
                     color: #B58E53;
@@ -34,20 +35,20 @@
                 }
 
                 h3 {
-                    font-size: 56px;
+                    font-size: 3.5rem;
                     font-weight: 700;
-                    line-height: 120%;
+                    line-height: 1.2;
                     color: #595349;
                     margin-top: 0px;
                     margin-bottom: 32px;
 
                     @media #{$max991} {
-                        font-size: 32px;
+                        font-size: 2rem;
                     }
                 }
 
                 p {
-                    font-size: 18px;
+                    font-size: 1.125rem;
                     color: #99948D;
 
                     &.tft-about-us-quotes,
@@ -151,16 +152,15 @@
                         justify-content: center;
 
                         h2 {
-                            font-size: 52px;
-                            font-style: normal;
+                            font-size: 3.25rem;
                             font-weight: 700;
-                            line-height: 120%;
+                            line-height: 1.2;
                             color: #99948D;
                             margin: 0;
                             height: 64%;
 
                             @media #{$max991} {
-                                font-size: 32px;
+                                font-size: 2rem;
                             }
                         }
                     }
