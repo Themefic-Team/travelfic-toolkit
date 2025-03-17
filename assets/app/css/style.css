@@ -15,8 +15,16 @@
   font-family: "Brygada 1918", serif;
 }
 
+.font-cormorant {
+  font-family: "Cormorant Garamond", sans-serif;
+}
+
 .font-josefin {
   font-family: "Josefin Sans";
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif;
 }
 
 * {
@@ -302,6 +310,115 @@ textarea.tft-form-control {
   }
 }
 
+.tft-text-center {
+  text-align: center;
+}
+
+.tft-text-right {
+  text-align: right;
+}
+
+.tft-d-flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tft-d-grid {
+  display: grid;
+}
+
+.tft-items-center {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.tft-justify-center {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.tft-justify-between {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+.tft-align-center {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.tft-flex-column {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-direction: vertical;
+  -moz-flex-direction: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.tft-rounded-0 {
+  border-radius: 0;
+}
+
+.tft-gap-0 {
+  gap: 0;
+}
+
+.tft-border-0 {
+  border: 0;
+}
+
+.tft-h-100 {
+  height: 100%;
+}
+
+.tft-w-100 {
+  width: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -318,7 +435,7 @@ p {
 .tft-btn {
   display: block;
   min-height: 55px;
-  background: var(--primary-color);
+  background: #FA6400;
   font-weight: 500;
   color: var(--color-white);
   display: -webkit-inline-box;
@@ -344,6 +461,7 @@ p {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   gap: 5px;
+  border: 0;
   min-width: 180px;
   padding: 0;
   cursor: pointer;
@@ -356,11 +474,46 @@ p {
   }
 }
 .tft-btn:hover {
-  background: var(--secondary-color);
+  background: #0e3dd8;
   color: var(--color-white);
 }
 .tft-btn:focus {
   color: var(--color-white);
+}
+.tft-btn.tft-large-circle {
+  width: 156px;
+  height: 156px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  gap: 0;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-btn.tft-large-circle {
+    width: 90px;
+    height: 90px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-btn.tft-large-circle svg {
+    width: 36px;
+  }
+}
+.tft-btn.tft-btn-gray {
+  background: #99948d;
+  color: white;
+}
+.tft-btn.tft-rounded-0 {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.tft-btn.tft-wh-auto {
+  min-width: auto;
+  min-height: auto;
+}
+.tft-btn.tft-border-0 {
+  border: 0;
 }
 
 input[type=submit].tft-form-btn {
@@ -402,8 +555,6 @@ input[type=submit].tft-form-btn:focus {
   font-weight: 500;
   margin-bottom: 17px;
   text-transform: uppercase;
-  color: var(--primary-color);
-  font-family: "Ubuntu", sans-serif;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-heading-content h3 {
@@ -415,10 +566,7 @@ input[type=submit].tft-form-btn:focus {
   font-size: 3rem;
   line-height: 58px;
   margin-bottom: 30px;
-  max-width: 613px;
-  position: relative;
   text-transform: capitalize;
-  font-family: "Brygada 1918", serif;
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-heading-content h2 {
@@ -446,7 +594,11 @@ input[type=submit].tft-form-btn:focus {
     margin-bottom: 20px;
   }
 }
-.tft-heading-content h2::after {
+.tft-heading-content h2.tft-title-shape {
+  max-width: 613px;
+  position: relative;
+}
+.tft-heading-content h2.tft-title-shape::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -456,13 +608,13 @@ input[type=submit].tft-form-btn:focus {
   background: rgba(255, 107, 0, 0.1);
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-heading-content h2::after {
+  .tft-heading-content h2.tft-title-shape::after {
     height: 30px;
     width: 300px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-heading-content h2::after {
+  .tft-heading-content h2.tft-title-shape::after {
     width: 250px;
   }
 }
@@ -471,7 +623,6 @@ input[type=submit].tft-form-btn:focus {
 }
 .tft-heading-content p {
   margin-bottom: 40px;
-  font-family: "Ubuntu", sans-serif;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-heading-content p {
@@ -2533,9 +2684,18 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button {
   margin-top: 40px;
 }
-.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button a {
+.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn {
   color: var(--color-white);
   font-size: 1.125rem;
+  padding: 17px 35px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  background-color: #F15D30;
+}
+.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn:hover {
+  background: #f94700;
 }
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button input:hover {
   background: #f94700;
@@ -3398,6 +3558,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_input-inner *,
 .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_input-inner {
+  font-family: "Josefin Sans";
   font-weight: 600;
   font-size: 1.125rem;
   line-height: 1.2;
@@ -3407,6 +3568,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-search-box input,
 .tft-search-box select {
+  font-family: "Josefin Sans";
   font-size: 1.125rem;
   color: #f15d30;
   font-weight: 600;
@@ -3486,96 +3648,66 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     display: flow-root;
   }
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
 @media only screen and (max-width: 767.98px) {
-  .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content {
+  .tft-about-us-design__one .tft-about-us-grid .tft-heading-content {
     margin-bottom: 16px;
   }
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content h6 {
-  font-family: "Josefin Sans";
-  font-size: 1rem;
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content h3 {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.16px;
-  text-transform: uppercase;
   color: #B58E53;
-  margin-top: 0px;
   margin-bottom: 8px;
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content h3 {
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content h2 {
   font-size: 3.5rem;
-  font-weight: 700;
   line-height: 1.2;
   color: #595349;
   margin-top: 0px;
   margin-bottom: 32px;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content h3 {
+  .tft-about-us-design__one .tft-about-us-grid .tft-heading-content h2 {
     font-size: 2rem;
   }
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content p {
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content p {
   font-size: 1.125rem;
   color: #99948D;
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content p.tft-about-us-quotes, .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content p.tft-about-us-author {
-  font-size: 1rem;
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content p.tft-about-us-quotes, .tft-about-us-design__one .tft-about-us-grid .tft-heading-content p.tft-about-us-author {
   padding-right: 55px;
   margin-top: 2px;
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content p.tft-about-us-author {
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content p.tft-about-us-author {
   font-weight: 600;
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content p:empty {
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content p:empty {
   display: none;
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a {
-  width: 156px;
-  height: 156px;
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a {
   border: 1px solid #B58E53;
-  display: inline-block;
-  border-radius: 50%;
-  font-size: 1rem;
   font-weight: 700;
   color: #B58E53;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  transition: 0.3s all ease;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a {
+  .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a {
     width: 90px;
     height: 90px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a svg {
+  .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a svg {
     width: 36px;
   }
 }
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover {
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a:hover {
   background: #917242;
   border-color: #917242;
   color: #FDF9F3;
 }
-@media only screen and (max-width: 991.98px) {
-  .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover svg {
-    width: 36px;
-  }
-}
-.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover svg path {
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a:hover svg path {
   fill: #FDF9F3;
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image {
@@ -3614,12 +3746,18 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
   justify-content: center;
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image .years-of-experience .tft-experience-years h2 {
-  font-size: 3.25rem;
+  font-size: 4.5rem;
   font-weight: 700;
   line-height: 1.2;
   color: #99948D;
@@ -4068,21 +4206,19 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     width: auto;
   }
 }
-.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h6 {
-  font-family: "Josefin Sans" !important;
-  font-size: 1rem;
+.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h3 {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.16px;
-  text-transform: uppercase;
   color: #B58E53;
+  margin-bottom: 0;
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h6 {
+  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h3 {
     font-size: 0.5rem;
   }
 }
-.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h3 {
+.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h2 {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -4090,12 +4226,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   margin-bottom: 24px;
 }
 @media only screen and (max-width: 1366px) {
-  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h3 {
+  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h2 {
     font-size: 2rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h3 {
+  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h2 {
     font-size: 1.25rem;
   }
 }
@@ -4116,38 +4252,31 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     gap: 15px;
   }
 }
-.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li {
+.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn {
   padding: 12px 32px;
-  background-color: #99948D;
-  color: #FDF9F3;
   font-weight: 700;
   cursor: pointer;
   transition: 0.3s all ease;
+  font-size: 1rem;
+  min-height: 48px;
+  min-width: auto;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li {
+  .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn {
     padding: 8px 12px;
   }
 }
-.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li:hover {
+.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn:hover {
   background-color: #917242;
   color: #FDF9F3;
 }
-.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li.active {
+.tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn.active {
   background-color: #B58E53;
 }
 .tft-popular-hotels-design__one .tft-popular-hotel-header .read-more a {
-  width: 156px;
-  height: 156px;
   background-color: #B58E53;
-  border-radius: 50%;
   font-weight: 700;
   color: #FDF9F3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  transition: 0.3s all ease;
 }
 @media only screen and (max-width: 1024.98px) {
   .tft-popular-hotels-design__one .tft-popular-hotel-header .read-more a {
@@ -6997,17 +7126,13 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     width: 80%;
   }
 }
-.tft-destination-design__two .tft-destination-header h6 {
-  font-family: "Josefin Sans";
+.tft-destination-design__two .tft-destination-header h3 {
   font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.3;
   letter-spacing: 0.16px;
-  text-transform: uppercase;
   color: #B58E53;
   margin: 0px 0px 8px 0px;
 }
-.tft-destination-design__two .tft-destination-header h3 {
+.tft-destination-design__two .tft-destination-header h2 {
   font-size: 3.5rem;
   line-height: 1.2;
   font-weight: 700;
@@ -7016,7 +7141,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   padding-bottom: 48px;
 }
 @media only screen and (max-width: 1366px) {
-  .tft-destination-design__two .tft-destination-header h3 {
+  .tft-destination-design__two .tft-destination-header h2 {
     font-size: 2rem;
   }
 }
@@ -7105,7 +7230,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   flex-direction: column;
   justify-content: end;
   overflow: hidden;
-  transition: 0.3s all ease;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-destination-design__two .tft-destination-content .tft-destination-slides .tft-single-destination .tft-destination-thumbnail .tft-destination-content {
@@ -7139,7 +7263,6 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   color: #FDF9F3;
   align-items: center;
   justify-content: space-between;
-  transition: 0.3s all ease;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-destination-design__two .tft-destination-content .tft-destination-slides .tft-single-destination .tft-destination-thumbnail .tft-destination-content span {

@@ -2,7 +2,7 @@
 .tft-btn {
   display: block;
   min-height: 55px;
-  background: $primary-color;
+  background: #FA6400;
   font-weight: 500;
   color: $color-white;
   @include inline-flex();
@@ -11,6 +11,7 @@
   @include bd-radius(100px);
   @include transition(.3s);
   gap: 5px;
+  border: 0;
   min-width: 180px;
   padding: 0;
   cursor: pointer;
@@ -22,13 +23,50 @@
   }
 
   &:hover {
-    background: $secondary-color;
+    background: #0e3dd8;
     color: $color-white;
   }
 
   &:focus {
     color: $color-white;
   }
+
+  &.tft-large-circle {
+    width: 156px;
+    height: 156px;
+    @include box-circle();
+    gap: 0;
+
+    @media #{$max991} {
+      width: 90px;
+      height: 90px;
+    }
+
+    svg {
+      @media #{$max991} {
+        width: 36px;
+      }
+    }
+  }
+
+  &.tft-btn-gray{
+    background: #99948d;
+    color: white;
+  }
+
+  &.tft-rounded-0{
+    @include bd-radius(0);
+  }
+
+  &.tft-wh-auto{
+    min-width: auto;
+    min-height: auto;
+  }
+
+  &.tft-border-0{
+    border: 0;
+  }
+
 }
 
 // submit tft form button

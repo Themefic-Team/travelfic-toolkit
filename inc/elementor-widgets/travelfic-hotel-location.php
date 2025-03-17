@@ -572,7 +572,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
     if("design-1"==$tft_design){
     ?>
 
-	<div class="tft-destination-wrapper tft-customizer-typography">
+	<div class="tft-destination-design__one tft-customizer-typography">
     	<div class="tft-destination tft-row">
             <?php
             foreach ( $all_categories as $cat ) {
@@ -624,7 +624,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
         </div>
     </div>
     <?php }elseif("design-2"==$tft_design){ ?>
-    <div class="tft-destination-design-2 tft-location-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
+    <div class="tft-destination-design__two tft-location-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
         <div class="tft-destination-header">
             <?php 
             if(!empty($tft_sec_subtitle)){ ?>

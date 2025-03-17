@@ -572,7 +572,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
     if("design-1"==$tft_design){
     ?>
 
-	<div class="tft-destination-wrapper tft-customizer-typography">
+	<div class="tft-destination-design__one tft-customizer-typography">
     	<div class="tft-destination tft-row">
             <?php
             foreach ( $all_categories as $cat ) {
@@ -624,15 +624,12 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
         </div>
     </div>
     <?php }elseif("design-2"==$tft_design){ ?>
-    <div class="tft-destination-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
-        <div class="tft-destination-header">
-            <?php 
-            if(!empty($tft_sec_subtitle)){ ?>
-                <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
-            <?php }
-            if(!empty($tft_sec_title)){
-            ?>
-            <h3><?php echo esc_html($tft_sec_title); ?></h3>
+    <div class="tft-destination-design__two" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
+        <div class="tft-destination-header tft-heading-content">
+            <?php if (!empty($tft_sec_subtitle)) { ?>
+                <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+            <?php } if (!empty($tft_sec_title)) { ?>
+                <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
             <?php } ?>
         </div>
         <?php $rand_number = wp_rand(8,10);?>
@@ -651,15 +648,15 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ?>
                     <div class="tft-single-destination">
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content">
+                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content tft-btn tft-wh-auto tft-rounded-0 tft-gap-0">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <span>
+                                <span class="tft-w-100">
                                     <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="content">
-                                    <path id="Vector" d="M17.0001 6L1.00012 6" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path id="Vector_2" d="M12.0003 11C12.0003 11 17.0002 7.31756 17.0002 5.99996C17.0003 4.68237 12.0002 1 12.0002 1" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </g>
+                                        <g id="content">
+                                            <path id="Vector" d="M17.0001 6L1.00012 6" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path id="Vector_2" d="M12.0003 11C12.0003 11 17.0002 7.31756 17.0002 5.99996C17.0003 4.68237 12.0002 1 12.0002 1" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
                                     </svg>
                                 </span>
                             </a>

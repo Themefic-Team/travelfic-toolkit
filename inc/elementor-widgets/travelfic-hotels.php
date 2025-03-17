@@ -1811,38 +1811,36 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         <?php if ('design-1' == $tft_design): ?>
             <div class="tft-popular-hotels-design__one tft-customizer-typography" style="background-image: url(<?php echo !empty($tft_posts_sec_bg['url']) ? esc_url($tft_posts_sec_bg['url']) : ''; ?>);">
                 <div class="tft-popular-hotel-header">
-                    <div class="tft-hotel-header">
+                    <div class="tft-hotel-header tft-heading-content">
                         <?php
                         if (!empty($tft_sec_subtitle)) { ?>
-                            <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
-                        <?php }
-                        if (!empty($tft_sec_title)) {
-                        ?>
-                            <h3><?php echo esc_html($tft_sec_title); ?></h3>
+                             <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                        <?php }if (!empty($tft_sec_title)) {?>
+                            <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
 
                         <ul>
                             <?php
                             if ("alls" == $tft_posts_tabs) { ?>
-                                <li class="active" data-id="all">
-                                    <?php echo esc_html_e("All", "travelfic-toolkit"); ?>
+                                <li data-id="all">
+                                    <button class="tft-btn active font-josefin tft-rounded-0"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
                                 </li>
                                 <li data-id="featured">
-                                    <?php echo esc_html_e("Featured", "travelfic-toolkit"); ?>
+                                    <button class="tft-btn tft-btn-gray font-josefin tft-rounded-0"><?php echo esc_html_e("Featured", "travelfic-toolkit"); ?></button>
                                 </li>
                             <?php } elseif ("all" == $tft_posts_tabs) { ?>
-                                <li class="active" data-id="all">
-                                    <?php echo esc_html_e("All", "travelfic-toolkit"); ?>
+                                <li data-id="all">
+                                    <button class="tft-btn active font-josefin tft-rounded-0"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
                                 </li>
                             <?php } elseif ("featured" == $tft_posts_tabs) { ?>
-                                <li class="active" data-id="featured">
-                                    <?php echo esc_html_e("Featured", "travelfic-toolkit"); ?>
+                                <li data-id="featured">
+                                    <button class="tft-btn active font-josefin tft-rounded-0"><?php echo esc_html_e("Featured", "travelfic-toolkit"); ?></button>
                                 </li>
                             <?php } ?>
                         </ul>
                     </div>
                     <div class="read-more">
-                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
+                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
                             <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
@@ -2074,7 +2072,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             }
                                             ?>
 
-                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="btn-view-details"><?php echo esc_html_e("View details", "travelfic-toolkit"); ?></a>
+                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn tft-wh-auto tft-rounded-0 btn-view-details font-josefin"><?php echo esc_html_e("View details", "travelfic-toolkit"); ?></a>
                                         </div>
                                     </div>
                                 </div>

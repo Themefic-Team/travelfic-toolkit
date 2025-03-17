@@ -53,9 +53,16 @@
                             .slider-button {
                                 margin-top: 40px;
 
-                                a {
+                                .tft-btn {
                                     color: $color-white;
                                     font-size: 1.125rem;
+                                    padding: 17px 35px;
+                                    @include bd-radius(4px);
+                                    font-weight: 700;
+                                    background-color: #F15D30;
+                                    &:hover{
+                                        background: #f94700;
+                                    }
                                 }
 
                                 input {
@@ -856,6 +863,7 @@
 
                     .tf_input-inner *,
                     .tf_input-inner {
+                        font-family: $font-josefin;
                         font-weight: 600;
                         font-size: 1.125rem;
                         line-height: 1.2;
@@ -871,6 +879,7 @@
 
     input,
     select {
+        font-family: $font-josefin;
         font-size: 1.125rem;
         color: #f15d30;
         font-weight: 600;

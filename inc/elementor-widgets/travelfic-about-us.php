@@ -561,7 +561,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ]
             ]
         );
-     
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -583,7 +583,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-about-design-2 .tft-heading-content h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-2', 
+                    'tft_about_style' => 'design-2',
                 ],
             ]
         );
@@ -596,7 +596,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
                 'default' => 'yes',
                 'condition' => [
-                    'tft_about_style' => 'design-2', 
+                    'tft_about_style' => 'design-2',
                 ],
             ]
         );
@@ -621,12 +621,12 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-about-design-2 .tft-heading-content h2::after' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-2', 
+                    'tft_about_style' => 'design-2',
                     'about_us_design2_title_backdrop' => 'yes',
                 ],
             ]
         );
-       
+
 
         // sub title
         $this->add_control(
@@ -663,7 +663,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-about-design-2 .tft-about-us-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-2', 
+                    'tft_about_style' => 'design-2',
                 ],
             ]
         );
@@ -679,7 +679,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ]
             ]
         );
-        
+
         // design 2
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
@@ -702,7 +702,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-about-design-2 .tft-heading-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'tft_about_style' => 'design-2', 
+                    'tft_about_style' => 'design-2',
                 ],
             ]
         );
@@ -851,7 +851,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ],
             ]
         );
-    
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -983,38 +983,36 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         if (!empty($settings['readme_label'])) {
             $tft_about_us_button_text = $settings['readme_label'];
         }
-        $section_title_backdrop = $settings['about_us_design2_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
-    
+        $section_title_backdrop = $settings['about_us_design2_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
+
         if ("design-1" == $tft_design) {
 ?>
 
             <div class="tft-about-us-design__one tft-customizer-typography">
                 <div class="tft-about-us__inner tft-row">
                     <div class="tft-about-us-grid">
-                        <div class="tft-about-us-content">
-                            <?php
-                            if (!empty($tft_sec_subtitle)) { ?>
-                                <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
-                            <?php }
-
-                            if (!empty($tft_sec_title)) { ?>
-                                <h3><?php echo esc_html($tft_sec_title); ?></h3>
-                            <?php }
-
-                            if (!empty($tft_sec_content)) { ?>
-                                <?php echo wp_kses_post($tft_sec_content); ?>
+                        <div class="tft-about-us-content tft-heading-content tf-direction-column">
+                            <?php if (!empty($tft_sec_subtitle)) { ?>
+                                <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <?php } if (!empty($tft_sec_title)) { ?>
+                                <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php } ?>
 
-                            <?php if (!empty($tft_sec_quotes)) { ?>
-                                <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
-                            <?php } ?>
+                            <div class="tft-section-content font-josefin">
+                                <?php if (!empty($tft_sec_content)) { ?>
+                                    <?php echo wp_kses_post($tft_sec_content); ?>
+                                <?php } ?>
 
-                            <?php if (!empty($tft_sec_author)) { ?>
-                                <p class="tft-about-us-author"><?php echo esc_html($tft_sec_author); ?></p>
-                            <?php } ?>
+                                <?php if (!empty($tft_sec_quotes)) { ?>
+                                    <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
+                                <?php } ?>
 
+                                <?php if (!empty($tft_sec_author)) { ?>
+                                    <p class="tft-about-us-author tft-text-right"><?php echo esc_html($tft_sec_author); ?></p>
+                                <?php } ?>
+                            </div>
                             <div class="read-more">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
                                     <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
@@ -1030,7 +1028,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <div class="years-of-experience">
                                     <img class="experience-badge" src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/years-experience.png'); ?>" alt="">
                                     <div class="tft-experience-years">
-                                        <h2><?php echo esc_html($tft_about_us_experience); ?></h2>
+                                        <h2 class="font-cormorant"><?php echo esc_html($tft_about_us_experience); ?></h2>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -1065,7 +1063,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
                                 <div class="tft-section-content">

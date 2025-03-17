@@ -1940,7 +1940,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <div class="tft-hero-content">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
-                        <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
@@ -1954,7 +1954,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <div class="tft-hero-content-box">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
-                        <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
                     <?php } ?>
 
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
@@ -2120,7 +2120,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                     <div class="tft-container tft-hero-single-item-inner">
                                         <div class="slider-inner-info">
                                             <div class="tft-slider-title">
-                                                <h1 class="tft-title title-large">
+                                                <h1 class="tft-title title-large font-cormorant">
                                                     <?php
                                                     if (!empty($item['slider_title'])) {
                                                         echo esc_html($item['slider_title']);
@@ -2128,14 +2128,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                 </h1>
                                                 <?php if ($item['slider_subtitle'] != '') { ?>
                                                     <div class="tft-sub-title">
-                                                        <p> <?php echo esc_html($item['slider_subtitle']); ?> </p>
+                                                        <p class="font-josefin"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
                                                     </div>
                                                 <?php } ?>
                                             </div>
                                             <div class="slider-button">
                                                 <?php
                                                 if (!empty($item['slider_bttn_url'])) { ?>
-                                                    <a class="bttn tft-bttn-primary" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
+                                                    <a class="tft-btn tft-rounded-0 tft-wh-auto tft-border-0" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php

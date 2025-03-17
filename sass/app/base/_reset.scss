@@ -249,3 +249,65 @@ textarea.tft-form-control {
     padding: 12px 20px;
   }
 }
+
+.tft-text-center {
+  text-align: center;
+}
+
+.tft-text-right {
+  text-align: right;
+}
+
+.tft-d-flex {
+  @include d-flex();
+}
+
+.tft-d-grid {
+  display: grid;
+}
+
+
+.tft-items-center {
+  @include d-flex();
+  @include align-items(center);
+}
+
+.tft-justify-center {
+  @include d-flex();
+  @include justify-content(center);
+}
+
+.tft-justify-between {
+  @include d-flex();
+  @include justify-content(space-between);
+}
+
+.tft-align-center {
+  @include align-center();
+}
+
+.tft-flex-column {
+  @include d-flex();
+  @include flex-direction(column);
+}
+
+.tft-rounded-0 {
+  border-radius: 0;
+}
+
+.tft-gap-0 {
+  gap: 0;
+}
+
+.tft-border-0 {
+  border: 0;
+}
+
+.tft-h-100 {
+  height: 100%;
+}
+
+
+.tft-w-100 {
+  width: 100%;
+}
