@@ -62,7 +62,8 @@
                     a {
                         border: 1px solid #B58E53;
                         font-weight: 700;
-                        color: #B58E53;
+                        color: #FDF9F3;
+                        background-color: #B58E53;
 
                         @media #{$max991} {
                             width: 90px;
@@ -70,6 +71,9 @@
                         }
 
                         svg {
+                            path {
+                                fill: #FDF9F3;
+                            }
                             @media #{$max991} {
                                 width: 36px;
                             }
@@ -78,13 +82,6 @@
                         &:hover {
                             background: #917242;
                             border-color: #917242;
-                            color: #FDF9F3;
-
-                            svg {
-                                path {
-                                    fill: #FDF9F3;
-                                }
-                            }
                         }
                     }
                 }
@@ -212,7 +209,7 @@
                     top: 40px;
                     width: 10px;
                     height: 150px;
-                    background-color: $primary-color;
+                    background-color: #FA6400;
                     z-index: 1;
 
                     @media #{$max767} {
@@ -340,7 +337,7 @@
                                 }
 
                                 i {
-                                    color: $primary-color;
+                                    color: #FA6400;
                                     font-size: 1.125rem;
 
                                     @media #{$max767} {

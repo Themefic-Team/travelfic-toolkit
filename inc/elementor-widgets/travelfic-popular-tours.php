@@ -204,7 +204,6 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title' => 'color: {{VALUE}}',
                 ],
@@ -231,7 +230,6 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content' => 'color: {{VALUE}}',
                 ],
@@ -258,7 +256,6 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-tour-items .tft-pricing' => 'color: {{VALUE}}',
                 ],
@@ -277,7 +274,6 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .tft-popular-tour-items  .slick-arrow i' => 'color: {{VALUE}}',

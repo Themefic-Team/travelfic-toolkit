@@ -97,7 +97,7 @@
           padding-bottom: 5px;
         }
         &:hover {
-          color: $primary-color;
+          color: #FA6400;
         }
       }
       &:last-child {
@@ -190,7 +190,7 @@
     }
   }
   &__menu {
-    background: $secondary-color;
+    background: #0e3dd8;
     flex: 0.8;
     padding: 16px 0;
     text-align: center;
@@ -206,7 +206,7 @@
       left: 100%;
       padding-right: 100%;
       top: 0;
-      background: $secondary-color;
+      background: #0e3dd8;
       width: 100vw;
       height: 100%;
       z-index: 99;
@@ -229,7 +229,7 @@
       color: $color-white;
       @include transition(0.2s);
       &:hover {
-        color: $primary-color;
+        color: #FA6400;
       }
     }
   }
@@ -266,7 +266,7 @@ footer.tft-footer-design-3 {
     min-width: 174px;
     padding: 0;
     height: 50px;
-    background: $secondary-color !important;
+    background: #0e3dd8;
     border: 0;
     color: $color-white;
     text-align: center;
@@ -280,7 +280,7 @@ footer.tft-footer-design-3 {
       font-size: 0.938rem;
     }
     &:hover {
-      background: $primary-color !important;
+      background: #FA6400;
     }
   }
 }

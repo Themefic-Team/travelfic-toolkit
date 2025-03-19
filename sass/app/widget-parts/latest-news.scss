@@ -453,7 +453,7 @@
                                 &:hover,
                                 &:focus,
                                 :visited {
-                                    color: $primary-color;
+                                    color: #FA6400;
                                 }
                             }
 
@@ -469,7 +469,7 @@
                         .tft-read-more {
                             a {
                                 display: inline-flex;
-                                color: $primary-color;
+                                color: #FA6400;
                                 background: rgba(250, 100, 0, 0.09);
                                 min-height: 50px;
                                 min-width: 170px;
@@ -480,7 +480,7 @@
                                 }
 
                                 &:hover {
-                                    background: $primary-color;
+                                    background: #FA6400;
                                     color: $color-white;
                                 }
                             }

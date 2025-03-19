@@ -922,7 +922,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
@@ -968,7 +967,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Form Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => 'rgba(48, 40, 28, 0.3)',
                 'selectors' => [
                     '{{WRAPPER}} .tf_booking-widget-design-2' => 'background: {{VALUE}}'
                 ],
@@ -983,7 +981,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Button Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#B58E53',
                 'selectors' => [
                     '{{WRAPPER}} .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_availability_checker_box button' => 'background: {{VALUE}}',
                     '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'background: {{VALUE}} !important',
@@ -1508,7 +1505,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Tab Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#000',
                 'selectors' => [
                     '{{WRAPPER}} button.tf-tablinks' => 'color: {{VALUE}} !important;',
                 ],
@@ -1522,7 +1518,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Tab Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} button.tf-tablinks' => 'background: {{VALUE}} !important;',
                 ],
@@ -1546,7 +1541,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Active Tab background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} button.tf-tablinks.active' => 'background: {{VALUE}} !important',
                 ],
@@ -1582,7 +1576,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Tab Border Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#ccc',
                 'selectors' => [
                     '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-color: {{VALUE}} !important',
                 ],
@@ -1667,7 +1660,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Border Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D3040',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-color: {{VALUE}} !important;',
                 ],
@@ -1714,7 +1706,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_input-inner div' => 'color: {{VALUE}} !important;',
                     '{{WRAPPER}} .tft-search-box .tf_input-inner' => 'color: {{VALUE}} !important;',
@@ -1776,7 +1767,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Border Color', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_button' => 'border-color: {{VALUE}} !important;',
                 ],
@@ -1834,7 +1824,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Button Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_button' => 'background-color: {{VALUE}} !important;',
                 ],
@@ -1862,7 +1851,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Button Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'color: {{VALUE}} !important;',
                 ],
@@ -1877,7 +1865,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label'     => __('Button Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#D83B0B',
                 'selectors' => [
                     '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'background-color: {{VALUE}} !important;',
                 ],
@@ -2135,7 +2122,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                             <div class="slider-button">
                                                 <?php
                                                 if (!empty($item['slider_bttn_url'])) { ?>
-                                                    <a class="tft-btn tft-rounded-0 tft-wh-auto tft-border-0" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
+                                                    <a class="tft-btn tft-btn_sharp tft-wh-auto tft-border-0" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php

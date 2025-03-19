@@ -224,10 +224,10 @@
                     }
 
                     &.slick-active {
-                        border-color: $primary-color;
+                        border-color: #FA6400;
 
                         button {
-                            background: $primary-color;
+                            background: #FA6400;
                         }
                     }
                 }
@@ -269,7 +269,7 @@
                     padding: 0;
 
                     h3 {
-                        color: $primary-color;
+                        color: #FA6400;
                         font-family: $font-ubuntu;
                         font-size: 1rem;
                         font-weight: 400;
@@ -305,7 +305,7 @@
                         button {
                             padding: 16px;
                             border-radius: 5px;
-                            background: $primary-color;
+                            background: #FA6400;
                             border: 0;
                             box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
 
@@ -322,7 +322,7 @@
                         }
 
                         .social-media {
-                            background: $primary-color;
+                            background: #FA6400;
                             width: fit-content;
                             padding: 7px 25px;
                             @include bd-radius(4px);
@@ -419,9 +419,9 @@
         }
 
         &:hover {
-            background: $primary-color;
+            background: #FA6400;
             color: $color-white;
-            border-color: $primary-color;
+            border-color: #FA6400;
         }
 
         &.tft-prev-slide {

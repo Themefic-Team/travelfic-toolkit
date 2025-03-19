@@ -648,7 +648,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ?>
                     <div class="tft-single-destination">
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content tft-btn tft-wh-auto tft-rounded-0 tft-gap-0">
+                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content tft-btn tft-wh-auto tft-btn_sharp tft-gap-0">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
                                 <span class="tft-w-100">
                                     <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>

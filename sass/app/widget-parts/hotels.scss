@@ -95,7 +95,7 @@
                     }
 
                     &:hover {
-                        background-color: #917242 !important;
+                        background-color: #917242;
                     }
 
                     svg {
@@ -188,14 +188,13 @@
                         .tft-locations {
                             display: flex;
                             margin: 0;
-
+                            color: #595349;
                             svg {
                                 margin-right: 8px;
                             }
 
                             span {
                                 font-weight: 400;
-                                color: #595349;
                             }
                         }
 
@@ -235,7 +234,7 @@
                                     transition: .3s all ease;
 
                                     &:hover {
-                                        background: #917242 !important;
+                                        background: #917242;
                                     }
                                 }
 
@@ -391,10 +390,10 @@
                     }
 
                     &.slick-active {
-                        border-color: $primary-color;
+                        border-color: #FA6400;
 
                         button {
-                            background: $primary-color;
+                            background: #FA6400;
                         }
                     }
                 }
@@ -436,7 +435,7 @@
                         .tft-featured {
                             @include bd-radius(100px);
                             padding: 8px 16px 7px 16px;
-                            background: $primary-color;
+                            background: #FA6400;
                             color: $color-white;
                             font-family: $font-ubuntu;
                             font-size: 0.813rem;
@@ -467,7 +466,7 @@
                             gap: 5px;
 
                             i {
-                                color: $primary-color;
+                                color: #FA6400;
                                 font-size: 0.875rem;
                             }
                         }
@@ -480,7 +479,7 @@
                             text-transform: capitalize;
 
                             i {
-                                color: $primary-color;
+                                color: #FA6400;
                                 float: left;
                                 margin-right: 6px;
                                 margin-top: 1px;
@@ -510,7 +509,7 @@
                                 text-transform: capitalize;
 
                                 &:hover {
-                                    color: $primary-color;
+                                    color: #FA6400;
                                 }
                             }
                         }
@@ -538,7 +537,7 @@
                             }
 
                             .tft-desination-price-value {
-                                color: $primary-color;
+                                color: #FA6400;
                                 font-family: $font-brygada;
                                 font-size: 1.25rem;
                                 text-transform: none;
@@ -548,13 +547,13 @@
                         .tft-desination-btn {
                             .tft-btn {
                                 background: rgba(250, 100, 0, 0.1);
-                                color: $primary-color;
+                                color: #FA6400;
                                 min-width: 136px;
                                 min-height: 50px;
                                 text-transform: capitalize;
 
                                 &:hover {
-                                    background: $primary-color;
+                                    background: #FA6400;
                                     color: $color-white;
                                 }
                             }
