@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 // global button
 .tft-btn {
   display: block;

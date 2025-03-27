@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 // Destination design 1
 .tft-destination-design {
     &__one {

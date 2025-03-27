@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 .tft-popular-hotels-design {
     &__one {
         background-repeat: no-repeat;

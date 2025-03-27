@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 .footer {
   padding: 72px 0;
   background-size: cover;

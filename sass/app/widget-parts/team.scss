@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 .tft-team-design {
     &__one {
         .tft-team-members {
@@ -308,13 +311,10 @@
                             background: #FA6400;
                             border: 0;
                             box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
-
+                            cursor: pointer;
                             @media #{$max767} {
                                 padding: 12px;
                             }
-
-                            cursor: pointer;
-
                             i {
                                 color: $color-white;
                                 font-size: 1.125rem;

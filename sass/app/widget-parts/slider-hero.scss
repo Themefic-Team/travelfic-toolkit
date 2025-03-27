@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 .tft-hero-design {
     &__one {
         overflow: hidden;

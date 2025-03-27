@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 // travelfic toolkit header design 2
 header.tft-design-2 {
   .tft-top-header {
@@ -497,8 +500,6 @@ header.tft-design-2 {
 
   // logo
   &__logo {
-    line-height: 0;
-
     a {
       font-size: 2rem;
       font-weight: 700;
@@ -509,6 +510,7 @@ header.tft-design-2 {
       }
 
       img {
+        vertical-align: middle;
         @media #{$max991} {
           max-width: 160px;
         }

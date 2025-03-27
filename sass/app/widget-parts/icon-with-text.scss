@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 .tft-icon-text-design {
     &__one {
         .tft-icon-text-items {

@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 // tft travelling service
 .tft-travelling-service {
   .tft-section-title {

@@ -285,7 +285,7 @@ textarea.tft-form-control {
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #dbe0f1;
-  background: var(--color-white);
+  background: #ffffff;
   padding: 17px 25px 18px;
 }
 @media only screen and (max-width: 991.98px) {
@@ -437,7 +437,7 @@ p {
   min-height: 55px;
   background: #FA6400;
   font-weight: 500;
-  color: var(--color-white);
+  color: #ffffff;
   display: -webkit-inline-box;
   display: -moz-inline-box;
   display: -webkit-inline-flex;
@@ -475,10 +475,10 @@ p {
 }
 .tft-btn:hover {
   background: #0e3dd8;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-btn:focus {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-btn_gray {
   background: #99948d;
@@ -519,7 +519,7 @@ input[type=submit].tft-form-btn {
   font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--color-white);
+  color: #ffffff;
   border-color: #FA6400;
   -webkit-border-radius: 9999px;
   -moz-border-radius: 9999px;
@@ -542,10 +542,10 @@ input[type=submit].tft-form-btn {
 }
 input[type=submit].tft-form-btn:hover {
   background: #0e3dd8;
-  color: var(--color-white);
+  color: #ffffff;
 }
 input[type=submit].tft-form-btn:focus {
-  color: var(--color-white);
+  color: #ffffff;
 }
 
 .tft-heading-content h3 {
@@ -738,7 +738,7 @@ label.tft-form-label .tft-form-control {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  color: var(--color-white);
+  color: #ffffff;
   z-index: 1;
   position: relative;
 }
@@ -818,7 +818,7 @@ label.tft-form-label .tft-form-control {
   left: 0;
   width: 60px;
   height: 2px;
-  background-color: var(--color-white);
+  background-color: #ffffff;
 }
 .footer h3.wp-block-heading {
   padding-bottom: 0;
@@ -828,7 +828,7 @@ label.tft-form-label .tft-form-control {
   display: none;
 }
 .footer h4.wp-block-heading {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.125rem;
   font-weight: 500;
   line-height: normal;
@@ -850,7 +850,7 @@ label.tft-form-label .tft-form-control {
   }
 }
 .footer .wp-block-list li a {
-  color: var(--color-white);
+  color: #ffffff;
   display: block;
   padding-bottom: 8px;
   -webkit-transition: all 0.2s ease;
@@ -890,7 +890,7 @@ label.tft-form-label .tft-form-control {
   }
 }
 .footer .tft-footer-section:first-child a {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .footer .tft-footer-section:first-child p:last-child {
   margin-bottom: 0;
@@ -917,7 +917,7 @@ label.tft-form-label .tft-form-control {
   font-family: "Ubuntu", sans-serif;
   font-size: 0.75rem;
   line-height: 13.79px;
-  color: var(--color-white);
+  color: #ffffff;
   overflow: hidden;
 }
 .footer-bottom__inner {
@@ -1021,7 +1021,7 @@ label.tft-form-label .tft-form-control {
   }
 }
 .footer-bottom__nav a {
-  color: var(--color-white);
+  color: #ffffff;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -1044,7 +1044,7 @@ footer.tft-footer-design-3 input[type=text] {
   -moz-border-radius: 1000px;
   border-radius: 1000px;
   padding: 16px 32px;
-  color: var(--color-white);
+  color: #ffffff;
   line-height: 18.38px;
   border: 0;
   margin-top: 16px;
@@ -1069,7 +1069,7 @@ footer.tft-design-2 input[type=email]::placeholder,
 footer.tft-design-2 input[type=text]::placeholder,
 footer.tft-footer-design-3 input[type=email]::placeholder,
 footer.tft-footer-design-3 input[type=text]::placeholder {
-  color: var(--color-white);
+  color: #ffffff;
 }
 footer.tft-design- input[type=submit],
 footer.tft-design-2 input[type=submit],
@@ -1080,7 +1080,7 @@ footer.tft-footer-design-3 input[type=submit] {
   height: 50px;
   background: #0e3dd8;
   border: 0;
-  color: var(--color-white);
+  color: #ffffff;
   text-align: center;
   margin-top: 16px;
   -webkit-border-radius: 9999px;
@@ -1242,7 +1242,7 @@ header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu {
   padding: 8px;
 }
 header.tft-design-2 .tft-menus-section .tft-flex .tft-menu ul.sub-menu li {
-  background-color: var(--color-white);
+  background-color: #ffffff;
   margin-bottom: 4px;
   padding: 10px;
   transition: 0.3s all ease;
@@ -1500,16 +1500,16 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     padding-right: 15px;
   }
 }
-.tft-design-3__logo {
-  line-height: 0;
-}
 .tft-design-3__logo a {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-design-3__logo a:hover {
-  color: var(--color-white);
+  color: #ffffff;
+}
+.tft-design-3__logo a img {
+  vertical-align: middle;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-design-3__logo a img {
@@ -1599,7 +1599,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__content-right {
   flex: 1;
   position: relative;
-  background: var(--color-white);
+  background: #ffffff;
   margin-left: 52px;
 }
 @media only screen and (max-width: 991.98px) {
@@ -1633,7 +1633,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   left: -48px;
   padding-right: 0;
   top: 0;
-  background-color: var(--color-white);
+  background-color: #ffffff;
   height: 100%;
   clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
   z-index: -1;
@@ -1844,13 +1844,13 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-align-items: center;
   align-items: center;
   gap: 10.5px;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-design-3__topbar-list-link:hover {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-design-3__topbar-list-link:visited {
-  color: var(--color-white);
+  color: #ffffff;
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-design-3__topbar-list-link {
@@ -1874,10 +1874,10 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-design-3__topbar-list:hover {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-design-3__topbar-list:focus {
-  color: var(--color-white);
+  color: #ffffff;
   outline: none;
   box-shadow: none;
 }
@@ -1887,11 +1887,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__topbar-list-select {
   background: transparent;
   border: 0;
-  color: var(--color-white);
+  color: #ffffff;
   cursor: pointer;
 }
 .tft-design-3__topbar-list-select:focus {
-  color: var(--color-white);
+  color: #ffffff;
   outline: none;
   box-shadow: none;
 }
@@ -2055,7 +2055,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-design-3__bottom__nav--list .menu-item.menu-item-has-children .sub-menu {
   position: absolute;
   z-index: 9;
-  background: var(--color-white);
+  background: #ffffff;
   box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
   margin: 0;
   padding: 8px 0px;
@@ -2188,7 +2188,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background: var(--color-white);
+  background: #ffffff;
   border: 1px dashed #060d1c;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -2264,7 +2264,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   transform: translateY(-50%);
   border: 0;
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 0.875rem;
   height: 100%;
   -webkit-border-radius: 0;
@@ -2340,7 +2340,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 10px;
   right: 20px;
   font-size: 2.25rem;
-  color: var(--color-white);
+  color: #ffffff;
   background: none;
   border: none;
   cursor: pointer;
@@ -2359,7 +2359,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .mobile-sidenav__nav--list .menu-item a {
   padding: 7px 25px;
-  color: var(--color-white);
+  color: #ffffff;
   display: block;
   transition: 0.3s;
 }
@@ -2394,7 +2394,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   padding-bottom: 7px;
 }
 .mobile-sidenav__middle ul li a {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 0.938rem;
 }
 .mobile-sidenav__middle .tf-flex {
@@ -2402,11 +2402,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   gap: 15px;
 }
 .mobile-sidenav__middle .tf-flex .tft-design-3__bottom__right__list__item--link {
-  border-color: var(--color-white);
+  border-color: #ffffff;
   background: transparent;
 }
 .mobile-sidenav__middle .tf-flex .tft-design-3__bottom__right__list__item--link path {
-  fill: var(--color-white);
+  fill: #ffffff;
 }
 .mobile-sidenav__bottom {
   display: none;
@@ -2437,7 +2437,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   .tft-design-3 .menu-item-has-children:after {
     position: absolute;
     right: 20px;
-    color: var(--color-white);
+    color: #ffffff;
     top: 14px;
   }
 }
@@ -2525,7 +2525,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: transparent;
   width: 60px;
   height: 60px;
-  border-color: var(--color-white);
+  border-color: #ffffff;
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-hero-slider-nav button {
@@ -2549,12 +2549,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-slider-nav button i {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.25rem;
 }
 .tft-hero-slider-nav button:hover {
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
   border-color: #FA6400;
 }
 .tft-hero-slider-nav button.tft-prev-slide {
@@ -2614,7 +2614,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-align-items: center;
   align-items: center;
   border-color: var(--tft-border-color) !important;
-  background: var(--color-white);
+  background: #ffffff;
   box-shadow: 0px 9px 12px 0px rgba(14, 19, 35, 0.02);
   -webkit-box-pack: center;
   -moz-box-pack: center;
@@ -2670,20 +2670,20 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .title-large {
   font-size: 5.25rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: #ffffff;
   line-height: 1.3;
   margin-bottom: 20px;
   margin-top: 0px;
 }
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title p {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.375rem;
 }
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button {
   margin-top: 40px;
 }
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.125rem;
   padding: 17px 35px;
   -webkit-border-radius: 4px;
@@ -2708,13 +2708,13 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   border-radius: 2px;
   transition: all 0.3s ease;
   border: 2px solid rgba(0, 0, 0, 0);
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1rem;
 }
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev::before,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next::before {
   display: none;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev:hover,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next:hover {
@@ -2885,7 +2885,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   align-items: center;
 }
 .tft-hero-design__three .tft-hero-content-box h1 {
-  color: var(--color-white);
+  color: #ffffff;
   text-align: center;
   font-size: 4.18rem;
   font-weight: 700;
@@ -2999,7 +2999,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  color: var(--color-white);
+  color: #ffffff;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design__four__slider__item {
@@ -3019,7 +3019,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   line-height: 1.25;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
   text-transform: capitalize;
-  color: var(--color-white);
+  color: #ffffff;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design__four__slider__item__content--subtitle {
@@ -3042,7 +3042,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   line-height: 1.17;
   margin: 14px 0 35px;
   text-transform: capitalize;
-  color: var(--color-white);
+  color: #ffffff;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design__four__slider__item__content--title {
@@ -3097,7 +3097,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   background: transparent;
   width: 60px;
   height: 60px;
-  border-color: var(--color-white);
+  border-color: #ffffff;
 }
 @media only screen and (max-width: 1399.98px) {
   .tft-hero-design__four__slider--nav button {
@@ -3121,12 +3121,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-design__four__slider--nav button i {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.25rem;
 }
 .tft-hero-design__four__slider--nav button:hover {
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
   border-color: #FA6400;
 }
 .tft-hero-design__four__slider--nav button.tft-prev-slide {
@@ -3178,7 +3178,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  color: var(--color-white);
+  color: #ffffff;
   gap: 20px;
 }
 @media only screen and (max-width: 1760px) {
@@ -3251,7 +3251,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-hero-design__four__social__list__item--link i {
   font-size: 0.875rem;
-  color: var(--color-white);
+  color: #ffffff;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-hero-design__four__social__list__item--link i {
@@ -3275,7 +3275,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   letter-spacing: 0.23em;
   writing-mode: tb-rl;
   transform: rotate(180deg);
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-hero-design__four__mobile--share {
   display: none;
@@ -3381,12 +3381,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-hero-design__four .slick-dots li.slick-active {
-  border-color: var(--color-white);
+  border-color: #ffffff;
 }
 .tft-hero-design__four .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: var(--color-white);
+  background: #ffffff;
   border: 0;
   padding: 0;
   font-size: 0;
@@ -3870,7 +3870,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 106px;
   width: 10px;
   height: 246px;
-  background-color: var(--color-white);
+  background-color: #ffffff;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-us-design__two .tft-about-us-grid .tft-about-image::after {
@@ -4169,7 +4169,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   font-size: 1rem;
   font-weight: 700;
   background: #F15D30;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-cf7-form-design__one .wpcf7-form .tft-submit .wpcf7-submit:hover {
   background: #f94700;
@@ -4187,7 +4187,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-cf7-form-design__one .tft-fields-subscriptions .wpcf7-submit {
   padding: 12px 16px;
   width: 100%;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-cf7-form-design__one span.wpcf7-spinner {
   position: absolute;
@@ -4595,7 +4595,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  background: var(--color-white);
+  background: #ffffff;
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
   padding: 30px;
   display: -webkit-box;
@@ -4640,7 +4640,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   border-radius: 100px;
   padding: 8px 16px 7px 16px;
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
   font-family: "Ubuntu", sans-serif;
   font-size: 0.813rem;
   font-weight: 700;
@@ -4779,7 +4779,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn:hover {
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-popular-hotels-design__two .tft-destination-slider.tft-slider-disable {
   overflow: initial;
@@ -4820,10 +4820,10 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   border-radius: 20px;
 }
 .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single:hover h3 {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single:hover p {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single .tft-icon-text-single-inner {
   padding: 64px 40px;
@@ -5015,7 +5015,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   width: 120px;
   height: 120px;
   margin: auto;
-  background-color: var(--color-white);
+  background-color: #ffffff;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -5182,10 +5182,10 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   margin-bottom: 10px;
 }
 .tft-latest-posts-design__one .tft-latest-post-items .tft-post-single-item .tft-post-thumbnail a .tft-post-content-wrap .tft-meta-wrap .tft-meta p {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-latest-posts-design__one .tft-latest-post-items .tft-post-single-item .tft-post-thumbnail a .tft-post-content-wrap .tft-title {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.25rem;
   font-weight: 700;
 }
@@ -5539,7 +5539,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover {
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
   display: -webkit-box;
@@ -6110,7 +6110,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-team-design__one .tft-team-members .tft-single-member .team-members-inner .member-details .social-media a {
   background: #f15d30;
   border-radius: 2px;
-  color: var(--color-white);
+  color: #ffffff;
   height: 24px;
   width: 24px;
   text-align: center;
@@ -6119,7 +6119,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   display: inline-block;
 }
 .tft-team-design__one .tft-team-members .tft-single-member .team-members-inner .member-details .social-media a:hover {
-  color: var(--color-white);
+  color: #ffffff;
   background-color: #f94700;
 }
 .tft-team-design__two .container {
@@ -6273,7 +6273,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  background: var(--color-white);
+  background: #ffffff;
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
   flex-basis: calc(33.33% - 16px);
 }
@@ -6355,7 +6355,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons button i {
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 1.125rem;
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons .social-media {
@@ -6377,7 +6377,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   display: flex;
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons .social-media a {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-team-design__two .tft_team_bottom_shape {
   margin-top: -320px;
@@ -6442,7 +6442,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--color-white);
+  background: #ffffff;
   border: 1px solid var(--tft-border-color);
   width: 70px;
   height: 70px;
@@ -6497,7 +6497,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-team-slider-nav button:hover,
 .tft-hero-slider-nav button:hover {
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
   border-color: #FA6400;
 }
 .tft-destination-slider-nav button.tft-prev-slide,
@@ -6825,7 +6825,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  background: var(--color-white);
+  background: #ffffff;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -6852,7 +6852,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   border-color: #FA6400;
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow:hover i {
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows--mobile {
   display: none;
@@ -6958,7 +6958,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   -moz-border-radius: 15px;
   border-radius: 15px;
   flex: 1;
-  background: var(--color-white);
+  background: #ffffff;
   padding: 40px;
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
 }
@@ -7406,10 +7406,10 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   position: absolute;
   bottom: 35px;
   left: 35px;
-  color: var(--color-white);
+  color: #ffffff;
 }
 .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a {
-  color: var(--color-white);
+  color: #ffffff;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -7420,7 +7420,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   font-weight: 500;
   line-height: normal;
   margin-bottom: 10px;
-  color: var(--color-white);
+  color: #ffffff;
   text-transform: capitalize;
 }
 .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content a:hover {
@@ -7428,7 +7428,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content p {
   margin-bottom: 0;
-  color: var(--color-white);
+  color: #ffffff;
   font-size: 0.875rem;
   line-height: normal;
 }
@@ -7440,7 +7440,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-destination-design__three .tft-destination-content .tft-btn:hover {
   background: #FA6400;
-  color: var(--color-white);
+  color: #ffffff;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-destination-design__three .tft-destination-content .tft-btn {
