@@ -1726,18 +1726,18 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
 
             <div class="tft-testimonials-design__two">
                 <div class="tft-testimonial-top-header">
-                    <?php
-                    if (!empty($tft_sec_subtitle)) { ?>
-                        <div class="testimonial-header-shape">
+                    <div class="testimonial-header-shape tft-heading-content">
+                        <?php
+                        if (!empty($tft_sec_subtitle)) { ?>
                             <!-- <img src="</?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/testimonial-group-1.png'); ?>" alt="Testimonial Shape"> -->
-                            <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                            <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <!-- <img src="</?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/testimonial-group-2.png'); ?>" alt="Testimonial Shape"> -->
-                        </div>
-                    <?php }
-                    if (!empty($tft_sec_title)) {
-                    ?>
-                        <h3><?php echo esc_html($tft_sec_title); ?></h3>
-                    <?php } ?>
+                        <?php }
+                        if (!empty($tft_sec_title)) {
+                        ?>
+                            <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
+                        <?php } ?>
+                    </div>
                 </div>
                 <div class="tft-testimonials-sliders" style="background-image: url(<?php echo !empty($tft_testimonial_bg['url']) ? esc_url($tft_testimonial_bg['url']) : ''; ?>);">
                     <div class="tft-testimonials-slides">
@@ -1763,11 +1763,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
 
                                         </div>
                                         <div class="testimonial-review">
-                                            <p class="tft-content"><?php echo wp_kses_post(travelfic_character_limit($item['testimonials_review'], 100)); ?></p>
+                                            <p class="tft-content font-josefin"><?php echo wp_kses_post(travelfic_character_limit($item['testimonials_review'], 100)); ?></p>
                                         </div>
                                         <div class="testimonial-author">
-                                            <p class="person-name"><?php echo esc_html($item['person_name']) ?></p>
-                                            <p class="designation"><?php echo esc_html($item['designation']) ?></p>
+                                            <p class="person-name font-josefin"><?php echo esc_html($item['person_name']) ?></p>
+                                            <p class="designation font-josefin"><?php echo esc_html($item['designation']) ?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -91,3 +91,45 @@
         }
     }
 }
+
+#tf-cf7-contact-form {
+    margin-top: 20px;
+    p {
+        font-family: Josefin Sans;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 130%;
+        .wpcf7-form-control-wrap {
+            position: relative;
+            input, textarea {
+                display: flex;
+                padding: 12px 14px;
+                align-items: center;
+                gap: 8px;
+                align-self: stretch;
+                width: 100%;
+                border: 1px solid #99948D;
+                box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+                background-color: transparent;
+                border-radius: unset;
+            }
+        }
+        input[type=submit] {
+            display: flex;
+            width: 100%;
+            padding: 12px 32px;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 8px;
+            font-family: Josefin Sans;
+            font-weight: 700;
+            line-height: 150%;
+            text-align: center;
+            background: #B58E53;
+            color: #FDF9F3;
+            cursor: pointer;
+        }
+    }
+    
+}

@@ -825,7 +825,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1D1D1D94',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}}!important;',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-2', 'design-3'],
@@ -837,9 +837,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 57, 204, 0.03) 125.37%)',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}}!important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-4', // Show this control only when des_style is 'design-2'
@@ -853,7 +852,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
                 ],
                 'condition' => [
                     'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -875,9 +874,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
+                    '{{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}!important;',
                 ],
 
             ]
@@ -886,7 +885,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_title',
-                'selector' => '{{WRAPPER}} .tft-slider-title .tft-title',
+                'selectors' => '{{WRAPPER}} .tft-slider-title .tft-title',
                 'label'    => __('Title Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'slider_style' => ['design-1'],

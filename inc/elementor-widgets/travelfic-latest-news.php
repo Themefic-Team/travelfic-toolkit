@@ -1234,7 +1234,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                             <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title <?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
 
@@ -1279,18 +1279,18 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         } else if ("design-2" == $design) { ?>
             <div class="tft-latest-posts-design__two">
                 <div class="tft-blog-header">
-                    <div class="tft-news-header">
+                    <div class="tft-news-header tft-heading-content">
                         <?php
                         if (!empty($tft_sec_subtitle)) { ?>
-                            <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                            <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) {
                         ?>
-                            <h3><?php echo esc_html($tft_sec_title); ?></h3>
+                            <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="read-more">
-                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>">
+                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
                             <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">

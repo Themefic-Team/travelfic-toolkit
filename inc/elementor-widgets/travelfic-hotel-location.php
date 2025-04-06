@@ -236,7 +236,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sec_title_typo',
-                'selector' => '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h3',
+                'selector' => '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h2',
                 'label'    => __( 'Section Title Typography', 'travelfic-toolkit' ),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
@@ -256,7 +256,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#595349',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
@@ -267,14 +267,8 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sec_subtitle_typo',
-                'selector' => '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h6',
+                'selector' => '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h3',
                 'label'    => __( 'Section Subtitle Typography', 'travelfic-toolkit' ),
-                'fields_options' => [
-                    'typography' => ['default' => 'yes'],
-                    'font_family' => [
-                        'default' => 'Josefin Sans',
-                    ],
-                ],
                 'condition' => [
                     'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
                 ],
@@ -287,7 +281,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#B58E53',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h6' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-location-design-2 .tft-destination-header h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'hotel_location_style' => 'design-2', // Show this control only when hotel_location_style is 'design-2'
@@ -512,8 +506,6 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 ],
             ]
         );
-
-
     }
 
    
@@ -625,14 +617,14 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
     </div>
     <?php }elseif("design-2"==$tft_design){ ?>
     <div class="tft-destination-design__two tft-location-design-2" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
-        <div class="tft-destination-header">
+        <div class="tft-destination-header tft-heading-content">
             <?php 
             if(!empty($tft_sec_subtitle)){ ?>
-                <h6><?php echo esc_html($tft_sec_subtitle); ?></h6>
+                <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
             <?php }
             if(!empty($tft_sec_title)){
             ?>
-            <h3><?php echo esc_html($tft_sec_title); ?></h3>
+            <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
             <?php } ?>
         </div>
         <?php $rand_number = wp_rand(8,10);?>
@@ -653,7 +645,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
                             <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>" class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <span>
+                                <span class="tft-btn tft-wh-auto tft-btn_sharp btn-view-details font-josefin">
                                     <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
