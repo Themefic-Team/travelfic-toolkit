@@ -1665,12 +1665,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                             <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
                                         </div>
                                         <div class="person-info">
-                                            <h4 class="person-name"><?php echo esc_html($item['person_name']) ?></h4>
-                                            <p class="designation"><?php echo esc_html($item['designation']) ?></p>
+                                            <h4 class="person-name font-nunito"><?php echo esc_html($item['person_name']) ?></h4>
+                                            <p class="designation font-nunito"><?php echo esc_html($item['designation']) ?></p>
                                         </div>
                                     </div>
                                     <div class="testimonial-body">
-                                        <p class="tft-content"><?php echo esc_html($item['testimonials_review']) ?></p>
+                                        <p class="tft-content font-nunito"><?php echo esc_html($item['testimonials_review']) ?></p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <?php $this->testimonials_rattings($item['rate']); ?>

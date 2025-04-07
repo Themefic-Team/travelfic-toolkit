@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400..700;1,400..700&family=Caveat:wght@400..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 :root {
   --tft-border-color: var(--border-color);
 }
@@ -39,6 +38,7 @@ html {
 
 body {
   overflow-x: hidden;
+  font-family: "Nunito", sans-serif;
 }
 @media only screen and (max-width: 767.98px) {
   body {
@@ -682,6 +682,20 @@ label.tft-form-label .tft-form-control {
   }
 }
 
+.wpcf7-form label {
+  color: #1D2A3B;
+}
+.wpcf7-form input[type=email],
+.wpcf7-form input[type=text],
+.wpcf7-form input[type=phone],
+.wpcf7-form textarea {
+  width: 100%;
+  padding: 12px 10px;
+}
+.wpcf7-form textarea {
+  height: 100px;
+}
+
 .tft-page__loader {
   position: fixed;
   width: 100vw;
@@ -1031,8 +1045,8 @@ label.tft-form-label .tft-form-control {
   color: #FA6400;
 }
 
-footer.tft-design- input[type=email],
-footer.tft-design- input[type=text],
+footer.tft-design-1 input[type=email],
+footer.tft-design-1 input[type=text],
 footer.tft-design-2 input[type=email],
 footer.tft-design-2 input[type=text],
 footer.tft-footer-design-3 input[type=email],
@@ -1050,8 +1064,8 @@ footer.tft-footer-design-3 input[type=text] {
   margin-top: 16px;
 }
 @media only screen and (max-width: 767.98px) {
-  footer.tft-design- input[type=email],
-  footer.tft-design- input[type=text],
+  footer.tft-design-1 input[type=email],
+  footer.tft-design-1 input[type=text],
   footer.tft-design-2 input[type=email],
   footer.tft-design-2 input[type=text],
   footer.tft-footer-design-3 input[type=email],
@@ -1063,15 +1077,15 @@ footer.tft-footer-design-3 input[type=text] {
     max-width: 100%;
   }
 }
-footer.tft-design- input[type=email]::placeholder,
-footer.tft-design- input[type=text]::placeholder,
+footer.tft-design-1 input[type=email]::placeholder,
+footer.tft-design-1 input[type=text]::placeholder,
 footer.tft-design-2 input[type=email]::placeholder,
 footer.tft-design-2 input[type=text]::placeholder,
 footer.tft-footer-design-3 input[type=email]::placeholder,
 footer.tft-footer-design-3 input[type=text]::placeholder {
   color: #ffffff;
 }
-footer.tft-design- input[type=submit],
+footer.tft-design-1 input[type=submit],
 footer.tft-design-2 input[type=submit],
 footer.tft-footer-design-3 input[type=submit] {
   width: fit-content;
@@ -1088,21 +1102,21 @@ footer.tft-footer-design-3 input[type=submit] {
   border-radius: 9999px;
 }
 @media only screen and (max-width: 767.98px) {
-  footer.tft-design- input[type=submit],
+  footer.tft-design-1 input[type=submit],
   footer.tft-design-2 input[type=submit],
   footer.tft-footer-design-3 input[type=submit] {
     margin-top: 12px;
   }
 }
 @media only screen and (max-width: 575.98px) {
-  footer.tft-design- input[type=submit],
+  footer.tft-design-1 input[type=submit],
   footer.tft-design-2 input[type=submit],
   footer.tft-footer-design-3 input[type=submit] {
     min-height: 45px;
     font-size: 0.938rem;
   }
 }
-footer.tft-design- input[type=submit]:hover,
+footer.tft-design-1 input[type=submit]:hover,
 footer.tft-design-2 input[type=submit]:hover,
 footer.tft-footer-design-3 input[type=submit]:hover {
   background: #FA6400;
@@ -2855,7 +2869,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   cursor: pointer;
   position: relative;
   text-decoration: none;
-  background-color: #e6e6e6;
+  background-color: #e6e6e6 !important;
   padding: 15px 30px;
 }
 .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button:hover, .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button.active {
@@ -4125,6 +4139,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 
 .tft-cf7-form-design__one .wpcf7-form label {
   color: #1D2A3B;
+  font-family: "Nunito", sans-serif;
 }
 .tft-cf7-form-design__one .wpcf7-form input[type=email],
 .tft-cf7-form-design__one .wpcf7-form input[type=text],
@@ -4132,6 +4147,12 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-cf7-form-design__one .wpcf7-form textarea {
   width: 100%;
   padding: 12px 10px;
+  color: #666666;
+  background-color: #fff;
+  padding: 14px 14px 14px 14px;
+  border-radius: 10px 10px 10px 10px;
+  border: 1px solid #ccc;
+  font-family: "Nunito", sans-serif;
 }
 .tft-cf7-form-design__one .wpcf7-form textarea {
   height: 100px;
@@ -4157,15 +4178,17 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-cf7-form-design__one .wpcf7-form .tft-fields-group.tft-clmn-2 .tft-field {
   flex-basis: 50%;
 }
-.tft-cf7-form-design__one .wpcf7-form .tft-submit .wpcf7-submit {
+.tft-cf7-form-design__one .wpcf7-form .wpcf7-submit {
   padding: 12px 24px;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
   background: #F15D30;
   color: #ffffff;
+  transition: all 0.3s ease;
+  font-family: "Nunito", sans-serif;
 }
-.tft-cf7-form-design__one .wpcf7-form .tft-submit .wpcf7-submit:hover {
+.tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover {
   background: #f94700;
   cursor: pointer;
 }
@@ -4200,7 +4223,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 #tf-cf7-contact-form p .wpcf7-form-control-wrap {
   position: relative;
 }
-#tf-cf7-contact-form p .wpcf7-form-control-wrap input, #tf-cf7-contact-form p .wpcf7-form-control-wrap textarea {
+#tf-cf7-contact-form p .wpcf7-form-control-wrap input,
+#tf-cf7-contact-form p .wpcf7-form-control-wrap textarea {
   display: flex;
   padding: 12px 14px;
   align-items: center;
@@ -5215,6 +5239,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 .tft-latest-posts-design__one .tft-latest-post-items .tft-post-single-item .tft-post-thumbnail a .tft-post-content-wrap .tft-meta-wrap .tft-meta {
   margin-bottom: 10px;
+  color: white;
 }
 .tft-latest-posts-design__one .tft-latest-post-items .tft-post-single-item .tft-post-thumbnail a .tft-post-content-wrap .tft-meta-wrap .tft-meta p {
   color: #ffffff;
@@ -7250,6 +7275,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   flex-direction: column;
   justify-content: end;
   overflow: hidden;
+  transition: 0.3s all ease;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-destination-design__two .tft-destination-content .tft-destination-slides .tft-single-destination .tft-destination-thumbnail .tft-destination-content {

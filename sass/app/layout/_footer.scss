@@ -9,31 +9,38 @@
   color: $color-white;
   z-index: 1;
   position: relative;
+
   @media #{$max1199} {
     padding: 60px 0;
   }
+
   @media #{$max991} {
     padding: 50px 0;
   }
+
   @media #{$max767} {
     padding: 40px 0;
   }
-  
+
   &__widget {
     &__row {
       @include d-flex();
       @include justify-content(space-between);
+
       @media #{$max991} {
         gap: 30px;
       }
+
       @media #{$max767} {
         gap: 20px;
       }
+
       @media #{$max575} {
         flex-direction: column;
       }
     }
   }
+
   h2.wp-block-heading,
   h3.wp-block-heading {
     font-size: 1.5rem;
@@ -42,16 +49,19 @@
     padding-bottom: 15px;
     margin-bottom: 32px;
     position: relative;
+
     @media #{$max991} {
       font-size: 1.25rem;
       margin-bottom: 25px;
       padding-bottom: 12px;
     }
+
     @media #{$max767} {
       font-size: 1.125rem;
       margin-bottom: 18px;
       padding-bottom: 8px;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -62,31 +72,38 @@
       background-color: $color-white;
     }
   }
+
   h3.wp-block-heading {
     padding-bottom: 0;
     margin: 0;
+
     &::after {
       display: none;
     }
   }
+
   h4.wp-block-heading {
     color: $color-white;
     font-size: 1.125rem;
     font-weight: 500;
     line-height: normal;
     margin-bottom: 16px;
+
     @media #{$max767} {
       font-size: 1rem;
       margin-bottom: 10px;
     }
   }
+
   p {
     margin-bottom: 0;
+
     @media #{$max767} {
       font-size: 0.875rem;
       line-height: 22px;
     }
   }
+
   .wp-block-list {
     li {
       a {
@@ -99,10 +116,12 @@
           font-size: 0.938rem;
           padding-bottom: 5px;
         }
+
         &:hover {
           color: #FA6400;
         }
       }
+
       &:last-child {
         a {
           padding-bottom: 0;
@@ -115,33 +134,42 @@
     @media #{$max767} {
       margin-bottom: 0;
     }
+
     &:first-child {
       max-width: 205px;
+
       @media #{$max767} {
         font-size: 0.938rem;
         line-height: 24px;
       }
+
       @media #{$max575} {
         max-width: 100%;
       }
+
       a {
         color: $color-white;
       }
+
       p {
         &:last-child {
           margin-bottom: 0;
         }
       }
+
       h4 {
         margin-top: 32px;
+
         @media #{$max991} {
           margin-top: 25px;
         }
+
         @media #{$max767} {
           margin-top: 18px;
         }
       }
     }
+
     .wp-block-image {
       max-width: 205px;
       margin-bottom: 32px;
@@ -156,24 +184,29 @@
   line-height: 13.79px;
   color: $color-white;
   overflow: hidden;
+
   &__inner {
     @include d-flex();
     align-items: center;
+
     @media #{$max767} {
       align-items: inherit;
     }
   }
+
   &__copyright {
     background: $color-dark-blue3;
     flex: 2;
     padding: 16px 0;
     // text-align: center;
     position: relative;
+
     @media #{$max767} {
       flex: 1;
       padding: 12px 5px;
       padding-left: 0;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -185,24 +218,29 @@
       height: 100%;
       z-index: 99;
     }
+
     p {
       margin-bottom: 0;
+
       @media #{$max767} {
         line-height: 18px;
       }
     }
   }
+
   &__menu {
     background: #0e3dd8;
     flex: 0.8;
     padding: 16px 0;
     text-align: center;
     position: relative;
+
     @media #{$max767} {
       flex: 1;
       padding: 12px 8px;
       padding-right: 0;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -215,11 +253,13 @@
       z-index: 99;
     }
   }
+
   &__nav {
     @include d-flex();
     @include align-items(center);
     @include justify-content(end);
     gap: 22px;
+
     @media #{$max767} {
       justify-content: center;
       gap: 10px;
@@ -228,9 +268,11 @@
       top: 50%;
       transform: translate(-50%, -50%);
     }
+
     a {
       color: $color-white;
       @include transition(0.2s);
+
       &:hover {
         color: #FA6400;
       }
@@ -238,9 +280,10 @@
   }
 }
 
-footer.tft-design-,
+footer.tft-design-1,
 footer.tft-design-2,
 footer.tft-footer-design-3 {
+
   input[type="email"],
   input[type="text"] {
     max-width: 320px;
@@ -252,7 +295,7 @@ footer.tft-footer-design-3 {
     line-height: 18.38px;
     border: 0;
     margin-top: 16px;
-  
+
     @media #{$max767} {
       min-height: 45px;
       padding: 10px 25px;
@@ -260,10 +303,12 @@ footer.tft-footer-design-3 {
       margin-top: 12px;
       max-width: 100%;
     }
+
     &::placeholder {
       color: $color-white;
     }
   }
+
   input[type="submit"] {
     width: fit-content;
     min-width: 174px;
@@ -275,20 +320,24 @@ footer.tft-footer-design-3 {
     text-align: center;
     margin-top: 16px;
     @include bd-radius(9999px);
+
     @media #{$max767} {
       margin-top: 12px;
     }
+
     @media #{$max575} {
       min-height: 45px;
       font-size: 0.938rem;
     }
+
     &:hover {
       background: #FA6400;
     }
   }
 }
-footer.tft-footer-design-3{
-  &::after{
+
+footer.tft-footer-design-3 {
+  &::after {
     content: '';
     position: absolute;
     background: #101f36d5;

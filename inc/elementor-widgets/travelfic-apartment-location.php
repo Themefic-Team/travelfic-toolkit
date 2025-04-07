@@ -627,7 +627,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
     <div class="tft-destination-design__two" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url( $tft_location_section_bg['url'] ) : ''; ?>);">
         <div class="tft-destination-header tft-heading-content">
             <?php if (!empty($tft_sec_subtitle)) { ?>
-                <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
             <?php } if (!empty($tft_sec_title)) { ?>
                 <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
             <?php } ?>
@@ -648,9 +648,9 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base{
                     ?>
                     <div class="tft-single-destination">
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content tft-btn tft-wh-auto tft-btn_sharp tft-gap-0">
+                            <a href="<?php echo esc_url(get_term_link( $cat->slug, 'apartment_location' )); ?>" class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <span class="tft-w-100">
+                                <span class="tft-w-100 tft-btn tft-wh-auto tft-btn_sharp tft-gap-0">
                                     <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="content">

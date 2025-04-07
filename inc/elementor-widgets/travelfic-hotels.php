@@ -1814,7 +1814,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     <div class="tft-hotel-header tft-heading-content">
                         <?php
                         if (!empty($tft_sec_subtitle)) { ?>
-                             <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                             <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }if (!empty($tft_sec_title)) {?>
                             <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
@@ -1840,7 +1840,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                         </ul>
                     </div>
                     <div class="read-more">
-                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
+                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column font-josefin">
                             <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
@@ -1893,7 +1893,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                     <div class="tft-hotel-details">
                                         <?php if ($comments && !$disable_review_sec == '1') { ?>
                                             <div class="tft-ratings">
-                                                <span>
+                                                <span class="font-josefin">
                                                     <i class="fas fa-star"></i>
                                                     <span>
                                                         <?php echo (class_exists("\Tourfic\App\TF_Review")) ? esc_html(\Tourfic\App\TF_Review::tf_total_avg_rating($comments)) : esc_html(tf_total_avg_rating($comments)); ?>
@@ -1903,7 +1903,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </div>
                                         <?php } else { ?>
                                             <div class="tft-ratings">
-                                                <span>
+                                                <span class="font-josefin">
                                                     <i class="fas fa-star"></i>
                                                     <span>
                                                         0.0
@@ -1913,7 +1913,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </div>
                                         <?php } ?>
                                         <h3 class="tft-title">
-                                            <a href="<?php echo esc_url(get_the_permalink()) ?>">
+                                            <a href="<?php echo esc_url(get_the_permalink()) ?>" class="font-cormorant">
                                                 <?php
                                                 if ("Split" == $settings['card_title_type']) {
                                                     echo esc_html(travelfic_character_limit(get_the_title(), 40));
@@ -1923,7 +1923,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 ?>
                                             </a>
                                         </h3>
-                                        <p class="tft-locations">
+                                        <p class="tft-locations font-josefin">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                                                 <g clip-path="url(#clip0_1443_3217)">
                                                     <path d="M10 17.9176L14.1248 13.7927C16.4028 11.5147 16.4028 7.82124 14.1248 5.54318C11.8468 3.26512 8.15327 3.26512 5.87521 5.54318C3.59715 7.82124 3.59715 11.5147 5.87521 13.7927L10 17.9176ZM10 20.2746L4.6967 14.9713C1.76777 12.0423 1.76777 7.2936 4.6967 4.36467C7.62563 1.43574 12.3743 1.43574 15.3033 4.36467C18.2323 7.2936 18.2323 12.0423 15.3033 14.9713L10 20.2746ZM10 11.3346C10.9205 11.3346 11.6667 10.5885 11.6667 9.66797C11.6667 8.74749 10.9205 8.0013 10 8.0013C9.0795 8.0013 8.33333 8.74749 8.33333 9.66797C8.33333 10.5885 9.0795 11.3346 10 11.3346ZM10 13.0013C8.15905 13.0013 6.66667 11.5089 6.66667 9.66797C6.66667 7.82702 8.15905 6.33464 10 6.33464C11.8409 6.33464 13.3333 7.82702 13.3333 9.66797C13.3333 11.5089 11.8409 13.0013 10 13.0013Z" fill="#595349" />
@@ -1949,7 +1949,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             </span>
                                         </p>
 
-                                        <div class="tf-others-details" style="<?php echo "tf_tours" == $settings['tf_post_type'] ? esc_attr('margin-top: 0px') : ''; ?>">
+                                        <div class="tf-others-details font-josefin" style="<?php echo "tf_tours" == $settings['tf_post_type'] ? esc_attr('margin-top: 0px') : ''; ?>">
                                             <?php
                                             if ("tf_tours" == $settings['tf_post_type']) {
                                                 if ($tour_duration) {

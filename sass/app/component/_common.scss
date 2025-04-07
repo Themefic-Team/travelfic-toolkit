@@ -1,5 +1,5 @@
 @use '../abstracts/variable' as *;
-@use '../abstracts/mixins' as *;  
+@use '../abstracts/mixins' as *;
 
 // section heading content
 .tft-heading-content {
@@ -139,5 +139,24 @@ label.tft-form-label {
         }
       }
     }
+  }
+}
+
+
+.wpcf7-form {
+  label {
+    color: #1D2A3B;
+  }
+
+  input[type="email"],
+  input[type="text"],
+  input[type="phone"],
+  textarea {
+    width: 100%;
+    padding: 12px 10px;
+  }
+
+  textarea {
+    height: 100px;
   }
 }

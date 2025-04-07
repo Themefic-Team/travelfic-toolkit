@@ -1373,10 +1373,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                                 <?php the_post_thumbnail('blog-thumb'); ?>
                                                 <div class="tft-post-content-wrap">
                                                     <div class="tft-meta-wrap">
-                                                        <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
+                                                        <p class="tft-meta font-nunito"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
                                                     </div>
                                                     <div class="tft-post-title">
-                                                        <h3 class="tft-title"><?php the_title(); ?></h3>
+                                                        <h3 class="tft-title font-nunito"><?php the_title(); ?></h3>
                                                     </div>
                                                 </div>
                                             </a>

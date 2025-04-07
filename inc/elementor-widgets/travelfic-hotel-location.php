@@ -582,11 +582,11 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php esc_html_e("Hotel Location Image", "travelfic-toolkit"); ?>"></a>
                     </div>
                     <div class="tft-destination-title">
-                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'hotel_location' )) . '">' . esc_html($cat->name) . '</a>'; ?>
+                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'hotel_location' )) . '" class="font-nunito">' . esc_html($cat->name) . '</a>'; ?>
                     </div>
 
                     <div class="tft-destination-details">
-                        <div class="tft-destination-details">
+                        <div class="tft-destination-details font-nunito">
                             <ul>
                             <?php
                             $args2 = array(
@@ -648,10 +648,10 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                                 <span class="tft-btn tft-wh-auto tft-btn_sharp btn-view-details font-josefin">
                                     <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="content">
-                                    <path id="Vector" d="M17.0001 6L1.00012 6" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path id="Vector_2" d="M12.0003 11C12.0003 11 17.0002 7.31756 17.0002 5.99996C17.0003 4.68237 12.0002 1 12.0002 1" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </g>
+                                        <g id="content">
+                                            <path id="Vector" d="M17.0001 6L1.00012 6" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path id="Vector_2" d="M12.0003 11C12.0003 11 17.0002 7.31756 17.0002 5.99996C17.0003 4.68237 12.0002 1 12.0002 1" stroke="#FDF9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
                                     </svg>
                                 </span>
                             </a>

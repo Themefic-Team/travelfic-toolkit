@@ -198,7 +198,7 @@
                             flex-direction: column;
                             justify-content: end;
                             overflow: hidden;
-
+                            transition: .3s all ease;
                             @media #{$max991} {
                                 bottom: 0px;
                             }

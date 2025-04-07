@@ -2106,7 +2106,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                     <div class="tft-container tft-hero-single-item-inner">
                                         <div class="slider-inner-info">
                                             <div class="tft-slider-title">
-                                                <h1 class="tft-title title-large font-cormorant">
+                                                <h1 class="tft-title title-large font-nunito">
                                                     <?php
                                                     if (!empty($item['slider_title'])) {
                                                         echo esc_html($item['slider_title']);
@@ -2114,14 +2114,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                 </h1>
                                                 <?php if ($item['slider_subtitle'] != '') { ?>
                                                     <div class="tft-sub-title">
-                                                        <p class="font-josefin"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
+                                                        <p class="font-nunito"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
                                                     </div>
                                                 <?php } ?>
                                             </div>
                                             <div class="slider-button">
                                                 <?php
                                                 if (!empty($item['slider_bttn_url'])) { ?>
-                                                    <a class="tft-btn tft-btn_sharp tft-wh-auto tft-border-0" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
+                                                    <a class="tft-btn tft-btn_sharp tft-wh-auto tft-border-0 font-nunito" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php

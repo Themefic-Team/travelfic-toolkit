@@ -993,7 +993,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     <div class="tft-about-us-grid">
                         <div class="tft-about-us-content tft-heading-content tf-direction-column">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php } if (!empty($tft_sec_title)) { ?>
                                 <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php } ?>
@@ -1004,15 +1004,15 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <?php } ?>
 
                                 <?php if (!empty($tft_sec_quotes)) { ?>
-                                    <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
+                                    <p class="tft-about-us-quotes font-josefin"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
                                 <?php } ?>
 
                                 <?php if (!empty($tft_sec_author)) { ?>
-                                    <p class="tft-about-us-author tft-text-right"><?php echo esc_html($tft_sec_author); ?></p>
+                                    <p class="tft-about-us-author tft-text-right font-josefin"><?php echo esc_html($tft_sec_author); ?></p>
                                 <?php } ?>
                             </div>
                             <div class="read-more">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column font-josefin">
                                     <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">

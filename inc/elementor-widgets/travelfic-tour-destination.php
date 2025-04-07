@@ -1141,7 +1141,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                     <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php esc_html_e("Tour Destination Image", "travelfic-toolkit"); ?>"></a>
                                 </div>
                                 <div class="tft-destination-title">
-                                    <?php echo '<a href="' . esc_url(get_term_link($cat->slug, 'tour_destination')) . '">' . esc_html($cat->name) . '</a>'; ?>
+                                    <?php echo '<a href="' . esc_url(get_term_link($cat->slug, 'tour_destination')) . '" class="font-nunito">' . esc_html($cat->name) . '</a>'; ?>
                                 </div>
                                 
                                 <div class="tft-destination-details">
@@ -1199,9 +1199,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                         ?>
                                 <div class="tft-single-destination">
                                     <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                                        <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content tft-btn tft-wh-auto tft-btn_sharp tft-gap-0">
+                                        <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content">
                                             <h3><?php echo esc_html($cat->name); ?></h3>
-                                            <span class="tft-w-100">
+                                            <span class="tft-w-100 tft-btn tft-wh-auto tft-btn_sharp tft-gap-0">
                                                 <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">

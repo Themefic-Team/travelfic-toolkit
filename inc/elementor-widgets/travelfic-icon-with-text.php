@@ -890,10 +890,10 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                                         <?php endif;
                                     endif;?>
                                 </div>
-                                <h3 class="tft-title">
+                                <h3 class="tft-title font-nunito">
                                     <?php echo esc_html($item['box_title']); ?>
                                 </h3>
-                                <p class="tft-details">
+                                <p class="tft-details font-nunito">
                                     <?php echo esc_html($item['box_details']); ?>
                                 </p>
                             </div>
