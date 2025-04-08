@@ -919,7 +919,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 										<?php } ?>
 										<div class="member-details">
 											<div class="social-media-icons">
-												<button class="share-btn" id="shareButons">
+												<button class="share-btn tft-btn tft-wh-auto" id="shareButons">
 													<i class="ri-share-line"></i>
 												</button>
 												<div class="social-media">

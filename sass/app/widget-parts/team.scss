@@ -392,7 +392,7 @@
         top: 50%;
         transform: translateY(-50%);
         background: $color-white;
-        border: 1px solid $border-color;
+        border: 1px solid #efefef;
         width: 70px;
         height: 70px;
         @include bd-radius(100px);

@@ -419,6 +419,12 @@ textarea.tft-form-control {
   width: 100%;
 }
 
+.tft-box-hidden {
+  overflow: hidden;
+  max-width: 1221px;
+  margin: auto;
+}
+
 h1,
 h2,
 h3,
@@ -6491,7 +6497,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   top: 50%;
   transform: translateY(-50%);
   background: #ffffff;
-  border: 1px solid var(--tft-border-color);
+  border: 1px solid #efefef;
   width: 70px;
   height: 70px;
   -webkit-border-radius: 100px;
@@ -7478,7 +7484,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   height: 50px;
   padding: 16px 36px;
   background: #f2f2f2;
-  color: var(--heading-color);
+  color: #060d1c;
 }
 .tft-destination-design__three .tft-destination-content .tft-btn:hover {
   background: #FA6400;
