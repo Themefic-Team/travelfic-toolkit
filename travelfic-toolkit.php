@@ -143,7 +143,7 @@ add_action( 'customize_preview_init', 'travelfic_toolkit_enqueue_customizer_prev
  *    Front-End Enqueue
  */
 
-add_action( 'wp_enqueue_scripts', 'travelfic_toolkit_front_page_script' );
+add_action( 'wp_enqueue_scripts', 'travelfic_toolkit_front_page_script');
 function travelfic_toolkit_front_page_script() {
     wp_enqueue_script( 'travelfic-toolkit-fontend', TRAVELFIC_TOOLKIT_URL . 'assets/app/js/main.js', array( 'jquery'), TRAVELFIC_TOOLKIT_VERSION, true );
     wp_enqueue_style( 'travelfic-toolkit-css', TRAVELFIC_TOOLKIT_URL . 'assets/app/css/style.min.css', false, time() );

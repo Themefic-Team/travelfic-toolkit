@@ -893,7 +893,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                                 <h3 class="tft-title font-nunito">
                                     <?php echo esc_html($item['box_title']); ?>
                                 </h3>
-                                <p class="tft-details font-nunito">
+                                <p class="tft-details font-nunito tft-hover-color-white">
                                     <?php echo esc_html($item['box_details']); ?>
                                 </p>
                             </div>

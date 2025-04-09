@@ -1075,7 +1075,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <ul>
                                     <?php foreach ($settings['about_list_content'] as $list): ?>
                                         <li>
-                                            <div class="icon">
+                                            <div class="icon tft-color-primary">
                                                 <i class="fa-regular fa-circle-check"></i>
                                             </div>
                                             <div class="text">

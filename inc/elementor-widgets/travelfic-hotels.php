@@ -2452,13 +2452,13 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 <!-- destination location -->
                                                 <?php if(!empty($tf_location)): ?>
                                                     <span class="tft-desination-location">
-                                                        <i class="ri-map-pin-line"></i>
+                                                        <i class="ri-map-pin-line tft-color-primary"></i>
                                                         <span><?php echo esc_html($tf_location); ?></span>
                                                     </span> 
                                                 <?php endif; ?>
                                                 <!-- destination title -->
                                                 <h2 class="tft-desination-title">
-                                                    <a href="<?php echo esc_url(get_the_permalink()) ?>">
+                                                    <a href="<?php echo esc_url(get_the_permalink()) ?>" class="tft-color-hover-primary">
                                                         <?php
                                                         if ("Split" == $settings['card_title_type']) {
                                                             echo esc_html(travelfic_character_limit(get_the_title(), 40));
@@ -2475,7 +2475,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 <!-- destination price -->
                                                 <div class="tft-desination-price">
                                                     <span class="tft-desination-price-title"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
-                                                    <span class="tft-desination-price-value">
+                                                    <span class="tft-desination-price-value tft-color-primary">
                                                         <?php echo '$', $tf_total_price; ?>
                                                     </span>
                                                 </div>
@@ -2495,10 +2495,10 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                         <!-- destination slider navigation -->
                         <?php if ($tftSliderDisable == false && 'true' === $design2_slider_arrows): ?>
                             <div class="tft-destination-slider-nav">
-                                <button type="button" class="tft-prev-slide">
+                                <button type="button" class="tft-prev-slide tft-bg-hover-primary">
                                     <i class="ri-arrow-left-line"></i>
                                 </button>
-                                <button type="button" class="tft-next-slide">
+                                <button type="button" class="tft-next-slide tft-bg-hover-primary">
                                     <i class="ri-arrow-right-line"></i>
                                 </button>
                             </div>

@@ -248,7 +248,7 @@ if (!function_exists('tf_review_star_rating')) {
         $half_star = ($tf_rating - $full_star) >= 0.5 ? 1 : 0;
         $empty_star = 5 - $full_star - $half_star;
 
-        $output = '<span class="tft-desination-rating">';
+        $output = '<span class="tft-desination-rating tft-color-primary">';
         for ($i = 0; $i < $full_star; $i++) {
             $output .= '<i class="ri-star-fill"></i>';
         }
@@ -345,3 +345,21 @@ if ('5' === $travelfic_template_version) {
         }
     }
 }
+
+
+/**
+ * Adds custom classes to the array of body classes.
+ *
+ * @param array $classes Classes for the body element.
+ * @return array
+ */
+function tft_body_classes( $classes ) {
+	
+	$theme = wp_get_theme(); 
+	if ( 'Travelfic' != $theme->name || 'Travelfic' != $theme->parent_theme ) {
+		$classes[] = 'tft-site-main-body';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'tft_body_classes' );

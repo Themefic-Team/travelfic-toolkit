@@ -218,7 +218,7 @@
                     button {
                         width: 10px;
                         height: 10px;
-                        background: $light-background;
+                        background: #e8d9cf;
                         border-radius: 50%;
 
                         &::before {
@@ -284,7 +284,7 @@
                         }
                     }
 
-                    p {
+                    h2 {
                         color: $heading-color;
                         font-family: $font-brygada;
                         font-size: 1.5rem;
@@ -306,14 +306,16 @@
                         }
 
                         button {
-                            padding: 16px;
+                            height: 50px;
+                            width: 50px;
                             border-radius: 5px;
                             background: #FA6400;
                             border: 0;
                             box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
                             cursor: pointer;
                             @media #{$max767} {
-                                padding: 12px;
+                                height: 45px;
+                                width: 45px;
                             }
                             i {
                                 color: $color-white;

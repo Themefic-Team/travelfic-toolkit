@@ -1666,11 +1666,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                         </div>
                                         <div class="person-info">
                                             <h4 class="person-name font-nunito"><?php echo esc_html($item['person_name']) ?></h4>
-                                            <p class="designation font-nunito"><?php echo esc_html($item['designation']) ?></p>
+                                            <p class="designation font-nunito tft-hover-color-white"><?php echo esc_html($item['designation']) ?></p>
                                         </div>
                                     </div>
                                     <div class="testimonial-body">
-                                        <p class="tft-content font-nunito"><?php echo esc_html($item['testimonials_review']) ?></p>
+                                        <p class="tft-content font-nunito tft-hover-color-white"><?php echo esc_html($item['testimonials_review']) ?></p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <?php $this->testimonials_rattings($item['rate']); ?>
@@ -1838,10 +1838,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
 
                             <?php if ($tftSliderDisable == false && 'true' === $design3_slider_arrows): ?>
                                 <div class="tft-slider-arrows tft-slider-arrows--desktop">
-                                    <button type="button" class="tft-slider-prev tft-arrow">
+                                    <button type="button" class="tft-slider-prev tft-arrow tft-bg-hover-primary">
                                         <i class="ri-arrow-left-line"></i>
                                     </button>
-                                    <button type="button" class="tft-slider-next tft-arrow">
+                                    <button type="button" class="tft-slider-next tft-arrow tft-bg-hover-primary">
                                         <i class="ri-arrow-right-line"></i>
                                     </button>
                                 </div>

@@ -519,6 +519,7 @@
                     .tft-blog-thumbnail {
                         max-width: 240px;
                         min-width: 240px;
+                        height: 100%;
 
                         @media #{$max991} {
                             max-width: inherit;
@@ -529,7 +530,7 @@
                         img {
                             min-height: auto;
                             max-height: inherit;
-
+                            height: 100%;
                             @media #{$max991} {
                                 min-height: 250px;
                                 max-height: 250px;
@@ -555,7 +556,7 @@
                         flex-direction: column;
                         gap: 30px;
                         margin-top: 0;
-
+                        @include align-items(flex-start);
                         @media #{$max991} {
                             gap: 20px;
                         }
@@ -578,6 +579,7 @@
                         .tft-blog-thumbnail {
                             max-width: 100%;
                             min-width: 100%;
+                            height: auto;
                         }
                     }
 

@@ -5659,6 +5659,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail {
   max-width: 240px;
   min-width: 240px;
+  height: 100%;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail {
@@ -5670,6 +5671,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
   min-height: auto;
   max-height: inherit;
+  height: 100%;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
@@ -5695,6 +5697,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   flex-direction: column;
   gap: 30px;
   margin-top: 0;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1), .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4), .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) {
@@ -5718,6 +5725,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-blog-thumbnail, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-blog-thumbnail, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-blog-thumbnail {
   max-width: 100%;
   min-width: 100%;
+  height: auto;
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(2) {
   grid-column: 2;
@@ -6309,7 +6317,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-team-design__two .tft-team-members .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: var(--light-background);
+  background: #e8d9cf;
   border-radius: 50%;
 }
 .tft-team-design__two .tft-team-members .slick-dots li button::before {
@@ -6373,7 +6381,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     margin-bottom: 0;
   }
 }
-.tft-team-design__two .tft-team-members .tft-single-member .member-details p {
+.tft-team-design__two .tft-team-members .tft-single-member .member-details h2 {
   color: var(--heading-color);
   font-family: "Brygada 1918", serif;
   font-size: 1.5rem;
@@ -6381,7 +6389,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   margin-bottom: 0;
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-team-design__two .tft-team-members .tft-single-member .member-details p {
+  .tft-team-design__two .tft-team-members .tft-single-member .member-details h2 {
     font-size: 1.25rem;
   }
 }
@@ -6396,7 +6404,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   }
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons button {
-  padding: 16px;
+  height: 50px;
+  width: 50px;
   border-radius: 5px;
   background: #FA6400;
   border: 0;
@@ -6405,7 +6414,8 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 }
 @media only screen and (max-width: 767.98px) {
   .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons button {
-    padding: 12px;
+    height: 45px;
+    width: 45px;
   }
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons button i {

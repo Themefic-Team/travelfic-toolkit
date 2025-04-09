@@ -1297,7 +1297,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                             <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content">
                                                 <h3><?php echo esc_html($cat->name); ?></h3>
                                             </a>
-                                            <p><?php echo esc_html($cat->count); ?> <span><?php echo esc_html__('Destination', 'travelfic-toolkit'); ?></span></p>
+                                            <p class="tft-color-white"><?php echo esc_html($cat->count); ?> <span><?php echo esc_html__('Destination', 'travelfic-toolkit'); ?></span></p>
                                         </div>
 
                                     </div>

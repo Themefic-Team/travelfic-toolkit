@@ -946,7 +946,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 												</div>
 											</div>
 											<h3 class="tft-subtitle"> <?php echo esc_html($item['member_designation']); ?> </h3>
-											<p class="tft-title"><?php echo esc_html($item['member_name']); ?></p>
+											<h2 class="tft-title"><?php echo esc_html($item['member_name']); ?></h2>
 										</div>
 									</div>
 								</div>

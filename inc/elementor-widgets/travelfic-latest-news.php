@@ -1238,7 +1238,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                         <?php } ?>
                     </div>
 
-                    <div class="tft-blog-gird-section blog-grid-item-<?php echo esc_attr($items_count); ?>">
+                    <div class="tft-blog-gird-section">
                         <?php if ($query->have_posts()) : ?>
                             <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -1373,7 +1373,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                                 <?php the_post_thumbnail('blog-thumb'); ?>
                                                 <div class="tft-post-content-wrap">
                                                     <div class="tft-meta-wrap">
-                                                        <p class="tft-meta font-nunito"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
+                                                        <p class="tft-meta font-nunito tft-color-white"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
                                                     </div>
                                                     <div class="tft-post-title">
                                                         <h3 class="tft-title font-nunito"><?php the_title(); ?></h3>

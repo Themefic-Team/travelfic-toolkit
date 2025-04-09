@@ -922,11 +922,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}} !important',
+                    '#tft-site-main-body .tft-slider-title .tft-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -2010,7 +2010,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                     <!-- social media item-->
                                     <li class="tft-hero-design__four__social__list__item">
                                         <a href="<?php echo esc_url($social['social_media_url']['url']); ?>"
-                                            class="tft-hero-design__four__social__list__item--link"
+                                            class="tft-hero-design__four__social__list__item--link tft-bg-hover-primary"
                                             <?php echo esc_attr($target_blank); ?>
                                             aria-label="<?php echo esc_attr('Visit ' . $social_media_name . ' page'); ?>">
                                             <span class="tft-hero-design__four__social-icon">
@@ -2042,9 +2042,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             <div class="tft-hero-design__four__social__divider"></div>
                             <!-- social share label -->
                             <?php if (!empty($settings['social_share_label'])): ?>
-                                <h4 class="tft-hero-design__four__social__label">
+                                <div class="tft-hero-design__four__social__label">
                                     <?php echo esc_html($settings['social_share_label']); ?>
-                                </h4>
+                                </div>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
@@ -2052,9 +2052,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     <div class="tft-hero-design__four__mobile--share">
                         <!-- social share label -->
                         <?php if (!empty($settings['social_share_label'])): ?>
-                            <h4 class="tft-hero-design__four__social__label">
+                            <div class="tft-hero-design__four__social__label">
                                 <?php echo esc_html($settings['social_share_label']); ?>
-                            </h4>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -2114,7 +2114,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                 </h1>
                                                 <?php if ($item['slider_subtitle'] != '') { ?>
                                                     <div class="tft-sub-title">
-                                                        <p class="font-nunito"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
+                                                        <p class="font-nunito tft-color-white"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
                                                     </div>
                                                 <?php } ?>
                                             </div>
