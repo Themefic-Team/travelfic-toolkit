@@ -37,7 +37,7 @@
                     }
 
                     .person-info {
-                        h4.person-name {
+                        .person-name {
                             margin-top: 0px;
                             margin-bottom: 0px;
                             font-size: 1.5rem;
@@ -209,19 +209,20 @@
                             }
                         }
 
-                        p {
+                        .tft-content {
+                            font-size: 1.25rem;
+                            color: #595349;
+                            margin-bottom: 32px;
+                        }
+
+                        .person-name {
                             color: #99948D;
-                            margin: 0px 0px 0px 0px;
-
-                            &.tft-content {
-                                font-size: 1.25rem;
-                                color: #595349;
-                                margin-bottom: 32px;
-                            }
-
-                            &.person-name {
-                                font-weight: 600;
-                            }
+                            font-weight: 600;
+                            margin: 0;
+                        }
+                        .designation {
+                            color: #99948D;
+                            margin: 0px;
                         }
                     }
                 }

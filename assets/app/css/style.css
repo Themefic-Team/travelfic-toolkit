@@ -4644,7 +4644,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-popular-hotels-design__two .tft-destination-slider .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: var(--light-background);
+  background: #e8d9cf;
   border-radius: 50%;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .slick-dots li button::before {
@@ -6603,7 +6603,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   width: 80px;
   object-fit: cover;
 }
-.tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header .person-info h4.person-name {
+.tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header .person-info .person-name {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 1.5rem;
@@ -6748,17 +6748,19 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     margin-top: -24px;
   }
 }
-.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner p {
-  color: #99948D;
-  margin: 0px 0px 0px 0px;
-}
-.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner p.tft-content {
+.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .tft-content {
   font-size: 1.25rem;
   color: #595349;
   margin-bottom: 32px;
 }
-.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner p.person-name {
+.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .person-name {
+  color: #99948D;
   font-weight: 600;
+  margin: 0;
+}
+.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .designation {
+  color: #99948D;
+  margin: 0px;
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .slick-dots li {
   height: 40px;
