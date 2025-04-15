@@ -436,7 +436,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Section Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two' => 'background: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two' => 'background: {{VALUE}}', 
+                    '#tft-site-main-body .tft-testimonials-design__three' => 'background: {{VALUE}}', 
                 ],
                 'condition' => [
                     'testimonial_style' => ['design-2', 'design-3'],
@@ -458,7 +459,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_testimonials_sec_title_typo',
-                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header h3',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -471,7 +472,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-title' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -494,7 +495,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_testimonials_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header h6',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -507,7 +508,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header .testimonial-header-shape h6' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonial-top-header .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -607,7 +608,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_design_3_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content h3',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__three .tft-heading-content .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => ['design-3'],
@@ -620,7 +621,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => ['design-3'],
@@ -642,7 +643,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_design_3_sec_content_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content p',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__three .tft-heading-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => ['design-3'],
@@ -655,7 +656,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-heading-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => ['design-3'],
@@ -680,6 +681,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('List Style', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-1',
+                ],
             ]
         );
         $this->add_control(
@@ -688,7 +692,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('List Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner' => 'background: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -711,7 +715,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'size' => 20,
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -734,7 +738,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'size' => 10,
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .testimonial-header' => 'padding-bottom: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__one .testimonial-header' => 'padding-bottom: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -748,7 +752,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -770,7 +774,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_title',
-                'selector' => '#tft-site-main-body .tft-testimonials-selector .person-name',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__one .person-name',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -784,7 +788,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .person-name' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .person-name' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -806,7 +810,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_designation_typo',
-                'selector' => '#tft-site-main-body .tft-testimonials-selector .designation',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__one .designation',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -819,7 +823,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .designation' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .designation' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -841,7 +845,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_content',
-                'selector' => '#tft-site-main-body .tft-testimonials-selector .testimonial-body .tft-content',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__one .testimonial-body .tft-content',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -854,7 +858,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .testimonial-body .tft-content' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .testimonial-body .tft-content' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -878,7 +882,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .testimonial-footer i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .testimonial-footer i' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1', 
@@ -897,6 +901,17 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'testimonials_2_card_head',
+            [
+                'label'     => __('List Style', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-2',
+                ],
+            ]
+        );
 
         // Design 2 Styles
         $this->add_responsive_control(
@@ -920,77 +935,6 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'testimonial_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'testimonials_2_title_head',
-            [
-                'label'     => __('Title', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'testimonial_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'testimonials_2_title',
-                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial .testimonial-author p',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'testimonial_style' => 'design-2',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'testimonials_2_title_color',
-            [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial .testimonial-author p' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'testimonial_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'testimonials_2_designation',
-            [
-                'label'     => __('Designation', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'testimonial_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'testimonials_2_designation_typo',
-                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial .testimonial-author .designation',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'testimonial_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'testimonials_2_designation_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial .testimonial-author .designation' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -1032,6 +976,42 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'testimonials_2_designation',
+            [
+                'label'     => __('Designation', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'testimonials_2_designation_typo',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial .testimonial-author .designation',
+                'label'    => __('Typography', 'travelfic-toolkit'),
+                'condition' => [
+                    'testimonial_style' => 'design-2',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_2_designation_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial .testimonial-author .designation' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-2',
+                ],
+            ]
+        );
+       
         $this->add_control(
             'testimonials_2_content_head',
             [
@@ -1075,7 +1055,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Box Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner:hover' => 'background: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner:hover' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -1089,7 +1069,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner:hover .person-name' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner:hover .person-name' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -1102,7 +1082,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Designation Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner:hover .designation' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner:hover .designation' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -1115,7 +1095,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Content Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner:hover .tft-content' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner:hover .tft-content' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -1128,7 +1108,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Icon Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector .tft-testimonials-inner:hover .testimonial-footer i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one .tft-testimonials-inner:hover .testimonial-footer i' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-1',
@@ -1169,7 +1149,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author .person-name' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -1182,7 +1162,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Designation Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-author .designation' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -1195,7 +1175,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Content Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-review p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial:hover .testimonial-review .tft-content' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-2',
@@ -1223,7 +1203,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Team Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-slides .tft-single-testimonial' => 'background: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-slides .tft-single-testimonial' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1242,7 +1222,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-slides .tft-single-testimonial' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-slides .tft-single-testimonial' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1256,7 +1236,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-slides .tft-single-testimonial' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-slides .tft-single-testimonial' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1278,7 +1258,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_title_3',
-                'selector' => '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1292,7 +1272,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1314,7 +1294,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_designation_3_typo',
-                'selector' => '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1327,7 +1307,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1349,7 +1329,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_content_3',
-                'selector' => '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p',
+                'selector' => '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1362,7 +1342,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1392,7 +1372,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1409,6 +1389,72 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
+
+
+        $this->add_control(
+            'tft_testimonials_nav_icon_head',
+            [
+                'label'     => __('Arrows', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => 'design-1',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_icon_nav_icon_color',
+            [
+                'label'     => __('Icon Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-slide-default button.slick-arrow i' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-1',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_icon_nav_icon_color_hover',
+            [
+                'label'     => __('Icon Hover Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-slide-default button.slick-arrow:hover i' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-1',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_icon_nav_icon_background_color',
+            [
+                'label'     => __('Icon Background Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-slide-default button.slick-arrow' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-1',
+                ],
+            ]
+        );
+        $this->add_control(
+            'testimonials_icon_nav_icon_background_color_hover',
+            [
+                'label'     => __('Icon Background Hover Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-slide-default button.slick-arrow:hover' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-1',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'testimonials_nav__arrow_width',
             [
@@ -1423,7 +1469,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'size' => 70,
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content .slick-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'testimonial_style' => 'design-3',
@@ -1442,9 +1489,13 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector button.slick-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
-
+                    '#tft-site-main-body .tft-testimonials-design__one button.slick-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__two .slick-dots li button::before' => 'border-width: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content .slick-arrow' => 'border-width: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active' => 'border-width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'testimonial_style' => ['design-2','design-3'],
                 ],
             ]
         );
@@ -1454,58 +1505,94 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Border Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector button.slick-arrow' => 'border-color: {{VALUE}}',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow' => 'border-color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__one button.slick-arrow' => 'border-color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .slick-dots li.slick-active button::before' => 'border-color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content .slick-arrow' => 'border-color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active' => 'border-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => ['design-2','design-3'],
                 ],
             ]
         );
         $this->add_control(
-            'testimonials_nav_border_hover_color',
+            'tft_testimonials_3_nav_icon_head',
             [
-                'label'     => __('Border Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body .tft-testimonials-selector button.slick-arrow:hover' => 'border-color: {{VALUE}}',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow:hover' => 'border-color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_testimonials_nav_icon_head',
-            [
-                'label'     => __('Icon', 'travelfic-toolkit'),
+                'label'     => __('Arrows', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-            ]
-        );
-        $this->add_control(
-            'testimonials_icon_nav_icon_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body .tft-slide-default button.slick-arrow i' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow i' => 'color: {{VALUE}}',
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                    'testimonial_design3_slider_navigation' => 'arrows',
                 ],
             ]
         );
         $this->add_control(
-            'testimonials_icon_nav_icon_color_hover',
+            'tft_testimonials_3_icon_nav_icon_color',
             [
-                'label'     => __('Hover Color', 'travelfic-toolkit'),
+                'label'     => __('Icon Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-slide-default button.slick-arrow:hover i' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow:hover i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-slider-arrows .tft-arrow i' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                    'testimonial_design3_slider_navigation' => 'arrows',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_testimonials_3_icon_nav_icon_color_hover',
+            [
+                'label'     => __('Icon Hover Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-slider-arrows .tft-arrow:hover i' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                    'testimonial_design3_slider_navigation' => 'arrows',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_testimonials_3_icon_nav_icon_background_color',
+            [
+                'label'     => __('Icon Background Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-heading-content .tft-slider-arrows .tft-arrow' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                    'testimonial_design3_slider_navigation' => 'arrows',
+                ],
+            ]
+        );
+        $this->add_control(
+            'tft_testimonials_3_icon_nav_icon_background_color_hover',
+            [
+                'label'     => __('Icon Background Hover Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-heading-content .tft-slider-arrows .tft-bg-hover-primary:hover' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => 'design-3',
+                    'testimonial_design3_slider_navigation' => 'arrows',
                 ],
             ]
         );
         $this->add_control(
             'tft_testimonials_nav_head',
             [
-                'label'     => __('Nav', 'travelfic-toolkit'),
+                'label'     => __('Dots', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'testimonial_style' => ['design-2','design-3'],
+                    'testimonial_design3_slider_navigation' => 'dots',
+                ],
             ]
         );
         $this->add_control(
@@ -1514,8 +1601,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-slide-default button.slick-arrow' => 'background-color: {{VALUE}}',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .slick-dots li button::before' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => ['design-2','design-3'],
+                    'testimonial_design3_slider_navigation' => 'dots',
                 ],
             ]
         );
@@ -1525,8 +1616,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-slide-default button.slick-arrow:hover' => 'background-color: {{VALUE}}',
-                    '#tft-site-main-body .tft-testimonials-design-3 .tft-slider-arrows .tft-arrow:hover' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__two .slick-dots li:hover button::before' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li:hover button' => 'background-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'testimonial_style' => ['design-2','design-3'],
+                    'testimonial_design3_slider_navigation' => 'dots',
                 ],
             ]
         );
@@ -1672,12 +1767,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     <div class="testimonial-header-shape tft-heading-content">
                         <?php
                         if (!empty($tft_sec_subtitle)) { ?>
-                            <!-- <img src="</?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/testimonial-group-1.png'); ?>" alt="Testimonial Shape"> -->
                             <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                            <!-- <img src="</?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/testimonial-group-2.png'); ?>" alt="Testimonial Shape"> -->
-                        <?php }
-                        if (!empty($tft_sec_title)) {
-                        ?>
+                        <?php }if (!empty($tft_sec_title)) { ?>
                             <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
@@ -1771,7 +1862,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                 <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title<?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
                                 <div class="tft-section-content">

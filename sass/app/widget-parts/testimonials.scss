@@ -74,42 +74,43 @@
             }
 
             .slick-track {
-                padding: 40px 0px;
                 overflow: hidden;
 
                 .slick-slide {
                     margin: 0 10px !important;
                 }
-
-                .slick-prev,
-                .slick-next {
-                    top: -50px;
-                    background-color: #fff;
-                    border: 1px solid #1D2A3B33;
-                    color: #F15D30;
-
-                    @media #{$max767} {
-                        top: -36px;
-                    }
-
-                    &::before {
-                        display: none;
-                    }
-
-                }
-
-                .slick-prev {
-                    left: 90%;
-
-                    @media #{$max767} {
-                        left: 75%;
-                    }
-                }
-
-                .slick-next {
-                    right: 0px;
-                }
             }
+
+        }
+
+        .slick-prev,
+        .slick-next {
+            top: -50px;
+            background-color: #fff;
+            border: 1px solid #1D2A3B33;
+            color: #F15D30;
+            z-index: 9;
+
+            @media #{$max767} {
+                top: -36px;
+            }
+
+            &::before {
+                display: none;
+            }
+
+        }
+
+        .slick-prev {
+            left: 90%;
+
+            @media #{$max767} {
+                left: 75%;
+            }
+        }
+
+        .slick-next {
+            right: 0px;
         }
     }
 
@@ -220,6 +221,7 @@
                             font-weight: 600;
                             margin: 0;
                         }
+
                         .designation {
                             color: #99948D;
                             margin: 0px;
@@ -397,7 +399,7 @@
                         button {
                             width: 10px;
                             height: 10px;
-                            background: $light-background;
+                            background: #e8d9cf;
                             border-radius: 50%;
 
                             &::before {
