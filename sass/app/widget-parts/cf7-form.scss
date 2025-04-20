@@ -9,6 +9,9 @@
                 color: #1D2A3B;
                 font-family: 'Nunito', sans-serif;
             }
+            p{
+                margin-bottom: 10px;
+            }
 
             input[type="email"],
             input[type="text"],
@@ -70,6 +73,9 @@
                 &:hover {
                     background: #f94700;
                     cursor: pointer;
+                }
+                &.footer__form__button{
+                    margin-top: 15px;
                 }
             }
 

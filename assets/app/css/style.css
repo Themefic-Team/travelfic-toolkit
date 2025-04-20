@@ -4062,11 +4062,11 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
     transform: rotate(360deg);
   }
 }
-.tft-brands-design__one .tft-brands-inner .tft-brands-header {
+.tft-brands-design__one .tft-brands-inner .tft-section-heading {
   max-width: 784px;
   margin: 0 auto;
 }
-.tft-brands-design__one .tft-brands-inner .tft-brands-header h2 {
+.tft-brands-design__one .tft-brands-inner .tft-section-heading .tft-section-title {
   color: #27333F;
   text-align: center;
   font-size: 2.375rem;
@@ -4075,7 +4075,7 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   margin-top: 0;
   margin-bottom: 16px;
 }
-.tft-brands-design__one .tft-brands-inner .tft-brands-header p {
+.tft-brands-design__one .tft-brands-inner .tft-section-heading p {
   color: #566676;
   text-align: center;
   margin-top: 0px;
@@ -4147,6 +4147,9 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
   color: #1D2A3B;
   font-family: "Nunito", sans-serif;
 }
+.tft-cf7-form-design__one .wpcf7-form p {
+  margin-bottom: 10px;
+}
 .tft-cf7-form-design__one .wpcf7-form input[type=email],
 .tft-cf7-form-design__one .wpcf7-form input[type=text],
 .tft-cf7-form-design__one .wpcf7-form input[type=phone],
@@ -4197,6 +4200,9 @@ header.tft-design-2 .tft-footer-sections .tft-footer-copyright p a {
 .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover {
   background: #f94700;
   cursor: pointer;
+}
+.tft-cf7-form-design__one .wpcf7-form .wpcf7-submit.footer__form__button {
+  margin-top: 15px;
 }
 .tft-cf7-form-design__one .tft-fields-subscriptions .tft-email {
   flex-basis: 100% !important;

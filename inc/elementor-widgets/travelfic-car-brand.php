@@ -207,10 +207,8 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-destination-wrapper .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'des_style' => 'design-1', // Show this control only when des_style is 'design-2'
+                    '#tft-site-main-body .tft-brands-design__one .tft-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-brands-design__one .tft-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -228,7 +226,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_car_item_title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'selector' => '{{WRAPPER}} .tft-brands-wrapper .tft-brands-header h2',
+                'selector' => '#tft-site-main-body .tft-brands-design__one .tft-section-heading .tft-section-title',
             ]
         );
         $this->add_control(
@@ -236,9 +234,8 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#27333f',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-brands-wrapper .tft-brands-header h2' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-brands-design__one .tft-section-heading .tft-section-title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -257,7 +254,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_car_item_sub_title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'selector' => '{{WRAPPER}} .tft-brands-wrapper .tft-brands-header p',
+                'selector' => '#tft-site-main-body .tft-brands-design__one .tft-section-heading p',
             ]
         );
         $this->add_control(
@@ -265,9 +262,8 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#566676',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-brands-wrapper .tft-brands-header p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-brands-design__one .tft-section-heading p' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -286,9 +282,8 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'label'     => __('Card Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#D9D9D9',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-brands-thumbnail .tft-brands-title a' => 'background: {{VALUE}}',
+                    '#tft-site-main-body .tft-brands-design__one .tft-brands-title a' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -298,9 +293,8 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'label'     => __('Card Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#27333F',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-brands-thumbnail .tft-brands-title a' => 'color: {{VALUE}}',
+                    '#tft-site-main-body .tft-brands-design__one .tft-brands-title a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -310,7 +304,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_car_item_card_title_typo',
                 'label'    => __('Card Typography', 'travelfic-toolkit'),
-                'selector' => '{{WRAPPER}} .tft-brands-thumbnail .tft-brands-title a',
+                'selector' => '#tft-site-main-body .tft-brands-design__one .tft-brands-title a',
             ]
         );
     }
@@ -375,11 +369,15 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
 
         <div class="tft-brands-design__one tft-customizer-typography">
             <div class="tft-brands-inner">
-                <div class="tft-brands-header">
-                    <?php
-                    echo ! empty($tft_sec_title) ? '<h2>' . esc_html($tft_sec_title) . '</h2>' : '';
-                    echo ! empty($tft_sec_subtitle) ? '<p>' . esc_html($tft_sec_subtitle) . '</p>' : '';
-                    ?>
+                <div class="tft-brands-header tft-section-heading">
+                    <?php if(!empty($tft_sec_title)): ?>
+                        <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                    <?php endif; ?>
+                    <?php if(!empty($tft_sec_subtitle)): ?>
+                        <div class="tft-section-content">
+                            <p><?php echo esc_html($tft_sec_subtitle); ?></p>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <?php $rand_number = wp_rand(100, 99999999); ?>
                 <div class="tft-brands <?php echo 'slider' == $style ? esc_attr('tft-brands-slider-selector-') . $rand_number : esc_attr('tft-brands-grid'); ?>">

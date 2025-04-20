@@ -169,7 +169,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'name'     => 'cf7_form_input_typo',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea, .tft-cf7-form-wrapper .wpcf7-form label',
+                'selector' => '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form input[type=email], .tft-cf7-form-design__one .wpcf7-form input[type=text], .tft-cf7-form-design__one .wpcf7-form input[type=phone], .tft-cf7-form-design__one .wpcf7-form textarea, .tft-cf7-form-design__one .wpcf7-form label',
             ]
         );
         $this->add_control(
@@ -177,9 +177,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Input Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#666666',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea' => 'color: {{VALUE}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form input[type=email], .tft-cf7-form-design__one .wpcf7-form input[type=text], .tft-cf7-form-design__one .wpcf7-form input[type=phone], .tft-cf7-form-design__one .wpcf7-form textarea' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -188,9 +187,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Label Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#1D2A3B',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form label' => 'color: {{VALUE}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form label' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -199,9 +197,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form input[type=email], .tft-cf7-form-design__one .wpcf7-form input[type=text], .tft-cf7-form-design__one .wpcf7-form input[type=phone], .tft-cf7-form-design__one .wpcf7-form textarea' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -211,16 +208,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 'label' => __( 'Padding', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 14,
-                    'right' => 14,
-                    'bottom' => 14,
-                    'left' => 14,
-                    'isLinked' => true,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form input[type=email], .tft-cf7-form-design__one .wpcf7-form input[type=text], .tft-cf7-form-design__one .wpcf7-form input[type=phone], .tft-cf7-form-design__one .wpcf7-form textarea' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -230,16 +219,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 'label' => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 10,
-                    'right' => 10,
-                    'bottom' => 10,
-                    'left' => 10,
-                    'isLinked' => true,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form input[type=email], .tft-cf7-form-wrapper .wpcf7-form input[type=text], .tft-cf7-form-wrapper .wpcf7-form input[type=phone], .tft-cf7-form-wrapper .wpcf7-form textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form input[type=email], .tft-cf7-form-design__one .wpcf7-form input[type=text], .tft-cf7-form-design__one .wpcf7-form input[type=phone], .tft-cf7-form-design__one .wpcf7-form textarea' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -257,7 +238,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'name'     => 'cf7_form_button',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit',
+                'selector' => '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit',
             ]
         );
         $this->add_responsive_control(
@@ -266,16 +247,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 'label' => __( 'Padding', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 14,
-                    'right' => 24,
-                    'bottom' => 14,
-                    'left' => 24,
-                    'isLinked' => false,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -284,9 +257,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit' => 'color: {{VALUE}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -295,9 +267,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit' => 'background-color: {{VALUE}} !important;',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -306,9 +277,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Background Hover', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#D83B0B',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit:hover' => 'background-color: {{VALUE}} !important;',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -318,16 +288,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 'label' => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 10,
-                    'right' => 10,
-                    'bottom' => 10,
-                    'left' => 10,
-                    'isLinked' => true,
-                ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-form .wpcf7-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -344,9 +306,8 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#00a0d2',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-cf7-form-wrapper .wpcf7-response-output' => 'color: {{VALUE}};',
+                    '#tft-site-main-body .tft-cf7-form-design__one .wpcf7-response-output' => 'color: {{VALUE}};',
                 ],
             ]
         );
