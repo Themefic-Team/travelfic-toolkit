@@ -259,7 +259,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'blog_section_bg',
+            'blog_section_background',
             [
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
@@ -268,7 +268,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body .tft-latest-posts-design__three' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-2'], 
+                    'blog_style' => ['design-2', 'design-3'], 
                 ],
             ]
         );
@@ -580,6 +580,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label'     => __('Background Gradient 1', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1D2A3B',
                 'condition' => [
                     'blog_style' => 'design-1', 
                 ],
@@ -591,6 +592,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label'     => __('Background Gradient 2', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#1d2a3b00',
                 'condition' => [
                     'blog_style' => 'design-1', 
                 ],
@@ -614,6 +616,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label'     => __('Background Gradient 1', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
+                'default'   => '#F15D30',
                 'condition' => [
                     'blog_style' => 'design-1', 
                 ],
@@ -811,7 +814,6 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a h3' => 'color: {{VALUE}}',
-
                 ],
                 'condition' => [
                     'blog_style' => 'design-2', 
@@ -1319,7 +1321,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                         <div class="tft-thumbnail-url">
                                             <a id="post-<?php the_ID(); ?>" <?php post_class('single-blog'); ?> href="<?php echo esc_url(get_permalink()); ?>">
                                                 <?php the_post_thumbnail('blog-thumb'); ?>
-                                                <div class="tft-post-content-wrap">
+                                                <div class="tft-post-content-wrap tft-content-box">
                                                     <div class="tft-meta-wrap">
                                                         <p class="tft-meta font-nunito tft-color-white"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
                                                     </div>

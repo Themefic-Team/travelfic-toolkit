@@ -1,178 +1,192 @@
 @use '../abstracts/variable' as *;
 @use '../abstracts/mixins' as *;
 
-.footer {
-  padding: 72px 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  color: $color-white;
-  z-index: 1;
-  position: relative;
+.tft-footer-design {
+  &__three {
+    padding: 72px 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: $color-white;
+    z-index: 1;
+    position: relative;
 
-  @media #{$max1199} {
-    padding: 60px 0;
-  }
+    @media #{$max1199} {
+      padding: 60px 0;
+    }
 
-  @media #{$max991} {
-    padding: 50px 0;
-  }
+    @media #{$max991} {
+      padding: 50px 0;
+    }
 
-  @media #{$max767} {
-    padding: 40px 0;
-  }
+    @media #{$max767} {
+      padding: 40px 0;
+    }
 
-  &__widget {
-    &__row {
-      @include d-flex();
-      @include justify-content(space-between);
+    &::after {
+      content: '';
+      position: absolute;
+      background: #101f36d5;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: .95;
+    }
+
+    .footer-widget {
+      .footer-widget-inner {
+        @include d-flex();
+        @include justify-content(space-between);
+
+        @media #{$max991} {
+          gap: 30px;
+        }
+
+        @media #{$max767} {
+          gap: 20px;
+        }
+
+        @media #{$max575} {
+          flex-direction: column;
+        }
+      }
+    }
+
+    h2.wp-block-heading,
+    h3.wp-block-heading {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 27.58px;
+      padding-bottom: 15px;
+      margin-bottom: 32px;
+      position: relative;
 
       @media #{$max991} {
-        gap: 30px;
+        font-size: 1.25rem;
+        margin-bottom: 25px;
+        padding-bottom: 12px;
       }
 
       @media #{$max767} {
-        gap: 20px;
-      }
-
-      @media #{$max575} {
-        flex-direction: column;
-      }
-    }
-  }
-
-  h2.wp-block-heading,
-  h3.wp-block-heading {
-    font-size: 1.5rem;
-    font-weight: 500;
-    line-height: 27.58px;
-    padding-bottom: 15px;
-    margin-bottom: 32px;
-    position: relative;
-
-    @media #{$max991} {
-      font-size: 1.25rem;
-      margin-bottom: 25px;
-      padding-bottom: 12px;
-    }
-
-    @media #{$max767} {
-      font-size: 1.125rem;
-      margin-bottom: 18px;
-      padding-bottom: 8px;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 60px;
-      height: 2px;
-      background-color: $color-white;
-    }
-  }
-
-  h3.wp-block-heading {
-    padding-bottom: 0;
-    margin: 0;
-
-    &::after {
-      display: none;
-    }
-  }
-
-  h4.wp-block-heading {
-    color: $color-white;
-    font-size: 1.125rem;
-    font-weight: 500;
-    line-height: normal;
-    margin-bottom: 16px;
-
-    @media #{$max767} {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-  }
-
-  p {
-    margin-bottom: 0;
-
-    @media #{$max767} {
-      font-size: 0.875rem;
-      line-height: 22px;
-    }
-  }
-
-  .wp-block-list {
-    li {
-      a {
-        color: $color-white;
-        display: block;
+        font-size: 1.125rem;
+        margin-bottom: 18px;
         padding-bottom: 8px;
-        @include transition(0.2s);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: $color-white;
+      }
+    }
+
+    h3.wp-block-heading {
+      padding-bottom: 0;
+      margin: 0;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    h4.wp-block-heading {
+      color: $color-white;
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: normal;
+      margin-bottom: 16px;
+
+      @media #{$max767} {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+
+      @media #{$max767} {
+        font-size: 0.875rem;
+        line-height: 22px;
+      }
+    }
+
+    .wp-block-list {
+      li {
+        a {
+          color: $color-white;
+          display: block;
+          padding-bottom: 8px;
+          @include transition(0.2s);
+
+          @media #{$max767} {
+            font-size: 0.938rem;
+            padding-bottom: 5px;
+          }
+
+          &:hover {
+            color: #FA6400;
+          }
+        }
+
+        &:last-child {
+          a {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+
+    .tft-footer-section {
+      @media #{$max767} {
+        margin-bottom: 0;
+      }
+
+      &:first-child {
+        max-width: 205px;
 
         @media #{$max767} {
           font-size: 0.938rem;
-          padding-bottom: 5px;
+          line-height: 24px;
         }
 
-        &:hover {
-          color: #FA6400;
+        @media #{$max575} {
+          max-width: 100%;
         }
-      }
 
-      &:last-child {
         a {
-          padding-bottom: 0;
+          color: $color-white;
         }
-      }
-    }
-  }
 
-  .tft-footer-section {
-    @media #{$max767} {
-      margin-bottom: 0;
-    }
+        p {
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
 
-    &:first-child {
-      max-width: 205px;
+        h4 {
+          margin-top: 32px;
 
-      @media #{$max767} {
-        font-size: 0.938rem;
-        line-height: 24px;
-      }
+          @media #{$max991} {
+            margin-top: 25px;
+          }
 
-      @media #{$max575} {
-        max-width: 100%;
-      }
-
-      a {
-        color: $color-white;
-      }
-
-      p {
-        &:last-child {
-          margin-bottom: 0;
+          @media #{$max767} {
+            margin-top: 18px;
+          }
         }
       }
 
-      h4 {
-        margin-top: 32px;
-
-        @media #{$max991} {
-          margin-top: 25px;
-        }
-
-        @media #{$max767} {
-          margin-top: 18px;
-        }
+      .wp-block-image {
+        max-width: 205px;
+        margin-bottom: 32px;
       }
-    }
-
-    .wp-block-image {
-      max-width: 205px;
-      margin-bottom: 32px;
     }
   }
 }
@@ -280,72 +294,61 @@
   }
 }
 
-footer.tft-design-1,
-footer.tft-design-2,
-footer.tft-footer-design-3 {
+.tft-footer-design {
 
-  input[type="email"],
-  input[type="text"] {
-    max-width: 320px;
-    min-height: 52px;
-    background: #203453;
-    @include bd-radius(1000px);
-    padding: 16px 32px;
-    color: $color-white;
-    line-height: 18.38px;
-    border: 0;
-    margin-top: 16px;
+  &__one,
+  &__two,
+  &__three {
 
-    @media #{$max767} {
-      min-height: 45px;
-      padding: 10px 25px;
-      font-size: 0.938rem;
-      margin-top: 12px;
-      max-width: 100%;
-    }
-
-    &::placeholder {
+    input[type="email"],
+    input[type="text"] {
+      max-width: 320px;
+      min-height: 52px;
+      background: #203453;
+      @include bd-radius(1000px);
+      padding: 16px 32px;
       color: $color-white;
-    }
-  }
+      line-height: 18.38px;
+      border: 0;
+      margin-top: 16px;
 
-  input[type="submit"] {
-    width: fit-content;
-    min-width: 174px;
-    padding: 0;
-    height: 50px;
-    background: #0e3dd8;
-    border: 0;
-    color: $color-white;
-    text-align: center;
-    margin-top: 16px;
-    @include bd-radius(9999px);
+      @media #{$max767} {
+        min-height: 45px;
+        padding: 10px 25px;
+        font-size: 0.938rem;
+        margin-top: 12px;
+        max-width: 100%;
+      }
 
-    @media #{$max767} {
-      margin-top: 12px;
+      &::placeholder {
+        color: $color-white;
+      }
     }
 
-    @media #{$max575} {
-      min-height: 45px;
-      font-size: 0.938rem;
-    }
+    input[type="submit"] {
+      width: fit-content;
+      min-width: 174px;
+      padding: 0;
+      height: 50px;
+      background: #0e3dd8;
+      border: 0;
+      color: $color-white;
+      text-align: center;
+      margin-top: 16px;
+      @include bd-radius(9999px);
 
-    &:hover {
-      background: #FA6400;
-    }
-  }
-}
+      @media #{$max767} {
+        margin-top: 12px;
+      }
 
-footer.tft-footer-design-3 {
-  &::after {
-    content: '';
-    position: absolute;
-    background: #101f36d5;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: .95;
+      @media #{$max575} {
+        min-height: 45px;
+        font-size: 0.938rem;
+      }
+
+      &:hover {
+        background: #FA6400;
+      }
+    }
   }
 }

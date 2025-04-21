@@ -9,12 +9,12 @@ class Travelfic_Customizer_Footer
         $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
         ob_start();
 ?>
-        <footer class="tft-design-2">
-            <div class="tft-footer-sections tft-w-padding <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
-                <div class="tft-grid">
+        <footer class="tft-design-2 tft-footer-design__two">
+            <div class="tft-footer-inner tft-w-padding <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
+                <div class="tft-footer-widgets tft-justify-between">
                     <?php dynamic_sidebar('footer_sideabr'); ?>
                 </div>
-                <div class="tft-footer-copyright">
+                <div class="tft-footer-copyright tft-footer-bottom__one">
                     <p><?php echo do_shortcode(esc_html($design_2_copyright)); ?></p>
                 </div>
             </div>
@@ -38,10 +38,10 @@ class Travelfic_Customizer_Footer
         ob_start();
     ?>
         <!-- footer -->
-        <footer class="footer tft-footer-design-3" style="background-image: url(<?php echo esc_url($travelfic_footer_back_image); ?>);">
+        <footer class="footer tft-footer-design__three" style="background-image: url(<?php echo esc_url($travelfic_footer_back_image); ?>);">
             <div class="container <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
-                <div class="footer__widget">
-                    <div class="footer__widget__row">
+                <div class="footer-widget">
+                    <div class="footer-widget-inner">
                         <?php if (is_active_sidebar('footer_sideabr  ')) : ?>
                             <?php dynamic_sidebar('footer_sideabr  '); ?>
                         <?php endif; ?>
@@ -51,7 +51,7 @@ class Travelfic_Customizer_Footer
         </footer>
 
         <!-- footer bottom -->
-        <div class="footer-bottom">
+        <div class="footer-bottom tft-footer-bottom__three">
             <div class="container">
                 <div class="footer-bottom__inner">
                     <div class="footer-bottom__copyright">

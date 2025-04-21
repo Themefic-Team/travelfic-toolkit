@@ -1088,7 +1088,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     '#tft-site-main-body .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
+                    'slider_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
@@ -1299,9 +1299,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 ?>
             <div class="tft-hero-design__two tft-hero-wrapper" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content">
-                    <?php
-                    if (!empty($tft_banner_title)) { ?>
-                        <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                    <?php if (!empty($tft_banner_title)) { ?>
+                        <div class="tft-content-box">
+                            <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        </div>
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
@@ -1315,9 +1316,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <div class="tft-hero-content-box">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
-                        <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        <div class="tft-content-box">
+                            <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        </div>
                     <?php } ?>
-
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
                             <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . 'design="3"]'); ?>
@@ -1329,7 +1331,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             <section class="tft-hero-design__four tft-hero-wrapper" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
                 <div class="container tft-hero-design__four__container">
                     <!-- hero banner slider -->
-                    <div class="tft-hero-design__four__slider">
+                    <div class="tft-hero-design__four__slider tft-content-box">
                         <?php foreach ($settings['design4_hero_slider_list'] as $slider):
                             $target_blank = $slider['design4_slider_bttn_url']['is_external'] ? 'target="_blank"' : '';
                         ?>
@@ -1478,7 +1480,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                         ?>
                             <div class="tft-hero-single-item">
                                 <div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url($item['slider_image']['url']); ?>);">
-                                    <div class="tft-container tft-hero-single-item-inner">
+                                    <div class="tft-container tft-hero-single-item-inner tft-content-box">
                                         <div class="slider-inner-info">
                                             <div class="tft-slider-title">
                                                 <h1 class="tft-title title-large font-nunito">
