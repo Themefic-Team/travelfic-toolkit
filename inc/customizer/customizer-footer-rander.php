@@ -9,12 +9,12 @@ class Travelfic_Customizer_Footer
         $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
         ob_start();
 ?>
-        <footer class="tft-design-2 tft-footer-design__two">
+        <footer class="tft-footer-design__two">
             <div class="tft-footer-inner tft-w-padding <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
                 <div class="tft-footer-widgets tft-justify-between">
                     <?php dynamic_sidebar('footer_sideabr'); ?>
                 </div>
-                <div class="tft-footer-copyright tft-footer-bottom__one">
+                <div class="tft-footer-bottom__two tft-footer-bottom">
                     <p><?php echo do_shortcode(esc_html($design_2_copyright)); ?></p>
                 </div>
             </div>
@@ -38,7 +38,7 @@ class Travelfic_Customizer_Footer
         ob_start();
     ?>
         <!-- footer -->
-        <footer class="footer tft-footer-design__three" style="background-image: url(<?php echo esc_url($travelfic_footer_back_image); ?>);">
+        <footer class="tft-footer-design__three" style="background-image: url(<?php echo esc_url($travelfic_footer_back_image); ?>);">
             <div class="container <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
                 <div class="footer-widget">
                     <div class="footer-widget-inner">
@@ -51,14 +51,14 @@ class Travelfic_Customizer_Footer
         </footer>
 
         <!-- footer bottom -->
-        <div class="footer-bottom tft-footer-bottom__three">
+        <div class="tft-footer-bottom__three tft-footer-bottom">
             <div class="container">
-                <div class="footer-bottom__inner">
-                    <div class="footer-bottom__copyright">
-                        <p><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
+                <div class="tft-footer-bottom__three__inner">
+                    <div class="tft-footer-bottom__three__copyright">
+                        <p class="tft-color-white"><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
                     </div>
-                    <div class="footer-bottom__menu">
-                        <ul class="footer-bottom__nav">
+                    <div class="tft-footer-bottom__three__menu">
+                        <ul class="tft-footer-bottom__three__nav">
                             <?php if (!empty($travelfic_menu_1_label)): ?>
                                 <li>
                                     <a href="<?php echo esc_url($travelfic_menu_1_url); ?>">

@@ -2,6 +2,82 @@
 @use '../abstracts/mixins' as *;
 
 .tft-footer-design {
+
+  &__two {
+    padding-top: 64px;
+    padding-bottom: 32px;
+    background-color: #595349;
+    color: #FAEEDC;
+    .tft-footer-inner {
+      a {
+        color: #faeedc;
+      }
+
+      .tft-grid {
+        display: flex;
+        justify-content: space-between;
+        align-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 83px;
+
+        @media #{$max991} {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
+
+        @media #{$max575} {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 0px;
+        }
+
+        .tft-footer-section {
+          width: 100%;
+        }
+
+        h2 {
+          font-size: 2rem;
+          font-weight: 700;
+          color: #FA6400;
+          margin-bottom: 24px;
+          line-height: 32px;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+
+          li {
+            display: block;
+            padding-bottom: 8px;
+            margin: 0;
+
+            a {
+              text-decoration: none;
+              display: block;
+              color: #faeedc;
+              font-size: 1rem;
+              font-weight: 600;
+
+              &:hover {
+                color: $highlights-background !important;
+              }
+            }
+          }
+
+          li:last-child {
+            padding-bottom: 0px;
+          }
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+
   &__three {
     padding: 72px 0;
     background-size: cover;
@@ -189,112 +265,6 @@
       }
     }
   }
-}
-
-// footer bottom
-.footer-bottom {
-  font-family: $font-ubuntu;
-  font-size: 0.75rem;
-  line-height: 13.79px;
-  color: $color-white;
-  overflow: hidden;
-
-  &__inner {
-    @include d-flex();
-    align-items: center;
-
-    @media #{$max767} {
-      align-items: inherit;
-    }
-  }
-
-  &__copyright {
-    background: $color-dark-blue3;
-    flex: 2;
-    padding: 16px 0;
-    // text-align: center;
-    position: relative;
-
-    @media #{$max767} {
-      flex: 1;
-      padding: 12px 5px;
-      padding-left: 0;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      right: 100%;
-      padding-right: 100%;
-      top: 0;
-      background: $color-dark-blue3;
-      width: 100vw;
-      height: 100%;
-      z-index: 99;
-    }
-
-    p {
-      margin-bottom: 0;
-
-      @media #{$max767} {
-        line-height: 18px;
-      }
-    }
-  }
-
-  &__menu {
-    background: #0e3dd8;
-    flex: 0.8;
-    padding: 16px 0;
-    text-align: center;
-    position: relative;
-
-    @media #{$max767} {
-      flex: 1;
-      padding: 12px 8px;
-      padding-right: 0;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 100%;
-      padding-right: 100%;
-      top: 0;
-      background: #0e3dd8;
-      width: 100vw;
-      height: 100%;
-      z-index: 99;
-    }
-  }
-
-  &__nav {
-    @include d-flex();
-    @include align-items(center);
-    @include justify-content(end);
-    gap: 22px;
-
-    @media #{$max767} {
-      justify-content: center;
-      gap: 10px;
-      position: relative;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    a {
-      color: $color-white;
-      @include transition(0.2s);
-
-      &:hover {
-        color: #FA6400;
-      }
-    }
-  }
-}
-
-.tft-footer-design {
 
   &__one,
   &__two,
@@ -348,6 +318,131 @@
 
       &:hover {
         background: #FA6400;
+      }
+    }
+  }
+}
+
+// footer bottom
+.tft-footer-bottom {
+  &__two {
+    border-top: 0.5px solid #99948d;
+    margin-top: 32px;
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 130%;
+      margin: 0;
+      padding-top: 32px;
+      color: #99948d;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: #99948d;
+      }
+    }
+
+  }
+
+  &__three {
+    font-family: $font-ubuntu;
+    font-size: 0.75rem;
+    line-height: 13.79px;
+    color: $color-white;
+    overflow: hidden;
+
+    &__inner {
+      @include d-flex();
+      align-items: center;
+
+      @media #{$max767} {
+        align-items: inherit;
+      }
+    }
+
+    &__copyright {
+      background: $color-dark-blue3;
+      flex: 2;
+      padding: 16px 0;
+      position: relative;
+
+      @media #{$max767} {
+        flex: 1;
+        padding: 12px 5px;
+        padding-left: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 100%;
+        padding-right: 100%;
+        top: 0;
+        background: $color-dark-blue3;
+        width: 100vw;
+        height: 100%;
+        z-index: 99;
+      }
+
+      p {
+        margin-bottom: 0;
+
+        @media #{$max767} {
+          line-height: 18px;
+        }
+      }
+    }
+
+    &__menu {
+      background: #0e3dd8;
+      flex: 0.8;
+      padding: 16px 0;
+      text-align: center;
+      position: relative;
+
+      @media #{$max767} {
+        flex: 1;
+        padding: 12px 8px;
+        padding-right: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 100%;
+        padding-right: 100%;
+        top: 0;
+        background: #0e3dd8;
+        width: 100vw;
+        height: 100%;
+        z-index: 99;
+      }
+    }
+
+    &__nav {
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(end);
+      gap: 22px;
+
+      @media #{$max767} {
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      a {
+        color: $color-white;
+        @include transition(0.2s);
+
+        &:hover {
+          color: #FA6400;
+        }
       }
     }
   }

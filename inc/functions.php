@@ -263,20 +263,7 @@ if (!function_exists('tf_review_star_rating')) {
     }
 }
 
-
-if (!function_exists('tf_print')) {
-    function tf_print($data)
-    {
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
-    }
-}
-
-
-
 // Load elementor background image based on travelfic template version
-
 $travelfic_template_version = get_option('travelfic_template_version');
 
 if ('5' === $travelfic_template_version) {
@@ -363,3 +350,4 @@ function tft_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'tft_body_classes' );
+

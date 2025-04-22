@@ -20,12 +20,12 @@
 
     // Share button for mobile
     function initializeMobileShare() {
-      $(".tft-hero-design-4__mobile--share").off("click");
+      $(".tft-hero-design__four__mobile--share").off("click");
       $(document).off("click");
 
       if ($(window).width() <= 1199) {
-        $(".tft-hero-design-4__mobile--share").on("click", function () {
-          $(".tft-hero-design-4__social")
+        $(".tft-hero-design__four__mobile--share").on("click", function () {
+          $(".tft-hero-design__four__social")
             .addClass("visible")
             .animate({ left: "0px" }, 400);
         });
@@ -33,10 +33,10 @@
         $(document).on("click", function (event) {
           if (
             !$(event.target).closest(
-              ".tft-hero-design-4__mobile--share, .tft-hero-design-4__social"
+              ".tft-hero-design__four__mobile--share, .tft-hero-design__four__social"
             ).length
           ) {
-            $(".tft-hero-design-4__social").animate(
+            $(".tft-hero-design__four__social").animate(
               { left: "-100%" },
               400,
               function () {
@@ -72,7 +72,7 @@ function SubMenuHandleEvents() {
   var windowWidth = jQuery(window).width();
 
   if (windowWidth > 1199) {
-    jQuery(".tft-design-3 .menu-item-has-children")
+    jQuery(".tft-header-design__three .menu-item-has-children")
       .off("click")
       .hover(
         function () {
@@ -84,7 +84,7 @@ function SubMenuHandleEvents() {
       );
   } else {
   
-    jQuery(".tft-design-3 .menu-item-has-children > a")
+    jQuery(".tft-header-design__three .menu-item-has-children > a")
       .off("click")
       .click(function (e) {
         var $parentLi = jQuery(this).parent();
@@ -104,7 +104,7 @@ function SubMenuHandleEvents() {
       });
 
     // Allow links without children to redirect
-    jQuery(".tft-design-3 .menu-item-has-children .sub-menu a")
+    jQuery(".tft-header-design__three .menu-item-has-children .sub-menu a")
       .off("click")
       .click(function (e) {
         var $submenu = jQuery(this).siblings("ul.sub-menu");

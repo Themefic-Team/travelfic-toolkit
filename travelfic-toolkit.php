@@ -25,6 +25,7 @@ define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_VERSION', '1.1.9' );
 
+
 /**
  * Include file from plugin if it is not available in theme
  */
