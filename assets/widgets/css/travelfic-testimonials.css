@@ -1,12 +1,22 @@
-.tft-testimonials-selector .slick-prev,
-.tft-testimonials-selector .slick-next {
+.tft-testimonials-selector .slick-arrow{
   top: -50px;
   background-color: #fff;
   border: 1px solid #1D2A3B33;
   color: #F15D30;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  transition: all 0.3s ease;
+}
+.tft-testimonials-selector .slick-arrow:hover{
+  background-color: #F15D30;
+  color: #fff;
 }
 .tft-testimonials-selector .slick-prev {
-  left: 90%;
+  left: 92%;
 }
 .tft-testimonials-selector .slick-next {
   right: 0px;
