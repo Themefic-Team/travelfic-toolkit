@@ -162,6 +162,17 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
 
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
+			'image_icon_switcher',
+			[
+				'label' => esc_html__( 'Choose Type', 'travelfic-toolkit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Image', 'travelfic-toolkit' ),
+                'label_off' => esc_html__( 'Icon', 'travelfic-toolkit' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $repeater->add_control(
             'box_image',
             [
                 'label'   => __('Image', 'travelfic-toolkit'),
@@ -171,6 +182,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 ],
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'image_icon_switcher' => 'yes',
                 ],
             ]
         );
@@ -184,7 +198,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                     'library' => 'solid',
                 ],
                 'condition' => [
-                    'tft_icon_style' => 'design-1',
+                    'image_icon_switcher!' => 'yes',
                 ],
             ]
         );
@@ -871,7 +885,10 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         <?php elseif ($settings['icon_text_list']): ?>
             <div class="tft-icon-text-wrapper tft-customizer-typography">
                 <div class="tft-icon-text-items tft-flex">
-                    <?php foreach ($settings['icon_text_list'] as $item): ?>
+                    <?php foreach ($settings['icon_text_list'] as $item): 
+                        
+                        error_log(print_r($item, true));
+                        ?>
 
                         <div class="tft-icon-text-single" <?php if ($item['active_gap'] == 'yes'): ?>
                             style="margin-top:<?php echo esc_html($settings['items_gap']); ?>px;" <?php else: ?>
@@ -879,17 +896,13 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                             <div class="tft-icon-text-single-inner tft-center">
                                 <div class="icon_outter"
                                     style="background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, <?php echo esc_attr($iconGradientOne); ?> 6.09%, <?php echo esc_attr($iconGradientTwo); ?> 100%);">
-                                    <?php
-                                    if (!empty($item['box_image']['url'])) : ?>
+                                    <?php if ('yes' ===  $item['image_icon_switcher'] && !empty($item['box_image']['url']))  : ?>
                                         <img src="<?php echo esc_url($item['box_image']['url']); ?> " alt="">
-                                        <?php else :
-                                        if (!empty($item['box_icon']['value'])) : ?>
-                                            <div class="tft-icon">
-                                                <?php \Elementor\Icons_Manager::render_icon($item['box_icon'], ['aria-hidden' => 'true']); ?>
-                                            </div>
-                                    <?php endif;
-                                    endif;
-                                    ?>
+                                    <?php elseif ('yes' !==  $item['image_icon_switcher'] && !empty($item['box_icon'])): ?>
+                                        <div class="tft-icon">
+                                            <i class="<?php echo esc_attr($item['box_icon']['value']); ?>"></i>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                                 <h3 class="tft-title">
                                     <?php echo esc_html($item['box_title']); ?>
