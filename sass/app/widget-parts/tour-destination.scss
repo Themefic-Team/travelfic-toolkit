@@ -286,6 +286,14 @@
                     flex-basis: 100%;
                 }
 
+                h3{
+                    color: #FA6400;
+                }
+
+                h2{
+                    color: #060D1C;
+                }
+
                 .tft-section-content {
                     max-width: 490px;
 
@@ -295,6 +303,7 @@
 
                     p {
                         margin-bottom: 30px;
+                        color: #686E7A;
 
                         @media #{$max767} {
                             margin-bottom: 10px;
@@ -388,6 +397,7 @@
                             color: $color-white;
                             font-size: 0.875rem;
                             line-height: normal;
+                            
                         }
                     }
                 }

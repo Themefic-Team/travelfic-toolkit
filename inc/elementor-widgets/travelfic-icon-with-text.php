@@ -807,10 +807,10 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 <div class="container">
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title tft-title-shape font-brygada <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-icon-text-items tft-section-space-bottom">
@@ -824,10 +824,10 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <h3 class="tft-title">
+                                    <h3 class="tft-title font-brygada">
                                         <?php echo esc_html($item['box_title']); ?>
                                     </h3>
-                                    <p class="tft-details">
+                                    <p class="tft-details font-ubuntu">
                                         <?php echo esc_html($item['box_details']); ?>
                                     </p>
                                 </div>

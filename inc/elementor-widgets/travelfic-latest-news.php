@@ -1181,10 +1181,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 <div class="container">
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title tft-title-shape font-brygada <?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
 
@@ -1203,17 +1203,17 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                         <?php } ?>
                                     </div>
                                     <div class="tft-content-details">
-                                        <div class="tft-post-meta">
+                                        <div class="tft-post-meta font-ubuntu">
                                             <p class="tft-meta"><i class="ri-time-line"></i><?php echo get_the_date('j M, Y'); ?></p>
                                             <p class="tft-meta"><i class="ri-user-line"></i> <?php echo 'by' . ' ' . get_the_author(); ?></p>
                                         </div>
-                                        <h3 class="tft-title">
+                                        <h3 class="tft-title font-brygada">
                                             <a href="<?php echo esc_url(get_permalink()); ?>">
                                                 <?php echo esc_html(travelfic_character_limit(get_the_title(), 70)); ?>
                                             </a>
                                         </h3>
                                         <div class="tft-read-more">
-                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn">
+                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn font-ubuntu">
                                                 <?php echo esc_html_e("Read Details", "travelfic-toolkit"); ?>
                                                 <i class="ri-arrow-right-line"></i>
                                             </a>

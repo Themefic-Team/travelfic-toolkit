@@ -1065,13 +1065,13 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                         </div>
                         <div class="tft-about-us-content tft-heading-content">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title font-brygada tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
-                                <div class="tft-section-content">
+                                <div class="tft-section-content font-ubuntu">
                                     <?php echo wp_kses_post($tft_sec_content); ?>
                                 </div>
                             <?php } ?>
@@ -1083,7 +1083,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                             <div class="icon tft-color-primary">
                                                 <i class="fa-regular fa-circle-check"></i>
                                             </div>
-                                            <div class="text">
+                                            <div class="text font-ubuntu">
                                                 <?php echo esc_html($list['about_list_title']); ?>
                                             </div>
                                         </li>
@@ -1091,7 +1091,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 </ul>
                             </div>
                             <div class="tft-about-us-button">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn font-ubuntu">
                                     <?php echo esc_html($tft_about_us_button_text); ?>
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>

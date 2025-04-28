@@ -311,33 +311,32 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 		}
 
 ?>
-		<div class="tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
-
-			<?php if ('design-2' == $tft_design): ?>
-				<h2 class="title section-title">
-					<span class="section-title-suffix">
-						<?php if ($settings['title_suffix']) {
-							echo esc_html($settings['suffix_title']);
-						} ?>
-					</span>
-					<?php echo esc_html($settings['tf_heading']); ?>
-
-				</h2>
-			<?php else : ?>
-				<h2 class="title section-title">
-					<?php echo esc_html($settings['tf_heading']); ?>
-					<span class="section-title-suffix">
-						<?php if ($settings['title_suffix']) {
-							echo esc_html($settings['suffix_title']);
-						} ?>
-					</span>
-				</h2>
-				<p class="subtitle">
-					<?php echo esc_html($settings['tf_heading_details']); ?>
-				<p>
-			<?php endif; ?>
-
+	<?php if ('design-2' == $tft_design): ?>
+		<div class="tft-section-heading__two tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
+			<h2 class="title section-title font-brygada">
+				<span class="section-title-suffix">
+					<?php if ($settings['title_suffix']) {
+						echo esc_html($settings['suffix_title']);
+					} ?>
+				</span>
+				<?php echo esc_html($settings['tf_heading']); ?>
+			</h2>
 		</div>
+	<?php else : ?>
+		<div class="tft-section-heading__one tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
+			<h2 class="title section-title">
+				<?php echo esc_html($settings['tf_heading']); ?>
+				<span class="section-title-suffix">
+					<?php if ($settings['title_suffix']) {
+						echo esc_html($settings['suffix_title']);
+					} ?>
+				</span>
+			</h2>
+			<p class="subtitle">
+				<?php echo esc_html($settings['tf_heading_details']); ?>
+			<p>
+		</div>
+	<?php endif; ?>
 <?php
 	}
 }

@@ -1859,13 +1859,13 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     <div class="tft-testimonials-content">
                         <div class="tft-heading-content">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title tft-title-shape font-brygada <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
-                                <div class="tft-section-content">
+                                <div class="tft-section-content font-ubuntu">
                                     <?php echo wp_kses_post($tft_sec_content); ?>
                                 </div>
                             <?php } ?>
@@ -1888,7 +1888,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                         <div class="tft-single-testimonial">
                                             <div class="tft-testimonials-inner">
                                                 <div class="testimonial-review">
-                                                    <p><?php echo wp_kses_post($item['testimonials_review']); ?></p>
+                                                    <p class="font-ubuntu"><?php echo wp_kses_post($item['testimonials_review']); ?></p>
                                                 </div>
                                                 <div class="testimonial-author">
                                                     <div class="testimonial-author-image">
@@ -1900,8 +1900,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                                         <?php } ?>
                                                     </div>
                                                     <div class="testimonial-author-info">
-                                                        <h4 class="person-name"><?php echo esc_html($item['person_name']) ?></h4>
-                                                        <p class="designation"><?php echo esc_html($item['designation']) ?></p>
+                                                        <h4 class="person-name font-brygada"><?php echo esc_html($item['person_name']) ?></h4>
+                                                        <p class="designation font-ubuntu"><?php echo esc_html($item['designation']) ?></p>
                                                     </div>
                                                 </div>
                                             </div>

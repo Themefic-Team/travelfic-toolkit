@@ -300,7 +300,17 @@
                     padding-bottom: 0;
                 }
 
+                h3 {
+                    color: #FA6400;
+                }
+
+                h2 {
+                    color: #060D1C;
+                }
+
                 p {
+                    color: #686e76;
+
                     @media #{$max991} {
                         margin-bottom: 0;
                     }
@@ -443,6 +453,7 @@
                         .tft-testimonials-inner {
                             .testimonial-review {
                                 margin: 0;
+                                color: #686E7A;
                             }
 
                             .testimonial-author {
@@ -481,7 +492,7 @@
 
                                 .testimonial-author-info {
                                     h4 {
-                                        font-family: $font-brygada;
+                                        color: #060D1C;
                                         font-size: 1.125rem;
                                         margin-bottom: 0;
 
@@ -493,6 +504,7 @@
                                     p {
                                         font-size: 0.875rem;
                                         margin-bottom: 0;
+                                        color: #686E7A;
                                     }
                                 }
                             }

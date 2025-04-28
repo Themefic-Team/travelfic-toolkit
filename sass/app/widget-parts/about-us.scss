@@ -299,6 +299,19 @@
                     margin: auto;
                 }
 
+                h3{
+                    color: #FA6400;
+                }
+
+                h2{
+                    color: #060D1C;
+                }
+
+                p{
+                    color: #686E7A;
+
+                }
+
                 .tft-about-us-list {
                     padding: 44px 0 44px 69px;
                     border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -347,8 +360,7 @@
                             }
 
                             .text {
-                                color: $heading-color;
-                                font-family: $font-ubuntu;
+                                color: #000;
                                 font-size: 1.125rem;
                                 line-height: normal;
 

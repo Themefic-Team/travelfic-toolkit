@@ -111,7 +111,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $title = !empty($page['title']) ? $page['title'] : '';
                     $content = !empty($page['content']) ? $page['content'] : '';
                     $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
-                    $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
+                    $tft_header_bg =  !empty($page['tf-pmb-background-img']) ? $page['tf-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
@@ -208,12 +208,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     }
 
                     if(!empty($page['_wp_page_template'])){
-                        update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
-                        update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
-                        update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
+                        update_post_meta($new_page_id, 'tf-pmb-disable-sidebar', $page['tf-pmb-disable-sidebar']);
+                        update_post_meta($new_page_id, 'tf-pmb-banner', $page['tf-pmb-banner']);
+                        update_post_meta($new_page_id, 'tf-pmb-transfar-header', $page['tf-pmb-transfar-header']);
                         update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
-                        update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
-                        update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
+                        update_post_meta($new_page_id, 'tf-pmb-background-img', $tft_header_bg);
+                        update_post_meta($new_page_id, 'tf-pmb-subtitle', $page['tf-pmb-subtitle']);
                         update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
                         update_post_meta($new_page_id, '_elementor_data', $elementor_content);
                         update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
@@ -374,7 +374,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $widget_data = $import_array[1];
 
             $sidebars_widget_data = array(
-                "tft-sidebar" => array(),
+                "tf-sidebar" => array(),
                 "footer_sideabr" => array(),
                 "tf_archive_booking_sidebar" => array(),
                 "tf_search_result" => array(),

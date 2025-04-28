@@ -124,9 +124,14 @@
                     margin-bottom: 40px;
                 }
 
+                h3{
+                    color: #FA6400;
+                }
+
                 h2 {
                     margin-left: auto;
                     margin-right: auto;
+                    color: #060D1C;
 
                     &::after {
                         width: 195px;
@@ -222,8 +227,8 @@
                     .tft-title {
                         margin-top: 20px;
                         margin-bottom: 20px;
-                        font-family: $font-brygada;
                         font-size: 1.5rem;
+                        color: #060D1C;
 
                         @media #{$max991} {
                             font-size: 1.375rem;
@@ -240,7 +245,7 @@
 
                     .tft-details {
                         margin-bottom: 0;
-
+                        color: #686E7A;
                         @media #{$max767} {
                             max-width: 340px;
                             margin: auto;

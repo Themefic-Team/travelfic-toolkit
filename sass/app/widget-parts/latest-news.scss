@@ -338,10 +338,14 @@
                     margin-bottom: 20px;
                 }
 
+                h3{
+                    color: #FA6400;
+                }
+
                 h2 {
                     margin-left: auto;
                     margin-right: auto;
-
+                    color: #060D1C;
                     &::after {
                         left: 50%;
                         transform: translateX(-50%);
@@ -419,8 +423,7 @@
                         flex: 1;
 
                         .tft-title {
-                            color: $heading-color;
-                            font-family: $font-brygada;
+                            color: #060D1C;
                             font-size: 1.5rem;
                             line-height: 1.4;
                             margin: 25px 0 30px;
@@ -496,6 +499,7 @@
                                 gap: 10px;
                                 line-height: normal;
                                 margin-bottom: 0;
+                                color: #686E7A;
 
                                 @media #{$max991} {
                                     gap: 8px;

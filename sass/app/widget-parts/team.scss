@@ -165,10 +165,14 @@
                 margin-bottom: 20px;
             }
 
+            h3{
+                color: #FA6400;
+            }
+
             h2 {
                 margin-left: auto;
                 margin-right: auto;
-
+                color: #060D1C;
                 &::after {
                     left: 50%;
                     transform: translateX(-50%);
@@ -273,7 +277,6 @@
 
                     h3 {
                         color: #FA6400;
-                        font-family: $font-ubuntu;
                         font-size: 1rem;
                         font-weight: 400;
                         margin-bottom: 5px;
@@ -285,8 +288,7 @@
                     }
 
                     h2 {
-                        color: $heading-color;
-                        font-family: $font-brygada;
+                        color: #060D1C;
                         font-size: 1.5rem;
                         font-weight: 700;
                         margin-bottom: 0;

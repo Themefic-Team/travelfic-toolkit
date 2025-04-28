@@ -1,0 +1,10 @@
+.tft-section-heading{
+    &__two{
+        .section-title{
+            color: #060D1C;
+            &-suffix{
+                color: #FA6400;
+            }
+        }
+    }
+}

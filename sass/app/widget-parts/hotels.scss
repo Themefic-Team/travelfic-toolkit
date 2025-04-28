@@ -313,10 +313,14 @@
                 margin-bottom: 10px;
             }
 
+            h3{
+                color: #FA6400;
+            }
+
             h2 {
                 margin-left: auto;
                 margin-right: auto;
-
+                color: #060D1C;
                 &::after {
                     left: 50%;
                     transform: translateX(-50%);
@@ -493,6 +497,7 @@
                                 display: -webkit-box;
                                 -webkit-line-clamp: 2;
                                 -webkit-box-orient: vertical;
+                                color: #686E7A;
                             }
                         }
 
@@ -510,7 +515,7 @@
                                 @include transition(0.2s);
                                 color: inherit;
                                 text-transform: capitalize;
-
+                                color: #060D1C;
                                 &:hover {
                                     color: #FA6400;
                                 }
@@ -537,6 +542,7 @@
                                 font-size: 0.875rem;
                                 margin-bottom: 10px;
                                 text-transform: none;
+                                color: #686E7A;
                             }
 
                             .tft-desination-price-value {
@@ -544,6 +550,7 @@
                                 font-family: $font-brygada;
                                 font-size: 1.25rem;
                                 text-transform: none;
+                                font-weight: 700;
                             }
                         }
 

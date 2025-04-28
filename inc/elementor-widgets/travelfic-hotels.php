@@ -2279,10 +2279,10 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                     <!-- heading content -->
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title font-cormorant tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title font-brygada tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-destination-content">
@@ -2394,7 +2394,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             $tft_hotel_image = !empty(get_the_post_thumbnail_url(get_the_ID())) ? esc_url(get_the_post_thumbnail_url(get_the_ID())) : esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png');
                                             ?>
                                             <img src="<?php echo esc_url($tft_hotel_image); ?>" alt="post thumbnail">
-                                            <div class="tft-destination-featured">
+                                            <div class="tft-destination-featured font-ubuntu">
                                                 <?php echo $tf_featured ? '<span class="tft-featured">' . esc_html($tf_featured_text) . '</span>' : ''; ?>
                                             </div>
                                         </div>
@@ -2408,12 +2408,12 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 <?php if(!empty($tf_location)): ?>
                                                     <span class="tft-desination-location">
                                                         <i class="ri-map-pin-line tft-color-primary"></i>
-                                                        <span><?php echo esc_html($tf_location); ?></span>
+                                                        <span class="font-ubuntu"><?php echo esc_html($tf_location); ?></span>
                                                     </span> 
                                                 <?php endif; ?>
                                                 <!-- destination title -->
                                                 <h2 class="tft-desination-title">
-                                                    <a href="<?php echo esc_url(get_the_permalink()) ?>" class="tft-color-hover-primary">
+                                                    <a href="<?php echo esc_url(get_the_permalink()) ?>" class="tft-color-hover-primary font-brygada">
                                                         <?php
                                                         if ("Split" == $settings['card_title_type']) {
                                                             echo esc_html(travelfic_character_limit(get_the_title(), 40));
@@ -2429,14 +2429,14 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             <div class="tft-desination-bottom-info">
                                                 <!-- destination price -->
                                                 <div class="tft-desination-price">
-                                                    <span class="tft-desination-price-title"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
-                                                    <span class="tft-desination-price-value tft-color-primary">
+                                                    <span class="tft-desination-price-title font-ubuntu"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
+                                                    <span class="tft-desination-price-value tft-color-primary font-brygada">
                                                         <?php echo '$', $tf_total_price; ?>
                                                     </span>
                                                 </div>
                                                 <!-- destination button -->
                                                 <div class="tft-desination-btn">
-                                                    <a href="<?php echo esc_url(get_the_permalink()); ?>" class="tft-btn">
+                                                    <a href="<?php echo esc_url(get_the_permalink()); ?>" class="tft-btn font-ubuntu">
                                                         <?php echo esc_html__('Explore', 'travelfic-toolkit'); ?>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </a>
