@@ -66,7 +66,7 @@ add_filter( 'theme_file_path', 'travelfic_get_theme_filepath', 10, 2 );
  * Loading Text Domain
  *
 */
-add_action( 'plugins_loaded', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
+add_action( 'init', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
 
 function travelfic_toolkit_plugin_loaded_action() {
     load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );

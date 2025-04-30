@@ -178,7 +178,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -196,7 +196,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_item_title',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
             ]
         );
 		$this->add_control(
@@ -205,7 +205,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -222,7 +222,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_item_meta',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content',
             ]
         );
 		$this->add_control(
@@ -231,7 +231,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -248,7 +248,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_price_typo',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-pricing',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-pricing',
             ]
         );
 		$this->add_control(
@@ -257,7 +257,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-pricing' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-pricing' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -275,8 +275,8 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-popular-tour-items  .slick-arrow i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items  .slick-arrow i' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -333,7 +333,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 
 						$option_meta = travelfic_get_meta( get_the_ID(), 'tf_tours_opt' );
 
-						$disable_review_sec = !empty($meta['t-review']) ? $meta['t-review'] : '';
+						$disable_review_sec = !empty($option_meta['t-review']) ? $option_meta['t-review'] : '';
 						?>
 						<div class="tft-popular-single-item">
 							<div class="tft-popular-single-item-inner">
@@ -433,43 +433,43 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 		;(function ($) {
 			"use strict";
 			$(document).ready(function () {
-			$(".tft-popular-tour-selector").slick({
-				infinite: true,
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				arrows: true,
-				centerMode: true,
-				dots: false,
-				pauseOnHover: true,
-				autoplay: true,
-				autoplaySpeed: 7000,
-				arrows: true,
-				prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-				nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-				speed: 700,
-				responsive: [{
-						breakpoint: 1024,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 1,
+				$(".tft-popular-tour-selector").slick({
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					arrows: true,
+					centerMode: true,
+					dots: false,
+					pauseOnHover: true,
+					autoplay: true,
+					autoplaySpeed: 7000,
+					arrows: true,
+					prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+					nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+					speed: 700,
+					responsive: [{
+							breakpoint: 1024,
+							settings: {
+								slidesToShow: 3,
+								slidesToScroll: 1,
+							},
 						},
-					},
-					{
-						breakpoint: 991,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 1,
+						{
+							breakpoint: 991,
+							settings: {
+								slidesToShow: 2,
+								slidesToScroll: 1,
+							},
 						},
-					},
-					{
-						breakpoint: 480,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1,
+						{
+							breakpoint: 480,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							},
 						},
-					},
-				],
-			});
+					],
+				});
 			});
 		}(jQuery));
 			

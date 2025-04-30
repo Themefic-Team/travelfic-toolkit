@@ -210,7 +210,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'name'     => 'tft_section_title_typo',
 				'label'    => __('Typography', 'travelfic-toolkit'),
-				'selector' => '#tft-site-main-body .tft-section-head .section-title',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title',
 			]
 		);
 		$this->add_control(
@@ -219,7 +219,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'label' => __('Title Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'#tft-site-main-body .tft-section-head .section-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -239,7 +239,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'name'     => 'tft_section_content_typo',
 				'label'    => __('Typography', 'travelfic-toolkit'),
-				'selector' => '#tft-site-main-body .tft-section-head .subtitle',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-section-head .subtitle',
 				'condition' => [
 					'tft_heading_style' => 'design-1',
 				]
@@ -251,7 +251,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'label' => __('Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'#tft-site-main-body .tft-section-head .subtitle' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .subtitle' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'tft_heading_style' => 'design-1',
@@ -265,7 +265,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'#tft-site-main-body .tft-section-head .subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'tft_heading_style' => 'design-1',
@@ -285,7 +285,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'name'     => 'suffix_typo',
 				'label'    => __('Typography', 'travelfic-toolkit'),
-				'selector' => '#tft-site-main-body .tft-section-head .section-title-suffix',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title-suffix',
 			]
 		);
 		$this->add_control(
@@ -294,7 +294,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'label' => __('Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'#tft-site-main-body .tft-section-head .section-title-suffix' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title-suffix' => 'color: {{VALUE}}',
 				],
 			]
 		);

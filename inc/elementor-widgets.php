@@ -128,23 +128,31 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-cars.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-car-brand.php' );
 
-        // Register widget
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Travelfic_Toolkit_SliderHero());
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_IconWithText() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_PopularTours() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Testimonials() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_LatestNews() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_SectionHeading() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TeamMembers() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_TourDestinaions() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_HotelLocation() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_CF7_Form() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_AboutUs() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Hotels() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_ApartmentLocation() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_Cars() );
-        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Travelfic_Toolkit_CarBrands() );
 
+        // Register widget
+        \Elementor\Plugin::instance()->widgets_manager->register(new \Travelfic_Toolkit_SliderHero());
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_IconWithText() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_PopularTours() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Testimonials() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_LatestNews() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_SectionHeading() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_TeamMembers() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_TourDestinaions() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_HotelLocation() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_CF7_Form() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_AboutUs() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Hotels() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_ApartmentLocation() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Cars() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_CarBrands() );
+
+
+        // Include Tourfic Widget files
+        require_once(__DIR__ . '/elementor-widgets/tourfic-widgets/TF_Search_horizontal.php');
+
+        // Tourfic Widgets
+        \Elementor\Plugin::instance()->widgets_manager->register( new \TF_Search_horizontal() );
+       
     }
 }
 

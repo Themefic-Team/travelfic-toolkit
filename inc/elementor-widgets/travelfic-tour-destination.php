@@ -306,9 +306,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body .tft-destination-design__three .tft-single-destination .tft-destination-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body .tft-destination-design__three .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-single-destination .tft-destination-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-1', 'design-3'],
@@ -331,7 +331,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sec_title_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-heading-content .tft-section-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-heading-content .tft-section-title',
                 'label'    => __('Title Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-2'],
@@ -345,7 +345,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-2'],
@@ -356,7 +356,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-heading-content .tft-section-subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-heading-content .tft-section-subtitle',
                 'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-2'],
@@ -369,7 +369,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Subtitle Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-2'],
@@ -383,7 +383,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3, #tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3, #tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when blog_style is 'design-1'
@@ -396,7 +396,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Card Overley Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail::before' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail::before' => 'background-color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-2'],
@@ -407,7 +407,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'single_destination_title_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content h3',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content h3',
                 'label'    => __('Single Destination Typography', 'travelfic-toolkit'),
                 'fields_options' => [
                     'typography' => ['default' => 'yes'],
@@ -426,7 +426,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Single Destination Title', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -437,7 +437,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'single_destination_button_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span',
                 'label'    => __('Single Button Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -450,8 +450,8 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Destination Button Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span svg path' => 'stroke: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span svg path' => 'stroke: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -465,7 +465,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Destination Button Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -478,8 +478,8 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Destination Button Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover svg path' => 'stroke: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover svg path' => 'stroke: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -493,7 +493,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Destination Button Hover Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover' => 'background: {{VALUE}} !important',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover' => 'background: {{VALUE}} !important',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -508,7 +508,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'name'     => 'tour_destination_title',
                 'label'    => __('Destination List', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body .tft-destination-design__one .tft-destination-title a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-title a',
                 'condition' => [
                     'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
                 ],
@@ -520,7 +520,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-title a' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-title a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -533,7 +533,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-title a:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -545,7 +545,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'name'     => 'tour_destination_sub_list',
                 'label'    => __('Destination Sub List', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body .tft-destination-design__one .tft-destination-details ul li a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-details ul li a',
                 'condition' => [
                     'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
                 ],
@@ -557,7 +557,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-details ul li a' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-details ul li a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -570,7 +570,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-details ul li a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-1', // Show this control only when des_style is 'design-1'
@@ -594,7 +594,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_design_3_sec_title_typo',
-                'selector' =>  '#tft-site-main-body .tft-heading-content .tf-section-title',
+                'selector' =>  '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content .tft-heading-content .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -608,7 +608,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tf-section-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -646,7 +646,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tf-section-title::after' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-heading-content .tft-section-title::after' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-3',
@@ -670,7 +670,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_sub_title',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -683,7 +683,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -706,7 +706,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_content_design_3',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-content p',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -719,7 +719,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-content p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -746,7 +746,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -760,7 +760,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -783,7 +783,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_button_typography',
-                'selector' => '#tft-site-main-body .tft-destination-design__three .tft-btn',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn',
                 'condition' => [
                     'des_style' => ['design-3'],
                 ],
@@ -796,7 +796,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Text Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-btn' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -809,7 +809,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Background Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-btn' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -836,7 +836,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Text Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-btn:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -850,7 +850,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Background Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-btn:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -886,8 +886,8 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail' => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '#tft-site-main-body .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'des_style' => 'design-3',
@@ -900,7 +900,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Card Overley Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail::after' => 'background-color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -925,7 +925,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_title_typography',
-                'selector' => '#tft-site-main-body .tft-destination-design__three .tft-desination-content a h3',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content a h3',
 
                 'label'    => __('Typography', 'travelfic-toolkit'),
 
@@ -940,7 +940,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-desination-content a h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content a h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -953,7 +953,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-desination-content a h3:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content a h3:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -977,7 +977,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_para_typography',
-                'selector' => '#tft-site-main-body .tft-destination-design__three .tft-desination-content p',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -990,7 +990,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__three .tft-desination-content p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],

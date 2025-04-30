@@ -824,7 +824,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-3'],
@@ -839,7 +839,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -861,9 +861,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
 
             ]
@@ -872,7 +872,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_title_typo',
-                'selector' => '#tft-site-main-body .tft-slider-title .tft-title, #tft-site-main-body .tft-hero-content h1, #tft-site-main-body .tft-hero-design__three .tft-hero-content-box h1, #tft-site-main-body .tft-hero-design__four__slider__item__content--title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title, #tft-site-main-body #page {{WRAPPER}} .tft-hero-content h1, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -884,11 +884,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-slider-title .tft-title' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -908,7 +908,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_sub_title',
-                'selector' => '#tft-site-main-body .tft-sub-title p, #tft-site-main-body .tft-hero-design__four__slider__item__content--subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-sub-title p, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -921,8 +921,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-sub-title p' => 'color: {{VALUE}};',
-                    '#tft-site-main-body .tft-hero-design__four__slider__item__content--subtitle' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-sub-title p' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -949,7 +949,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-hero-wrapper .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -963,7 +963,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-hero-wrapper .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -986,7 +986,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '#tft-site-main-body .tft-hero-wrapper .tft-btn',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
                 ],
@@ -999,7 +999,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-wrapper .tft-btn' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1012,7 +1012,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1039,7 +1039,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1053,7 +1053,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1082,10 +1082,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-wrapper .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body .tft-hero-wrapper .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}};',
-                    '#tft-site-main-body .tft-hero-design__four .slick-dots li button'   => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .slick-dots li button'   => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1125,7 +1125,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-design__four__social__label' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__label' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1162,7 +1162,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-design__four__social__list__item--link i'   => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link i'   => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1175,7 +1175,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-design__four__social__list__item--link'   => 'background: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1188,7 +1188,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-design__four__social__list__item--link'   => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1214,7 +1214,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-design__four__social__list__item--link:hover i' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover i' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1227,7 +1227,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'background: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1240,7 +1240,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],

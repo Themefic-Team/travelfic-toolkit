@@ -227,7 +227,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-1',
@@ -252,7 +252,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
             [
                 'name'     => 'apartments_locations_title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body .tft-destination-design__one .tft-destination-title a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-title a',
                 'condition' => [
                     'aprt_location_style' => 'design-1',
                 ],
@@ -264,7 +264,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-title a' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-title a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-1',
@@ -277,7 +277,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__one .tft-destination-title a:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__one .tft-destination-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-1',
@@ -302,7 +302,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'apartments_locations_sec_title_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-destination-header h3',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-destination-header h3',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -315,7 +315,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-destination-header h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-destination-header h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -337,7 +337,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'apartments_locations_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-heading-content .tft-section-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-heading-content .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -350,7 +350,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -375,7 +375,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3, #tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3, #tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -388,7 +388,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Overley', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two  .tft-single-destination .tft-destination-thumbnail::before' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two  .tft-single-destination .tft-destination-thumbnail::before' => 'background-color: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -399,7 +399,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'single_destination_title_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content h3',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content h3',
                 'label'    => __('Title Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -412,7 +412,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Title', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -423,7 +423,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'single_destination_button_typo',
-                'selector' => '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span',
                 'label'    => __('Button Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -436,8 +436,8 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Button Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span svg path' => 'stroke: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span svg path' => 'stroke: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -451,7 +451,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Button Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -465,8 +465,8 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Button Hover Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover' => 'color: {{VALUE}}',
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover svg path' => 'stroke: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover svg path' => 'stroke: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -480,7 +480,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Button Hover Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span:hover' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',
@@ -505,7 +505,7 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-destination-design__two .tft-destination-content .tft-destination-slides .slick-arrow path' => 'fill: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-destination-content .tft-destination-slides .slick-arrow path' => 'fill: {{VALUE}}',
                 ],
                 'condition' => [
                     'aprt_location_style' => 'design-2',

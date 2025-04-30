@@ -308,8 +308,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     'end' => esc_html__('End', 'travelfic-toolkit'),
                 ],
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-content' => 'text-align: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-content .tft-about-us-list ul li' => 'justify-content: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-content' => 'text-align: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-content .tft-about-us-list ul li' => 'justify-content: {{VALUE}};',
                 ],
             ]
         );
@@ -330,7 +330,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_title_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -345,7 +345,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -369,7 +369,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -383,7 +383,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -407,7 +407,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_content_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-content p',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -421,7 +421,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-content p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -432,7 +432,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_quotes_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-content p.tft-about-us-quotes',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-quotes',
                 'label'    => __('Quotes Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -446,7 +446,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-content p.tft-about-us-quotes' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-quotes' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -457,7 +457,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_author_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content .tft-section-content p.tft-about-us-author',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-author',
                 'label'    => __('Author Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -485,7 +485,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ],
                 'default' => 'right', // Set the default alignment
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-content p.tft-about-us-author' => 'text-align: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-author' => 'text-align: {{VALUE}};',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -499,7 +499,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'default'   => '#99948D',
                 'selectors' => [
-                    '#tft-site-main-body .tft-heading-content .tft-section-content p.tft-about-us-author' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-author' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -510,7 +510,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_years_typo',
-                'selector' => '#tft-site-main-body .tft-about-us-grid .years-of-experience .tft-experience-years h2',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-grid .years-of-experience .tft-experience-years h2',
                 'label'    => __('Years of Experience Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -523,7 +523,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Years of Experience Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .years-of-experience .tft-experience-years h2' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .years-of-experience .tft-experience-years h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1', // Show this control only when tft_about_style is 'design-1'
@@ -548,7 +548,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_design2_sec_title_typo',
-                'selector' => '#tft-site-main-body .tft-heading-content h2',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2',
                 'label'    => __('Title Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -562,7 +562,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Title Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-heading-content h2' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-heading-content h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -600,7 +600,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-heading-content h2::after' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -628,7 +628,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_design2_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body .tft-about-us-design__two .tft-heading-content h3',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-heading-content h3',
                 'label'    => __('Subtitle Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -642,7 +642,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Subtitle Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-content h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-content h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -667,7 +667,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_design2_sec_content_typo',
-                'selector' => '#tft-site-main-body .tft-about-us-design__two .tft-heading-content p',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-heading-content p',
                 'label'    => __('Content Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -681,7 +681,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Content Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-heading-content p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-heading-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -705,8 +705,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -717,8 +717,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -735,7 +735,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a',
                 'condition' => [
                     'tft_about_style' => 'design-1',
                 ],
@@ -747,7 +747,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_button_typography',
-                'selector' => '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a',
                 'condition' => [
                     'tft_about_style' => 'design-2',
                 ],
@@ -761,9 +761,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
 
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'color: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a span svg path' => 'fill: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a span svg path' => 'fill: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'color: {{VALUE}};',
                 ],
 
             ]
@@ -775,8 +775,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
 
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'background-color: {{VALUE}};',
                 ],
 
             ]
@@ -788,8 +788,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
 
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'border-color: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'border-color: {{VALUE}};',
                 ],
 
             ]
@@ -810,9 +810,9 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'color: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover span svg path' => 'fill: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover span svg path' => 'fill: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -823,8 +823,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -834,8 +834,8 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'border-color: {{VALUE}};',
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -861,7 +861,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_design2_sec_list_typo',
-                'selector' => '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
                 'label'    => __('List Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -875,7 +875,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('List Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -886,7 +886,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_list_icon_typo',
-                'selector' => '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
                 'label'    => __('Icon Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -899,7 +899,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Icon Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -926,7 +926,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Shape 1 Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-image::before' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-image::before' => 'background-color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2', // Show this control only when des_style is 'design-2'
@@ -939,7 +939,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Shape 2 Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body .tft-about-us-design__two .tft-about-us-grid .tft-about-image::after' => 'background-color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-image::after' => 'background-color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-2', // Show this control only when des_style is 'design-2'

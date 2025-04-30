@@ -405,24 +405,10 @@ function travelfic_toolkit_customizer_style()
          * Footer Start
         */
 
-        /* footer background */
-        <?php if(!empty($travelfic_footer_bg_color)): ?>
-            #tft-site-main-body footer {
-                background: <?php echo esc_attr($travelfic_footer_bg_color); ?>;
-            }
-        <?php endif; ?>
-       
-        /* footer overlay */
-        <?php if(!empty($travelfic_footer_back_overlay)): ?>
-            #tft-site-main-body footer::after {
-                background: <?php echo esc_attr($travelfic_footer_back_overlay); ?>;
-            }
-        <?php endif; ?>
-
 
         /* footer text */
         <?php if(!empty($travelfic_footer_text_color)): ?>
-            #tft-site-main-body footer :is(a, p, li, span, h1, h2, h3, h4, h5, h6, .wp-block-heading),
+            #tft-site-main-body footer.tft-site-footer :is(a, p, li, span, h1, h2, h3, h4, h5, h6, .wp-block-heading),
             #tft-site-main-body .tft-footer-bottom :is(a, p) {
                 color: <?php echo esc_attr($travelfic_footer_text_color); ?>;
             }
