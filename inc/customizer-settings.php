@@ -208,6 +208,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design2',
             ],
+            [
+                'setting'  => $prefix . 'header_design_2_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -226,6 +231,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design2',
             ],
+            [
+                'setting'  => $prefix . 'header_design_2_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -242,6 +252,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design2',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_2_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -260,6 +275,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design2',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_2_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -381,6 +401,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -399,6 +424,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -415,6 +445,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design3',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -434,6 +469,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -450,6 +490,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design3',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -469,6 +514,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -485,6 +535,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design3',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -504,6 +559,11 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -519,6 +579,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design3',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -537,6 +602,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
                 'value'    => 'design3',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_3_topbar',
+                'operator' => '==',
+                'value'    => true,
             ],
         ],
     ]);
@@ -737,7 +807,7 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'header_button_color_separator_line',
+        'settings'    => $prefix . 'header_bg_color_separator_line',
         'section'     => 'travelfic_customizer_header',
         'priority'    => 11,
         'tab'         => 'design',
@@ -991,7 +1061,7 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'header_submenu_typography_separator_line',
+        'settings'    => $prefix . 'header_submenu_color_separator_line',
         'section'     => 'travelfic_customizer_header',
         'priority'    => 28,
         'tab'         => 'design',
