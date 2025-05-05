@@ -301,16 +301,15 @@ add_action('init', function () {
         ],
     ]);
 
-    // registration url
-    travelfic_Kirki::add_field('travelfic_customizer_options', [
-        'type'        => 'url',
-        'settings'    => $prefix . 'design_2_registration_url',
-        'section'     => 'travelfic_customizer_header',
-        'label'       => esc_html__('Register URL', 'travelfic'),
+    // my account switcher
+    new \Kirki\Pro\Field\HeadlineToggle([
+        'settings' => $prefix . 'header_design_2_my_account',
+        'label'    => esc_html__('My Account', 'travelfic'),
+        'section'  => 'travelfic_customizer_header',
+        'tab'      => 'settings',
+        'default'  => true,
         'priority'    => 19,
-        'tab'         => 'settings',
-        'default'     => '#',
-        'required'    => [
+        'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '==',
@@ -322,7 +321,7 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'design_2_registration_url_separator_line',
+        'settings'    => $prefix . 'header_design_2_my_account_separator_line',
         'section'     => 'travelfic_customizer_header',
         'priority'    => 20,
         'tab'         => 'settings',
@@ -333,15 +332,21 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design2',
             ],
+            [
+                'setting'  => $prefix . 'header_design_2_my_account',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
-    // login url
+
+    // registration url
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'url',
-        'settings'    => $prefix . 'design_2_login_url',
+        'settings'    => $prefix . 'design_2_registration_url',
         'section'     => 'travelfic_customizer_header',
-        'label'       => esc_html__('Login URL', 'travelfic'),
+        'label'       => esc_html__('Register URL', 'travelfic'),
         'priority'    => 21,
         'tab'         => 'settings',
         'default'     => '#',
@@ -351,6 +356,56 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design2',
             ],
+            [
+                'setting'  => $prefix . 'header_design_2_my_account',
+                'operator' => '==',
+                'value'    => true,
+            ],
+        ],
+    ]);
+
+    // separator line
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'design_2_registration_url_separator_line',
+        'section'     => 'travelfic_customizer_header',
+        'priority'    => 22,
+        'tab'         => 'settings',
+        'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
+        'required'    => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design2',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_2_my_account',
+                'operator' => '==',
+                'value'    => true,
+            ],
+        ],
+    ]);
+
+    // login url
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'url',
+        'settings'    => $prefix . 'design_2_login_url',
+        'section'     => 'travelfic_customizer_header',
+        'label'       => esc_html__('Login URL', 'travelfic'),
+        'priority'    => 23,
+        'tab'         => 'settings',
+        'default'     => '#',
+        'required'    => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design2',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_2_my_account',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
@@ -359,7 +414,7 @@ add_action('init', function () {
         'type'        => 'custom',
         'settings'    => $prefix . 'design_2_login_url_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 22,
+        'priority'    => 24,
         'tab'         => 'settings',
         'required'    => [
             [
@@ -367,6 +422,7 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design2',
             ],
+          
         ],
     ]);
 
@@ -377,7 +433,7 @@ add_action('init', function () {
         'section'  => 'travelfic_customizer_header',
         'tab'      => 'settings',
         'default'  => true,
-        'priority'    => 23,
+        'priority'    => 25,
         'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',
@@ -392,7 +448,7 @@ add_action('init', function () {
         'type'        => 'custom',
         'settings'    => $prefix . 'header_design_3_topbar_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 24,
+        'priority'    => 25,
         'tab'         => 'settings',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
         'required'    => [
@@ -415,7 +471,7 @@ add_action('init', function () {
         'settings'    => $prefix . 'design_3_location',
         'section'     => 'travelfic_customizer_header',
         'label'       => esc_html__('Location', 'travelfic'),
-        'priority'    => 25,
+        'priority'    => 26,
         'tab'         => 'settings',
         'default'     => '4b, Walse Street , USA',
         'required'    => [
@@ -482,7 +538,7 @@ add_action('init', function () {
         'type'        => 'custom',
         'settings'    => $prefix . 'design_3_email_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 28,
+        'priority'    => 27,
         'tab'         => 'settings',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
         'required'    => [
@@ -505,7 +561,7 @@ add_action('init', function () {
         'settings'    => $prefix . 'design_3_phone',
         'section'     => 'travelfic_customizer_header',
         'label'       => esc_html__('Phone Number', 'travelfic'),
-        'priority'    => 29,
+        'priority'    => 28,
         'tab'         => 'settings',
         'default'     => '(245) 2156 21453',
         'required'    => [
@@ -527,7 +583,7 @@ add_action('init', function () {
         'type'        => 'custom',
         'settings'    => $prefix . 'design_3_phone_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 30,
+        'priority'    => 28,
         'tab'         => 'settings',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
         'required'    => [
@@ -550,7 +606,7 @@ add_action('init', function () {
         'settings'    => $prefix . 'design_3_login_label',
         'section'     => 'travelfic_customizer_header',
         'label'       => esc_html__('Login Label', 'travelfic'),
-        'priority'    => 31,
+        'priority'    => 29,
         'tab'         => 'settings',
         'default'     => 'Login Now',
         'required'    => [
@@ -572,7 +628,7 @@ add_action('init', function () {
         'type'        => 'custom',
         'settings'    => $prefix . 'design_3_login_label_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 32,
+        'priority'    => 29,
         'tab'         => 'settings',
         'required'    => [
             [
@@ -594,7 +650,7 @@ add_action('init', function () {
         'settings'    => $prefix . 'design_3_login_url',
         'section'     => 'travelfic_customizer_header',
         'label'       => esc_html__('Login URL', 'travelfic'),
-        'priority'    => 33,
+        'priority'    => 30,
         'tab'         => 'settings',
         'default'     => '#',
         'required'    => [
@@ -616,7 +672,7 @@ add_action('init', function () {
         'type'        => 'custom',
         'settings'    => $prefix . 'design_3_login_url_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 34,
+        'priority'    => 30,
         'tab'         => 'settings',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
         'required'    => [
@@ -628,13 +684,121 @@ add_action('init', function () {
         ],
     ]);
 
+    // search
+    new \Kirki\Pro\Field\HeadlineToggle([
+        'settings' => $prefix . 'header_design_3_search',
+        'label'    => esc_html__('Search', 'travelfic'),
+        'section'  => 'travelfic_customizer_header',
+        'tab'      => 'settings',
+        'default'  => true,
+        'priority' => 31,
+        'required' => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+        ],
+    ]);
+
+    // separator line
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'header_design_3_search_separator_line',
+        'section'     => 'travelfic_customizer_header',
+        'priority'    => 31,
+        'tab'         => 'settings',
+        'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
+        'required'    => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+        ],
+    ]);
+
+    // cart
+    new \Kirki\Pro\Field\HeadlineToggle([
+        'settings' => $prefix . 'header_design_3_cart',
+        'label'    => esc_html__('Cart', 'travelfic'),
+        'section'  => 'travelfic_customizer_header',
+        'tab'      => 'settings',
+        'default'  => true,
+        'priority' => 32,
+        'required' => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+        ],
+    ]);
+
+    // separator line
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'header_design_3_cart_separator_line',
+        'section'     => 'travelfic_customizer_header',
+        'priority'    => 32,
+        'tab'         => 'settings',
+        'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
+        'required'    => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+        ],
+    ]);
+
+
+    // button
+    new \Kirki\Pro\Field\HeadlineToggle([
+        'settings' => $prefix . 'header_design_3_button',
+        'label'    => esc_html__('Button', 'travelfic'),
+        'section'  => 'travelfic_customizer_header',
+        'tab'      => 'settings',
+        'default'  => true,
+        'priority' => 33,
+        'required' => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+        ],
+    ]);
+
+    // separator line
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'header_design_3_button_separator_line',
+        'section'     => 'travelfic_customizer_header',
+        'priority'    => 33,
+        'tab'         => 'settings',
+        'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
+        'required'    => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+            [
+                'setting'  => $prefix . 'header_design_3_button',
+                'operator' => '==',
+                'value'    => true,
+            ],
+        ],
+    ]);
+
     // discover label
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'text',
-        'settings'    => $prefix . 'design_3_discover_label',
+        'settings'    => $prefix . 'design_3_button_label',
         'section'     => 'travelfic_customizer_header',
-        'label'       => esc_html__('Discover Label', 'travelfic'),
-        'priority'    => 35,
+        'label'       => esc_html__('Button Label', 'travelfic'),
+        'priority'    => 34,
         'tab'         => 'settings',
         'default'     => 'Discover Now',
         'required'    => [
@@ -643,15 +807,20 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_button',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'design_3_discover_label_separator_line',
+        'settings'    => $prefix . 'design_3_button_label_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 36,
+        'priority'    => 34,
         'tab'         => 'settings',
         'required'    => [
             [
@@ -659,16 +828,21 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_button',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
     // discover url
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'url',
-        'settings'    => $prefix . 'design_3_discover_url',
+        'settings'    => $prefix . 'design_3_button_url',
         'section'     => 'travelfic_customizer_header',
-        'label'       => esc_html__('Discover URL', 'travelfic'),
-        'priority'    => 37,
+        'label'       => esc_html__('Button URL', 'travelfic'),
+        'priority'    => 35,
         'tab'         => 'settings',
         'default'     => '#',
         'required'    => [
@@ -677,15 +851,20 @@ add_action('init', function () {
                 'operator' => '==',
                 'value'    => 'design3',
             ],
+            [
+                'setting'  => $prefix . 'header_design_3_button',
+                'operator' => '==',
+                'value'    => true,
+            ],
         ],
     ]);
 
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'design_3_discover_url_separator_line',
+        'settings'    => $prefix . 'design_3_button_url_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 38,
+        'priority'    => 35,
         'tab'         => 'settings',
         'required'    => [
             [
@@ -789,7 +968,7 @@ add_action('init', function () {
             ],
         ],
     ));
-    
+
 
     // header design settings
 
@@ -803,7 +982,7 @@ add_action('init', function () {
         'priority' => 10,
     ));
 
-    
+
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
@@ -1311,37 +1490,6 @@ add_action('init', function () {
         ],
     ));
 
-
-    /**
-     * 
-     * Tourfic Theme Options
-     * 
-     */
-
-     // separator line
-    travelfic_Kirki::add_field('travelfic_customizer_options', [
-        'type'        => 'custom',
-        'settings'    => $prefix . 'tourfic_border_radius_separator_line',
-        'section'     => 'travelfic_customizer_tourfic',
-        'default'     => '<div class="tf-mb-12"></div>',
-    ]);
-    //  tourfic border radius
-    travelfic_Kirki::add_field('travelfic_customizer_options', array(
-        'type'       => 'kirki-padding',
-        'settings'   => $prefix . 'tourfic_border_radius',
-        'section'    => 'travelfic_customizer_tourfic',
-        'label'      => esc_html__('Border Radius', 'travelfic'),
-        'default'     => [
-            'top'    => 3,
-            'right'  => 3,
-            'bottom' => 3,
-            'left'   => 3,
-        ],
-        'choices'    => [
-            'units' => "PX",
-        ],
-    ));
-
     /**
      * 
      * Social Theme Options
@@ -1820,6 +1968,6 @@ add_action('init', function () {
                 'value'    => 'design3',
             ],
         ],
-        
+
     ));
 });

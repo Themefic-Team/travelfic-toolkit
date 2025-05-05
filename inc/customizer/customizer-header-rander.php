@@ -62,6 +62,7 @@ class Travelfic_Customizer_Header
         $design_2_topbar = get_theme_mod($travelfic_prefix . 'header_design_2_topbar', '1');
         $design_2_phone = get_theme_mod($travelfic_prefix . 'design_2_phone', '+88 00 123 456');
         $design_2_email = get_theme_mod($travelfic_prefix . 'design_2_email', 'travello@outlook.com');
+        $design_2_myaccount = get_theme_mod($travelfic_prefix . 'header_design_2_my_account', '');
         $design_2_registration_url = get_theme_mod($travelfic_prefix . 'design_2_registration_url', '#');
         $design_2_login_url = get_theme_mod($travelfic_prefix . 'design_2_login_url', '#');
 
@@ -248,30 +249,32 @@ class Travelfic_Customizer_Header
                         <?php }
                         } ?>
                     </div>
-                    <div class="tft-account">
-                        <ul>
-                            <?php
-                            if (is_user_logged_in()) {
-                                $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
-                            ?>
-                                <li>
-                                    <a href="<?php echo esc_url($dashboard_url); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
-                                </li>
+                    <?php if($design_2_myaccount): ?>
+                        <div class="tft-account">
+                            <ul>
                                 <?php
-                            } else {
-                                if (!empty($design_2_registration_url)) { ?>
+                                if (is_user_logged_in()) {
+                                    $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+                                ?>
                                     <li>
-                                        <a href="<?php echo esc_url($design_2_registration_url); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
+                                        <a href="<?php echo esc_url($dashboard_url); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
                                     </li>
+                                    <?php
+                                } else {
+                                    if (!empty($design_2_registration_url)) { ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($design_2_registration_url); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($design_2_login_url)) { ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($design_2_login_url); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
+                                        </li>
                                 <?php }
-                                if (!empty($design_2_login_url)) { ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($design_2_login_url); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
-                                    </li>
-                            <?php }
-                            } ?>
-                        </ul>
-                    </div>
+                                } ?>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -326,7 +329,7 @@ class Travelfic_Customizer_Header
                             ));
                         ?>
 
-                        <?php if (is_user_logged_in() || !empty($design_2_registration_url) && !empty($design_2_login_url)) : ?>
+                        <?php if (is_user_logged_in() || !empty($design_2_registration_url) && !empty($design_2_login_url) && $design_2_myaccount) : ?>
 
                             <!-- Login/Register Links for Hamburger Menu -->
                             <div class="tft-mobile-account" style="padding-top: 15px;">
@@ -354,114 +357,115 @@ class Travelfic_Customizer_Header
                                 </ul>
                             </div>
                         <?php endif; ?>
+                        <?php if(!empty($design_2_topbar)): ?>
+                            <div class="tft-social-share">
+                                <ul>
+                                    <?php if (!empty($social_linkedin)) { ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank">
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <path id="Vector 6810" d="M4.41602 15.4596V8.79297C4.41602 7.9711 4.41602 7.56016 4.18903 7.28358C4.14747 7.23294 4.10104 7.18651 4.05041 7.14496C3.77382 6.91797 3.36289 6.91797 2.54102 6.91797C1.71915 6.91797 1.30821 6.91797 1.03162 7.14496C0.980988 7.18651 0.934559 7.23294 0.893005 7.28358C0.666016 7.56016 0.666016 7.9711 0.666016 8.79297V15.4596C0.666016 16.2815 0.666016 16.6924 0.893005 16.969C0.934559 17.0197 0.980988 17.0661 1.03162 17.1076C1.30821 17.3346 1.71915 17.3346 2.54102 17.3346C3.36289 17.3346 3.77382 17.3346 4.05041 17.1076C4.10104 17.0661 4.14747 17.0197 4.18903 16.969C4.41602 16.6924 4.41602 16.2815 4.41602 15.4596Z" stroke="#595349" />
+                                                        <path id="Ellipse 1922" d="M4.41602 2.54297C4.41602 3.5785 3.57655 4.41797 2.54102 4.41797C1.50548 4.41797 0.666016 3.5785 0.666016 2.54297C0.666016 1.50743 1.50548 0.667969 2.54102 0.667969C3.57655 0.667969 4.41602 1.50743 4.41602 2.54297Z" stroke="#595349" />
+                                                        <path id="Vector" d="M9.27106 6.91797H8.58268C7.79701 6.91797 7.40417 6.91797 7.16009 7.16205C6.91602 7.40612 6.91602 7.79896 6.91602 8.58464V15.668C6.91602 16.4536 6.91602 16.8465 7.16009 17.0906C7.40417 17.3346 7.79701 17.3346 8.58268 17.3346H8.99937C9.78503 17.3346 10.1779 17.3346 10.4219 17.0906C10.666 16.8465 10.666 16.4537 10.666 15.668L10.6661 12.7514C10.6661 11.3707 11.1061 10.2514 12.4059 10.2514C13.0558 10.2514 13.5827 10.811 13.5827 11.5014V15.2514C13.5827 16.0371 13.5827 16.4299 13.8267 16.674C14.0708 16.9181 14.4636 16.9181 15.2493 16.9181H15.665C16.4505 16.9181 16.8432 16.9181 17.0873 16.6741C17.3313 16.4301 17.3314 16.0373 17.3316 15.2518L17.3327 10.6682C17.3327 8.5971 15.363 6.91817 13.4133 6.91817C12.3035 6.91817 11.3132 7.46221 10.6661 8.31293C10.666 7.78792 10.666 7.52541 10.552 7.33047C10.4797 7.20702 10.377 7.10425 10.2535 7.03202C10.0586 6.91797 9.79607 6.91797 9.27106 6.91797Z" stroke="#595349" stroke-linejoin="round" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($social_facebook)) {
+                                    ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_facebook); ?>" target="_blank">
+                                                <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M2.15086 7.60851C1.33607 7.60851 1.16602 7.76838 1.16602 8.53443V9.92332C1.16602 10.6894 1.33607 10.8492 2.15086 10.8492H4.12056V16.4048C4.12056 17.1709 4.29061 17.3307 5.10541 17.3307H7.07511C7.8899 17.3307 8.05996 17.1709 8.05996 16.4048V10.8492H10.2716C10.8896 10.8492 11.0488 10.7363 11.2186 10.1777L11.6407 8.78881C11.9315 7.83186 11.7523 7.60851 10.6937 7.60851H8.05996V5.29369C8.05996 4.78232 8.50089 4.36777 9.0448 4.36777H11.8478C12.6626 4.36777 12.8327 4.20789 12.8327 3.44184V1.58999C12.8327 0.823939 12.6626 0.664062 11.8478 0.664062H9.0448C6.32522 0.664063 4.12056 2.73682 4.12056 5.29369V7.60851H2.15086Z" stroke="#595349" stroke-linejoin="round" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($social_twitter)) {
+                                    ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_twitter); ?>" target="_blank">
+                                                <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <path id="Vector" d="M0.666016 13.4193C2.13688 14.2701 3.84458 14.6693 5.66602 14.6693C11.0667 14.6693 15.4674 10.388 15.6595 5.03425L17.3327 1.7526L14.5375 2.16927C13.9499 1.65063 13.1781 1.33594 12.3327 1.33594C10.189 1.33594 8.58326 3.43372 9.10013 5.48596C6.13921 5.677 3.45657 3.85369 1.90512 1.42363C0.875573 4.92081 1.82959 9.13268 4.41602 11.7281C4.41602 12.7084 1.91602 13.2933 0.666016 13.4193Z" stroke="#595349" stroke-linejoin="round" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($social_youtube)) {
+                                    ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_youtube); ?>" target="_blank">
+                                                <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <path id="Vector" d="M8.99935 15.0807C10.5074 15.0807 11.9536 14.9318 13.2939 14.6585C14.968 14.3173 15.805 14.1467 16.5688 13.1646C17.3327 12.1825 17.3327 11.0551 17.3327 8.80035V7.19444C17.3327 4.93967 17.3327 3.81229 16.5688 2.83021C15.805 1.84813 14.968 1.6775 13.2939 1.33625C11.9536 1.06304 10.5074 0.914062 8.99935 0.914062C7.49128 0.914062 6.04509 1.06304 4.70481 1.33625C3.03073 1.6775 2.19369 1.84813 1.42985 2.83021C0.666016 3.81229 0.666016 4.93967 0.666016 7.19444V8.80035C0.666016 11.0551 0.666016 12.1825 1.42985 13.1646C2.19369 14.1467 3.03073 14.3173 4.70481 14.6585C6.04509 14.9318 7.49128 15.0807 8.99935 15.0807Z" stroke="#595349" />
+                                                        <path id="Vector 3642" d="M12.3018 8.25943C12.1781 8.7643 11.5201 9.12689 10.204 9.85209C8.77271 10.6408 8.05703 11.0352 7.47733 10.8833C7.281 10.8318 7.10017 10.7413 6.94832 10.6186C6.5 10.2561 6.5 9.50363 6.5 7.9987C6.5 6.49377 6.5 5.7413 6.94832 5.37884C7.10017 5.25609 7.281 5.1656 7.47733 5.11414C8.05703 4.96221 8.7727 5.35657 10.204 6.14531C11.5201 6.8705 12.1781 7.2331 12.3018 7.73797C12.3439 7.90975 12.3439 8.08765 12.3018 8.25943Z" stroke="#595349" stroke-linejoin="round" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($social_pinterest)) {
+                                    ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_pinterest); ?>" target="_blank">
 
-                        <div class="tft-social-share">
-                            <ul>
-                                <?php if (!empty($social_linkedin)) { ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank">
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <path id="Vector 6810" d="M4.41602 15.4596V8.79297C4.41602 7.9711 4.41602 7.56016 4.18903 7.28358C4.14747 7.23294 4.10104 7.18651 4.05041 7.14496C3.77382 6.91797 3.36289 6.91797 2.54102 6.91797C1.71915 6.91797 1.30821 6.91797 1.03162 7.14496C0.980988 7.18651 0.934559 7.23294 0.893005 7.28358C0.666016 7.56016 0.666016 7.9711 0.666016 8.79297V15.4596C0.666016 16.2815 0.666016 16.6924 0.893005 16.969C0.934559 17.0197 0.980988 17.0661 1.03162 17.1076C1.30821 17.3346 1.71915 17.3346 2.54102 17.3346C3.36289 17.3346 3.77382 17.3346 4.05041 17.1076C4.10104 17.0661 4.14747 17.0197 4.18903 16.969C4.41602 16.6924 4.41602 16.2815 4.41602 15.4596Z" stroke="#595349" />
-                                                    <path id="Ellipse 1922" d="M4.41602 2.54297C4.41602 3.5785 3.57655 4.41797 2.54102 4.41797C1.50548 4.41797 0.666016 3.5785 0.666016 2.54297C0.666016 1.50743 1.50548 0.667969 2.54102 0.667969C3.57655 0.667969 4.41602 1.50743 4.41602 2.54297Z" stroke="#595349" />
-                                                    <path id="Vector" d="M9.27106 6.91797H8.58268C7.79701 6.91797 7.40417 6.91797 7.16009 7.16205C6.91602 7.40612 6.91602 7.79896 6.91602 8.58464V15.668C6.91602 16.4536 6.91602 16.8465 7.16009 17.0906C7.40417 17.3346 7.79701 17.3346 8.58268 17.3346H8.99937C9.78503 17.3346 10.1779 17.3346 10.4219 17.0906C10.666 16.8465 10.666 16.4537 10.666 15.668L10.6661 12.7514C10.6661 11.3707 11.1061 10.2514 12.4059 10.2514C13.0558 10.2514 13.5827 10.811 13.5827 11.5014V15.2514C13.5827 16.0371 13.5827 16.4299 13.8267 16.674C14.0708 16.9181 14.4636 16.9181 15.2493 16.9181H15.665C16.4505 16.9181 16.8432 16.9181 17.0873 16.6741C17.3313 16.4301 17.3314 16.0373 17.3316 15.2518L17.3327 10.6682C17.3327 8.5971 15.363 6.91817 13.4133 6.91817C12.3035 6.91817 11.3132 7.46221 10.6661 8.31293C10.666 7.78792 10.666 7.52541 10.552 7.33047C10.4797 7.20702 10.377 7.10425 10.2535 7.03202C10.0586 6.91797 9.79607 6.91797 9.27106 6.91797Z" stroke="#595349" stroke-linejoin="round" />
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                <?php }
-                                if (!empty($social_facebook)) {
-                                ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_facebook); ?>" target="_blank">
-                                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M2.15086 7.60851C1.33607 7.60851 1.16602 7.76838 1.16602 8.53443V9.92332C1.16602 10.6894 1.33607 10.8492 2.15086 10.8492H4.12056V16.4048C4.12056 17.1709 4.29061 17.3307 5.10541 17.3307H7.07511C7.8899 17.3307 8.05996 17.1709 8.05996 16.4048V10.8492H10.2716C10.8896 10.8492 11.0488 10.7363 11.2186 10.1777L11.6407 8.78881C11.9315 7.83186 11.7523 7.60851 10.6937 7.60851H8.05996V5.29369C8.05996 4.78232 8.50089 4.36777 9.0448 4.36777H11.8478C12.6626 4.36777 12.8327 4.20789 12.8327 3.44184V1.58999C12.8327 0.823939 12.6626 0.664062 11.8478 0.664062H9.0448C6.32522 0.664063 4.12056 2.73682 4.12056 5.29369V7.60851H2.15086Z" stroke="#595349" stroke-linejoin="round" />
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                <?php }
-                                if (!empty($social_twitter)) {
-                                ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_twitter); ?>" target="_blank">
-                                            <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <path id="Vector" d="M0.666016 13.4193C2.13688 14.2701 3.84458 14.6693 5.66602 14.6693C11.0667 14.6693 15.4674 10.388 15.6595 5.03425L17.3327 1.7526L14.5375 2.16927C13.9499 1.65063 13.1781 1.33594 12.3327 1.33594C10.189 1.33594 8.58326 3.43372 9.10013 5.48596C6.13921 5.677 3.45657 3.85369 1.90512 1.42363C0.875573 4.92081 1.82959 9.13268 4.41602 11.7281C4.41602 12.7084 1.91602 13.2933 0.666016 13.4193Z" stroke="#595349" stroke-linejoin="round" />
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                <?php }
-                                if (!empty($social_youtube)) {
-                                ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_youtube); ?>" target="_blank">
-                                            <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <path id="Vector" d="M8.99935 15.0807C10.5074 15.0807 11.9536 14.9318 13.2939 14.6585C14.968 14.3173 15.805 14.1467 16.5688 13.1646C17.3327 12.1825 17.3327 11.0551 17.3327 8.80035V7.19444C17.3327 4.93967 17.3327 3.81229 16.5688 2.83021C15.805 1.84813 14.968 1.6775 13.2939 1.33625C11.9536 1.06304 10.5074 0.914062 8.99935 0.914062C7.49128 0.914062 6.04509 1.06304 4.70481 1.33625C3.03073 1.6775 2.19369 1.84813 1.42985 2.83021C0.666016 3.81229 0.666016 4.93967 0.666016 7.19444V8.80035C0.666016 11.0551 0.666016 12.1825 1.42985 13.1646C2.19369 14.1467 3.03073 14.3173 4.70481 14.6585C6.04509 14.9318 7.49128 15.0807 8.99935 15.0807Z" stroke="#595349" />
-                                                    <path id="Vector 3642" d="M12.3018 8.25943C12.1781 8.7643 11.5201 9.12689 10.204 9.85209C8.77271 10.6408 8.05703 11.0352 7.47733 10.8833C7.281 10.8318 7.10017 10.7413 6.94832 10.6186C6.5 10.2561 6.5 9.50363 6.5 7.9987C6.5 6.49377 6.5 5.7413 6.94832 5.37884C7.10017 5.25609 7.281 5.1656 7.47733 5.11414C8.05703 4.96221 8.7727 5.35657 10.204 6.14531C11.5201 6.8705 12.1781 7.2331 12.3018 7.73797C12.3439 7.90975 12.3439 8.08765 12.3018 8.25943Z" stroke="#595349" stroke-linejoin="round" />
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                <?php }
-                                if (!empty($social_pinterest)) {
-                                ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_pinterest); ?>" target="_blank">
+                                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <path id="Vector" d="M8.00004 6.83594L5.33337 13.5026" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path id="Vector_2" d="M6.6492 10.5495C7.06212 10.7328 7.51921 10.8346 8.00008 10.8346C9.84103 10.8346 11.3334 9.34225 11.3334 7.5013C11.3334 5.66035 9.84103 4.16797 8.00008 4.16797C6.15913 4.16797 4.66675 5.66035 4.66675 7.5013C4.66675 8.10849 4.8292 8.67769 5.11289 9.16797" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <circle id="Ellipse 1794" cx="8.00004" cy="7.5026" r="6.66667" stroke="#595349" />
+                                                    </g>
+                                                </svg>
 
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <path id="Vector" d="M8.00004 6.83594L5.33337 13.5026" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path id="Vector_2" d="M6.6492 10.5495C7.06212 10.7328 7.51921 10.8346 8.00008 10.8346C9.84103 10.8346 11.3334 9.34225 11.3334 7.5013C11.3334 5.66035 9.84103 4.16797 8.00008 4.16797C6.15913 4.16797 4.66675 5.66035 4.66675 7.5013C4.66675 8.10849 4.8292 8.67769 5.11289 9.16797" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <circle id="Ellipse 1794" cx="8.00004" cy="7.5026" r="6.66667" stroke="#595349" />
-                                                </g>
-                                            </svg>
+                                            </a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($social_reddit)) {
+                                    ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_reddit); ?>" target="_blank">
 
-                                        </a>
-                                    </li>
-                                <?php }
-                                if (!empty($social_reddit)) {
-                                ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_reddit); ?>" target="_blank">
+                                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <ellipse id="Ellipse 1794" cx="8" cy="9.83333" rx="6" ry="4.33333" stroke="#595349" />
+                                                        <path id="Ellipse 1796" d="M10.3334 10.6875C9.67667 11.1993 8.87087 11.5008 8.00008 11.5008C7.12929 11.5008 6.32349 11.1993 5.66675 10.6875" stroke="#595349" stroke-linecap="round" />
+                                                        <ellipse id="Ellipse 1795" cx="12.6667" cy="2.16927" rx="1.33333" ry="1.33333" stroke="#595349" />
+                                                        <path id="Vector" d="M12 6.2129C12.2458 5.78702 12.7089 5.5 13.2397 5.5C14.0278 5.5 14.6667 6.13281 14.6667 6.91342C14.6667 7.45799 14.3557 7.93063 13.9001 8.16667" stroke="#595349" stroke-linecap="round" />
+                                                        <path id="Vector_2" d="M4.00004 6.2129C3.75421 5.78702 3.29113 5.5 2.76036 5.5C1.97226 5.5 1.33337 6.13281 1.33337 6.91342C1.33337 7.45799 1.6443 7.93063 2.09991 8.16667" stroke="#595349" stroke-linecap="round" />
+                                                        <path id="Vector 6379" d="M11.3333 2.16797C9.76198 2.16797 8.97631 2.16797 8.48816 2.65612C8 3.14428 8 3.92995 8 5.5013" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path id="Vector_3" d="M6.00538 8.16797L5.99939 8.16797" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path id="Vector_4" d="M10.0054 8.16797L9.99939 8.16797" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                </svg>
 
-                                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <ellipse id="Ellipse 1794" cx="8" cy="9.83333" rx="6" ry="4.33333" stroke="#595349" />
-                                                    <path id="Ellipse 1796" d="M10.3334 10.6875C9.67667 11.1993 8.87087 11.5008 8.00008 11.5008C7.12929 11.5008 6.32349 11.1993 5.66675 10.6875" stroke="#595349" stroke-linecap="round" />
-                                                    <ellipse id="Ellipse 1795" cx="12.6667" cy="2.16927" rx="1.33333" ry="1.33333" stroke="#595349" />
-                                                    <path id="Vector" d="M12 6.2129C12.2458 5.78702 12.7089 5.5 13.2397 5.5C14.0278 5.5 14.6667 6.13281 14.6667 6.91342C14.6667 7.45799 14.3557 7.93063 13.9001 8.16667" stroke="#595349" stroke-linecap="round" />
-                                                    <path id="Vector_2" d="M4.00004 6.2129C3.75421 5.78702 3.29113 5.5 2.76036 5.5C1.97226 5.5 1.33337 6.13281 1.33337 6.91342C1.33337 7.45799 1.6443 7.93063 2.09991 8.16667" stroke="#595349" stroke-linecap="round" />
-                                                    <path id="Vector 6379" d="M11.3333 2.16797C9.76198 2.16797 8.97631 2.16797 8.48816 2.65612C8 3.14428 8 3.92995 8 5.5013" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path id="Vector_3" d="M6.00538 8.16797L5.99939 8.16797" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
-                                                    <path id="Vector_4" d="M10.0054 8.16797L9.99939 8.16797" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
-                                                </g>
-                                            </svg>
+                                            </a>
+                                        </li>
+                                    <?php }
+                                    if (!empty($social_instagram)) {
+                                    ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($social_instagram); ?>" target="_blank">
 
-                                        </a>
-                                    </li>
-                                <?php }
-                                if (!empty($social_instagram)) {
-                                ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($social_instagram); ?>" target="_blank">
+                                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="content">
+                                                        <path id="Vector" d="M0.666626 7.4974C0.666626 4.51183 0.666626 3.01905 1.59412 2.09156C2.52162 1.16406 4.0144 1.16406 6.99996 1.16406C9.98552 1.16406 11.4783 1.16406 12.4058 2.09156C13.3333 3.01905 13.3333 4.51183 13.3333 7.4974C13.3333 10.483 13.3333 11.9757 12.4058 12.9032C11.4783 13.8307 9.98552 13.8307 6.99996 13.8307C4.0144 13.8307 2.52162 13.8307 1.59412 12.9032C0.666626 11.9757 0.666626 10.483 0.666626 7.4974Z" stroke="#595349" stroke-linejoin="round" />
+                                                        <path id="Ellipse 1794" d="M10 7.5C10 9.15685 8.65685 10.5 7 10.5C5.34315 10.5 4 9.15685 4 7.5C4 5.84315 5.34315 4.5 7 4.5C8.65685 4.5 10 5.84315 10 7.5Z" stroke="#595349" />
+                                                        <path id="Vector_2" d="M10.6724 3.83203L10.6664 3.83203" stroke="#595349" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </g>
+                                                </svg>
 
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="content">
-                                                    <path id="Vector" d="M0.666626 7.4974C0.666626 4.51183 0.666626 3.01905 1.59412 2.09156C2.52162 1.16406 4.0144 1.16406 6.99996 1.16406C9.98552 1.16406 11.4783 1.16406 12.4058 2.09156C13.3333 3.01905 13.3333 4.51183 13.3333 7.4974C13.3333 10.483 13.3333 11.9757 12.4058 12.9032C11.4783 13.8307 9.98552 13.8307 6.99996 13.8307C4.0144 13.8307 2.52162 13.8307 1.59412 12.9032C0.666626 11.9757 0.666626 10.483 0.666626 7.4974Z" stroke="#595349" stroke-linejoin="round" />
-                                                    <path id="Ellipse 1794" d="M10 7.5C10 9.15685 8.65685 10.5 7 10.5C5.34315 10.5 4 9.15685 4 7.5C4 5.84315 5.34315 4.5 7 4.5C8.65685 4.5 10 5.84315 10 7.5Z" stroke="#595349" />
-                                                    <path id="Vector_2" d="M10.6724 3.83203L10.6664 3.83203" stroke="#595349" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                </g>
-                                            </svg>
-
-                                        </a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </div>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                     </nav>
                 </div>
             </div>
@@ -530,15 +534,18 @@ class Travelfic_Customizer_Header
 
         // design 3 header settings
         $design_3_topbar = get_theme_mod($travelfic_prefix . 'header_design_3_topbar', 1);
-        $design_3_top_header_bg = get_theme_mod($travelfic_prefix . 'design_3_top_header_bg', '#1342E0');
-        $design_3_top_header_text_color = get_theme_mod($travelfic_prefix . 'design_3_top_header_text_color', '#fff');
         $design_3_location = get_theme_mod($travelfic_prefix . 'design_3_location', '4b, Walse Street , USA');
         $design_3_phone = get_theme_mod($travelfic_prefix . 'design_3_phone', '+88 00 123 456');
         $design_3_email = get_theme_mod($travelfic_prefix . 'design_3_email', 'info@example.com');
         $design_3_login_label = get_theme_mod($travelfic_prefix . 'design_3_login_label', 'Login Now');
         $design_3_login_url = get_theme_mod($travelfic_prefix . 'design_3_login_url', '#');
-        $design_3_discover_label = get_theme_mod($travelfic_prefix . 'design_3_discover_label', 'Discover More');
-        $design_3_discover_url = get_theme_mod($travelfic_prefix . 'design_3_discover_url', '#');
+
+        $design_3_search = get_theme_mod($travelfic_prefix . 'header_design_3_search', '');
+        $design_3_cart = get_theme_mod($travelfic_prefix . 'header_design_3_cart', '');
+        $design_3_button = get_theme_mod($travelfic_prefix . 'header_design_3_button', '');
+
+        $design_3_button_label = get_theme_mod($travelfic_prefix . 'design_3_button_label', 'Discover More');
+        $design_3_button_url = get_theme_mod($travelfic_prefix . 'design_3_button_url', '#');
 
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
@@ -587,7 +594,7 @@ class Travelfic_Customizer_Header
 
                     </div>
                     <div class="tft-header-design__three__content-right">
-                        <?php if (!empty($design_3_topbar)): ?>
+                        <?php if ($design_3_topbar): ?>
                             <div class="tft-header-design__three__topbar tft-top-header">
                                 <div class="tft-header-design__three__topbar-left">
                                     <ul class="tft-header-design__three__topbar-list">
@@ -669,46 +676,52 @@ class Travelfic_Customizer_Header
 
                             <div class="tft-header-design__three__bottom__right">
                                 <ul class="tft-header-design__three__bottom__right__list">
-                                    <li class="tft-header-design__three__bottom__right__list__item">
-                                        <a href="javascript:void(0);" class="tft-header-design__three__bottom__right__list__item--link" aria-label="Search" id="tftSearchBtn">
-                                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
-                                            </svg>
-                                        </a>
-                                        <div class="tft-header-design__three__bottom__right__list__item--search" id="tftSearchForm">
-                                            <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-                                                <input type="search" name="s" class="tft-header-design__three__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
-                                                <button type="submit" class="tft-header-design__three__bottom__right__list__item--search__button">
-                                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </li>
-                                    <li class="tft-header-design__three__bottom__right__list__item">
-                                        <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-header-design__three__bottom__right__list__item--link" aria-label="View Cart">
-                                            <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
-                                            </svg>
-                                        </a>
-                                    </li>
+                                    <?php if($design_3_search): ?>
+                                        <li class="tft-header-design__three__bottom__right__list__item">
+                                            <a href="javascript:void(0);" class="tft-header-design__three__bottom__right__list__item--link" aria-label="Search" id="tftSearchBtn">
+                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
+                                                </svg>
+                                            </a>
+                                            <div class="tft-header-design__three__bottom__right__list__item--search" id="tftSearchForm">
+                                                <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+                                                    <input type="search" name="s" class="tft-header-design__three__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
+                                                    <button type="submit" class="tft-header-design__three__bottom__right__list__item--search__button">
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if($design_3_cart): ?>
+                                        <li class="tft-header-design__three__bottom__right__list__item">
+                                            <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-header-design__three__bottom__right__list__item--link" aria-label="View Cart">
+                                                <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
                                 </ul>
-                                <div class="tft-header-design__three__topbar-right mobile-view">
-                                    <ul class="tft-header-design__three__topbar-list">
-                                        <?php if (!is_user_logged_in()) : ?>
-                                            <li class="tft-header-design__three__topbar-list-item">
-                                                <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="Login" style="color: #000!important"><?php echo esc_html($design_3_login_label); ?></a>
-                                            </li>
-                                        <?php else : ?>
-                                            <li class="tft-header-design__three__topbar-list-item">
-                                                <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account" style="color: #000!important "><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
-                                            </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </div>
-                                <?php if (!empty($design_3_discover_label)): ?>
+                                <?php if($design_3_topbar): ?>
+                                    <div class="tft-header-design__three__topbar-right mobile-view">
+                                        <ul class="tft-header-design__three__topbar-list">
+                                            <?php if (!is_user_logged_in()) : ?>
+                                                <li class="tft-header-design__three__topbar-list-item">
+                                                    <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="Login" style="color: #000!important"><?php echo esc_html($design_3_login_label); ?></a>
+                                                </li>
+                                            <?php else : ?>
+                                                <li class="tft-header-design__three__topbar-list-item">
+                                                    <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account" style="color: #000!important "><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
+                                                </li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if (!empty($design_3_button_label) && $design_3_button): ?>
                                     <div class="tft-header-design__three__bottom__right__button">
-                                        <a href="<?php echo esc_url($design_3_discover_url); ?>" class="tft-btn" aria-label="Discover">
-                                            <?php echo esc_html($design_3_discover_label); ?>
+                                        <a href="<?php echo esc_url($design_3_button_url); ?>" class="tft-btn" aria-label="Discover">
+                                            <?php echo esc_html($design_3_button_label); ?>
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -742,54 +755,60 @@ class Travelfic_Customizer_Header
             </nav>
             <div class="mobile-sidenav__middle">
                 <ul>
-                    <!-- Login -->
-                    <?php if (!is_user_logged_in()) : ?>
-                        <li class="tft-header-design__three__topbar-list-item">
-                            <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="Login"><?php echo esc_html($design_3_login_label); ?></a>
-                        </li>
-                    <?php else : ?>
-                        <li class="tft-header-design__three__topbar-list-item">
-                            <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
-                        </li>
+                    <?php if($design_3_topbar): ?>
+                        <!-- Login -->
+                        <?php if (!is_user_logged_in()) : ?>
+                            <li class="tft-header-design__three__topbar-list-item">
+                                <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="Login"><?php echo esc_html($design_3_login_label); ?></a>
+                            </li>
+                        <?php else : ?>
+                            <li class="tft-header-design__three__topbar-list-item">
+                                <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
+                            </li>
+                        <?php endif; ?>    
                     <?php endif; ?>
                     <!-- Discover -->
-                    <?php if (!empty($design_3_discover_label)): ?>
+                    <?php if (!empty($design_3_button_label) && $design_3_button): ?>
                         <li class="tft-header-design__three__bottom__right__button">
-                            <a href="<?php echo esc_url($design_3_discover_url); ?>" class="color-white" aria-label="Discover">
-                                <?php echo esc_html($design_3_discover_label); ?>
+                            <a href="<?php echo esc_url($design_3_button_url); ?>" class="color-white" aria-label="Discover">
+                                <?php echo esc_html($design_3_button_label); ?>
                             </a>
                         </li>
                     <?php endif; ?>
                 </ul>
 
                 <div class="tf-flex">
-                    <div class="tft-header-design__three__bottom__right__list__item">
-                        <a href="javascript:void(0);" class="tft-header-design__three__bottom__right__list__item--link" aria-label="Search" id="tftMobileSearchBtn">
-                            <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
-                            </svg>
-                        </a>
-                        <div class="tft-header-design__three__bottom__right__list__item--search" id="tftMobileSearchForm">
-                            <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-                                <input type="search" name="s" class="tft-header-design__three__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
-                                <button type="submit" class="tft-header-design__three__bottom__right__list__item--search__button">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </form>
+                    <?php if($design_3_search): ?>
+                        <div class="tft-header-design__three__bottom__right__list__item">
+                            <a href="javascript:void(0);" class="tft-header-design__three__bottom__right__list__item--link" aria-label="Search" id="tftMobileSearchBtn">
+                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.75 14.7188L11.5625 10.5312C12.4688 9.4375 12.9688 8.03125 12.9688 6.5C12.9688 2.9375 10.0312 0 6.46875 0C2.875 0 0 2.9375 0 6.5C0 10.0938 2.90625 13 6.46875 13C7.96875 13 9.375 12.5 10.5 11.5938L14.6875 15.7812C14.8438 15.9375 15.0312 16 15.25 16C15.4375 16 15.625 15.9375 15.75 15.7812C16.0625 15.5 16.0625 15.0312 15.75 14.7188ZM1.5 6.5C1.5 3.75 3.71875 1.5 6.5 1.5C9.25 1.5 11.5 3.75 11.5 6.5C11.5 9.28125 9.25 11.5 6.5 11.5C3.71875 11.5 1.5 9.28125 1.5 6.5Z" fill="#060D1C" />
+                                </svg>
+                            </a>
+                            <div class="tft-header-design__three__bottom__right__list__item--search" id="tftMobileSearchForm">
+                                <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+                                    <input type="search" name="s" class="tft-header-design__three__bottom__right__list__item--search__input" placeholder="Search" aria-label="Search">
+                                    <button type="submit" class="tft-header-design__three__bottom__right__list__item--search__button">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>    
+                    <?php endif; ?>
+                    <?php if($design_3_cart): ?>
+                        <div class="tft-header-design__three__bottom__right__list__item">
+                            <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-header-design__three__bottom__right__list__item--link" aria-label="View Cart">
+                                <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-                    <div class="tft-header-design__three__bottom__right__list__item">
-                        <a href="<?php echo esc_url(home_url('/cart')); ?>" class="tft-header-design__three__bottom__right__list__item--link" aria-label="View Cart">
-                            <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 10.25C6 10.6875 5.65625 11 5.25 11C4.8125 11 4.5 10.6875 4.5 10.25C4.5 9.84375 4.8125 9.5 5.25 9.5C5.65625 9.5 6 9.84375 6 10.25ZM12 10.25C12 9.84375 12.3125 9.5 12.75 9.5C13.1562 9.5 13.5 9.84375 13.5 10.25C13.5 10.6875 13.1562 11 12.75 11C12.3125 11 12 10.6875 12 10.25ZM7.59375 1.09375C7.9375 1.28125 8.09375 1.75 7.90625 2.125L5.34375 7H12.625L10.0625 2.125C9.875 1.75 10.0312 1.28125 10.375 1.09375C10.75 0.90625 11.2188 1.0625 11.4062 1.40625L14.3125 7H17.25C17.6562 7 18 7.34375 18 7.75C18 8.1875 17.6562 8.5 17.25 8.5H16.625L14.875 15.5C14.625 16.375 13.8438 17 12.9375 17H5.03125C4.125 17 3.34375 16.375 3.09375 15.5L1.375 8.5H0.75C0.3125 8.5 0 8.1875 0 7.75C0 7.34375 0.3125 7 0.75 7H3.65625L6.5625 1.40625C6.75 1.0625 7.21875 0.90625 7.59375 1.09375ZM15.0625 8.5H2.90625L4.5625 15.125C4.625 15.3438 4.8125 15.5 5.03125 15.5H12.9375C13.1562 15.5 13.3438 15.3438 13.4062 15.125L15.0625 8.5Z" fill="#060D1C" />
-                            </svg>
-                        </a>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
             <div class="mobile-sidenav__bottom">
-                <?php if (!empty($design_3_topbar)): ?>
+                <?php if ($design_3_topbar): ?>
                     <ul class="tft-header-design__three__topbar-list">
                         <!-- Location -->
                         <?php if (!empty($design_3_location)): ?>
