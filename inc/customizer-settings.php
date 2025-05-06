@@ -56,7 +56,7 @@ add_action('init', function () {
         'type'     => 'custom',
         'settings' => $prefix . 'page_loader_separator_line',
         'section'  => 'travelfic_customizer_scroll_to_top',
-        'default'  => '<hr style="border-top: 1px solid #D1D5DB; margin: 0 -22px 20px;">',
+        'default'  => '<hr style="border-top: 1px solid #D1D5DB; margin: 18px -22px 20px;">',
         'tab' => 'general',
         'priority'    => 14,
     ));
@@ -93,6 +93,16 @@ add_action('init', function () {
         'default'     => '#ffffff',
 
     ));
+
+    // separator line
+    travelfic_Kirki::add_field('travelfic_customizer_options', [
+        'type'        => 'custom',
+        'settings'    => $prefix . 'page_loader_background_separator_line',
+        'section'     => 'travelfic_customizer_scroll_to_top',
+        'tab'         => 'design',
+        'priority'    => 16,
+        'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
+    ]);
 
     // icon color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
@@ -1139,7 +1149,7 @@ add_action('init', function () {
         'tab'         => 'design',
         'priority'    => 20,
     ]);
-
+    travelfic_add_font_weight_field($prefix . 'menu_font_weight', 'Font Weight', 'travelfic_customizer_header');
     travelfic_add_font_size_field($prefix . 'menu_font_size', 'Font Size', 'travelfic_customizer_header');
     travelfic_add_line_height_field($prefix . 'menu_font_line_height', 'travelfic_customizer_header');
     travelfic_add_letter_spacing_field($prefix . 'menu_font_letter_space', 'travelfic_customizer_header');
@@ -1229,6 +1239,7 @@ add_action('init', function () {
         'priority'    => 27,
     ]);
 
+    travelfic_add_font_weight_field($prefix . 'submenu_font_weight', 'Font Weight', 'travelfic_customizer_header');
     travelfic_add_font_size_field($prefix . 'submenu_font_size', 'Font Size', 'travelfic_customizer_header');
     travelfic_add_line_height_field($prefix . 'submenu_font_line_height', 'travelfic_customizer_header');
     travelfic_add_letter_spacing_field($prefix . 'submenu_font_letter_space', 'travelfic_customizer_header');
@@ -1447,7 +1458,7 @@ add_action('init', function () {
         'section'     => 'travelfic_customizer_header',
         'priority'   => 40,
         'tab'      => 'design',
-        'default'     => '<div class="border-dashed border-bottom"></div>',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12"></div>',
         'required' => [
             [
                 'setting'  => $prefix . 'sticky_header',
