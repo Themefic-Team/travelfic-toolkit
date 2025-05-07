@@ -351,3 +351,14 @@ function tft_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'tft_body_classes' );
 
+
+/** 
+ * 
+ * Travelfic Current Year Shortcode
+ * 
+*/
+function travelfic_current_year() {
+    return date('Y');
+}
+add_shortcode('year', 'travelfic_current_year');
+
