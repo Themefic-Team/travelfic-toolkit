@@ -229,16 +229,16 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
         $about_list_repeater->add_control(
             'about_list_title',
             [
-                'label'       => __('About List Title', 'themefic_themedev'),
+                'label'       => __('About List Title', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => __('Easy & Modern Customer Solution', 'themefic_themedev'),
+                'default'     => __('Easy & Modern Customer Solution', 'travelfic-toolkit'),
                 'label_block' => true,
             ]
         );
         $this->add_control(
             'about_list_content',
             [
-                'label'   => __('About List Content', 'themefic_themedev'),
+                'label'   => __('About List Content', 'travelfic-toolkit'),
                 'type'    => \Elementor\Controls_Manager::REPEATER,
                 'fields'  => $about_list_repeater->get_controls(),
                 'default' => [
