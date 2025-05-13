@@ -1170,7 +1170,7 @@ add_action('init', function () {
 
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'header_menu_colors',
+        'settings'    => $prefix . 'header_menu_color',
         'label'       => esc_html__('Color', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',

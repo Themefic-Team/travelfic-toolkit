@@ -7,10 +7,10 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
         // Sticky Settings Checked
-        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', '');
-        $travelfic_sticky_settings = $travelfic_sticky_settings ? 'enabled' : 'disabled';
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'sticky_header', '');
+        $travelfic_sticky_settings = $travelfic_sticky_settings ? true : false;
         if (isset($travelfic_sticky_settings)) {
-            if ($travelfic_sticky_settings != 'disabled') {
+            if ($travelfic_sticky_settings != false) {
                 $travelfic_sticky_class = 'tft_has_sticky';
             } else {
                 $travelfic_sticky_class = '';
@@ -18,11 +18,13 @@ class Travelfic_Customizer_Header
         }
 
         // Transparent Header Settings Checked
-        $travelfic_transparent_settings = get_theme_mod($travelfic_prefix . 'transparent_header', '');
-        $travelfic_transparent_settings = $travelfic_transparent_settings ? 'enabled' : 'disabled';
+        $travelfic_transparent_settings = get_theme_mod($travelfic_prefix . 'transparent_header', false);
+        $travelfic_transparent_settings = $travelfic_transparent_settings ? true : false;
         $travelfic_transparent_showing = get_theme_mod($travelfic_prefix . 'transparent_showing', 'both');
+        $travelfic_desktop_transparent_class = '';
+        $travelfic_mobile_transparent_class = '';
         if (isset($travelfic_transparent_settings)) {
-            if ($travelfic_transparent_settings != 'disabled') {
+            if ($travelfic_transparent_settings != false) {
                 if ("both" == $travelfic_transparent_showing || "desktop" == $travelfic_transparent_showing) {
                     $travelfic_desktop_transparent_class = 'tft_has_transparent';
                 }
@@ -484,10 +486,10 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
         // Sticky Settings Checked
-        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', 'disabled');
-        $travelfic_sticky_settings = $travelfic_sticky_settings ? 'enabled' : 'disabled';
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'sticky_header', 'disabled');
+        $travelfic_sticky_settings = $travelfic_sticky_settings ? true : false;
         if (isset($travelfic_sticky_settings)) {
-            if ($travelfic_sticky_settings != 'disabled') {
+            if ($travelfic_sticky_settings != false) {
                 $travelfic_sticky_class = 'tft_has_sticky';
             } else {
                 $travelfic_sticky_class = '';
@@ -495,11 +497,11 @@ class Travelfic_Customizer_Header
         }
 
         // Transparent Header Settings Checked
-        $travelfic_transparent_settings = get_theme_mod($travelfic_prefix . 'transparent_header', 'disabled');
-        $travelfic_transparent_settings = $travelfic_transparent_settings ? 'enabled' : 'disabled';
+        $travelfic_transparent_settings = get_theme_mod($travelfic_prefix . 'transparent_header', false);
+        $travelfic_transparent_settings = $travelfic_transparent_settings ? true : false;
         $travelfic_transparent_showing = get_theme_mod($travelfic_prefix . 'transparent_showing', 'both');
         if (isset($travelfic_transparent_settings)) {
-            if ($travelfic_transparent_settings != 'disabled') {
+            if ($travelfic_transparent_settings != false) {
                 if ("both" == $travelfic_transparent_showing || "desktop" == $travelfic_transparent_showing) {
                     $travelfic_desktop_transparent_class = 'tft_has_transparent';
                 }
@@ -556,7 +558,7 @@ class Travelfic_Customizer_Header
 
       
         <!-- header-->
-        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
+        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != false && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
             <div class="tft-header-design__three__container <?php echo esc_attr(apply_filters('travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
                 <div class="tft-header-design__three__content">
                     <div class="tft-header-design__three__content-left">

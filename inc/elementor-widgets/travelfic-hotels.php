@@ -2218,7 +2218,6 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                             foreach ($rm_features as $feature) {
                                                                 if ($tft_limit < 7) {
                                                                     $term = get_term_by('id', $feature, 'hotel_feature');
-
                                                                     $room_f_meta = get_term_meta($feature, 'tf_hotel_feature', true);
                                                                     if (! empty($room_f_meta)) {
                                                                         $room_icon_type = ! empty($room_f_meta['icon-type']) ? $room_f_meta['icon-type'] : '';
@@ -2231,7 +2230,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                             ?>
                                                                     <li>
                                                                         <?php echo ! empty($room_feature_icon) ? wp_kses_post($room_feature_icon) : ''; ?>
-                                                                        <?php echo esc_html($term->name); ?>
+                                                                        <?php if(!empty($term->name)): ?>
+                                                                            <?php echo esc_html($term->name); ?>
+                                                                        <?php endif; ?>
                                                                     </li>
                                                             <?php
                                                                 }
