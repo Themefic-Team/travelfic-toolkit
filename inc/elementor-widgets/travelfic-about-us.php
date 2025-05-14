@@ -302,6 +302,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Content Position', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'start',
                 'options' => [
                     'start' => esc_html__('Start', 'travelfic-toolkit'),
                     'center' => esc_html__('Center', 'travelfic-toolkit'),
@@ -1013,7 +1014,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <?php } ?>
 
                                 <?php if (!empty($tft_sec_author)) { ?>
-                                    <p class="tft-about-us-author tft-text-right font-josefin"><?php echo esc_html($tft_sec_author); ?></p>
+                                    <p class="tft-about-us-author tft-text-right font-josefin tft-color-text"><?php echo esc_html($tft_sec_author); ?></p>
                                 <?php } ?>
                             </div>
                             <div class="read-more">
@@ -1083,7 +1084,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                             <div class="icon tft-color-primary">
                                                 <i class="fa-regular fa-circle-check"></i>
                                             </div>
-                                            <div class="text font-ubuntu">
+                                            <div class="text font-ubuntu tft-color-text">
                                                 <?php echo esc_html($list['about_list_title']); ?>
                                             </div>
                                         </li>

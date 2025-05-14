@@ -153,20 +153,7 @@ add_action('init', function () {
         ],
     ]);
 
-    // header width
-    travelfic_Kirki::add_field('travelfic_customizer_options', array(
-        'type'        => 'radio-image',
-        'settings'    => $prefix . 'header_width',
-        'label'       => esc_html__('Header Width', 'travelfic'),
-        'section'     => 'travelfic_customizer_header',
-        'default'     => 'default',
-        'tab'         => 'settings',
-        'priority'    => 11,
-        'choices'     => array(
-            'default'    => get_template_directory_uri() . '/assets/admin/img/customizer/container-normal.svg',
-            'full' => get_template_directory_uri() . '/assets/admin/img/customizer/container-fullwidth.svg',
-        ),
-    ));
+
 
     // design settings head
     travelfic_Kirki::add_field('travelfic_customizer_options', [
@@ -1677,38 +1664,6 @@ add_action('init', function () {
     ));
 
 
-    // footer width
-    travelfic_Kirki::add_field('travelfic_customizer_options', array(
-        'type'        => 'radio-image',
-        'settings'    => $prefix . 'footer_width',
-        'label'       => esc_html__('Footer Layout', 'travelfic'),
-        'section'     => 'travelfic_customizer_footer',
-        'default'     => 'default',
-        'priority'    => 11,
-        'tab'         => 'settings',
-        'choices'     => array(
-            'default'    => get_template_directory_uri() . '/assets/admin/img/customizer/container-normal.svg',
-            'full' => get_template_directory_uri() . '/assets/admin/img/customizer/container-fullwidth.svg',
-        ),
-    ));
-
-    // separator line
-    travelfic_Kirki::add_field('travelfic_customizer_options', [
-        'type'        => 'custom',
-        'settings'    => $prefix . 'footer_3_bg_image_before_separator_line',
-        'section'     => 'travelfic_customizer_footer',
-        'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
-        'priority'    => 12,
-        'tab'         => 'settings',
-        'required' => [
-            [
-                'setting'  => $prefix . 'footer_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
-            ],
-        ],
-    ]);
-
     // footer 3 bg image
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'image',
@@ -1841,6 +1796,13 @@ add_action('init', function () {
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
         'priority'    => 22,
         'tab'         => 'settings',
+        'required' => [
+            [
+                'setting'  => $prefix . 'footer_design_select',
+                'operator' => '==',
+                'value'    => 'design3',
+            ],
+        ],
     ));
 
     // footer copyright

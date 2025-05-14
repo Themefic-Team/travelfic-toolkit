@@ -153,7 +153,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Banner title', 'travelfic-toolkit'),
                 'default' => __('Embark on extraordinary voyages and explorations', 'travelfic-toolkit'),
                 'condition' => [
-                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3'],
                 ],
             ]
         );
@@ -169,7 +169,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'slider_style' => ['design-2', 'design-3', 'design-4'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3', 'design-4'],
                 ],
             ]
         );
@@ -288,7 +288,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
-
             ]
         );
 
@@ -608,7 +607,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-hero-design__two' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-2'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-1', 'design-2'],
                 ],
 
             ]
@@ -637,7 +636,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     '{{WRAPPER}} .tft-hero-design__three' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'slider_style' => 'design-3', // Show this control only when des_style is 'design-2'
+                    'slider_style' => 'design-3',
                 ],
 
             ]
@@ -842,7 +841,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'slider_style' => 'design-2', 
                 ],
             ]
         );
@@ -1705,7 +1704,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $design4_slider_pause_on_focus = ('yes' === $settings['design4_slider_pause_on_focus']) ? 'true' : 'false';
         $design4_slider_rtl = ('yes' === $settings['design4_slider_rtl']) ? 'true' : 'false';
         $design4_slider_draggable = ('yes' === $settings['design4_slider_draggable']) ? 'true' : 'false';
-
+error_log(print_r($type, true));
 
         if ("design-2" == $tft_design) {
 ?>

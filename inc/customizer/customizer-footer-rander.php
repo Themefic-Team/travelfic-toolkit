@@ -10,9 +10,11 @@ class Travelfic_Customizer_Footer
         ob_start();
 ?>
         <footer class="tft-footer-design__two tft-site-footer">
-            <div class="tft-footer-inner tft-w-padding <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
-                <div class="tft-footer-widgets tft-justify-between">
-                    <?php dynamic_sidebar('footer_sideabr'); ?>
+            <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                <div class="tft-footer-widgets">
+                    <div class="tft-grid">
+                        <?php dynamic_sidebar('footer_sideabr'); ?>
+                    </div>
                 </div>
                 <div class="tft-footer-bottom__two tft-footer-bottom">
                     <p><?php echo do_shortcode(esc_html($design_2_copyright)); ?></p>
@@ -39,7 +41,7 @@ class Travelfic_Customizer_Footer
     ?>
         <!-- footer -->
         <footer class="tft-footer-design__three tft-site-footer" style="background-image: url(<?php echo esc_url($travelfic_footer_back_image); ?>);">
-            <div class="container <?php echo esc_attr(apply_filters('travelfic_footer_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
+            <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="footer-widget">
                     <div class="footer-widget-inner">
                         <?php if (is_active_sidebar('footer_sideabr  ')) : ?>
@@ -52,7 +54,7 @@ class Travelfic_Customizer_Footer
 
         <!-- footer bottom -->
         <div class="tft-footer-bottom__three tft-footer-bottom">
-            <div class="container">
+            <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-footer-bottom__three__inner">
                     <div class="tft-footer-bottom__three__copyright">
                         <p class="tft-color-white"><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>

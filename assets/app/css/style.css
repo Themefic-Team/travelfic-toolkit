@@ -759,10 +759,10 @@ label.tft-form-label .tft-form-control {
   background-color: #595349;
   color: #FAEEDC;
 }
-.tft-footer-design__two .tft-footer-inner a {
+.tft-footer-design__two a {
   color: #faeedc;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid {
+.tft-footer-design__two .tft-grid {
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
@@ -770,52 +770,53 @@ label.tft-form-label .tft-form-control {
   gap: 83px;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-footer-design__two .tft-footer-inner .tft-grid {
+  .tft-footer-design__two .tft-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 40px;
   }
 }
 @media only screen and (max-width: 575.98px) {
-  .tft-footer-design__two .tft-footer-inner .tft-grid {
+  .tft-footer-design__two .tft-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 0px;
   }
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid .tft-footer-section {
+.tft-footer-design__two .tft-grid .tft-footer-section {
   width: 100%;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid h2 {
+.tft-footer-design__two .tft-grid h2 {
   font-size: 2rem;
   font-weight: 700;
   color: #FA6400;
   margin-bottom: 24px;
   line-height: 32px;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid ul {
+.tft-footer-design__two .tft-grid ul {
   margin: 0;
   padding: 0;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid ul li {
+.tft-footer-design__two .tft-grid ul li {
   display: block;
   padding-bottom: 8px;
   margin: 0;
+  color: #faeedc;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid ul li a {
+.tft-footer-design__two .tft-grid ul li a {
   text-decoration: none;
   display: block;
-  color: #faeedc;
+  color: inherit;
   font-size: 1rem;
   font-weight: 600;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid ul li a:hover {
+.tft-footer-design__two .tft-grid ul li a:hover {
   color: var(--highlights-background) !important;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid ul li:last-child {
+.tft-footer-design__two .tft-grid ul li:last-child {
   padding-bottom: 0px;
 }
-.tft-footer-design__two .tft-footer-inner .tft-grid p {
+.tft-footer-design__two .tft-grid p {
   margin: 0;
 }
 .tft-footer-design__three {
@@ -4795,6 +4796,7 @@ label.tft-form-label .tft-form-control {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  color: #060D1C;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a {
   -webkit-transition: all 0.2s ease;
@@ -4803,7 +4805,7 @@ label.tft-form-label .tft-form-control {
   transition: all 0.2s ease;
   color: inherit;
   text-transform: capitalize;
-  color: #060D1C;
+  color: inherit;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover {
   color: #FA6400;

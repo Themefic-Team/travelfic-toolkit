@@ -1848,19 +1848,19 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                     <div class="tft-hotel-details">
                                         <?php if ($comments && !$disable_review_sec == '1') { ?>
                                             <div class="tft-ratings">
-                                                <span class="font-josefin">
+                                                <span class="font-josefin tft-color-text">
                                                     <i class="fas fa-star"></i>
-                                                    <span>
+                                                    <span class="tft-color-text">
                                                         <?php echo (class_exists("\Tourfic\App\TF_Review")) ? esc_html(\Tourfic\App\TF_Review::tf_total_avg_rating($comments)) : esc_html(tf_total_avg_rating($comments)); ?>
                                                     </span>
                                                     out of <?php class_exists("\Tourfic\App\TF_Review") ? esc_html(\Tourfic\App\TF_Review::tf_based_on_text(count($comments))) : esc_html(tf_based_on_text(count($comments))); ?>
                                                 </span>
                                             </div>
                                         <?php } else { ?>
-                                            <div class="tft-ratings">
-                                                <span class="font-josefin">
+                                            <div class="tft-ratings ">
+                                                <span class="font-josefin tft-color-text">
                                                     <i class="fas fa-star"></i>
-                                                    <span>
+                                                    <span class="tft-color-text">
                                                         0.0
                                                     </span>
                                                     out of 0 review
@@ -2409,7 +2409,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 <?php if(!empty($tf_location)): ?>
                                                     <span class="tft-desination-location">
                                                         <i class="ri-map-pin-line tft-color-primary"></i>
-                                                        <span class="font-ubuntu"><?php echo esc_html($tf_location); ?></span>
+                                                        <span class="font-ubuntu tft-color-text"><?php echo esc_html($tf_location); ?></span>
                                                     </span> 
                                                 <?php endif; ?>
                                                 <!-- destination title -->
@@ -2430,7 +2430,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             <div class="tft-desination-bottom-info">
                                                 <!-- destination price -->
                                                 <div class="tft-desination-price">
-                                                    <span class="tft-desination-price-title font-ubuntu"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
+                                                    <span class="tft-desination-price-title font-ubuntu tft-color-text"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
                                                     <span class="tft-desination-price-value tft-color-primary font-brygada">
                                                         <?php echo '$', $tf_total_price; ?>
                                                     </span>

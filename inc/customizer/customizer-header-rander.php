@@ -85,8 +85,8 @@ class Travelfic_Customizer_Header
 
         <header class="tft-header-design__two <?php echo esc_attr($travelfic_sticky_class); ?>">
             <?php if (!empty($design_2_topbar)) { ?>
-                <div class="tft-top-header tft-w-padding <?php echo esc_attr(apply_filters('travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
-                    <div class="tft-flex">
+                <div class="tft-top-header">
+                    <div class="tft-flex tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                         <div class="tft-contact-info">
                             <ul>
                                 <?php
@@ -207,8 +207,8 @@ class Travelfic_Customizer_Header
                 </div>
             <?php } ?>
 
-            <div class="tft-menus-section tft-header-desktop tft-w-padding <?php echo esc_attr($travelfic_desktop_transparent_class); ?>  <?php echo esc_attr(apply_filters('travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '')); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
-                <div class="tft-flex">
+            <div class="tft-menus-section tft-header-desktop <?php echo esc_attr($travelfic_desktop_transparent_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
+                <div class="tft-flex tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
                             <?php
@@ -283,7 +283,7 @@ class Travelfic_Customizer_Header
 
 
             <div class="tft-menus-section tft-header-mobile <?php echo esc_attr($travelfic_mobile_transparent_class); ?>">
-                <div class="tft-main-header-wrapper <?php echo esc_attr(apply_filters('travelfic_header_tftcontainer', $travelfic_tftcontainer = '')); ?> tft-container-flex align-center justify-sp-between tft-w-padding">
+                <div class="tft-main-header-wrapper tft-container-flex align-center justify-sp-between tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-header-left site-header-section">
                         <div class="site--brand-logo">
                             <?php
@@ -311,7 +311,7 @@ class Travelfic_Customizer_Header
                     </div>
                 </div>
 
-                <div class="<?php echo esc_attr(apply_filters('travelfic_header_tftcontainer', $travelfic_tftcontainer = '')); ?> site-header-section tft-mobile-main-menu">
+                <div class="site-header-section tft-mobile-main-menu <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <nav class="tft-site-navigation">
                         <?php
                         $travelfic_current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
@@ -542,9 +542,9 @@ class Travelfic_Customizer_Header
         $design_3_login_label = get_theme_mod($travelfic_prefix . 'design_3_login_label', 'Login Now');
         $design_3_login_url = get_theme_mod($travelfic_prefix . 'design_3_login_url', '#');
 
-        $design_3_search = get_theme_mod($travelfic_prefix . 'header_design_3_search', '');
-        $design_3_cart = get_theme_mod($travelfic_prefix . 'header_design_3_cart', '');
-        $design_3_button = get_theme_mod($travelfic_prefix . 'header_design_3_button', '');
+        $design_3_search = get_theme_mod($travelfic_prefix . 'header_design_3_search', 1);
+        $design_3_cart = get_theme_mod($travelfic_prefix . 'header_design_3_cart', 1);
+        $design_3_button = get_theme_mod($travelfic_prefix . 'header_design_3_button', 1);
 
         $design_3_button_label = get_theme_mod($travelfic_prefix . 'design_3_button_label', 'Discover More');
         $design_3_button_url = get_theme_mod($travelfic_prefix . 'design_3_button_url', '#');
@@ -559,7 +559,7 @@ class Travelfic_Customizer_Header
       
         <!-- header-->
         <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != false && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
-            <div class="tft-header-design__three__container <?php echo esc_attr(apply_filters('travelfic_header_2_tftcontainer', $travelfic_tftcontainer = '')); ?>">
+            <div class="tft-header-design__three__container">
                 <div class="tft-header-design__three__content">
                     <div class="tft-header-design__three__content-left">
                         <!-- Logo -->
@@ -640,13 +640,6 @@ class Travelfic_Customizer_Header
 
                                 <div class="tft-header-design__three__topbar-right">
                                     <ul class="tft-header-design__three__topbar-list">
-                                        <!-- <li class="tft-header-design__three__topbar-list-item">
-                                            <select name="language" id="language" class="tft-header-design__three__topbar-list-select">
-                                                <option value="en"></?php echo esc_html_e('English', 'travelfic-toolkit'); ?></option>
-                                                <option value="nl"></?php echo esc_html_e('Dutch', 'travelfic-toolkit'); ?></option>
-                                                <option value="ar"></?php echo esc_html_e('Arabic', 'travelfic-toolkit'); ?></option>
-                                            </select>
-                                        </li> -->
                                         <?php if (!is_user_logged_in()) : ?>
                                             <li class="tft-header-design__three__topbar-list-item">
                                                 <a href="<?php echo esc_url($design_3_login_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="Login"><?php echo esc_html($design_3_login_label); ?></a>

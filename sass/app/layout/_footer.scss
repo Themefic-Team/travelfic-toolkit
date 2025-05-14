@@ -8,74 +8,74 @@
     padding-bottom: 32px;
     background-color: #595349;
     color: #FAEEDC;
-    .tft-footer-inner {
-      a {
-        color: #faeedc;
+
+    a {
+      color: #faeedc;
+    }
+
+    .tft-grid {
+      display: flex;
+      justify-content: space-between;
+      align-content: flex-start;
+      flex-wrap: nowrap;
+      gap: 83px;
+
+      @media #{$max991} {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
       }
 
-      .tft-grid {
-        display: flex;
-        justify-content: space-between;
-        align-content: flex-start;
-        flex-wrap: nowrap;
-        gap: 83px;
+      @media #{$max575} {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 0px;
+      }
 
-        @media #{$max991} {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 40px;
-        }
+      .tft-footer-section {
+        width: 100%;
+      }
 
-        @media #{$max575} {
-          display: grid;
-          grid-template-columns: repeat(1, 1fr);
-          gap: 0px;
-        }
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #FA6400;
+        margin-bottom: 24px;
+        line-height: 32px;
+      }
 
-        .tft-footer-section {
-          width: 100%;
-        }
+      ul {
+        margin: 0;
+        padding: 0;
 
-        h2 {
-          font-size: 2rem;
-          font-weight: 700;
-          color: #FA6400;
-          margin-bottom: 24px;
-          line-height: 32px;
-        }
-
-        ul {
+        li {
+          display: block;
+          padding-bottom: 8px;
           margin: 0;
-          padding: 0;
-
-          li {
+          color: #faeedc;
+          a {
+            text-decoration: none;
             display: block;
-            padding-bottom: 8px;
-            margin: 0;
+            color: inherit;
+            font-size: 1rem;
+            font-weight: 600;
 
-            a {
-              text-decoration: none;
-              display: block;
-              color: #faeedc;
-              font-size: 1rem;
-              font-weight: 600;
-
-              &:hover {
-                color: $highlights-background !important;
-              }
+            &:hover {
+              color: $highlights-background !important;
             }
           }
-
-          li:last-child {
-            padding-bottom: 0px;
-          }
         }
 
-        p {
-          margin: 0;
+        li:last-child {
+          padding-bottom: 0px;
         }
       }
+
+      p {
+        margin: 0;
+      }
     }
+
   }
 
   &__three {
