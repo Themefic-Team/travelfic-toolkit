@@ -991,8 +991,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => '!=',
+                'value'    => 'design1',
             ],
         ],
     ]);
@@ -1000,7 +1000,7 @@ add_action('init', function () {
     // header button background
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'header_button_colors',
+        'settings'    => $prefix . 'header_button_background_colors',
         'label'       => esc_html__('Button Background', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',
@@ -1012,8 +1012,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => '!=',
+                'value'    => 'design1',
             ],
         ],
     ));
@@ -1021,26 +1021,50 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'header_button_separator_line',
+        'settings'    => $prefix . 'header_button_background_colors_separator_line',
         'section'     => 'travelfic_customizer_header',
-        'priority'    => 13,
+        'priority'    => 12,
         'tab'         => 'design',
+        'default'     => '<div class="border-dashed border-bottom tf-mb-12"></div>',
         'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',
                 'operator' => '!=',
-                'value'    => 'design3',
+                'value'    => 'design1',
             ],
         ],
     ]);
+  
 
+    // header button color
+    travelfic_Kirki::add_field('travelfic_customizer_options', array(
+        'type'        => 'multicolor',
+        'settings'    => $prefix . 'header_button_text_colors',
+        'label'       => esc_html__('Button Color', 'travelfic'),
+        'section'     => 'travelfic_customizer_header',
+        'tab'         => 'design',
+        'priority'    => 13,
+        'choices'     => [
+            'normal' => esc_html__('Normal', 'travelfic'),
+            'hover'  => esc_html__('Hover', 'travelfic'),
+        ],
+        'required' => [
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '!=',
+                'value'    => 'design1',
+            ],
+        ],
+    ));
+
+ 
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
         'settings'    => $prefix . 'header_topbar_head',
         'section'     => 'travelfic_customizer_header',
         'default'     => '<h2 class="travelfic-customizer-heading">' . esc_html__('Topbar', 'travelfic') . '</h2>',
         'tab'         => 'design',
-        'priority'    => 14,
+        'priority'    => 15,
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',

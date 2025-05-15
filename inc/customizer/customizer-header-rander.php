@@ -64,7 +64,7 @@ class Travelfic_Customizer_Header
         $design_2_topbar = get_theme_mod($travelfic_prefix . 'header_design_2_topbar', '1');
         $design_2_phone = get_theme_mod($travelfic_prefix . 'design_2_phone', '+88 00 123 456');
         $design_2_email = get_theme_mod($travelfic_prefix . 'design_2_email', 'travello@outlook.com');
-        $design_2_myaccount = get_theme_mod($travelfic_prefix . 'header_design_2_my_account', '');
+        $design_2_myaccount = get_theme_mod($travelfic_prefix . 'header_design_2_my_account', 1);
         $design_2_registration_url = get_theme_mod($travelfic_prefix . 'design_2_registration_url', '#');
         $design_2_login_url = get_theme_mod($travelfic_prefix . 'design_2_login_url', '#');
 

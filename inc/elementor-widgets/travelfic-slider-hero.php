@@ -1704,7 +1704,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $design4_slider_pause_on_focus = ('yes' === $settings['design4_slider_pause_on_focus']) ? 'true' : 'false';
         $design4_slider_rtl = ('yes' === $settings['design4_slider_rtl']) ? 'true' : 'false';
         $design4_slider_draggable = ('yes' === $settings['design4_slider_draggable']) ? 'true' : 'false';
-error_log(print_r($type, true));
+
 
         if ("design-2" == $tft_design) {
 ?>
