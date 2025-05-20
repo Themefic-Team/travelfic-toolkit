@@ -4,7 +4,7 @@
  * Plugin URI: https://tourfic.site/travelfic/
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
- * Version: 1.2.3
+ * Version: 1.2.4
  * Tested up to: 6.7
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
@@ -23,7 +23,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.2.3' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.2.4' );
 
 /**
  * Include file from plugin if it is not available in theme
