@@ -55,9 +55,10 @@
   &__slider {
     position: relative;
     top: 50%;
-
-    @media #{$max575} {
-      &.slick-dotted.slick-slider {
+    
+    &.slick-dotted.slick-slider {
+      margin-bottom: 0;
+      @media #{$max575} {
         margin-bottom: 90px;
       }
     }
@@ -257,8 +258,8 @@
     position: absolute;
     top: 50%;
     right: 3px;
-    max-width: 1706px;
-    margin: auto;
+    max-width: fit-content;
+    margin: 0 auto;
     @include d-flex();
     @include align-items(center);
     @include justify-content(center);
@@ -267,6 +268,7 @@
     z-index: 99;
     flex-direction: column;
     align-items: end;
+    height: fit-content;
 
     @media #{$max1760} {
       right: 0;
@@ -274,22 +276,25 @@
 
     @media #{$max991} {
       right: 0;
-      bottom: 0px;
+      top: 100%;
       gap: 8px;
       transform: none;
       flex-direction: row;
       width: 100%;
-      margin-bottom: -120px;
+      margin-top: 100px;
+      max-width: inherit;
+      max-height: fit-content;
     }
 
     @media #{$max575} {
       right: 0;
-      bottom: 10px;
+      top: 100%;
       gap: 8px;
       transform: none;
       flex-direction: row;
       width: 100%;
-      margin-bottom: -100px;
+      margin-top: 100px;
+      max-height: fit-content;
     }
 
     li {
@@ -1129,19 +1134,23 @@
         max-width: inherit;
         padding-bottom: 0;
       }
-      p{
+
+      p {
         @media #{$max991} {
           margin-bottom: 0;
         }
       }
-     
+
     }
+
     .tft-slider-arrows {
       @include d-flex();
       gap: 20px;
+
       @media #{$max991} {
         display: none;
       }
+
       .tft-arrow {
         width: 70px;
         height: 70px;
@@ -1175,14 +1184,17 @@
           }
         }
       }
-      &--mobile{
+
+      &--mobile {
         display: none;
+
         @media #{$max991} {
           @include d-flex();
           margin: auto;
         }
       }
     }
+
     .tft-testimonials-sliders {
       max-width: 764px;
       overflow: hidden;
@@ -1379,6 +1391,7 @@
     @media #{$max991} {
       gap: 20px;
     }
+
     @media #{$max767} {
       @include align-items(center);
     }
@@ -1414,7 +1427,7 @@
         }
       }
 
-      
+
     }
 
     .tft-single-destination {
@@ -1521,7 +1534,7 @@
         display: none;
       }
 
-      &--mobile{
+      &--mobile {
         display: none;
 
         @media #{$max767} {
@@ -2291,9 +2304,11 @@
         .tft-destination-top-info {
           margin-top: 20px;
           margin-bottom: 30px;
+
           @media #{$max767} {
             margin-bottom: 20px;
           }
+
           .tft-desination-rating {
             @include d-flex();
             @include align-items(center);
