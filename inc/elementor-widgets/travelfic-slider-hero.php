@@ -28,7 +28,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Travelfic Slider Hero', 'travelfic-toolkit');
+        return esc_html__('Travelfic Hero', 'travelfic-toolkit');
     }
 
     /**
@@ -126,7 +126,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'hero_slider',
             [
-                'label' => __('Slider Items', 'travelfic-toolkit'),
+                'label' => __('Hero Content', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -895,7 +895,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_subtitle',
             [
-                'label'     => __('Sub title', 'travelfic-toolkit'),
+                'label'     => __('Subtitle', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
@@ -933,9 +933,19 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_buttons_style',
             [
-                'label'     => __('Button Style', 'travelfic-toolkit'),
+                'label'     => __('Button', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'slider_style' => ['design-1', 'design-4'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'button_typography',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
                 ],
@@ -969,7 +979,28 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'slider_button_border',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
+                'condition' => [
+                    'slider_style' => ['design-1', 'design-4'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'slider_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->start_controls_tabs('button_style_tabs_');
 
         $this->start_controls_tab(
@@ -981,16 +1012,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'button_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
-                'condition' => [
-                    'slider_style' => ['design-1', 'design-4'],
-                ],
-            ]
-        );
+      
 
         $this->add_control(
             'button_text_color',
@@ -1059,7 +1081,16 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
-
+        $this->add_control(
+            'button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
 
         $this->end_controls_tab();
 
@@ -1303,13 +1334,24 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
             [
-                'name'     => 'search_button_border',
+                'name'     => 'search_button_border_',
                 'label'    => __('Border', 'travelfic-toolkit'),
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
             ]
         );
+        $this->add_control(
+            'search_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
  
-        $this->start_controls_tabs('search_button_style_tabs_');
+        $this->start_controls_tabs('search_button_style_tabs_'); 
 
         $this->start_controls_tab(
             'search_button_normal_',
@@ -1581,6 +1623,19 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit',
             ]
         );
+        $this->add_control(
+            'about_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
  
         $this->start_controls_tabs('search_form_button_style_tabs_');
 
@@ -1656,6 +1711,19 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'background-color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'background-color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );

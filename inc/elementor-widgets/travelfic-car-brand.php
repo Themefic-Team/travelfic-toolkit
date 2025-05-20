@@ -200,18 +200,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
-        $this->add_responsive_control(
-            'tour_destination_image_border_radius',
-            [
-                'label'      => __('Image Radius', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
+      
         $this->add_control(
             'car_brand_header',
             [
@@ -248,7 +237,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
                 'separator' => 'after',
             ]
         );
-
+      
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -276,11 +265,30 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
                 'separator' => 'after',
             ]
         );
-
+        $this->add_responsive_control(
+            'tour_destination_image_border_radius',
+            [
+                'label'      => __('Image Radius', 'travelfic-toolkit'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em'], 
+                'selectors'  => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-thumbnail' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-thumbnail img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_car_item_card_title_typo',
+                'label'    => __('Typography', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-brands-title a',
+            ]
+        );
         $this->add_control(
             'popular_car_item_card_title_bg',
             [
-                'label'     => __('Card Background', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-brands-title a' => 'background: {{VALUE}}',
@@ -291,7 +299,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
         $this->add_control(
             'popular_car_item_card_title_color',
             [
-                'label'     => __('Card Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-brands-title a' => 'color: {{VALUE}}',
@@ -299,14 +307,7 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'popular_car_item_card_title_typo',
-                'label'    => __('Card Typography', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-brands-design__one .tft-brands-title a',
-            ]
-        );
+        
     }
 
 

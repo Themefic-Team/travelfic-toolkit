@@ -212,7 +212,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_meta_heading',
             [
-                'label'     => __( 'Meta Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Meta', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -264,7 +264,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 		$this->add_control(
             'popular_icon_head',
             [
-                'label'     => __( 'Icon Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Icon', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]

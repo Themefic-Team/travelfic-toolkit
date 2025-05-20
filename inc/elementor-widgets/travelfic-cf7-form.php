@@ -156,9 +156,27 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
             ]
         );
         $this->add_control(
+            'cf7_form_input_label_head',
+            [
+                'label'     => __( 'Label', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_control(
+            'cf7_form_input_label',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form label' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
             'cf7_form_input',
             [
-                'label'     => __( 'Input Fields', 'travelfic-toolkit' ),
+                'label'     => __( 'Input', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -175,23 +193,14 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
         $this->add_control(
             'cf7_form_input_color',
             [
-                'label'     => __( 'Input Color', 'travelfic-toolkit' ),
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form input[type=email], .tft-cf7-form-design__one .wpcf7-form input[type=text], .tft-cf7-form-design__one .wpcf7-form input[type=phone], .tft-cf7-form-design__one .wpcf7-form textarea' => 'color: {{VALUE}};',
                 ],
             ]
         );
-        $this->add_control(
-            'cf7_form_input_label',
-            [
-                'label'     => __( 'Label Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form label' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
+       
         $this->add_control(
             'cf7_form_input_bg',
             [
@@ -228,7 +237,7 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
         $this->add_control(
             'cf7_form_button',
             [
-                'label'     => __( 'Button Style', 'travelfic-toolkit' ),
+                'label'     => __( 'Button', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
             ]
@@ -252,34 +261,23 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 ],
             ]
         );
-        $this->add_control(
-            'cf7_form_button_color',
+        $this->add_responsive_control(
+            'cf7_form_button_margin',
             [
-                'label'     => __( 'Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
+                'label' => __( 'Margin', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
-        $this->add_control(
-            'cf7_form_button_bg_color',
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
             [
-                'label'     => __( 'Background Color', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'background-color: {{VALUE}} !important;',
-                ],
-            ]
-        );
-        $this->add_control(
-            'cf7_form_button_bg_hover_color',
-            [
-                'label'     => __( 'Background Hover', 'travelfic-toolkit' ),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover' => 'background-color: {{VALUE}} !important;',
-                ],
+                'name'     => 'cf7_form_button_border_',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit',
             ]
         );
         $this->add_control(
@@ -293,6 +291,77 @@ class Travelfic_Toolkit_CF7_Form extends \Elementor\Widget_Base {
                 ],
             ]
         );
+        $this->start_controls_tabs('cf7_form_button_tabs_');
+
+        $this->start_controls_tab(
+            'cf7_form_button_normal_',
+            [
+                'label' => __('Normal', 'travelfic-toolkit'),
+            ]
+        );
+       
+        $this->add_control(
+            'cf7_form_button_color',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'cf7_form_button_bg_color',
+            [
+                'label'     => __( 'Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit' => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'popular_hotel_card_button_hover_',
+            [
+                'label' => __('Hover', 'travelfic-toolkit'),
+            ]
+        );
+        $this->add_control(
+            'cf7_form_button_hover_color',
+            [
+                'label'     => __( 'Color', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'cf7_form_button_bg_hover_color',
+            [
+                'label'     => __( 'Background', 'travelfic-toolkit' ),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'cf7_form_button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
+
         $this->add_control(
             'cf7_form_notice',
             [

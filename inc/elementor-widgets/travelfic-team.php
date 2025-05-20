@@ -501,7 +501,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_sec_subtitle',
 			[
-				'label'     => __('Sub Title', 'travelfic-toolkit'),
+				'label'     => __('Subtitle', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
 				'condition' => [
@@ -547,7 +547,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_card_head',
 			[
-				'label'     => __('Card Style', 'travelfic-toolkit'),
+				'label'     => __('Card', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
 			]
@@ -646,7 +646,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_card_subtitle',
 			[
-				'label'     => __('Sub Title', 'travelfic-toolkit'),
+				'label'     => __('Subtitle', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
 				'condition' => [
@@ -672,7 +672,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_card_subtitle_design_2',
 			[
-				'label'     => __('Sub Title', 'travelfic-toolkit'),
+				'label'     => __('Subtitle', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
 				'condition' => [
@@ -744,7 +744,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'team_icon',
 			[
-				'label' => __('Social Icons', 'travelfic-toolkit'),
+				'label' => __('Social', 'travelfic-toolkit'),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -763,7 +763,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_icon_color_bg',
 			[
-				'label'     => __('Color Background', 'travelfic-toolkit'),
+				'label'     => __('Background', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'background-color: {{VALUE}}',
@@ -778,7 +778,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->start_controls_section(
 			'team_slider_nav',
 			[
-				'label' => __('Slider Navigation', 'travelfic-toolkit'),
+				'label' => __('Navigation', 'travelfic-toolkit'),
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'tft_team_style' => ['design-2'],
@@ -789,7 +789,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_slider_nav_button',
 			[
-				'label'     => __('Nav Color', 'travelfic-toolkit'),
+				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li button' => 'background-color: {{VALUE}};',
@@ -802,7 +802,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$this->add_control(
 			'team_slider_nav_button_active',
 			[
-				'label'     => __('Nav Active Color', 'travelfic-toolkit'),
+				'label'     => __('Active Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li.slick-active button' => 'background-color: {{VALUE}};',
