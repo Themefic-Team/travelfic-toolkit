@@ -564,21 +564,12 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				],
 			]
 		);
-		$this->add_control(
+		$this->add_responsive_control(
 			'team_card_border_radius',
 			[
-				'label'     => __('Border Radius', 'travelfic-toolkit'),
-				'type'      => \Elementor\Controls_Manager::SLIDER,
-				'range'     => [
-					'px' => [
-						'min' => 1,
-						'max' => 100,
-					],
-				],
-				'default'   => [
-					'unit' => 'px',
-					'size' => 8,
-				],
+				'label'      => __('Border Radius', 'travelfic-toolkit'),
+				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',

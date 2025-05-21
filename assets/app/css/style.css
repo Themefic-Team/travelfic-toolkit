@@ -186,7 +186,7 @@ main {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 99999;
+  z-index: 9999;
 }
 
 .tft-section-space {
@@ -2992,6 +2992,9 @@ label.tft-form-label .tft-form-control {
   position: relative;
   top: 50%;
 }
+.tft-hero-design__four__slider.slick-dotted.slick-slider {
+  margin-bottom: 0;
+}
 @media only screen and (max-width: 575.98px) {
   .tft-hero-design__four__slider.slick-dotted.slick-slider {
     margin-bottom: 90px;
@@ -3314,8 +3317,8 @@ label.tft-form-label .tft-form-control {
   position: absolute;
   top: 50%;
   right: 3px;
-  max-width: 1706px;
-  margin: auto;
+  max-width: fit-content;
+  margin: 0 auto;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -3337,7 +3340,7 @@ label.tft-form-label .tft-form-control {
   z-index: 99;
   flex-direction: column;
   align-items: end;
-  bottom: inherit;
+  height: fit-content;
 }
 @media only screen and (max-width: 1760px) {
   .tft-hero-design__four .slick-dots {
@@ -3347,80 +3350,29 @@ label.tft-form-label .tft-form-control {
 @media only screen and (max-width: 991.98px) {
   .tft-hero-design__four .slick-dots {
     right: 0;
-    bottom: 0px;
+    top: 100%;
     gap: 8px;
     transform: none;
     flex-direction: row;
     width: 100%;
-    margin-bottom: -120px;
+    margin-top: 100px;
+    max-width: inherit;
+    max-height: fit-content;
   }
 }
 @media only screen and (max-width: 575.98px) {
   .tft-hero-design__four .slick-dots {
     right: 0;
-    bottom: 10px;
+    top: 100%;
     gap: 8px;
     transform: none;
     flex-direction: row;
     width: 100%;
-    margin-bottom: -100px;
+    margin-top: 100px;
+    max-height: fit-content;
   }
 }
-.tft-hero-design__four .slick-dots li {
-  width: 30px;
-  height: 30px;
-  border: 2px solid transparent;
-  background: transparent;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  cursor: pointer;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-hero-design__four .slick-dots li {
-    width: 25px;
-    height: 25px;
-  }
-}
-.tft-hero-design__four .slick-dots li.slick-active {
-  border-color: #ffffff;
-}
-.tft-hero-design__four .slick-dots li button {
-  width: 10px;
-  height: 10px;
-  background: #ffffff;
-  border: 0;
-  padding: 0;
-  font-size: 0;
-  cursor: pointer;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-hero-design__four .slick-dots li button {
-    width: 9px;
-    height: 9px;
-  }
-}
-.tft-hero-design__four .slick-dots li button:before {
-  display: none;
-}
-
-.tft-search-box {
+.tft-hero-design .tft-search-box {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -3428,165 +3380,165 @@ label.tft-form-label .tft-form-control {
   max-width: 1000px;
 }
 @media only screen and (max-width: 1480px) {
-  .tft-search-box {
+  .tft-hero-design .tft-search-box {
     width: 900px;
   }
 }
 @media only screen and (max-width: 1280px) {
-  .tft-search-box {
+  .tft-hero-design .tft-search-box {
     width: 820px;
   }
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-search-box {
+  .tft-hero-design .tft-search-box {
     width: 820px;
   }
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box {
+  .tft-hero-design .tft-search-box {
     position: relative;
     max-width: 100%;
   }
 }
-.tft-search-box .tft-search-box-inner {
+.tft-hero-design .tft-search-box .tft-search-box-inner {
   padding: 40px;
   box-shadow: rgba(29, 42, 59, 0.1) 0px 4px 20px;
   width: 1000px;
 }
 @media only screen and (max-width: 1480px) {
-  .tft-search-box .tft-search-box-inner {
+  .tft-hero-design .tft-search-box .tft-search-box-inner {
     width: 900px;
   }
 }
 @media only screen and (max-width: 1280px) {
-  .tft-search-box .tft-search-box-inner {
+  .tft-hero-design .tft-search-box .tft-search-box-inner {
     width: 820px;
   }
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-search-box .tft-search-box-inner {
+  .tft-hero-design .tft-search-box .tft-search-box-inner {
     width: 820px;
   }
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box .tft-search-box-inner {
+  .tft-hero-design .tft-search-box .tft-search-box-inner {
     width: 100%;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-inner {
+  .tft-hero-design .tft-search-box .tft-search-box-inner {
     padding: 20px;
   }
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs {
   box-shadow: none;
   padding: 0px;
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn {
   cursor: pointer;
   padding: 10px 18px;
   background-color: transparent;
   border: 1px solid #ccc;
   color: #000;
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn.active, .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn:hover {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn.active, .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn:hover {
   background-color: #F15D30;
   border-color: #F15D30;
   color: white;
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab-mobile {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab-mobile {
     border: 1px solid #ddd;
     border-radius: 4px;
   }
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper {
   margin-top: 16px;
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf-tabcontent #tf_hotel_aval_check {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf-tabcontent #tf_hotel_aval_check {
     margin-bottom: 0px;
   }
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking {
   margin: 0px;
   border-radius: 4px 0px 0px 4px;
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking {
     padding: 8px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking {
     height: auto;
     flex-direction: column;
     row-gap: 16px;
     align-items: stretch;
   }
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking > div {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking > div {
     width: 100%;
   }
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking > div:nth-child(2) {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking > div:nth-child(2) {
     width: 100% !important;
   }
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_btn.tf-submit {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_btn.tf-submit {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
   background: #f15d30;
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
   border-right: 1px solid #ccc;
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
     padding: 0px !important;
   }
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectdate-wrap {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectdate-wrap {
     padding: 8px 8px !important;
     border: none;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectdate-wrap {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectdate-wrap {
     padding: 0px !important;
   }
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap {
   width: 30%;
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap {
     padding: 8px 8px !important;
     border: none;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap {
+  .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap {
     width: 100% !important;
     padding: 0px !important;
   }
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap .tf_input-inner input {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_selectperson-wrap .tf_input-inner input {
   padding: 0px 8px;
   border-radius: 0;
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_input-inner *,
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_input-inner {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_input-inner *,
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_input-inner {
   font-family: "Josefin Sans";
   font-weight: 600;
   font-size: 1.125rem;
   line-height: 1.2;
 }
-.tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_submit-wrap {
+.tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_submit-wrap {
   background: transparent;
 }
-.tft-search-box input,
-.tft-search-box select {
+.tft-hero-design .tft-search-box input,
+.tft-hero-design .tft-search-box select {
   font-family: "Josefin Sans";
   font-size: 1.125rem;
   color: #f15d30;
@@ -3596,45 +3548,45 @@ label.tft-form-label .tft-form-control {
   width: 100%;
   padding: 10px;
 }
-.tft-search-box input:focus,
-.tft-search-box select:focus {
+.tft-hero-design .tft-search-box input:focus,
+.tft-hero-design .tft-search-box select:focus {
   color: #f15d30;
 }
-.tft-search-box input[type=date]::-webkit-calendar-picker-indicator {
+.tft-hero-design .tft-search-box input[type=date]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   border-radius: 4px;
   margin-right: 2px;
   filter: invert(41%) sepia(99%) saturate(1595%) hue-rotate(342deg) brightness(98%) contrast(94%);
 }
-.tft-search-box .tft-search-box-field {
+.tft-hero-design .tft-search-box .tft-search-box-field {
   flex-basis: 22%;
   padding: 15px 0px;
 }
-.tft-search-box .tft-search-box-field label {
+.tft-hero-design .tft-search-box .tft-search-box-field label {
   display: block;
   padding-bottom: 2px;
 }
-.tft-search-box .tft-search-box-container {
+.tft-hero-design .tft-search-box .tft-search-box-container {
   column-gap: 18px;
   justify-content: space-between;
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-search-box .tft-search-box-container {
+  .tft-hero-design .tft-search-box .tft-search-box-container {
     column-gap: 10px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-search-box .tft-search-box-container {
+  .tft-hero-design .tft-search-box .tft-search-box-container {
     display: block;
   }
 }
-.tft-search-box .tft-tour-serach-fields-wrap {
+.tft-hero-design .tft-search-box .tft-tour-serach-fields-wrap {
   border: none;
   box-shadow: none;
   display: flex;
   flex-direction: row;
 }
-.tft-search-box .tft-tour-serach-fields-wrap > div {
+.tft-hero-design .tft-search-box .tft-tour-serach-fields-wrap > div {
   border: none;
   display: flex;
   flex-direction: column;
@@ -3642,10 +3594,10 @@ label.tft-form-label .tft-form-control {
   justify-content: space-between;
   padding: 0;
 }
-.tft-search-box .tft_tour-fields-title {
+.tft-hero-design .tft-search-box .tft_tour-fields-title {
   color: #a79997;
 }
-.tft-search-box .tft-selectperson-field-wrap {
+.tft-hero-design .tft-search-box .tft-selectperson-field-wrap {
   border-bottom: 1px solid rgba(241, 93, 48, 0.2509803922);
   padding: 11px 0;
 }

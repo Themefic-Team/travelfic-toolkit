@@ -488,6 +488,34 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 ]
             ]
         );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'blog_section_button_border_',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a',
+                'condition' => [
+                    'blog_style' => 'design-2',
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'blog_section_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2',
+                ]
+            ]
+        );
+
         $this->start_controls_tabs('blog_section_button_tabs_');
 
         $this->start_controls_tab(
@@ -566,6 +594,19 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 ],
             ]
         );
+        $this->add_control(
+            'blog_section_button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a:hover' => 'border-color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'blog_style' => 'design-2', 
+                ],
+            ]
+        );
         $this->end_controls_tab();
         $this->end_controls_tabs();
         $this->end_controls_section();
@@ -607,18 +648,13 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         );
 
         // design 3
-        $this->add_control(
+        $this->add_responsive_control(
             'news_card_radius_design_3',
             [
-                'label'     => __('Border Radius', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::SLIDER,
-                'range'     => [
-                    'px' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-                'selectors' => [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
@@ -1128,6 +1164,33 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'news_design3_button_border_',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a',
+                'condition' => [
+                    'blog_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'news_design3_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors'  => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'blog_style' => ['design-3'],
+                ],
+            ]
+        );
+
         $this->start_controls_tabs('button_style_tabs_');
 
         $this->start_controls_tab(
@@ -1201,6 +1264,20 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'blog_style' => ['design-3'],
+                ],
+            ]
+        );
+
+         $this->add_control(
+            'news_design3_button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'blog_style' => ['design-3'],

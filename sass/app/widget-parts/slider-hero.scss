@@ -360,8 +360,10 @@
             position: relative;
             top: 50%;
 
-            @media #{$max575} {
-                &.slick-dotted.slick-slider {
+            &.slick-dotted.slick-slider {
+                margin-bottom: 0;
+
+                @media #{$max575} {
                     margin-bottom: 90px;
                 }
             }
@@ -633,8 +635,8 @@
             position: absolute;
             top: 50%;
             right: 3px;
-            max-width: 1706px;
-            margin: auto;
+            max-width: fit-content;
+            margin: 0 auto;
             @include d-flex();
             @include align-items(center);
             @include justify-content(center);
@@ -643,7 +645,7 @@
             z-index: 99;
             flex-direction: column;
             align-items: end;
-            bottom: inherit;
+            height: fit-content;
 
             @media #{$max1760} {
                 right: 0;
@@ -651,97 +653,37 @@
 
             @media #{$max991} {
                 right: 0;
-                bottom: 0px;
+                top: 100%;
                 gap: 8px;
                 transform: none;
                 flex-direction: row;
                 width: 100%;
-                margin-bottom: -120px;
+                margin-top: 100px;
+                max-width: inherit;
+                max-height: fit-content;
             }
 
             @media #{$max575} {
                 right: 0;
-                bottom: 10px;
+                top: 100%;
                 gap: 8px;
                 transform: none;
                 flex-direction: row;
                 width: 100%;
-                margin-bottom: -100px;
-            }
-
-            li {
-                width: 30px;
-                height: 30px;
-                border: 2px solid transparent;
-                background: transparent;
-                @include d-flex();
-                @include align-items(center);
-                @include justify-content(center);
-                cursor: pointer;
-
-                @media #{$max767} {
-                    width: 25px;
-                    height: 25px;
-                }
-
-                &.slick-active {
-                    border-color: $color-white;
-                }
-
-                button {
-                    width: 10px;
-                    height: 10px;
-                    background: $color-white;
-                    border: 0;
-                    padding: 0;
-                    font-size: 0;
-                    cursor: pointer;
-                    @include bd-radius(0);
-
-                    @media #{$max767} {
-                        width: 9px;
-                        height: 9px;
-                    }
-
-                    &:before {
-                        display: none;
-                    }
-                }
+                margin-top: 100px;
+                max-height: fit-content;
             }
         }
     }
-}
 
 
-// search form
-.tft-search-box {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background: #fff;
-    max-width: 1000px;
-
-    @media #{$max1480} {
-        width: 900px;
-    }
-
-    @media #{$max1280} {
-        width: 820px;
-    }
-
-    @media #{$max1199} {
-        width: 820px;
-    }
-
-    @media #{$max1024} {
-        position: relative;
-        max-width: 100%;
-    }
-
-    .tft-search-box-inner {
-        padding: 40px;
-        box-shadow: rgba(29, 42, 59, 0.1) 0px 4px 20px;
-        width: 1000px;
+    // search form
+    .tft-search-box {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        max-width: 1000px;
 
         @media #{$max1480} {
             width: 900px;
@@ -756,206 +698,231 @@
         }
 
         @media #{$max1024} {
-            width: 100%;
+            position: relative;
+            max-width: 100%;
         }
 
-        @media #{$max767} {
-            padding: 20px;
-        }
+        .tft-search-box-inner {
+            padding: 40px;
+            box-shadow: rgba(29, 42, 59, 0.1) 0px 4px 20px;
+            width: 1000px;
 
-        #tf-booking-search-tabs {
-            box-shadow: none;
-            padding: 0px;
-
-            .tf-booking-form-tab {
-                .tf_btn {
-                    cursor: pointer;
-                    padding: 10px 18px;
-                    background-color: transparent;
-                    border: 1px solid #ccc;
-                    color: #000;
-                    &.active,
-                    &:hover {
-                        background-color: #F15D30;
-                        border-color: #F15D30;
-                        color: white;
-                    }
-                    
-                }
+            @media #{$max1480} {
+                width: 900px;
             }
 
-            .tf-booking-form-tab-mobile {
-                @media #{$max1024} {
-                    border: 1px solid #ddd;
-                    border-radius: 4px;
-                }
+            @media #{$max1280} {
+                width: 820px;
             }
 
-            .tf-booking-forms-wrapper {
-                margin-top: 16px;
+            @media #{$max1199} {
+                width: 820px;
+            }
 
-                .tf-tabcontent {
-                    #tf_hotel_aval_check {
-                        @media #{$max767} {
-                            margin-bottom: 0px;
-                        }
-                    }
-                }
+            @media #{$max1024} {
+                width: 100%;
+            }
 
-                .tf_homepage-booking {
-                    margin: 0px;
-                    border-radius: 4px 0px 0px 4px;
+            @media #{$max767} {
+                padding: 20px;
+            }
 
-                    @media #{$max1024} {
-                        padding: 8px;
-                    }
+            #tf-booking-search-tabs {
+                box-shadow: none;
+                padding: 0px;
 
-                    @media #{$max767} {
-                        height: auto;
-                        flex-direction: column;
-                        row-gap: 16px;
-                        align-items: stretch;
-
-                        &>div {
-                            width: 100%;
-
-                            &:nth-child(2) {
-                                width: 100% !important;
-                            }
-                        }
-                    }
-
+                .tf-booking-form-tab {
                     .tf_btn {
-                        &.tf-submit{
-                            @include bd-radius(0);
-                            background: #f15d30;
+                        cursor: pointer;
+                        padding: 10px 18px;
+                        background-color: transparent;
+                        border: 1px solid #ccc;
+                        color: #000;
+
+                        &.active,
+                        &:hover {
+                            background-color: #F15D30;
+                            border-color: #F15D30;
+                            color: white;
                         }
+
                     }
+                }
 
-                    .tf_destination-wrap {
-                        border-right: 1px solid #ccc;
-
-                        @media #{$max767} {
-                            padding: 0px !important;
-                        }
+                .tf-booking-form-tab-mobile {
+                    @media #{$max1024} {
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
                     }
+                }
 
-                    .tf_selectdate-wrap {
-                        @media #{$max1024} {
-                            padding: 8px 8px !important;
-                            border: none;
-                        }
+                .tf-booking-forms-wrapper {
+                    margin-top: 16px;
 
-                        @media #{$max767} {
-                            padding: 0px !important;
-                        }
-                    }
-
-                    .tf_selectperson-wrap {
-                        width: 30%;
-
-                        @media #{$max1024} {
-                            padding: 8px 8px !important;
-                            border: none;
-                        }
-
-                        @media #{$max767} {
-                            width: 100% !important;
-                            padding: 0px !important;
-                        }
-
-                        .tf_input-inner {
-                            input {
-                                padding: 0px 8px;
-                                border-radius: 0;
+                    .tf-tabcontent {
+                        #tf_hotel_aval_check {
+                            @media #{$max767} {
+                                margin-bottom: 0px;
                             }
                         }
                     }
 
-                    .tf_input-inner *,
-                    .tf_input-inner {
-                        font-family: $font-josefin;
-                        font-weight: 600;
-                        font-size: 1.125rem;
-                        line-height: 1.2;
-                    }
+                    .tf_homepage-booking {
+                        margin: 0px;
+                        border-radius: 4px 0px 0px 4px;
 
-                    .tf_submit-wrap {
-                        background: transparent;
+                        @media #{$max1024} {
+                            padding: 8px;
+                        }
+
+                        @media #{$max767} {
+                            height: auto;
+                            flex-direction: column;
+                            row-gap: 16px;
+                            align-items: stretch;
+
+                            &>div {
+                                width: 100%;
+
+                                &:nth-child(2) {
+                                    width: 100% !important;
+                                }
+                            }
+                        }
+
+                        .tf_btn {
+                            &.tf-submit {
+                                @include bd-radius(0);
+                                background: #f15d30;
+                            }
+                        }
+
+                        .tf_destination-wrap {
+                            border-right: 1px solid #ccc;
+
+                            @media #{$max767} {
+                                padding: 0px !important;
+                            }
+                        }
+
+                        .tf_selectdate-wrap {
+                            @media #{$max1024} {
+                                padding: 8px 8px !important;
+                                border: none;
+                            }
+
+                            @media #{$max767} {
+                                padding: 0px !important;
+                            }
+                        }
+
+                        .tf_selectperson-wrap {
+                            width: 30%;
+
+                            @media #{$max1024} {
+                                padding: 8px 8px !important;
+                                border: none;
+                            }
+
+                            @media #{$max767} {
+                                width: 100% !important;
+                                padding: 0px !important;
+                            }
+
+                            .tf_input-inner {
+                                input {
+                                    padding: 0px 8px;
+                                    border-radius: 0;
+                                }
+                            }
+                        }
+
+                        .tf_input-inner *,
+                        .tf_input-inner {
+                            font-family: $font-josefin;
+                            font-weight: 600;
+                            font-size: 1.125rem;
+                            line-height: 1.2;
+                        }
+
+                        .tf_submit-wrap {
+                            background: transparent;
+                        }
                     }
                 }
             }
         }
-    }
 
-    input,
-    select {
-        font-family: $font-josefin;
-        font-size: 1.125rem;
-        color: #f15d30;
-        font-weight: 600;
-        line-height: 1.3;
-        border: none;
-        width: 100%;
-        padding: 10px;
-
-        &:focus {
+        input,
+        select {
+            font-family: $font-josefin;
+            font-size: 1.125rem;
             color: #f15d30;
-        }
-    }
-
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        cursor: pointer;
-        border-radius: 4px;
-        margin-right: 2px;
-        filter: invert(41%) sepia(99%) saturate(1595%) hue-rotate(342deg) brightness(98%) contrast(94%);
-    }
-
-    .tft-search-box-field {
-        flex-basis: 22%;
-        padding: 15px 0px;
-
-        label {
-            display: block;
-            padding-bottom: 2px;
-        }
-    }
-
-    .tft-search-box-container {
-        column-gap: 18px;
-        justify-content: space-between;
-
-        @media #{$max1024} {
-            column-gap: 10px;
-        }
-
-        @media #{$max767} {
-            display: block;
-        }
-    }
-
-    .tft-tour-serach-fields-wrap {
-        border: none;
-        box-shadow: none;
-        display: flex;
-        flex-direction: row;
-
-        &>div {
+            font-weight: 600;
+            line-height: 1.3;
             border: none;
-            display: flex;
-            flex-direction: column;
-            height: inherit;
+            width: 100%;
+            padding: 10px;
+
+            &:focus {
+                color: #f15d30;
+            }
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 2px;
+            filter: invert(41%) sepia(99%) saturate(1595%) hue-rotate(342deg) brightness(98%) contrast(94%);
+        }
+
+        .tft-search-box-field {
+            flex-basis: 22%;
+            padding: 15px 0px;
+
+            label {
+                display: block;
+                padding-bottom: 2px;
+            }
+        }
+
+        .tft-search-box-container {
+            column-gap: 18px;
             justify-content: space-between;
-            padding: 0;
+
+            @media #{$max1024} {
+                column-gap: 10px;
+            }
+
+            @media #{$max767} {
+                display: block;
+            }
+        }
+
+        .tft-tour-serach-fields-wrap {
+            border: none;
+            box-shadow: none;
+            display: flex;
+            flex-direction: row;
+
+            &>div {
+                border: none;
+                display: flex;
+                flex-direction: column;
+                height: inherit;
+                justify-content: space-between;
+                padding: 0;
+            }
+        }
+
+        .tft_tour-fields-title {
+            color: #a79997;
+        }
+
+        .tft-selectperson-field-wrap {
+            border-bottom: 1px solid rgba(241, 93, 48, 0.2509803922);
+            padding: 11px 0;
         }
     }
 
-    .tft_tour-fields-title {
-        color: #a79997;
-    }
-
-    .tft-selectperson-field-wrap {
-        border-bottom: 1px solid rgba(241, 93, 48, 0.2509803922);
-        padding: 11px 0;
-    }
 }

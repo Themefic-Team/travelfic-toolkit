@@ -517,6 +517,23 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'name'     => 'single_destination_button_border_',
                 'label'    => __('Border', 'travelfic-toolkit'),
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span',
+                'condition' => [
+                    'des_style' => 'design-2', 
+                ],
+            ]
+        );
+        $this->add_control(
+            'single_destination_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-content span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', 
+                ],
             ]
         );
         $this->start_controls_tabs('single_destination_button_tabs_');
@@ -592,7 +609,20 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover' => 'background: {{VALUE}} !important',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover' => 'background: {{VALUE}}',
+                ],
+                'condition' => [
+                    'des_style' => 'design-2', 
+                ],
+            ]
+        );
+        $this->add_control(
+            'single_destination_button_border_hov_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover' => 'border-color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => 'design-2', 
@@ -912,6 +942,18 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'tour_destination_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->start_controls_tabs('button_style_tabs_');
 
         $this->start_controls_tab(
@@ -927,7 +969,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_button_text_color',
             [
-                'label'     => __('Text Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'color: {{VALUE}};',
@@ -940,7 +982,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_button_background_color',
             [
-                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn' => 'background-color: {{VALUE}};',
@@ -967,7 +1009,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_button_hover_color',
             [
-                'label'     => __('Text Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn:hover' => 'color: {{VALUE}};',
@@ -981,10 +1023,24 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
         $this->add_control(
             'tour_destination_button_background_hover_color',
             [
-                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn:hover' => 'background-color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'des_style' => ['design-3'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'tour_destination_button_Border_hover_color',
+            [
+                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-btn:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
