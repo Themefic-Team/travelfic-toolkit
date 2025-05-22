@@ -890,8 +890,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'transparent_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -904,12 +904,11 @@ add_action('init', function () {
         'priority'   => 53,
         'tab'      => 'settings',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
-
         'required' => [
             [
                 'setting'  => $prefix . 'transparent_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -922,11 +921,11 @@ add_action('init', function () {
         'section'   => 'travelfic_customizer_header',
         'tab'       => 'settings',
         'default'   => '<a href="' . esc_url(admin_url('customize.php?autofocus[section]=title_tagline')) . '" class="tf-redirect-btn ">' . esc_html__('Transparent Logo', 'travelfic') . '</a>',
-        'required'  => [
+        'required' => [
             [
                 'setting'  => $prefix . 'transparent_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -939,12 +938,11 @@ add_action('init', function () {
         'priority'    => 54,
         'tab'         => 'settings',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
-
         'required' => [
             [
                 'setting'  => $prefix . 'transparent_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -960,8 +958,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'transparent_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ));
@@ -1439,8 +1437,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'stiky_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -1456,8 +1454,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'stiky_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ));
@@ -1473,8 +1471,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'stiky_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -1489,8 +1487,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'stiky_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ]);
@@ -1506,8 +1504,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'stiky_header',
-                'operator' => '==',
-                'value'    => true,
+                'operator' => '!=',
+                'value'    => false,
             ],
         ],
     ));
