@@ -1431,14 +1431,14 @@ add_action('init', function () {
     // transparent header head
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'sticky_header_head',
+        'settings'    => $prefix . 'stiky_header_head',
         'section'     => 'travelfic_customizer_header',
         'default'     => '<h2 class="travelfic-customizer-heading">' . esc_html__('Sticky Header', 'travelfic') . '</h2>',
         'tab'         => 'design',
         'priority'    => 38,
         'required' => [
             [
-                'setting'  => $prefix . 'sticky_header',
+                'setting'  => $prefix . 'stiky_header',
                 'operator' => '==',
                 'value'    => true,
             ],
@@ -1448,14 +1448,14 @@ add_action('init', function () {
     //Sticky Header Background color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'color',
-        'settings'    => $prefix . 'sticky_header_bg_color',
+        'settings'    => $prefix . 'stiky_header_bg_color',
         'label'       => esc_html__('Background', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'priority'    => 39,
         'tab'         => 'design',
         'required' => [
             [
-                'setting'  => $prefix . 'sticky_header',
+                'setting'  => $prefix . 'stiky_header',
                 'operator' => '==',
                 'value'    => true,
             ],
@@ -1472,7 +1472,7 @@ add_action('init', function () {
         'default'     => '<div class="border-dashed border-bottom tf-mb-12"></div>',
         'required' => [
             [
-                'setting'  => $prefix . 'sticky_header',
+                'setting'  => $prefix . 'stiky_header',
                 'operator' => '==',
                 'value'    => true,
             ],
@@ -1482,13 +1482,13 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'sticky_header_menu_text_color_separator_line',
+        'settings'    => $prefix . 'stiky_header_menu_text_color_separator_line',
         'section'     => 'travelfic_customizer_header',
         'priority'   => 41,
         'tab'      => 'design',
         'required' => [
             [
-                'setting'  => $prefix . 'sticky_header',
+                'setting'  => $prefix . 'stiky_header',
                 'operator' => '==',
                 'value'    => true,
             ],
@@ -1498,14 +1498,14 @@ add_action('init', function () {
     // Sticky Header Menu Color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'color',
-        'settings'    => $prefix . 'sticky_header_menu_text_color',
+        'settings'    => $prefix . 'stiky_header_menu_text_color',
         'label'       => esc_html__('Menu', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'priority'    => 42,
         'tab'         => 'design',
         'required' => [
             [
-                'setting'  => $prefix . 'sticky_header',
+                'setting'  => $prefix . 'stiky_header',
                 'operator' => '==',
                 'value'    => true,
             ],

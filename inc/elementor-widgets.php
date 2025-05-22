@@ -145,13 +145,6 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_ApartmentLocation() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Cars() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_CarBrands() );
-
-
-        // Include Tourfic Widget files
-        require_once(__DIR__ . '/elementor-widgets/tourfic-widgets/TF_Search_horizontal.php');
-
-        // Tourfic Widgets
-        \Elementor\Plugin::instance()->widgets_manager->register( new \TF_Search_horizontal() );
        
     }
 }
