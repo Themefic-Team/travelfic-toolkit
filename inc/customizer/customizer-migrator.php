@@ -95,7 +95,7 @@ function tft_customizer_migrator()
 
     // rename customizer keys
     $tft_customizer_key_renames = [
-        'travelfic_customizer_settings_design_3_header_btn_bg_color' => 'travelfic_customizer_settings_header_topbar_background',
+        'travelfic_customizer_settings_design_3_top_header_bg' => 'travelfic_customizer_settings_header_topbar_background',
         'travelfic_customizer_settings_design_3_top_header_text_color' => 'travelfic_customizer_settings_header_topbar_color',
     ];
 
