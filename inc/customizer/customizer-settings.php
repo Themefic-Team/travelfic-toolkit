@@ -998,7 +998,7 @@ add_action('init', function () {
     // header button background
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'header_button_background_colors',
+        'settings'    => $prefix . 'header_button_background_color',
         'label'       => esc_html__('Button Background', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',
@@ -1019,7 +1019,7 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'header_button_background_colors_separator_line',
+        'settings'    => $prefix . 'header_button_background_color_separator_line',
         'section'     => 'travelfic_customizer_header',
         'priority'    => 12,
         'tab'         => 'design',
@@ -1301,7 +1301,7 @@ add_action('init', function () {
     // transparent header bg
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'     => 'color',
-        'settings' => $prefix . 'transparent_header_bg',
+        'settings' => $prefix . 'transparent_header_bg_color',
         'label'    => esc_html__('Background', 'travelfic'),
         'section'  => 'travelfic_customizer_header',
         'tab'      => 'design',
@@ -1407,7 +1407,7 @@ add_action('init', function () {
     // transparent header submenu color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'        => 'multicolor',
-        'settings'    => $prefix . 'transparent_submenu_colors',
+        'settings'    => $prefix . 'transparent_submenu_color',
         'label'       => esc_html__('Submenu Color', 'travelfic'),
         'section'     => 'travelfic_customizer_header',
         'tab'         => 'design',
@@ -1862,7 +1862,7 @@ add_action('init', function () {
     // footer background overlay
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
         'type'      => 'color',
-        'settings' => $prefix . 'footer_3_bg_overlay_colors',
+        'settings' => $prefix . 'footer_3_bg_overlay_color',
         'label'    => esc_html__('Background Overlay', 'travelfic'),
         'section'  => 'travelfic_customizer_footer',
         'tab'         => 'design',
@@ -1878,7 +1878,7 @@ add_action('init', function () {
     // separator line
     travelfic_Kirki::add_field('travelfic_customizer_options', [
         'type'        => 'custom',
-        'settings'    => $prefix . 'footer_3_bg_overlay_colors_separator_line',
+        'settings'    => $prefix . 'footer_3_bg_overlay_color_separator_line',
         'section'     => 'travelfic_customizer_footer',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
         'tab'         => 'design',

@@ -75,7 +75,13 @@ function travelfic_toolkit_plugin_loaded_action() {
 /**
  *    Customizer Settings
 */
-require_once dirname( __FILE__ ) . '/inc/customizer-settings.php';
+require_once dirname( __FILE__ ) . '/inc/customizer/customizer-settings.php';
+
+/**
+ *    Customizer Migrator
+*/
+require_once dirname( __FILE__ ) . '/inc/customizer/customizer-migrator.php';
+
 
 /**
  *    Customizer Apply
