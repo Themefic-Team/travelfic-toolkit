@@ -3372,6 +3372,59 @@ label.tft-form-label .tft-form-control {
     max-height: fit-content;
   }
 }
+.tft-hero-design__four .slick-dots li {
+  width: 30px;
+  height: 30px;
+  border: 2px solid transparent;
+  background: transparent;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  cursor: pointer;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-hero-design__four .slick-dots li {
+    width: 25px;
+    height: 25px;
+  }
+}
+.tft-hero-design__four .slick-dots li.slick-active {
+  border-color: #ffffff;
+}
+.tft-hero-design__four .slick-dots li button {
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border: 0;
+  padding: 0;
+  font-size: 0;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-hero-design__four .slick-dots li button {
+    width: 9px;
+    height: 9px;
+  }
+}
+.tft-hero-design__four .slick-dots li button:before {
+  display: none;
+}
 .tft-hero-design .tft-search-box {
   position: absolute;
   right: 0;
