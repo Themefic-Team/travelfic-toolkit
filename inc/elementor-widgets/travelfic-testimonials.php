@@ -1432,6 +1432,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
             [
+                'name' => 'testimonials_nav__arrow_border',
                 'label' => esc_html__('Border', 'travelfic-toolkit'),
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one button.slick-arrow,
                     #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .slick-dots li.slick-active button::before, 
