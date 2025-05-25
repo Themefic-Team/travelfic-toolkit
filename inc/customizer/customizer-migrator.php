@@ -9,7 +9,8 @@ function tft_customizer_migrator()
         return;
     }
 
-    $fields_to_migrate = [
+    // Color setting migration
+    $color_fields_migrate = [
         'header_menu_color' => [
             'new_key' => 'travelfic_customizer_settings_header_menu_color',
             'normal_key' => 'travelfic_customizer_settings_menu_color',
@@ -37,7 +38,7 @@ function tft_customizer_migrator()
         ],
     ];
 
-    foreach ($fields_to_migrate as $field) {
+    foreach ($color_fields_migrate as $field) {
         $normal = get_theme_mod($field['normal_key']);
         $hover  = get_theme_mod($field['hover_key']);
 
@@ -57,5 +58,53 @@ function tft_customizer_migrator()
             remove_theme_mod($field['hover_key']);
         }
     }
+
+
+    // Typography setting migration
+    $typography_fields_to_migrate = [
+        'header_menu_typo' => 'menu',
+        'header_submenu_typo' => 'submenu',
+    ];
+
+    foreach ($typography_fields_to_migrate as $old_key => $new_prefix) {
+        $full_old_key = 'travelfic_customizer_settings_' . $old_key;
+        $old_values = get_theme_mod($full_old_key);
+
+        if (is_array($old_values)) {
+
+            // Migrate font-size
+            if (!empty($old_values['font-size'])) {
+                set_theme_mod("travelfic_customizer_settings_{$new_prefix}_font_size", [
+                    'desktop' => $old_values['font-size'],
+                ]);
+            }
+
+            // Migrate line-height
+            if (!empty($old_values['line-height'])) {
+                set_theme_mod("travelfic_customizer_settings_{$new_prefix}_font_line_height", $old_values['line-height']);
+            }
+
+            // Migrate text-transform
+            if (!empty($old_values['text-transform'])) {
+                set_theme_mod("travelfic_customizer_settings_{$new_prefix}_font_transform", $old_values['text-transform']);
+            }
+
+            remove_theme_mod($full_old_key);
+        }
+    }
+
+    // rename customizer keys
+    $tft_customizer_key_renames = [
+        'travelfic_customizer_settings_design_3_header_btn_bg_color' => 'travelfic_customizer_settings_header_topbar_background',
+        'travelfic_customizer_settings_design_3_top_header_text_color' => 'travelfic_customizer_settings_header_topbar_color',
+    ];
+
+    foreach ($tft_customizer_key_renames as $old_key => $new_key) {
+        $value = get_theme_mod($old_key);
+        if (!empty($value) && get_theme_mod($new_key) === false) {
+            set_theme_mod($new_key, $value);
+        }
+    }
+
     update_option('tft_customizer_options_migrated', true);
 }
