@@ -6667,11 +6667,8 @@ label.tft-form-label .tft-form-control {
 }
 .tft-testimonials-design__one .slick-prev,
 .tft-testimonials-design__one .slick-next {
-  top: -50px;
-  background-color: #fff;
-  border: 1px solid rgba(29, 42, 59, 0.2);
-  color: #F15D30;
-  z-index: 9;
+  width: auto;
+  height: auto;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-testimonials-design__one .slick-prev,
@@ -6682,17 +6679,6 @@ label.tft-form-label .tft-form-control {
 .tft-testimonials-design__one .slick-prev::before,
 .tft-testimonials-design__one .slick-next::before {
   display: none;
-}
-.tft-testimonials-design__one .slick-prev {
-  left: 90%;
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-testimonials-design__one .slick-prev {
-    left: 75%;
-  }
-}
-.tft-testimonials-design__one .slick-next {
-  right: 0px;
 }
 .tft-testimonials-design__two {
   width: 100%;

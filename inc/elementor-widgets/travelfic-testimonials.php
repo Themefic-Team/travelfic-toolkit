@@ -1676,6 +1676,18 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     <?php }
                     } ?>
                 </div>
+                <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                    <button type='button' class='slick-prev'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path d="M15.9999 21.3334L5.33325 32M5.33325 32L15.9999 42.6667M5.33325 32L58.6666 32" stroke="#C0CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button type='button' class='slick-next'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path d="M47.9999 21.3334L58.6666 32M58.6666 32L47.9999 42.6667M58.6666 32L5.33325 32" stroke="#C0CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <script>
                 // Testimonials
@@ -1694,8 +1706,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             infinite: true,
                             cssEase: "linear",
                             arrows: true,
-                            prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-                            nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+                            prevArrow: ".tft-testimonials-design__one .slick-prev",
+                            nextArrow: ".tft-testimonials-design__one .slick-next",
                             responsive: [{
                                     breakpoint: 991,
                                     settings: {
