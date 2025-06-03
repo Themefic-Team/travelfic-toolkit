@@ -1688,7 +1688,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     </button>
                     <button type='button' class='slick-next pull-right'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
-                            <path d="M47.9999 21.3334L58.6666 32M58.6666 32L47.9999 42.6667M58.6666 32L5.33325 32" stroke="#566676" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M47.9999 21.3334L58.6666 32M58.6666 32L47.9999 42.6667M58.6666 32L5.33325 32" stroke="#C0CCD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                 </div>
