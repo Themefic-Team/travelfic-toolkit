@@ -39,6 +39,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_global_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/settings.json';
             $settings_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($settings_files);
@@ -55,12 +56,46 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_customizer_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
+
+            $prefix = 'travelfic_customizer_settings_';
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/customizer.json';
             $customizers_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($customizers_files);
+          
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
+
+                $palette_choices = array(
+                    'design-1' => ['#0E3DD8', '#003C7A', '#686E7A', '#060D1C'],
+                    'design-2' => ['#003162', '#0054A8', '#000', '#faeedc'],
+                    'design-3' => ['#B58E53', '#917242', '#99948D', '#595349'],
+                    'design-4' => ['#FF6B00', '#C15100', '#6E655E', '#1A0B00'],
+                );
+
+                $color_palette_key = $prefix . 'color_palette';
+
+                switch ($template_key) {
+                    case '4':
+                        $selected_palette = 'design-1';
+                        break;
+                    case '5':
+                        $selected_palette = 'design-4';
+                        break;
+                    default:
+                        $selected_palette = 'design-3';
+                        break;
+                }
+
+                $imported_data[$color_palette_key] = $selected_palette;
+
+                if( isset($palette_choices[$selected_palette]) ){
+                    $imported_data[$prefix .'primary_color']    = $palette_choices[$selected_palette][0];
+                    $imported_data[$prefix .'secondary_color']  = $palette_choices[$selected_palette][1];
+                    $imported_data[$prefix .'body_text_color']  = $palette_choices[$selected_palette][2];
+                    $imported_data[$prefix .'heading_color']    = $palette_choices[$selected_palette][3];
+                }
+
                 foreach ($imported_data as $key => $value) {
                     set_theme_mod($key, $value);
                 }

@@ -741,13 +741,29 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
             </div>
         <?php } elseif ("design-2" == $tft_design) { ?>
             <div class="tft-destination-design__two" style="background-image: url(<?php echo !empty($tft_location_section_bg['url']) ? esc_url($tft_location_section_bg['url']) : ''; ?>);">
-                <div class="tft-destination-header tft-heading-content">
-                    <?php if (!empty($tft_sec_subtitle)) { ?>
-                        <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                    <?php }
-                    if (!empty($tft_sec_title)) { ?>
+                <div class="tft-destination-header">
+                    <div class="tft-heading-content">
+                        <?php 
+                        if(!empty($tft_sec_subtitle)){ ?>
+                            <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                        <?php }
+                        if(!empty($tft_sec_title)){
+                        ?>
                         <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
-                    <?php } ?>
+                        <?php } ?>
+                    </div>
+                    <div class="tft-apartment-location-slider-arrows">
+                        <button type="button" class="slick-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none">
+                                <path d="M7.82843 11.0009H44V13.0009H7.82843L13.1924 18.3648L11.7782 19.779L4 12.0009L11.7782 4.22266L13.1924 5.63687L7.82843 11.0009Z" fill="#B58E53"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="slick-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none">
+                                <path d="M40.1716 11.0009H4V13.0009H40.1716L34.8076 18.3648L36.2218 19.779L44 12.0009L36.2218 4.22266L34.8076 5.63687L40.1716 11.0009Z" fill="#B58E53"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
                 <?php $rand_number = wp_rand(8, 10); ?>
                 <div class="tft-destination-content">
@@ -797,9 +813,8 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                                 autoplaySpeed: 2000,
                                 slidesToShow: 3,
                                 slidesToScroll: 1,
-                                centerMode: <?php echo !empty($all_categories) && count($all_categories) > 3 ? 'true' : 'false' ?>,
-                                prevArrow: '<button type="button" class="slick-prev pull-left"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M7.82843 11.0009H44V13.0009H7.82843L13.1924 18.3648L11.7782 19.779L4 12.0009L11.7782 4.22266L13.1924 5.63687L7.82843 11.0009Z" fill="#B58E53"/></svg></button>',
-                                nextArrow: '<button type="button" class="slick-next pull-right"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="24" viewBox="0 0 48 24" fill="none"><path d="M40.1716 11.0009H4V13.0009H40.1716L34.8076 18.3648L36.2218 19.779L44 12.0009L36.2218 4.22266L34.8076 5.63687L40.1716 11.0009Z" fill="#B58E53"/></svg></button>',
+                                prevArrow:'.tft-apartment-location-slider-arrows .slick-prev',
+            	                nextArrow:'.tft-apartment-location-slider-arrows .slick-next',
                                 responsive: [{
                                         breakpoint: 1024,
                                         settings: {

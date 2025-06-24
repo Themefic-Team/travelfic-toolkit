@@ -2089,7 +2089,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             <?php
                             if ("alls" == $tft_posts_tabs) { ?>
                                 <li data-id="all">
-                                    <button class="tft-btn active font-josefin tft-btn_sharp"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
+                                    <button class="tft-btn tft-btn_gray active font-josefin tft-btn_sharp"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
                                 </li>
                                 <li data-id="featured">
                                     <button class="tft-btn tft-btn_gray font-josefin tft-btn_sharp"><?php echo esc_html_e("Featured", "travelfic-toolkit"); ?></button>
@@ -2569,13 +2569,13 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 <script>
                     (function($) {
                         $(document).ready(function() {
-                            $(document).on('click', '.tft-hotel-header ul li', function() {
+                            $('body').on('click', '.tft-popular-hotel-header ul li', function() {
                                 let $this = $(this).closest('.tft-popular-hotels-design__one');
                                 let tab_type = $(this).attr('data-id');
                                 $this.find('.tft-hotel-header ul li').each(function() {
-                                    $(this).removeClass('active');
+                                    $(this).children('button').removeClass('active');
                                 })
-                                $(this).addClass('active');
+                                $(this).children('button').addClass('active');
                                 $this.find('.tft-popular-hotels-items').hide();
                                 $this.find('.tf-widget-' + tab_type + '-post').css('display', 'grid');
                             });

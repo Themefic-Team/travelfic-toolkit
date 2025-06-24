@@ -298,7 +298,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
 
         // Design Styles start
         $this->add_control(
-            'content_positon',
+            'about_content_positon',
             [
                 'label' => esc_html__('Content Position', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
@@ -316,7 +316,6 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
-                'default' => 'left',
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-content' => 'text-align: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-content .tft-about-us-list ul li' => 'justify-content: {{VALUE}};',
@@ -839,7 +838,6 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a span svg path' => 'fill: {{VALUE}};',
@@ -1087,7 +1085,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
 
                             <div class="tft-section-content font-josefin">
                                 <?php if (!empty($tft_sec_content)) { ?>
-                                    <?php echo wp_kses_post($tft_sec_content); ?>
+                                   <p> <?php echo wp_kses_post($tft_sec_content); ?></p>
                                 <?php } ?>
 
                                 <?php if (!empty($tft_sec_quotes)) { ?>
