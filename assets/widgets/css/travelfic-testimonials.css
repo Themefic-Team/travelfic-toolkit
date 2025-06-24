@@ -1,28 +1,29 @@
-.tft-testimonials-selector .slick-arrow{
-  top: -50px;
-  background-color: #fff;
-  border: 1px solid #1D2A3B33;
-  color: #F15D30;
-  font-size: 18px;
+.tft-testimonials-wrapper .tft-slider-arrows{
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
-  transition: all 0.3s ease;
+  margin-top: 56px;
+  gap: 40px;
 }
-.tft-testimonials-selector .slick-arrow:hover{
-  background-color: #F15D30;
-  color: #fff;
+.tft-testimonials-wrapper .tft-slider-arrows .slick-prev,
+.tft-testimonials-wrapper .tft-slider-arrows .slick-next {
+  width: auto;
+  height: auto;
+  position: relative;
+  left: unset;
+  right: unset;
+  top: unset;
+  transition: all 0.2s ease;
 }
-.tft-testimonials-selector .slick-prev {
-  left: 92%;
+.tft-testimonials-wrapper .tft-slider-arrows .slick-prev::before,
+.tft-testimonials-wrapper .tft-slider-arrows .slick-next::before{
+  display: none;
 }
-.tft-testimonials-selector .slick-next {
-  right: 0px;
+.tft-testimonials-wrapper .tft-slider-arrows svg path{
+  transition: all 0.2s ease;
 }
-
-
+.tft-testimonials-wrapper .tft-slider-arrows button:hover path{
+  stroke: #566676;
+}
 
 .tft-testimonials-selector .tft-testimonials-inner {
   background: #fff;
@@ -234,12 +235,14 @@
   }
 }
 @media (max-width: 767px) {
-  .tft-testimonials-selector .slick-prev,
-  .tft-testimonials-selector .slick-next {
-    top: -36px;
+  .tft-testimonials-wrapper .tft-slider-arrows{
+    gap: 24px;
+    margin-top: 40px;
   }
-  .tft-testimonials-selector .slick-prev {
-    left: 75%;
+
+  .tft-testimonials-wrapper .tft-slider-arrows svg{
+    width: 45px;
+    height: 45px;
   }
   .tft-testimonials-design-2 .tft-testimonials-slides .tft-single-testimonial{
     margin-left: 5px !important;
