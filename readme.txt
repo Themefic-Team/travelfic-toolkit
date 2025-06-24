@@ -2,8 +2,8 @@
 Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
-Tested up to: 6.7
-Stable tag: 1.2.4
+Tested up to: 6.8
+Stable tag: 1.2.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -147,6 +147,11 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.2.5 - 24 June 2025 =
+
+- Fixed: Testimonial widget slider arrow issue.
+- Updated: Slider arrow color for improved visibility.
 
 = 1.2.4 - 20 April 2025 =
 
