@@ -62,28 +62,35 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/customizer.json';
             $customizers_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($customizers_files);
-          
+
+            // tourfic color palette
+            $tf_settings = ! empty( get_option( 'tf_settings') ) ? get_option( 'tf_settings') : [];
+            $prev_primary = !empty($tf_settings['tourfic-design1-global-color']) ? unserialize($tf_settings['tourfic-design1-global-color']) : '';
+            $tf_color_palette = isset($tf_settings['color-palette-template']) ? $tf_settings['color-palette-template'] : '';
+
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
 
                 $palette_choices = array(
                     'design-1' => ['#0E3DD8', '#003C7A', '#686E7A', '#060D1C'],
-                    'design-2' => ['#003162', '#0054A8', '#000', '#faeedc'],
-                    'design-3' => ['#B58E53', '#917242', '#99948D', '#595349'],
-                    'design-4' => ['#FF6B00', '#C15100', '#6E655E', '#1A0B00'],
+                    'design-2' => ['#B58E53', '#917242', '#99948D', '#595349'],
+                    'custom' => ['#fa6400', '#0e3dd8', '#686e7a', '#060d1c'],
                 );
 
                 $color_palette_key = $prefix . 'color_palette';
-
+                
                 switch ($template_key) {
                     case '4':
                         $selected_palette = 'design-1';
+                        $tf_color_palette = 'design-1';
                         break;
                     case '5':
-                        $selected_palette = 'design-4';
+                        $selected_palette = 'custom';
+                        $tf_color_palette = 'custom';
                         break;
                     default:
-                        $selected_palette = 'design-3';
+                        $selected_palette = 'design-2';
+                        $tf_color_palette = 'design-2';
                         break;
                 }
 
@@ -99,6 +106,23 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 foreach ($imported_data as $key => $value) {
                     set_theme_mod($key, $value);
                 }
+
+                // update tf_settings
+                if($tf_color_palette == 'custom'){
+                    $tf_settings['tf-custom-brand']['default'] = !empty($prev_primary['gcolor']) ? $prev_primary['gcolor'] : '#fa6400';
+					$tf_settings['tf-custom-brand']['dark'] = '#0e3dd8';
+					$tf_settings['tf-custom-brand']['lite'] = '#FDDCC3';
+					$tf_settings['tf-custom-text']['heading'] = '#060d1c';
+					$tf_settings['tf-custom-text']['paragraph'] = '#686e7a';
+					$tf_settings['tf-custom-text']['lite'] = '#FDF7F3';
+					$tf_settings['tf-custom-border']['default'] = '#5F3416';
+					$tf_settings['tf-custom-border']['lite'] = '#EEDDD1';
+					$tf_settings['tf-custom-filling']['background'] = '#ffffff';
+					$tf_settings['tf-custom-filling']['foreground'] = '#FFF9F5';
+                }
+                $tf_settings['color-palette-template'] = $tf_color_palette;
+                update_option('tf_settings', $tf_settings);
+
                 die();
             }
 		}
@@ -258,8 +282,49 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                 delete_option('_elementor_global_css');
 		        delete_option('elementor-custom-breakpoints-files');
-                die();
             }
+
+            // Update the elementor global colors
+            $elementor_kit_id = get_option('elementor_active_kit');
+            $settings = get_post_meta($elementor_kit_id, '_elementor_page_settings', true);
+
+            // Ensure settings is an array
+            if (!is_array($settings)) {
+                $settings = [];
+            }
+
+            // Define palettes
+            $color_palette = [
+                'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
+                'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
+                'design-3' => ['#fa6400', '#0e3dd8', '#686e7a', '#fa6400'],
+            ];
+
+            // Fallback to design-1
+            switch ($template_key) {
+                case '5':
+                    $selected = 'design-3';
+                    break;
+                case '4':
+                    $selected = 'design-2';
+                    break;
+                default:
+                    $selected = 'design-1';
+            }
+
+            list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
+
+            // Update colors
+            $settings['system_colors'] = [
+                ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
+                ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
+                ['_id' => 'text',      'title' => 'Text',      'color' => $text_color],
+                ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
+            ];
+
+            update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
+            die();
+
 		}
 
         /**

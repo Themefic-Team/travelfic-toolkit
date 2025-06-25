@@ -2089,7 +2089,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             <?php
                             if ("alls" == $tft_posts_tabs) { ?>
                                 <li data-id="all">
-                                    <button class="tft-btn tft-btn_gray active font-josefin tft-btn_sharp"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
+                                    <button class="tft-btn active font-josefin tft-btn_sharp"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
                                 </li>
                                 <li data-id="featured">
                                     <button class="tft-btn tft-btn_gray font-josefin tft-btn_sharp"><?php echo esc_html_e("Featured", "travelfic-toolkit"); ?></button>
@@ -2573,9 +2573,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                 let $this = $(this).closest('.tft-popular-hotels-design__one');
                                 let tab_type = $(this).attr('data-id');
                                 $this.find('.tft-hotel-header ul li').each(function() {
-                                    $(this).children('button').removeClass('active');
+                                    $(this).children('button').removeClass('active').addClass('tft-btn_gray');
                                 })
-                                $(this).children('button').addClass('active');
+                                $(this).children('button').addClass('active').removeClass('tft-btn_gray');
                                 $this.find('.tft-popular-hotels-items').hide();
                                 $this.find('.tf-widget-' + tab_type + '-post').css('display', 'grid');
                             });
@@ -2748,7 +2748,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 </div>
                                                 <!-- destination button -->
                                                 <div class="tft-desination-btn">
-                                                    <a href="<?php echo esc_url(get_the_permalink()); ?>" class="tft-btn font-ubuntu">
+                                                    <a href="<?php echo esc_url(get_the_permalink()); ?>" class="tft-btn tft-btn_gray font-ubuntu">
                                                         <?php echo esc_html__('Explore', 'travelfic-toolkit'); ?>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </a>

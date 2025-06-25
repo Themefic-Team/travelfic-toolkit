@@ -1370,7 +1370,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                             </a>
                                         </h3>
                                         <div class="tft-read-more">
-                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn font-ubuntu">
+                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn tft-btn_gray font-ubuntu">
                                                 <?php echo esc_html_e("Read Details", "travelfic-toolkit"); ?>
                                                 <i class="ri-arrow-right-line"></i>
                                             </a>
