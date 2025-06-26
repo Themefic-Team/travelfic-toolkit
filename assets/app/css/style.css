@@ -1443,15 +1443,6 @@ label.tft-form-label .tft-form-control {
   background: rgba(48, 40, 28, 0.3);
   backdrop-filter: blur(15px);
 }
-.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-menu ul li a {
-  color: var(--highlights-background);
-}
-.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-logo .logo-text a {
-  color: var(--highlights-background);
-}
-.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-account ul li a {
-  color: var(--highlights-background);
-}
 .tft-header-design__two .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-left .logo-text a {
   color: var(--highlights-background);
 }
@@ -2842,8 +2833,8 @@ label.tft-form-label .tft-form-control {
   line-height: 1.2;
   color: #FDF9F3;
   text-align: center;
-  padding-bottom: 120px;
-  padding-top: 120px;
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-hero-design__two .tft-hero-content h1 {
@@ -6737,11 +6728,11 @@ label.tft-form-label .tft-form-control {
   }
 }
 .tft-testimonials-design__two .tft-testimonials-sliders {
-  padding: 120px 0px 55px 0px;
+  padding: 60px 0;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-testimonials-design__two .tft-testimonials-sliders {
-    padding: 18px 20px 28px 20px !important;
+    padding: 20px;
   }
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial {
