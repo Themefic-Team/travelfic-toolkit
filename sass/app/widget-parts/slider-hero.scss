@@ -205,15 +205,21 @@
                 line-height: 1.2;
                 color: #FDF9F3;
                 text-align: center;
-                padding-bottom: 100px;
-                padding-top: 100px;
-
+                padding-bottom: 80px;
+                padding-top: 80px;
+                margin-bottom: 0;
+                @media #{$max1024} {
+                    padding-top: 120px;
+                    padding-bottom: 20px;   
+                }
                 @media #{$max991} {
                     font-size: 2.5rem;
                 }
 
                 @media #{$max767} {
                     font-size: 1.5rem;
+                    padding-top: 50px;
+                    padding-bottom: 20px;
                 }
             }
 
@@ -270,7 +276,7 @@
             position: absolute;
             right: 24px;
             left: 24px;
-            bottom: 35px;
+            bottom: -60px;
             display: flex;
             flex-direction: column;
             align-items: center;

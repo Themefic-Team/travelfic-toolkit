@@ -71,6 +71,54 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
 
+                // header menu color
+                if(isset($imported_data['travelfic_customizer_settings_menu_color'])){
+                    $imported_data['travelfic_customizer_settings_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_menu_color'];
+                }
+                if(isset($imported_data['travelfic_customizer_settings_menu_hover_color'])){
+                    $imported_data['travelfic_customizer_settings_header_menu_color']['hover'] = $imported_data['travelfic_customizer_settings_menu_hover_color'];
+                }
+
+                // header submenu color
+                if(isset($imported_data['travelfic_customizer_settings_submenu_text_color'])){
+                    $imported_data['travelfic_customizer_settings_header_submenu_color']['normal'] = $imported_data['travelfic_customizer_settings_submenu_text_color'];
+                }
+                if(isset($imported_data['travelfic_customizer_settings_submenu_text_hover_color'])){
+                    $imported_data['travelfic_customizer_settings_header_submenu_color']['hover'] = $imported_data['travelfic_customizer_settings_submenu_text_hover_color'];
+                }
+
+                // transparent menu color
+                if(isset($imported_data['travelfic_customizer_settings_transparent_menu_color'])){
+                    $imported_data['travelfic_customizer_settings_transparent_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_transparent_menu_color'];
+                }
+                if(isset($imported_data['travelfic_customizer_settings_transparent_menu_hover_color'])){
+                    $imported_data['travelfic_customizer_settings_transparent_header_menu_color']['hover'] = $imported_data['travelfic_customizer_settings_transparent_menu_hover_color'];
+                }
+
+                // transparent submenu color
+                if(isset($imported_data['travelfic_customizer_settings_transparent_submenu_text_color'])){
+                    $imported_data['travelfic_customizer_settings_transparent_submenu_color']['normal'] = $imported_data['travelfic_customizer_settings_transparent_submenu_text_color'];
+                }
+                if(isset($imported_data['travelfic_customizer_settings_transparent_submenu_text_hover_color'])){
+                    $imported_data['travelfic_customizer_settings_transparent_submenu_color']['hover'] = $imported_data['travelfic_customizer_settings_transparent_submenu_text_hover_color'];
+                }
+
+                // Archive transparent header
+                if( isset($imported_data['travelfic_customizer_settings_archive_transparent_header']) && $imported_data['travelfic_customizer_settings_archive_transparent_header'] == 'disabled'){
+                    $imported_data['travelfic_customizer_settings_archive_transparent_header'] = false;
+                }else{
+                    $imported_data['travelfic_customizer_settings_archive_transparent_header'] = true;
+                }
+
+                // transparent header
+                if(isset($imported_data['travelfic_customizer_settings_transparent_header']) && $imported_data['travelfic_customizer_settings_transparent_header'] == 'disabled'){
+                    $imported_data['travelfic_customizer_settings_transparent_header'] = false;
+                }else{
+                    $imported_data['travelfic_customizer_settings_transparent_header'] = true;
+                }
+
+                
+
                 $palette_choices = array(
                     'design-1' => ['#0E3DD8', '#003C7A', '#686E7A', '#060D1C'],
                     'design-2' => ['#B58E53', '#917242', '#99948D', '#595349'],
@@ -172,9 +220,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
                     $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
+
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
                         $update_media_url = [];
+
                         foreach($media_urls as $media){
                             if(!empty($media)){
                                 // Download the image file
@@ -209,11 +259,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 }
                             }
                         }
-                        foreach ($update_media_url as $key => $value) {
-                            // Replace the keys in the string
-                            $elementor_content = str_replace($value, $key, $elementor_content);
+                        foreach ($update_media_url as $local_url => $old_url) {
+                            $elementor_content = str_replace($old_url, $local_url, $elementor_content);
                         }
                     }
+                    
                     if(!empty($tft_header_bg)){
                         // Download the image file
                         $page_image_data = file_get_contents( $tft_header_bg );
@@ -244,6 +294,69 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
                 
                             $tft_header_bg = wp_get_attachment_url($page_attachment_id);
+                        }
+                    }
+
+                    // Replace URLs
+                    if (!function_exists('replace_urls_in_array')) {
+                        function replace_urls_in_array($array, $old_url_prefixes, $new_url) {
+                            foreach ($array as $key => $value) {
+                                if (is_array($value)) {
+                                    $array[$key] = replace_urls_in_array($value, $old_url_prefixes, $new_url);
+                                } elseif (is_string($value)) {
+                                    foreach ($old_url_prefixes as $old_url_prefix) {
+                                        if (strpos($value, $old_url_prefix) !== false) {
+                                            $value = str_replace($old_url_prefix, $new_url, $value);
+                                        }
+                                    }
+                                    $array[$key] = $value;
+                                }
+                            }
+                            return $array;
+                        }
+                    }
+                   
+                    // Get the current URL
+                    $current_url = home_url();
+
+                    // Define the old URL prefixes
+                    $old_url_prefixes = [
+                        'https://hotelic-demo.themefic.com',
+                        'https://carrental-demo.themefic.com',
+                        'https://tragaway-demo.themefic.com',
+                    ];
+
+                    // Find and replace URLs
+                    if (!empty($elementor_content)) {
+                        $elementor_data = json_decode(stripslashes($elementor_content), true);
+
+                        if (json_last_error() === JSON_ERROR_NONE && is_array($elementor_data)) {
+
+                            // Replace URLs in array recursively
+                            $elementor_data = replace_urls_in_array($elementor_data, $old_url_prefixes, $current_url);
+
+                            // Find URLs after replacement (optional, for logging)
+                            if (!function_exists('find_urls_in_array')) {
+                                function find_urls_in_array($array) {
+                                    $urls = [];
+
+                                    foreach ($array as $key => $value) {
+                                        if (is_array($value)) {
+                                            $urls = array_merge($urls, find_urls_in_array($value));
+                                        } elseif (is_string($value)) {
+                                            if (preg_match_all('#https?://[^\s"\']+#i', $value, $matches)) {
+                                                $urls = array_merge($urls, $matches[0]);
+                                            }
+                                        }
+                                    }
+
+                                    return $urls;
+                                }
+                            }
+
+                            $found_urls = find_urls_in_array($elementor_data);
+                            $found_urls = array_unique($found_urls);
+                            $elementor_content = wp_slash(json_encode($elementor_data));
                         }
                     }
 
@@ -283,6 +396,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 delete_option('_elementor_global_css');
 		        delete_option('elementor-custom-breakpoints-files');
             }
+
+           
 
             // Update the elementor global colors
             $elementor_kit_id = get_option('elementor_active_kit');
@@ -2551,7 +2666,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 			}
 		}
+
+        
 	}
+
+
 }
 
 new Travelfic_Template_Importer();
