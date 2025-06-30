@@ -301,24 +301,43 @@
       z-index: 99;
       background: rgba(48, 40, 28, 0.3);
       backdrop-filter: blur(15px);
-
-      .tft-main-header-wrapper {
-        .tft-header-left {
-          .logo-text {
+      .tft-menu{
+        ul {
+          li {
             a {
-              color: $highlights-background;
+              color: #fdf9f3;
             }
           }
         }
-
-        .tft-header-center {
-          .tft-mobile_menubar {
-            i {
-              color: $highlights-background;
+      } 
+      .tft-logo{
+        .logo-text {
+          a {
+            color: #fdf9f3;
+            &:hover{
+              color: #fdf9f3!important;
             }
           }
         }
       }
+      .tft-header-center {
+        .tft-mobile_menubar {
+          i {
+            color: #fdf9f3;
+          }
+        }
+      }
+      .tft-account {
+        ul {
+          li{
+            a{
+              color: #fdf9f3;
+            }
+          }
+        }
+      }
+    
+      
     }
 
     

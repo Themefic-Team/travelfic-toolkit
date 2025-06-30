@@ -23,8 +23,8 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TRAVELFIC_TOOLKIT_ASSETS', TRAVELFIC_TOOLKIT_URL . 'assets/' );
 define( 'TRAVELFIC_TOOLKIT_VERSION', '1.1.9' );
-
 
 /**
  * Include file from plugin if it is not available in theme
@@ -257,3 +257,5 @@ function travelfic_toolkit_template_list( $links ) {
     array_push( $links, $link );
     return $links;
 }
+
+

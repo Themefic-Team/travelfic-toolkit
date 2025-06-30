@@ -187,9 +187,6 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'dynamic' => [
                     'active' => true,
                 ],
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
             ]
         );
         $repeater->add_control(

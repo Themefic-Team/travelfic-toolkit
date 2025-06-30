@@ -1443,11 +1443,20 @@ label.tft-form-label .tft-form-control {
   background: rgba(48, 40, 28, 0.3);
   backdrop-filter: blur(15px);
 }
-.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-left .logo-text a {
-  color: var(--highlights-background);
+.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-menu ul li a {
+  color: #fdf9f3;
 }
-.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
-  color: var(--highlights-background);
+.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-logo .logo-text a {
+  color: #fdf9f3;
+}
+.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-logo .logo-text a:hover {
+  color: #fdf9f3 !important;
+}
+.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-header-center .tft-mobile_menubar i {
+  color: #fdf9f3;
+}
+.tft-header-design__two .tft-menus-section.tft_has_transparent .tft-account ul li a {
+  color: #fdf9f3;
 }
 .tft-header-design__three {
   background: #07245f;

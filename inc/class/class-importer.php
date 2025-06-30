@@ -9,6 +9,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 	class Travelfic_Template_Importer {
 
 		private static $instance = null;
+        private $generated_css = '';
 
 		/**
 		 * Singleton instance
@@ -31,6 +32,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_ajax_travelfic-demo-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-widget-import', array( $this, 'prepare_travelfic_widgets_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-menu-import', array( $this, 'prepare_travelfic_menus_imports' ) );
+			add_action( 'wp_head', array( $this, 'prepare_travelfic_elementor_background_images' ));
 		}
 
 		/**
@@ -184,7 +186,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
 
             update_option('travelfic_template_version', $template_key);
-
+            delete_option('travelfic_elementor_background_images');
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
             $forms_files = wp_remote_get( $demo_forms_data_url );
             $forms_imported_data = wp_remote_retrieve_body($forms_files);
@@ -210,6 +212,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
+
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
                 foreach($imported_data as $page){
@@ -217,9 +220,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
                     $title = !empty($page['title']) ? $page['title'] : '';
                     $content = !empty($page['content']) ? $page['content'] : '';
-                    $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
                     $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
                     $pages_images = $page['media_urls'];
+
+                    $elementor_data = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
+                
+                    $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
 
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
@@ -227,6 +233,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                         foreach($media_urls as $media){
                             if(!empty($media)){
+
                                 // Download the image file
                                 $page_image_data = file_get_contents( $media );
                                 $page_filename   = basename( $media );
@@ -264,6 +271,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
                     
+                    // Process Elementor data to find and replace background images
+                    if (!empty($elementor_data)) {
+                        foreach ($elementor_data as &$element) {
+                          $this->prepare_travelfic_elementor_background_images($element);
+                        }
+                    }
+    
+
                     if(!empty($tft_header_bg)){
                         // Download the image file
                         $page_image_data = file_get_contents( $tft_header_bg );
@@ -297,68 +312,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
 
-                    // Replace URLs
-                    if (!function_exists('replace_urls_in_array')) {
-                        function replace_urls_in_array($array, $old_url_prefixes, $new_url) {
-                            foreach ($array as $key => $value) {
-                                if (is_array($value)) {
-                                    $array[$key] = replace_urls_in_array($value, $old_url_prefixes, $new_url);
-                                } elseif (is_string($value)) {
-                                    foreach ($old_url_prefixes as $old_url_prefix) {
-                                        if (strpos($value, $old_url_prefix) !== false) {
-                                            $value = str_replace($old_url_prefix, $new_url, $value);
-                                        }
-                                    }
-                                    $array[$key] = $value;
-                                }
-                            }
-                            return $array;
-                        }
-                    }
-                   
-                    // Get the current URL
-                    $current_url = home_url();
-
-                    // Define the old URL prefixes
-                    $old_url_prefixes = [
-                        'https://hotelic-demo.themefic.com',
-                        'https://carrental-demo.themefic.com',
-                        'https://tragaway-demo.themefic.com',
-                    ];
-
-                    // Find and replace URLs
-                    if (!empty($elementor_content)) {
-                        $elementor_data = json_decode(stripslashes($elementor_content), true);
-
-                        if (json_last_error() === JSON_ERROR_NONE && is_array($elementor_data)) {
-
-                            // Replace URLs in array recursively
-                            $elementor_data = replace_urls_in_array($elementor_data, $old_url_prefixes, $current_url);
-
-                            // Find URLs after replacement (optional, for logging)
-                            if (!function_exists('find_urls_in_array')) {
-                                function find_urls_in_array($array) {
-                                    $urls = [];
-
-                                    foreach ($array as $key => $value) {
-                                        if (is_array($value)) {
-                                            $urls = array_merge($urls, find_urls_in_array($value));
-                                        } elseif (is_string($value)) {
-                                            if (preg_match_all('#https?://[^\s"\']+#i', $value, $matches)) {
-                                                $urls = array_merge($urls, $matches[0]);
-                                            }
-                                        }
-                                    }
-
-                                    return $urls;
-                                }
-                            }
-
-                            $found_urls = find_urls_in_array($elementor_data);
-                            $found_urls = array_unique($found_urls);
-                            $elementor_content = wp_slash(json_encode($elementor_data));
-                        }
-                    }
 
                     // Create a new page programmatically
                     $new_page = array(
@@ -368,6 +321,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'post_type' => 'page'
                     );
 
+
+                 
                     // Insert the page into the database
                     $new_page_id = wp_insert_post($new_page);
                     if(!empty($is_front)){
@@ -392,12 +347,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
                     }
                 }
-
+                
                 delete_option('_elementor_global_css');
 		        delete_option('elementor-custom-breakpoints-files');
             }
-
-           
 
             // Update the elementor global colors
             $elementor_kit_id = get_option('elementor_active_kit');
@@ -442,6 +395,78 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 		}
 
+        public function prepare_travelfic_elementor_background_images($element) {
+            $this->generated_css = '';
+            $this->check_element_for_background($element);
+         
+            if (!empty($this->generated_css)) {
+                // Get existing data
+                $existing_data = get_option('travelfic_elementor_background_images', array());
+                
+                // Prepare new data
+                $background_data = array(
+                    'css_rules' => $this->generated_css,
+                    'timestamp' => current_time('mysql'),
+                );
+
+                // Merge with existing data if needed
+                if (!empty($existing_data)) {
+                    $background_data['css_rules'] = $existing_data['css_rules'] . "\n" . $background_data['css_rules'];
+                }
+
+                update_option('travelfic_elementor_background_images', $background_data, false);
+                error_log('All background images stored: ' . print_r($background_data, true));
+            }
+        }
+
+        // Recursive function to check for background images
+        private function check_element_for_background($element) {
+            if (!isset($element['id'])) {
+                return false;
+            }
+
+            $element_id = $element['id'];
+            $background_image = isset($element['settings']['background_image']['url']) 
+                ? $element['settings']['background_image']['url'] 
+                : '';
+            $overlay_image = isset($element['settings']['background_overlay_image']['url']) 
+                ? $element['settings']['background_overlay_image']['url'] 
+                : '';
+
+            $has_background = !empty($background_image) || !empty($overlay_image);
+
+            if ($has_background) {
+               
+                // Generate CSS for main background
+                if (!empty($background_image)) {
+                    $this->generated_css .= sprintf(
+                        '[data-id="%s"] { background-image: url("%s"); } ',
+                        $element_id,
+                        esc_url($background_image)
+                    );
+                }
+
+                // Generate CSS for overlay
+                if (!empty($overlay_image)) {
+                    $this->generated_css .= sprintf(
+                        '[data-id="%s"] { background-image: url("%s"); } ',
+                        $element_id,
+                        esc_url($overlay_image)
+                    );
+                }
+            }
+
+            // Check nested elements
+            if (isset($element['elements'])) {
+                foreach ($element['elements'] as $child_element) {
+                    $this->check_element_for_background($child_element);
+                }
+            }
+
+            return true;
+        }
+
+      
         /**
 		 * Tourfic Menu importer Settings
 		 */
@@ -459,7 +484,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             die();
         }
         public static function travelfic_toolkit_create_menu_from_imported_data($menu_data, $template_key) {
-
             $menu_name = 'Imported Main Menu';
             $menu_exists = wp_get_nav_menu_object($menu_name);
         
@@ -479,7 +503,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     'menu-item-type' => 'custom',
                     'menu-item-status' => 'publish'
                 );
-        
+     
                 // Insert the top-level menu item.
                 $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
         
@@ -1145,8 +1169,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 foreach( $features as $fkey => $feature ){
                                     foreach( $feature as $key => $value ){
                                         $term = get_term_by( 'name', $value, 'hotel_feature' );
-                                        $term_id = $term->term_id;
-                                        $room_features[$fkey][$key] = $term_id;
+                                        if ( $term && ! is_wp_error( $term ) ) {
+                                            $term_id = $term->term_id;
+                                            $room_features[$fkey][$key] = $term_id;
+                                        }
                                     }
                                 }
                                 if(!empty($room)){

@@ -362,3 +362,17 @@ function travelfic_current_year() {
 }
 add_shortcode('year', 'travelfic_current_year');
 
+
+/** 
+ * 
+ * Travelfic Import Elementor Background Images
+ * 
+*/
+add_action( 'wp_head', function () {
+   $background_images = get_option('travelfic_elementor_background_images', array());
+   if(isset($background_images['css_rules'])){
+       $background_images['css_rules'] = str_replace("\n", '', $background_images['css_rules']);
+        error_log(print_r($background_images['css_rules'], true));
+       echo '<style type="text/css" id="travelfic_elementor_background_images">' . $background_images['css_rules'] . '</style>';
+   }
+});
