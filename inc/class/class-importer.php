@@ -419,7 +419,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
 
                 update_option('travelfic_elementor_background_images', $background_data, false);
-                error_log('All background images stored: ' . print_r($background_data, true));
             }
         }
 
@@ -463,8 +462,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
 
             $element_id = $element['id'];
-
-            error_log(print_r($element_id, true));
 
             $background_image = isset($element['settings']['background_image']['url']) ? $element['settings']['background_image']['url'] : '';
             $overlay_image = isset($element['settings']['background_overlay_image']['url'])  ? $element['settings']['background_overlay_image']['url'] : '';
@@ -510,8 +507,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             return true;
         }
-
-
       
         /**
 		 * Tourfic Menu importer Settings
@@ -2738,8 +2733,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 			}
 		}
-
-        
 	}
 
 
