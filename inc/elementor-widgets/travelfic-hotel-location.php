@@ -726,7 +726,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         if(!empty($meta['image'])){
                             $cat_image = $meta['image'];
                         } else{
-                            $cat_image = TRAVELFIC_TOOLKIT_ASSETS . 'app/img/hotel-location.jpeg';
+                            $cat_image = TRAVELFIC_TOOLKIT_ASSETS . 'app/img/location.jpeg';
                         }
                     ?>
                     <div class="tft-single-destination">

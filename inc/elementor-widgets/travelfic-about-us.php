@@ -1097,7 +1097,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <?php } ?>
                             </div>
                             <div class="read-more">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column font-josefin">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-btn-transparent tft-large-circle tft-wh-auto tft-flex-column font-josefin">
                                     <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">

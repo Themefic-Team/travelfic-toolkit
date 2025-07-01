@@ -3726,6 +3726,19 @@ label.tft-form-label .tft-form-control {
   color: #FDF9F3;
   background-color: #B58E53;
 }
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent {
+  background-color: transparent;
+  color: #B58E53;
+}
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent:hover {
+  color: #FDF9F3;
+}
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent:hover path {
+  fill: #FDF9F3;
+}
+.tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent path {
+  fill: #B58E53;
+}
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a svg path {
   fill: #FDF9F3;
 }

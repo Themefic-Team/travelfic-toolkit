@@ -10,6 +10,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 		private static $instance = null;
         private $generated_css = '';
+        private $processed_ids = [];
 
 		/**
 		 * Singleton instance
@@ -119,8 +120,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $imported_data['travelfic_customizer_settings_transparent_header'] = true;
                 }
 
-                
-
+                // color palette
                 $palette_choices = array(
                     'design-1' => ['#0E3DD8', '#003C7A', '#686E7A', '#060D1C'],
                     'design-2' => ['#B58E53', '#917242', '#99948D', '#595349'],
@@ -186,7 +186,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
 
             update_option('travelfic_template_version', $template_key);
-            delete_option('travelfic_elementor_background_images');
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
             $forms_files = wp_remote_get( $demo_forms_data_url );
             $forms_imported_data = wp_remote_retrieve_body($forms_files);
@@ -398,25 +397,63 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         public function prepare_travelfic_elementor_background_images($element) {
             $this->generated_css = '';
             $this->check_element_for_background($element);
-         
+        
             if (!empty($this->generated_css)) {
                 // Get existing data
                 $existing_data = get_option('travelfic_elementor_background_images', array());
                 
-                // Prepare new data
-                $background_data = array(
-                    'css_rules' => $this->generated_css,
-                    'timestamp' => current_time('mysql'),
-                );
-
-                // Merge with existing data if needed
-                if (!empty($existing_data)) {
-                    $background_data['css_rules'] = $existing_data['css_rules'] . "\n" . $background_data['css_rules'];
+                // If no existing data, create new structure
+                if (empty($existing_data)) {
+                    $background_data = array(
+                        'css_rules' => $this->generated_css,
+                        'timestamp' => current_time('mysql'),
+                    );
+                } else {
+                    // Process existing CSS rules to remove duplicates for the same element IDs
+                    $existing_rules = $this->remove_duplicate_rules($existing_data['css_rules'], $this->generated_css);
+                    
+                    $background_data = array(
+                        'css_rules' => $existing_rules . "\n" . $this->generated_css,
+                        'timestamp' => current_time('mysql'),
+                    );
                 }
 
                 update_option('travelfic_elementor_background_images', $background_data, false);
                 error_log('All background images stored: ' . print_r($background_data, true));
             }
+        }
+
+        // Helper function to remove duplicate rules for the same element IDs
+        private function remove_duplicate_rules($existing_css, $new_css) {
+            // Extract all element IDs from the new CSS
+            preg_match_all('/\[data-id="([^"]+)"/', $new_css, $matches);
+            $new_ids = array_unique($matches[1]);
+            
+            if (empty($new_ids)) {
+                return $existing_css;
+            }
+            
+            // Split existing rules into lines
+            $existing_rules = explode('}', $existing_css);
+            $filtered_rules = array();
+            
+            foreach ($existing_rules as $rule) {
+                $keep_rule = true;
+                
+                // Check if this rule contains any of the new IDs
+                foreach ($new_ids as $id) {
+                    if (strpos($rule, '[data-id="' . $id . '"') !== false) {
+                        $keep_rule = false;
+                        break;
+                    }
+                }
+                
+                if ($keep_rule && trim($rule)) {
+                    $filtered_rules[] = $rule . '}';
+                }
+            }
+            
+            return implode(' ', $filtered_rules);
         }
 
         // Recursive function to check for background images
@@ -426,17 +463,16 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
 
             $element_id = $element['id'];
-            $background_image = isset($element['settings']['background_image']['url']) 
-                ? $element['settings']['background_image']['url'] 
-                : '';
-            $overlay_image = isset($element['settings']['background_overlay_image']['url']) 
-                ? $element['settings']['background_overlay_image']['url'] 
-                : '';
 
-            $has_background = !empty($background_image) || !empty($overlay_image);
+            error_log(print_r($element_id, true));
+
+            $background_image = isset($element['settings']['background_image']['url']) ? $element['settings']['background_image']['url'] : '';
+            $overlay_image = isset($element['settings']['background_overlay_image']['url'])  ? $element['settings']['background_overlay_image']['url'] : '';
+            $selected_icon = isset($element['settings']['selected_icon']['value']['url']) ? $element['settings']['selected_icon']['value']['url'] : '';
+
+            $has_background = !empty($background_image) || !empty($overlay_image) || !empty($selected_icon);
 
             if ($has_background) {
-               
                 // Generate CSS for main background
                 if (!empty($background_image)) {
                     $this->generated_css .= sprintf(
@@ -454,6 +490,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         esc_url($overlay_image)
                     );
                 }
+
+                // Generate CSS for selected icon
+                if (!empty($selected_icon)) {
+                    $this->generated_css .= sprintf(
+                        '[data-id="%s"] .elementor-icon { background-image: url("%s"); background-repeat: no-repeat; background-position: center center; } ',
+                        $element_id,
+                        esc_url($selected_icon)
+                    );
+                }
             }
 
             // Check nested elements
@@ -465,6 +510,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             return true;
         }
+
 
       
         /**
@@ -584,8 +630,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $widgets[$widget_title][$widget_key] = $widget_data[$widget_title][$widget_key];
                 }
             }
-    
-            $sidebar_data = array( array_filter( $sidebar_data ), $widgets );
+            $sidebar_data = is_array( $sidebar_data ) ? array_filter($sidebar_data) : array();
+            $sidebar_data = array($sidebar_data, $widgets);
             $response['id'] = ( self::travelfic_toolkit_parse_import_data( $sidebar_data ) ) ? true : new WP_Error( 'widget_import_submit', 'Unknown Error' );
     
             $response = new WP_Ajax_Response( $response );

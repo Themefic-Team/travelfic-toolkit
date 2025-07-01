@@ -68,7 +68,21 @@
                         font-weight: 700;
                         color: #FDF9F3;
                         background-color: #B58E53;
+                        &.tft-btn-transparent {
+                            background-color: transparent;
+                            color: #B58E53;
+                            &:hover{
+                                color: #FDF9F3;
+                                path{
+                                    fill: #FDF9F3;
+                                }
+                            }
 
+                            path{
+                                fill: #B58E53;
+                            }
+                            
+                        }
 
                         svg {
                             path {
