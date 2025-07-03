@@ -6,7 +6,7 @@
   h3 {
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 17px;
+    margin-bottom: 16px;
     text-transform: uppercase;
 
     @media #{$max767} {
@@ -17,34 +17,33 @@
 
   h2 {
     font-size: 3rem;
-    line-height: 58px;
+    line-height: 1.2;
     margin-bottom: 30px;
     text-transform: capitalize;
 
     @media #{$max1399} {
       font-size: 2.5rem;
-      line-height: 50px;
+      line-height: 1.25;
     }
 
     @media #{$max1199} {
       font-size: 2.188rem;
-      line-height: 45px;
+      line-height: 1.3;
     }
 
     @media #{$max991} {
       font-size: 2rem;
-      line-height: 42px;
       margin-bottom: 24px;
     }
 
     @media #{$max767} {
       font-size: 1.75rem;
-      line-height: 40px;
+      line-height: 1.4;
       margin-bottom: 20px;
     }
 
     &.tft-title-shape {
-      max-width: 613px;
+      max-width: 615px;
       position: relative;
 
       &::after {
@@ -92,27 +91,6 @@ textarea.tft-form-control {
   }
 }
 
-// label
-label.tft-form-label {
-  line-height: normal;
-  margin-bottom: 25px;
-  display: block;
-  font-weight: 500;
-
-  @media #{$max991} {
-    margin-bottom: 20px;
-  }
-
-  .tft-form-control {
-    margin-top: 20px;
-
-    @media #{$max991} {
-      margin-top: 12px;
-    }
-  }
-}
-
-
 // section wrapper
 .tft-section-wrapper {
   .tft-section-title {
@@ -145,7 +123,21 @@ label.tft-form-label {
 // wpcf7 form
 .wpcf7-form {
   label {
-    color: #1D2A3B;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 500;
+
+    @media #{$max991} {
+      margin-bottom: 20px;
+    }
+
+    .tft-form-control {
+      margin-top: 20px;
+
+      @media #{$max991} {
+        margin-top: 12px;
+      }
+    }
   }
 
   input[type="email"],

@@ -22,7 +22,7 @@
                     font-weight: 700;
                     line-height: 1.3;
                     letter-spacing: 0.16px;
-                    color: #B58E53;
+                    color: $tft-color-primary;
                     margin-bottom: 0;
 
                     @media #{$max767} {
@@ -35,7 +35,7 @@
                     font-size: 3.5rem;
                     font-weight: 700;
                     line-height: 1.2;
-                    color: #595349;
+                    color: $tft-color-secondary;
                     margin-bottom: 24px;
 
                     @media #{$max1366} {
@@ -61,10 +61,6 @@
                     li {
                         .tft-btn {
                             padding: 12px 32px;
-                            font-weight: 700;
-                            cursor: pointer;
-                            transition: .3s all ease;
-                            font-size: 1rem;
                             min-height: 48px;
                             min-width: auto;
                             @media #{$max991} {
@@ -72,12 +68,15 @@
                             }
 
                             &:hover {
-                                background-color: #917242;
-                                color: #FDF9F3;
+                                background-color: $tft-color-secondary;
+                                color: $tft-color-white;
                             }
 
                             &.active {
-                                background-color: #B58E53;
+                                background-color: $tft-color-primary;
+                                &:hover {
+                                    background-color: $tft-color-primary;
+                                }
                             }
                         }
 
@@ -87,9 +86,9 @@
 
             .read-more {
                 a {
-                    background-color: #B58E53;
+                    background-color: $tft-color-primary;
                     font-weight: 700;
-                    color: #FDF9F3;
+                    color: $tft-color-white;
 
                     @media #{$max1024} {
                         width: 96px;
@@ -98,7 +97,7 @@
                     }
 
                     &:hover {
-                        background-color: #917242;
+                        background-color: $tft-color-secondary;
                     }
 
                     svg {
@@ -163,11 +162,10 @@
 
                         .tft-ratings {
                             span {
-                                font-weight: 400;
-                                color: #99948D;
+                                color: $tft-color-text;
 
                                 i {
-                                    color: #FFC700;
+                                    color: $tf-color-gold;
                                 }
                             }
                         }
@@ -176,7 +174,7 @@
                             font-size: 2rem;
                             font-weight: 700;
                             line-height: 1.2;
-                            color: #595349;
+                            color: $tft-color-heading;
                             margin-bottom: 16px;
 
                             @media #{$max1366} {
@@ -186,25 +184,27 @@
                             a {
                                 color: inherit;
                             }
+
+                            &:hover{
+                                a{
+                                    color: $tft-color-primary;
+                                }
+                            }
                         }
 
                         .tft-locations {
                             display: flex;
                             margin: 0;
-                            color: #595349;
+                            color: $tft-color-text;
                             svg {
                                 margin-right: 8px;
-                            }
-
-                            span {
-                                font-weight: 400;
                             }
                         }
 
                         .tour-time {
                             display: flex;
                             margin: 0;
-                            color: #595349;
+                            color: $tft-color-text;
 
                             svg {
                                 margin-right: 8px;
@@ -229,15 +229,15 @@
                                 &.btn-view-details {
                                     display: block;
                                     padding: 12px 32px;
-                                    background-color: #B58E53;
-                                    color: #FDF9F3;
+                                    background-color: $tft-color-primary;
+                                    color: $tft-color-white;
                                     font-weight: 700;
                                     text-align: center;
                                     margin-top: 16px;
                                     transition: .3s all ease;
 
                                     &:hover {
-                                        background: #917242;
+                                        background: $tft-color-secondary;
                                     }
                                 }
 
@@ -254,11 +254,11 @@
 
                                 li {
                                     line-height: 1.3;
-                                    color: #99948D;
+                                    color: $tft-color-text;
                                     display: flex;
 
                                     @media #{$max991} {
-                                        font-size: 14px !important;
+                                        font-size: 14px;
                                     }
 
                                     img {
@@ -314,13 +314,13 @@
             }
 
             h3{
-                color: #FA6400;
+                color: $tft-color-primary;
             }
 
             h2 {
                 margin-left: auto;
                 margin-right: auto;
-                color: #060D1C;
+                color: $tft-color-heading;
                 &::after {
                     left: 50%;
                     transform: translateX(-50%);
@@ -397,10 +397,10 @@
                     }
 
                     &.slick-active {
-                        border-color: #FA6400;
+                        border-color: $tft-color-primary;
 
                         button {
-                            background: #FA6400;
+                            background: $tft-color-primary;
                         }
                     }
                 }
@@ -408,7 +408,7 @@
 
             .tft-single-destination {
                 @include bd-radius(15px);
-                background: $color-white;
+                background: $tft-color-white;
                 box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
                 padding: 30px;
                 @include d-flex();
@@ -442,12 +442,10 @@
                         .tft-featured {
                             @include bd-radius(100px);
                             padding: 8px 16px 7px 16px;
-                            background: #FA6400;
-                            color: $color-white;
-                            font-family: $font-ubuntu;
+                            background: $tft-color-primary;
+                            color: $tft-color-white;
                             font-size: 0.813rem;
                             font-weight: 700;
-                            line-height: normal;
                             text-transform: uppercase;
                         }
                     }
@@ -473,20 +471,20 @@
                             gap: 5px;
 
                             i {
-                                color: #FA6400;
+                                color: $tft-color-primary;
                                 font-size: 0.875rem;
                             }
                         }
 
                         .tft-desination-location {
                             display: block;
-                            color: $body-color;
+                            color: $tft-color-text;
                             font-size: 1rem;
                             margin-top: 8px;
                             text-transform: capitalize;
 
                             i {
-                                color: #FA6400;
+                                color: $tft-color-primary;
                                 float: left;
                                 margin-right: 6px;
                                 margin-top: 1px;
@@ -497,12 +495,11 @@
                                 display: -webkit-box;
                                 -webkit-line-clamp: 2;
                                 -webkit-box-orient: vertical;
-                                color: #686E7A;
+                                color: $tft-color-text;
                             }
                         }
 
                         .tft-desination-title {
-                            font-family: $font-brygada;
                             font-size: 1.5rem;
                             margin-bottom: 0px;
                             margin-top: 20px;
@@ -510,14 +507,14 @@
                             display: -webkit-box;
                             -webkit-line-clamp: 2;
                             -webkit-box-orient: vertical;
-                            color: #060D1C;
+                            color: $tft-color-heading;
                             a {
                                 @include transition(0.2s);
                                 color: inherit;
                                 text-transform: capitalize;
                                 color: inherit;
                                 &:hover {
-                                    color: #FA6400;
+                                    color: $tft-color-primary;
                                 }
                             }
                         }
@@ -525,7 +522,7 @@
 
                     .tft-desination-bottom-info {
                         @include bd-radius(15px);
-                        border: 1px solid $color-light-white;
+                        border: 1px solid $tft-color-light-white;
                         @include d-flex();
                         @include align-items(center);
                         @include justify-content(space-between);
@@ -542,12 +539,11 @@
                                 font-size: 0.875rem;
                                 margin-bottom: 10px;
                                 text-transform: none;
-                                color: #686E7A;
+                                color: $tft-color-text;
                             }
 
                             .tft-desination-price-value {
-                                color: #FA6400;
-                                font-family: $font-brygada;
+                                color: $tft-color-primary;
                                 font-size: 1.25rem;
                                 text-transform: none;
                                 font-weight: 700;
@@ -557,14 +553,14 @@
                         .tft-desination-btn {
                             .tft-btn {
                                 background: rgba(250, 100, 0, 0.1);
-                                color: #FA6400;
+                                color: $tft-color-primary;
                                 min-width: 136px;
                                 min-height: 50px;
                                 text-transform: capitalize;
 
                                 &:hover {
-                                    background: #FA6400;
-                                    color: $color-white;
+                                    background: $tft-color-secondary;
+                                    color: $tft-color-white;
                                 }
                             }
                         }

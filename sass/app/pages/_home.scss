@@ -83,7 +83,7 @@
     background: transparent;
     width: 60px;
     height: 60px;
-    border-color: $color-white;
+    border-color: $tft-color-white;
 
     @media #{$max1399} {
       width: 50px;
@@ -106,13 +106,13 @@
     }
 
     i {
-      color: $color-white;
+      color: $tft-color-white;
       font-size: 1.25rem;
     }
 
     &:hover {
       background: #FA6400;
-      color: $color-white;
+      color: $tft-color-white;
       border-color: #FA6400;
     }
 

@@ -16,8 +16,8 @@
         min-height: 70px;
         @include d-flex();
         @include align-items(center);
-        border-color: $border-color !important;
-        background: $color-white;
+        border-color: #dbe0f1;
+        background: $tft-color-white;
         box-shadow: 0px 9px 12px 0px rgba(14, 19, 35, 0.02);
         @include justify-content(center);
       }

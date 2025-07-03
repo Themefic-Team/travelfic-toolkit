@@ -313,7 +313,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 ?>
 	<?php if ('design-2' == $tft_design): ?>
 		<div class="tft-section-heading__two tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
-			<h2 class="title section-title font-brygada">
+			<h2 class="title section-title">
 				<span class="section-title-suffix">
 					<?php if ($settings['title_suffix']) {
 						echo esc_html($settings['suffix_title']);

@@ -873,9 +873,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 									</div>
 								<?php } ?>
 								<div class="member-details">
-									<h3 class="tft-title font-nunito"> <?php echo esc_html($item['member_name']); ?> </h3>
-									<p class="tft-subtitle font-nunito"><?php echo esc_html($item['member_designation']); ?></p>
-									<p class="tft-content font-nunito"><?php echo esc_html($item['member_details']); ?></p>
+									<h3 class="tft-title"> <?php echo esc_html($item['member_name']); ?> </h3>
+									<p class="tft-subtitle"><?php echo esc_html($item['member_designation']); ?></p>
+									<p class="tft-content"><?php echo esc_html($item['member_details']); ?></p>
 
 									<div class="social-media">
 										<?php if ($item['member_social_fb'] !== '') { ?>
@@ -911,10 +911,10 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				<div class="container<?php echo esc_attr($tftDisableClass . $container_max_width); ?>">
 					<div class="tft-heading-content">
 						<?php if (!empty($tft_sec_subtitle)) { ?>
-							<h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+							<h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
 						<?php }
 						if (!empty($tft_sec_title)) { ?>
-							<h2 class="tft-section-title tft-title-shape font-brygada <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+							<h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
 						<?php } ?>
 					</div>
 					<div class="tft-team-content">
@@ -956,8 +956,8 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 													<?php } ?>
 												</div>
 											</div>
-											<h3 class="tft-subtitle font-ubuntu"> <?php echo esc_html($item['member_designation']); ?> </h3>
-											<h2 class="tft-title font-brygada"><?php echo esc_html($item['member_name']); ?></h2>
+											<h3 class="tft-subtitle"> <?php echo esc_html($item['member_designation']); ?> </h3>
+											<h2 class="tft-title"><?php echo esc_html($item['member_name']); ?></h2>
 										</div>
 									</div>
 								</div>

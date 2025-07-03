@@ -7,10 +7,10 @@
     padding-top: 64px;
     padding-bottom: 32px;
     background-color: #595349;
-    color: #FAEEDC;
+    color: $tft-color-light-white;
 
     a {
-      color: #faeedc;
+      color: $tft-color-light-white;
     }
 
     .tft-grid {
@@ -52,7 +52,7 @@
           display: block;
           padding-bottom: 8px;
           margin: 0;
-          color: #faeedc;
+          color: $tft-color-light-white;
           a {
             text-decoration: none;
             display: block;
@@ -84,7 +84,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    color: $color-white;
+    color: $tft-color-white;
     z-index: 1;
     position: relative;
 
@@ -159,7 +159,7 @@
         left: 0;
         width: 60px;
         height: 2px;
-        background-color: $color-white;
+        background-color: $tft-color-white;
       }
     }
 
@@ -173,7 +173,7 @@
     }
 
     h4.wp-block-heading {
-      color: $color-white;
+      color: $tft-color-white;
       font-size: 1.125rem;
       font-weight: 500;
       line-height: normal;
@@ -197,7 +197,7 @@
     .wp-block-list {
       li {
         a {
-          color: $color-white;
+          color: $tft-color-white;
           display: block;
           padding-bottom: 8px;
           @include transition(0.2s);
@@ -238,7 +238,7 @@
         }
 
         a {
-          color: $color-white;
+          color: $tft-color-white;
         }
 
         p {
@@ -278,7 +278,7 @@
       background: #203453;
       @include bd-radius(1000px);
       padding: 16px 32px;
-      color: $color-white;
+      color: $tft-color-white;
       line-height: 18.38px;
       border: 0;
       margin-top: 16px;
@@ -292,7 +292,7 @@
       }
 
       &::placeholder {
-        color: $color-white;
+        color: $tft-color-white;
       }
     }
 
@@ -303,7 +303,7 @@
       height: 50px;
       background: #0e3dd8;
       border: 0;
-      color: $color-white;
+      color: $tft-color-white;
       text-align: center;
       margin-top: 16px;
       @include bd-radius(9999px);
@@ -348,10 +348,9 @@
   }
 
   &__three {
-    font-family: $font-ubuntu;
     font-size: 0.75rem;
     line-height: 13.79px;
-    color: $color-white;
+    color: $tft-color-white;
     overflow: hidden;
 
     &__inner {
@@ -438,7 +437,7 @@
       }
 
       a {
-        color: $color-white;
+        color: $tft-color-white;
         @include transition(0.2s);
 
         &:hover {

@@ -11,28 +11,10 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  overflow-x: hidden;
-  font-family: "Nunito", sans-serif;
-  @media #{$max767} {
-    font-size: 0.938rem;
-  }
-}
-
 main {
   margin-bottom: 56px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0px;
-  padding: 0px;
-}
 
 a {
   text-decoration: none;
@@ -244,7 +226,7 @@ input[type="color"].tft-form-control,
 textarea.tft-form-control {
   @include bd-radius(5px);
   border: 1px solid #dbe0f1;
-  background: $color-white;
+  background: $tft-color-white;
   padding: 17px 25px 18px;
 
   @media #{$max991} {
@@ -315,9 +297,8 @@ textarea.tft-form-control {
   width: 100%;
 }
 
-
 .tft-box-hidden {
   overflow: hidden;
-  max-width: 1221px;
+  max-width: 1220px;
   margin: auto;
 }

@@ -44,7 +44,7 @@
                             border-radius: 10px;
                             padding: 8px 12px;
                             font-weight: 600;
-                            color: #1D2A3A;
+                            color: $tft-color-text;
 
                             span {
                                 font-size: 0.875rem;
@@ -139,7 +139,9 @@
 
             .slick-arrow {
                 backdrop-filter: blur(12px);
-                padding: 25px;
+                background-color: $tft-color-primary;
+                color: $tft-color-white;
+                padding: 0;
                 border-radius: 50px;
                 z-index: 99;
                 height: 40px;
@@ -151,12 +153,13 @@
                 transition: 0.3s;
 
                 &:hover {
-                    opacity: 0.7;
+                    background-color: $tft-color-secondary;
                 }
-
-                .slick-prev:before,
-                .slick-next:before {
+                &::before{
                     display: none;
+                }
+                i::before{
+                    display: block;
                 }
             }
         }

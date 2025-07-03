@@ -112,7 +112,7 @@
               display: inline-block;
 
               a {
-                color: #595349;
+                color: $tft-color-text;
                 font-weight: 600;
                 padding: 0px;
               }
@@ -127,7 +127,7 @@
             }
 
             li.current_page_item>a {
-              color: #B58E53;
+              color: $tft-color-primary;
             }
 
             li:last-child {
@@ -172,7 +172,7 @@
             a {
               font-size: 2rem;
               font-weight: 700;
-              color: #595349;
+              color: $tft-color-text;
             }
           }
         }
@@ -191,7 +191,7 @@
 
               a {
                 padding: 12px 32px;
-                color: #595349;
+                color: $tft-color-text;
                 font-size: 1rem;
                 font-weight: 700;
                 text-decoration: none;
@@ -199,17 +199,17 @@
                 transition: 0.3s all ease;
 
                 &:hover {
-                  color: #B58E53;
+                  color: $tft-color-primary;
                 }
               }
 
               a.login {
-                border: 1px solid #B58E53;
+                border: 1px solid $tft-color-primary;
 
                 &:hover {
-                  background: #917242;
+                  background: $tft-color-secondary;
                   color: #fdf9f3;
-                  border-color: #917242;
+                  border-color: $tft-color-secondary;
                 }
               }
             }
@@ -226,7 +226,7 @@
         .tft-header-left {
           .logo-text {
             a {
-              color: #595349;
+              color: $tft-color-text;
             }
           }
         }
@@ -234,7 +234,7 @@
         .tft-header-center {
           .tft-mobile_menubar {
             i {
-              color: #595349;
+              color: $tft-color-text;
             }
           }
         }
@@ -253,7 +253,7 @@
               border: 0px solid;
 
               a {
-                color: #595349;
+                color: $tft-color-text;
                 font-size: 1rem;
                 font-weight: 600;
                 line-height: 130%;
@@ -265,7 +265,7 @@
 
                 li {
                   a {
-                    color: #595349;
+                    color: $tft-color-text;
                     font-size: 1rem;
                     font-weight: 600;
                     line-height: 130%;
@@ -315,7 +315,7 @@
           a {
             color: #fdf9f3;
             &:hover{
-              color: #fdf9f3!important;
+              color: #fdf9f3;
             }
           }
         }
@@ -345,8 +345,6 @@
 
   &__three {
     background: $color-blue;
-    // min-height: 151px;
-    // overflow: hidden;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     @media #{$max767} {
@@ -356,8 +354,6 @@
 
     // container
     &__container {
-
-      // max-width: 1678px;
       @media #{$max991} {
         padding: 0;
       }
@@ -384,7 +380,6 @@
 
         .tft-design-3__bottom {
           padding-right: 32px;
-
           @media #{$max991} {
             padding-right: 15px;
           }
@@ -397,10 +392,10 @@
       a {
         font-size: 2rem;
         font-weight: 700;
-        color: $color-white;
+        color: $tft-color-white;
 
         &:hover {
-          color: $color-white;
+          color: $tft-color-white;
         }
 
         img {
@@ -474,7 +469,7 @@
       &-right {
         flex: 1;
         position: relative;
-        background: $color-white;
+        background: $tft-color-white;
         margin-left: 52px;
 
         @media #{$max991} {
@@ -494,8 +489,7 @@
           left: -48px;
           padding-right: 0;
           top: 0;
-          background-color: $color-white;
-          // width: 100vw;
+          background-color: $tft-color-white;
           height: 100%;
           clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
           z-index: -1;
@@ -597,7 +591,7 @@
 
             a,
             select {
-              color: $body-color;
+              color: $tft-color-text;
             }
           }
 
@@ -653,14 +647,14 @@
           @include d-flex();
           @include align-items(center);
           gap: 10.5px;
-          color: $color-white;
+          color: $tft-color-white;
 
           &:hover {
-            color: $color-white;
+            color: $tft-color-white;
           }
 
           &:visited {
-            color: $color-white;
+            color: $tft-color-white;
           }
 
           @media #{$max1399} {
@@ -686,11 +680,11 @@
         }
 
         &:hover {
-          color: $color-white;
+          color: $tft-color-white;
         }
 
         &:focus {
-          color: $color-white;
+          color: $tft-color-white;
           outline: none;
           box-shadow: none;
         }
@@ -702,17 +696,17 @@
         &-select {
           background: transparent;
           border: 0;
-          color: $color-white;
+          color: $tft-color-white;
           cursor: pointer;
 
           &:focus {
-            color: $color-white;
+            color: $tft-color-white;
             outline: none;
             box-shadow: none;
           }
 
           option {
-            color: $heading-color;
+            color: $tft-color-heading;
             cursor: pointer;
           }
         }
@@ -736,7 +730,7 @@
         &--icon {
           width: 30px;
           height: 2px;
-          background: $heading-color;
+          background: $tft-color-heading;
           position: absolute;
           top: 0;
           cursor: pointer;
@@ -856,7 +850,7 @@
                 @media #{$max1199} {
                   position: absolute;
                   right: 20px;
-                  color: $color-white;
+                  color: $tft-color-white;
                   top: 14px;
                 }
               }
@@ -865,7 +859,7 @@
               .sub-menu {
                 position: absolute;
                 z-index: 9;
-                background: $color-white;
+                background: $tft-color-white;
                 box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
                 margin: 0;
                 padding: 8px 0px;
@@ -928,7 +922,7 @@
             a {
               font-size: 1rem;
               font-weight: 700;
-              color: $body-color;
+              color: $tft-color-text;
               @include transition(0.1s);
               text-transform: uppercase;
               padding: 24px 0;
@@ -991,7 +985,7 @@
               @include d-flex();
               @include align-items(center);
               @include justify-content(center);
-              background: $color-white;
+              background: $tft-color-white;
               border: 1px dashed #060d1c;
               @include box-circle();
 
@@ -1043,7 +1037,7 @@
                 border: 0;
                 padding: 10px 12px;
                 font-size: 0.875rem;
-                color: $body-color;
+                color: $tft-color-text;
                 @include bd-radius(0);
 
                 @media #{$max767} {
@@ -1058,7 +1052,7 @@
                 transform: translateY(-50%);
                 border: 0;
                 background: #FA6400;
-                color: $color-white;
+                color: $tft-color-white;
                 font-size: 0.875rem;
                 height: 100%;
                 @include bd-radius(0);
@@ -1128,7 +1122,7 @@
   left: -100%;
   height: 100%;
   width: 280px;
-  background-color: $color-dark-blue;
+  background-color: $tft-color-dark-blue;
   overflow-x: hidden;
   transition: 0.5s ease;
   z-index: 99999;
@@ -1138,7 +1132,7 @@
     top: 10px;
     right: 20px;
     font-size: 2.25rem;
-    color: $color-white;
+    color: $tft-color-white;
     background: none;
     border: none;
     cursor: pointer;
@@ -1158,7 +1152,7 @@
 
         a {
           padding: 7px 25px;
-          color: $color-white;
+          color: $tft-color-white;
           display: block;
           transition: 0.3s;
 
@@ -1200,7 +1194,7 @@
         padding-bottom: 7px;
 
         a {
-          color: $color-white;
+          color: $tft-color-white;
           font-size: 0.938rem;
         }
       }
@@ -1211,11 +1205,11 @@
       gap: 15px;
 
       .tft-design-3__bottom__right__list__item--link {
-        border-color: $color-white;
+        border-color: $tft-color-white;
         background: transparent;
 
         path {
-          fill: $color-white;
+          fill: $tft-color-white;
         }
       }
     }

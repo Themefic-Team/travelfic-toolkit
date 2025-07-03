@@ -1077,27 +1077,27 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     <div class="tft-about-us-grid">
                         <div class="tft-about-us-content tft-heading-content tf-direction-column">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php } ?>
 
-                            <div class="tft-section-content font-josefin">
+                            <div class="tft-section-content">
                                 <?php if (!empty($tft_sec_content)) { ?>
                                    <p> <?php echo wp_kses_post($tft_sec_content); ?></p>
                                 <?php } ?>
 
                                 <?php if (!empty($tft_sec_quotes)) { ?>
-                                    <p class="tft-about-us-quotes font-josefin"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
+                                    <p class="tft-about-us-quotes"><?php echo wp_kses_post($tft_sec_quotes); ?></p>
                                 <?php } ?>
 
                                 <?php if (!empty($tft_sec_author)) { ?>
-                                    <p class="tft-about-us-author tft-text-right font-josefin tft-color-text"><?php echo esc_html($tft_sec_author); ?></p>
+                                    <p class="tft-about-us-author tft-text-right tft-color-text"><?php echo esc_html($tft_sec_author); ?></p>
                                 <?php } ?>
                             </div>
                             <div class="read-more">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-btn-transparent tft-large-circle tft-wh-auto tft-flex-column font-josefin">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn tft-btn-transparent tft-large-circle tft-wh-auto tft-flex-column">
                                     <?php echo esc_html_e("More", "travelfic-toolkit"); ?>
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
@@ -1113,7 +1113,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 <div class="years-of-experience">
                                     <img class="experience-badge" src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/years-experience.png'); ?>" alt="">
                                     <div class="tft-experience-years">
-                                        <h2 class="font-cormorant"><?php echo esc_html($tft_about_us_experience); ?></h2>
+                                        <h2><?php echo esc_html($tft_about_us_experience); ?></h2>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -1145,13 +1145,13 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                         </div>
                         <div class="tft-about-us-content tft-heading-content">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title font-brygada tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
-                                <div class="tft-section-content font-ubuntu">
+                                <div class="tft-section-content">
                                     <?php echo wp_kses_post($tft_sec_content); ?>
                                 </div>
                             <?php } ?>
@@ -1163,7 +1163,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                             <div class="icon tft-color-primary">
                                                 <i class="fa-regular fa-circle-check"></i>
                                             </div>
-                                            <div class="text font-ubuntu tft-color-text">
+                                            <div class="text tft-color-text">
                                                 <?php echo esc_html($list['about_list_title']); ?>
                                             </div>
                                         </li>
@@ -1171,7 +1171,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                                 </ul>
                             </div>
                             <div class="tft-about-us-button">
-                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn font-ubuntu">
+                                <a href="<?php echo esc_url($settings['readme_link']['url']); ?>" class="tft-btn">
                                     <?php echo esc_html($tft_about_us_button_text); ?>
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>

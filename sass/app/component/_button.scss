@@ -5,9 +5,9 @@
 .tft-btn {
   display: block;
   min-height: 55px;
-  background: #FA6400;
+  background: $tft-color-primary;
   font-weight: 500;
-  color: $color-white;
+  color: $tft-color-white;
   @include inline-flex();
   @include align-items(center);
   @include justify-content(center);
@@ -26,17 +26,17 @@
   }
 
   &:hover {
-    background: #0e3dd8;
-    color: $color-white;
+    background: $tft-color-secondary;
+    color: $tft-color-white;
   }
 
   &:focus {
-    color: $color-white;
+    color: $tft-color-white;
   }
 
   &_gray {
     background: #99948d;
-    color: white;
+    color: $tft-color-white;
   }
 
   &_sharp {
@@ -71,12 +71,11 @@
 // submit tft form button
 input[type="submit"].tft-form-btn {
   height: 55px;
-  background: #FA6400;
-  font-family: $font-ubuntu;
+  background: $tft-color-primary;
   font-size: 1rem;
   font-weight: 500;
-  color: $color-white;
-  border-color: #FA6400;
+  color: $tft-color-white;
+  border-color: $tft-color-primary;
   @include bd-radius(9999px);
   @include transition(0.3s);
   cursor: pointer;
@@ -91,11 +90,11 @@ input[type="submit"].tft-form-btn {
   }
 
   &:hover {
-    background: #0e3dd8;
-    color: $color-white;
+    background: $tft-color-secondary;
+    color: $tft-color-white;
   }
 
   &:focus {
-    color: $color-white;
+    color: $tft-color-white;
   }
 }

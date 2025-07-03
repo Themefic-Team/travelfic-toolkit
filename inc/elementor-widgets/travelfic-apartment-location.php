@@ -745,11 +745,11 @@ class Travelfic_Toolkit_ApartmentLocation extends \Elementor\Widget_Base
                     <div class="tft-heading-content">
                         <?php 
                         if(!empty($tft_sec_subtitle)){ ?>
-                            <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }
                         if(!empty($tft_sec_title)){
                         ?>
-                        <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
+                        <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-apartment-location-slider-arrows">

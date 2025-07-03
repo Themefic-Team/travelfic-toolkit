@@ -1658,12 +1658,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                             <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
                                         </div>
                                         <div class="person-info">
-                                            <h3 class="person-name font-nunito"><?php echo esc_html($item['person_name']) ?></h3>
-                                            <h4 class="designation font-nunito tft-hover-color-white"><?php echo esc_html($item['designation']) ?></h4>
+                                            <h3 class="person-name"><?php echo esc_html($item['person_name']) ?></h3>
+                                            <h4 class="designation tft-hover-color-white"><?php echo esc_html($item['designation']) ?></h4>
                                         </div>
                                     </div>
                                     <div class="testimonial-body">
-                                        <p class="tft-content font-nunito tft-hover-color-white"><?php echo esc_html($item['testimonials_review']) ?></p>
+                                        <p class="tft-content tft-hover-color-white"><?php echo esc_html($item['testimonials_review']) ?></p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <?php $this->testimonials_rattings($item['rate']); ?>
@@ -1734,9 +1734,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     <div class="testimonial-header-shape tft-heading-content">
                         <?php
                         if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php }if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                 </div>
@@ -1764,11 +1764,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
 
                                         </div>
                                         <div class="testimonial-review">
-                                            <p class="tft-content font-josefin"><?php echo wp_kses_post(travelfic_character_limit($item['testimonials_review'], 100)); ?></p>
+                                            <p class="tft-content"><?php echo wp_kses_post(travelfic_character_limit($item['testimonials_review'], 100)); ?></p>
                                         </div>
                                         <div class="testimonial-author">
-                                            <h3 class="person-name font-josefin"><?php echo esc_html($item['person_name']) ?></h3>
-                                            <h4 class="designation font-josefin"><?php echo esc_html($item['designation']) ?></h4>
+                                            <h3 class="person-name"><?php echo esc_html($item['person_name']) ?></h3>
+                                            <h4 class="designation"><?php echo esc_html($item['designation']) ?></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -1826,13 +1826,13 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     <div class="tft-testimonials-content">
                         <div class="tft-heading-content">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title tft-title-shape font-brygada <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
-                                <div class="tft-section-content font-ubuntu">
+                                <div class="tft-section-content">
                                     <?php echo wp_kses_post($tft_sec_content); ?>
                                 </div>
                             <?php } ?>
@@ -1855,7 +1855,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                         <div class="tft-single-testimonial">
                                             <div class="tft-testimonials-inner">
                                                 <div class="testimonial-review">
-                                                    <p class="font-ubuntu"><?php echo wp_kses_post($item['testimonials_review']); ?></p>
+                                                    <p><?php echo wp_kses_post($item['testimonials_review']); ?></p>
                                                 </div>
                                                 <div class="testimonial-author">
                                                     <div class="testimonial-author-image">
@@ -1867,8 +1867,8 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                                         <?php } ?>
                                                     </div>
                                                     <div class="testimonial-author-info">
-                                                        <h4 class="person-name font-brygada"><?php echo esc_html($item['person_name']) ?></h4>
-                                                        <p class="designation font-ubuntu"><?php echo esc_html($item['designation']) ?></p>
+                                                        <h4 class="person-name"><?php echo esc_html($item['person_name']) ?></h4>
+                                                        <p class="designation"><?php echo esc_html($item['designation']) ?></p>
                                                     </div>
                                                 </div>
                                             </div>

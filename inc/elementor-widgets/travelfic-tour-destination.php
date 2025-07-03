@@ -1315,7 +1315,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                     <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php esc_html_e("Tour Destination Image", "travelfic-toolkit"); ?>"></a>
                                 </div>
                                 <div class="tft-destination-title">
-                                    <?php echo '<a href="' . esc_url(get_term_link($cat->slug, 'tour_destination')) . '" class="font-nunito tft-color-text">' . esc_html($cat->name) . '</a>'; ?>
+                                    <?php echo '<a href="' . esc_url(get_term_link($cat->slug, 'tour_destination')) . '" class="tft-color-text">' . esc_html($cat->name) . '</a>'; ?>
                                 </div>
                                 
                                 <div class="tft-destination-details">
@@ -1353,9 +1353,9 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 <div class="tft-destination-header">
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle font-cormorant"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                         <?php } if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
+                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
                     <div class="tft-tour-destination-slides-arrows">
@@ -1452,18 +1452,18 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     <div class="tft-destination-content">
                         <div class="tft-heading-content">
                             <?php if (!empty($tft_sec_subtitle)) { ?>
-                                <h3 class="tft-section-subtitle font-ubuntu"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                                <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                             <?php }
                             if (!empty($tft_sec_title)) { ?>
-                                <h2 class="tft-section-title font-brygada tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                                <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
                             <?php }
                             if (!empty($tft_sec_content)) { ?>
-                                <div class="tft-section-content font-ubuntu">
+                                <div class="tft-section-content">
                                     <?php echo wp_kses_post($tft_sec_content); ?>
                                 </div>
                             <?php }
                             if (!empty($settings['readme_label'])) { ?>
-                                <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn font-ubuntu" target="_blank">
+                                <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn" target="_blank">
                                     <?php echo esc_html($settings['readme_label']); ?>
                                     <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                 </a>
@@ -1483,10 +1483,12 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                                 <div class="tft-single-destination">
                                     <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
                                         <div class="tft-desination-content tft-content-box">
-                                            <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content">
-                                                <h3 class="font-ubuntu"><?php echo esc_html($cat->name); ?></h3>
-                                            </a>
-                                            <p class="tft-color-white font-ubuntu"><?php echo esc_html($cat->count); ?> <span><?php echo esc_html__('Destination', 'travelfic-toolkit'); ?></span></p>
+                                            <h3>
+                                                <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content">
+                                                    <?php echo esc_html($cat->name); ?>
+                                                </a>
+                                            </h3>
+                                            <p class="tft-color-white"><?php echo esc_html($cat->count); ?> <span><?php echo esc_html__('Destination', 'travelfic-toolkit'); ?></span></p>
                                         </div>
 
                                     </div>
@@ -1494,7 +1496,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                             <?php }
                         }
                         if (!empty($settings['readme_label'])) { ?>
-                            <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn tft-btn--mobile font-ubuntu" target="_blank">
+                            <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn tft-btn--mobile" target="_blank">
                                 <?php echo esc_html($settings['readme_label']); ?>
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>

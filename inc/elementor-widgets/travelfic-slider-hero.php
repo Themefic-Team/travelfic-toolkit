@@ -1780,7 +1780,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 <div class="tft-hero-content">
                     <?php if (!empty($tft_banner_title)) { ?>
                         <div class="tft-content-box">
-                            <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                            <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
                         </div>
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
@@ -1796,7 +1796,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     <?php
                     if (!empty($tft_banner_title)) { ?>
                         <div class="tft-content-box">
-                            <h1 class="font-cormorant"><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                            <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
                         </div>
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
@@ -1819,21 +1819,21 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                 <div class="tft-hero-design__four__slider__item__content">
                                     <!-- slider subtitle -->
                                     <?php if (!empty($slider['design4_slider_subtitle'])) : ?>
-                                        <h2 class="tft-hero-design__four__slider__item__content--subtitle font-caveat">
+                                        <h2 class="tft-hero-design__four__slider__item__content--subtitle">
                                             <?php echo esc_html($slider['design4_slider_subtitle']); ?>
                                         </h2>
                                     <?php endif; ?>
 
                                     <!-- slider title -->
                                     <?php if (!empty($slider['design4_slider_title'])): ?>
-                                        <h1 class="tft-hero-design__four__slider__item__content--title font-brygada">
+                                        <h1 class="tft-hero-design__four__slider__item__content--title">
                                             <?php echo esc_html($slider['design4_slider_title']); ?>
                                         </h1>
                                     <?php endif; ?>
                                     <!-- slider button -->
                                     <?php if (!empty($slider['design4_slider_bttn_txt'])) : ?>
                                         <a href="<?php echo esc_url($slider['design4_slider_bttn_url']['url']); ?>"
-                                            class="tft-hero-design__four__slider__item__content--link tft-btn font-ubuntu"
+                                            class="tft-hero-design__four__slider__item__content--link tft-btn"
                                             <?php echo esc_attr($target_blank); ?>>
                                             <?php echo esc_html($slider['design4_slider_bttn_txt']); ?>
                                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
@@ -1962,7 +1962,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                     <div class="tft-container tft-hero-single-item-inner tft-content-box">
                                         <div class="slider-inner-info">
                                             <div class="tft-slider-title">
-                                                <h1 class="tft-title title-large font-nunito">
+                                                <h1 class="tft-title title-large">
                                                     <?php
                                                     if (!empty($item['slider_title'])) {
                                                         echo esc_html($item['slider_title']);
@@ -1970,14 +1970,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                 </h1>
                                                 <?php if ($item['slider_subtitle'] != '') { ?>
                                                     <div class="tft-sub-title">
-                                                        <p class="font-nunito tft-color-white"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
+                                                        <p class="tft-color-white"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
                                                     </div>
                                                 <?php } ?>
                                             </div>
                                             <div class="slider-button">
                                                 <?php
                                                 if (!empty($item['slider_bttn_url'])) { ?>
-                                                    <a class="tft-btn tft-btn_sharp tft-wh-auto tft-border-0 font-nunito" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
+                                                    <a class="tft-btn tft-btn_sharp tft-wh-auto tft-border-0" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php

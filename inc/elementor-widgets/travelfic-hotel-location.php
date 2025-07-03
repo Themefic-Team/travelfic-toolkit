@@ -655,11 +655,11 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>"><img src="<?php echo esc_url($cat_image); ?>" alt="<?php esc_html_e("Hotel Location Image", "travelfic-toolkit"); ?>"></a>
                     </div>
                     <div class="tft-destination-title">
-                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'hotel_location' )) . '" class="font-nunito">' . esc_html($cat->name) . '</a>'; ?>
+                        <?php echo '<a href="' . esc_url(get_term_link( $cat->slug, 'hotel_location' )) . '">' . esc_html($cat->name) . '</a>'; ?>
                     </div>
 
                     <div class="tft-destination-details">
-                        <div class="tft-destination-details font-nunito">
+                        <div class="tft-destination-details">
                             <ul>
                             <?php
                             $args2 = array(
@@ -694,11 +694,11 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
             <div class="tft-heading-content">
                 <?php 
                 if(!empty($tft_sec_subtitle)){ ?>
-                    <h3 class="tft-section-subtitle font-josefin"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                    <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
                 <?php }
                 if(!empty($tft_sec_title)){
                 ?>
-                <h2 class="tft-section-title font-cormorant"><?php echo esc_html($tft_sec_title); ?></h2>
+                <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                 <?php } ?>
             </div>
             <div class="tft-destination-slides-arrows">
@@ -733,7 +733,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                         <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
                             <a href="<?php echo esc_url(get_term_link( $cat->slug, 'hotel_location' )); ?>" class="tft-destination-content">
                                 <h3><?php echo esc_html($cat->name); ?></h3>
-                                <span class="tft-btn tft-wh-auto tft-btn_sharp btn-view-details font-josefin">
+                                <span class="tft-btn tft-wh-auto tft-btn_sharp btn-view-details">
                                     <?php echo esc_html_e("Explore now", "travelfic-toolkit"); ?>
                                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g id="content">

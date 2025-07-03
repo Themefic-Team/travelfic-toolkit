@@ -98,9 +98,9 @@
 
                         .social-media {
                             a {
-                                background: #f15d30;
+                                background: $tft-color-primary;
                                 border-radius: 2px;
-                                color: $color-white;
+                                color: $tft-color-white;
                                 height: 24px;
                                 width: 24px;
                                 text-align: center;
@@ -109,8 +109,8 @@
                                 display: inline-block;
 
                                 &:hover {
-                                    color: $color-white;
-                                    background-color: #f94700;
+                                    color: $tft-color-white;
+                                    background-color: $tft-color-secondary;
                                 }
                             }
                         }
@@ -166,13 +166,13 @@
             }
 
             h3{
-                color: #FA6400;
+                color: $tft-color-primary;
             }
 
             h2 {
                 margin-left: auto;
                 margin-right: auto;
-                color: #060D1C;
+                color: $tft-color-heading;
                 &::after {
                     left: 50%;
                     transform: translateX(-50%);
@@ -222,7 +222,7 @@
                     button {
                         width: 10px;
                         height: 10px;
-                        background: #e8d9cf;
+                        background: $tft-color-light-white;
                         border-radius: 50%;
 
                         &::before {
@@ -231,10 +231,10 @@
                     }
 
                     &.slick-active {
-                        border-color: #FA6400;
+                        border-color: $tft-color-primary;
 
                         button {
-                            background: #FA6400;
+                            background: $tft-color-secondary;
                         }
                     }
                 }
@@ -244,7 +244,7 @@
                 padding: 30px;
                 padding-bottom: 40px;
                 @include bd-radius(15px);
-                background: $color-white;
+                background: $tft-color-white;
                 box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
                 flex-basis: calc(33.33% - 16px);
 
@@ -276,7 +276,7 @@
                     padding: 0;
 
                     h3 {
-                        color: #FA6400;
+                        color: $tft-color-primary;
                         font-size: 1rem;
                         font-weight: 400;
                         margin-bottom: 5px;
@@ -288,7 +288,7 @@
                     }
 
                     h2 {
-                        color: #060D1C;
+                        color: $tft-color-heading;
                         font-size: 1.5rem;
                         font-weight: 700;
                         margin-bottom: 0;
@@ -311,7 +311,7 @@
                             height: 50px;
                             width: 50px;
                             border-radius: 5px;
-                            background: #FA6400;
+                            background: $tft-color-primary;
                             border: 0;
                             box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
                             cursor: pointer;
@@ -320,13 +320,13 @@
                                 width: 45px;
                             }
                             i {
-                                color: $color-white;
+                                color: $tft-color-white;
                                 font-size: 1.125rem;
                             }
                         }
 
                         .social-media {
-                            background: #FA6400;
+                            background: $tft-color-primary;
                             width: fit-content;
                             padding: 7px 25px;
                             @include bd-radius(4px);
@@ -343,7 +343,7 @@
                             }
 
                             a {
-                                color: $color-white;
+                                color: $tft-color-white;
                             }
                         }
                     }
@@ -395,7 +395,7 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: $color-white;
+        background: $tft-color-white;
         border: 1px solid #efefef;
         width: 70px;
         height: 70px;
@@ -423,9 +423,9 @@
         }
 
         &:hover {
-            background: #FA6400;
-            color: $color-white;
-            border-color: #FA6400;
+            background: $tft-color-primary;
+            color: $tft-color-white;
+            border-color: $tft-color-primary;
         }
 
         &.tft-prev-slide {
