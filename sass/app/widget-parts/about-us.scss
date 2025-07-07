@@ -377,7 +377,6 @@
                             .text {
                                 color: $tft-color-text;
                                 font-size: 1.125rem;
-                                line-height: normal;
 
                                 @media #{$max767} {
                                     font-size: 1rem;

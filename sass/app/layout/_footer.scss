@@ -6,7 +6,7 @@
   &__two {
     padding-top: 64px;
     padding-bottom: 32px;
-    background-color: #595349;
+    background-color: $tft-color-gray;
     color: $tft-color-light-white;
 
     a {
@@ -39,9 +39,9 @@
       h2 {
         font-size: 2rem;
         font-weight: 700;
-        color: #b58e53;
+        color: $tft-color-primary;
         margin-bottom: 24px;
-        line-height: 32px;
+        line-height: 1;
       }
 
       ul {
@@ -62,7 +62,7 @@
             transition: all 0.2s ease;
 
             &:hover {
-              color: #b58e53;
+              color: $tft-color-secondary;
             }
           }
         }
@@ -103,7 +103,7 @@
     &::after {
       content: '';
       position: absolute;
-      background: #101f36d5;
+      background: $tft-color-dark-blue;
       left: 0;
       top: 0;
       width: 100%;
@@ -135,7 +135,7 @@
     h3.wp-block-heading {
       font-size: 1.5rem;
       font-weight: 500;
-      line-height: 27.58px;
+      line-height: 1.15;
       padding-bottom: 15px;
       margin-bottom: 32px;
       position: relative;
@@ -176,7 +176,6 @@
       color: $tft-color-white;
       font-size: 1.125rem;
       font-weight: 500;
-      line-height: normal;
       margin-bottom: 16px;
 
       @media #{$max767} {
@@ -190,7 +189,7 @@
 
       @media #{$max767} {
         font-size: 0.875rem;
-        line-height: 22px;
+        line-height: 1.5;
       }
     }
 
@@ -208,7 +207,7 @@
           }
 
           &:hover {
-            color: #FA6400;
+            color: $tft-color-secondary;
           }
         }
 
@@ -230,7 +229,7 @@
 
         @media #{$max767} {
           font-size: 0.938rem;
-          line-height: 24px;
+          line-height: 1.6;
         }
 
         @media #{$max575} {
@@ -275,11 +274,11 @@
     input[type="text"] {
       max-width: 320px;
       min-height: 52px;
-      background: #203453;
+      background:$tft-color-dark-blue;
       @include bd-radius(1000px);
       padding: 16px 32px;
       color: $tft-color-white;
-      line-height: 18.38px;
+      line-height: 1.2;
       border: 0;
       margin-top: 16px;
 
@@ -301,7 +300,7 @@
       min-width: 174px;
       padding: 0;
       height: 50px;
-      background: #0e3dd8;
+      background: $tft-color-primary;
       border: 0;
       color: $tft-color-white;
       text-align: center;
@@ -318,7 +317,7 @@
       }
 
       &:hover {
-        background: #FA6400;
+        background: $tft-color-secondary;
       }
     }
   }
@@ -331,17 +330,14 @@
     margin-top: 32px;
 
     p {
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 130%;
       margin: 0;
       padding-top: 32px;
-      color: #99948d;
+      color: $tft-color-text;
       text-align: center;
 
       a {
         text-decoration: none;
-        color: #99948d;
+        color: $tft-color-text;
       }
     }
 
@@ -349,13 +345,12 @@
 
   &__three {
     font-size: 0.75rem;
-    line-height: 13.79px;
     color: $tft-color-white;
     overflow: hidden;
 
     &__inner {
       @include d-flex();
-      align-items: center;
+      align-items: stretch;
 
       @media #{$max767} {
         align-items: inherit;
@@ -363,10 +358,12 @@
     }
 
     &__copyright {
-      background: $color-dark-blue3;
+      background: $tft-color-dark-blue;
       flex: 2;
       padding: 16px 0;
       position: relative;
+      @include d-flex();
+      align-items: center;
 
       @media #{$max767} {
         flex: 1;
@@ -380,7 +377,7 @@
         right: 100%;
         padding-right: 100%;
         top: 0;
-        background: $color-dark-blue3;
+        background: $tft-color-dark-blue;
         width: 100vw;
         height: 100%;
         z-index: 99;
@@ -390,13 +387,13 @@
         margin-bottom: 0;
 
         @media #{$max767} {
-          line-height: 18px;
+          line-height: 1.125;
         }
       }
     }
 
     &__menu {
-      background: #0e3dd8;
+      background: $tft-color-secondary;
       flex: 0.8;
       padding: 16px 0;
       text-align: center;
@@ -414,7 +411,7 @@
         left: 100%;
         padding-right: 100%;
         top: 0;
-        background: #0e3dd8;
+        background: $tft-color-secondary;
         width: 100vw;
         height: 100%;
         z-index: 99;
@@ -441,7 +438,7 @@
         @include transition(0.2s);
 
         &:hover {
-          color: #FA6400;
+          color: $tft-color-secondary;
         }
       }
     }

@@ -111,9 +111,9 @@
     }
 
     &:hover {
-      background: #FA6400;
+      background: $tft-color-primary;
       color: $tft-color-white;
-      border-color: #FA6400;
+      border-color: $tft-color-primary;
     }
 
     &.tft-prev-slide {
@@ -142,8 +142,6 @@
     }
   }
 }
-
-
 
 .tft-team-slider-nav {
   margin-top: 0;

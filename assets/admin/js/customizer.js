@@ -19,5 +19,17 @@
         }
       });
     });
+
+    $(document).on('click', '.tf-menu-redirect', function(e) {
+      e.preventDefault();
+      wp.customize.panel('nav_menus').expand();
+    });
+
+
+    $(document).on('click', '.tf-redirect-btn', function(e) {
+      e.preventDefault();
+      wp.customize.section('title_tagline').expand();
+    });
+    
   });
 })(jQuery);

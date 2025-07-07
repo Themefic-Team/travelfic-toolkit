@@ -7,7 +7,7 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
         // Sticky Settings Checked
-        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'sticky_header', '');
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', '');
         $travelfic_sticky_settings = $travelfic_sticky_settings ? true : false;
         if (isset($travelfic_sticky_settings)) {
             if ($travelfic_sticky_settings != false) {
@@ -86,7 +86,7 @@ class Travelfic_Customizer_Header
         <header class="tft-header-design__two <?php echo esc_attr($travelfic_sticky_class); ?>">
             <?php if (!empty($design_2_topbar)) { ?>
                 <div class="tft-top-header">
-                    <div class="tft-flex tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                    <div class="tft-flex <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                         <div class="tft-contact-info">
                             <ul>
                                 <?php
@@ -208,7 +208,7 @@ class Travelfic_Customizer_Header
             <?php } ?>
 
             <div class="tft-menus-section tft-header-desktop <?php echo esc_attr($travelfic_desktop_transparent_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
-                <div class="tft-flex tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                <div class="tft-flex <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
                             <?php
@@ -283,7 +283,7 @@ class Travelfic_Customizer_Header
 
 
             <div class="tft-menus-section tft-header-mobile <?php echo esc_attr($travelfic_mobile_transparent_class); ?>">
-                <div class="tft-main-header-wrapper tft-container-flex align-center justify-sp-between tft-w-padding <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                <div class="tft-main-header-wrapper tft-container-flex align-center justify-sp-between <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-header-left site-header-section">
                         <div class="site--brand-logo">
                             <?php
@@ -486,7 +486,7 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
         // Sticky Settings Checked
-        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'sticky_header', 'disabled');
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', 'disabled');
         $travelfic_sticky_settings = $travelfic_sticky_settings ? true : false;
         if (isset($travelfic_sticky_settings)) {
             if ($travelfic_sticky_settings != false) {

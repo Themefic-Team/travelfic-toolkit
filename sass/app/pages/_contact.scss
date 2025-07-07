@@ -26,9 +26,9 @@
 }
 
 .tft-contact-form a {
-  color: #0e3dd8;
+  color: $tft-color-primary;
 
   &:hover {
-    color: #FA6400;
+    color: $tft-color-secondary;
   }
 }
