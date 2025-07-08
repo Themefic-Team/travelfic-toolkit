@@ -126,7 +126,7 @@
     }
 
     &__two {
-        background: $tft-color-light-white;
+        background: $tft-color-orange-light;
 
         .tft-blog-header {
             display: flex;
@@ -157,7 +157,7 @@
                     color: $tft-color-heading;
                     margin: 0;
 
-                    @media #{$max1480} {
+                    @media (max-width: 1480px) {
                         font-size: 2rem;
                     }
                 }
@@ -231,7 +231,7 @@
                                 color: $tft-color-text;
                                 margin: 0px;
 
-                                @media #{$max1480} {
+                                @media (max-width: 1480px) {
                                     font-size: 0.75rem;
                                 }
                             }
@@ -243,7 +243,7 @@
                                 color: $tft-color-text;
                                 margin: 0px;
 
-                                @media #{$max1480} {
+                                @media (max-width: 1480px) {
                                     font-size: 0.875rem;
                                 }
 
@@ -266,7 +266,7 @@
                             color: $tft-color-heading;
                             margin: 8px 0px 24px 0px;
 
-                            @media #{$max1480} {
+                            @media (max-width: 1480px) {
                                 font-size: 1.25rem;
                             }
                         }
@@ -544,7 +544,7 @@
                                 max-height: inherit;
                             }
 
-                            @media #{$max480} {
+                            @media (max-width: 480px) {
                                 min-height: 250px;
                                 max-height: 250px;
                             }

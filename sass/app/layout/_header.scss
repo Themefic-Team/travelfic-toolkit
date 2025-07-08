@@ -5,7 +5,7 @@
 
   &__two {
     .tft-top-header {
-      background: $tft-color-gray;
+      background: $tft-color-dark-brown;
       padding-top: 10px;
       padding-bottom: 10px;
 
@@ -136,7 +136,7 @@
           }
 
           ul.sub-menu {
-            background: $tft-color-light-white;
+            background: $tft-color-orange-light;
             box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
             padding: 8px;
 
@@ -246,7 +246,7 @@
 
       .tft-mobile-main-menu {
         .tft-site-navigation {
-          background-color: $tft-color-light-white;
+          background-color: $tft-color-orange-light;
           top: 31px;
           padding: 50px 0px 45px 0px;
 
@@ -265,7 +265,7 @@
               }
 
               ul {
-                background-color: $tft-color-light-white;
+                background-color: $tft-color-orange-light;
 
                 li {
                   a {
@@ -348,7 +348,7 @@
   }
 
   &__three {
-    background: $color-blue;
+    background: $tft-color-blue;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     @media #{$max767} {
@@ -429,24 +429,24 @@
         flex: 1;
         padding-left: 6.3%;
 
-        @media #{$max1850} {
+        @media (max-width: 1850px) {
           padding-left: 5%;
         }
 
-        @media #{$max1760} {
+        @media (max-width: 1760px) {
           max-width: 450px;
         }
 
-        @media #{$max1680} {
+        @media (max-width: 1680px){
           max-width: 350px;
           padding-left: 3%;
         }
 
-        @media #{$max1480} {
+        @media (max-width: 1480px) {
           max-width: 300px;
         }
 
-        @media #{$max1399} {
+        @media (max-width: 1399px) {
           max-width: 260px;
         }
 
@@ -464,7 +464,7 @@
           @include align-items(center);
           width: 100%;
           max-width: 100%;
-          background: $color-blue;
+          background: $tft-color-blue;
           padding: 15px;
           min-height: 70px;
           flex-basis: 30%;
@@ -514,7 +514,7 @@
     &__topbar {
       padding-left: 20px;
       position: relative;
-      background: $linear-gradient;
+      background: linear-gradient(0deg, $tft-color-primary, $tft-color-primary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
       min-height: 45px;
       @include d-flex();
       @include align-items(center);
@@ -523,25 +523,25 @@
       z-index: 99;
       padding-right: 8%;
 
-      @media #{$max1850} {
+      @media (max-width: 1850px) {
         padding-right: 4%;
       }
 
-      @media #{$max1760} {
+      @media (max-width: 1760px) {
         padding-right: 3%;
       }
 
-      @media #{$max1480} {
+      @media (max-width: 1480px) {
         padding-right: 15px;
       }
 
-      @media #{$max1399} {
+      @media (max-width: 1399px) {
         padding-left: 15px;
         margin-left: 30px;
         min-height: 45px;
       }
 
-      @media #{$max1366} {
+      @media (max-width: 1366px) {
         padding-left: 5px;
       }
 
@@ -569,7 +569,7 @@
         left: -20px;
         padding-right: 100%;
         top: 0;
-        background: $linear-gradient;
+        background: linear-gradient(0deg, $tft-color-primary, $tft-color-primary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
         width: auto;
         height: 100%;
         transform: skewX(-19deg);
@@ -624,7 +624,7 @@
         @include align-items(center);
         gap: 30px;
 
-        @media #{$max1399} {
+        @media (max-width: 1399px) {
           gap: 20px;
           @include align-items(baseline);
         }
@@ -638,7 +638,7 @@
         }
 
         &-item {
-          @media #{$max1399} {
+          @media (max-width: 1399px) {
             max-height: 24px;
             min-height: 24px;
           }
@@ -663,7 +663,7 @@
             color: $tft-color-white;
           }
 
-          @media #{$max1399} {
+          @media (max-width: 1399px) {
             font-size: 0.938rem;
           }
 
@@ -763,16 +763,16 @@
       @include justify-content(space-between);
       padding-right: 8%;
 
-      @media #{$max1850} {
+      @media (max-width: 1850px) {
         padding-right: 4%;
         padding-left: 30px;
       }
 
-      @media #{$max1760} {
+      @media (max-width: 1760px) {
         padding-right: 3%;
       }
 
-      @media #{$max1480} {
+      @media (max-width: 1480px) {
         padding: 15px;
         gap: 20px;
         @include justify-content(space-between);
@@ -797,7 +797,7 @@
         min-width: 754px;
         flex: 1;
 
-        @media #{$max1680} {
+        @media (max-width: 1680px) {
           min-width: auto;
         }
 
@@ -810,11 +810,11 @@
           gap: 32px;
           row-gap: 10px;
 
-          @media #{$max1680} {
+          @media (max-width: 1680px) {
             gap: 30px;
           }
 
-          @media #{$max1366} {
+          @media (max-width: 1366px) {
             gap: 20px;
           }
 
@@ -878,7 +878,7 @@
                 @include transition(0.3s);
 
                 // Adjust for different screen sizes
-                @media #{$max1399} {
+                @media (max-width: 1399px) {
                   left: -100px;
                 }
 
@@ -960,7 +960,7 @@
         @include align-items(center);
         gap: 30px;
 
-        @media #{$max1480} {
+        @media (max-width: 1480px) {
           gap: 15px;
         }
 
@@ -969,11 +969,11 @@
           @include align-items(center);
           gap: 24px;
 
-          @media #{$max1366} {
+          @media (max-width: 1366px) {
             gap: 20px;
           }
 
-          @media #{$max1480} {
+          @media (max-width: 1480px) {
             gap: 15px;
           }
 
@@ -988,10 +988,10 @@
               @include align-items(center);
               @include justify-content(center);
               background: $tft-color-white;
-              border: 1px dashed #060d1c;
+              border: 1px dashed $tft-color-dark-blue;
               @include box-circle();
 
-              @media #{$max1480} {
+              @media (max-width: 1480px) {
                 width: 42px;
                 height: 42px;
               }
@@ -1065,7 +1065,7 @@
                 visibility: visible;
                 transform: translateY(20px);
 
-                @media #{$max1399} {
+                @media (max-width: 1399px) {
                   transform: translateY(17px);
                 }
 
@@ -1091,7 +1091,7 @@
           }
 
           .tft-btn {
-            @media #{$max1366} {
+            @media (max-width: 1366px) {
               min-width: 140px;
               min-height: 45px;
               font-size: 0.938rem;

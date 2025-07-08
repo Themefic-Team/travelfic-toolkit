@@ -111,7 +111,7 @@
                 margin: 0;
                 padding-bottom: 48px;
 
-                @media #{$max1366} {
+                @media (max-width: 1366px) {
                     font-size: 2rem;
                 }
                 @media #{$max575} {
@@ -260,7 +260,7 @@
             @include d-flex();
             gap: 24px;
 
-            @media #{$max1760} {
+            @media (max-width: 1760px) {
                 gap: 20px;
             }
 
@@ -275,7 +275,7 @@
             .tft-heading-content {
                 flex-basis: calc(608px - 12px);
 
-                @media #{$max1760} {
+                @media (max-width: 1760px) {
                     flex-basis: calc(40% - 15px);
                 }
 
@@ -318,7 +318,7 @@
             .tft-single-destination {
                 flex-basis: 288px;
 
-                @media #{$max1760} {
+                @media (max-width: 1760px) {
                     flex-basis: calc(30% - 15px);
                 }
 
@@ -333,7 +333,7 @@
                 &:nth-child(5) {
                     flex-basis: calc(608px - 12px);
 
-                    @media #{$max1760} {
+                    @media (max-width: 1760px) {
                         flex-basis: calc(40% - 15px);
                     }
 
@@ -402,7 +402,7 @@
             .tft-btn {
                 height: 50px;
                 padding: 16px 36px;
-                background: #f2f2f2;
+                background: $tft-color-gray-light;
                 color: $tft-color-text;
 
                 &:hover {

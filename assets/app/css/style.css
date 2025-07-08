@@ -8,10 +8,6 @@ html {
   scroll-behavior: smooth;
 }
 
-main {
-  margin-bottom: 56px;
-}
-
 a {
   text-decoration: none;
 }
@@ -235,7 +231,7 @@ textarea.tft-form-control {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid #dbe0f1;
+  border: 1px solid var(--tf-border-color);
   background: var(--tf-color-white);
   padding: 17px 25px 18px;
 }
@@ -1004,7 +1000,7 @@ textarea.tft-form-control {
 }
 
 .tft-footer-bottom__two {
-  border-top: 0.5px solid #99948d;
+  border-top: 0.5px solid var(--tf-border-color);
   margin-top: 32px;
 }
 .tft-footer-bottom__two p {
@@ -2186,7 +2182,7 @@ textarea.tft-form-control {
   -webkit-justify-content: center;
   justify-content: center;
   background: var(--tf-color-white);
-  border: 1px dashed #060d1c;
+  border: 1px dashed #1d2a3b;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -2586,7 +2582,7 @@ textarea.tft-form-control {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  border-color: #dbe0f1;
+  border-color: var(--tf-border-color);
   background: var(--tf-color-white);
   box-shadow: 0px 9px 12px 0px rgba(14, 19, 35, 0.02);
   -webkit-box-pack: center;
@@ -2692,9 +2688,9 @@ textarea.tft-form-control {
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev:hover,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next:hover {
   background: transparent !important;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--tf-border-color);
   transition: all 0.3s ease;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--tf-color-text);
 }
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev:hover::before,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next:hover::before {
@@ -2828,7 +2824,7 @@ textarea.tft-form-control {
   transition: 0.3s all ease;
 }
 .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button.tf_btn {
-  border: #e6e6e6;
+  border: var(--tf-border-color);
   border-radius: 0px;
   overflow: hidden;
   position: relative;
@@ -2846,7 +2842,7 @@ textarea.tft-form-control {
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab-mobile select[name=tf-booking-form-tab-select] {
-    color: #FDF9F3;
+    color: #FAEEDC;
   }
 }
 .tft-hero-design__three {
@@ -3218,7 +3214,7 @@ textarea.tft-form-control {
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  border: 1px solid #d6dff0;
+  border: 1px solid var(--tf-border-color);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -3269,7 +3265,7 @@ textarea.tft-form-control {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  background-color: rgba(16, 31, 54, 0.7019607843);
+  background-color: #1d2a3b;
   padding: 10px 6px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -3457,7 +3453,7 @@ textarea.tft-form-control {
   cursor: pointer;
   padding: 10px 18px;
   background-color: transparent;
-  border: 1px solid #ccc;
+  border: 1px solid var(--tf-border-color);
   color: var(--tf-color-text);
 }
 .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn.active, .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn:hover {
@@ -3467,7 +3463,7 @@ textarea.tft-form-control {
 }
 @media only screen and (max-width: 1024.98px) {
   .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab-mobile {
-    border: 1px solid #ddd;
+    border: 1px solid var(--tf-border-color);
     border-radius: 4px;
   }
 }
@@ -3509,7 +3505,7 @@ textarea.tft-form-control {
   background: var(--tf-color-primary);
 }
 .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--tf-border-color);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
@@ -3880,8 +3876,8 @@ textarea.tft-form-control {
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-image .tft-about-curbe-image img {
   width: 100%;
-  border-bottom-left-radius: 1000px;
-  border-bottom-right-radius: 1000px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-us-design__two .tft-about-us-grid .tft-about-image .tft-about-curbe-image img {
@@ -3897,7 +3893,7 @@ textarea.tft-form-control {
   top: 50px;
   width: 100%;
   height: 100%;
-  border-radius: 0px 0px 1000px 1000px;
+  border-radius: 0px 0px 100px 100px;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 @media only screen and (max-width: 767.98px) {
@@ -4148,7 +4144,7 @@ textarea.tft-form-control {
   background-color: var(--tf-color-white);
   padding: 14px 14px 14px 14px;
   border-radius: 10px 10px 10px 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--tf-border-color);
 }
 .tft-cf7-form-design__one .wpcf7-form textarea {
   height: 100px;
@@ -4225,7 +4221,7 @@ textarea.tft-form-control {
   gap: 8px;
   align-self: stretch;
   width: 100%;
-  border: 1px solid #99948D;
+  border: 1px solid var(--tf-border-color);
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   background-color: transparent;
   border-radius: unset;
@@ -4633,7 +4629,7 @@ textarea.tft-form-control {
 .tft-popular-hotels-design__two .tft-destination-slider .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: #e8d9cf;
+  background: #FAEEDC;
   border-radius: 50%;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .slick-dots li button::before {
@@ -4787,7 +4783,7 @@ textarea.tft-form-control {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  border: 1px solid #FAEEDC;
+  border: 1px solid var(--tf-border-color);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -4857,7 +4853,7 @@ textarea.tft-form-control {
 }
 .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single {
   flex-basis: 31.33%;
-  border: 1px solid #ededf0;
+  border: 1px solid var(--tf-border-color);
   box-shadow: 0px 32px 64px rgba(90, 91, 106, 0.08);
   border-radius: 16px;
   transition: all 0.6s ease;
@@ -5078,7 +5074,7 @@ textarea.tft-form-control {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  box-shadow: drop-shadow(0px 5px 35px #f9eee5);
+  box-shadow: drop-shadow(0px 5px 35px var(--tf-box-shadow-color));
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -6512,7 +6508,7 @@ textarea.tft-form-control {
   top: 50%;
   transform: translateY(-50%);
   background: var(--tf-color-white);
-  border: 1px solid #efefef;
+  border: 1px solid var(--tf-border-color);
   width: 70px;
   height: 70px;
   -webkit-border-radius: 100px;
@@ -6925,7 +6921,7 @@ textarea.tft-form-control {
   .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow {
     width: 50px;
     height: 50px;
-    border-color: var(--tf-color-text);
+    border-color: var(--tf-border-color);
   }
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow i {
@@ -7017,7 +7013,7 @@ textarea.tft-form-control {
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button {
   width: 10px;
   height: 10px;
-  background: #e8d9cf;
+  background: #FAEEDC;
   border-radius: 50%;
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li button::before {
@@ -7069,7 +7065,7 @@ textarea.tft-form-control {
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author {
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--tf-border-color);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;

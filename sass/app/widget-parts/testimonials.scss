@@ -150,7 +150,7 @@
                     margin: 0;
                     padding-bottom: 48px;
 
-                    @media #{$max1366} {
+                    @media (max-width: 1366px) {
                         font-size: 2rem;
                     }
                 }
@@ -169,7 +169,7 @@
             .tft-testimonials-slides {
                 .tft-single-testimonial {
                     padding: 0px 56px 56px 56px;
-                    background-color: $tft-color-light-white;
+                    background-color: $tft-color-orange-light;
                     margin: 50px 20px 75px 20px !important;
                     position: relative;
                     transition: .3s all ease;
@@ -214,7 +214,7 @@
                         }
 
                         .testimonial-review {
-                            @media #{$min992} {
+                            @media (min-width: 992px) {
                                 margin-top: -24px;
                             }
                         }
@@ -350,7 +350,7 @@
                     @media #{$max1199} {
                         width: 50px;
                         height: 50px;
-                        border-color: $tft-color-text;
+                        border-color: $tft-color-border;
                     }
 
                     i {
@@ -418,7 +418,7 @@
                         button {
                             width: 10px;
                             height: 10px;
-                            background: #e8d9cf;
+                            background: $tft-color-orange-light;
                             border-radius: 50%;
 
                             &::before {
@@ -468,7 +468,7 @@
                             .testimonial-author {
                                 margin-top: 40px;
                                 padding-top: 30px;
-                                border-top: 1px solid #f0f0f0;
+                                border-top: 1px solid $tft-color-border;
                                 @include d-flex();
                                 @include align-items(center);
                                 gap: 15px;

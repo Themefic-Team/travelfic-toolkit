@@ -38,7 +38,7 @@
                     color: $tft-color-secondary;
                     margin-bottom: 24px;
 
-                    @media #{$max1366} {
+                    @media (max-width: 1366px) {
                         font-size: 2rem;
                     }
 
@@ -136,7 +136,7 @@
                         padding-right: 56px;
                         display: block;
 
-                        @media #{$max1650} {
+                        @media (max-width: 1650px) {
                             padding-left: 24px;
                             padding-right: 24px;
                         }
@@ -147,7 +147,7 @@
                     }
 
                     .tft-hotel-details {
-                        background-color: #FCF4E8;
+                        background-color: $tft-color-orange-thin;
                         padding: 32px;
                         position: absolute;
                         left: 56px;
@@ -155,7 +155,7 @@
                         bottom: 0;
                         overflow: hidden;
 
-                        @media #{$max1650} {
+                        @media (max-width: 1650px) {
                             left: 24px;
                             right: 24px;
                         }
@@ -165,7 +165,7 @@
                                 color: $tft-color-text;
 
                                 i {
-                                    color: $tft-color-gold;
+                                    color: $tft-color-orange-yellow;
                                 }
                             }
                         }
@@ -177,7 +177,7 @@
                             color: $tft-color-heading;
                             margin-bottom: 16px;
 
-                            @media #{$max1366} {
+                            @media (max-width: 1366px) {
                                 font-size: 2rem;
                             }
 
@@ -292,7 +292,7 @@
         .container {
             overflow: hidden;
 
-            @media #{$max640} {
+            @media (max-width: 640px) {
                 padding: 0;
             }
         }
@@ -364,7 +364,7 @@
                 margin: 0 12px !important;
                 height: auto;
 
-                @media #{$max640} {
+                @media (max-width: 640px) {
                     margin: 15px 7.5px !important;
                 }
             }
@@ -388,7 +388,7 @@
                     button {
                         width: 10px;
                         height: 10px;
-                        background: #e8d9cf;
+                        background: $tft-color-orange-light;
                         border-radius: 50%;
 
                         &::before {
@@ -429,7 +429,7 @@
                         object-fit: cover;
                         @include bd-radius(15px);
 
-                        @media #{$max640} {
+                        @media (max-width: 640px) {
                             height: 200px;
                         }
                     }
@@ -522,7 +522,7 @@
 
                     .tft-desination-bottom-info {
                         @include bd-radius(15px);
-                        border: 1px solid $tft-color-light-white;
+                        border: 1px solid $tft-color-border;
                         @include d-flex();
                         @include align-items(center);
                         @include justify-content(space-between);

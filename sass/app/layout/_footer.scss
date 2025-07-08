@@ -6,11 +6,11 @@
   &__two {
     padding-top: 64px;
     padding-bottom: 32px;
-    background-color: $tft-color-gray;
-    color: $tft-color-light-white;
+    background-color: $tft-color-dark-brown;
+    color: $tft-color-orange-light;
 
     a {
-      color: $tft-color-light-white;
+      color: $tft-color-orange-light;
     }
 
     .tft-grid {
@@ -52,7 +52,7 @@
           display: block;
           padding-bottom: 8px;
           margin: 0;
-          color: $tft-color-light-white;
+          color: $tft-color-orange-light;
           a {
             text-decoration: none;
             display: block;
@@ -326,7 +326,7 @@
 // footer bottom
 .tft-footer-bottom {
   &__two {
-    border-top: 0.5px solid #99948d;
+    border-top: 0.5px solid $tft-color-border;
     margin-top: 32px;
 
     p {

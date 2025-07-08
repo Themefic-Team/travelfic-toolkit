@@ -93,7 +93,9 @@ function travelfic_toolkit_customizer_style()
     $travelfic_secondary_color = get_theme_mod($travelfic_kit_pre . 'secondary_color', '#003C7A');
     $travelfic_body_text_color = get_theme_mod($travelfic_kit_pre . 'body_text_color', '#686E7A');
     $travelfic_heading_color = get_theme_mod($travelfic_kit_pre . 'heading_color', '#060D1C');
-
+    $travelfic_box_shadow_color = get_theme_mod($travelfic_kit_pre . 'box_shadow_color', '#e0e8ee');
+    $travelfic_border_color = get_theme_mod($travelfic_kit_pre . 'border_color', '#f4f4f4');
+    
     /**
      * 
      * Header Settings 
@@ -188,6 +190,8 @@ function travelfic_toolkit_customizer_style()
                     --tf-color-secondary: <?php echo esc_attr($travelfic_secondary_color); ?> ;
                     --tf-color-text: <?php echo esc_attr($travelfic_body_text_color); ?> ;
                     --tf-color-heading: <?php echo esc_attr($travelfic_heading_color); ?> ;
+                    --tf-box-shadow-color: <?php echo esc_attr($travelfic_box_shadow_color) ?> ;
+                    --tf-border-color: <?php echo esc_attr($travelfic_border_color) ?> ;
                 }
         
         <?php endif; 

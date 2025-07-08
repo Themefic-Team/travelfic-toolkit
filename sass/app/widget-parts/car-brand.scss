@@ -53,7 +53,7 @@
                 .tft-single-brands {
                     .tft-brands-thumbnail {
                         height: 212px;
-                        background: $tft-color-light-white;
+                        background: $tft-color-orange-light;
                         border-radius: 16px;
                         position: relative;
 
@@ -76,7 +76,7 @@
                                 font-size: 1.313rem;
                                 display: inline-block;
                                 padding: 4px 17px 0px 16px;
-                                background: $tft-color-light-white;
+                                background: $tft-color-orange-light;
                                 border-radius: 0px 16px 0px 16px;
                                 @include transition-linear(0.2s);
                                 &:hover{

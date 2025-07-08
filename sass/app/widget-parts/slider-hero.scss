@@ -101,9 +101,9 @@
 
                 &:hover {
                     background: transparent !important;
-                    border: 2px solid rgba(255, 255, 255, 0.5);
+                    border: 2px solid $tft-color-border;
                     transition: all 0.3s ease;
-                    color: rgba(255, 255, 255, 0.5);
+                    color: $tft-color-text;
 
                     &::before {
                         color: $tft-color-primary;
@@ -114,7 +114,7 @@
             .slick-prev {
                 left: calc(50% - (1200px / 2) + 0px) !important;
 
-                @media #{$max1280} {
+                @media (max-width: 1280px) {
                     left: calc(50% - (1200px / 2) + 60px) !important;
                 }
 
@@ -130,7 +130,7 @@
             .slick-next {
                 left: calc(50% - (1200px / 2) + 70px) !important;
 
-                @media #{$max1280} {
+                @media (max-width: 1280px) {
                     left: calc(50% - (1200px / 2) + 120px) !important;
                 }
 
@@ -153,7 +153,7 @@
                 color: $tft-color-primary;
                 font-weight: 500;
 
-                @media #{$max1280} {
+                @media (max-width: 1280px) {
                     display: none;
                 }
 
@@ -232,7 +232,7 @@
                         transition: .3s all ease;
 
                         &.tf_btn {
-                            border: #e6e6e6;
+                            border: $tft-color-border;
                             border-radius: 0px;
                             overflow: hidden;
                             position: relative;
@@ -241,7 +241,7 @@
                             cursor: pointer;
                             position: relative;
                             text-decoration: none;
-                            background-color: #e6e6e6;
+                            background-color: $tft-color-gray-platinum;
                             padding: 15px 30px;
                         }
 
@@ -256,7 +256,7 @@
                 .tf-booking-form-tab-mobile {
                     select[name="tf-booking-form-tab-select"] {
                         @media #{$max767} {
-                            color: #FDF9F3;
+                            color: $tft-color-orange-light;
                         }
                     }
                 }
@@ -265,7 +265,7 @@
     }
 
     &__three {
-        background: #b8c5d2;
+        background: $tft-color-gray-ish-blue;
         height: 540px;
         margin: 0 0 86px 0;
         background-position: center center;
@@ -320,7 +320,7 @@
         @include align-items(center);
         overflow: hidden;
 
-        @media #{$max1366} {
+        @media (max-width: 1366px) {
             min-height: 700px;
         }
 
@@ -347,7 +347,7 @@
             right: 0;
             bottom: 0;
             top: 0;
-            background: $linear-gradient2;
+            background: linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 57, 204, 0.03) 125.37%);
             z-index: -1;
         }
 
@@ -446,7 +446,7 @@
 
             // slider nav
             &--nav {
-                @media #{$max1399} {
+                @media (max-width: 1399px) {
                     margin-top: 0;
                     position: absolute;
                     left: 50%;
@@ -456,7 +456,7 @@
                     gap: 15px;
                 }
 
-                @media #{$max480} {
+                @media (max-width: 480px) {
                     bottom: -80px;
                 }
 
@@ -466,7 +466,7 @@
                     height: 60px;
                     border-color: $tft-color-white;
 
-                    @media #{$max1399} {
+                    @media (max-width: 1399px) {
                         width: 50px;
                         height: 50px;
                         position: relative;
@@ -500,11 +500,11 @@
                     &.tft-prev-slide {
                         left: 80px;
 
-                        @media #{$max1760} {
+                        @media (max-width: 1760px) {
                             left: 100px;
                         }
 
-                        @media #{$max1399} {
+                        @media (max-width: 1399px) {
                             left: 0;
                         }
                     }
@@ -512,11 +512,11 @@
                     &.tft-next-slide {
                         right: 80px;
 
-                        @media #{$max1760} {
+                        @media (max-width: 1760px) {
                             right: 100px;
                         }
 
-                        @media #{$max1399} {
+                        @media (max-width: 1399px) {
                             right: 0;
                         }
 
@@ -539,7 +539,7 @@
             color: $tft-color-white;
             gap: 20px;
 
-            @media #{$max1760} {
+            @media (max-width: 1760px) {
                 left: 35px;
             }
 
@@ -570,7 +570,7 @@
                         @include box-circle();
                         width: 45px;
                         height: 45px;
-                        border: 1px solid #d6dff0;
+                        border: 1px solid $tft-color-border;
                         @include transition(0.3s);
 
                         @media #{$max991} {
@@ -599,7 +599,7 @@
             &__divider {
                 width: 1px;
                 height: 100px;
-                background: #D9D9D9;
+                background: $tft-color-silver-light;
 
                 @media #{$max767} {
                     height: 80px;
@@ -625,7 +625,7 @@
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            background-color: #101f36b3;
+            background-color: $tft-color-dark-blue;
             padding: 10px 6px;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -652,7 +652,7 @@
             align-items: end;
             height: fit-content;
 
-            @media #{$max1760} {
+            @media (max-width: 1760px) {
                 right: 0;
             }
 
@@ -730,11 +730,11 @@
         background: $tft-color-white;
         max-width: 1000px;
 
-        @media #{$max1480} {
+        @media (max-width: 1480px) {
             width: 900px;
         }
 
-        @media #{$max1280} {
+        @media (max-width: 1280px) {
             width: 820px;
         }
 
@@ -752,11 +752,11 @@
             box-shadow: rgba(29, 42, 59, 0.1) 0px 4px 20px;
             width: 1000px;
 
-            @media #{$max1480} {
+            @media (max-width: 1480px) {
                 width: 900px;
             }
 
-            @media #{$max1280} {
+            @media (max-width: 1280px) {
                 width: 820px;
             }
 
@@ -781,7 +781,7 @@
                         cursor: pointer;
                         padding: 10px 18px;
                         background-color: transparent;
-                        border: 1px solid #ccc;
+                        border: 1px solid $tft-color-border;
                         color: $tft-color-text;
 
                         &.active,
@@ -796,7 +796,7 @@
 
                 .tf-booking-form-tab-mobile {
                     @media #{$max1024} {
-                        border: 1px solid #ddd;
+                        border: 1px solid $tft-color-border;
                         border-radius: 4px;
                     }
                 }
@@ -843,7 +843,7 @@
                         }
 
                         .tf_destination-wrap {
-                            border-right: 1px solid #ccc;
+                            border-right: 1px solid $tft-color-border;
 
                             @media #{$max767} {
                                 padding: 0px !important;

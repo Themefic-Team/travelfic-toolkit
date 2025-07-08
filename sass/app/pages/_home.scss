@@ -65,7 +65,7 @@
 }
 
 .tft-hero-slider-nav {
-  @media #{$max1399} {
+  @media (max-width: 1399px) {
     margin-top: 0;
     position: absolute;
     left: 50%;
@@ -75,7 +75,7 @@
     gap: 15px;
   }
 
-  @media #{$max480} {
+  @media (max-width: 480px) {
     bottom: -80px;
   }
 
@@ -85,7 +85,7 @@
     height: 60px;
     border-color: $tft-color-white;
 
-    @media #{$max1399} {
+    @media (max-width: 1399px) {
       width: 50px;
       height: 50px;
       position: relative;
@@ -119,11 +119,11 @@
     &.tft-prev-slide {
       left: 80px;
 
-      @media #{$max1760} {
+      @media (max-width: 1760px) {
         left: 100px;
       }
 
-      @media #{$max1399} {
+      @media (max-width: 1399px) {
         left: 0;
       }
     }
@@ -131,11 +131,11 @@
     &.tft-next-slide {
       right: 80px;
 
-      @media #{$max1760} {
+      @media (max-width: 1760px) {
         right: 100px;
       }
 
-      @media #{$max1399} {
+      @media (max-width: 1399px) {
         right: 0;
       }
 

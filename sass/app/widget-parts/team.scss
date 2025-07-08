@@ -124,7 +124,7 @@
         .container {
             overflow: hidden;
 
-            @media #{$max1399} {
+            @media (max-width: 1399px) {
                 padding: 0 15px;
             }
 
@@ -222,7 +222,7 @@
                     button {
                         width: 10px;
                         height: 10px;
-                        background: $tft-color-light-white;
+                        background: $tft-color-orange-light;
                         border-radius: 50%;
 
                         &::before {
@@ -356,11 +356,11 @@
             z-index: -1;
             position: relative;
 
-            @media #{$max1760} {
+            @media (max-width: 1760px) {
                 margin-top: -250px;
             }
 
-            @media #{$max1399} {
+            @media (max-width: 1399px) {
                 margin-top: -180px;
             }
 
@@ -387,7 +387,7 @@
         margin-top: 30px;
     }
 
-    @media #{$max640} {
+    @media (max-width: 640px) {
         margin-top: 45px;
     }
 
@@ -396,7 +396,7 @@
         top: 50%;
         transform: translateY(-50%);
         background: $tft-color-white;
-        border: 1px solid #efefef;
+        border: 1px solid $tft-color-border;
         width: 70px;
         height: 70px;
         @include bd-radius(100px);

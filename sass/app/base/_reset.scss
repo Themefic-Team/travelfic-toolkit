@@ -11,11 +11,6 @@ html {
   scroll-behavior: smooth;
 }
 
-main {
-  margin-bottom: 56px;
-}
-
-
 a {
   text-decoration: none;
 
@@ -92,7 +87,7 @@ main {
   padding-left: 200px;
   padding-right: 200px;
 
-  @media #{$max1366} {
+  @media (max-width: 1366px) {
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -101,7 +96,7 @@ main {
 .tft-l-padding {
   padding-left: 200px;
 
-  @media #{$max1366} {
+  @media (max-width: 1366px) {
     padding-left: 32px;
   }
 }
@@ -119,7 +114,7 @@ main {
     }
   }
 
-  @media #{$max1760} {
+  @media (max-width: 1760px) {
     padding: 0 15px;
   }
 }
@@ -144,7 +139,7 @@ main {
 .tft-section-space {
   padding: 120px 0;
 
-  @media #{$max1399} {
+  @media (max-width: 1399px) {
     padding: 100px 0;
   }
 
@@ -161,7 +156,7 @@ main {
 .tft-section-space-top {
   padding-top: 120px;
 
-  @media #{$max1399} {
+  @media (max-width: 1399px) {
     padding-top: 100px;
   }
 
@@ -177,7 +172,7 @@ main {
 .tft-section-space-bottom {
   padding-bottom: 120px;
 
-  @media #{$max1399} {
+  @media (max-width: 1399px) {
     padding-bottom: 100px;
   }
 
@@ -225,7 +220,7 @@ input[type="datetime-local"].tft-form-control,
 input[type="color"].tft-form-control,
 textarea.tft-form-control {
   @include bd-radius(5px);
-  border: 1px solid #dbe0f1;
+  border: 1px solid $tft-color-border;
   background: $tft-color-white;
   padding: 17px 25px 18px;
 
