@@ -95,7 +95,7 @@ function travelfic_toolkit_customizer_style()
     $travelfic_heading_color = get_theme_mod($travelfic_kit_pre . 'heading_color', '#060D1C');
     $travelfic_box_shadow_color = get_theme_mod($travelfic_kit_pre . 'box_shadow_color', '#e0e8ee');
     $travelfic_border_color = get_theme_mod($travelfic_kit_pre . 'border_color', '#f4f4f4');
-    
+
     /**
      * 
      * Header Settings 
@@ -186,22 +186,17 @@ function travelfic_toolkit_customizer_style()
         <?php if ('travelfic' !== $travelfic_current_active_theme && 'travelfic-child' !== $travelfic_current_active_theme): ?>
                 :root {
                     --tf-color-white: #ffffff;
-                    --tf-color-primary: <?php echo esc_attr($travelfic_primary_color); ?> ;
-                    --tf-color-secondary: <?php echo esc_attr($travelfic_secondary_color); ?> ;
-                    --tf-color-text: <?php echo esc_attr($travelfic_body_text_color); ?> ;
-                    --tf-color-heading: <?php echo esc_attr($travelfic_heading_color); ?> ;
+                    --tf-primary: <?php echo esc_attr($travelfic_primary_color); ?> ;
+                    --tf-brand-dark: <?php echo esc_attr($travelfic_secondary_color); ?> ;
+                    --tf-text-paragraph: <?php echo esc_attr($travelfic_body_text_color); ?> ;
+                    --tf-text-heading: <?php echo esc_attr($travelfic_heading_color); ?> ;
                     --tf-box-shadow-color: <?php echo esc_attr($travelfic_box_shadow_color) ?> ;
-                    --tf-border-color: <?php echo esc_attr($travelfic_border_color) ?> ;
+                    --tf-border-lite: <?php echo esc_attr($travelfic_border_color) ?> ;
                 }
         
         <?php endif; 
         
-           
         ?>
-
-        
-
-        
         /* header background */
         <?php if(!empty($travelfic_header_bg_color)): ?>
             #tft-site-main-body header:not(.entry-header) {

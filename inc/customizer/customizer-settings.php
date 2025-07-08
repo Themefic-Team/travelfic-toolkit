@@ -490,7 +490,7 @@ add_action('init', function () {
         'section'  => 'travelfic_customizer_header',
         'tab'      => 'settings',
         'default'  => true,
-        'priority'    => 30,
+        'priority'    => 24,
         'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',

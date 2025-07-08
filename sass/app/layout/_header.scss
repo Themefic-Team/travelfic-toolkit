@@ -514,7 +514,7 @@
     &__topbar {
       padding-left: 20px;
       position: relative;
-      background: linear-gradient(0deg, $tft-color-primary, $tft-color-primary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
+      background: linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
       min-height: 45px;
       @include d-flex();
       @include align-items(center);
@@ -569,7 +569,7 @@
         left: -20px;
         padding-right: 100%;
         top: 0;
-        background: linear-gradient(0deg, $tft-color-primary, $tft-color-primary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
+        background: linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary), linear-gradient(0deg, $tft-color-primary, $tft-color-primary);
         width: auto;
         height: 100%;
         transform: skewX(-19deg);

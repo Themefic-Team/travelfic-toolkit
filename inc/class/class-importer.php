@@ -120,6 +120,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $imported_data['travelfic_customizer_settings_transparent_header'] = true;
                 }
 
+                // footer heading color
+                if(isset($imported_data['travelfic_customizer_settings_footer_text_color'])){
+                    $imported_data['travelfic_customizer_settings_footer_heading_color'] = $imported_data['travelfic_customizer_settings_footer_text_color'];
+                }
+
                 // color palette
                 $palette_choices = array(
                     'design-1' => ['#0E3DD8', '#003C7A', '#686E7A', '#060D1C'],

@@ -84,7 +84,7 @@ main {
   padding-left: 200px;
   padding-right: 200px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-w-padding {
     padding-left: 32px;
     padding-right: 32px;
@@ -94,7 +94,7 @@ main {
 .tft-l-padding {
   padding-left: 200px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-l-padding {
     padding-left: 32px;
   }
@@ -113,7 +113,7 @@ main {
     padding: 0 15px;
   }
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .container {
     padding: 0 15px;
   }
@@ -139,7 +139,7 @@ main {
 .tft-section-space {
   padding: 120px 0;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-section-space {
     padding: 100px 0;
   }
@@ -158,7 +158,7 @@ main {
 .tft-section-space-top {
   padding-top: 120px;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-section-space-top {
     padding-top: 100px;
   }
@@ -177,7 +177,7 @@ main {
 .tft-section-space-bottom {
   padding-bottom: 120px;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-section-space-bottom {
     padding-bottom: 100px;
   }
@@ -231,7 +231,7 @@ textarea.tft-form-control {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
   background: var(--tf-color-white);
   padding: 17px 25px 18px;
 }
@@ -375,7 +375,7 @@ textarea.tft-form-control {
 .tft-btn {
   display: block;
   min-height: 55px;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   font-weight: 500;
   color: var(--tf-color-white);
   display: -webkit-inline-box;
@@ -414,7 +414,7 @@ textarea.tft-form-control {
   }
 }
 .tft-btn:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
 .tft-btn:focus {
@@ -455,11 +455,11 @@ textarea.tft-form-control {
 
 input[type=submit].tft-form-btn {
   height: 55px;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   font-size: 1rem;
   font-weight: 500;
   color: var(--tf-color-white);
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
   -webkit-border-radius: 9999px;
   -moz-border-radius: 9999px;
   border-radius: 9999px;
@@ -480,7 +480,7 @@ input[type=submit].tft-form-btn {
   }
 }
 input[type=submit].tft-form-btn:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
 input[type=submit].tft-form-btn:focus {
@@ -505,7 +505,7 @@ input[type=submit].tft-form-btn:focus {
   margin-bottom: 30px;
   text-transform: capitalize;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-heading-content h2 {
     font-size: 2.5rem;
     line-height: 1.25;
@@ -716,7 +716,7 @@ textarea.tft-form-control {
 .tft-footer-design__two .tft-grid h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   margin-bottom: 24px;
   line-height: 1;
 }
@@ -739,7 +739,7 @@ textarea.tft-form-control {
   transition: all 0.2s ease;
 }
 .tft-footer-design__two .tft-grid ul li a:hover {
-  color: var(--tf-color-secondary);
+  color: var(--tf-brand-dark);
 }
 .tft-footer-design__two .tft-grid ul li:last-child {
   padding-bottom: 0px;
@@ -889,7 +889,7 @@ textarea.tft-form-control {
   }
 }
 .tft-footer-design__three .wp-block-list li a:hover {
-  color: var(--tf-color-secondary);
+  color: var(--tf-brand-dark);
 }
 .tft-footer-design__three .wp-block-list li:last-child a {
   padding-bottom: 0;
@@ -975,7 +975,7 @@ textarea.tft-form-control {
   min-width: 174px;
   padding: 0;
   height: 50px;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   border: 0;
   color: var(--tf-color-white);
   text-align: center;
@@ -996,22 +996,22 @@ textarea.tft-form-control {
   }
 }
 .tft-footer-design__one input[type=submit]:hover, .tft-footer-design__two input[type=submit]:hover, .tft-footer-design__three input[type=submit]:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 
 .tft-footer-bottom__two {
-  border-top: 0.5px solid var(--tf-border-color);
+  border-top: 0.5px solid var(--tf-border-lite);
   margin-top: 32px;
 }
 .tft-footer-bottom__two p {
   margin: 0;
   padding-top: 32px;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   text-align: center;
 }
 .tft-footer-bottom__two p a {
   text-decoration: none;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-footer-bottom__three {
   font-size: 0.75rem;
@@ -1072,7 +1072,7 @@ textarea.tft-form-control {
   }
 }
 .tft-footer-bottom__three__menu {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   flex: 0.8;
   padding: 16px 0;
   text-align: center;
@@ -1091,7 +1091,7 @@ textarea.tft-form-control {
   left: 100%;
   padding-right: 100%;
   top: 0;
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   width: 100vw;
   height: 100%;
   z-index: 99;
@@ -1133,7 +1133,7 @@ textarea.tft-form-control {
   transition: all 0.2s ease;
 }
 .tft-footer-bottom__three__nav a:hover {
-  color: var(--tf-color-secondary);
+  color: var(--tf-brand-dark);
 }
 
 .tft-header-design__two .tft-top-header {
@@ -1237,7 +1237,7 @@ textarea.tft-form-control {
   display: inline-block;
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-menu ul li a {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-weight: 600;
   padding: 0px;
 }
@@ -1247,7 +1247,7 @@ textarea.tft-form-control {
   padding: 5px 10px;
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-menu ul li.current_page_item > a {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-menu ul li:last-child {
   margin: 0px;
@@ -1306,7 +1306,7 @@ textarea.tft-form-control {
 .tft-header-design__two .tft-menus-section .tft-flex .tft-logo .logo-text a {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account {
   max-width: 33%;
@@ -1322,7 +1322,7 @@ textarea.tft-form-control {
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a {
   padding: 12px 32px;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
@@ -1330,25 +1330,25 @@ textarea.tft-form-control {
   transition: 0.3s all ease;
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a.login {
-  border: 1px solid var(--tf-color-primary);
+  border: 1px solid var(--tf-primary);
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   color: var(--tf-color-white);
-  border-color: var(--tf-color-secondary);
+  border-color: var(--tf-brand-dark);
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
   min-height: auto;
   padding: 0 32px;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
   background-color: #FAEEDC;
@@ -1361,7 +1361,7 @@ textarea.tft-form-control {
   border: 0px solid;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li a {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
@@ -1371,7 +1371,7 @@ textarea.tft-form-control {
   background-color: #FAEEDC;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li ul li a {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
@@ -1402,7 +1402,7 @@ textarea.tft-form-control {
   color: var(--tf-color-white);
 }
 .tft-header-design__two .tft-menus-section.tft_has_transparent .tft-logo .logo-text a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-header-design__two .tft-menus-section.tft_has_transparent .tft-header-center .tft-mobile_menubar i {
   color: var(--tf-color-white);
@@ -1496,28 +1496,28 @@ textarea.tft-form-control {
   flex: 1;
   padding-left: 6.3%;
 }
-@media only screen and (max-width: 1850px) {
+@media (max-width: 1850px) {
   .tft-header-design__three__content-left {
     padding-left: 5%;
   }
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-header-design__three__content-left {
     max-width: 450px;
   }
 }
-@media only screen and (max-width: 1680px) {
+@media (max-width: 1680px) {
   .tft-header-design__three__content-left {
     max-width: 350px;
     padding-left: 3%;
   }
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-header-design__three__content-left {
     max-width: 300px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__content-left {
     max-width: 260px;
   }
@@ -1611,7 +1611,7 @@ textarea.tft-form-control {
 .tft-header-design__three__topbar {
   padding-left: 20px;
   position: relative;
-  background: linear-gradient(0deg, var(--tf-color-primary), var(--tf-color-primary)), linear-gradient(0deg, var(--tf-color-secondary), var(--tf-color-secondary));
+  background: linear-gradient(0deg, var(--tf-brand-dark), var(--tf-brand-dark)), linear-gradient(0deg, var(--tf-brand-dark), var(--tf-brand-dark));
   min-height: 45px;
   display: -webkit-box;
   display: -moz-box;
@@ -1633,29 +1633,29 @@ textarea.tft-form-control {
   z-index: 99;
   padding-right: 8%;
 }
-@media only screen and (max-width: 1850px) {
+@media (max-width: 1850px) {
   .tft-header-design__three__topbar {
     padding-right: 4%;
   }
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-header-design__three__topbar {
     padding-right: 3%;
   }
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-header-design__three__topbar {
     padding-right: 15px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__topbar {
     padding-left: 15px;
     margin-left: 30px;
     min-height: 45px;
   }
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-header-design__three__topbar {
     padding-left: 5px;
   }
@@ -1695,7 +1695,7 @@ textarea.tft-form-control {
   left: -20px;
   padding-right: 100%;
   top: 0;
-  background: linear-gradient(0deg, var(--tf-color-primary), var(--tf-color-primary)), linear-gradient(0deg, var(--tf-color-secondary), var(--tf-color-secondary));
+  background: linear-gradient(0deg, var(--tf-brand-dark), var(--tf-brand-dark)), linear-gradient(0deg, var(--tf-primary), var(--tf-primary));
   width: auto;
   height: 100%;
   transform: skewX(-19deg);
@@ -1725,7 +1725,7 @@ textarea.tft-form-control {
   }
   .tft-header-design__three__topbar-right.mobile-view a,
   .tft-header-design__three__topbar-right.mobile-view select {
-    color: var(--tf-color-text);
+    color: var(--tf-text-paragraph);
   }
 }
 @media only screen and (max-width: 575.98px) {
@@ -1757,7 +1757,7 @@ textarea.tft-form-control {
   align-items: center;
   gap: 30px;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__topbar-list {
     gap: 20px;
     -webkit-box-align: baseline;
@@ -1781,7 +1781,7 @@ textarea.tft-form-control {
     justify-content: space-between;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__topbar-list-item {
     max-height: 24px;
     min-height: 24px;
@@ -1814,7 +1814,7 @@ textarea.tft-form-control {
 .tft-header-design__three__topbar-list-link:visited {
   color: var(--tf-color-white);
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__topbar-list-link {
     font-size: 0.938rem;
   }
@@ -1855,7 +1855,7 @@ textarea.tft-form-control {
   box-shadow: none;
 }
 .tft-header-design__three__topbar-list-select option {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   cursor: pointer;
 }
 .tft-header-design__three__bars {
@@ -1876,7 +1876,7 @@ textarea.tft-form-control {
   .tft-header-design__three__bars--icon {
     width: 30px;
     height: 2px;
-    background: var(--tf-color-heading);
+    background: var(--tf-text-heading);
     position: absolute;
     top: 0;
     cursor: pointer;
@@ -1916,18 +1916,18 @@ textarea.tft-form-control {
   justify-content: space-between;
   padding-right: 8%;
 }
-@media only screen and (max-width: 1850px) {
+@media (max-width: 1850px) {
   .tft-header-design__three__bottom {
     padding-right: 4%;
     padding-left: 30px;
   }
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-header-design__three__bottom {
     padding-right: 3%;
   }
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-header-design__three__bottom {
     padding: 15px;
     gap: 20px;
@@ -1964,7 +1964,7 @@ textarea.tft-form-control {
   min-width: 754px;
   flex: 1;
 }
-@media only screen and (max-width: 1680px) {
+@media (max-width: 1680px) {
   .tft-header-design__three__bottom__nav {
     min-width: auto;
   }
@@ -1984,12 +1984,12 @@ textarea.tft-form-control {
   gap: 32px;
   row-gap: 10px;
 }
-@media only screen and (max-width: 1680px) {
+@media (max-width: 1680px) {
   .tft-header-design__three__bottom__nav--list {
     gap: 30px;
   }
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-header-design__three__bottom__nav--list {
     gap: 20px;
   }
@@ -2058,7 +2058,7 @@ textarea.tft-form-control {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__bottom__nav--list .menu-item.menu-item-has-children .sub-menu {
     left: -100px;
   }
@@ -2093,7 +2093,7 @@ textarea.tft-form-control {
 .tft-header-design__three__bottom__nav--list .menu-item a {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   -webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
@@ -2104,7 +2104,7 @@ textarea.tft-form-control {
   display: inline;
 }
 .tft-header-design__three__bottom__nav--list .menu-item a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-header-design__three__bottom__nav.tft-site-navigation ul {
   justify-content: start;
@@ -2129,7 +2129,7 @@ textarea.tft-form-control {
   align-items: center;
   gap: 30px;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-header-design__three__bottom__right {
     gap: 15px;
   }
@@ -2148,12 +2148,12 @@ textarea.tft-form-control {
   align-items: center;
   gap: 24px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-header-design__three__bottom__right__list {
     gap: 20px;
   }
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-header-design__three__bottom__right__list {
     gap: 15px;
   }
@@ -2187,7 +2187,7 @@ textarea.tft-form-control {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-header-design__three__bottom__right__list__item--link {
     width: 42px;
     height: 42px;
@@ -2240,7 +2240,7 @@ textarea.tft-form-control {
   border: 0;
   padding: 10px 12px;
   font-size: 0.875rem;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -2256,7 +2256,7 @@ textarea.tft-form-control {
   top: 50%;
   transform: translateY(-50%);
   border: 0;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
   font-size: 0.875rem;
   height: 100%;
@@ -2269,7 +2269,7 @@ textarea.tft-form-control {
   visibility: visible;
   transform: translateY(20px);
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-header-design__three__bottom__right__list__item--search.active {
     transform: translateY(17px);
   }
@@ -2294,7 +2294,7 @@ textarea.tft-form-control {
     display: none;
   }
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-header-design__three__bottom__right__button .tft-btn {
     min-width: 140px;
     min-height: 45px;
@@ -2357,7 +2357,7 @@ textarea.tft-form-control {
   transition: 0.3s;
 }
 .mobile-sidenav__nav--list .menu-item a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .mobile-sidenav__nav--list .menu-item .sub-menu {
   display: none;
@@ -2469,7 +2469,7 @@ textarea.tft-form-control {
   visibility: visible;
 }
 
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-slider-nav {
     margin-top: 0;
     position: absolute;
@@ -2485,7 +2485,7 @@ textarea.tft-form-control {
     gap: 15px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .tft-hero-slider-nav {
     bottom: -80px;
   }
@@ -2496,7 +2496,7 @@ textarea.tft-form-control {
   height: 60px;
   border-color: var(--tf-color-white);
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-slider-nav button {
     width: 50px;
     height: 50px;
@@ -2522,19 +2522,19 @@ textarea.tft-form-control {
   font-size: 1.25rem;
 }
 .tft-hero-slider-nav button:hover {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
 }
 .tft-hero-slider-nav button.tft-prev-slide {
   left: 80px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-hero-slider-nav button.tft-prev-slide {
     left: 100px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-slider-nav button.tft-prev-slide {
     left: 0;
   }
@@ -2542,12 +2542,12 @@ textarea.tft-form-control {
 .tft-hero-slider-nav button.tft-next-slide {
   right: 80px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-hero-slider-nav button.tft-next-slide {
     right: 100px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-slider-nav button.tft-next-slide {
     right: 0;
   }
@@ -2582,7 +2582,7 @@ textarea.tft-form-control {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  border-color: var(--tf-border-color);
+  border-color: var(--tf-border-lite);
   background: var(--tf-color-white);
   box-shadow: 0px 9px 12px 0px rgba(14, 19, 35, 0.02);
   -webkit-box-pack: center;
@@ -2593,10 +2593,10 @@ textarea.tft-form-control {
 }
 
 .tft-contact-form a {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-contact-form a:hover {
-  color: var(--tf-color-secondary);
+  color: var(--tf-brand-dark);
 }
 
 /** 
@@ -2659,19 +2659,19 @@ textarea.tft-form-control {
   -moz-border-radius: 4px;
   border-radius: 4px;
   font-weight: 700;
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
 }
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button input:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next {
   top: 91%;
   z-index: 99;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   height: 45px;
   width: 45px;
   border-radius: 2px;
@@ -2688,18 +2688,18 @@ textarea.tft-form-control {
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev:hover,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next:hover {
   background: transparent !important;
-  border: 2px solid var(--tf-border-color);
+  border: 2px solid var(--tf-border-lite);
   transition: all 0.3s ease;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev:hover::before,
 .tft-hero-design__one .tft-hero-slider-selector .slick-next:hover::before {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-hero-design__one .tft-hero-slider-selector .slick-prev {
   left: calc(50% - 600px + 0px) !important;
 }
-@media only screen and (max-width: 1280px) {
+@media (max-width: 1280px) {
   .tft-hero-design__one .tft-hero-slider-selector .slick-prev {
     left: calc(50% - 600px + 60px) !important;
   }
@@ -2717,7 +2717,7 @@ textarea.tft-form-control {
 .tft-hero-design__one .tft-hero-slider-selector .slick-next {
   left: calc(50% - 600px + 70px) !important;
 }
-@media only screen and (max-width: 1280px) {
+@media (max-width: 1280px) {
   .tft-hero-design__one .tft-hero-slider-selector .slick-next {
     left: calc(50% - 600px + 120px) !important;
   }
@@ -2739,10 +2739,10 @@ textarea.tft-form-control {
   width: 115px;
   text-align: right;
   font-size: 1.5rem;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   font-weight: 500;
 }
-@media only screen and (max-width: 1280px) {
+@media (max-width: 1280px) {
   .tft-hero-design__one .tft-hero-slider-selector .slider__counter {
     display: none;
   }
@@ -2824,11 +2824,11 @@ textarea.tft-form-control {
   transition: 0.3s all ease;
 }
 .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button.tf_btn {
-  border: var(--tf-border-color);
+  border: var(--tf-border-lite);
   border-radius: 0px;
   overflow: hidden;
   position: relative;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1rem;
   cursor: pointer;
   position: relative;
@@ -2837,7 +2837,7 @@ textarea.tft-form-control {
   padding: 15px 30px;
 }
 .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button:hover, .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button.active {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   color: var(--tf-color-white);
 }
 @media only screen and (max-width: 767.98px) {
@@ -2906,7 +2906,7 @@ textarea.tft-form-control {
   align-items: center;
   overflow: hidden;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-hero-design__four {
     min-height: 700px;
   }
@@ -3053,7 +3053,7 @@ textarea.tft-form-control {
     padding: 0 30px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-design__four__slider--nav {
     margin-top: 0;
     position: absolute;
@@ -3069,7 +3069,7 @@ textarea.tft-form-control {
     gap: 15px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .tft-hero-design__four__slider--nav {
     bottom: -80px;
   }
@@ -3080,7 +3080,7 @@ textarea.tft-form-control {
   height: 60px;
   border-color: var(--tf-color-white);
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-design__four__slider--nav button {
     width: 50px;
     height: 50px;
@@ -3106,19 +3106,19 @@ textarea.tft-form-control {
   font-size: 1.25rem;
 }
 .tft-hero-design__four__slider--nav button:hover {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
 }
 .tft-hero-design__four__slider--nav button.tft-prev-slide {
   left: 80px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-hero-design__four__slider--nav button.tft-prev-slide {
     left: 100px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-design__four__slider--nav button.tft-prev-slide {
     left: 0;
   }
@@ -3126,12 +3126,12 @@ textarea.tft-form-control {
 .tft-hero-design__four__slider--nav button.tft-next-slide {
   right: 80px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-hero-design__four__slider--nav button.tft-next-slide {
     right: 100px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-hero-design__four__slider--nav button.tft-next-slide {
     right: 0;
   }
@@ -3162,14 +3162,14 @@ textarea.tft-form-control {
   color: var(--tf-color-white);
   gap: 20px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-hero-design__four__social {
     left: 35px;
   }
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-hero-design__four__social {
-    background: var(--tf-color-secondary);
+    background: var(--tf-brand-dark);
     left: -60px;
     gap: 10px;
     padding: 14px 8px;
@@ -3214,7 +3214,7 @@ textarea.tft-form-control {
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -3227,8 +3227,8 @@ textarea.tft-form-control {
   }
 }
 .tft-hero-design__four__social__list__item--link:hover {
-  background: var(--tf-color-primary);
-  border-color: var(--tf-color-primary);
+  background: var(--tf-primary);
+  border-color: var(--tf-primary);
 }
 .tft-hero-design__four__social__list__item--link i {
   font-size: 0.875rem;
@@ -3304,7 +3304,7 @@ textarea.tft-form-control {
   align-items: end;
   height: fit-content;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-hero-design__four .slick-dots {
     right: 0;
   }
@@ -3394,12 +3394,12 @@ textarea.tft-form-control {
   background: var(--tf-color-white);
   max-width: 1000px;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-hero-design .tft-search-box {
     width: 900px;
   }
 }
-@media only screen and (max-width: 1280px) {
+@media (max-width: 1280px) {
   .tft-hero-design .tft-search-box {
     width: 820px;
   }
@@ -3420,12 +3420,12 @@ textarea.tft-form-control {
   box-shadow: rgba(29, 42, 59, 0.1) 0px 4px 20px;
   width: 1000px;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-hero-design .tft-search-box .tft-search-box-inner {
     width: 900px;
   }
 }
-@media only screen and (max-width: 1280px) {
+@media (max-width: 1280px) {
   .tft-hero-design .tft-search-box .tft-search-box-inner {
     width: 820px;
   }
@@ -3453,17 +3453,17 @@ textarea.tft-form-control {
   cursor: pointer;
   padding: 10px 18px;
   background-color: transparent;
-  border: 1px solid var(--tf-border-color);
-  color: var(--tf-color-text);
+  border: 1px solid var(--tf-border-lite);
+  color: var(--tf-text-paragraph);
 }
 .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn.active, .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab .tf_btn:hover {
-  background-color: var(--tf-color-primary);
-  border-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
+  border-color: var(--tf-primary);
   color: var(--tf-color-white);
 }
 @media only screen and (max-width: 1024.98px) {
   .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-form-tab-mobile {
-    border: 1px solid var(--tf-border-color);
+    border: 1px solid var(--tf-border-lite);
     border-radius: 4px;
   }
 }
@@ -3502,10 +3502,10 @@ textarea.tft-form-control {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
 }
 .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
-  border-right: 1px solid var(--tf-border-color);
+  border-right: 1px solid var(--tf-border-lite);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design .tft-search-box .tft-search-box-inner #tf-booking-search-tabs .tf-booking-forms-wrapper .tf_homepage-booking .tf_destination-wrap {
@@ -3554,7 +3554,7 @@ textarea.tft-form-control {
 .tft-hero-design .tft-search-box input,
 .tft-hero-design .tft-search-box select {
   font-size: 1.125rem;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   font-weight: 600;
   line-height: 1.3;
   border: none;
@@ -3563,7 +3563,7 @@ textarea.tft-form-control {
 }
 .tft-hero-design .tft-search-box input:focus,
 .tft-hero-design .tft-search-box select:focus {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-hero-design .tft-search-box input[type=date]::-webkit-calendar-picker-indicator {
   cursor: pointer;
@@ -3608,7 +3608,7 @@ textarea.tft-form-control {
   padding: 0;
 }
 .tft-hero-design .tft-search-box .tft_tour-fields-title {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-hero-design .tft-search-box .tft-selectperson-field-wrap {
   border-bottom: 1px solid rgba(241, 93, 48, 0.2509803922);
@@ -3641,13 +3641,13 @@ textarea.tft-form-control {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.16px;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   margin-bottom: 8px;
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content h2 {
   font-size: 3.5rem;
   line-height: 1.2;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin-top: 0px;
   margin-bottom: 32px;
 }
@@ -3658,7 +3658,7 @@ textarea.tft-form-control {
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content p {
   font-size: 1.125rem;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content p.tft-about-us-quotes, .tft-about-us-design__one .tft-about-us-grid .tft-heading-content p.tft-about-us-author {
   padding-right: 55px;
@@ -3671,14 +3671,14 @@ textarea.tft-form-control {
   display: none;
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a {
-  border: 1px solid var(--tf-color-primary);
+  border: 1px solid var(--tf-primary);
   font-weight: 700;
   color: var(--tf-color-white);
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent {
   background-color: transparent;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent:hover {
   color: var(--tf-color-white);
@@ -3687,7 +3687,7 @@ textarea.tft-form-control {
   fill: var(--tf-color-white);
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a.tft-btn-transparent path {
-  fill: var(--tf-color-primary);
+  fill: var(--tf-primary);
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a svg path {
   fill: var(--tf-color-white);
@@ -3698,8 +3698,8 @@ textarea.tft-form-control {
   }
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-heading-content .read-more a:hover {
-  background: var(--tf-color-secondary);
-  border-color: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
+  border-color: var(--tf-brand-dark);
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image {
   position: relative;
@@ -3751,7 +3751,7 @@ textarea.tft-form-control {
   font-size: 4.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin: 0;
   height: 64%;
 }
@@ -3782,7 +3782,7 @@ textarea.tft-form-control {
   position: relative;
   overflow-x: hidden;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-about-us-design__two {
     padding-bottom: 100px;
     padding-left: 15px;
@@ -3842,7 +3842,7 @@ textarea.tft-form-control {
   top: 40px;
   width: 10px;
   height: 150px;
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   z-index: 1;
 }
 @media only screen and (max-width: 767.98px) {
@@ -3937,13 +3937,13 @@ textarea.tft-form-control {
   }
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content h2 {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content p {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list {
   padding: 44px 0 44px 69px;
@@ -3993,7 +3993,7 @@ textarea.tft-form-control {
   }
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   font-size: 1.125rem;
 }
 @media only screen and (max-width: 767.98px) {
@@ -4003,7 +4003,7 @@ textarea.tft-form-control {
   }
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1.125rem;
 }
 @media only screen and (max-width: 767.98px) {
@@ -4047,7 +4047,7 @@ textarea.tft-form-control {
   margin: 0 auto;
 }
 .tft-brands-design__one .tft-brands-inner .tft-section-heading .tft-section-title {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   text-align: center;
   font-size: 2.375rem;
   font-weight: 400;
@@ -4056,7 +4056,7 @@ textarea.tft-form-control {
   margin-bottom: 16px;
 }
 .tft-brands-design__one .tft-brands-inner .tft-section-heading p {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   text-align: center;
   margin-top: 0px;
   margin-bottom: 56px;
@@ -4101,7 +4101,7 @@ textarea.tft-form-control {
   bottom: 0;
 }
 .tft-brands-design__one .tft-brands-inner .tft-brands .tft-single-brands .tft-brands-thumbnail .tft-brands-title a {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1.313rem;
   display: inline-block;
   padding: 4px 17px 0px 16px;
@@ -4113,7 +4113,7 @@ textarea.tft-form-control {
   transition: all 0.2s linear;
 }
 .tft-brands-design__one .tft-brands-inner .tft-brands .tft-single-brands .tft-brands-thumbnail .tft-brands-title a:hover {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   color: var(--tf-color-white);
 }
 
@@ -4125,7 +4125,7 @@ textarea.tft-form-control {
     width: calc(50% - 16px);
   }
 }
-@media only screen and (max-width: 640px) {
+@media (max-width: 640px) {
   #tft-site-main-body .tf-archive-template__one .tf-car-archive-result.tf-car-lists-widgets .tf-car-result.grid-view .tf-single-car-view {
     width: 100%;
   }
@@ -4140,11 +4140,11 @@ textarea.tft-form-control {
 .tft-cf7-form-design__one .wpcf7-form textarea {
   width: 100%;
   padding: 12px 10px;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   background-color: var(--tf-color-white);
   padding: 14px 14px 14px 14px;
   border-radius: 10px 10px 10px 10px;
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
 }
 .tft-cf7-form-design__one .wpcf7-form textarea {
   height: 100px;
@@ -4175,12 +4175,12 @@ textarea.tft-form-control {
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
   transition: all 0.3s ease;
 }
 .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   cursor: pointer;
 }
 .tft-cf7-form-design__one .wpcf7-form .wpcf7-submit.footer__form__button {
@@ -4221,7 +4221,7 @@ textarea.tft-form-control {
   gap: 8px;
   align-self: stretch;
   width: 100%;
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   background-color: transparent;
   border-radius: unset;
@@ -4236,7 +4236,7 @@ textarea.tft-form-control {
   font-weight: 700;
   line-height: 1.5;
   text-align: center;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
   cursor: pointer;
 }
@@ -4262,7 +4262,7 @@ textarea.tft-form-control {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.16px;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   margin-bottom: 0;
 }
 @media only screen and (max-width: 767.98px) {
@@ -4274,10 +4274,10 @@ textarea.tft-form-control {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--tf-color-secondary);
+  color: var(--tf-brand-dark);
   margin-bottom: 24px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header h2 {
     font-size: 2rem;
   }
@@ -4315,17 +4315,17 @@ textarea.tft-form-control {
   }
 }
 .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn:hover {
-  background-color: var(--tf-color-secondary);
+  background-color: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
 .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn.active {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
 }
 .tft-popular-hotels-design__one .tft-popular-hotel-header .tft-hotel-header ul li .tft-btn.active:hover {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
 }
 .tft-popular-hotels-design__one .tft-popular-hotel-header .read-more a {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   font-weight: 700;
   color: var(--tf-color-white);
 }
@@ -4337,7 +4337,7 @@ textarea.tft-form-control {
   }
 }
 .tft-popular-hotels-design__one .tft-popular-hotel-header .read-more a:hover {
-  background-color: var(--tf-color-secondary);
+  background-color: var(--tf-brand-dark);
 }
 @media only screen and (max-width: 1024.98px) {
   .tft-popular-hotels-design__one .tft-popular-hotel-header .read-more a svg {
@@ -4372,7 +4372,7 @@ textarea.tft-form-control {
   padding-right: 56px;
   display: block;
 }
-@media only screen and (max-width: 1650px) {
+@media (max-width: 1650px) {
   .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-popular-thumbnail {
     padding-left: 24px;
     padding-right: 24px;
@@ -4392,14 +4392,14 @@ textarea.tft-form-control {
   bottom: 0;
   overflow: hidden;
 }
-@media only screen and (max-width: 1650px) {
+@media (max-width: 1650px) {
   .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details {
     left: 24px;
     right: 24px;
   }
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tft-ratings span {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tft-ratings span i {
   color: #FFC700;
@@ -4408,10 +4408,10 @@ textarea.tft-form-control {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin-bottom: 16px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details h3 {
     font-size: 2rem;
   }
@@ -4420,12 +4420,12 @@ textarea.tft-form-control {
   color: inherit;
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details h3:hover a {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tft-locations {
   display: flex;
   margin: 0;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tft-locations svg {
   margin-right: 8px;
@@ -4433,7 +4433,7 @@ textarea.tft-form-control {
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tour-time {
   display: flex;
   margin: 0;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tour-time svg {
   margin-right: 8px;
@@ -4455,7 +4455,7 @@ textarea.tft-form-control {
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tf-others-details a.btn-view-details {
   display: block;
   padding: 12px 32px;
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   color: var(--tf-color-white);
   font-weight: 700;
   text-align: center;
@@ -4463,7 +4463,7 @@ textarea.tft-form-control {
   transition: 0.3s all ease;
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tf-others-details a.btn-view-details:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tf-others-details ul {
   display: grid;
@@ -4476,7 +4476,7 @@ textarea.tft-form-control {
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tf-others-details ul li {
   line-height: 1.3;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   display: flex;
 }
 @media only screen and (max-width: 991.98px) {
@@ -4500,7 +4500,7 @@ textarea.tft-form-control {
 .tft-popular-hotels-design__two .container {
   overflow: hidden;
 }
-@media only screen and (max-width: 640px) {
+@media (max-width: 640px) {
   .tft-popular-hotels-design__two .container {
     padding: 0;
   }
@@ -4525,12 +4525,12 @@ textarea.tft-form-control {
   }
 }
 .tft-popular-hotels-design__two .tft-heading-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-popular-hotels-design__two .tft-heading-content h2 {
   margin-left: auto;
   margin-right: auto;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-popular-hotels-design__two .tft-heading-content h2::after {
   left: 50%;
@@ -4579,7 +4579,7 @@ textarea.tft-form-control {
   margin: 0 12px !important;
   height: auto;
 }
-@media only screen and (max-width: 640px) {
+@media (max-width: 640px) {
   .tft-popular-hotels-design__two .tft-destination-slider .slick-slide {
     margin: 15px 7.5px !important;
   }
@@ -4636,10 +4636,10 @@ textarea.tft-form-control {
   display: none;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .slick-dots li.slick-active {
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
 }
 .tft-popular-hotels-design__two .tft-destination-slider .slick-dots li.slick-active button {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination {
   -webkit-border-radius: 15px;
@@ -4674,7 +4674,7 @@ textarea.tft-form-control {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-@media only screen and (max-width: 640px) {
+@media (max-width: 640px) {
   .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-thumbnail img {
     height: 200px;
   }
@@ -4689,7 +4689,7 @@ textarea.tft-form-control {
   -moz-border-radius: 100px;
   border-radius: 100px;
   padding: 8px 16px 7px 16px;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
   font-size: 0.813rem;
   font-weight: 700;
@@ -4734,18 +4734,18 @@ textarea.tft-form-control {
   gap: 5px;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-rating i {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   font-size: 0.875rem;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location {
   display: block;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1rem;
   margin-top: 8px;
   text-transform: capitalize;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location i {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   float: left;
   margin-right: 6px;
   margin-top: 1px;
@@ -4755,7 +4755,7 @@ textarea.tft-form-control {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title {
   font-size: 1.5rem;
@@ -4765,7 +4765,7 @@ textarea.tft-form-control {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a {
   -webkit-transition: all 0.2s ease;
@@ -4777,13 +4777,13 @@ textarea.tft-form-control {
   color: inherit;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -4813,23 +4813,23 @@ textarea.tft-form-control {
   font-size: 0.875rem;
   margin-bottom: 10px;
   text-transform: none;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-value {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   font-size: 1.25rem;
   text-transform: none;
   font-weight: 700;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn {
   background: rgba(250, 100, 0, 0.1);
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   min-width: 136px;
   min-height: 50px;
   text-transform: capitalize;
 }
 .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
 .tft-popular-hotels-design__two .tft-destination-slider.tft-slider-disable {
@@ -4853,7 +4853,7 @@ textarea.tft-form-control {
 }
 .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single {
   flex-basis: 31.33%;
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
   box-shadow: 0px 32px 64px rgba(90, 91, 106, 0.08);
   border-radius: 16px;
   transition: all 0.6s ease;
@@ -4880,7 +4880,7 @@ textarea.tft-form-control {
   padding: 64px 40px;
 }
 .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single .tft-icon-text-single-inner .icon_outter {
-  background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, var(--tf-color-secondary) 6.09%, var(--tf-color-primary) 100%);
+  background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, var(--tf-brand-dark) 6.09%, var(--tf-primary) 100%);
   box-shadow: 0px 18px 80px rgba(0, 0, 0, 0.12);
   width: 126px;
   height: 126px;
@@ -4922,7 +4922,7 @@ textarea.tft-form-control {
 .tft-icon-text-design__two {
   background-position: bottom;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-icon-text-design__two {
     background-position: left;
   }
@@ -4955,12 +4955,12 @@ textarea.tft-form-control {
   }
 }
 .tft-icon-text-design__two .container .tft-heading-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-icon-text-design__two .container .tft-heading-content h2 {
   margin-left: auto;
   margin-right: auto;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-icon-text-design__two .container .tft-heading-content h2::after {
   width: 195px;
@@ -4969,7 +4969,7 @@ textarea.tft-form-control {
   left: 50%;
   transform: translateX(-50%);
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-icon-text-design__two .container .tft-heading-content h2::after {
     top: 15px;
   }
@@ -5108,7 +5108,7 @@ textarea.tft-form-control {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single h3 {
@@ -5126,7 +5126,7 @@ textarea.tft-form-control {
 }
 .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single p {
   margin-bottom: 0;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single p {
@@ -5135,7 +5135,7 @@ textarea.tft-form-control {
   }
 }
 .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single:hover .icon_outter {
-  border: 2px dashed var(--tf-color-primary);
+  border: 2px dashed var(--tf-primary);
 }
 
 .tft-latest-posts-design__one .tft-latest-post-items {
@@ -5268,23 +5268,23 @@ textarea.tft-form-control {
   line-height: 1.3;
   letter-spacing: 0.16px;
   text-transform: uppercase;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   margin-bottom: 8px;
 }
 .tft-latest-posts-design__two .tft-blog-header .tft-news-header h2 {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin: 0;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-latest-posts-design__two .tft-blog-header .tft-news-header h2 {
     font-size: 2rem;
   }
 }
 .tft-latest-posts-design__two .tft-blog-header .read-more a {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   font-weight: 700;
   color: var(--tf-color-white);
 }
@@ -5295,7 +5295,7 @@ textarea.tft-form-control {
   }
 }
 .tft-latest-posts-design__two .tft-blog-header .read-more a:hover {
-  background-color: var(--tf-color-secondary);
+  background-color: var(--tf-brand-dark);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-latest-posts-design__two .tft-blog-header .read-more a svg {
@@ -5341,10 +5341,10 @@ textarea.tft-form-control {
   line-height: 1.3;
   letter-spacing: 0.16px;
   text-transform: uppercase;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   margin: 0px;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a .tft-content-details p.tft-meta {
     font-size: 0.75rem;
   }
@@ -5353,10 +5353,10 @@ textarea.tft-form-control {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.3;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   margin: 0px;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a .tft-content-details p.content {
     font-size: 0.875rem;
   }
@@ -5375,10 +5375,10 @@ textarea.tft-form-control {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin: 8px 0px 24px 0px;
 }
-@media only screen and (max-width: 1480px) {
+@media (max-width: 1480px) {
   .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a .tft-content-details h3 {
     font-size: 1.25rem;
   }
@@ -5439,12 +5439,12 @@ textarea.tft-form-control {
   }
 }
 .tft-latest-posts-design__three .container .tft-heading-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-latest-posts-design__three .container .tft-heading-content h2 {
   margin-left: auto;
   margin-right: auto;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-latest-posts-design__three .container .tft-heading-content h2::after {
   left: 50%;
@@ -5530,7 +5530,7 @@ textarea.tft-form-control {
   flex: 1;
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   font-size: 1.5rem;
   line-height: 1.4;
   margin: 25px 0 30px;
@@ -5559,7 +5559,7 @@ textarea.tft-form-control {
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:focus,
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a :visited {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
@@ -5573,7 +5573,7 @@ textarea.tft-form-control {
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
   display: inline-flex;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   background: rgba(250, 100, 0, 0.09);
   min-height: 50px;
   min-width: 170px;
@@ -5585,7 +5585,7 @@ textarea.tft-form-control {
   }
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
 .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
@@ -5621,7 +5621,7 @@ textarea.tft-form-control {
   align-items: center;
   gap: 10px;
   margin-bottom: 0;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
@@ -5679,7 +5679,7 @@ textarea.tft-form-control {
     max-height: inherit;
   }
 }
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
   .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
     min-height: 250px;
     max-height: 250px;
@@ -5818,7 +5818,7 @@ textarea.tft-form-control {
   width: 100%;
   left: 0;
   top: 0;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   opacity: 0.9;
   justify-content: end;
 }
@@ -5975,7 +5975,7 @@ textarea.tft-form-control {
   border-radius: 10px;
   padding: 8px 12px;
   font-weight: 600;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-popular-tour-design__one .tft-popular-tour-items .tft-popular-single-item .tft-popular-single-item-inner .tft-popular-thumbnail .tft-ratings span {
   font-size: 0.875rem;
@@ -6045,7 +6045,7 @@ textarea.tft-form-control {
 }
 .tft-popular-tour-design__one .tft-popular-tour-items .slick-arrow {
   backdrop-filter: blur(12px);
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   color: var(--tf-color-white);
   padding: 0;
   border-radius: 50px;
@@ -6059,7 +6059,7 @@ textarea.tft-form-control {
   transition: 0.3s;
 }
 .tft-popular-tour-design__one .tft-popular-tour-items .slick-arrow:hover {
-  background-color: var(--tf-color-secondary);
+  background-color: var(--tf-brand-dark);
 }
 .tft-popular-tour-design__one .tft-popular-tour-items .slick-arrow::before {
   display: none;
@@ -6169,7 +6169,7 @@ textarea.tft-form-control {
   }
 }
 .tft-team-design__one .tft-team-members .tft-single-member .team-members-inner .member-details .social-media a {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   border-radius: 2px;
   color: var(--tf-color-white);
   height: 24px;
@@ -6181,12 +6181,12 @@ textarea.tft-form-control {
 }
 .tft-team-design__one .tft-team-members .tft-single-member .team-members-inner .member-details .social-media a:hover {
   color: var(--tf-color-white);
-  background-color: var(--tf-color-secondary);
+  background-color: var(--tf-brand-dark);
 }
 .tft-team-design__two .container {
   overflow: hidden;
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-team-design__two .container {
     padding: 0 15px;
   }
@@ -6230,12 +6230,12 @@ textarea.tft-form-control {
   }
 }
 .tft-team-design__two .tft-heading-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-team-design__two .tft-heading-content h2 {
   margin-left: auto;
   margin-right: auto;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-team-design__two .tft-heading-content h2::after {
   left: 50%;
@@ -6327,10 +6327,10 @@ textarea.tft-form-control {
   display: none;
 }
 .tft-team-design__two .tft-team-members .slick-dots li.slick-active {
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
 }
 .tft-team-design__two .tft-team-members .slick-dots li.slick-active button {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 .tft-team-design__two .tft-team-members .tft-single-member {
   padding: 30px;
@@ -6372,7 +6372,7 @@ textarea.tft-form-control {
   padding: 0;
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 5px;
@@ -6384,7 +6384,7 @@ textarea.tft-form-control {
   }
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details h2 {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0;
@@ -6408,7 +6408,7 @@ textarea.tft-form-control {
   height: 50px;
   width: 50px;
   border-radius: 5px;
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   border: 0;
   box-shadow: 0px 5px 35px 0px rgba(250, 100, 0, 0.4);
   cursor: pointer;
@@ -6424,7 +6424,7 @@ textarea.tft-form-control {
   font-size: 1.125rem;
 }
 .tft-team-design__two .tft-team-members .tft-single-member .member-details .social-media-icons .social-media {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   width: fit-content;
   padding: 7px 25px;
   -webkit-border-radius: 4px;
@@ -6449,12 +6449,12 @@ textarea.tft-form-control {
   z-index: -1;
   position: relative;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-team-design__two .tft_team_bottom_shape {
     margin-top: -250px;
   }
 }
-@media only screen and (max-width: 1399.98px) {
+@media (max-width: 1399px) {
   .tft-team-design__two .tft_team_bottom_shape {
     margin-top: -180px;
   }
@@ -6494,7 +6494,7 @@ textarea.tft-form-control {
     margin-top: 30px;
   }
 }
-@media only screen and (max-width: 640px) {
+@media (max-width: 640px) {
   .tft-destination-slider-nav,
   .tft-team-slider-nav,
   .tft-hero-slider-nav {
@@ -6508,7 +6508,7 @@ textarea.tft-form-control {
   top: 50%;
   transform: translateY(-50%);
   background: var(--tf-color-white);
-  border: 1px solid var(--tf-border-color);
+  border: 1px solid var(--tf-border-lite);
   width: 70px;
   height: 70px;
   -webkit-border-radius: 100px;
@@ -6561,9 +6561,9 @@ textarea.tft-form-control {
 .tft-destination-slider-nav button:hover,
 .tft-team-slider-nav button:hover,
 .tft-hero-slider-nav button:hover {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
 }
 .tft-destination-slider-nav button.tft-prev-slide,
 .tft-team-slider-nav button.tft-prev-slide,
@@ -6617,7 +6617,7 @@ textarea.tft-form-control {
   font-weight: 400;
 }
 .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-footer i {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-testimonials-design__one .slick-list {
   margin: 0 -10px !important;
@@ -6667,7 +6667,7 @@ textarea.tft-form-control {
 }
 .tft-testimonials-design__one .tft-slider-arrows .slick-prev:hover path,
 .tft-testimonials-design__one .tft-slider-arrows .slick-next:hover path {
-  stroke: var(--tf-color-text);
+  stroke: var(--tf-text-paragraph);
 }
 .tft-testimonials-design__one .tft-slider-arrows .slick-prev::before,
 .tft-testimonials-design__one .tft-slider-arrows .slick-next::before {
@@ -6686,18 +6686,18 @@ textarea.tft-form-control {
   line-height: 1.3;
   letter-spacing: 0.16px;
   text-transform: uppercase;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   margin-bottom: 8px;
 }
 .tft-testimonials-design__two .tft-testimonial-top-header .testimonial-header-shape h2 {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin: 0;
   padding-bottom: 48px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-testimonials-design__two .tft-testimonial-top-header .testimonial-header-shape h2 {
     font-size: 2rem;
   }
@@ -6756,23 +6756,23 @@ textarea.tft-form-control {
     top: -9px;
   }
 }
-@media only screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review {
     margin-top: -24px;
   }
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .tft-content {
   font-size: 1.25rem;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   margin-bottom: 32px;
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .person-name {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-weight: 600;
   margin: 0;
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .designation {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   margin: 0px;
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .slick-dots li {
@@ -6802,13 +6802,13 @@ textarea.tft-form-control {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   border: 2px solid transparent;
   opacity: 1;
 }
 .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .slick-dots li.slick-active button::before {
-  color: var(--tf-color-primary);
-  border: 2px solid var(--tf-color-primary);
+  color: var(--tf-primary);
+  border: 2px solid var(--tf-primary);
   border-radius: 50%;
 }
 .tft-testimonials-design__three {
@@ -6860,13 +6860,13 @@ textarea.tft-form-control {
   }
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content h2 {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content p {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 @media only screen and (max-width: 991.98px) {
   .tft-testimonials-design__three .tft-testimonials-content .tft-heading-content p {
@@ -6921,16 +6921,16 @@ textarea.tft-form-control {
   .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow {
     width: 50px;
     height: 50px;
-    border-color: var(--tf-border-color);
+    border-color: var(--tf-border-lite);
   }
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow i {
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
   font-size: 1rem;
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow:hover {
-  background-color: var(--tf-color-primary);
-  border-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
+  border-color: var(--tf-primary);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-slider-arrows .tft-arrow:hover i {
   color: var(--tf-color-white);
@@ -7020,10 +7020,10 @@ textarea.tft-form-control {
   display: none;
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active {
-  border-color: var(--tf-color-primary);
+  border-color: var(--tf-primary);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .slick-dots li.slick-active button {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides {
   display: -webkit-box;
@@ -7060,12 +7060,12 @@ textarea.tft-form-control {
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review {
   margin: 0;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author {
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 1px solid var(--tf-border-color);
+  border-top: 1px solid var(--tf-border-lite);
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -7109,7 +7109,7 @@ textarea.tft-form-control {
   border-radius: 50%;
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info h4 {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   font-size: 1.125rem;
   margin-bottom: 0;
 }
@@ -7121,7 +7121,7 @@ textarea.tft-form-control {
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author .testimonial-author-info p {
   font-size: 0.875rem;
   margin-bottom: 0;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-testimonials-design__three .tft-testimonials-content .tft-testimonials-sliders.tft-slider-disable {
   overflow: initial;
@@ -7181,10 +7181,10 @@ textarea.tft-form-control {
   font-weight: 600;
   margin: 6px 0px;
   display: block;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-destination-design__one .tft-destination .tft-single-destination .tft-destination-title a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-destination-design__one .tft-destination .tft-single-destination .tft-destination-details ul {
   display: flex;
@@ -7203,7 +7203,7 @@ textarea.tft-form-control {
   font-weight: 400;
 }
 .tft-destination-design__one .tft-destination .tft-single-destination .tft-destination-details ul li a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-destination-design__two {
   background-position: left top;
@@ -7239,18 +7239,18 @@ textarea.tft-form-control {
 .tft-destination-design__two .tft-destination-header h3 {
   font-weight: 700;
   letter-spacing: 0.16px;
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
   margin: 0px 0px 8px 0px;
 }
 .tft-destination-design__two .tft-destination-header h2 {
   font-size: 3.5rem;
   line-height: 1.2;
   font-weight: 700;
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
   margin: 0;
   padding-bottom: 48px;
 }
-@media only screen and (max-width: 1366px) {
+@media (max-width: 1366px) {
   .tft-destination-design__two .tft-destination-header h2 {
     font-size: 2rem;
   }
@@ -7384,7 +7384,7 @@ textarea.tft-form-control {
   }
 }
 .tft-destination-design__two .tft-destination-content .tft-destination-slides .tft-single-destination .tft-destination-thumbnail .tft-destination-content span {
-  background-color: var(--tf-color-primary);
+  background-color: var(--tf-primary);
   padding: 20px 48px;
   display: flex;
   font-weight: 700;
@@ -7399,7 +7399,7 @@ textarea.tft-form-control {
   }
 }
 .tft-destination-design__two .tft-destination-content .tft-destination-slides .tft-single-destination .tft-destination-thumbnail .tft-destination-content span:hover {
-  background: var(--tf-color-secondary);
+  background: var(--tf-brand-dark);
 }
 .tft-destination-design__two .tft-destination-content .tft-destination-slides .tft-single-destination:hover .tft-destination-thumbnail .tft-destination-content {
   bottom: 0;
@@ -7413,7 +7413,7 @@ textarea.tft-form-control {
   flex-wrap: wrap;
   gap: 24px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-destination-design__three .tft-destination-content {
     gap: 20px;
   }
@@ -7435,7 +7435,7 @@ textarea.tft-form-control {
 .tft-destination-design__three .tft-destination-content .tft-heading-content {
   flex-basis: 596px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-destination-design__three .tft-destination-content .tft-heading-content {
     flex-basis: calc(40% - 15px);
   }
@@ -7451,10 +7451,10 @@ textarea.tft-form-control {
   }
 }
 .tft-destination-design__three .tft-destination-content .tft-heading-content h3 {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-destination-design__three .tft-destination-content .tft-heading-content h2 {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-destination-design__three .tft-destination-content .tft-heading-content .tft-section-content {
   max-width: 490px;
@@ -7466,7 +7466,7 @@ textarea.tft-form-control {
 }
 .tft-destination-design__three .tft-destination-content .tft-heading-content .tft-section-content p {
   margin-bottom: 30px;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-destination-design__three .tft-destination-content .tft-heading-content .tft-section-content p {
@@ -7476,7 +7476,7 @@ textarea.tft-form-control {
 .tft-destination-design__three .tft-destination-content .tft-single-destination {
   flex-basis: 288px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-destination-design__three .tft-destination-content .tft-single-destination {
     flex-basis: calc(30% - 15px);
   }
@@ -7494,7 +7494,7 @@ textarea.tft-form-control {
 .tft-destination-design__three .tft-destination-content .tft-single-destination:nth-child(5) {
   flex-basis: 596px;
 }
-@media only screen and (max-width: 1760px) {
+@media (max-width: 1760px) {
   .tft-destination-design__three .tft-destination-content .tft-single-destination:nth-child(5) {
     flex-basis: calc(40% - 15px);
   }
@@ -7555,7 +7555,7 @@ textarea.tft-form-control {
   transition: all 0.3s ease;
 }
 .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content h3 a:hover {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content p {
   margin-bottom: 0;
@@ -7566,10 +7566,10 @@ textarea.tft-form-control {
   height: 50px;
   padding: 16px 36px;
   background: #f2f2f2;
-  color: var(--tf-color-text);
+  color: var(--tf-text-paragraph);
 }
 .tft-destination-design__three .tft-destination-content .tft-btn:hover {
-  background: var(--tf-color-primary);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
 }
 @media only screen and (max-width: 767.98px) {
@@ -7588,10 +7588,10 @@ textarea.tft-form-control {
 }
 
 .tft-section-heading__two .section-title {
-  color: var(--tf-color-heading);
+  color: var(--tf-text-heading);
 }
 .tft-section-heading__two .section-title-suffix {
-  color: var(--tf-color-primary);
+  color: var(--tf-primary);
 }
 
 /*# sourceMappingURL=style.css.map */

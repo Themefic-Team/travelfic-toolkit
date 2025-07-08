@@ -2,12 +2,12 @@
 // color variable
 // ================================ //
 $tft-color-white: var(--tf-color-white);
-$tft-color-primary: var(--tf-color-primary);
-$tft-color-secondary: var(--tf-color-secondary);
-$tft-color-text: var(--tf-color-text);
-$tft-color-heading: var(--tf-color-heading);
+$tft-color-primary: var(--tf-primary);
+$tft-color-secondary: var(--tf-brand-dark);
+$tft-color-text: var(--tf-text-paragraph);
+$tft-color-heading: var(--tf-text-heading);
 $tft-color-box-shadow: var(--tf-box-shadow-color);
-$tft-color-border: var(--tf-border-color);
+$tft-color-border: var(--tf-border-lite);
 
 $tft-color-blue: #07245f;
 $tft-color-orange-light: #FAEEDC;
