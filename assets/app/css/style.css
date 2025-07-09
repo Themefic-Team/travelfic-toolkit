@@ -4085,7 +4085,7 @@ textarea.tft-form-control {
 }
 .tft-brands-design__one .tft-brands-inner .tft-brands .tft-single-brands .tft-brands-thumbnail {
   height: 212px;
-  background: #FAEEDC;
+  background: #D9D9D9;
   border-radius: 16px;
   position: relative;
 }
@@ -4105,7 +4105,7 @@ textarea.tft-form-control {
   font-size: 1.313rem;
   display: inline-block;
   padding: 4px 17px 0px 16px;
-  background: #FAEEDC;
+  background: #D9D9D9;
   border-radius: 0px 16px 0px 16px;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
