@@ -1342,7 +1342,7 @@ textarea.tft-form-control {
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
   min-height: auto;
-  padding: 0 32px;
+  align-items: center;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a {
   color: var(--tf-text-paragraph);
@@ -1352,8 +1352,7 @@ textarea.tft-form-control {
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
   background-color: #FAEEDC;
-  top: 31px;
-  padding: 50px 0px 45px 0px;
+  top: 12px;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation ul li {
   display: block;
@@ -1377,7 +1376,7 @@ textarea.tft-form-control {
   line-height: 1.3;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul {
-  margin: 32px 0px 0px 32px;
+  margin: 32px 0px 0px 0;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation .tft-social-share ul li {
   display: inline-block;
@@ -1417,7 +1416,6 @@ textarea.tft-form-control {
 @media only screen and (max-width: 767.98px) {
   .tft-header-design__three {
     min-height: auto;
-    background: transparent;
   }
 }
 @media only screen and (max-width: 991.98px) {
@@ -1552,7 +1550,6 @@ textarea.tft-form-control {
     align-items: center;
     width: 100%;
     max-width: 100%;
-    background: #07245f;
     padding: 15px;
     min-height: 70px;
     flex-basis: 30%;

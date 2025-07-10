@@ -225,7 +225,7 @@
     .tft-menus-section.tft-header-mobile {
       .tft-main-header-wrapper {
         min-height: auto;
-        padding: 0 32px;
+        align-items: center;
 
         .tft-header-left {
           .logo-text {
@@ -247,8 +247,7 @@
       .tft-mobile-main-menu {
         .tft-site-navigation {
           background-color: $tft-color-orange-light;
-          top: 31px;
-          padding: 50px 0px 45px 0px;
+          top: 12px;
 
           ul {
             li {
@@ -281,7 +280,7 @@
 
           .tft-social-share {
             ul {
-              margin: 32px 0px 0px 32px;
+              margin: 32px 0px 0px 0;
 
               li {
                 display: inline-block;
@@ -353,7 +352,6 @@
 
     @media #{$max767} {
       min-height: auto;
-      background: transparent;
     }
 
     // container
@@ -464,7 +462,6 @@
           @include align-items(center);
           width: 100%;
           max-width: 100%;
-          background: $tft-color-blue;
           padding: 15px;
           min-height: 70px;
           flex-basis: 30%;

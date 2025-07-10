@@ -30,6 +30,17 @@
       e.preventDefault();
       wp.customize.section('title_tagline').expand();
     });
+
+    $(document).on('click', '.tf-archive-redirect', function(e) {
+      e.preventDefault();
+      const headerSection = wp.customize.section('travelfic_customizer_header');
+	    headerSection.expand();   
+      requestAnimationFrame(() => {
+        $('#customize-control-kirki_tabs_travelfic_customizer_header').find('.kirki-tab-menu-item[data-kirki-tab-menu-id="design"] a').trigger('click');
+      });
+    });
+
+
     
   });
 })(jQuery);
