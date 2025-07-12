@@ -619,7 +619,7 @@
         // mobile share label
         &__mobile--share {
             display: none;
-            width: 31px;
+            min-width: 31px;
             position: absolute;
             left: 0px;
             top: 50%;

@@ -7,10 +7,10 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
         // Sticky Settings Checked
-        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', '');
-        $travelfic_sticky_settings = $travelfic_sticky_settings ? true : false;
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', true);
+        $travelfic_sticky_settings = $travelfic_sticky_settings ? 'enabled' : 'disabled';
         if (isset($travelfic_sticky_settings)) {
-            if ($travelfic_sticky_settings != false) {
+            if ($travelfic_sticky_settings != 'disabled') {
                 $travelfic_sticky_class = 'tft_has_sticky';
             } else {
                 $travelfic_sticky_class = '';
@@ -38,13 +38,10 @@ class Travelfic_Customizer_Header
         }
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', false);
-
-        error_log(print_r($travelfic_archive_transparent_header, true));
-
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
 
         
-        if (is_archive() || is_single() || is_404() || is_search()) {
+        if (is_archive()) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -494,7 +491,7 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
         // Sticky Settings Checked
-        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', false);
+        $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', true);
         $travelfic_sticky_settings = $travelfic_sticky_settings ? 'enabled' : 'disabled';
         if (isset($travelfic_sticky_settings)) {
             if ($travelfic_sticky_settings != 'disabled') {
@@ -524,7 +521,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', '');
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-        if (is_archive()  || is_single() || is_404() || is_search()) {
+        if (is_archive()) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';

@@ -6,6 +6,7 @@
   display: block;
   min-height: 55px;
   background: $tft-color-primary;
+  font-size: 1rem;
   font-weight: 500;
   color: $tft-color-white;
   @include inline-flex();

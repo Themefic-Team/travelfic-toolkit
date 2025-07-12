@@ -62,7 +62,7 @@ add_action('wp_footer', 'travelfic_toolkit_page_loader');
 function travelfic_toolkit_page_loader()
 {
     $travelfic_prefix = 'travelfic_customizer_settings_';
-    $page_loader = get_theme_mod($travelfic_prefix . 'page_loader', 0);
+    $page_loader = get_theme_mod($travelfic_prefix . 'page_loader', 1);
     if ($page_loader):
         $page_loader_background = get_theme_mod($travelfic_prefix . 'page_loader_background', '#fff');
         $page_loader_color = get_theme_mod($travelfic_prefix . 'page_loader_color', '#FA6400');

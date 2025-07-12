@@ -376,6 +376,7 @@ textarea.tft-form-control {
   display: block;
   min-height: 55px;
   background: var(--tf-primary);
+  font-size: 1rem;
   font-weight: 500;
   color: var(--tf-color-white);
   display: -webkit-inline-box;
@@ -3256,7 +3257,7 @@ textarea.tft-form-control {
 }
 .tft-hero-design__four__mobile--share {
   display: none;
-  width: 31px;
+  min-width: 31px;
   position: absolute;
   left: 0px;
   top: 50%;

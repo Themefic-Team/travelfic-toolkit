@@ -1502,7 +1502,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'search_form_label_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking label, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-label',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking label, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-label, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label',
             ]
         );
         $this->add_control(
