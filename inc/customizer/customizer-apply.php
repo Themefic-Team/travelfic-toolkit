@@ -167,6 +167,8 @@ function travelfic_toolkit_customizer_style()
         $travelfic_transparent_menu_hover_color = isset($travelfic_transparent_header_colors['hover']) ? $travelfic_transparent_header_colors['hover'] : '';
     }
 
+    $travelfic_transparent_header_blur = get_theme_mod($travelfic_kit_pre . 'transparent_header_blur');
+
     // transparent header
     $travelfic_transparent_submenu_bg = get_theme_mod($travelfic_kit_pre . 'transparent_submenu_bg');
     $travelfic_transparent_submenu_color = get_theme_mod($travelfic_kit_pre . 'transparent_submenu_color', []);
@@ -339,9 +341,17 @@ function travelfic_toolkit_customizer_style()
         */
 
         /* header transparent background */
-        <?php if(!empty($travelfic_transparent_header_bg)): ?>
+        <?php if(!empty($travelfic_transparent_header_bg || ($travelfic_transparent_header_blur && $travelfic_transparent_header_blur > 0))): ?>
             #tft-site-main-body .tft_has_transparent {
-                background: <?php echo !empty($travelfic_transparent_header_bg) ? esc_attr($travelfic_transparent_header_bg) : ''; ?>;
+                <?php if ( ! empty( $travelfic_transparent_header_bg ) ) : ?>
+                    background: <?php echo esc_attr( $travelfic_transparent_header_bg ); ?>;
+                <?php endif; ?>
+
+                <?php if ( ! empty( $travelfic_transparent_header_blur ) ) :
+                    $blur = (int) $travelfic_transparent_header_blur; ?>
+                    backdrop-filter: blur(<?php echo $blur; ?>px);
+                    -webkit-backdrop-filter: blur(<?php echo $blur; ?>px);
+                <?php endif; ?>
             }
         <?php endif; ?>
 

@@ -2180,7 +2180,7 @@ textarea.tft-form-control {
   -webkit-justify-content: center;
   justify-content: center;
   background: var(--tf-color-white);
-  border: 1px dashed #1d2a3b;
+  border: 1px dashed var(--tf-text-paragraph);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -2208,6 +2208,9 @@ textarea.tft-form-control {
     width: 16px;
     height: 16px;
   }
+}
+.tft-header-design__three__bottom__right__list__item--link svg path {
+  fill: var(--tf-text-paragraph);
 }
 .tft-header-design__three__bottom__right__list__item--search {
   position: absolute;
@@ -6753,6 +6756,9 @@ textarea.tft-form-control {
     width: 24px !important;
     top: -9px;
   }
+}
+.tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-author-image svg path {
+  stroke: var(--tf-text-paragraph);
 }
 @media (min-width: 992px) {
   .tft-testimonials-design__two .tft-testimonials-sliders .tft-testimonials-slides .tft-single-testimonial .tft-testimonials-inner .testimonial-review {

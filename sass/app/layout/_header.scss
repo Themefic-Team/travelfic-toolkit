@@ -985,7 +985,7 @@
               @include align-items(center);
               @include justify-content(center);
               background: $tft-color-white;
-              border: 1px dashed $tft-color-dark-blue;
+              border: 1px dashed $tft-color-text;
               @include box-circle();
 
               @media (max-width: 1480px) {
@@ -1007,6 +1007,9 @@
                 @media #{$max991} {
                   width: 16px;
                   height: 16px;
+                }
+                path{
+                  fill: $tft-color-text;
                 }
               }
             }

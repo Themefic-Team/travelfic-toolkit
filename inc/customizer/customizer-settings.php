@@ -1558,7 +1558,8 @@ add_action('init', function () {
         'settings'    => $prefix . 'tf_archive_header_img_separator_line',
         'section'     => 'travelfic_customizer_archive',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
-    
+        'tab'         => 'settings',
+        'priority'    => 28,
     ]);
     // Archive design redirect
     travelfic_Kirki::add_field('travelfic_customizer_options', [
@@ -1567,6 +1568,7 @@ add_action('init', function () {
         'section'  => 'travelfic_customizer_archive',
         'tab'      => 'settings',
         'default'  => '<a href="#" class="tf-archive-redirect">' . esc_html__('Archive Design', 'travelfic-toolkit') . '</a>',
+        'priority'    => 29,
     ]);
 
      // Archive header head
