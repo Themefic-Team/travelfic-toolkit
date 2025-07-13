@@ -101,23 +101,6 @@ main {
   }
 }
 
-.container {
-  max-width: 1220px;
-  margin: 0 auto;
-  padding: 0;
-
-  &.tft-fullwidth-container {
-    max-width: 100%;
-
-    @media #{$max1199} {
-      padding: 0 15px;
-    }
-  }
-
-  @media (max-width: 1760px) {
-    padding: 0 15px;
-  }
-}
 
 .tft-container-width {
   max-width: 1521px;
