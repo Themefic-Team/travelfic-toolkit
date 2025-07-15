@@ -41,7 +41,7 @@ class Travelfic_Customizer_Header
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
 
         
-        if (is_archive()) {
+        if (is_home() || is_archive() || is_search() || is_single() || is_404()) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -54,7 +54,10 @@ class Travelfic_Customizer_Header
 
         if (is_page()) {
             $disable_single_page = get_post_meta(get_the_ID(), 'tft-pmb-transfar-header', true);
-            if (!empty($disable_single_page)) {
+            if (!empty($disable_single_page) && $disable_single_page == 'enabled') {
+                $travelfic_desktop_transparent_class = 'tft_has_transparent';
+                $travelfic_mobile_transparent_class = 'tft_has_transparent';
+            }else if(!empty($disable_single_page) && $disable_single_page == 'disabled'){
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
             }
@@ -79,9 +82,9 @@ class Travelfic_Customizer_Header
 
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
-        $travelfic_archive_header_bg = get_theme_mod($travelfic_prefix . 'archive_header_bg_color');
-        if(!empty($travelfic_archive_header_bg) && (is_archive()  || is_single() || is_404() || is_search())){
-            $travelfic_header_bg = $travelfic_archive_header_bg;
+        $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
+        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_single() || is_404() || is_search())){
+            $travelfic_header_bg = $travelfic_blog_header_bg;
         }
 
         ob_start();
@@ -285,8 +288,6 @@ class Travelfic_Customizer_Header
                 </div>
             </div>
 
-
-
             <div class="tft-menus-section tft-header-mobile <?php echo esc_attr($travelfic_mobile_transparent_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
                 <div class="tft-main-header-wrapper tft-container-flex align-center justify-sp-between <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-header-left site-header-section">
@@ -476,7 +477,8 @@ class Travelfic_Customizer_Header
                     </nav>
                 </div>
             </div>
-
+            
+            
 
         </header>
 
@@ -521,7 +523,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', '');
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-        if (is_archive()) {
+        if (is_home() || is_archive() || is_search() || is_single() || is_404()) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -536,7 +538,10 @@ class Travelfic_Customizer_Header
 
         if (is_page()) {
             $disable_single_page = get_post_meta(get_the_ID(), 'tft-pmb-transfar-header', true);
-            if (!empty($disable_single_page)) {
+            if (!empty($disable_single_page) && $disable_single_page == 'enabled') {
+                $travelfic_desktop_transparent_class = 'tft_has_transparent';
+                $travelfic_mobile_transparent_class = 'tft_has_transparent';
+            }else if(!empty($disable_single_page) && $disable_single_page == 'disabled'){
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
             }
@@ -559,10 +564,10 @@ class Travelfic_Customizer_Header
 
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
-        $travelfic_archive_header_bg = get_theme_mod($travelfic_prefix . 'archive_header_bg_color');
+        $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
 
-        if(!empty($travelfic_archive_header_bg) && (is_archive() || is_single() || is_404() || is_search())){
-            $travelfic_header_bg = $travelfic_archive_header_bg;
+        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_search() || is_single() || is_404())){
+            $travelfic_header_bg = $travelfic_blog_header_bg;
         }
         ob_start();
 

@@ -188,7 +188,7 @@
 
         @media #{$max767} {
             height: auto;
-            padding: 38px 16px;
+            padding: 20px 16px;
         }
 
         .tft-hero-content {
@@ -205,12 +205,10 @@
                 line-height: 1.2;
                 color: $tft-color-white;
                 text-align: center;
-                padding-bottom: 80px;
-                padding-top: 80px;
+                padding-bottom: 100px;
                 margin-bottom: 0;
                 @media #{$max1024} {
-                    padding-top: 120px;
-                    padding-bottom: 20px;   
+                    padding-bottom: 50px;   
                 }
                 @media #{$max991} {
                     font-size: 2.5rem;
@@ -218,8 +216,6 @@
 
                 @media #{$max767} {
                     font-size: 1.5rem;
-                    padding-top: 50px;
-                    padding-bottom: 20px;
                 }
             }
 

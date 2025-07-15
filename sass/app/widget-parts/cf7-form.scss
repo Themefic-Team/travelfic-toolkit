@@ -101,28 +101,35 @@
 }
 
 #tf-cf7-contact-form {
-    margin-top: 20px;
-
     p {
-        font-weight: 600;
+        margin-bottom: 16px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        label{
+            font-weight: 600;
+            .wpcf7-form-control-wrap {
+                position: relative; 
+                display: block;
+                margin-top: 6px;
 
-        .wpcf7-form-control-wrap {
-            position: relative;
-
-            input,
-            textarea {
-                display: flex;
-                padding: 12px 14px;
-                align-items: center;
-                gap: 8px;
-                align-self: stretch;
-                width: 100%;
-                border: 1px solid $tft-color-border;
-                box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-                background-color: transparent;
-                border-radius: unset;
+                input,
+                textarea {
+                    display: flex;
+                    padding: 12px 14px;
+                    align-items: center;
+                    gap: 8px;
+                    align-self: stretch;
+                    width: 100%;
+                    border: 1px solid $tft-color-border;
+                    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+                    background-color: transparent;
+                    border-radius: unset;
+                    font-weight: 400;
+                }
             }
         }
+        
 
         input[type=submit] {
             display: flex;

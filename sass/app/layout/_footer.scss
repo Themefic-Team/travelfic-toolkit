@@ -4,11 +4,27 @@
 .tft-footer-design {
 
   &__two {
-    padding-top: 64px;
+    padding-top: 60px;
     padding-bottom: 32px;
     background-color: $tft-color-dark-brown;
     color: $tft-color-orange-light;
+    position: relative;
+    @media #{$max767} {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    .tft-fullwidth-container,
+    .tft-container {
+      padding: 0 200px;
 
+      @media (max-width: 1366px) {
+        padding: 0 32px;
+      }
+
+      @media #{$max767} {
+        padding: 0 16px;
+      }
+    }
     a {
       color: $tft-color-orange-light;
     }
@@ -75,6 +91,16 @@
       p {
         margin: 0;
       }
+    }
+
+    .tft-footer-shape {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-image: url("../img/footer-shape.png");
+      background-repeat: no-repeat;
+      width: 110px;
+      height: 125px;
     }
 
   }

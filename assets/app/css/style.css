@@ -663,10 +663,33 @@ textarea.tft-form-control {
   }
 }
 .tft-footer-design__two {
-  padding-top: 64px;
+  padding-top: 60px;
   padding-bottom: 32px;
   background-color: #595349;
   color: #FAEEDC;
+  position: relative;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-footer-design__two {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+.tft-footer-design__two .tft-fullwidth-container,
+.tft-footer-design__two .tft-container {
+  padding: 0 200px;
+}
+@media (max-width: 1366px) {
+  .tft-footer-design__two .tft-fullwidth-container,
+  .tft-footer-design__two .tft-container {
+    padding: 0 32px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-footer-design__two .tft-fullwidth-container,
+  .tft-footer-design__two .tft-container {
+    padding: 0 16px;
+  }
 }
 .tft-footer-design__two a {
   color: #FAEEDC;
@@ -728,6 +751,15 @@ textarea.tft-form-control {
 }
 .tft-footer-design__two .tft-grid p {
   margin: 0;
+}
+.tft-footer-design__two .tft-footer-shape {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: url("../img/footer-shape.png");
+  background-repeat: no-repeat;
+  width: 110px;
+  height: 125px;
 }
 .tft-footer-design__three {
   padding: 72px 0;
@@ -1120,8 +1152,13 @@ textarea.tft-form-control {
 
 .tft-header-design__two .tft-top-header {
   background: #595349;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+@media only screen and (max-width: 1024.98px) {
+  .tft-header-design__two .tft-top-header {
+    padding: 12px 0;
+  }
 }
 .tft-header-design__two .tft-top-header .tft-flex {
   justify-content: space-between;
@@ -1167,6 +1204,7 @@ textarea.tft-form-control {
 }
 .tft-header-design__two .tft-top-header .tft-flex .tft-social-share {
   margin-top: 7px;
+  line-height: 1;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-header-design__two .tft-top-header .tft-flex .tft-social-share {
@@ -1198,8 +1236,13 @@ textarea.tft-form-control {
 }
 .tft-header-design__two .tft-menus-section {
   background: var(--tf-color-white);
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+@media only screen and (max-width: 1024.98px) {
+  .tft-header-design__two .tft-menus-section {
+    padding: 12px 0;
+  }
 }
 .tft-header-design__two .tft-menus-section .tft-flex {
   justify-content: space-between;
@@ -2759,7 +2802,7 @@ textarea.tft-form-control {
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design__two {
     height: auto;
-    padding: 38px 16px;
+    padding: 20px 16px;
   }
 }
 .tft-hero-design__two .tft-hero-content {
@@ -2777,14 +2820,12 @@ textarea.tft-form-control {
   line-height: 1.2;
   color: var(--tf-color-white);
   text-align: center;
-  padding-bottom: 80px;
-  padding-top: 80px;
+  padding-bottom: 100px;
   margin-bottom: 0;
 }
 @media only screen and (max-width: 1024.98px) {
   .tft-hero-design__two .tft-hero-content h1 {
-    padding-top: 120px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
   }
 }
 @media only screen and (max-width: 991.98px) {
@@ -2795,8 +2836,6 @@ textarea.tft-form-control {
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design__two .tft-hero-content h1 {
     font-size: 1.5rem;
-    padding-top: 50px;
-    padding-bottom: 20px;
   }
 }
 .tft-hero-design__two .tft-hero-content #tf-booking-search-tabs .tf-booking-form-tab button {
@@ -4186,17 +4225,22 @@ textarea.tft-form-control {
   position: absolute;
 }
 
-#tf-cf7-contact-form {
-  margin-top: 20px;
-}
 #tf-cf7-contact-form p {
+  margin-bottom: 16px;
+}
+#tf-cf7-contact-form p:last-child {
+  margin-bottom: 0;
+}
+#tf-cf7-contact-form p label {
   font-weight: 600;
 }
-#tf-cf7-contact-form p .wpcf7-form-control-wrap {
+#tf-cf7-contact-form p label .wpcf7-form-control-wrap {
   position: relative;
+  display: block;
+  margin-top: 6px;
 }
-#tf-cf7-contact-form p .wpcf7-form-control-wrap input,
-#tf-cf7-contact-form p .wpcf7-form-control-wrap textarea {
+#tf-cf7-contact-form p label .wpcf7-form-control-wrap input,
+#tf-cf7-contact-form p label .wpcf7-form-control-wrap textarea {
   display: flex;
   padding: 12px 14px;
   align-items: center;
@@ -4207,6 +4251,7 @@ textarea.tft-form-control {
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   background-color: transparent;
   border-radius: unset;
+  font-weight: 400;
 }
 #tf-cf7-contact-form p input[type=submit] {
   display: flex;
@@ -4256,7 +4301,7 @@ textarea.tft-form-control {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--tf-brand-dark);
+  color: var(--tf-text-heading);
   margin-bottom: 24px;
 }
 @media (max-width: 1366px) {
@@ -4392,6 +4437,7 @@ textarea.tft-form-control {
   line-height: 1.2;
   color: var(--tf-text-heading);
   margin-bottom: 16px;
+  margin-top: 8px;
 }
 @media (max-width: 1366px) {
   .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details h3 {
@@ -4411,6 +4457,13 @@ textarea.tft-form-control {
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tft-locations svg {
   margin-right: 8px;
+}
+.tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tft-locations span {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-single-item-inner .tft-hotel-details .tour-time {
   display: flex;

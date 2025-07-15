@@ -953,7 +953,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_hotel_card_features_typo',
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li',
-                'label'    => __('Features Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_hotels_style' => 'design-1'
                 ],
@@ -988,7 +988,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_hotel_card_button_typo',
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details',
-                'label'    => __('Button Typography', 'travelfic-toolkit'),
+                'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_hotels_style' => 'design-1'
                 ],
@@ -2438,15 +2438,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 </span>
                                             </div>
                                         <?php } ?>
-                                        <h3 class="tft-title">
+                                        <h3 class="tft-title<?php echo "Split" == $settings['card_title_type'] ? ' tft-title-split' : ''; ?>">
                                             <a href="<?php echo  esc_url(get_the_permalink()) ?>">
-                                                <?php
-                                                if ("Split" == $settings['card_title_type']) {
-                                                    echo esc_html(travelfic_character_limit(get_the_title(), 15));
-                                                } else {
-                                                    the_title();
-                                                }
-                                                ?>
+                                                <?php echo the_title();?>
                                             </a>
                                         </h3>
                                         <p class="tft-locations">

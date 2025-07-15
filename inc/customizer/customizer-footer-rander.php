@@ -19,6 +19,7 @@ class Travelfic_Customizer_Footer
                 <div class="tft-footer-bottom__two tft-footer-bottom">
                     <p><?php echo do_shortcode(esc_html($design_2_copyright)); ?></p>
                 </div>
+                <div class="tft-footer-shape"></div>
             </div>
         </footer>
     <?php

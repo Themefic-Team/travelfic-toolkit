@@ -6,9 +6,11 @@
   &__two {
     .tft-top-header {
       background: $tft-color-dark-brown;
-      padding-top: 10px;
-      padding-bottom: 10px;
-
+      padding-top: 16px;
+      padding-bottom: 16px;
+      @media #{$max1024} {
+        padding: 12px 0;
+      }
       .tft-flex {
         justify-content: space-between;
         align-items: center;
@@ -57,6 +59,7 @@
 
         .tft-social-share {
           margin-top: 7px;
+          line-height: 1;
 
           @media #{$max767} {
             width: 100%;
@@ -91,9 +94,11 @@
 
     .tft-menus-section {
       background: $tft-color-white;
-      padding-top: 10px;
-      padding-bottom: 10px;
-
+      padding-top: 32px;
+      padding-bottom: 32px;
+      @media #{$max1024} {
+        padding: 12px 0;
+      }
       .tft-flex {
         justify-content: space-between;
         align-items: center;
