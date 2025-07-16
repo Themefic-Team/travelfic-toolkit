@@ -153,6 +153,10 @@
                     @media (max-width: 1366px) {
                         font-size: 2rem;
                     }
+                    @media (max-width: 767px) {
+                        font-size: 1.5em;
+                        padding-bottom: 24px;
+                    }
                 }
             }
 
@@ -163,7 +167,10 @@
             padding: 60px 0;
 
             @media #{$max991} {
-                padding: 20px
+                padding: 20px 16px
+            }
+            @media #{$max767} {
+                padding: 20px 0 16px
             }
 
             .tft-testimonials-slides {
@@ -175,8 +182,8 @@
                     transition: .3s all ease;
 
                     @media #{$max767} {
-                        margin-left: 5px !important;
-                        margin-right: 5px !important;
+                        padding: 24px 16px 16px;
+                        margin: 40px 16px 48px 16px !important;
                     }
 
                     .tft-testimonials-inner {
@@ -186,6 +193,9 @@
 
                             @media #{$max991} {
                                 top: -16px;
+                            }
+                            @media #{$max767} {
+                                top: -42px;
                             }
 
                             img {
@@ -226,17 +236,28 @@
                             font-size: 1.25rem;
                             color: $tft-color-text;
                             margin-bottom: 32px;
+
+                            @media #{$max767} {
+                                font-size: 1rem;
+                                margin-bottom: 8px;
+                            }
                         }
 
                         .person-name {
                             color: $tft-color-text;
                             font-weight: 600;
                             margin: 0;
+                            @media #{$max767} {
+                                font-size: 0.875rem;
+                            }
                         }
 
                         .designation {
                             color: $tft-color-text;
                             margin: 0px;
+                            @media #{$max767} {
+                                font-size: 0.875rem;
+                            }
                         }
                     }
                 }
@@ -259,6 +280,10 @@
                                 color: $tft-color-text;
                                 border: 2px solid transparent;
                                 opacity: 1;
+                                @media #{$max767} {
+                                    width: 25px;
+                                    height: 25px;
+                                }
                             }
                         }
 

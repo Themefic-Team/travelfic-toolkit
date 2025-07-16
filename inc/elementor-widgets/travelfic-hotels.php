@@ -2178,15 +2178,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 </span>
                                             </div>
                                         <?php } ?>
-                                        <h3 class="tft-title">
+                                        <h3 class="tft-title<?php echo ("Split" == $settings['card_title_type']) ? ' tft-title-split' : ''; ?>">
                                             <a href="<?php echo esc_url(get_the_permalink()) ?>">
-                                                <?php
-                                                if ("Split" == $settings['card_title_type']) {
-                                                    echo esc_html(travelfic_character_limit(get_the_title(), 40));
-                                                } else {
-                                                    the_title();
-                                                }
-                                                ?>
+                                                <?php the_title(); ?>
                                             </a>
                                         </h3>
                                         <p class="tft-locations">
@@ -2438,7 +2432,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 </span>
                                             </div>
                                         <?php } ?>
-                                        <h3 class="tft-title<?php echo "Split" == $settings['card_title_type'] ? ' tft-title-split' : ''; ?>">
+                                        <h3 class="tft-title">
                                             <a href="<?php echo  esc_url(get_the_permalink()) ?>">
                                                 <?php echo the_title();?>
                                             </a>

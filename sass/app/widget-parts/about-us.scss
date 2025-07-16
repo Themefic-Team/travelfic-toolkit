@@ -37,8 +37,13 @@
                     margin-top: 0px;
                     margin-bottom: 32px;
 
-                    @media #{$max991} {
+                    @media (max-width: 1366px) {
                         font-size: 2rem;
+                    }
+                    @media #{$max767} {
+                        font-size: 1.5rem;
+                        margin-bottom: 24px;
+                        max-width: 70%;
                     }
                 }
 
@@ -46,11 +51,17 @@
                 p {
                     font-size: 1.125rem;
                     color: $tft-color-text;
-
+                    @media #{$max767} {
+                        font-size: 0.875rem;
+                    }
                     &.tft-about-us-quotes,
                     &.tft-about-us-author {
                         padding-right: 55px;
                         margin-top: 2px;
+                        @media #{$max767} {
+                            margin-top: 0;
+                            padding-right: 0;
+                        }
                     }
 
                     &.tft-about-us-author {
@@ -63,6 +74,16 @@
                 }
 
                 .read-more {
+                    @media #{$max767} {
+                        position: absolute;
+                        right: 16px;
+                        top: 6px;
+                    }
+                    @media #{$max575} {
+                        position: absolute;
+                        right: 16px;
+                        top: 20px;
+                    }
                     a {
                         border: 1px solid $tft-color-primary;
                         font-weight: 700;
@@ -84,12 +105,15 @@
                             
                         }
 
-                        svg {
-                            path {
-                                fill: $tft-color-white;
-                            }
-                            @media #{$max991} {
-                                width: 36px;
+                        span{
+                            line-height: 0;
+                            svg {
+                                path {
+                                    fill: $tft-color-white;
+                                }
+                                @media #{$max991} {
+                                    width: 36px;
+                                }
                             }
                         }
 
@@ -147,6 +171,7 @@
 
                             @media #{$max991} {
                                 font-size: 2rem;
+                                height: 40%;
                             }
                         }
                     }

@@ -10,8 +10,8 @@
     color: $tft-color-orange-light;
     position: relative;
     @media #{$max767} {
-      padding-top: 30px;
-      padding-bottom: 30px;
+      padding-top: 32px;
+      padding-bottom: 16px;
     }
     .tft-fullwidth-container,
     .tft-container {
@@ -35,11 +35,12 @@
       align-content: flex-start;
       flex-wrap: nowrap;
       gap: 83px;
-
+      @media #{$max1199} {
+        gap: 40px;
+      }
       @media #{$max991} {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
       }
 
       @media #{$max575} {
@@ -50,6 +51,31 @@
 
       .tft-footer-section {
         width: 100%;
+        @media #{$max767} {
+          margin-bottom: 24px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+        &:first-child {
+          .wp-block-group{
+            width: 350px;
+            @media #{$max767} {
+              width: 270px;
+            }
+
+            @media #{$max575} {
+              width: 100%;
+            }
+          }
+        }
+        .wp-block-heading{
+          @media #{$max767} {
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+          }
+         
+        }
       }
 
       h2 {
@@ -76,7 +102,10 @@
             font-size: 1rem;
             font-weight: 600;
             transition: all 0.2s ease;
-
+            @media #{$max1024} {
+              font-weight: 400;
+              font-size: 0.875rem;
+            }
             &:hover {
               color: $tft-color-secondary;
             }
@@ -90,6 +119,9 @@
 
       p {
         margin: 0;
+        @media #{$max767} {
+          font-size: 0.875rem;
+        }
       }
     }
 
@@ -360,7 +392,10 @@
       padding-top: 32px;
       color: $tft-color-text;
       text-align: center;
-
+      @media #{$max767} {
+        padding-top: 16px;
+        font-size: 0.875rem;
+      }
       a {
         text-decoration: none;
         color: $tft-color-text;
