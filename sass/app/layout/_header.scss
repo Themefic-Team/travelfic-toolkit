@@ -1231,3 +1231,11 @@
     }
   }
 }
+
+body.wp-singular,
+body.blog,
+body.archive{
+  .tft-header-design__two {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  }
+}

@@ -718,9 +718,9 @@
     width: 100%;
     left: 0;
     top: 0;
-    background: $tft-color-primary;
     opacity: 0.9;
     justify-content: end;
+    background: linear-gradient(0deg, rgba(238, 199, 140, 0.90) 0%, rgba(238, 199, 140, 0.90) 100%), lightgray 50% / cover no-repeat;
 }
 
 .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,

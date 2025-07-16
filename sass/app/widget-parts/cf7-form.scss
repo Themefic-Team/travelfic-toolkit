@@ -212,6 +212,9 @@
             @media (max-width: 767px){
                 padding: 8px 20px;
             }
+            &:hover{
+                background-color: $tft-color-secondary;
+            }
         }
         .wpcf7-spinner{
             position: absolute;

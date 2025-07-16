@@ -2491,6 +2491,12 @@ textarea.tft-form-control {
   }
 }
 
+body.wp-singular .tft-header-design__two,
+body.blog .tft-header-design__two,
+body.archive .tft-header-design__two {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
 .tft-travelling-service .tft-section-title h2 {
   position: relative;
 }
@@ -4444,6 +4450,9 @@ textarea.tft-form-control {
     padding: 8px 20px;
   }
 }
+.tft-subscribe p input[type=submit]:hover {
+  background-color: var(--tf-brand-dark);
+}
 .tft-subscribe p .wpcf7-spinner {
   position: absolute;
   top: 100%;
@@ -6114,9 +6123,9 @@ textarea.tft-form-control {
   width: 100%;
   left: 0;
   top: 0;
-  background: var(--tf-primary);
   opacity: 0.9;
   justify-content: end;
+  background: linear-gradient(0deg, rgba(238, 199, 140, 0.9) 0%, rgba(238, 199, 140, 0.9) 100%), lightgray 50%/cover no-repeat;
 }
 
 .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details h3,
