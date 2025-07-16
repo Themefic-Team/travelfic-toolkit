@@ -315,6 +315,7 @@
 
                     @media #{$max767} {
                         grid-template-columns: 1fr;
+                        gap: 16px;
                     }
                 }
 
@@ -690,6 +691,7 @@
 .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a {
     display: flow-root;
     position: relative;
+    line-height: 0;
 }
 
 .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-blog-thumbnail,
@@ -810,33 +812,4 @@
 .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(3) a .tft-blog-thumbnail,
 .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(5) a .tft-blog-thumbnail {
     width: 100%;
-}
-
-
-@media all and (max-width: 991px) {
-
-    .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a,
-    .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a,
-    .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a,
-    .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a,
-    .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a,
-    .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a,
-    .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a,
-    .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a,
-    .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a {
-        position: static;
-    }
-
-    .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-    .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-    .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-    .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a .tft-content-details,
-    .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-    .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details,
-    .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-    .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details,
-    .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a .tft-content-details {
-        position: static;
-        background-color: transparent;
-    }
 }

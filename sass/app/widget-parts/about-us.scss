@@ -179,6 +179,7 @@
 
                 .tft-about-image {
                     padding-left: 100px;
+                    line-height: 0;
 
                     @media #{$max767} {
                         padding-left: 0px;

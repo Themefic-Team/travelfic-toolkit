@@ -3884,6 +3884,7 @@ body.archive .tft-header-design__two {
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image .tft-about-image {
   padding-left: 100px;
+  line-height: 0;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image .tft-about-image {
@@ -5701,6 +5702,7 @@ body.archive .tft-header-design__two {
 @media only screen and (max-width: 767.98px) {
   .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-2, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-3, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-4, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-5, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-6 {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-4 {
@@ -6095,6 +6097,7 @@ body.archive .tft-header-design__two {
 .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a {
   display: flow-root;
   position: relative;
+  line-height: 0;
 }
 
 .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-blog-thumbnail,
@@ -6216,31 +6219,6 @@ body.archive .tft-header-design__two {
   width: 100%;
 }
 
-@media all and (max-width: 991px) {
-  .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a,
-  .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a,
-  .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a,
-  .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a,
-  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a,
-  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a,
-  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a,
-  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a,
-  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a {
-    position: static;
-  }
-  .blog-grid-item-2 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-  .blog-grid-item-3 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-  .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-  .blog-grid-item-4 .tft-post-single-item.tft-col-item:nth-child(3) a .tft-content-details,
-  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-  .blog-grid-item-5 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details,
-  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(2) a .tft-content-details,
-  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(4) a .tft-content-details,
-  .blog-grid-item-6 .tft-post-single-item.tft-col-item:nth-child(6) a .tft-content-details {
-    position: static;
-    background-color: transparent;
-  }
-}
 @media only screen and (max-width: 991.98px) {
   .tft-popular-tour-design__one {
     width: 90%;
