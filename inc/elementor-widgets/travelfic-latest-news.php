@@ -1390,9 +1390,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                         <?php
                         if (!empty($tft_sec_subtitle)) { ?>
                             <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                        <?php }
-                        if (!empty($tft_sec_title)) {
-                        ?>
+                        <?php } if (!empty($tft_sec_title)) { ?>
                             <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
