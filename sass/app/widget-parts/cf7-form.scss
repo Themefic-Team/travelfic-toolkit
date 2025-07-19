@@ -223,4 +223,50 @@
             margin-top: 15px;
         }
     }
+
+    &.tft-subscribe-design-two{
+        p{
+            gap: 8px;
+            label{
+                input[type="email"]{
+                    background-color: $tft-color-gray-skid;
+                    border-radius: 8px;
+                    color: $tft-color-mystic-light;
+                    min-width: 217px;
+                    @media (max-width: 1366px){
+                        min-width: auto;
+                        min-height: 40px;
+                        padding: 8px 16px;
+                        height: auto;
+                    }
+                    @media (max-width: 1260px){
+                        width: 180px;
+                    }
+                    @media #{$max991}{
+                        width: 260px;
+                    }
+                    @media #{$max767}{
+                        width: 100%;
+                    }
+                    &::placeholder{
+                        color: $tft-color-mystic-light;
+                    }
+                }
+            }
+            input[type="submit"]{
+                border-radius: 8px;
+                padding: 16px 32px;
+                min-width: 144px;
+                @media (max-width: 1366px){
+                    min-width: auto;
+                    min-height: 40px;
+                    padding: 8px 16px;
+                    height: auto;
+                }
+                @media (max-width: 767px){
+                    padding: 8px 20px;
+                }
+            }
+        }
+    }
 }

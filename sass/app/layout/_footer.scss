@@ -13,18 +13,7 @@
       padding-top: 32px;
       padding-bottom: 16px;
     }
-    .tft-fullwidth-container,
-    .tft-container {
-      padding: 0 200px;
 
-      @media (max-width: 1366px) {
-        padding: 0 32px;
-      }
-
-      @media #{$max767} {
-        padding: 0 16px;
-      }
-    }
     a {
       color: $tft-color-orange-light;
     }
@@ -114,6 +103,13 @@
 
         li:last-child {
           padding-bottom: 0px;
+        }
+        &.tft-footer-menu-list {
+          li{
+            a{
+              font-weight: 400;
+            }
+          }
         }
       }
 

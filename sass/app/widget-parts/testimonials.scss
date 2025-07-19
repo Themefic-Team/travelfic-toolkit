@@ -13,7 +13,9 @@
                 transition: all 0.3s ease;
                 border: 1px solid rgba(29, 42, 59, 0.1);
                 cursor: pointer;
-
+                @media #{$max767} {
+                    padding: 20px;
+                }
                 &:hover {
                     background-color: $tft-color-dark-blue;
                     transition: all 0.3s ease;
@@ -24,6 +26,10 @@
                     align-items: center;
                     column-gap: 24px;
                     padding-bottom: 32px;
+                    @media #{$max767} {
+                        column-gap: 20px;
+                        padding-bottom: 20px;
+                    }
 
                     .person-avatar {
                         max-width: 80px;
@@ -41,6 +47,14 @@
                             margin-top: 0px;
                             margin-bottom: 0px;
                             font-size: 1.5rem;
+                            @media #{$max767} {
+                                font-size: 1.125rem;
+                            }
+                        }
+                        .designation{
+                            @media #{$max767} {
+                                font-size: 1rem;
+                            }
                         }
 
                         p {
@@ -53,6 +67,10 @@
                     .tft-content {
                         font-size: 1.125rem;
                         font-weight: 400;
+                        margin-bottom: 0;
+                        @media #{$max767} {
+                            font-size: 0.938rem;
+                        }
                     }
                 }
 
@@ -89,7 +107,7 @@
             gap: 40px;
             @media #{$max767}{
                 gap: 24px;
-                margin-top: 40px;
+                margin-top: 16px;
             }
             .slick-prev,
             .slick-next {
@@ -99,6 +117,7 @@
                 left: unset;
                 right: unset;
                 top: unset;
+                transform: inherit;
                 transition: all 0.2s ease;
                 svg{
                     @media #{$max767}{

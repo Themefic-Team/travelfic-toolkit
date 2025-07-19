@@ -682,22 +682,6 @@ textarea.tft-form-control {
     padding-bottom: 16px;
   }
 }
-.tft-footer-design__two .tft-fullwidth-container,
-.tft-footer-design__two .tft-container {
-  padding: 0 200px;
-}
-@media (max-width: 1366px) {
-  .tft-footer-design__two .tft-fullwidth-container,
-  .tft-footer-design__two .tft-container {
-    padding: 0 32px;
-  }
-}
-@media only screen and (max-width: 767.98px) {
-  .tft-footer-design__two .tft-fullwidth-container,
-  .tft-footer-design__two .tft-container {
-    padding: 0 16px;
-  }
-}
 .tft-footer-design__two a {
   color: #FAEEDC;
 }
@@ -792,6 +776,9 @@ textarea.tft-form-control {
 }
 .tft-footer-design__two .tft-grid ul li:last-child {
   padding-bottom: 0px;
+}
+.tft-footer-design__two .tft-grid ul.tft-footer-menu-list li a {
+  font-weight: 400;
 }
 .tft-footer-design__two .tft-grid p {
   margin: 0;
@@ -1205,6 +1192,9 @@ textarea.tft-form-control {
   color: var(--tf-brand-dark);
 }
 
+.tft-header-design__one .tft-header-mobile {
+  padding: 16px 0;
+}
 .tft-header-design__two .tft-top-header {
   background: #595349;
   padding-top: 16px;
@@ -2943,7 +2933,7 @@ body.archive .tft-header-design__two {
   position: absolute;
   right: 24px;
   left: 24px;
-  bottom: -60px;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4185,8 +4175,14 @@ body.archive .tft-header-design__two {
   margin-bottom: 56px;
 }
 .tft-brands-design__one .tft-brands-inner .tft-brands .slick-slide {
-  margin-left: 8px !important;
-  margin-right: 8px !important;
+  margin-left: 16px !important;
+  margin-right: 16px !important;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-brands-design__one .tft-brands-inner .tft-brands .slick-slide {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+  }
 }
 .tft-brands-design__one .tft-brands-inner .tft-brands.tft-brands-grid {
   display: flex;
@@ -4459,6 +4455,59 @@ body.archive .tft-header-design__two {
   top: 100%;
   margin-left: 6px;
   margin-top: 15px;
+}
+.tft-subscribe.tft-subscribe-design-two p {
+  gap: 8px;
+}
+.tft-subscribe.tft-subscribe-design-two p label input[type=email] {
+  background-color: #8999A9;
+  border-radius: 8px;
+  color: #DFE6ED;
+  min-width: 217px;
+}
+@media (max-width: 1366px) {
+  .tft-subscribe.tft-subscribe-design-two p label input[type=email] {
+    min-width: auto;
+    min-height: 40px;
+    padding: 8px 16px;
+    height: auto;
+  }
+}
+@media (max-width: 1260px) {
+  .tft-subscribe.tft-subscribe-design-two p label input[type=email] {
+    width: 180px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-subscribe.tft-subscribe-design-two p label input[type=email] {
+    width: 260px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-subscribe.tft-subscribe-design-two p label input[type=email] {
+    width: 100%;
+  }
+}
+.tft-subscribe.tft-subscribe-design-two p label input[type=email]::placeholder {
+  color: #DFE6ED;
+}
+.tft-subscribe.tft-subscribe-design-two p input[type=submit] {
+  border-radius: 8px;
+  padding: 16px 32px;
+  min-width: 144px;
+}
+@media (max-width: 1366px) {
+  .tft-subscribe.tft-subscribe-design-two p input[type=submit] {
+    min-width: auto;
+    min-height: 40px;
+    padding: 8px 16px;
+    height: auto;
+  }
+}
+@media (max-width: 767px) {
+  .tft-subscribe.tft-subscribe-design-two p input[type=submit] {
+    padding: 8px 20px;
+  }
 }
 
 .tft-popular-hotels-design__one {
@@ -6876,6 +6925,11 @@ body.archive .tft-header-design__two {
   border: 1px solid rgba(29, 42, 59, 0.1);
   cursor: pointer;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner {
+    padding: 20px;
+  }
+}
 .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner:hover {
   background-color: #1d2a3b;
   transition: all 0.3s ease;
@@ -6885,6 +6939,12 @@ body.archive .tft-header-design__two {
   align-items: center;
   column-gap: 24px;
   padding-bottom: 32px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header {
+    column-gap: 20px;
+    padding-bottom: 20px;
+  }
 }
 .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header .person-avatar {
   max-width: 80px;
@@ -6900,12 +6960,28 @@ body.archive .tft-header-design__two {
   margin-bottom: 0px;
   font-size: 1.5rem;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header .person-info .person-name {
+    font-size: 1.125rem;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header .person-info .designation {
+    font-size: 1rem;
+  }
+}
 .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-header .person-info p {
   margin: 0px;
 }
 .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-body .tft-content {
   font-size: 1.125rem;
   font-weight: 400;
+  margin-bottom: 0;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-body .tft-content {
+    font-size: 0.938rem;
+  }
 }
 .tft-testimonials-design__one .tft-single-testimonial .tft-testimonials-inner .testimonial-footer i {
   color: var(--tf-primary);
@@ -6932,7 +7008,7 @@ body.archive .tft-header-design__two {
 @media only screen and (max-width: 767.98px) {
   .tft-testimonials-design__one .tft-slider-arrows {
     gap: 24px;
-    margin-top: 40px;
+    margin-top: 16px;
   }
 }
 .tft-testimonials-design__one .tft-slider-arrows .slick-prev,
@@ -6943,6 +7019,7 @@ body.archive .tft-header-design__two {
   left: unset;
   right: unset;
   top: unset;
+  transform: inherit;
   transition: all 0.2s ease;
 }
 @media only screen and (max-width: 767.98px) {

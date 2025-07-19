@@ -2,7 +2,11 @@
 @use '../abstracts/mixins' as *;
 
 .tft-header-design {
-
+  &__one {
+    .tft-header-mobile{
+      padding: 16px 0;
+    }
+  }
   &__two {
     .tft-top-header {
       background: $tft-color-dark-brown;
