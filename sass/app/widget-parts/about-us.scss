@@ -284,8 +284,8 @@
 
                     img {
                         width: 100%;
-                        border-bottom-left-radius: 100px;
-                        border-bottom-right-radius: 100px;
+                        border-bottom-left-radius: 1000px;
+                        border-bottom-right-radius: 1000px;
 
                         @media #{$max767} {
                             @include bd-radius(20px);
