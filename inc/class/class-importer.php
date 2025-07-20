@@ -68,12 +68,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             // tourfic color palette
             $tf_settings = ! empty( get_option( 'tf_settings') ) ? get_option( 'tf_settings') : [];
-            $prev_primary = !empty($tf_settings['tourfic-design1-global-color']) ? unserialize($tf_settings['tourfic-design1-global-color']) : '';
             $tf_color_palette = isset($tf_settings['color-palette-template']) ? $tf_settings['color-palette-template'] : '';
+
 
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
-
                 // header menu color
                 if(isset($imported_data['travelfic_customizer_settings_menu_color'])){
                     $imported_data['travelfic_customizer_settings_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_menu_color'];
@@ -162,19 +161,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     set_theme_mod($key, $value);
                 }
 
-                // update tf_settings
-                if($tf_color_palette == 'custom'){
-                    $tf_settings['tf-custom-brand']['default'] = !empty($prev_primary['gcolor']) ? $prev_primary['gcolor'] : '#fa6400';
-					$tf_settings['tf-custom-brand']['dark'] = '#0e3dd8';
-					$tf_settings['tf-custom-brand']['lite'] = '#FDDCC3';
-					$tf_settings['tf-custom-text']['heading'] = '#060d1c';
-					$tf_settings['tf-custom-text']['paragraph'] = '#686e7a';
-					$tf_settings['tf-custom-text']['lite'] = '#FDF7F3';
-					$tf_settings['tf-custom-border']['default'] = '#5F3416';
-					$tf_settings['tf-custom-border']['lite'] = '#EEDDD1';
-					$tf_settings['tf-custom-filling']['background'] = '#ffffff';
-					$tf_settings['tf-custom-filling']['foreground'] = '#FFF9F5';
-                }
                 $tf_settings['color-palette-template'] = $tf_color_palette;
                 update_option('tf_settings', $tf_settings);
 
@@ -532,7 +518,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         public static function travelfic_toolkit_create_menu_from_imported_data($menu_data, $template_key) {
             $menu_name = 'Imported Main Menu';
             $menu_exists = wp_get_nav_menu_object($menu_name);
-        
             if (!$menu_exists) {
                 $menu_id = wp_create_nav_menu($menu_name);
             } else {
@@ -543,13 +528,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 // Add top-level menu items.
                 $menu_item_data = array(
                     'menu-item-title' => $menu_item['title'],
-                    'menu-item-url' => str_replace("https://api.tourfic.com/tourfic",site_url(),$menu_item['url']),
+                    'menu-item-url' => str_replace(parse_url($menu_item['url'], PHP_URL_HOST), parse_url(site_url(), PHP_URL_HOST), $menu_item['url']),
                     'menu-item-object' => 'custom',
                     'menu-item-parent' => 0,
                     'menu-item-type' => 'custom',
                     'menu-item-status' => 'publish'
                 );
-     
                 // Insert the top-level menu item.
                 $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
         
@@ -558,7 +542,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
                             'menu-item-title' => $sub_menu_item['title'],
-                            'menu-item-url' => str_replace("https://api.tourfic.com/tourfic",site_url(),$sub_menu_item['url']),
+                            'menu-item-url' => str_replace(parse_url($sub_menu_item['url'], PHP_URL_HOST), parse_url(site_url(), PHP_URL_HOST), $sub_menu_item['url']),
                             'menu-item-object' => 'custom',
                             'menu-item-parent-id' => $menu_item_id,
                             'menu-item-type' => 'custom',
