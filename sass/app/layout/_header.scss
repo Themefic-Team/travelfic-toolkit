@@ -404,7 +404,7 @@
       a {
         font-size: 2rem;
         font-weight: 700;
-        color: $tft-color-white;
+        color: $tft-color-white!important;
 
         &:hover {
           color: $tft-color-white;
