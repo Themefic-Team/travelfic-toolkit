@@ -225,7 +225,7 @@
         .tft-about-us-grid {
             @include d-flex();
             @include justify-content(center);
-            gap: 59px;
+            gap: 60px;
 
             @media #{$max991} {
                 flex-direction: column-reverse;
@@ -333,8 +333,6 @@
 
             .tft-about-us-content {
                 flex: 1;
-                max-width: 669px;
-
                 @media #{$max767} {
                     max-width: 500px;
                     margin: auto;

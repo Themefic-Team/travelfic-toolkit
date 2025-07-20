@@ -99,6 +99,7 @@ input[type="submit"].tft-form-btn {
   &:hover {
     background: $tft-color-secondary;
     color: $tft-color-white;
+    border-color: $tft-color-secondary;
   }
 
   &:focus {

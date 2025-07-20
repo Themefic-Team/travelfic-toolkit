@@ -1335,51 +1335,49 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         }
         if ("design-3" == $design) { ?>
             <div class="tft-latest-posts-design__three">
-                <div class="container">
-                    <div class="tft-heading-content">
-                        <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                        <?php }
-                        if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
-                        <?php } ?>
-                    </div>
+                <div class="tft-heading-content">
+                    <?php if (!empty($tft_sec_subtitle)) { ?>
+                        <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                    <?php }
+                    if (!empty($tft_sec_title)) { ?>
+                        <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
+                    <?php } ?>
+                </div>
 
-                    <div class="tft-blog-gird-section">
-                        <?php if ($query->have_posts()) : ?>
-                            <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <div class="tft-blog-gird-section">
+                    <?php if ($query->have_posts()) : ?>
+                        <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-                                <div class="tft-col-item tft-post-single-item">
+                            <div class="tft-col-item tft-post-single-item">
 
-                                    <div class="tft-blog-thumbnail">
-                                        <?php
-                                        if (get_the_post_thumbnail_url(get_the_ID())) {
-                                            the_post_thumbnail('blog-thumb');
-                                        } else { ?>
-                                            <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
-                                        <?php } ?>
+                                <div class="tft-blog-thumbnail">
+                                    <?php
+                                    if (get_the_post_thumbnail_url(get_the_ID())) {
+                                        the_post_thumbnail('blog-thumb');
+                                    } else { ?>
+                                        <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
+                                    <?php } ?>
+                                </div>
+                                <div class="tft-content-details">
+                                    <div class="tft-post-meta">
+                                        <p class="tft-meta"><i class="ri-time-line"></i><?php echo get_the_date('j M, Y'); ?></p>
+                                        <p class="tft-meta"><i class="ri-user-line"></i> <?php echo 'by' . ' ' . get_the_author(); ?></p>
                                     </div>
-                                    <div class="tft-content-details">
-                                        <div class="tft-post-meta">
-                                            <p class="tft-meta"><i class="ri-time-line"></i><?php echo get_the_date('j M, Y'); ?></p>
-                                            <p class="tft-meta"><i class="ri-user-line"></i> <?php echo 'by' . ' ' . get_the_author(); ?></p>
-                                        </div>
-                                        <h3 class="tft-title">
-                                            <a href="<?php echo esc_url(get_permalink()); ?>">
-                                                <?php echo esc_html(travelfic_character_limit(get_the_title(), 70)); ?>
-                                            </a>
-                                        </h3>
-                                        <div class="tft-read-more">
-                                            <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn tft-btn_gray">
-                                                <?php echo esc_html_e("Read Details", "travelfic-toolkit"); ?>
-                                                <i class="ri-arrow-right-line"></i>
-                                            </a>
-                                        </div>
+                                    <h3 class="tft-title">
+                                        <a href="<?php echo esc_url(get_permalink()); ?>">
+                                            <?php echo esc_html(travelfic_character_limit(get_the_title(), 70)); ?>
+                                        </a>
+                                    </h3>
+                                    <div class="tft-read-more">
+                                        <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn tft-btn_gray">
+                                            <?php echo esc_html_e("Read Details", "travelfic-toolkit"); ?>
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
                                     </div>
                                 </div>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
-                    </div>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php

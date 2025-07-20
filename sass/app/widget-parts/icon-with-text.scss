@@ -105,157 +105,153 @@
             background-position: bottom;
         }
 
-        .container {
-            max-width: 1130px;
-            margin: 0 auto;
-            .tft-heading-content {
-                text-align: center;
-                margin-bottom: 70px;
+        .tft-heading-content {
+            text-align: center;
+            margin-bottom: 70px;
 
-                @media #{$max1199} {
-                    margin-bottom: 60px;
-                }
+            @media #{$max1199} {
+                margin-bottom: 60px;
+            }
 
-                @media #{$max991} {
-                    margin-bottom: 50px;
-                }
+            @media #{$max991} {
+                margin-bottom: 50px;
+            }
 
-                @media #{$max767} {
-                    margin-bottom: 40px;
-                }
+            @media #{$max767} {
+                margin-bottom: 40px;
+            }
 
-                h3{
-                    color: $tft-color-primary;
-                }
+            h3{
+                color: $tft-color-primary;
+            }
 
-                h2 {
-                    margin-left: auto;
-                    margin-right: auto;
-                    color: $tft-color-heading;
+            h2 {
+                margin-left: auto;
+                margin-right: auto;
+                color: $tft-color-heading;
 
-                    &::after {
-                        width: 195px;
-                        height: 34px;
-                        top: 30px;
-                        left: 50%;
-                        transform: translateX(-50%);
+                &::after {
+                    width: 195px;
+                    height: 34px;
+                    top: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
 
-                        @media (max-width: 1399px) {
-                            top: 15px;
-                        }
+                    @media (max-width: 1399px) {
+                        top: 15px;
+                    }
 
-                        @media #{$max1199} {
-                            width: 160px;
-                            height: 30px;
-                            top: 13px;
-                        }
+                    @media #{$max1199} {
+                        width: 160px;
+                        height: 30px;
+                        top: 13px;
                     }
                 }
             }
+        }
 
-            .tft-icon-text-items {
-                @include d-flex();
-                @include align-items(center);
-                @include justify-content(space-between);
+        .tft-icon-text-items {
+            @include d-flex();
+            @include align-items(center);
+            @include justify-content(space-between);
 
-                @media #{$max1199} {
-                    gap: 30px;
-                    padding-bottom: 80px;
-                }
+            @media #{$max1199} {
+                gap: 30px;
+                padding-bottom: 80px;
+            }
+
+            @media #{$max991} {
+                padding-bottom: 120px;
+            }
+
+            .tft-icon-text-single {
+                max-width: 299px;
 
                 @media #{$max991} {
-                    padding-bottom: 120px;
+                    width: calc(50% - 15px);
+                    max-width: 100%;
                 }
 
-                .tft-icon-text-single {
-                    max-width: 299px;
+                @media #{$max767} {
+                    max-width: 100%;
+                    width: 100%;
+                }
+
+                .icon_outter {
+                    width: 160px;
+                    height: 160px;
+                    border: 2px dashed transparent;
+                    margin: auto;
+                    @include box-circle();
+                    @include d-flex();
+                    @include align-items(center);
+                    @include justify-content(center);
+                    @include transition(0.3s);
+
+                    @media #{$max1199} {
+                        width: 140px;
+                        height: 140px;
+                    }
 
                     @media #{$max991} {
-                        width: calc(50% - 15px);
-                        max-width: 100%;
+                        width: 120px;
+                        height: 120px;
                     }
 
-                    @media #{$max767} {
-                        max-width: 100%;
-                        width: 100%;
-                    }
-
-                    .icon_outter {
-                        width: 160px;
-                        height: 160px;
-                        border: 2px dashed transparent;
+                    .img-box {
+                        width: 120px;
+                        height: 120px;
                         margin: auto;
+                        background-color: $tft-color-white;
                         @include box-circle();
+                        box-shadow: drop-shadow(0px 5px 35px $tft-color-box-shadow);
                         @include d-flex();
                         @include align-items(center);
                         @include justify-content(center);
-                        @include transition(0.3s);
 
                         @media #{$max1199} {
-                            width: 140px;
-                            height: 140px;
+                            width: 105px;
+                            height: 105px;
                         }
 
                         @media #{$max991} {
-                            width: 120px;
-                            height: 120px;
-                        }
-
-                        .img-box {
-                            width: 120px;
-                            height: 120px;
-                            margin: auto;
-                            background-color: $tft-color-white;
-                            @include box-circle();
-                            box-shadow: drop-shadow(0px 5px 35px $tft-color-box-shadow);
-                            @include d-flex();
-                            @include align-items(center);
-                            @include justify-content(center);
-
-                            @media #{$max1199} {
-                                width: 105px;
-                                height: 105px;
-                            }
-
-                            @media #{$max991} {
-                                width: 95px;
-                                height: 95px;
-                            }
+                            width: 95px;
+                            height: 95px;
                         }
                     }
+                }
 
-                    h3 {
-                        margin-top: 20px;
-                        margin-bottom: 20px;
-                        font-size: 1.5rem;
-                        color: $tft-color-heading;
+                h3 {
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    font-size: 1.5rem;
+                    color: $tft-color-heading;
 
-                        @media #{$max991} {
-                            font-size: 1.375rem;
-                            margin-top: 18px;
-                            margin-bottom: 18px;
-                        }
-
-                        @media #{$max767} {
-                            font-size: 1.25rem;
-                            margin-top: 15px;
-                            margin-bottom: 15px;
-                        }
+                    @media #{$max991} {
+                        font-size: 1.375rem;
+                        margin-top: 18px;
+                        margin-bottom: 18px;
                     }
 
-                    p {
-                        margin-bottom: 0;
-                        color: $tft-color-text;
-                        @media #{$max767} {
-                            max-width: 340px;
-                            margin: auto;
-                        }
+                    @media #{$max767} {
+                        font-size: 1.25rem;
+                        margin-top: 15px;
+                        margin-bottom: 15px;
                     }
+                }
 
-                    &:hover {
-                        .icon_outter {
-                            border: 2px dashed $tft-color-primary;
-                        }
+                p {
+                    margin-bottom: 0;
+                    color: $tft-color-text;
+                    @media #{$max767} {
+                        max-width: 340px;
+                        margin: auto;
+                    }
+                }
+
+                &:hover {
+                    .icon_outter {
+                        border: 2px dashed $tft-color-primary;
                     }
                 }
             }

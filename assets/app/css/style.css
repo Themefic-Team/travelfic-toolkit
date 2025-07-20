@@ -471,6 +471,7 @@ input[type=submit].tft-form-btn {
 input[type=submit].tft-form-btn:hover {
   background: var(--tf-brand-dark);
   color: var(--tf-color-white);
+  border-color: var(--tf-brand-dark);
 }
 input[type=submit].tft-form-btn:focus {
   color: var(--tf-color-white);
@@ -3930,7 +3931,7 @@ body.archive .tft-header-design__two {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  gap: 59px;
+  gap: 60px;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-about-us-design__two .tft-about-us-grid {
@@ -4042,7 +4043,6 @@ body.archive .tft-header-design__two {
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content {
   flex: 1;
-  max-width: 669px;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content {
@@ -5250,38 +5250,34 @@ body.archive .tft-header-design__two {
     background-position: bottom;
   }
 }
-.tft-icon-text-design__two .container {
-  max-width: 1130px;
-  margin: 0 auto;
-}
-.tft-icon-text-design__two .container .tft-heading-content {
+.tft-icon-text-design__two .tft-heading-content {
   text-align: center;
   margin-bottom: 70px;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-icon-text-design__two .container .tft-heading-content {
+  .tft-icon-text-design__two .tft-heading-content {
     margin-bottom: 60px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-icon-text-design__two .container .tft-heading-content {
+  .tft-icon-text-design__two .tft-heading-content {
     margin-bottom: 50px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-icon-text-design__two .container .tft-heading-content {
+  .tft-icon-text-design__two .tft-heading-content {
     margin-bottom: 40px;
   }
 }
-.tft-icon-text-design__two .container .tft-heading-content h3 {
+.tft-icon-text-design__two .tft-heading-content h3 {
   color: var(--tf-primary);
 }
-.tft-icon-text-design__two .container .tft-heading-content h2 {
+.tft-icon-text-design__two .tft-heading-content h2 {
   margin-left: auto;
   margin-right: auto;
   color: var(--tf-text-heading);
 }
-.tft-icon-text-design__two .container .tft-heading-content h2::after {
+.tft-icon-text-design__two .tft-heading-content h2::after {
   width: 195px;
   height: 34px;
   top: 30px;
@@ -5289,18 +5285,18 @@ body.archive .tft-header-design__two {
   transform: translateX(-50%);
 }
 @media (max-width: 1399px) {
-  .tft-icon-text-design__two .container .tft-heading-content h2::after {
+  .tft-icon-text-design__two .tft-heading-content h2::after {
     top: 15px;
   }
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-icon-text-design__two .container .tft-heading-content h2::after {
+  .tft-icon-text-design__two .tft-heading-content h2::after {
     width: 160px;
     height: 30px;
     top: 13px;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items {
+.tft-icon-text-design__two .tft-icon-text-items {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -5319,32 +5315,32 @@ body.archive .tft-header-design__two {
   justify-content: space-between;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items {
+  .tft-icon-text-design__two .tft-icon-text-items {
     gap: 30px;
     padding-bottom: 80px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items {
+  .tft-icon-text-design__two .tft-icon-text-items {
     padding-bottom: 120px;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single {
+.tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single {
   max-width: 299px;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single {
     width: calc(50% - 15px);
     max-width: 100%;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single {
     max-width: 100%;
     width: 100%;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single .icon_outter {
+.tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter {
   width: 160px;
   height: 160px;
   border: 2px dashed transparent;
@@ -5374,18 +5370,18 @@ body.archive .tft-header-design__two {
   transition: all 0.3s ease;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single .icon_outter {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter {
     width: 140px;
     height: 140px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single .icon_outter {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter {
     width: 120px;
     height: 120px;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
+.tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
   width: 120px;
   height: 120px;
   margin: auto;
@@ -5412,48 +5408,48 @@ body.archive .tft-header-design__two {
   justify-content: center;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
     width: 105px;
     height: 105px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box {
     width: 95px;
     height: 95px;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single h3 {
+.tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single h3 {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 1.5rem;
   color: var(--tf-text-heading);
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single h3 {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single h3 {
     font-size: 1.375rem;
     margin-top: 18px;
     margin-bottom: 18px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single h3 {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single h3 {
     font-size: 1.25rem;
     margin-top: 15px;
     margin-bottom: 15px;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single p {
+.tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single p {
   margin-bottom: 0;
   color: var(--tf-text-paragraph);
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single p {
+  .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single p {
     max-width: 340px;
     margin: auto;
   }
 }
-.tft-icon-text-design__two .container .tft-icon-text-items .tft-icon-text-single:hover .icon_outter {
+.tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single:hover .icon_outter {
   border: 2px dashed var(--tf-primary);
 }
 
@@ -5785,81 +5781,82 @@ body.archive .tft-header-design__two {
     grid-template-columns: 1fr;
   }
 }
-.tft-latest-posts-design__three .container .tft-heading-content {
+.tft-latest-posts-design__three .tft-heading-content {
   text-align: center;
   margin-bottom: 70px;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-latest-posts-design__three .container .tft-heading-content {
+  .tft-latest-posts-design__three .tft-heading-content {
     margin-bottom: 60px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-heading-content {
+  .tft-latest-posts-design__three .tft-heading-content {
     margin-bottom: 50px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-heading-content {
+  .tft-latest-posts-design__three .tft-heading-content {
     margin-bottom: 20px;
   }
 }
-.tft-latest-posts-design__three .container .tft-heading-content h3 {
+.tft-latest-posts-design__three .tft-heading-content h3 {
   color: var(--tf-primary);
 }
-.tft-latest-posts-design__three .container .tft-heading-content h2 {
+.tft-latest-posts-design__three .tft-heading-content h2 {
   margin-left: auto;
   margin-right: auto;
   color: var(--tf-text-heading);
 }
-.tft-latest-posts-design__three .container .tft-heading-content h2::after {
+.tft-latest-posts-design__three .tft-heading-content h2::after {
   left: 50%;
   transform: translateX(-50%);
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section {
+.tft-latest-posts-design__three .tft-blog-gird-section {
   display: grid;
   grid-template-columns: 40.5%;
   grid-template-rows: auto;
   gap: 24px;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section {
+  .tft-latest-posts-design__three .tft-blog-gird-section {
     grid-template-columns: 50%;
     grid-template-columns: auto auto;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section {
+  .tft-latest-posts-design__three .tft-blog-gird-section {
     grid: inherit;
     grid-template-columns: 100%;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item {
   padding: 30px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
   border-radius: 15px;
   box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+  background-color: var(--tf-color-white);
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item {
     gap: 20px;
     padding: 20px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item {
     padding: 16px;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail {
   line-height: 0;
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -5869,33 +5866,33 @@ body.archive .tft-header-design__two {
   object-fit: cover;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
     max-height: 270px;
     min-height: 270px;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
     max-height: 250px;
     min-height: 250px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
     max-height: 200px;
     min-height: 200px;
   }
 }
 @media only screen and (max-width: 575.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-blog-thumbnail img {
     max-height: inherit;
     min-height: inherit;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details {
   flex: 1;
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
   color: var(--tf-text-heading);
   font-size: 1.5rem;
   line-height: 1.4;
@@ -5906,16 +5903,16 @@ body.archive .tft-header-design__two {
   -webkit-box-orient: vertical;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
     margin: 24px 0;
   }
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
     margin: 20px 0;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a {
   display: contents;
   color: inherit;
   -webkit-transition: all 0.1s ease;
@@ -5923,21 +5920,21 @@ body.archive .tft-header-design__two {
   -o-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:focus,
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a :visited {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover, .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:focus,
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a :visited {
   color: var(--tf-primary);
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
     font-size: 1.375rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title {
     font-size: 1.25rem;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
   display: inline-flex;
   color: var(--tf-primary);
   background: rgba(250, 100, 0, 0.09);
@@ -5945,16 +5942,16 @@ body.archive .tft-header-design__two {
   min-width: 170px;
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a {
     min-width: 160px;
     min-height: 45px;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover {
   background: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -5964,16 +5961,16 @@ body.archive .tft-header-design__two {
   gap: 30px;
 }
 @media only screen and (max-width: 1199.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
     gap: 20px;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta {
     gap: 20px;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -5990,12 +5987,12 @@ body.archive .tft-header-design__two {
   color: var(--tf-text-paragraph);
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-post-meta .tft-meta {
     gap: 8px;
     font-size: 0.938rem;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -6011,48 +6008,48 @@ body.archive .tft-header-design__two {
   gap: 35px;
 }
 @media only screen and (max-width: 1024.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item {
     gap: 20px;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail {
   max-width: 240px;
   min-width: 240px;
   height: 100%;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail {
     max-width: inherit;
     min-width: inherit;
     width: 100%;
     height: auto;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
   min-height: auto;
   max-height: inherit;
   height: 100%;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
     min-height: 250px;
     max-height: 250px;
     height: auto;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
     min-height: inherit;
     max-height: inherit;
   }
 }
 @media (max-width: 480px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item .tft-blog-thumbnail img {
     min-height: 250px;
     max-height: 250px;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1), .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4), .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(1), .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(4), .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(7) {
   grid-column: span 1;
   grid-row: span 2;
   flex-direction: column;
@@ -6065,51 +6062,51 @@ body.archive .tft-header-design__two {
   align-items: flex-start;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1), .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4), .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(1), .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(4), .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(7) {
     gap: 20px;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
   font-size: 1.875rem;
   line-height: 1.3;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
     font-size: 1.375rem;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-content-details .tft-title, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-content-details .tft-title, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-content-details .tft-title {
     font-size: 1.25rem;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-blog-thumbnail, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-blog-thumbnail, .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-blog-thumbnail {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(1) .tft-blog-thumbnail, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(4) .tft-blog-thumbnail, .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(7) .tft-blog-thumbnail {
   max-width: 100%;
   min-width: 100%;
   height: auto;
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(2) {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(2) {
   grid-column: 2;
   grid-row: 1;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(2) {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(2) {
     grid-column: auto;
     grid-row: auto;
   }
 }
-.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(3) {
+.tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(3) {
   grid-column: 2;
   grid-row: 2;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(3) {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(3) {
     grid-column: 1;
     grid-row: auto;
   }
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item:nth-child(3) {
+  .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item:nth-child(3) {
     grid-column: auto;
   }
 }
@@ -6877,6 +6874,7 @@ body.archive .tft-header-design__two {
   align-items: center;
   cursor: pointer;
   font-size: 1.2rem;
+  padding: 0;
 }
 @media only screen and (max-width: 1199.98px) {
   .tft-destination-slider-nav button,

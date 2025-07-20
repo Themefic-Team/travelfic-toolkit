@@ -123,19 +123,6 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'sec_bg_image',
-            [
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'label' => esc_html__('Background Image', 'travelfic-toolkit'),
-                'condition' => [
-                    'tft_icon_style' => ['design-2'],
-                ],
-                'default' => [
-                    'url' => TRAVELFIC_TOOLKIT_URL . 'assets/app/img/work-bg.png',
-                ],
-            ]
-        );
-        $this->add_control(
             'sec_subtitle',
             [
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
@@ -788,9 +775,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         if (!empty($settings['tft_icon_style'])) {
             $tft_design = $settings['tft_icon_style'];
         }
-        if (!empty($settings['sec_bg_image'])) {
-            $tft_sec_bg_image = $settings['sec_bg_image'] ?: '';
-        }
+    
         if (!empty($settings['sec_title'])) {
             $tft_sec_title = $settings['sec_title'];
         }
@@ -803,7 +788,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
 ?>
 
         <?php if ($settings['icon_text_list'] && "design-2" == $tft_design) : ?>
-            <div class="tft-icon-text-design__two tft-no-reapeat tft-customizer-typography tft-section-space" style="background-image: url(<?php echo esc_url($tft_sec_bg_image['url']); ?>)">
+            <div class="tft-icon-text-design__two tft-customizer-typography tft-section-space">
                 <div class="container">
                     <div class="tft-heading-content">
                         <?php if (!empty($tft_sec_subtitle)) { ?>
@@ -845,8 +830,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                             style="margin-top:<?php echo esc_html($settings['items_gap']); ?>px;" <?php else: ?>
                             style="margin-bottom:<?php echo esc_html($settings['items_gap']); ?>px;" <?php endif ?>>
                             <div class="tft-icon-text-single-inner tft-center">
-                                <div class="icon_outter"
-                                    style="background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, <?php echo esc_attr($iconGradientOne); ?> 6.09%, <?php echo esc_attr($iconGradientTwo); ?> 100%);">
+                                <div class="icon_outter" style="background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, <?php echo esc_attr($iconGradientOne); ?> 6.09%, <?php echo esc_attr($iconGradientTwo); ?> 100%);">
                                     <?php
                                     if (!empty($item['box_image']['url'])) : ?>
                                         <img src="<?php echo esc_url($item['box_image']['url']); ?> " alt="">
