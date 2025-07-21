@@ -1051,7 +1051,7 @@ textarea.tft-form-control {
 }
 
 .tft-footer-bottom__two {
-  border-top: 0.5px solid var(--tf-border-lite);
+  border-top: 0.5px solid #99948D;
   margin-top: 32px;
 }
 .tft-footer-bottom__two p {
@@ -1410,17 +1410,15 @@ textarea.tft-form-control {
   text-decoration: none;
   display: inline-block;
   transition: 0.3s all ease;
+  border: 1px solid transparent;
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a:hover {
-  color: var(--tf-primary);
-}
-.tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a.login {
-  border: 1px solid var(--tf-primary);
-}
-.tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a.login:hover {
   background: var(--tf-brand-dark);
   color: var(--tf-color-white);
   border-color: var(--tf-brand-dark);
+}
+.tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a.login {
+  border-color: var(--tf-primary);
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper {
   min-height: auto;
@@ -5660,11 +5658,14 @@ body.archive .tft-header-design__two {
 }
 .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a .tft-blog-thumbnail {
   width: 50%;
+  line-height: 0;
+  overflow: hidden;
 }
 .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a .tft-blog-thumbnail img {
   height: 220px;
   object-fit: cover;
   width: 100%;
+  transition: all 0.3s linear;
 }
 .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a .tft-content-details {
   padding: 32px;
@@ -5757,6 +5758,9 @@ body.archive .tft-header-design__two {
 }
 .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a:hover h3 {
   color: var(--tf-primary);
+}
+.tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item a:hover .tft-blog-thumbnail img {
+  transform: scale(1.2);
 }
 .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-2, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-3, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-4, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-5, .tft-latest-posts-design__two .tft-blog-gird-section.blog-grid-item-6 {
   display: grid;

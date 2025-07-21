@@ -523,12 +523,25 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             } else {
                 $menu_id = $menu_exists->term_id;
             }
+
+            // Get the current site's URL and protocol
+            $site_url = site_url();
+            $site_host = parse_url($site_url, PHP_URL_HOST);
+            $site_protocol = parse_url($site_url, PHP_URL_SCHEME);
+
             $template_key = $template_key;
             foreach ($menu_data as $menu_item) {
+                // Process the URL
+                $menu_item_url = $menu_item['url'];
+                $menu_item_host = parse_url($menu_item_url, PHP_URL_HOST);
+
+                // Replace the host and protocol
+                $menu_item_url = str_replace(['https://'.$menu_item_host, 'http://'.$menu_item_host], $site_protocol.'://'.$site_host,$menu_item_url);
+
                 // Add top-level menu items.
                 $menu_item_data = array(
                     'menu-item-title' => $menu_item['title'],
-                    'menu-item-url' => str_replace(parse_url($menu_item['url'], PHP_URL_HOST), parse_url(site_url(), PHP_URL_HOST), $menu_item['url']),
+                    'menu-item-url' => $menu_item_url,
                     'menu-item-object' => 'custom',
                     'menu-item-parent' => 0,
                     'menu-item-type' => 'custom',
@@ -539,10 +552,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         
                 if (!empty($menu_item['sub_menu'])) {
                     foreach ($menu_item['sub_menu'] as $sub_menu_item) {
+                        // Process sub-menu URL
+                        $sub_menu_item_url = $sub_menu_item['url'];
+                        $sub_menu_item_host = parse_url($sub_menu_item_url, PHP_URL_HOST);
+                        $sub_menu_item_url = str_replace(['https://'.$sub_menu_item_host, 'http://'.$sub_menu_item_host],$site_protocol.'://'.$site_host, $sub_menu_item_url);
+
                         // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
                             'menu-item-title' => $sub_menu_item['title'],
-                            'menu-item-url' => str_replace(parse_url($sub_menu_item['url'], PHP_URL_HOST), parse_url(site_url(), PHP_URL_HOST), $sub_menu_item['url']),
+                            'menu-item-url' => $sub_menu_item_url,
                             'menu-item-object' => 'custom',
                             'menu-item-parent-id' => $menu_item_id,
                             'menu-item-type' => 'custom',
@@ -559,6 +577,33 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $locations = get_theme_mod('nav_menu_locations');
             $locations['primary_menu'] = $menu_id;
             set_theme_mod('nav_menu_locations', $locations);
+        }
+
+        function replace_menu_url($menu_item_url) {
+            $parsed_url = parse_url($menu_item_url);
+            $site_url = parse_url(site_url());
+
+            // Replace scheme and host
+            $parsed_url['scheme'] = $site_url['scheme'];
+            $parsed_url['host'] = $site_url['host'];
+
+            // Optional: Replace port if present in site_url
+            if (isset($site_url['port'])) {
+                $parsed_url['port'] = $site_url['port'];
+            }
+
+            return $this->build_url($parsed_url);
+        }
+
+        // Helper to rebuild URL from parsed parts
+        function build_url($parts) {
+            return (isset($parts['scheme']) ? "{$parts['scheme']}://" : '') .
+                (isset($parts['user']) ? "{$parts['user']}" . (isset($parts['pass']) ? ":{$parts['pass']}" : '') . '@' : '') .
+                (isset($parts['host']) ? $parts['host'] : '') .
+                (isset($parts['port']) ? ":{$parts['port']}" : '') .
+                (isset($parts['path']) ? $parts['path'] : '') .
+                (isset($parts['query']) ? "?{$parts['query']}" : '') .
+                (isset($parts['fragment']) ? "#{$parts['fragment']}" : '');
         }
 
         /**

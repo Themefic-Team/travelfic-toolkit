@@ -211,11 +211,14 @@
 
                     .tft-blog-thumbnail {
                         width: 50%;
-
+                        line-height: 0;
+                        overflow: hidden;
+                      
                         img {
                             height: 220px;
                             object-fit: cover;
                             width: 100%;
+                            transition: all 0.3s linear;
                         }
                     }
 
@@ -305,8 +308,14 @@
                         h3{
                             color: $tft-color-primary;
                         }
+                        .tft-blog-thumbnail {
+                            img{
+                                transform: scale(1.2);
+                            }
+                        }
                     }
                 }
+                
             }
 
             &.blog-grid-item {

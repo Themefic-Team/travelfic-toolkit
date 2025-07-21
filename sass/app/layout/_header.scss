@@ -223,20 +223,16 @@
                 text-decoration: none;
                 display: inline-block;
                 transition: 0.3s all ease;
-
-                &:hover {
-                  color: $tft-color-primary;
-                }
-              }
-
-              a.login {
-                border: 1px solid $tft-color-primary;
-
+                border: 1px solid transparent;
                 &:hover {
                   background: $tft-color-secondary;
                   color: $tft-color-white;
                   border-color: $tft-color-secondary;
                 }
+              }
+
+              a.login {
+                border-color: $tft-color-primary;
               }
             }
           }
