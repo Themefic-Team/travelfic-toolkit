@@ -1193,8 +1193,12 @@ textarea.tft-form-control {
   color: var(--tf-primary);
 }
 
-.tft-header-design__one .tft-header-mobile {
+.tft-header-design__one .tft-header-mobile:not(.tft_has_transparent) {
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+}
+.tft-header-design__one .tft-header-mobile .tft-main-header-wrapper {
   padding: 16px 0;
+  box-shadow: none;
 }
 .tft-header-design__two .tft-top-header {
   background: #595349;
@@ -1287,7 +1291,14 @@ textarea.tft-form-control {
 }
 @media only screen and (max-width: 1024.98px) {
   .tft-header-design__two .tft-menus-section {
-    padding: 12px 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+@media only screen and (max-width: 1024.98px) {
+  .tft-header-design__two .tft-menus-section .tft-main-header-wrapper {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }
 .tft-header-design__two .tft-menus-section .tft-flex {
@@ -2934,7 +2945,7 @@ body.archive .tft-header-design__two {
   position: absolute;
   right: 24px;
   left: 24px;
-  bottom: -86px;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -4365,6 +4376,9 @@ body.archive .tft-header-design__two {
   background: var(--tf-primary);
   color: var(--tf-color-white);
   cursor: pointer;
+}
+#tf-cf7-contact-form p .wpcf7-spinner {
+  position: absolute;
 }
 
 .tft-subscribe {

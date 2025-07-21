@@ -4,7 +4,13 @@
 .tft-header-design {
   &__one {
     .tft-header-mobile{
-      padding: 16px 0;
+      &:not(.tft_has_transparent){
+        box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+      }
+      .tft-main-header-wrapper{
+        padding: 16px 0;
+        box-shadow: none;
+      }
     }
   }
   &__two {
@@ -101,7 +107,14 @@
       padding-top: 32px;
       padding-bottom: 32px;
       @media #{$max1024} {
-        padding: 12px 0;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .tft-main-header-wrapper{
+        @media #{$max1024} {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
       }
       .tft-flex {
         justify-content: space-between;
