@@ -297,7 +297,7 @@ function travelfic_toolkit_customizer_style()
 
 
         /* blog Header Menu */
-        <?php if(!empty($travelfic_blog_menu_color) && ((is_home()|| is_archive()  || is_single() || is_404() || is_search()))): ?>
+        <?php if(!empty($travelfic_blog_menu_color) && ((is_home()|| is_archive()  || is_single() || is_404() || is_search() || is_page('tf-search')))): ?>
 
             #tft-site-main-body header :is(.main--header-menu > li > a, .tft-site-navigation > ul > li a, a i, .logo-text a),
             #tft-site-main-body header .menu-item-has-children::after{

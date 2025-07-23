@@ -41,7 +41,7 @@ class Travelfic_Customizer_Header
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
 
         
-        if (is_home() || is_archive() || is_search() || is_single() || is_404()) {
+        if (is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search')) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -83,7 +83,7 @@ class Travelfic_Customizer_Header
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
         $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
-        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_single() || is_404() || is_search())){
+        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_single() || is_404() || is_search() || is_page('tf-search'))){
             $travelfic_header_bg = $travelfic_blog_header_bg;
         }
 
@@ -523,7 +523,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', '');
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-        if (is_home() || is_archive() || is_search() || is_single() || is_404()) {
+        if (is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search')) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -566,7 +566,7 @@ class Travelfic_Customizer_Header
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
         $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
 
-        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_search() || is_single() || is_404())){
+        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_search() || is_single() || is_404()) || is_page('tf-search')){
             $travelfic_header_bg = $travelfic_blog_header_bg;
         }
         ob_start();
