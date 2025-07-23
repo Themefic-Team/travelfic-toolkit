@@ -21,6 +21,9 @@
       @media #{$max1024} {
         padding: 12px 0;
       }
+      @media #{$max767} {
+        display: none;
+      }
       .tft-flex {
         justify-content: space-between;
         align-items: center;

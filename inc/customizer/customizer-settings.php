@@ -406,7 +406,7 @@ add_action('init', function () {
         'label'       => esc_html__('Register URL', 'travelfic-toolkit'),
         'priority'    => 26,
         'tab'         => 'settings',
-        'default'     => '#',
+        'default'     => '/my-account',
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
@@ -451,7 +451,7 @@ add_action('init', function () {
         'label'       => esc_html__('Login URL', 'travelfic-toolkit'),
         'priority'    => 28,
         'tab'         => 'settings',
-        'default'     => '#',
+        'default'     => '/my-account',
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
@@ -709,7 +709,7 @@ add_action('init', function () {
         'label'       => esc_html__('Login URL', 'travelfic-toolkit'),
         'priority'    => 30,
         'tab'         => 'settings',
-        'default'     => '#',
+        'default'     => '/my-account',
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',

@@ -706,9 +706,10 @@ textarea.tft-form-control {
 }
 @media only screen and (max-width: 575.98px) {
   .tft-footer-design__two .tft-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0px;
+    column-gap: 24px;
   }
 }
 .tft-footer-design__two .tft-grid .tft-footer-section {
@@ -734,6 +735,9 @@ textarea.tft-form-control {
   .tft-footer-design__two .tft-grid .tft-footer-section:first-child .wp-block-group {
     width: 100%;
   }
+}
+.tft-footer-design__two .tft-grid .tft-footer-section:nth-child(2), .tft-footer-design__two .tft-grid .tft-footer-section:nth-child(3) {
+  flex-basis: calc(50% - 12px);
 }
 @media only screen and (max-width: 767.98px) {
   .tft-footer-design__two .tft-grid .tft-footer-section .wp-block-heading {
@@ -1208,6 +1212,11 @@ textarea.tft-form-control {
 @media only screen and (max-width: 1024.98px) {
   .tft-header-design__two .tft-top-header {
     padding: 12px 0;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-header-design__two .tft-top-header {
+    display: none;
   }
 }
 .tft-header-design__two .tft-top-header .tft-flex {

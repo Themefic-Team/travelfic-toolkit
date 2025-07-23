@@ -6,6 +6,21 @@ class Travelfic_Customizer_Header
     public static function travelfic_toolkit_header_second_design($travelfic_header)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
+
+        $user = wp_get_current_user();
+        $user_roles = $user->roles;
+        $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+        $design_2_registration_url = get_theme_mod($travelfic_prefix . 'design_2_registration_url', '/my-account');
+        $design_2_login_url = get_theme_mod($travelfic_prefix . 'design_2_login_url', '/my-account');
+        $login_url = get_option("tf_login_page_id") ? get_permalink(get_option("tf_login_page_id")) : $design_2_login_url;
+        $registration_url = get_option("tf_register_page_id") ? get_permalink(get_option("tf_register_page_id")) : $design_2_registration_url;
+
+        if ( in_array('subscriber', $user_roles) ) {
+            $dashboard_url = site_url('my-account/');
+            $login_url = $design_2_registration_url;
+            $registration_url = $design_2_login_url;
+        }
+
         // Sticky Settings Checked
         $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', true);
         $travelfic_sticky_settings = $travelfic_sticky_settings ? 'enabled' : 'disabled';
@@ -39,9 +54,9 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', false);
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-
+        $travelfic_show_pages = is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search') || is_page('tf-login') || is_page('tf-register');
         
-        if (is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search')) {
+        if ($travelfic_show_pages) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -68,8 +83,7 @@ class Travelfic_Customizer_Header
         $design_2_phone = get_theme_mod($travelfic_prefix . 'design_2_phone', '+88 00 123 456');
         $design_2_email = get_theme_mod($travelfic_prefix . 'design_2_email', 'travello@outlook.com');
         $design_2_myaccount = get_theme_mod($travelfic_prefix . 'header_design_2_my_account', 1);
-        $design_2_registration_url = get_theme_mod($travelfic_prefix . 'design_2_registration_url', '#');
-        $design_2_login_url = get_theme_mod($travelfic_prefix . 'design_2_login_url', '#');
+       
 
         // design 2 social settings
         $social_facebook = get_theme_mod($travelfic_prefix . 'social_facebook', '#');
@@ -83,7 +97,7 @@ class Travelfic_Customizer_Header
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
         $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
-        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_single() || is_404() || is_search() || is_page('tf-search'))){
+        if(!empty($travelfic_blog_header_bg) && $travelfic_show_pages){
             $travelfic_header_bg = $travelfic_blog_header_bg;
         }
 
@@ -262,23 +276,20 @@ class Travelfic_Customizer_Header
                     <?php if($design_2_myaccount): ?>
                         <div class="tft-account">
                             <ul>
-                                <?php
-                                if (is_user_logged_in()) {
-                                    $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
-                                ?>
+                                <?php if (is_user_logged_in()) {?>
                                     <li>
                                         <a href="<?php echo esc_url($dashboard_url); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
                                     </li>
                                     <?php
                                 } else {
-                                    if (!empty($design_2_registration_url)) { ?>
+                                    if (!empty($registration_url)) { ?>
                                         <li>
-                                            <a href="<?php echo esc_url($design_2_registration_url); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
+                                            <a href="<?php echo esc_url($registration_url); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
                                         </li>
                                     <?php }
-                                    if (!empty($design_2_login_url)) { ?>
+                                    if (!empty($login_url)) { ?>
                                         <li>
-                                            <a href="<?php echo esc_url($design_2_login_url); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
+                                            <a href="<?php echo esc_url($login_url); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
                                         </li>
                                 <?php }
                                 } ?>
@@ -337,28 +348,25 @@ class Travelfic_Customizer_Header
                             ));
                         ?>
 
-                        <?php if (is_user_logged_in() || !empty($design_2_registration_url) && !empty($design_2_login_url) && $design_2_myaccount) : ?>
+                        <?php if (is_user_logged_in() || !empty($registration_url) && !empty($login_url) && $design_2_myaccount) : ?>
 
                             <!-- Login/Register Links for Hamburger Menu -->
                             <div class="tft-mobile-account" style="padding-top: 15px;">
                                 <ul>
-                                    <?php
-                                    if (is_user_logged_in()) {
-                                        $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
-                                    ?>
+                                    <?php if (is_user_logged_in()) {?>
                                         <li>
                                             <a href="<?php echo esc_url($dashboard_url); ?>" class="login"><?php echo esc_html_e("Profile", "travelfic-toolkit"); ?></a>
                                         </li>
                                         <?php
                                     } else {
-                                        if (!empty($design_2_registration_url)) { ?>
+                                        if (!empty($registration_url)) { ?>
                                             <li>
-                                                <a href="<?php echo esc_url($design_2_registration_url); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
+                                                <a href="<?php echo esc_url($registration_url); ?>"><?php echo esc_html_e("Register", "travelfic-toolkit"); ?></a>
                                             </li>
                                         <?php }
-                                        if (!empty($design_2_login_url)) { ?>
+                                        if (!empty($login_url)) { ?>
                                             <li>
-                                                <a href="<?php echo esc_url($design_2_login_url); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
+                                                <a href="<?php echo esc_url($login_url); ?>" class="login"><?php echo esc_html_e("Login", "travelfic-toolkit"); ?></a>
                                             </li>
                                     <?php }
                                     } ?>
@@ -492,6 +500,14 @@ class Travelfic_Customizer_Header
     public static function travelfic_toolkit_header_third_design($travelfic_header)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
+
+        $user = wp_get_current_user();
+        $user_roles = $user->roles;
+        $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+        if ( in_array('subscriber', $user_roles) ) {
+            $dashboard_url = site_url('my-account/');
+        }
+
         // Sticky Settings Checked
         $travelfic_sticky_settings = get_theme_mod($travelfic_prefix . 'stiky_header', true);
         $travelfic_sticky_settings = $travelfic_sticky_settings ? 'enabled' : 'disabled';
@@ -523,7 +539,10 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', '');
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-        if (is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search')) {
+        $travelfic_show_pages = is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search') || is_page('tf-login') || is_page('tf-register');
+
+
+        if ($travelfic_show_pages) {
             if ("disabled" == $travelfic_archive_transparent_header) {
                 $travelfic_desktop_transparent_class = '';
                 $travelfic_mobile_transparent_class = '';
@@ -566,9 +585,10 @@ class Travelfic_Customizer_Header
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
         $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
 
-        if(!empty($travelfic_blog_header_bg) && (is_home() || is_archive() || is_search() || is_single() || is_404()) || is_page('tf-search')){
+        if ( !empty($travelfic_blog_header_bg) && $travelfic_show_pages ) {
             $travelfic_header_bg = $travelfic_blog_header_bg;
         }
+
         ob_start();
 
     ?>
@@ -663,7 +683,7 @@ class Travelfic_Customizer_Header
                                             </li>
                                         <?php else : ?>
                                             <li class="tft-header-design__three__topbar-list-item">
-                                                <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
+                                                <a href="<?php echo esc_url($dashboard_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
                                             </li>
                                         <?php endif; ?>
                                     </ul>
@@ -775,7 +795,7 @@ class Travelfic_Customizer_Header
                             </li>
                         <?php else : ?>
                             <li class="tft-header-design__three__topbar-list-item">
-                                <a href="<?php echo esc_url(home_url('/myaccount')); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
+                                <a href="<?php echo esc_url($dashboard_url); ?>" class="tft-header-design__three__topbar-list-link" aria-label="My Account"><?php esc_html_e('My Account', 'travelfic-toolkit'); ?></a>
                             </li>
                         <?php endif; ?>    
                     <?php endif; ?>
