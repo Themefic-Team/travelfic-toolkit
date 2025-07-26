@@ -2966,7 +2966,7 @@ body.archive .tft-header-design__two {
 }
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design__three .tft-hero-content-box h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 20px;
   }
 }
@@ -4244,7 +4244,7 @@ body.archive .tft-header-design__two {
   display: inline-block;
   padding: 4px 17px 0px 16px;
   background: #D9D9D9;
-  border-radius: 0px 16px 0px 16px;
+  border-radius: 0px 16px 0px 0;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
