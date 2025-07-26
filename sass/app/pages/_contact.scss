@@ -16,8 +16,6 @@
         min-height: 70px;
         @include d-flex();
         @include align-items(center);
-        border-color: $tft-color-border;
-        background: $tft-color-white;
         box-shadow: 0px 9px 12px 0px rgba(14, 19, 35, 0.02);
         @include justify-content(center);
       }
@@ -32,3 +30,4 @@
     color: $tft-color-secondary;
   }
 }
+
