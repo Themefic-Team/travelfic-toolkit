@@ -1912,11 +1912,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                                         </div>
                                         <div class="person-info">
                                             <h3 class="person-name"><?php echo esc_html($item['person_name']) ?></h3>
-                                            <h4 class="designation tft-hover-color-white"><?php echo esc_html($item['designation']) ?></h4>
+                                            <h4 class="designation"><?php echo esc_html($item['designation']) ?></h4>
                                         </div>
                                     </div>
                                     <div class="testimonial-body">
-                                        <p class="tft-content tft-hover-color-white"><?php echo esc_html($item['testimonials_review']) ?></p>
+                                        <p class="tft-content"><?php echo esc_html($item['testimonials_review']) ?></p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <?php $this->testimonials_rattings($item['rate']); ?>

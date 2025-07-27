@@ -845,7 +845,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                                 <h3 class="tft-title">
                                     <?php echo esc_html($item['box_title']); ?>
                                 </h3>
-                                <p class="tft-details tft-hover-color-white">
+                                <p class="tft-details">
                                     <?php echo esc_html($item['box_details']); ?>
                                 </p>
                             </div>
