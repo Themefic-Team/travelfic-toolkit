@@ -21,7 +21,6 @@
     // Share button for mobile
     function initializeMobileShare() {
       $(".tft-hero-design-4__mobile--share").off("click");
-      $(document).off("click");
 
       if ($(window).width() <= 1199) {
         $(".tft-hero-design-4__mobile--share").on("click", function () {
