@@ -203,8 +203,33 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
 
+            // existing pages to delete
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
+                foreach ($imported_data as $page) {
+                    $title = !empty($page['title']) ? $page['title'] : '';
+                    if (!empty($title)) {
+                        // Find any existing pages with this title
+                        $existing_pages = get_posts(array(
+                            'post_type' => 'page',
+                            'title' => $title,
+                            'post_status' => 'any',
+                            'numberposts' => -1
+                        ));
+                        
+                        // Delete all found pages
+                        foreach ($existing_pages as $existing_page) {
+                            if (get_option('page_on_front') == $existing_page->ID) {
+                                update_option('page_on_front', 0);
+                            }
+                            if (get_option('page_for_posts') == $existing_page->ID) {
+                                update_option('page_for_posts', 0);
+                            }
+                            wp_delete_post($existing_page->ID, true);
+                        }
+                    }
+                }
+
                 foreach($imported_data as $page){
                     $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
                     $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
@@ -522,6 +547,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $menu_id = wp_create_nav_menu($menu_name);
             } else {
                 $menu_id = $menu_exists->term_id;
+
+                // Delete existing menu items
+                $existing_items = wp_get_nav_menu_items($menu_id);
+                if(!empty($existing_items)){
+                    foreach ($existing_items as $item) {
+                        wp_delete_post($item->ID, true);
+                    }
+                }
             }
 
             // Get the current site's URL and protocol
@@ -538,6 +571,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 // Replace the host and protocol
                 $menu_item_url = str_replace(['https://'.$menu_item_host, 'http://'.$menu_item_host], $site_protocol.'://'.$site_host,$menu_item_url);
 
+                $item_key = md5($menu_item['title'] . $menu_item_url);
+                if(isset($added_items[$item_key])){
+                    continue;
+                }
                 // Add top-level menu items.
                 $menu_item_data = array(
                     'menu-item-title' => $menu_item['title'],
@@ -549,6 +586,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 );
                 // Insert the top-level menu item.
                 $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
+                $added_items[$item_key] = $menu_item_id;
         
                 if (!empty($menu_item['sub_menu'])) {
                     foreach ($menu_item['sub_menu'] as $sub_menu_item) {
@@ -556,6 +594,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         $sub_menu_item_url = $sub_menu_item['url'];
                         $sub_menu_item_host = parse_url($sub_menu_item_url, PHP_URL_HOST);
                         $sub_menu_item_url = str_replace(['https://'.$sub_menu_item_host, 'http://'.$sub_menu_item_host],$site_protocol.'://'.$site_host, $sub_menu_item_url);
+
+                        $sub_item_key = md5($sub_menu_item['title'] . $sub_menu_item_url);
+                        if(isset($added_items[$sub_item_key])){
+                            continue;
+                        }
 
                         // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
@@ -569,6 +612,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         
                         // Insert the sub-menu items.
                         wp_update_nav_menu_item($menu_id, 0, $sub_menu_item_data);
+                        $added_items[$sub_item_key] = $menu_item_id;
                     }
                 }
             }
