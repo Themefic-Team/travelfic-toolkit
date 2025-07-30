@@ -545,14 +545,14 @@ function travelfic_toolkit_customizer_style()
 
             // logo tablet & mobile styles
             if($logo_tablet_styles){
-                echo "@media only screen and (max-width: 1024px) {
+                echo "@media only screen and (max-width: 992px) {
                     {$travelfic_logo_selector} {
                         {$logo_tablet_styles}
                     }
                 }";
             }
             if($logo_mobile_styles){
-                echo "@media only screen and (max-width: 767px) {
+                echo "@media only screen and (max-width: 600px) {
                     {$travelfic_logo_selector} {
                         {$logo_mobile_styles}
                     }
@@ -561,14 +561,14 @@ function travelfic_toolkit_customizer_style()
 
             // menu tablet & mobile styles
             if($menu_tablet_styles){
-                echo "@media only screen and (max-width: 1024px) {
+                echo "@media only screen and (max-width: 992px) {
                     {$travelfic_menu_selector} {
                         {$menu_tablet_styles}
                     }
                 }";
             }
             if($menu_mobile_styles){
-                echo "@media only screen and (max-width: 767px) {
+                echo "@media only screen and (max-width: 600px) {
                     {$travelfic_menu_selector} {
                         {$menu_mobile_styles}
                     }
@@ -577,14 +577,14 @@ function travelfic_toolkit_customizer_style()
 
             // submenu tablet & mobile styles
             if($submenu_tablet_styles){
-                echo "@media only screen and (max-width: 1024px) {
+                echo "@media only screen and (max-width: 992px) {
                     {$travelfic_submenu_selector} {
                         {$submenu_tablet_styles}
                     }
                 }";
             }
             if($submenu_mobile_styles){
-                echo "@media only screen and (max-width: 767px) {
+                echo "@media only screen and (max-width: 600px) {
                     {$travelfic_submenu_selector} {
                         {$submenu_mobile_styles}
                     }
