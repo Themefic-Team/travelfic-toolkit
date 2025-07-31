@@ -1462,7 +1462,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                             </div>
                         <?php }
                         if (!empty($settings['readme_label'])) { ?>
-                            <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn" target="_blank">
+                            <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn" target="_blank" rel="noopener noreferrer">
                                 <?php echo esc_html($settings['readme_label']); ?>
                                 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             </a>
@@ -1495,7 +1495,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                         <?php }
                     }
                     if (!empty($settings['readme_label'])) { ?>
-                        <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn tft-btn--mobile tft-btn-transparent" target="_blank">
+                        <a href="<?php echo esc_url($tft_readme_url['url']); ?>" class="tft-btn tft-btn--mobile tft-btn-transparent" target="_blank" rel="noopener noreferrer">
                             <?php echo esc_html($settings['readme_label']); ?>
                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                         </a>

@@ -298,7 +298,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <?php } ?>
                                     <div class="template-preview">
                                         <div class="import-button-group">
-                                            <a href="<?php echo !empty($single_temp['demo_url']) ? esc_url($single_temp['demo_url']) : '' ?>" target="_blank">
+                                            <a href="<?php echo !empty($single_temp['demo_url']) ? esc_url($single_temp['demo_url']) : '' ?>" target="_blank" rel="noopener noreferrer">
                                                 <?php esc_html_e("Preview", "travelfic-toolkit"); ?>
                                                 <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <g id="content">
@@ -404,7 +404,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 </svg>
                                 <?php esc_html_e("Back To Dashboard", "travelfic-toolkit"); ?>
                             </a>
-                            <a href="<?php echo esc_url(site_url()); ?>" target="_blank" class="visit-site">
+                            <a href="<?php echo esc_url(site_url()); ?>" target="_blank" class="visit-site" rel="noopener noreferrer">
                                 <?php esc_html_e("Visit Your Website", "travelfic-toolkit"); ?>
                                 <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="content">

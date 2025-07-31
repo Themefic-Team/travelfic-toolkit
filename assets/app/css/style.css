@@ -1433,6 +1433,9 @@ textarea.tft-form-control {
   min-height: auto;
   align-items: center;
 }
+.tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left {
+  flex: 1;
+}
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-left .logo-text a {
   color: var(--tf-text-paragraph);
 }

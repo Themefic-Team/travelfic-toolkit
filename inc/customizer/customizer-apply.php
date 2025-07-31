@@ -255,7 +255,7 @@ function travelfic_toolkit_customizer_style()
     
         /* header menu typography */
         <?php if (!empty($travelfic_menu_color) || !empty($travelfic_menu_font_weight) || !empty($travelfic_desktop_menu_size) ||  !empty($travelfic_menu_line_height) || !empty($travelfic_menu_texttransform) || !empty($travelfic_menu_letter_space) || !empty($travelfic_menu_decoration)): ?>
-            #tft-site-main-body header .tft-site-navigation > ul > li a,
+            #tft-site-main-body header .tft-site-navigation ul > li a,
             #tft-site-main-body header .menu-item-has-children::after {
                 <?php if (!empty($travelfic_menu_color)): ?>
                     color: <?php echo esc_attr($travelfic_menu_color); ?>;

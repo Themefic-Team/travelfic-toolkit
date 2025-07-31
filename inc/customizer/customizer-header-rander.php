@@ -142,7 +142,7 @@ class Travelfic_Customizer_Header
                             <ul>
                                 <?php if (!empty($social_linkedin)) { ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4.33203 13.6673V8.33398C4.33203 7.86804 4.33203 7.63507 4.25591 7.4513C4.15442 7.20627 3.95974 7.0116 3.71471 6.9101C3.53094 6.83398 3.29797 6.83398 2.83203 6.83398C2.36609 6.83398 2.13312 6.83398 1.94935 6.9101C1.70432 7.0116 1.50965 7.20627 1.40815 7.4513C1.33203 7.63507 1.33203 7.86804 1.33203 8.33399V13.6673C1.33203 14.1333 1.33203 14.3662 1.40815 14.55C1.50965 14.795 1.70432 14.9897 1.94935 15.0912C2.13312 15.1673 2.36609 15.1673 2.83203 15.1673C3.29797 15.1673 3.53094 15.1673 3.71471 15.0912C3.95974 14.9897 4.15442 14.795 4.25591 14.55C4.33203 14.3662 4.33203 14.1333 4.33203 13.6673Z" fill="#FDF9F4" />
                                                 <path d="M4.33203 3.33398C4.33203 4.16241 3.66046 4.83398 2.83203 4.83398C2.0036 4.83398 1.33203 4.16241 1.33203 3.33398C1.33203 2.50556 2.0036 1.83398 2.83203 1.83398C3.66046 1.83398 4.33203 2.50556 4.33203 3.33398Z" fill="#FDF9F4" />
@@ -154,7 +154,7 @@ class Travelfic_Customizer_Header
                                 if (!empty($social_facebook)) {
                                 ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_facebook); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_facebook); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.11991 7.38563C3.46807 7.38563 3.33203 7.51353 3.33203 8.12637V9.23749C3.33203 9.85033 3.46807 9.97823 4.11991 9.97823H5.69567V14.4227C5.69567 15.0355 5.83171 15.1634 6.48355 15.1634H8.0593C8.71114 15.1634 8.84718 15.0355 8.84718 14.4227V9.97823H10.6165C11.1109 9.97823 11.2383 9.88789 11.3741 9.44098L11.7117 8.32987C11.9444 7.56432 11.801 7.38563 10.9542 7.38563H8.84718V5.53378C8.84718 5.12468 9.19993 4.79304 9.63506 4.79304H11.8775C12.5293 4.79304 12.6654 4.66514 12.6654 4.0523V2.57082C12.6654 1.95798 12.5293 1.83008 11.8775 1.83008H9.63506C7.45939 1.83008 5.69567 3.48828 5.69567 5.53378V7.38563H4.11991Z" fill="#FDF9F4" />
                                             </svg>
@@ -164,7 +164,7 @@ class Travelfic_Customizer_Header
                                 if (!empty($social_twitter)) {
                                 ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_twitter); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_twitter); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1.33203 12.8366C2.50872 13.5173 3.87488 13.8366 5.33203 13.8366C9.65256 13.8366 13.1731 10.4116 13.3268 6.12857L14.6654 3.50326L12.4292 3.83659C11.9592 3.42168 11.3417 3.16992 10.6654 3.16992C8.95044 3.16992 7.66582 4.84815 8.07932 6.48994C5.71059 6.64277 3.56448 5.18412 2.32332 3.24007C1.49968 6.03782 2.26289 9.40732 4.33203 11.4836C4.33203 12.2679 2.33203 12.7358 1.33203 12.8366Z" fill="#FDF9F4" />
                                             </svg>
@@ -174,7 +174,7 @@ class Travelfic_Customizer_Header
                                 if (!empty($social_youtube)) {
                                 ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_youtube); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_youtube); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M7.9987 14.1634C9.20516 14.1634 10.3621 14.0442 11.4343 13.8257C12.7736 13.5527 13.4432 13.4162 14.0543 12.6305C14.6654 11.8448 14.6654 10.9429 14.6654 9.13911V7.85438C14.6654 6.05057 14.6654 5.14866 14.0543 4.36299C13.4432 3.57733 12.7736 3.44083 11.4343 3.16783C10.3621 2.94926 9.20516 2.83008 7.9987 2.83008C6.79224 2.83008 5.63529 2.94926 4.56307 3.16783C3.2238 3.44083 2.55417 3.57733 1.9431 4.36299C1.33203 5.14866 1.33203 6.05057 1.33203 7.85438V9.13911C1.33203 10.9429 1.33203 11.8448 1.9431 12.6305C2.55417 13.4162 3.2238 13.5527 4.56307 13.8257C5.63529 14.0442 6.79224 14.1634 7.9987 14.1634Z" fill="#FDF9F4" />
                                                 <path d="M10.6414 8.70793C10.5425 9.11183 10.0161 9.40191 8.96324 9.98206C7.81817 10.613 7.24562 10.9285 6.78187 10.807C6.6248 10.7658 6.48013 10.6934 6.35866 10.5952C6 10.3053 6 9.70329 6 8.49935C6 7.2954 6 6.69343 6.35866 6.40347C6.48013 6.30526 6.6248 6.23287 6.78187 6.19171C7.24562 6.07016 7.81816 6.38565 8.96324 7.01663C10.0161 7.59679 10.5425 7.88687 10.6414 8.29076C10.6751 8.42819 10.6751 8.57051 10.6414 8.70793Z" fill="#595349" />
@@ -185,7 +185,7 @@ class Travelfic_Customizer_Header
                                 if (!empty($social_pinterest)) {
                                 ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_pinterest); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_pinterest); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="8.00065" cy="7.9987" r="6.66667" fill="#FDF9F4" />
                                                 <path d="M8.00065 7.33203L5.33398 13.9987" stroke="#595349" stroke-linecap="round" stroke-linejoin="round" />
@@ -197,7 +197,7 @@ class Travelfic_Customizer_Header
                                 if (!empty($social_reddit)) {
                                 ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_reddit); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_reddit); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <ellipse cx="8" cy="10.8333" rx="6" ry="4.33333" fill="#FDF9F4" />
                                                 <path d="M10.3346 11.6855C9.67789 12.1974 8.87209 12.4988 8.0013 12.4988C7.13051 12.4988 6.32471 12.1974 5.66797 11.6855" stroke="#595349" stroke-linecap="round" />
@@ -214,7 +214,7 @@ class Travelfic_Customizer_Header
                                 if (!empty($social_instagram)) {
                                 ?>
                                     <li>
-                                        <a href="<?php echo esc_url($social_instagram); ?>" target="_blank">
+                                        <a href="<?php echo esc_url($social_instagram); ?>" target="_blank" rel="noopener noreferrer">
                                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1.66602 8.5013C1.66602 5.51574 1.66602 4.02296 2.59351 3.09546C3.52101 2.16797 5.01379 2.16797 7.99935 2.16797C10.9849 2.16797 12.4777 2.16797 13.4052 3.09546C14.3327 4.02296 14.3327 5.51574 14.3327 8.5013C14.3327 11.4869 14.3327 12.9796 13.4052 13.9071C12.4777 14.8346 10.9849 14.8346 7.99935 14.8346C5.01379 14.8346 3.52101 14.8346 2.59351 13.9071C1.66602 12.9796 1.66602 11.4869 1.66602 8.5013Z" fill="#FDF9F4" />
                                                 <path d="M11 8.5C11 10.1569 9.65685 11.5 8 11.5C6.34315 11.5 5 10.1569 5 8.5C5 6.84315 6.34315 5.5 8 5.5C9.65685 5.5 11 6.84315 11 8.5Z" fill="#FDF9F4" stroke="#595349" />
@@ -378,7 +378,7 @@ class Travelfic_Customizer_Header
                                 <ul>
                                     <?php if (!empty($social_linkedin)) { ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_linkedin); ?>" target="_blank" rel="noopener noreferrer">
                                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
                                                         <path id="Vector 6810" d="M4.41602 15.4596V8.79297C4.41602 7.9711 4.41602 7.56016 4.18903 7.28358C4.14747 7.23294 4.10104 7.18651 4.05041 7.14496C3.77382 6.91797 3.36289 6.91797 2.54102 6.91797C1.71915 6.91797 1.30821 6.91797 1.03162 7.14496C0.980988 7.18651 0.934559 7.23294 0.893005 7.28358C0.666016 7.56016 0.666016 7.9711 0.666016 8.79297V15.4596C0.666016 16.2815 0.666016 16.6924 0.893005 16.969C0.934559 17.0197 0.980988 17.0661 1.03162 17.1076C1.30821 17.3346 1.71915 17.3346 2.54102 17.3346C3.36289 17.3346 3.77382 17.3346 4.05041 17.1076C4.10104 17.0661 4.14747 17.0197 4.18903 16.969C4.41602 16.6924 4.41602 16.2815 4.41602 15.4596Z" stroke="#595349" />
@@ -392,7 +392,7 @@ class Travelfic_Customizer_Header
                                     if (!empty($social_facebook)) {
                                     ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_facebook); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_facebook); ?>" target="_blank" rel="noopener noreferrer">
                                                 <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
                                                         <path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M2.15086 7.60851C1.33607 7.60851 1.16602 7.76838 1.16602 8.53443V9.92332C1.16602 10.6894 1.33607 10.8492 2.15086 10.8492H4.12056V16.4048C4.12056 17.1709 4.29061 17.3307 5.10541 17.3307H7.07511C7.8899 17.3307 8.05996 17.1709 8.05996 16.4048V10.8492H10.2716C10.8896 10.8492 11.0488 10.7363 11.2186 10.1777L11.6407 8.78881C11.9315 7.83186 11.7523 7.60851 10.6937 7.60851H8.05996V5.29369C8.05996 4.78232 8.50089 4.36777 9.0448 4.36777H11.8478C12.6626 4.36777 12.8327 4.20789 12.8327 3.44184V1.58999C12.8327 0.823939 12.6626 0.664062 11.8478 0.664062H9.0448C6.32522 0.664063 4.12056 2.73682 4.12056 5.29369V7.60851H2.15086Z" stroke="#595349" stroke-linejoin="round" />
@@ -404,7 +404,7 @@ class Travelfic_Customizer_Header
                                     if (!empty($social_twitter)) {
                                     ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_twitter); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_twitter); ?>" target="_blank" rel="noopener noreferrer">
                                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
                                                         <path id="Vector" d="M0.666016 13.4193C2.13688 14.2701 3.84458 14.6693 5.66602 14.6693C11.0667 14.6693 15.4674 10.388 15.6595 5.03425L17.3327 1.7526L14.5375 2.16927C13.9499 1.65063 13.1781 1.33594 12.3327 1.33594C10.189 1.33594 8.58326 3.43372 9.10013 5.48596C6.13921 5.677 3.45657 3.85369 1.90512 1.42363C0.875573 4.92081 1.82959 9.13268 4.41602 11.7281C4.41602 12.7084 1.91602 13.2933 0.666016 13.4193Z" stroke="#595349" stroke-linejoin="round" />
@@ -416,7 +416,7 @@ class Travelfic_Customizer_Header
                                     if (!empty($social_youtube)) {
                                     ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_youtube); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_youtube); ?>" target="_blank" rel="noopener noreferrer">
                                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
                                                         <path id="Vector" d="M8.99935 15.0807C10.5074 15.0807 11.9536 14.9318 13.2939 14.6585C14.968 14.3173 15.805 14.1467 16.5688 13.1646C17.3327 12.1825 17.3327 11.0551 17.3327 8.80035V7.19444C17.3327 4.93967 17.3327 3.81229 16.5688 2.83021C15.805 1.84813 14.968 1.6775 13.2939 1.33625C11.9536 1.06304 10.5074 0.914062 8.99935 0.914062C7.49128 0.914062 6.04509 1.06304 4.70481 1.33625C3.03073 1.6775 2.19369 1.84813 1.42985 2.83021C0.666016 3.81229 0.666016 4.93967 0.666016 7.19444V8.80035C0.666016 11.0551 0.666016 12.1825 1.42985 13.1646C2.19369 14.1467 3.03073 14.3173 4.70481 14.6585C6.04509 14.9318 7.49128 15.0807 8.99935 15.0807Z" stroke="#595349" />
@@ -429,7 +429,7 @@ class Travelfic_Customizer_Header
                                     if (!empty($social_pinterest)) {
                                     ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_pinterest); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_pinterest); ?>" target="_blank" rel="noopener noreferrer">
 
                                                 <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
@@ -445,7 +445,7 @@ class Travelfic_Customizer_Header
                                     if (!empty($social_reddit)) {
                                     ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_reddit); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_reddit); ?>" target="_blank" rel="noopener noreferrer">
 
                                                 <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
@@ -466,7 +466,7 @@ class Travelfic_Customizer_Header
                                     if (!empty($social_instagram)) {
                                     ?>
                                         <li>
-                                            <a href="<?php echo esc_url($social_instagram); ?>" target="_blank">
+                                            <a href="<?php echo esc_url($social_instagram); ?>" target="_blank" rel="noopener noreferrer">
 
                                                 <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="content">
