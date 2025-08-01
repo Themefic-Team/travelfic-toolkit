@@ -880,7 +880,7 @@
                 transform: translateY(40px);
                 @include bd-radius(4px);
                 @include transition(0.3s);
-
+                
                 // Adjust for different screen sizes
                 @media (max-width: 1399px) {
                   left: -100px;
@@ -891,6 +891,9 @@
                   background: transparent;
                   box-shadow: unset;
                   display: none;
+                }
+                &.open-left{
+                  right: 100%;
                 }
 
                 .menu-item {
@@ -944,8 +947,6 @@
         &.tft-site-navigation {
           ul {
             justify-content: start;
-            gap: 0;
-
             li {
               padding: 0;
             }

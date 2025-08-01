@@ -2153,6 +2153,9 @@ textarea.tft-form-control {
     display: none;
   }
 }
+.tft-header-design__three__bottom__nav--list .menu-item.menu-item-has-children .sub-menu.open-left, .tft-header-design__three__bottom__nav--list ul .menu-item.menu-item-has-children .sub-menu.open-left {
+  right: 100%;
+}
 .tft-header-design__three__bottom__nav--list .menu-item.menu-item-has-children .sub-menu .menu-item a, .tft-header-design__three__bottom__nav--list ul .menu-item.menu-item-has-children .sub-menu .menu-item a {
   display: block;
   padding: 10px 16px;
@@ -2190,7 +2193,6 @@ textarea.tft-form-control {
 }
 .tft-header-design__three__bottom__nav.tft-site-navigation ul {
   justify-content: start;
-  gap: 0;
 }
 .tft-header-design__three__bottom__nav.tft-site-navigation ul li {
   padding: 0;

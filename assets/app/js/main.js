@@ -69,7 +69,7 @@ function SubMenuHandleEvents() {
           jQuery(this).children("ul.sub-menu, ul.children").css("transform", "translateY(5px)").stop(true, true).slideDown(100);
         },
         function () {
-          jQuery(this).children("ul.sub-menum ul.children").stop(true, true).slideUp(100);
+          jQuery(this).children("ul.sub-menu, ul.children").stop(true, true).slideUp(100);
         }
       );
   } else {

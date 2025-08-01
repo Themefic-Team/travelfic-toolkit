@@ -687,7 +687,6 @@ class Travelfic_Customizer_Header
                         <?php endif; ?>
                         <!-- Navigation -->
                         <div class="tft-header-design__three__bottom">
-
                             <nav class="tft-header-design__three__bottom__nav tft-site-navigation" aria-label="Primary Navigation">
                                 <?php
                                     wp_nav_menu(
