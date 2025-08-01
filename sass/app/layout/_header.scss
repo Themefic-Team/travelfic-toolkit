@@ -119,7 +119,11 @@
           padding-top: 12px;
           padding-bottom: 12px;
         }
+        @media #{$max767} {
+          gap: 15px;
+        }
       }
+     
       .tft-flex {
         justify-content: space-between;
         align-items: center;
@@ -195,6 +199,7 @@
             @include d-flex();
             img {
               max-width: var(--tf-logo-width);
+              width: 100%;
             }
           }
 
@@ -419,6 +424,7 @@
         font-size: 2rem;
         font-weight: 700;
         color: $tft-color-white!important;
+        display: block;
 
         &:hover {
           color: $tft-color-white;
@@ -427,6 +433,7 @@
         img {
           vertical-align: middle;
           max-width: var(--tf-logo-width);
+          width: 100%;
 
           @media #{$max991} {
             max-width: 160px;
@@ -827,7 +834,8 @@
           display: none;
         }
 
-        &--list {
+        &--list, 
+        &--list ul {
           @include d-flex();
           gap: 32px;
           row-gap: 10px;
@@ -852,8 +860,6 @@
                   transform: translateY(0px);
                 }
               }
-
-              
 
               // Styling for submenus
               .sub-menu {
@@ -894,7 +900,6 @@
                     text-transform: capitalize;
                   }
                 }
-
 
                 .menu-item-has-children {
                   &::after {
@@ -939,6 +944,7 @@
         &.tft-site-navigation {
           ul {
             justify-content: start;
+            gap: 0;
 
             li {
               padding: 0;
@@ -1183,6 +1189,7 @@
 
     @media #{$max767} {
       display: block;
+      padding: 0 15px;
     }
 
     ul {
@@ -1198,6 +1205,7 @@
     }
 
     .tf-flex {
+      @include d-flex();
       margin: 10px 0;
       gap: 15px;
 
@@ -1218,6 +1226,7 @@
 
     @media #{$max767} {
       display: block;
+      padding: 0 15px;
     }
   }
 }

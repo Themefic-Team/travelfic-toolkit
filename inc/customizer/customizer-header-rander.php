@@ -101,6 +101,11 @@ class Travelfic_Customizer_Header
             $travelfic_header_bg = $travelfic_blog_header_bg;
         }
 
+        
+        $header_bg = ($travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
+        $header_back_style = $header_bg ? 'style="background: ' . $header_bg . '"' : '';
+
+
         ob_start();
 ?>
 
@@ -229,7 +234,7 @@ class Travelfic_Customizer_Header
                 </div>
             <?php } ?>
 
-            <div class="tft-menus-section tft-header-desktop <?php echo esc_attr($travelfic_desktop_transparent_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
+            <div class="tft-menus-section tft-header-desktop <?php echo esc_attr($travelfic_desktop_transparent_class); ?>" <?php echo $header_back_style;?> >
                 <div class="tft-flex <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-menu">
                         <nav class="tft-site-navigation">
@@ -243,35 +248,24 @@ class Travelfic_Customizer_Header
                             ?>
                         </nav>
                     </div>
-                    <div class="tft-logo">
+                    <div class="tft-logo tft-brand-logo">
                         <?php
-                        if ($travelfic_transparent_settings == 'enabled') {
-                            if (!empty($header_trasnparent_logo)) { ?>
-                                <a href="<?php echo esc_url(home_url('/')) ?>">
-                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_html_e("Logo", "travelfic-toolkit"); ?>">
+                            if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
-                            <?php } else { ?>
+                            <?php 
+                            } elseif ( has_custom_logo() && function_exists('the_custom_logo') ) {
+                                the_custom_logo();
+                            } else { ?>
                                 <div class="logo-text">
-                                    <a href="<?php echo esc_url(home_url('/')) ?>">
+                                    <a href="<?php echo esc_url(home_url('/')); ?>">
                                         <?php bloginfo('name'); ?>
                                     </a>
                                 </div>
-                            <?php
+                            <?php 
                             }
-                        } else {
-                            if (has_custom_logo()) {
-                                if (function_exists('the_custom_logo')) {
-                                    the_custom_logo();
-                                }
-                            } else {
-                            ?>
-                                <div class="logo-text">
-                                    <a href="<?php echo esc_url(home_url('/')) ?>">
-                                        <?php bloginfo('name'); ?>
-                                    </a>
-                                </div>
-                        <?php }
-                        } ?>
+                        ?>
                     </div>
                     <?php if($design_2_myaccount): ?>
                         <div class="tft-account">
@@ -299,20 +293,27 @@ class Travelfic_Customizer_Header
                 </div>
             </div>
 
-            <div class="tft-menus-section tft-header-mobile <?php echo esc_attr($travelfic_mobile_transparent_class); ?>" style="background: <?php echo $travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
+            <div class="tft-menus-section tft-header-mobile <?php echo esc_attr($travelfic_mobile_transparent_class); ?>" <?php echo $header_back_style;?>>
                 <div class="tft-main-header-wrapper tft-container-flex align-center justify-sp-between <?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                     <div class="tft-header-left site-header-section">
-                        <div class="site--brand-logo">
+                        <div class="site--brand-logo tft-brand-logo">
                             <?php
-                            if (has_custom_logo()) {
+                            if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                </a>
+                            <?php 
+                            } elseif ( has_custom_logo() && function_exists('the_custom_logo') ) {
                                 the_custom_logo();
                             } else { ?>
                                 <div class="logo-text">
-                                    <a href="<?php echo esc_url(home_url('/')) ?>">
+                                    <a href="<?php echo esc_url(home_url('/')); ?>">
                                         <?php bloginfo('name'); ?>
                                     </a>
                                 </div>
-                            <?php  } ?>
+                            <?php 
+                            }
+                            ?>
                         </div>
                     </div>
                     <!-- Site Search Bar -->
@@ -589,46 +590,40 @@ class Travelfic_Customizer_Header
             $travelfic_header_bg = $travelfic_blog_header_bg;
         }
 
+
+        $header_bg = ($travelfic_transparent_settings != false && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
+        $header_back_style = $header_bg ? 'style="background: ' . $header_bg . '"' : '';
+
+
         ob_start();
 
     ?>
 
       
         <!-- header-->
-        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class); ?>" style="background: <?php echo $travelfic_transparent_settings != false && !empty($travelfic_header_bg) ? esc_attr($travelfic_header_bg) : '' ?>">
+        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class); ?>" <?php echo $header_back_style; ?>>
             <div class="tft-header-design__three__container">
                 <div class="tft-header-design__three__content">
                     <div class="tft-header-design__three__content-left">
                         <!-- Logo -->
-                        <div class="tft-header-design__three__logo">
+                        <div class="tft-header-design__three__logo tft-brand-logo">
                             <?php
-                            if ($travelfic_transparent_settings == 'enabled') {
-                                if (!empty($header_trasnparent_logo)) { ?>
-                                    <a href="<?php echo esc_url(home_url('/')) ?>">
-                                        <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_html_e("Logo", "travelfic-toolkit"); ?>">
+                            if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                </a>
+                            <?php 
+                            } elseif ( has_custom_logo() && function_exists('the_custom_logo') ) {
+                                the_custom_logo();
+                            } else { ?>
+                                <div class="logo-text">
+                                    <a href="<?php echo esc_url(home_url('/')); ?>">
+                                        <?php bloginfo('name'); ?>
                                     </a>
-                                <?php } else { ?>
-                                    <div class="logo-text">
-                                        <a href="<?php echo esc_url(home_url('/')) ?>">
-                                            <?php bloginfo('name'); ?>
-                                        </a>
-                                    </div>
-                                <?php
-                                }
-                            } else {
-                                if (has_custom_logo()) {
-                                    if (function_exists('the_custom_logo')) {
-                                        the_custom_logo();
-                                    }
-                                } else {
-                                ?>
-                                    <div class="logo-text">
-                                        <a href="<?php echo esc_url(home_url('/')) ?>">
-                                            <?php bloginfo('name'); ?>
-                                        </a>
-                                    </div>
-                            <?php }
-                            } ?>
+                                </div>
+                            <?php 
+                            }
+                            ?>
                         </div>
 
                     </div>

@@ -62,23 +62,23 @@ function SubMenuHandleEvents() {
   var windowWidth = jQuery(window).width();
 
   if (windowWidth > 1199) {
-    jQuery(".tft-header-design__three .menu-item-has-children")
+    jQuery(".tft-header-design__three .menu-item-has-children, .tft-header-design__three .page_item_has_children")
       .off("click")
       .hover(
         function () {
-          jQuery(this).children("ul.sub-menu").css("transform", "translateY(5px)").stop(true, true).slideDown(100);
+          jQuery(this).children("ul.sub-menu, ul.children").css("transform", "translateY(5px)").stop(true, true).slideDown(100);
         },
         function () {
-          jQuery(this).children("ul.sub-menu").stop(true, true).slideUp(100);
+          jQuery(this).children("ul.sub-menum ul.children").stop(true, true).slideUp(100);
         }
       );
   } else {
   
-    jQuery(".tft-header-design__three .menu-item-has-children > a")
+    jQuery(".tft-header-design__three .menu-item-has-children > a, .tft-header-design__three .page_item_has_children > a")
       .off("click")
       .click(function (e) {
         var $parentLi = jQuery(this).parent();
-        var $submenu = $parentLi.children(".sub-menu");
+        var $submenu = $parentLi.children(".sub-menu, .children");
 
         if ($submenu.length > 0) {
           e.preventDefault();
@@ -87,17 +87,17 @@ function SubMenuHandleEvents() {
           if ($submenu.is(":visible")) {
             $submenu.slideUp();
           } else {
-            $parentLi.siblings().children(".sub-menu").slideUp(); 
+            $parentLi.siblings().children(".sub-menu, .children").slideUp(); 
             $submenu.slideDown(); 
           }
         }
       });
 
     // Allow links without children to redirect
-    jQuery(".tft-header-design__three .menu-item-has-children .sub-menu a")
+    jQuery(".tft-header-design__three .menu-item-has-children .sub-menu a, .tft-header-design__three .page_item_has_children .sub-menu a")
       .off("click")
       .click(function (e) {
-        var $submenu = jQuery(this).siblings("ul.sub-menu");
+        var $submenu = jQuery(this).siblings("ul.sub-menu, ul.children");
 
         if ($submenu.length > 0) {
           // Prevent redirection and toggle visibility of the nested submenu
@@ -107,7 +107,7 @@ function SubMenuHandleEvents() {
           if ($submenu.is(":visible")) {
             $submenu.slideUp();
           } else {
-            jQuery(this).parent().siblings().children(".sub-menu").slideUp(); 
+            jQuery(this).parent().siblings().children(".sub-menu, .children").slideUp(); 
             $submenu.slideDown(); 
           }
         }
