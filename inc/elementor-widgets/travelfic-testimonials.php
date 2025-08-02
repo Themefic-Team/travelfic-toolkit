@@ -355,9 +355,14 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
          $repeater->add_control(
             'post_date',
             [
-                'label'       => __('Posted', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => __('1 day ago', 'travelfic-toolkit'),
+                'label'       => __('Date', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::DATE_TIME,
+                'picker_options' => [
+                    'enableTime' => false,
+                    'dateFormat' => 'd M, Y',
+                    'showMonths' => true
+                ],
+                'default'     => __(date('d M, Y'), 'travelfic-toolkit'),
                 'label_block' => true,
             ]
         );

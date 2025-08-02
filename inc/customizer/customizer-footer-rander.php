@@ -13,7 +13,9 @@ class Travelfic_Customizer_Footer
             <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-footer-widgets">
                     <div class="tft-grid">
-                        <?php dynamic_sidebar('footer_sideabr'); ?>
+                        <?php if (is_active_sidebar('footer_widgets')) : ?>
+                            <?php dynamic_sidebar('footer_widgets'); ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="tft-footer-bottom__two tft-footer-bottom">
@@ -45,8 +47,8 @@ class Travelfic_Customizer_Footer
             <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="footer-widget">
                     <div class="footer-widget-inner">
-                        <?php if (is_active_sidebar('footer_sideabr  ')) : ?>
-                            <?php dynamic_sidebar('footer_sideabr  '); ?>
+                        <?php if (is_active_sidebar('footer_widgets')) : ?>
+                            <?php dynamic_sidebar('footer_widgets'); ?>
                         <?php endif; ?>
                     </div>
                 </div>

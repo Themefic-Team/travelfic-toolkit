@@ -733,7 +733,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             $sidebars_widget_data = array(
                 "tf-sidebar" => array(),
-                "footer_sideabr" => array(),
+                "footer_widgets" => array(),
                 "tf_archive_booking_sidebar" => array(),
                 "tf_search_result" => array(),
                 "wp_inactive_widgets" => array(),

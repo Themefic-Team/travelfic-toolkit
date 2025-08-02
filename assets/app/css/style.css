@@ -1389,7 +1389,7 @@ textarea.tft-form-control {
     text-align: left;
   }
 }
-.tft-header-design__two .tft-menus-section .tft-flex .tft-logo a.custom-logo-link {
+.tft-header-design__two .tft-menus-section .tft-flex .tft-logo a {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -1397,7 +1397,7 @@ textarea.tft-form-control {
   display: flex;
   flex-wrap: wrap;
 }
-.tft-header-design__two .tft-menus-section .tft-flex .tft-logo a.custom-logo-link img {
+.tft-header-design__two .tft-menus-section .tft-flex .tft-logo a img {
   max-width: var(--tf-logo-width);
   width: 100%;
 }
@@ -5070,7 +5070,7 @@ body.archive .tft-header-design__two {
     margin-bottom: 20px;
   }
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-rating {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-rating {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -5084,31 +5084,31 @@ body.archive .tft-header-design__two {
   align-items: center;
   gap: 5px;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-rating i {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-rating i {
   color: var(--tf-primary);
   font-size: 0.875rem;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-location {
   display: block;
   color: var(--tf-text-paragraph);
   font-size: 1rem;
   margin-top: 8px;
   text-transform: capitalize;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location i {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-location i {
   color: var(--tf-primary);
   float: left;
   margin-right: 6px;
   margin-top: 1px;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-location span {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-location span {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   color: var(--tf-text-paragraph);
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-title {
   font-size: 1.5rem;
   margin-bottom: 0px;
   margin-top: 20px;
@@ -5118,7 +5118,7 @@ body.archive .tft-header-design__two {
   -webkit-box-orient: vertical;
   color: var(--tf-text-heading);
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-title a {
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -5127,10 +5127,10 @@ body.archive .tft-header-design__two {
   text-transform: capitalize;
   color: inherit;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-desination-title a:hover {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-title a:hover {
   color: var(--tf-primary);
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-bottom-info {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
@@ -5155,31 +5155,31 @@ body.archive .tft-header-design__two {
   padding: 30px;
 }
 @media only screen and (max-width: 767.98px) {
-  .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info {
+  .tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-bottom-info {
     padding: 16px;
   }
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-title {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-bottom-info .tft-destination-price .tft-destination-price-title {
   display: block;
   font-size: 0.875rem;
   margin-bottom: 10px;
   text-transform: none;
   color: var(--tf-text-paragraph);
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-price .tft-desination-price-value {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-bottom-info .tft-destination-price .tft-destination-price-value {
   color: var(--tf-primary);
   font-size: 1.25rem;
   text-transform: none;
   font-weight: 700;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-bottom-info .tft-destination-btn .tft-btn {
   background: rgba(250, 100, 0, 0.1);
   color: var(--tf-primary);
   min-width: 136px;
   min-height: 50px;
   text-transform: capitalize;
 }
-.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-desination-bottom-info .tft-desination-btn .tft-btn:hover {
+.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-bottom-info .tft-destination-btn .tft-btn:hover {
   background: var(--tf-brand-dark);
   color: var(--tf-color-white);
 }
@@ -8118,13 +8118,13 @@ body.archive .tft-header-design__two {
   border-radius: 15px;
   z-index: -1;
 }
-.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content {
+.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-destination-content {
   position: absolute;
   bottom: 35px;
   left: 35px;
   color: var(--tf-color-white);
 }
-.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content h3 {
+.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3 {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1;
@@ -8132,17 +8132,17 @@ body.archive .tft-header-design__two {
   color: var(--tf-color-white);
   text-transform: capitalize;
 }
-.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content h3 a {
+.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3 a {
   color: var(--tf-color-white);
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content h3 a:hover {
+.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3 a:hover {
   color: var(--tf-primary);
 }
-.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-desination-content p {
+.tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-destination-content p {
   margin-bottom: 0;
   color: var(--tf-color-white);
   font-size: 0.875rem;

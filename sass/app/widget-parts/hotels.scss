@@ -506,7 +506,7 @@
                             margin-bottom: 20px;
                         }
 
-                        .tft-desination-rating {
+                        .tft-destination-rating {
                             @include d-flex();
                             @include align-items(center);
                             gap: 5px;
@@ -517,7 +517,7 @@
                             }
                         }
 
-                        .tft-desination-location {
+                        .tft-destination-location {
                             display: block;
                             color: $tft-color-text;
                             font-size: 1rem;
@@ -540,7 +540,7 @@
                             }
                         }
 
-                        .tft-desination-title {
+                        .tft-destination-title {
                             font-size: 1.5rem;
                             margin-bottom: 0px;
                             margin-top: 20px;
@@ -561,7 +561,7 @@
                         }
                     }
 
-                    .tft-desination-bottom-info {
+                    .tft-destination-bottom-info {
                         @include bd-radius(15px);
                         border: 1px solid $tft-color-border;
                         @include d-flex();
@@ -574,8 +574,8 @@
                             padding: 16px;
                         }
 
-                        .tft-desination-price {
-                            .tft-desination-price-title {
+                        .tft-destination-price {
+                            .tft-destination-price-title {
                                 display: block;
                                 font-size: 0.875rem;
                                 margin-bottom: 10px;
@@ -583,7 +583,7 @@
                                 color: $tft-color-text;
                             }
 
-                            .tft-desination-price-value {
+                            .tft-destination-price-value {
                                 color: $tft-color-primary;
                                 font-size: 1.25rem;
                                 text-transform: none;
@@ -591,7 +591,7 @@
                             }
                         }
 
-                        .tft-desination-btn {
+                        .tft-destination-btn {
                             .tft-btn {
                                 background: rgba(250, 100, 0, 0.1);
                                 color: $tft-color-primary;

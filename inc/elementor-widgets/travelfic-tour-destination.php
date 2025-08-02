@@ -1115,7 +1115,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_title_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content a h3',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content a h3',
 
                 'label'    => __('Typography', 'travelfic-toolkit'),
 
@@ -1130,7 +1130,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content a h3' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content a h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -1143,7 +1143,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content a h3:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content a h3:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -1167,7 +1167,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tour_destination_card_para_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content p',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -1180,7 +1180,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-desination-content p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'des_style' => ['design-3'],
@@ -1481,7 +1481,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     ?>
                             <div class="tft-single-destination">
                                 <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                                    <div class="tft-desination-content tft-content-box">
+                                    <div class="tft-destination-content tft-content-box">
                                         <h3>
                                             <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content">
                                                 <?php echo esc_html($cat->name); ?>

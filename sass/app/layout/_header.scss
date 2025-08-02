@@ -195,7 +195,7 @@
             text-align: left;
           }
 
-          a.custom-logo-link {
+          a {
             @include d-flex();
             img {
               max-width: var(--tf-logo-width);

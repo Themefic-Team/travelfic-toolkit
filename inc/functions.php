@@ -248,7 +248,7 @@ if (!function_exists('tf_review_star_rating')) {
         $half_star = ($tf_rating - $full_star) >= 0.5 ? 1 : 0;
         $empty_star = 5 - $full_star - $half_star;
 
-        $output = '<span class="tft-desination-rating tft-color-primary">';
+        $output = '<span class="tft-destination-rating tft-color-primary">';
         for ($i = 0; $i < $full_star; $i++) {
             $output .= '<i class="ri-star-fill"></i>';
         }
