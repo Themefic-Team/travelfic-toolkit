@@ -96,12 +96,7 @@ class Travelfic_Customizer_Header
 
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
-        $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
-        if(!empty($travelfic_blog_header_bg) && $travelfic_show_pages){
-            $travelfic_header_bg = $travelfic_blog_header_bg;
-        }
-
-        
+     
         $header_bg = ($travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
         $header_back_style = $header_bg ? 'style="background: ' . $header_bg . '"' : '';
 
@@ -584,14 +579,8 @@ class Travelfic_Customizer_Header
 
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
-        $travelfic_blog_header_bg = get_theme_mod($travelfic_prefix . 'blog_header_bg_color');
 
-        if ( !empty($travelfic_blog_header_bg) && $travelfic_show_pages ) {
-            $travelfic_header_bg = $travelfic_blog_header_bg;
-        }
-
-
-        $header_bg = ($travelfic_transparent_settings != false && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
+        $header_bg = ($travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
         $header_back_style = $header_bg ? 'style="background: ' . $header_bg . '"' : '';
 
 
@@ -599,9 +588,8 @@ class Travelfic_Customizer_Header
 
     ?>
 
-      
         <!-- header-->
-        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class); ?>" <?php echo $header_back_style; ?>>
+        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class . ' ' . $travelfic_mobile_transparent_class); ?>" <?php echo $header_back_style; ?>>
             <div class="tft-header-design__three__container">
                 <div class="tft-header-design__three__content">
                     <div class="tft-header-design__three__content-left">

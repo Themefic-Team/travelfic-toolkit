@@ -309,6 +309,9 @@
           .tft-social-share {
             ul {
               margin: 32px 16px 0;
+              @media #{$max767} {
+                margin-top: 16px;
+              }
 
               li {
                 display: inline-block;
@@ -1167,6 +1170,16 @@
 
         .sub-menu {
           display: none;
+          position: relative;
+          box-shadow: none;
+          background-color: transparent;
+          left: auto;
+          padding: 0;
+          li{
+            a{
+              padding: 2px 25px;
+            }
+          }
         }
       }
     }
@@ -1190,7 +1203,7 @@
 
     @media #{$max767} {
       display: block;
-      padding: 0 15px;
+      padding: 0 24px;
     }
 
     ul {
@@ -1227,7 +1240,7 @@
 
     @media #{$max767} {
       display: block;
-      padding: 0 15px;
+      padding: 10px 24px;
     }
   }
 }
