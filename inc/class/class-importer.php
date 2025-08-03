@@ -42,13 +42,18 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_global_settings() {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
-
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/settings-v2.json';
             $settings_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($settings_files);
-           
+
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
+                $tf_search_page = get_page_by_path('tf-search');
+                if($tf_search_page && !empty($tf_search_page->ID)){
+                    if(isset($imported_data['search-result-page'])){
+                        $imported_data['search-result-page'] = $tf_search_page->ID;
+                    }
+                }
                 update_option( 'tf_settings', $imported_data );
                 wp_send_json_success($imported_data);
                 die();
