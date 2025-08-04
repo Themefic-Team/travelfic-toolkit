@@ -256,5 +256,3 @@ function travelfic_toolkit_template_list( $links ) {
     array_push( $links, $link );
     return $links;
 }
-
-

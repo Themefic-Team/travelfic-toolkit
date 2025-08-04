@@ -1610,6 +1610,11 @@ textarea.tft-form-control {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 @media (max-width: 1850px) {
   .tft-header-design__three__content-left {
@@ -1703,24 +1708,30 @@ textarea.tft-form-control {
     padding-right: 15px;
   }
 }
-.tft-header-design__three__content-right::before {
+.tft-header-design__three__content-right::before, .tft-header-design__three__content-right::after {
   content: "";
   position: absolute;
   left: -48px;
   padding-right: 0;
-  top: 0;
   background-color: var(--tf-color-white);
   height: 100%;
   clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
   z-index: -1;
   width: 205px;
+  top: 0.5px;
 }
 @media only screen and (max-width: 991.98px) {
-  .tft-header-design__three__content-right::before {
+  .tft-header-design__three__content-right::before, .tft-header-design__three__content-right::after {
     width: 150px;
     left: -35px;
     z-index: 1;
   }
+}
+.tft-header-design__three__content-right::after {
+  clip-path: none;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 .tft-header-design__three__topbar {
   padding-left: 20px;
@@ -3938,7 +3949,7 @@ body.archive .tft-header-design__two {
 .tft-about-us-design__two {
   padding-bottom: 104px;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 @media (max-width: 1399px) {
   .tft-about-us-design__two {

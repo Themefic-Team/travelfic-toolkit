@@ -461,6 +461,7 @@
         padding-left: 6.3%;
         @include d-flex();
         @include align-items(center);
+        @include justify-content(center);
 
         @media (max-width: 1850px) {
           padding-left: 5%;
@@ -510,6 +511,7 @@
         background: $tft-color-white;
         margin-left: 52px;
 
+
         @media #{$max991} {
           padding-left: 0;
           clip-path: none;
@@ -521,23 +523,30 @@
           padding-right: 15px;
         }
 
-        &::before {
+        &::before,
+        &::after {
           content: "";
           position: absolute;
           left: -48px;
           padding-right: 0;
-          top: 0;
           background-color: $tft-color-white;
           height: 100%;
           clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
           z-index: -1;
           width: 205px;
-
+          top: 0.5px;
           @media #{$max991} {
             width: 150px;
             left: -35px;
             z-index: 1;
+            
           }
+        }
+        &::after{
+          clip-path: none;
+          width: 100%;
+          left: 0;
+          top: 0;
         }
       }
     }

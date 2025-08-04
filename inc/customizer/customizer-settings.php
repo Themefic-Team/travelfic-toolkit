@@ -27,21 +27,7 @@ add_action('init', function () {
     $prefix = 'travelfic_customizer_settings_';
 
 
-    /**
-     * 
-     * Tagline Theme Options
-     * 
-     */
-
-    //  transparent logo
-    travelfic_Kirki::add_field('travelfic_customizer_options', [
-        'type'        => 'image',
-        'settings'    => $prefix . 'trasnparent_logo',
-        'label'       => esc_html__('Transparent Logo', 'travelfic-toolkit'),
-        'section'     => 'title_tagline',
-        'priority'    => 10,
-        'transport'   => 'refresh',
-    ]);
+   
 
     /**
      * 

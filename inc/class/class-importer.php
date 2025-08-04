@@ -79,6 +79,25 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
+
+                // site title
+                if (isset($imported_data['blogname']) && !empty($imported_data['blogname'])) {
+                    update_option('blogname', $imported_data['blogname']);
+                }
+
+                // site tagline
+                if (isset($imported_data['blogdescription']) && !empty($imported_data['blogdescription'])) {
+                    update_option('blogdescription', $imported_data['blogdescription']); 
+                }
+
+                // site icon
+                if (isset($imported_data['site_icon_url']) && !empty($imported_data['site_icon_url'])) {
+                    $icon_id = $this->upload_media_from_url($imported_data['site_icon_url']);
+                    if ($icon_id) {
+                        update_option('site_icon', $icon_id);
+                    }
+                }
+
                 // // header menu color
                 // if(isset($imported_data['travelfic_customizer_settings_menu_color'])){
                 //     $imported_data['travelfic_customizer_settings_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_menu_color'];
@@ -173,6 +192,33 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 die();
             }
 		}
+
+        public function upload_media_from_url($image_url) {
+            require_once(ABSPATH . 'wp-admin/includes/media.php');
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+            // Download the image and get its file path
+            $tmp_file = download_url($image_url);
+
+            if (is_wp_error($tmp_file)) {
+                return false; // Failed to download
+            }
+
+            // Prepare file data for WordPress
+            $file_array = array(
+                'name'     => basename($image_url),
+                'tmp_name' => $tmp_file
+            );
+
+            // Upload the image to the media library
+            $attachment_id = media_handle_sideload($file_array, 0);
+
+            // Clean up temp file
+            @unlink($tmp_file);
+
+            return $attachment_id;
+        }
 
         /**
 		 * Tourfic Pages Importer Settings

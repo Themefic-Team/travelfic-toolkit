@@ -94,6 +94,7 @@ class Travelfic_Customizer_Header
         $social_pinterest = get_theme_mod($travelfic_prefix . 'social_pinterest', '#');
         $social_reddit = get_theme_mod($travelfic_prefix . 'social_reddit', '#');
 
+        $travelfic_site_logo = get_theme_mod($travelfic_prefix . 'site_logo');
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
      
@@ -250,9 +251,11 @@ class Travelfic_Customizer_Header
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php 
-                            } elseif ( has_custom_logo() && function_exists('the_custom_logo') ) {
-                                the_custom_logo();
-                            } else { ?>
+                            } elseif ( !empty($travelfic_site_logo) ) { ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                </a>
+                            <?php } else { ?>
                                 <div class="logo-text">
                                     <a href="<?php echo esc_url(home_url('/')); ?>">
                                         <?php bloginfo('name'); ?>
@@ -298,9 +301,11 @@ class Travelfic_Customizer_Header
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php 
-                            } elseif ( has_custom_logo() && function_exists('the_custom_logo') ) {
-                                the_custom_logo();
-                            } else { ?>
+                            } elseif ( !empty($travelfic_site_logo) ) { ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                </a>
+                            <?php } else { ?>
                                 <div class="logo-text">
                                     <a href="<?php echo esc_url(home_url('/')); ?>">
                                         <?php bloginfo('name'); ?>
@@ -577,6 +582,7 @@ class Travelfic_Customizer_Header
         $design_3_button_label = get_theme_mod($travelfic_prefix . 'design_3_button_label', 'Discover More');
         $design_3_button_url = get_theme_mod($travelfic_prefix . 'design_3_button_url', '#');
 
+        $travelfic_site_logo = get_theme_mod($travelfic_prefix . 'site_logo');
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
 
@@ -601,9 +607,11 @@ class Travelfic_Customizer_Header
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php 
-                            } elseif ( has_custom_logo() && function_exists('the_custom_logo') ) {
-                                the_custom_logo();
-                            } else { ?>
+                            } elseif ( !empty($travelfic_site_logo) ) { ?>
+                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                </a>
+                            <?php } else { ?>
                                 <div class="logo-text">
                                     <a href="<?php echo esc_url(home_url('/')); ?>">
                                         <?php bloginfo('name'); ?>
