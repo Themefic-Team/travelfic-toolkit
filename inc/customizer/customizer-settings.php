@@ -1523,11 +1523,15 @@ add_action('init', function () {
 
     // Sticky Header Menu Color
     travelfic_Kirki::add_field('travelfic_customizer_options', array(
-        'type'        => 'color',
+        'type'        => 'multicolor',
         'settings'    => $prefix . 'stiky_header_menu_text_color',
         'label'       => esc_html__('Menu', 'travelfic-toolkit'),
         'section'     => 'travelfic_customizer_header',
         'priority'    => 42,
+        'choices'     => [
+            'hover'  => esc_html__('Hover', 'travelfic-toolkit'),
+            'normal' => esc_html__('Normal', 'travelfic-toolkit'),
+        ],
         'tab'         => 'design',
         'required' => [
             [

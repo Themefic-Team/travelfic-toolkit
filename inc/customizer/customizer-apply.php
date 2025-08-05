@@ -243,6 +243,7 @@ function travelfic_toolkit_customizer_style()
         /* header menu hover color */
         <?php if(!empty($travelfic_menu_color_hover)): ?>
             #tft-site-main-body header .tft-site-navigation ul>li:hover>a,
+            #tft-site-main-body header .tft-site-navigation ul>li:hover .travelfic-dropdown>a,
             #tft-site-main-body header .menu-item-has-children:hover::after{
                 color: <?php echo !empty($travelfic_menu_color_hover) ? esc_attr($travelfic_menu_color_hover) : esc_attr(''); ?>;
             }
