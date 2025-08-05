@@ -461,7 +461,6 @@
         padding-left: 6.3%;
         @include d-flex();
         @include align-items(center);
-        @include justify-content(center);
 
         @media (max-width: 1850px) {
           padding-left: 5%;
@@ -501,6 +500,9 @@
           padding: 15px;
           min-height: 70px;
           flex-basis: 30%;
+        }
+        @media #{$max575} {
+          flex-basis: 50%;
         }
       }
 

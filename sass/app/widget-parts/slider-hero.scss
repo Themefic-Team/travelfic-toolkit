@@ -653,7 +653,7 @@
             height: fit-content;
 
             @media (max-width: 1760px) {
-                right: 0;
+                right: 16px;
             }
 
             @media #{$max991} {
