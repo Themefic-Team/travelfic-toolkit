@@ -188,8 +188,6 @@ function travelfic_toolkit_customizer_style()
     $travelfic_footer_btm_right_bg = get_theme_mod($travelfic_kit_pre . 'footer_bottom_right_bg_color');
     empty($travelfic_footer_back_image) ? $travelfic_footer_back_overlay = 'transparent' : $travelfic_footer_back_overlay;
 
-    
-
 ?>
 
     <style>

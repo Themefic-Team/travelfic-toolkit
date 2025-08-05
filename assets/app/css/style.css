@@ -1429,9 +1429,9 @@ textarea.tft-form-control {
   border: 1px solid transparent;
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a:hover {
-  background: var(--tf-brand-dark);
+  background: var(--tf-primary);
   color: var(--tf-color-white);
-  border-color: var(--tf-brand-dark);
+  border-color: var(--tf-primary);
 }
 .tft-header-design__two .tft-menus-section .tft-flex .tft-account ul li a.login {
   border-color: var(--tf-primary);

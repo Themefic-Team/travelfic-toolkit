@@ -9,11 +9,15 @@ class Travelfic_Customizer_Header
 
         $user = wp_get_current_user();
         $user_roles = $user->roles;
-        $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+        // check if tourfic pro is active
+        $is_tourfic_pro_active = function_exists('is_plugin_active') ? is_plugin_active('tourfic-pro/tourfic-pro.php') : false;
+
         $design_2_registration_url = get_theme_mod($travelfic_prefix . 'design_2_registration_url', '/my-account');
         $design_2_login_url = get_theme_mod($travelfic_prefix . 'design_2_login_url', '/my-account');
-        $login_url = get_option("tf_login_page_id") ? get_permalink(get_option("tf_login_page_id")) : $design_2_login_url;
-        $registration_url = get_option("tf_register_page_id") ? get_permalink(get_option("tf_register_page_id")) : $design_2_registration_url;
+        
+        $dashboard_url = (get_option("tf_dashboard_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+        $login_url = (get_option("tf_login_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_login_page_id")) : $design_2_login_url;
+        $registration_url = (get_option("tf_register_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_register_page_id")) : $design_2_registration_url;
 
         if ( in_array('subscriber', $user_roles) ) {
             $dashboard_url = site_url('my-account/');
@@ -54,7 +58,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', false);
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-        $travelfic_show_pages = is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search') || is_page('tf-login') || is_page('tf-register');
+        $travelfic_show_pages = is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search') || is_page('my-account') || is_page('tf-login') || is_page('tf-register');
         
         if ($travelfic_show_pages) {
             if ("disabled" == $travelfic_archive_transparent_header) {
@@ -502,9 +506,12 @@ class Travelfic_Customizer_Header
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
 
+         // check if tourfic pro is active
+        $is_tourfic_pro_active = function_exists('is_plugin_active') ? is_plugin_active('tourfic-pro/tourfic-pro.php') : false;
+
         $user = wp_get_current_user();
         $user_roles = $user->roles;
-        $dashboard_url = get_option("tf_dashboard_page_id") ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+        $dashboard_url = (get_option("tf_dashboard_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
         if ( in_array('subscriber', $user_roles) ) {
             $dashboard_url = site_url('my-account/');
         }
@@ -540,7 +547,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_archive_transparent_header = get_theme_mod($travelfic_prefix . 'archive_transparent_header', '');
         $travelfic_archive_transparent_header = $travelfic_archive_transparent_header ? 'enabled' : 'disabled';
-        $travelfic_show_pages = is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search') || is_page('tf-login') || is_page('tf-register');
+        $travelfic_show_pages = is_home() || is_archive() || is_search() || is_single() || is_404() || is_page('tf-search') || is_page('my-account') || is_page('tf-login') || is_page('tf-register');
 
 
         if ($travelfic_show_pages) {

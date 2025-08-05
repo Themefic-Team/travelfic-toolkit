@@ -234,9 +234,9 @@
                 transition: 0.3s all ease;
                 border: 1px solid transparent;
                 &:hover {
-                  background: $tft-color-secondary;
+                  background: $tft-color-primary;
                   color: $tft-color-white;
-                  border-color: $tft-color-secondary;
+                  border-color: $tft-color-primary;
                 }
               }
 
