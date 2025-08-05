@@ -1448,6 +1448,7 @@ textarea.tft-form-control {
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-main-header-wrapper .tft-header-center .tft-mobile_menubar i {
   color: var(--tf-text-paragraph);
+  display: block;
 }
 .tft-header-design__two .tft-menus-section.tft-header-mobile .tft-mobile-main-menu .tft-site-navigation {
   background-color: #FAEEDC;

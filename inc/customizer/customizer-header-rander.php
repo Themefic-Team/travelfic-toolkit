@@ -530,18 +530,11 @@ class Travelfic_Customizer_Header
         // Transparent Header Settings Checked
         $travelfic_transparent_settings = get_theme_mod($travelfic_prefix . 'transparent_header', false);
         $travelfic_transparent_settings = $travelfic_transparent_settings ? 'enabled' : 'disabled';
-        $travelfic_transparent_showing = get_theme_mod($travelfic_prefix . 'transparent_showing', 'both');
         if (isset($travelfic_transparent_settings)) {
             if ($travelfic_transparent_settings != 'disabled') {
-                if ("both" == $travelfic_transparent_showing || "desktop" == $travelfic_transparent_showing) {
-                    $travelfic_desktop_transparent_class = 'tft_has_transparent';
-                }
-                if ("both" == $travelfic_transparent_showing || "mobile" == $travelfic_transparent_showing) {
-                    $travelfic_mobile_transparent_class = 'tft_has_transparent';
-                }
+                $travelfic_transparent_class = 'tft_has_transparent';
             } else {
-                $travelfic_desktop_transparent_class = '';
-                $travelfic_mobile_transparent_class = '';
+                $travelfic_transparent_class = '';
             }
         }
 
@@ -552,11 +545,9 @@ class Travelfic_Customizer_Header
 
         if ($travelfic_show_pages) {
             if ("disabled" == $travelfic_archive_transparent_header) {
-                $travelfic_desktop_transparent_class = '';
-                $travelfic_mobile_transparent_class = '';
+                $travelfic_transparent_class = '';
             } else {
-                $travelfic_desktop_transparent_class = 'tft_has_transparent';
-                $travelfic_mobile_transparent_class = 'tft_has_transparent';
+                $travelfic_transparent_class = 'tft_has_transparent';
             }
 
             $travelfic_transparent_settings = $travelfic_archive_transparent_header;
@@ -566,11 +557,9 @@ class Travelfic_Customizer_Header
         if (is_page()) {
             $disable_single_page = get_post_meta(get_the_ID(), 'tft-pmb-transfar-header', true);
             if (!empty($disable_single_page) && $disable_single_page == 'enabled') {
-                $travelfic_desktop_transparent_class = 'tft_has_transparent';
-                $travelfic_mobile_transparent_class = 'tft_has_transparent';
+                $travelfic_transparent_class = 'tft_has_transparent';
             }else if(!empty($disable_single_page) && $disable_single_page == 'disabled'){
-                $travelfic_desktop_transparent_class = '';
-                $travelfic_mobile_transparent_class = '';
+                $travelfic_transparent_class = '';
             }
         }
 
@@ -602,14 +591,14 @@ class Travelfic_Customizer_Header
     ?>
 
         <!-- header-->
-        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class . ' ' . $travelfic_mobile_transparent_class); ?>" <?php echo $header_back_style; ?>>
+        <header class="tft-header-design__three <?php echo esc_attr($travelfic_sticky_class . ' ' . $travelfic_transparent_class); ?>" <?php echo $header_back_style; ?>>
             <div class="tft-header-design__three__container">
                 <div class="tft-header-design__three__content">
                     <div class="tft-header-design__three__content-left">
                         <!-- Logo -->
                         <div class="tft-header-design__three__logo tft-brand-logo">
                             <?php
-                            if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
+                            if ( $travelfic_transparent_class == 'tft_has_transparent' && !empty($header_trasnparent_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>">
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>

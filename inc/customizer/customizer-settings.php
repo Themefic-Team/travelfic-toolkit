@@ -939,6 +939,13 @@ add_action('init', function () {
                 'operator' => '!=',
                 'value'    => false,
             ],
+
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '!=',
+                'value'    => 'design3',
+            ],
+            
         ],
     ]);
 
@@ -955,6 +962,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'transparent_header',
                 'operator' => '!=',
                 'value'    => false,
+            ],
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '!=',
+                'value'    => 'design3',
             ],
         ],
     ]);
@@ -973,6 +985,11 @@ add_action('init', function () {
                 'setting'  => $prefix . 'transparent_header',
                 'operator' => '!=',
                 'value'    => false,
+            ],
+            [
+                'setting'  => $prefix . 'header_design_select',
+                'operator' => '!=',
+                'value'    => 'design3',
             ],
         ],
     ));

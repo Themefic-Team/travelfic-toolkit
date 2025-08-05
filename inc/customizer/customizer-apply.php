@@ -244,7 +244,8 @@ function travelfic_toolkit_customizer_style()
         <?php if(!empty($travelfic_menu_color_hover)): ?>
             #tft-site-main-body header .tft-site-navigation ul>li:hover>a,
             #tft-site-main-body header .tft-site-navigation ul>li:hover .travelfic-dropdown>a,
-            #tft-site-main-body header .menu-item-has-children:hover::after{
+            #tft-site-main-body header .menu-item-has-children:hover::after,
+            #tft-site-main-body header .menu-item-has-children:hover a::after{
                 color: <?php echo !empty($travelfic_menu_color_hover) ? esc_attr($travelfic_menu_color_hover) : esc_attr(''); ?>;
             }
         <?php endif; ?>
@@ -252,6 +253,7 @@ function travelfic_toolkit_customizer_style()
         /* header submenu background */
         <?php if(!empty($travelfic_submenu_bg)): ?>
             #tft-site-main-body header .tft-site-navigation ul li > ul.sub-menu,
+            #tft-site-main-body header .tft-site-navigation ul li > ul.children,
             #tft-site-main-body header .tft-header-mobile .tft-site-navigation {
                 border-color: <?php echo !empty($travelfic_submenu_bg) ? esc_attr($travelfic_submenu_bg) : esc_attr(''); ?>;
                 background: <?php echo !empty($travelfic_submenu_bg) ? esc_attr($travelfic_submenu_bg) : esc_attr(''); ?>;
@@ -261,7 +263,8 @@ function travelfic_toolkit_customizer_style()
         /* header submenu typography */
         <?php if ( !empty($travelfic_submenu_text) || !empty($travelfic_submenu_font_weight) || !empty($travelfic_desktop_submenu_size) || !empty($travelfic_submenu_line_height) || !empty($travelfic_submenu_texttransform) || !empty($travelfic_submenu_letter_space) || !empty($travelfic_submenu_decoration)): ?>
             #tft-site-main-body header .tft-site-navigation ul li > ul.sub-menu li a,
-            #tft-site-main-body header .tft-header-mobile .tft-site-navigation ul.sub-men > li > a {
+            #tft-site-main-body header .tft-header-mobile .tft-site-navigation ul.sub-menu > li > a,
+             #tft-site-main-body header .tft-header-mobile .tft-site-navigation ul.sub-menu > li > a::after {
                 <?php if (!empty($travelfic_submenu_text)): ?>
                     color: <?php echo esc_attr($travelfic_submenu_text); ?>;
                 <?php endif; ?>
