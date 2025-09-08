@@ -100,6 +100,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_site_logo = get_theme_mod($travelfic_prefix . 'site_logo');
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
+        $header_sticky_logo = get_theme_mod($travelfic_prefix . 'sticky_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
      
         $header_bg = ($travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
@@ -248,15 +249,15 @@ class Travelfic_Customizer_Header
                             ?>
                         </nav>
                     </div>
-                    <div class="tft-logo tft-brand-logo">
+                    <div class="tft-logo tft-brand-logo site--brand-logo">
                         <?php
                             if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="transparent-logo">
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php 
                             } elseif ( !empty($travelfic_site_logo) ) { ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
                                     <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php } else { ?>
@@ -266,6 +267,14 @@ class Travelfic_Customizer_Header
                                     </a>
                                 </div>
                             <?php 
+                            }
+                            if( isset( $travelfic_sticky_settings ) ){
+                                if( $travelfic_sticky_settings != 'disabled' && !empty($header_sticky_logo) ){ ?>
+                                    <a href="<?php echo esc_url(home_url('/')); ?>" class="sticky-logo">
+                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    </a>
+                                <?php
+                                }
                             }
                         ?>
                     </div>
@@ -301,12 +310,12 @@ class Travelfic_Customizer_Header
                         <div class="site--brand-logo tft-brand-logo">
                             <?php
                             if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="transparent-logo">
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php 
                             } elseif ( !empty($travelfic_site_logo) ) { ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
                                     <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php } else { ?>
@@ -316,6 +325,14 @@ class Travelfic_Customizer_Header
                                     </a>
                                 </div>
                             <?php 
+                            }
+                            if( isset( $travelfic_sticky_settings ) ){
+                                if( $travelfic_sticky_settings != 'disabled' && !empty($header_sticky_logo) ){ ?>
+                                    <a href="<?php echo esc_url(home_url('/')); ?>" class="sticky-logo">
+                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    </a>
+                                <?php
+                                }
                             }
                             ?>
                         </div>
@@ -580,6 +597,7 @@ class Travelfic_Customizer_Header
 
         $travelfic_site_logo = get_theme_mod($travelfic_prefix . 'site_logo');
         $header_trasnparent_logo = get_theme_mod($travelfic_prefix . 'trasnparent_logo');
+        $header_sticky_logo = get_theme_mod($travelfic_prefix . 'sticky_logo');
         $travelfic_header_bg = get_theme_mod($travelfic_prefix . 'header_bg_color');
 
         $header_bg = ($travelfic_transparent_settings != 'enabled' && !empty($travelfic_header_bg)) ? esc_attr($travelfic_header_bg) : '';
@@ -596,15 +614,15 @@ class Travelfic_Customizer_Header
                 <div class="tft-header-design__three__content">
                     <div class="tft-header-design__three__content-left">
                         <!-- Logo -->
-                        <div class="tft-header-design__three__logo tft-brand-logo">
+                        <div class="tft-header-design__three__logo tft-brand-logo site--brand-logo">
                             <?php
                             if ( $travelfic_transparent_class == 'tft_has_transparent' && !empty($header_trasnparent_logo) ) { ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="transparent-logo">
                                     <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php 
                             } elseif ( !empty($travelfic_site_logo) ) { ?>
-                                <a href="<?php echo esc_url(home_url('/')); ?>">
+                                <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
                                     <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
                                 </a>
                             <?php } else { ?>
@@ -614,6 +632,14 @@ class Travelfic_Customizer_Header
                                     </a>
                                 </div>
                             <?php 
+                            }
+                            if( isset( $travelfic_sticky_settings ) ){
+                                if( $travelfic_sticky_settings != 'disabled' && !empty($header_sticky_logo) ){ ?>
+                                    <a href="<?php echo esc_url(home_url('/')); ?>" class="sticky-logo">
+                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    </a>
+                                <?php
+                                }
                             }
                             ?>
                         </div>
