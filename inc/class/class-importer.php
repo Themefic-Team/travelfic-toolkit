@@ -1725,43 +1725,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             $post_slug = $row[$column_index];
                         }
                         if( $field == 'thumbnail' ){
-                            $thumbnail = $row[$column_index];
-                            //set as the post thumbnail.
-                            if (!empty( $thumbnail )) {
-                                // Get the file name from the URL.
-                                $filename = basename($thumbnail);
-        
-                                // Download the image to the server.
-                                $upload_dir = wp_upload_dir();
-                                $image_path = $upload_dir['path'] . '/' . $filename;
-        
-                                $image_data = file_get_contents($thumbnail);
-                                file_put_contents($image_path, $image_data);
-        
-                                // Check if the image was downloaded successfully.
-                                if (file_exists($image_path)) {
-                                    // Create the attachment in the media library.
-                                    $attachment = array(
-                                        'guid'           => $upload_dir['url'] . '/' . $filename,
-                                        'post_mime_type' => 'image/jpeg', // Replace with the appropriate mime type if needed.
-                                        'post_title'     => sanitize_file_name($filename),
-                                        'post_content'   => '',
-                                        'post_status'    => 'inherit',
-                                    );
-        
-                                    $attach_id = wp_insert_attachment($attachment, $image_path, $post_id);
-        
-                                    // Include the necessary file 
-                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
-        
-                                    // Set the image as the post thumbnail.
-                                    $attach_data = wp_generate_attachment_metadata($attach_id, $image_path);
-                                    wp_update_attachment_metadata($attach_id, $attach_data);
-        
-                                    $post_meta['_thumbnail_id'] = $attach_id;
-                                }
+                            $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
+                            if ( $attach_id ) {
+                                $post_meta['_thumbnail_id'] = $attach_id;
                             }
-        
                         }
                         if( $field == 'post_date' ){
                             $post_date = $row[$column_index];
@@ -1787,44 +1754,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
         
                             foreach ( $image_urls as $image_url ) {
-                                if(!empty($image_url)){
-                                    // Download the image file
-                                    $image_data = file_get_contents( $image_url );
-                                    //if not found image
-                                    if( $image_data === false ){
-                                        continue;
-                                    }
-                                    // Create a unique filename for the image
-                                    $filename = basename( $image_url );
-                                    $upload_dir = wp_upload_dir();
-                                    $image_path = $upload_dir['path'] . '/' . $filename;
-                
-                                    // Save the image file to the uploads directory
-                                    $result = file_put_contents( $image_path, $image_data );
-                                    
-                                    //failed to save image
-                                    if( $result === false ){
-                                        continue;
-                                    }
-                
-                                    // Create the attachment for the uploaded image
-                                    $attachment = array(
-                                        'guid'           => $upload_dir['url'] . '/' . $filename,
-                                        'post_mime_type' => 'image/jpeg',
-                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
-                                        'post_content'   => '',
-                                        'post_status'    => 'inherit'
-                                    );
-                
-                                    // Insert the attachment
-                                    $attachment_id = wp_insert_attachment( $attachment, $image_path );                       
-                
-                                    // Generate the attachment metadata
-                                    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_path );
-                                    wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                
-                                    // Add the attachment ID to the gallery images array
-                                    $gallery_images[] = $attachment_id;
+                                $attach_id = $this->travelfic_import_image( $image_url, $post_id );
+                                if ( $attach_id ) {
+                                    $gallery_images[] = $attach_id;
                                 }
                             }
         
@@ -1947,44 +1879,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 }
             
                                 foreach ( $image_urls as $image_url ) {
-                                    if(!empty($image_url)){
-                                        // Download the image file
-                                        $image_data = file_get_contents( $image_url );
-                                        //if not found image
-                                        if( $image_data === false ){
-                                            continue;
-                                        }
-                                        // Create a unique filename for the image
-                                        $filename   = basename( $image_url );
-                                        $upload_dir = wp_upload_dir();
-                                        $image_path = $upload_dir['path'] . '/' . $filename;
-                    
-                                        // Save the image file to the uploads directory
-                                        $result = file_put_contents( $image_path, $image_data );
-                                        
-                                        //failed to save image
-                                        if( $result === false ){
-                                            continue;
-                                        }
-                    
-                                        // Create the attachment for the uploaded image
-                                        $attachment = array(
-                                            'guid'           => $upload_dir['url'] . '/' . $filename,
-                                            'post_mime_type' => 'image/jpeg',
-                                            'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
-                                            'post_content'   => '',
-                                            'post_status'    => 'inherit'
-                                        );
-                    
-                                        // Insert the attachment
-                                        $attachment_id = wp_insert_attachment( $attachment, $image_path );                       
-                    
-                                        // Generate the attachment metadata
-                                        $attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_path );
-                                        wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                    
-                                        // Add the attachment ID to the gallery images array
-                                        $gallery_images[] = $attachment_id;
+                                    $attach_id = $this->travelfic_import_image( $image_url, $post_id );
+                                    if ( $attach_id ) {
+                                        $gallery_images[] = $attach_id;
                                     }
                                 }
                                 
@@ -2382,43 +2279,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             $post_slug = $row[$column_index];
                         }
                         if( $field == 'thumbnail' ){
-                            $thumbnail = $row[$column_index];
-                            //set as the post thumbnail.
-                            if (!empty( $thumbnail )) {
-                                // Get the file name from the URL.
-                                $filename = basename($thumbnail);
-        
-                                // Download the image to the server.
-                                $upload_dir = wp_upload_dir();
-                                $image_path = $upload_dir['path'] . '/' . $filename;
-        
-                                $image_data = file_get_contents($thumbnail);
-                                file_put_contents($image_path, $image_data);
-        
-                                // Check if the image was downloaded successfully.
-                                if (file_exists($image_path)) {
-                                    // Create the attachment in the media library.
-                                    $attachment = array(
-                                        'guid'           => $upload_dir['url'] . '/' . $filename,
-                                        'post_mime_type' => 'image/jpeg', // Replace with the appropriate mime type if needed.
-                                        'post_title'     => sanitize_file_name($filename),
-                                        'post_content'   => '',
-                                        'post_status'    => 'inherit',
-                                    );
-        
-                                    $attach_id = wp_insert_attachment($attachment, $image_path, $post_id);
-        
-                                    // Include the necessary file 
-                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
-        
-                                    // Set the image as the post thumbnail.
-                                    $attach_data = wp_generate_attachment_metadata($attach_id, $image_path);
-                                    wp_update_attachment_metadata($attach_id, $attach_data);
-        
-                                    $post_meta['_thumbnail_id'] = $attach_id;
-                                }
+                            $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
+                            if ( $attach_id ) {
+                                $post_meta['_thumbnail_id'] = $attach_id;
                             }
-        
                         }
                         if( $field == 'post_date' ){
                             $post_date = $row[$column_index];
@@ -2502,45 +2366,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
         
                             foreach ( $image_urls as $image_url ) {
-                                if(!empty($image_url)){
-                                    // Download the image file
-                                    $image_data = file_get_contents( $image_url );
-                                    
-                                    //if not found image
-                                    if( $image_data === false ){
-                                        continue;
-                                    }
-                                    // Create a unique filename for the image
-                                    $filename = basename( $image_url );
-                                    $upload_dir = wp_upload_dir();
-                                    $image_path = $upload_dir['path'] . '/' . $filename;
-                
-                                    // Save the image file to the uploads directory
-                                    $result = file_put_contents( $image_path, $image_data );
-                                    
-                                    //failed to save image
-                                    if( $result === false ){
-                                        continue;
-                                    }
-                
-                                    // Create the attachment for the uploaded image
-                                    $attachment = array(
-                                        'guid'           => $upload_dir['url'] . '/' . $filename,
-                                        'post_mime_type' => 'image/jpeg',
-                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
-                                        'post_content'   => '',
-                                        'post_status'    => 'inherit'
-                                    );
-                
-                                    // Insert the attachment
-                                    $attachment_id = wp_insert_attachment( $attachment, $image_path );                       
-                                    
-                                    // Generate the attachment metadata
-                                    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_path );
-                                    wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                
-                                    // Add the attachment ID to the gallery images array
-                                    $gallery_images[] = $attachment_id;
+                                $attach_id = $this->travelfic_import_image( $image_url, $post_id );
+                                if ( $attach_id ) {
+                                    $gallery_images[] = $attach_id;
                                 }
                             }
         
