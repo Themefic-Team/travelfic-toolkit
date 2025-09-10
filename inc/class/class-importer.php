@@ -92,7 +92,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                 // site icon
                 if (isset($imported_data['site_icon_url']) && !empty($imported_data['site_icon_url'])) {
-                    $icon_id = $this->upload_media_from_url($imported_data['site_icon_url']);
+                    $icon_id = $this->travelfic_import_image($imported_data['site_icon_url']);
                     if ($icon_id) {
                         update_option('site_icon', $icon_id);
                     }
@@ -193,31 +193,57 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
 		}
 
-        public function upload_media_from_url($image_url) {
-            require_once(ABSPATH . 'wp-admin/includes/media.php');
-            require_once(ABSPATH . 'wp-admin/includes/file.php');
-            require_once(ABSPATH . 'wp-admin/includes/image.php');
-
-            // Download the image and get its file path
-            $tmp_file = download_url($image_url);
-
-            if (is_wp_error($tmp_file)) {
-                return false; // Failed to download
+        /**
+         * Import image from URL but prevent duplicates
+         */
+        function travelfic_import_image( $image_url, $post_id = 0 ) {
+            if ( empty( $image_url ) ) {
+                return false;
             }
 
-            // Prepare file data for WordPress
+            // Extract filename
+            $filename = basename( parse_url( $image_url, PHP_URL_PATH ) );
+
+            $tmp = download_url( $image_url );
+            if ( is_wp_error( $tmp ) ) {
+                return false;
+            }
+
+            $file_hash = md5_file( $tmp );
+            $existing = get_posts( array(
+                'post_type'   => 'attachment',
+                'post_status' => 'inherit',
+                'meta_key'    => '_file_hash',
+                'meta_value'  => $file_hash,
+                'numberposts' => 1,
+                'fields'      => 'ids',
+            ) );
+
+            if ( ! empty( $existing ) ) {
+                @unlink( $tmp ); // cleanup temp file
+                return $existing[0];
+            }
+
             $file_array = array(
-                'name'     => basename($image_url),
-                'tmp_name' => $tmp_file
+                'name'     => $filename,
+                'tmp_name' => $tmp,
             );
 
-            // Upload the image to the media library
-            $attachment_id = media_handle_sideload($file_array, 0);
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/media.php';
+            require_once ABSPATH . 'wp-admin/includes/image.php';
 
-            // Clean up temp file
-            @unlink($tmp_file);
+            $attach_id = media_handle_sideload( $file_array, $post_id );
 
-            return $attachment_id;
+            if ( is_wp_error( $attach_id ) ) {
+                @unlink( $file_array['tmp_name'] );
+                return false;
+            }
+
+            // Save file hash for future duplicate checks
+            update_post_meta( $attach_id, '_file_hash', $file_hash );
+
+            return $attach_id;
         }
 
         /**
@@ -1119,43 +1145,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
 
                             if( $field == 'thumbnail' ){
-                                $thumbnail = $row[$column_index];
-                                //set as the post thumbnail.
-                                if (!empty( $thumbnail )) {
-                                    // Get the file name from the URL.
-                                    $filename = basename($thumbnail);
-
-                                    // Download the image to the server.
-                                    $upload_dir = wp_upload_dir();
-                                    $image_path = $upload_dir['path'] . '/' . $filename;
-
-                                    $image_data = file_get_contents($thumbnail);
-                                    file_put_contents($image_path, $image_data);
-
-                                    // Check if the image was downloaded successfully.
-                                    if (file_exists($image_path)) {
-                                        // Create the attachment in the media library.
-                                        $attachment = array(
-                                            'guid'           => $upload_dir['url'] . '/' . $filename,
-                                            'post_mime_type' => 'image/jpeg', // Replace with the appropriate mime type if needed.
-                                            'post_title'     => sanitize_file_name($filename),
-                                            'post_content'   => '',
-                                            'post_status'    => 'inherit',
-                                        );
-
-                                        $attach_id = wp_insert_attachment($attachment, $image_path, $post_id);
-
-                                        // Include the necessary file for media_handle_sideload().
-                                        require_once(ABSPATH . 'wp-admin/includes/image.php');
-
-                                        // Set the image as the post thumbnail.
-                                        $attach_data = wp_generate_attachment_metadata($attach_id, $image_path);
-                                        wp_update_attachment_metadata($attach_id, $attach_data);
-
-                                        $post_meta['_thumbnail_id'] = $attach_id;
-                                    }
+                                $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
+                                if ( $attach_id ) {
+                                    $post_meta['_thumbnail_id'] = $attach_id;
                                 }
-
                             } else if( $field == 'airport_service_type' && ! empty( $row[$column_index] ) ){
                                 $airport_service_type = explode( ',', $row[$column_index] );
                                 $post_meta['tf_hotels_opt']['airport_service_type'] = $airport_service_type;
@@ -1169,50 +1162,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 $image_urls     = explode( ',', $row[$column_index] );
                                 $gallery_images = array();
 
-                                //include image.php for wp_generate_attachment_metadata() function
-                                if( ! function_exists( 'wp_crop_image' ) ){
-                                    require_once ABSPATH . 'wp-admin/includes/image.php';
-                                }
-
                                 foreach ( $image_urls as $image_url ) {
-                                    if(!empty($image_url)){
-                                        // Download the image file
-                                        $image_data = file_get_contents( $image_url );
-                                        //if not found image
-                                        if( $image_data === false ){
-                                            continue;
-                                        }
-                                        // Create a unique filename for the image
-                                        $filename   = basename( $image_url );
-                                        $upload_dir = wp_upload_dir();
-                                        $image_path = $upload_dir['path'] . '/' . $filename;
-                    
-                                        // Save the image file to the uploads directory
-                                        $result = file_put_contents( $image_path, $image_data );
-                                        
-                                        //failed to save image
-                                        if( $result === false ){
-                                            continue;
-                                        }
-                    
-                                        // Create the attachment for the uploaded image
-                                        $attachment = array(
-                                            'guid'           => $upload_dir['url'] . '/' . $filename,
-                                            'post_mime_type' => 'image/jpeg',
-                                            'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
-                                            'post_content'   => '',
-                                            'post_status'    => 'inherit'
-                                        );
-                    
-                                        // Insert the attachment
-                                        $attachment_id = wp_insert_attachment( $attachment, $image_path );                       
-                    
-                                        // Generate the attachment metadata
-                                        $attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_path );
-                                        wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                    
-                                        // Add the attachment ID to the gallery images array
-                                        $gallery_images[] = $attachment_id;
+                                    $attach_id = $this->travelfic_import_image( $image_url, $post_id );
+                                    if ( $attach_id ) {
+                                        $gallery_images[] = $attach_id;
                                     }
                                 }
 
@@ -1232,56 +1185,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 $total_gall = count( $room_gall_gallery_array ) - 1;
                                 for( $room_gall = 0; $room_gall <= $total_gall; $room_gall++ ){
                                     // Extract the image URLs from the CSV row                           
+                                    $gallery_images = array();
                                     $gallery_index     = $room_gall + 1;
                                     $image_urls        = explode( ',', $room_gall_gallery_array[$gallery_index] );
-                    
-                                    $gallery_images = array();
-                
-                                    //include image.php for wp_generate_attachment_metadata() function
-                                    if( ! function_exists( 'wp_crop_image' ) ){
-                                        require_once ABSPATH . 'wp-admin/includes/image.php';
-                                    }
                 
                                     foreach ( $image_urls as $image_url ) {
-                                        
-                                        if(!empty($image_url)){
-                                            // Download the image file
-                                            $image_data = file_get_contents( $image_url );
-                                            //if not found image
-                                            if( $image_data === false ){
-                                                continue;
-                                            }
-                                            // Create a unique filename for the image
-                                            $filename   = basename( $image_url );
-                                            $upload_dir = wp_upload_dir();
-                                            $image_path = $upload_dir['path'] . '/' . $filename;
-                        
-                                            // Save the image file to the uploads directory
-                                            $result = file_put_contents( $image_path, $image_data );
-                                            
-                                            //failed to save image
-                                            if( $result === false ){
-                                                continue;
-                                            }
-                        
-                                            // Create the attachment for the uploaded image
-                                            $attachment = array(
-                                                'guid'           => $upload_dir['url'] . '/' . $filename,
-                                                'post_mime_type' => 'image/jpeg',
-                                                'post_title'     => preg_replace( '/\.[^.]+$/', '', $filename ),
-                                                'post_content'   => '',
-                                                'post_status'    => 'inherit'
-                                            );
-                        
-                                            // Insert the attachment
-                                            $attachment_id = wp_insert_attachment( $attachment, $image_path );                       
-                        
-                                            // Generate the attachment metadata
-                                            $attachment_data = wp_generate_attachment_metadata( $attachment_id, $image_path );
-                                            wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                        
-                                            // Add the attachment ID to the gallery images array
-                                            $gallery_images[] = $attachment_id;
+                                        $attach_id = $this->travelfic_import_image( $image_url, $post_id );
+                                        if ( $attach_id ) {
+                                            $gallery_images[] = $attach_id;
                                         }
                                     }
                                     
@@ -2851,13 +2762,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						$room_post_id = wp_insert_post( $post_data );
 						update_post_meta( $room_post_id, 'tf_room_opt', $room );
 
-						//insert thumbnail if has 'room_preview_img' key which return url
-						if ( ! empty( $room['room_preview_img'] ) ) {
-							$attachment_id = attachment_url_to_postid( $room['room_preview_img'] );
-							if ( ! empty( $attachment_id ) ) {
-								set_post_thumbnail( $room_post_id, $attachment_id );
-							}
-						}
+						// Import thumbnail (prevent duplicates)
+                        if ( ! empty( $room['room_preview_img'] ) ) {
+                            $attachment_id = $this->travelfic_import_image( $room['room_preview_img'], $room_post_id );
+                            if ( $attachment_id ) {
+                                set_post_thumbnail( $room_post_id, $attachment_id );
+                            }
+                        }
 					}
 
 				}
