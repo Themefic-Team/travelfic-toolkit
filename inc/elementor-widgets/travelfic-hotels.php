@@ -2234,9 +2234,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                                 <?php
                                                                 if (! empty($night_count)) {
                                                                     if ($night_count > 1) {
-                                                                        echo esc_html__('Nights', 'tourfic');
+                                                                        echo esc_html__('Nights', 'travelfic-toolkit');
                                                                     } else {
-                                                                        echo esc_html__('Night', 'tourfic');
+                                                                        echo esc_html__('Night', 'travelfic-toolkit');
                                                                     }
                                                                 }
                                                                 ?>
@@ -2488,9 +2488,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                                 <?php
                                                                 if (! empty($night_count)) {
                                                                     if ($night_count > 1) {
-                                                                        echo esc_html__('Nights', 'tourfic');
+                                                                        echo esc_html__('Nights', 'travelfic-toolkit');
                                                                     } else {
-                                                                        echo esc_html__('Night', 'tourfic');
+                                                                        echo esc_html__('Night', 'travelfic-toolkit');
                                                                     }
                                                                 }
                                                                 ?>

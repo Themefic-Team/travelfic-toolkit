@@ -1181,7 +1181,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                     </div>
                 </div>
                 <div class="tft-about-us-shape">
-                    <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/plane shape.png'); ?>" alt="About us shape">
+                    <img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/plane-shape.png'); ?>" alt="About us shape">
                 </div>
             </div>
 <?php

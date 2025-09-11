@@ -362,7 +362,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'dateFormat' => 'd M, Y',
                     'showMonths' => true
                 ],
-                'default'     => __(date('d M, Y'), 'travelfic-toolkit'),
+                'default' => date('d M, Y'),
                 'label_block' => true,
             ]
         );

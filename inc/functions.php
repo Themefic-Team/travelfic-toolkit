@@ -166,7 +166,7 @@ if (!class_exists("\Tourfic\App\TF_Review")) {
                 'tf_comment_form_title',
                 sprintf( // WPCS: XSS OK.
                     /* translators: 1: number of comments */
-                    esc_html(_nx('%1$s review', '%1$s reviews', $number, 'comments title', 'tourfic')),
+                    esc_html(_nx('%1$s review', '%1$s reviews', $number, 'comments title', 'travelfic-toolkit')),
                     number_format_i18n($number)
                 )
             );

@@ -253,12 +253,12 @@ class Travelfic_Customizer_Header
                         <?php
                             if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="transparent-logo">
-                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                 </a>
                             <?php 
                             } elseif ( !empty($travelfic_site_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
-                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                 </a>
                             <?php } else { ?>
                                 <div class="logo-text">
@@ -271,7 +271,7 @@ class Travelfic_Customizer_Header
                             if( isset( $travelfic_sticky_settings ) ){
                                 if( $travelfic_sticky_settings != 'disabled' && !empty($header_sticky_logo) ){ ?>
                                     <a href="<?php echo esc_url(home_url('/')); ?>" class="sticky-logo">
-                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                     </a>
                                 <?php
                                 }
@@ -311,12 +311,12 @@ class Travelfic_Customizer_Header
                             <?php
                             if ( $travelfic_transparent_settings == 'enabled' && !empty($header_trasnparent_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="transparent-logo">
-                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                 </a>
                             <?php 
                             } elseif ( !empty($travelfic_site_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
-                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                 </a>
                             <?php } else { ?>
                                 <div class="logo-text">
@@ -329,7 +329,7 @@ class Travelfic_Customizer_Header
                             if( isset( $travelfic_sticky_settings ) ){
                                 if( $travelfic_sticky_settings != 'disabled' && !empty($header_sticky_logo) ){ ?>
                                     <a href="<?php echo esc_url(home_url('/')); ?>" class="sticky-logo">
-                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                     </a>
                                 <?php
                                 }
@@ -618,12 +618,12 @@ class Travelfic_Customizer_Header
                             <?php
                             if ( $travelfic_transparent_class == 'tft_has_transparent' && !empty($header_trasnparent_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="transparent-logo">
-                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    <img src="<?php echo esc_url($header_trasnparent_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                 </a>
                             <?php 
                             } elseif ( !empty($travelfic_site_logo) ) { ?>
                                 <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
-                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                    <img src="<?php echo esc_url($travelfic_site_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                 </a>
                             <?php } else { ?>
                                 <div class="logo-text">
@@ -636,7 +636,7 @@ class Travelfic_Customizer_Header
                             if( isset( $travelfic_sticky_settings ) ){
                                 if( $travelfic_sticky_settings != 'disabled' && !empty($header_sticky_logo) ){ ?>
                                     <a href="<?php echo esc_url(home_url('/')); ?>" class="sticky-logo">
-                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic"); ?>">
+                                        <img src="<?php echo esc_url($header_sticky_logo); ?>" alt="<?php esc_attr_e("Logo", "travelfic-toolkit"); ?>">
                                     </a>
                                 <?php
                                 }

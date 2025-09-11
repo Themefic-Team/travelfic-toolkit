@@ -551,7 +551,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         $this->add_control(
             'icon_color_hover',
             [
-                'label'     => __('Hover', 'plugin-domain'),
+                'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-icon-text-design__one .tft-icon-text-single:hover .tft-icon i' => 'color: {{VALUE}};',
