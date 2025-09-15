@@ -637,17 +637,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             // Get the current site's URL and protocol
             $site_url = site_url();
-            $site_host = parse_url($site_url, PHP_URL_HOST);
-            $site_protocol = parse_url($site_url, PHP_URL_SCHEME);
 
             $template_key = $template_key;
             foreach ($menu_data as $menu_item) {
                 // Process the URL
                 $menu_item_url = $menu_item['url'];
-                $menu_item_host = parse_url($menu_item_url, PHP_URL_HOST);
-
-                // Replace the host and protocol
-                $menu_item_url = str_replace(['https://'.$menu_item_host, 'http://'.$menu_item_host], $site_protocol.'://'.$site_host,$menu_item_url);
+                $menu_item_path = parse_url($menu_item_url, PHP_URL_PATH);
+                $menu_item_url = rtrim($site_url, '/') . $menu_item_path;
 
                 $item_key = md5($menu_item['title'] . $menu_item_url);
                 if(isset($added_items[$item_key])){
@@ -670,8 +666,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     foreach ($menu_item['sub_menu'] as $sub_menu_item) {
                         // Process sub-menu URL
                         $sub_menu_item_url = $sub_menu_item['url'];
-                        $sub_menu_item_host = parse_url($sub_menu_item_url, PHP_URL_HOST);
-                        $sub_menu_item_url = str_replace(['https://'.$sub_menu_item_host, 'http://'.$sub_menu_item_host],$site_protocol.'://'.$site_host, $sub_menu_item_url);
+                        $sub_menu_item_path = parse_url($sub_menu_item_url, PHP_URL_PATH);
+                        $sub_menu_item_url = rtrim($site_url, '/') . $sub_menu_item_path;
 
                         $sub_item_key = md5($sub_menu_item['title'] . $sub_menu_item_url);
                         if(isset($added_items[$sub_item_key])){
