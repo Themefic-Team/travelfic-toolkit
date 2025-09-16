@@ -1116,7 +1116,6 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
             [
                 'name'     => 'tour_destination_card_title_typography',
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__three .tft-destination-content a h3',
-
                 'label'    => __('Typography', 'travelfic-toolkit'),
 
                 'condition' => [
@@ -1190,6 +1189,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
 
         $this->end_controls_section();
     }
+
 
 
     protected function render()

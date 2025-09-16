@@ -1,0 +1,18 @@
+.tf_template_3_global_layouts{
+    .footer{
+        .container{
+            max-width: 1220px!important;
+            @media #{$max1760}{
+                padding: 0 15px!important;
+            }
+        }
+        &-bottom{
+            .container{
+                max-width: 1220px!important;
+                @media #{$max1760}{
+                    padding: 0 15px!important;
+                }
+            }
+        }
+    }
+}

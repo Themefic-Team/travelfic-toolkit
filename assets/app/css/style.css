@@ -114,7 +114,7 @@ main {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 99991;
 }
 
 .tft-section-space {
@@ -1517,6 +1517,8 @@ textarea.tft-form-control {
 .tft-header-design__three {
   background: #07245f;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: relative;
+  z-index: 99991;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-header-design__three {
@@ -8202,6 +8204,23 @@ body.archive .tft-header-design__two {
 }
 .tft-section-heading__two .section-title-suffix {
   color: var(--tf-primary);
+}
+
+.tf_template_3_global_layouts .footer .container {
+  max-width: 1220px !important;
+}
+@media only screen and (max-width: 1760px) {
+  .tf_template_3_global_layouts .footer .container {
+    padding: 0 15px !important;
+  }
+}
+.tf_template_3_global_layouts .footer-bottom .container {
+  max-width: 1220px !important;
+}
+@media only screen and (max-width: 1760px) {
+  .tf_template_3_global_layouts .footer-bottom .container {
+    padding: 0 15px !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

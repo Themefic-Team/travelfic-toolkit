@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name: Travelfic Toolkit
+ * Plugin Name: Tourfic Toolkit
  * Plugin URI: https://tourfic.site/travelfic/
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
- * Version: 9999
- * Tested up to: 6.7
+ * Version: 1.2.5
+ * Tested up to: 6.8
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
- * Elementor tested up to: 3.26
+ * Elementor tested up to: 3.29
  * License: GPLv2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -24,7 +24,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_ASSETS', TRAVELFIC_TOOLKIT_URL . 'assets/' );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.1.9' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.2.5' );
 
 /**
  * Include file from plugin if it is not available in theme

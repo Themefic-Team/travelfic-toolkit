@@ -1798,8 +1798,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $design4_slider_arrows = ("arrows" === $design4_slider_nav) ? 'true' : 'false';
         $design4_slider_dots = ("dots" === $design4_slider_nav) ? 'true' : 'false';
         $design4_slider_autoplay = ('yes' === $settings['design4_slider_autoplay']) ? 'true' : 'false';
-        $design4_slider_autoplay_speed = !empty($settings['design4_slider_autoplay_speed']) ? $settings['design4_slider_autoplay_speed']['size'] : 0;
-        $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? $settings['design4_slider_autoplay_interval']['size'] : 0;
+        $design4_slider_autoplay_speed = !empty($settings['design4_slider_autoplay_speed']) ? absint($settings['design4_slider_autoplay_speed']['size']) : 0;
+        $design4_slider_autoplay_interval = !empty($settings['design4_slider_autoplay_interval']) ? absint($settings['design4_slider_autoplay_interval']['size']) : 0;
         $design4_slider_loop = ('yes' === $settings['design4_slider_loop']) ? 'true' : 'false';
         $design4_slider_animation = ('yes' === $settings['design4_slider_animation']) ? 'true' : 'false';
         $design4_slider_pause_on_hover = ('yes' === $settings['design4_slider_pause_on_hover']) ? 'true' : 'false';

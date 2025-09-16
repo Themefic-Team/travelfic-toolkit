@@ -132,7 +132,6 @@ if(mobileMenuToggle && mobileSidenav) {
   });
 }
 
-
 // Close the sidenav
 if(closeMobileMenu && mobileSidenav) {
   closeMobileMenu.addEventListener("click", function () {
@@ -173,21 +172,29 @@ const shareButtons = document.querySelectorAll(".share-btn");
 const socialMediaIcons = document.querySelectorAll(".social-media");
 
 //  Toggle social media icons
-shareButtons.forEach((button) => {
-  button.addEventListener("click", function (e) {
-    e.stopPropagation();
-    const socialMedia = this.closest(".social-media-icons").querySelector(
-      ".social-media"
-    );
-    socialMedia.classList.toggle("active");
+if(shareButtons){
+  shareButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const socialMedia = this.closest(".social-media-icons").querySelector(
+        ".social-media"
+      );
+      if(socialMedia){
+        socialMedia.classList.toggle("active");
+      }
+    });
   });
-});
+}
 
-socialMediaIcons.forEach((icon) => {
-  icon.addEventListener("click", function (e) {
-    e.stopPropagation();
+
+if(socialMediaIcons){
+  socialMediaIcons.forEach((icon) => {
+    icon.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
   });
-});
+}
+
 
 /**
  *

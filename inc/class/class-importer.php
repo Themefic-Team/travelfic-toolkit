@@ -1319,7 +1319,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             'post_title'   => $post_title,
                             'post_content' => $post_content,
                             'post_status'  => 'publish',
-                            'post_author'  => 1,
+                            'author'  => get_current_user_id(),
                             'post_date'    => $post_date,
                             'meta_input'   => $post_meta,
                             'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -1931,7 +1931,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'post_title'   => $post_title,
                         'post_content' => $post_content,
                         'post_status'  => 'publish',
-                        'post_author'  => 1,
+                        'author'  => get_current_user_id(),
                         'post_date'    => $post_date,
                         'meta_input'   => $post_meta,
                         'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -2464,7 +2464,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'post_title'   => $post_title,
                         'post_content' => $post_content,
                         'post_status'  => 'publish',
-                        'post_author'  => 1,
+                        'author'  => get_current_user_id(),
                         'post_date'    => $post_date,
                         'meta_input'   => $post_meta,
                         'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -2595,6 +2595,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					}
 
 					$current_user_id = get_current_user_id();
+                    $room_ids = array();
 					foreach ( $rooms as $room ) {
 						$post_data        = array(
 							'post_type'    => 'tf_room',
@@ -2607,6 +2608,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 						$room_post_id = wp_insert_post( $post_data );
 						update_post_meta( $room_post_id, 'tf_room_opt', $room );
+                        $room_ids[] = $room_post_id;
 
 						// Import thumbnail (prevent duplicates)
                         if ( ! empty( $room['room_preview_img'] ) ) {
@@ -2617,6 +2619,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
 					}
 
+                    $meta['tf_rooms'] = $room_ids;
+                    update_post_meta( $post_id, 'tf_hotels_opt', $meta );
 				}
 			}
 		}

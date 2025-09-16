@@ -149,6 +149,17 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
 
         $repeater = new \Elementor\Repeater();
         $repeater->add_control(
+			'image_icon_switcher',
+			[
+				'label' => esc_html__( 'Choose Type', 'travelfic-toolkit' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'Image', 'travelfic-toolkit' ),
+                'label_off' => esc_html__( 'Icon', 'travelfic-toolkit' ),
+				'return_value' => 'yes',
+				'default' => 'yes',
+			]
+		);
+        $repeater->add_control(
             'box_image',
             [
                 'label'   => __('Image', 'travelfic-toolkit'),
@@ -158,6 +169,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                 ],
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'image_icon_switcher' => 'yes',
                 ],
             ]
         );
@@ -171,7 +185,7 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                     'library' => 'solid',
                 ],
                 'condition' => [
-                    'tft_icon_style' => 'design-1',
+                    'image_icon_switcher!' => 'yes',
                 ],
             ]
         );
@@ -824,7 +838,10 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
         <?php elseif ($settings['icon_text_list']): ?>
             <div class="tft-icon-text-design__one tft-customizer-typography">
                 <div class="tft-icon-text-items tft-flex">
-                    <?php foreach ($settings['icon_text_list'] as $item): ?>
+                    <?php foreach ($settings['icon_text_list'] as $item): 
+                        
+                        error_log(print_r($item, true));
+                        ?>
 
                         <div class="tft-icon-text-single" <?php if ($item['active_gap'] == 'yes'): ?>
                             style="margin-top:<?php echo esc_html($settings['items_gap']); ?>px;" <?php else: ?>

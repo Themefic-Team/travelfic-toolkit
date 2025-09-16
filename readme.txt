@@ -2,8 +2,8 @@
 Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
-Tested up to: 6.7
-Stable tag: 1.1.9
+Tested up to: 6.8
+Stable tag: 1.2.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -148,119 +148,34 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.1.9 - 12 January 2025 =
+= 1.2.5 - 24 June 2025 =
 
-- Fixed: Image loading issue during demo import.
+- Fixed: Testimonial widget slider arrow issue.
+- Updated: Slider arrow color for improved visibility.
 
-= 1.1.8 - 31 December 2024 =
+= 1.2.4 - 20 April 2025 =
 
-- Updated: Refined the readme.txt file and plugin information.
-- Compatibility: Ensured compatibility with Elementor 3.26.3.
+- Fixed: Hero section button issue on mobile devices.
 
-= 1.1.7 - 22 December 2024 =
+= 1.2.3 - 08 April 2025 =
 
-- Improved: Updated demos for Car, Apartment, Tour, and Hotel.
+- Fixed: Security vulnerability issue has been resolved.
 
-= 1.1.6 - 15 December 2024 =
+= 1.2.2 - 08 March 2025 =
 
-- Fixed: Resolved the car rental search issue.
+- Fixed: The import/export issue has been resolved.
+- Improved: System stability for better performance.
 
-= 1.1.5 - 12 December 2024 =
+= 1.2.1 - 06 March 2025 =
 
-- Improved: Car rental theme demo.
+- Fixed: Price currency issue has been resolved.
+- Fixed: Car layout responsiveness issue has been fixed.
 
-= 1.1.4 - 10 December 2024 =
+= 1.2.0 - 19 January 2025 =
 
-- Added: Car rental theme demo introduced.
-- Improvement: Updated Elementor Widgets.
-
-= 1.1.3 – 27 November 2024 =
-
-- Added: Added: Car rental widgets introduced.
-- Improvement: Updated and refined widgets for the car rental feature.
-
-= 1.1.2 - 30 October 2024 =
-
-- Added: Settings for changing Search form Tab Title
-- Fixed: Travelfic Popular Tours Arrow Icon Color
-
-= 1.1.1 - 03 October 2024 =
-
-- System stability improved
-- Added Ultimate Hotel Booking
-
-= 1.0.15 - 21 August 2024 =
-
-- Fixed: Review error issue
-- System stability improved
-
-= 1.0.14 - 02 August 2024 =
-
-- Improvement: System stability
-- Fixed: Design issues
-- Improvement: Security enhancements
-
-= 1.0.13 - 17 July 2024 =
-
-- Compatible with WordPress 6.6
-- System stability improved
-
-= 1.0.12 - 11 July 2024 =
-
-- Improvement: System stability improved
-
-= 1.0.11 - 08 July 2024 =
-
-- Fixed: Quick setup issue
-
-= 1.0.10 - 13 May 2024 =
-
-- Fixed: Hero section background issue
-
-= 1.0.9 - 12 May 2024 =
-
-- Fixed: Minor bug fixes & improvements
-- Improvement: System stability Improved
-
-= 1.0.8 - 30 April 2024 =
-
-- Fixed: Minor bug fixes & improvements
-- Added: Notice for Travelfic theme 
-- Compatibility: Compatible with WordPress 6.5
-- Added: Plugin dependency notice
-
-= 1.0.7 - 15 March 2024 =
-
-- Added: Disclaimer for Patchstack VDP
-- Updated: readme.txt
-
-= 1.0.6 - 09 March 2024 =
-
-- Improvement: System stability Improved
-- Updated: Updated readme.txt
-
-= 1.0.5 =
-
-- Fixed: Travelfic theme required notice
-
-= 1.0.4 =
-
-- Improved: Widgets Importing
-- Improved: Customizer Font Family Selection Design
-- Fixed: Demo Importing
-
-= 1.0.3 =
-
-- Added: Appsero Integrate
-
-= 1.0.2 =
-
-- Improved: Template Library Page design
-- Added: Travelcraze Template
-
-= 1.0.1 =
-
-- Added: Customizer Font Family Selection Style
+- Introduced: A new demo for Tourfic called "Tragaway".
+- Improved: System stability has been improved.
+- Fixed: Minor bugs and issues have been fixed.
 
 = 1.0.0 =
 
