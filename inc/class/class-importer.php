@@ -628,6 +628,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $menu_items = unserialize($serialized_menu);
                 self::travelfic_toolkit_create_menu_from_imported_data($menu_items, $template_key);
             }
+
+            update_option('permalink_structure', '/%postname%/');
+            flush_rewrite_rules();
             
             die();
         }
