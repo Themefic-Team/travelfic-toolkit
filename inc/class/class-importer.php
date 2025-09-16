@@ -658,8 +658,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             foreach ($menu_data as $menu_item) {
                 // Process the URL
                 $menu_item_url = $menu_item['url'];
-                $menu_item_path = parse_url($menu_item_url, PHP_URL_PATH);
-                $menu_item_url = rtrim($site_url, '/') . $menu_item_path;
+                
+                if ($menu_item_url !== '#') {
+                    $menu_item_path = parse_url($menu_item_url, PHP_URL_PATH);
+                    $menu_item_url  = rtrim($site_url, '/') . $menu_item_path;
+                }
 
                 $item_key = md5($menu_item['title'] . $menu_item_url);
                 if(isset($added_items[$item_key])){
@@ -674,6 +677,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     'menu-item-type' => 'custom',
                     'menu-item-status' => 'publish'
                 );
+
                 // Insert the top-level menu item.
                 $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
                 $added_items[$item_key] = $menu_item_id;
@@ -682,8 +686,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     foreach ($menu_item['sub_menu'] as $sub_menu_item) {
                         // Process sub-menu URL
                         $sub_menu_item_url = $sub_menu_item['url'];
-                        $sub_menu_item_path = parse_url($sub_menu_item_url, PHP_URL_PATH);
-                        $sub_menu_item_url = rtrim($site_url, '/') . $sub_menu_item_path;
+                        if ($sub_menu_item_url !== '#') {
+                            $sub_menu_item_path = parse_url($sub_menu_item_url, PHP_URL_PATH);
+                            $sub_menu_item_url  = rtrim($site_url, '/') . $sub_menu_item_path;
+                        }
 
                         $sub_item_key = md5($sub_menu_item['title'] . $sub_menu_item_url);
                         if(isset($added_items[$sub_item_key])){
