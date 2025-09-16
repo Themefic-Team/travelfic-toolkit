@@ -384,6 +384,7 @@
 
     @media #{$max767} {
       min-height: auto;
+      overflow-x: hidden;
     }
 
     // container

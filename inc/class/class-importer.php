@@ -98,6 +98,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     }
                 }
 
+                if (isset($imported_data[ $prefix . 'design_2_login_url' ]) && !empty($imported_data[ $prefix . 'design_2_login_url' ])) {
+                    $imported_data[ $prefix . 'design_2_login_url' ] = trailingslashit(site_url()) . ltrim($imported_data[ $prefix . 'design_2_login_url' ], '/');
+                }
+
+                if (isset($imported_data[ $prefix . 'design_2_registration_url' ]) && !empty($imported_data[ $prefix . 'design_2_registration_url' ])) {
+                    $imported_data[ $prefix . 'design_2_registration_url' ] = trailingslashit(site_url()) . ltrim($imported_data[ $prefix . 'design_2_registration_url' ], '/');
+                }
+
+                if (isset($imported_data[ $prefix . 'design_3_login_url' ]) && !empty($imported_data[ $prefix . 'design_3_login_url' ])) {
+                    $imported_data[ $prefix . 'design_3_login_url' ] = trailingslashit(site_url()) . ltrim($imported_data[ $prefix . 'design_3_login_url' ], '/');
+                }
+
+
                 // // header menu color
                 // if(isset($imported_data['travelfic_customizer_settings_menu_color'])){
                 //     $imported_data['travelfic_customizer_settings_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_menu_color'];

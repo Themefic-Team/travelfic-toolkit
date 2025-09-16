@@ -506,3 +506,24 @@
     }
   }
 }
+@media #{$max767} {
+  .single-tf_tours .tf-single-template__one ~ .tft-site-footer .tft-footer-bottom,
+  .single-tf_tours .tf-single-template__one ~ .tft-footer-bottom__three{
+    margin-bottom: 70px;
+  }
+
+  .single-tf_tours .tf-single-template__two ~ .tft-site-footer .tft-footer-bottom,
+  .single-tf_tours .tf-single-template__two ~ .tft-footer-bottom__three {
+    margin-bottom: 50px;
+  }
+
+  .single-tf_tours .tf-single-template__legacy ~ .tft-site-footer .tft-footer-bottom,
+  .single-tf_tours .tf-single-template__legacy ~ .tft-footer-bottom__three {
+    margin-bottom: 60px;
+  }
+
+  .single-tf_carrental .tf-single-template__one ~ .tft-site-footer .tft-footer-bottom,
+  .single-tf_carrental .tf-single-template__one ~ .tft-footer-bottom__three {
+    margin-bottom: 90px;
+  }
+}

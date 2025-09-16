@@ -336,22 +336,39 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $social_repeater->add_control(
             'social_media_label',
             [
-                'label'       => __('Social Media Label', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::SELECT,
-                'options'     => [
-                    'facebook' => __('Facebook', 'travelfic-toolkit'),
-                    'twitter'  => __('Twitter', 'travelfic-toolkit'),
-                    'linkedin'  => __('Linkedin', 'travelfic-toolkit'),
-                    'instagram'  => __('Instagram', 'travelfic-toolkit'),
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fab fa-wordpress-simple',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+                    'fa-brands' => [
+                        'facebook-f',
+                        'x-twitter',
+                        'linkedin-in',
+                        'instagram',
+                        'youtube',
+                        'pinterest-p',
+                        'tiktok',
+                        'whatsapp',
+                        'telegram',
+                        'github',
+                        'reddit-alien',
+                        'tumblr',
+                        'snapchat-ghost',
+                        'dribbble',
+                        'behance',
+                        'flickr',
+                        'wordpress-simple',
+                    ],
                 ],
-                'default'     => 'facebook',
-                'label_block' => true,
-            ]
+			]
         );
         $social_repeater->add_control(
             'social_media_url',
             [
-                'label'       => __('Social Media URL', 'travelfic-toolkit'),
+                'label'       => __('Link', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::URL,
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
@@ -368,20 +385,37 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'fields'  => $social_repeater->get_controls(),
                 'default' => [
                     [
-                        'social_media_label' => 'facebook',
+                        'social_media_label' => [
+                            'value' => 'fab fa-facebook-f',
+                            'library' => 'fa-brands',
+                        ],
                     ],
                     [
-                        'social_media_label' => 'twitter',
+                        'social_media_label' => [
+                            'value' => 'fab fa-x-twitter',
+                            'library' => 'fa-brands',
+                        ],
                     ],
                     [
-                        'social_media_label' => 'linkedin',
+                        'social_media_label' => [
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'fa-brands',
+                        ],
                     ],
                     [
-                        'social_media_label' => 'instagram',
+                        'social_media_label' => [
+                            'value' => 'fab fa-instagram',
+                            'library' => 'fa-brands',
+                        ],
                     ],
-
+                    [
+                        'social_media_label' => [
+                            'value' => 'fab fa-tiktok',
+                            'library' => 'fa-brands',
+                        ],
+                    ],
                 ],
-                'title_field' => '{{{ social_media_label }}}',
+                'title_field' => '{{{ social_media_label.value }}}',
                 'condition'   => [
                     'slider_style' => 'design-4',
                 ],
@@ -1861,34 +1895,15 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                             <ul class="tft-hero-design__four__social__list">
                                 <?php foreach ($settings['social_media_list'] as $social):
                                     $target_blank = $social['social_media_url']['is_external'] ? 'target="_blank"' : '';
-                                    $social_media_name = isset($social['social_media_label']) ? $social['social_media_label'] : '';
+                                    $social_media_icon = isset($social['social_media_label']) ? $social['social_media_label'] : '';
                                 ?>
                                     <!-- social media item-->
                                     <li class="tft-hero-design__four__social__list__item">
                                         <a href="<?php echo esc_url($social['social_media_url']['url']); ?>"
                                             class="tft-hero-design__four__social__list__item--link tft-bg-hover-primary"
-                                            <?php echo esc_attr($target_blank); ?>
-                                            aria-label="<?php echo esc_attr('Visit ' . $social_media_name . ' page'); ?>">
+                                            <?php echo esc_attr($target_blank); ?>>
                                             <span class="tft-hero-design__four__social-icon">
-                                                <?php
-
-                                                $social_icon = '';
-                                                switch ($social_media_name) {
-                                                    case 'facebook':
-                                                        $social_icon = 'fa-facebook-f';
-                                                        break;
-                                                    case 'twitter':
-                                                        $social_icon = 'fa-x-twitter';
-                                                        break;
-                                                    case 'linkedin':
-                                                        $social_icon = 'fa-linkedin-in';
-                                                        break;
-                                                    case 'instagram':
-                                                        $social_icon = 'fa-instagram';
-                                                        break;
-                                                }
-                                                ?>
-                                                <i class="fa-brands <?php echo esc_attr($social_icon); ?>" aria-hidden="true"></i>
+                                                <i class="fa-brands <?php echo esc_attr($social_media_icon['value']); ?>" aria-hidden="true"></i>
                                             </span>
                                         </a>
                                     </li>
