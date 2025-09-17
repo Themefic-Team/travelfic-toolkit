@@ -1,25 +1,70 @@
 // Abstract Styles
 
-@import "./abstracts/mixins";
-@import "./abstracts/variable";
+@use "./abstracts/mixins";
+@use "./abstracts/variable";
 
 //Base Styles
-@import "./base/reset";
-@import "./base/typography";
+@use "./base/reset";
 
 //Component
-@import "./component/button";
-@import "./component/common";
-@import "./component/loader";
+@use "./component/button";
+@use "./component/common";
+@use "./component/loader";
 
 
 //Layout
-@import "./layout/footer";
-@import "./layout/header";
+@use "./layout/footer";
+@use "./layout/header";
 
 //Pages Styles
-@import "./pages/home";
-@import "./pages/about";
-@import "./pages/contact";             
-@import "./pages/design-2";             
-@import "./pages/single";             
+@use "./pages/home";
+@use "./pages/about";
+@use "./pages/contact";
+
+
+
+/** 
+*
+* Widget Parts Start 
+*
+**/
+
+// hero slider
+@use './widget-parts/slider-hero';
+
+// about us
+@use './widget-parts/about-us';
+
+// car brand
+@use './widget-parts/car-brand';
+
+// car
+@use './widget-parts/car';
+
+// cf7 form
+@use './widget-parts/cf7-form';
+
+// hotels
+@use './widget-parts/hotels';
+
+// icon with text
+@use './widget-parts/icon-with-text';
+
+// latest news
+@use './widget-parts/latest-news';
+
+// popular tours
+@use './widget-parts/popular-tours';
+
+// team
+@use './widget-parts/team';
+
+// testimonials
+@use './widget-parts/testimonials';
+
+// Tour Destination
+@use './widget-parts/tour-destination';
+
+
+// Section Heading
+@use './widget-parts/section-heading';

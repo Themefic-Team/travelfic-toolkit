@@ -1,3 +1,6 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
 * {
   margin: 0px;
   padding: 0px;
@@ -8,30 +11,12 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  overflow-x: hidden;
-}
-
-main {
-  margin-bottom: 56px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0px;
-  padding: 0px;
-}
-
 a {
   text-decoration: none;
+
+  &:focus {
+    border: 0;
+  }
 
   &:hover {
     text-decoration: none;
@@ -90,31 +75,19 @@ main {
   display: block;
 }
 
-.container {
-  // max-width: 1678px;
-  max-width: 1220px;
-  margin: 0 auto;
-  padding: 0;
+.elementor-button-content-wrapper {
+  @include align-items(center);
 
-  &.tft-fullwidth-container {
-    max-width: 100%;
-
-    @media #{$max1199} {
-      padding: 0 15px;
-    }
-  }
-
-  @media #{$max1760} {
-    padding: 0 15px;
+  .elementor-button-icon {
+    line-height: 0;
   }
 }
-
 
 .tft-w-padding {
   padding-left: 200px;
   padding-right: 200px;
 
-  @media #{$max1366} {
+  @media (max-width: 1366px) {
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -123,9 +96,15 @@ main {
 .tft-l-padding {
   padding-left: 200px;
 
-  @media #{$max1366} {
+  @media (max-width: 1366px) {
     padding-left: 32px;
   }
+}
+
+
+.tft-container-width {
+  max-width: 1521px;
+  margin: auto;
 }
 
 .tft-fullwidth-container {
@@ -133,26 +112,171 @@ main {
   padding-right: 32px;
 }
 
-.single {
-  input#submit {
-    background: $color-primary;
-    @include transition(.3s);
-    &:hover {
-      background-color: $color-secondary;
-    }
+.tft_has_sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.tft-section-space {
+  padding: 120px 0;
+
+  @media (max-width: 1399px) {
+    padding: 100px 0;
+  }
+
+  @media #{$max1199} {
+    padding: 80px 0;
+  }
+
+  @media #{$max991} {
+    padding: 72px 0;
+  }
+
+}
+
+.tft-section-space-top {
+  padding-top: 120px;
+
+  @media (max-width: 1399px) {
+    padding-top: 100px;
+  }
+
+  @media #{$max1199} {
+    padding-top: 80px;
+  }
+
+  @media #{$max991} {
+    padding-top: 72px;
   }
 }
 
-.comment-form-cookies-consent {
-  input {
-    width: auto;
+.tft-section-space-bottom {
+  padding-bottom: 120px;
+
+  @media (max-width: 1399px) {
+    padding-bottom: 100px;
   }
-  label{
-    cursor: pointer;
+
+  @media #{$max1199} {
+    padding-bottom: 80px;
+  }
+
+  @media #{$max991} {
+    padding-bottom: 72px;
   }
 }
 
-.search-form label{
-  margin-bottom: 10px;
-  display: block;
+.tft-section-small-bottom-space {
+  padding-bottom: 80px;
+
+  @media #{$max1199} {
+    padding-bottom: 72px;
+  }
+}
+
+.tft-heading-content p:empty {
+  display: none;
+}
+
+.tft-no-reapeat {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+input[type="text"].tft-form-control,
+input[type="email"].tft-form-control,
+input[type="url"].tft-form-control,
+input[type="password"].tft-form-control,
+input[type="search"].tft-form-control,
+input[type="number"].tft-form-control,
+input[type="tel"].tft-form-control,
+input[type="range"].tft-form-control,
+input[type="date"].tft-form-control,
+input[type="month"].tft-form-control,
+input[type="week"].tft-form-control,
+input[type="time"].tft-form-control,
+input[type="datetime"].tft-form-control,
+input[type="datetime-local"].tft-form-control,
+input[type="color"].tft-form-control,
+textarea.tft-form-control {
+  @include bd-radius(5px);
+  border: 1px solid $tft-color-border;
+  background: $tft-color-white;
+  padding: 17px 25px 18px;
+
+  @media #{$max991} {
+    font-size: 0.938rem;
+    padding: 12px 20px;
+  }
+}
+
+.tft-text-center {
+  text-align: center;
+}
+
+.tft-text-right {
+  text-align: right;
+}
+
+.tft-d-flex {
+  @include d-flex();
+}
+
+.tft-d-grid {
+  display: grid;
+}
+
+
+.tft-items-center {
+  @include d-flex();
+  @include align-items(center);
+}
+
+.tft-justify-center {
+  @include d-flex();
+  @include justify-content(center);
+}
+
+.tft-justify-between {
+  @include d-flex();
+  @include justify-content(space-between);
+}
+
+.tft-align-center {
+  @include align-center();
+}
+
+.tft-flex-column {
+  @include d-flex();
+  @include flex-direction(column);
+}
+
+.tft-rounded-0 {
+  border-radius: 0;
+}
+
+.tft-gap-0 {
+  gap: 0;
+}
+
+.tft-border-0 {
+  border: 0;
+}
+
+.tft-h-100 {
+  height: 100%;
+}
+
+
+.tft-w-100 {
+  width: 100%;
+}
+
+.tft-box-hidden {
+  overflow: hidden;
+  max-width: 1220px;
+  margin: auto;
 }

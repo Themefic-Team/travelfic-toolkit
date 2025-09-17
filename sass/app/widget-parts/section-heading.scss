@@ -1,0 +1,11 @@
+@use '../abstracts/variable' as *;
+.tft-section-heading{
+    &__two{
+        .section-title{
+            color: $tft-color-heading;
+            &-suffix{
+                color: $tft-color-primary;
+            }
+        }
+    }
+}

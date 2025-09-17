@@ -210,7 +210,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'name'     => 'tft_section_title_typo',
 				'label'    => __('Typography', 'travelfic-toolkit'),
-				'selector' => '{{WRAPPER}} .tft-section-head .section-title',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title',
 			]
 		);
 		$this->add_control(
@@ -219,7 +219,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'label' => __('Title Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-section-head .section-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -239,7 +239,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'name'     => 'tft_section_content_typo',
 				'label'    => __('Typography', 'travelfic-toolkit'),
-				'selector' => '{{WRAPPER}} .tft-section-head .subtitle',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-section-head .subtitle',
 				'condition' => [
 					'tft_heading_style' => 'design-1',
 				]
@@ -251,7 +251,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'label' => __('Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-section-head .subtitle' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .subtitle' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'tft_heading_style' => 'design-1',
@@ -265,7 +265,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .tft-section-head .subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition' => [
 					'tft_heading_style' => 'design-1',
@@ -285,7 +285,7 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'name'     => 'suffix_typo',
 				'label'    => __('Typography', 'travelfic-toolkit'),
-				'selector' => '{{WRAPPER}} .tft-section-head .section-title-suffix',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title-suffix',
 			]
 		);
 		$this->add_control(
@@ -293,9 +293,8 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 			[
 				'label' => __('Color', 'travelfic-toolkit'),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'default' => '#F15D30',
 				'selectors' => [
-					'{{WRAPPER}} .tft-section-head .section-title-suffix' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-section-head .section-title-suffix' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -312,33 +311,32 @@ class Travelfic_Toolkit_SectionHeading extends \Elementor\Widget_Base
 		}
 
 ?>
-		<div class="tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
-
-			<?php if ('design-2' == $tft_design): ?>
-				<h2 class="title section-title">
-					<span class="section-title-suffix">
-						<?php if ($settings['title_suffix']) {
-							echo esc_html($settings['suffix_title']);
-						} ?>
-					</span>
-					<?php echo esc_html($settings['tf_heading']); ?>
-
-				</h2>
-			<?php else : ?>
-				<h2 class="title section-title">
-					<?php echo esc_html($settings['tf_heading']); ?>
-					<span class="section-title-suffix">
-						<?php if ($settings['title_suffix']) {
-							echo esc_html($settings['suffix_title']);
-						} ?>
-					</span>
-				</h2>
-				<p class="subtitle">
-					<?php echo esc_html($settings['tf_heading_details']); ?>
-				<p>
-			<?php endif; ?>
-
+	<?php if ('design-2' == $tft_design): ?>
+		<div class="tft-section-heading__two tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
+			<h2 class="title section-title">
+				<span class="section-title-suffix">
+					<?php if ($settings['title_suffix']) {
+						echo esc_html($settings['suffix_title']);
+					} ?>
+				</span>
+				<?php echo esc_html($settings['tf_heading']); ?>
+			</h2>
 		</div>
+	<?php else : ?>
+		<div class="tft-section-heading__one tft-section-head" style="text-align: <?php echo esc_attr($settings['text_align']); ?>;">
+			<h2 class="title section-title">
+				<?php echo esc_html($settings['tf_heading']); ?>
+				<span class="section-title-suffix">
+					<?php if ($settings['title_suffix']) {
+						echo esc_html($settings['suffix_title']);
+					} ?>
+				</span>
+			</h2>
+			<p class="subtitle">
+				<?php echo esc_html($settings['tf_heading_details']); ?>
+			<p>
+		</div>
+	<?php endif; ?>
 <?php
 	}
 }

@@ -28,7 +28,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Travelfic Slider Hero', 'travelfic-toolkit');
+        return esc_html__('Travelfic Hero', 'travelfic-toolkit');
     }
 
     /**
@@ -126,7 +126,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'hero_slider',
             [
-                'label' => __('Slider Items', 'travelfic-toolkit'),
+                'label' => __('Hero Content', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -153,7 +153,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Banner title', 'travelfic-toolkit'),
                 'default' => __('Embark on extraordinary voyages and explorations', 'travelfic-toolkit'),
                 'condition' => [
-                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3'],
                 ],
             ]
         );
@@ -169,7 +169,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'slider_style' => ['design-2', 'design-3', 'design-4'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-2', 'design-3', 'design-4'],
                 ],
             ]
         );
@@ -288,7 +288,6 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
-
             ]
         );
 
@@ -312,7 +311,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->start_controls_section(
             'social_content_section',
             [
-                'label' => __('Hero Social Content', 'themefic_themedev'),
+                'label' => __('Hero Social Content', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
                 'condition'   => [
                     'slider_style' => 'design-4',
@@ -337,22 +336,39 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $social_repeater->add_control(
             'social_media_label',
             [
-                'label'       => __('Social Media Label', 'themefic_themedev'),
-                'type'        => \Elementor\Controls_Manager::SELECT,
-                'options'     => [
-                    'facebook' => __('Facebook', 'themefic_themedev'),
-                    'twitter'  => __('Twitter', 'themefic_themedev'),
-                    'linkedin'  => __('Linkedin', 'themefic_themedev'),
-                    'instagram'  => __('Instagram', 'themefic_themedev'),
+				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::ICONS,
+				'default' => [
+					'value' => 'fab fa-wordpress-simple',
+					'library' => 'fa-solid',
+				],
+				'recommended' => [
+                    'fa-brands' => [
+                        'facebook-f',
+                        'x-twitter',
+                        'linkedin-in',
+                        'instagram',
+                        'youtube',
+                        'pinterest-p',
+                        'tiktok',
+                        'whatsapp',
+                        'telegram',
+                        'github',
+                        'reddit-alien',
+                        'tumblr',
+                        'snapchat-ghost',
+                        'dribbble',
+                        'behance',
+                        'flickr',
+                        'wordpress-simple',
+                    ],
                 ],
-                'default'     => 'facebook',
-                'label_block' => true,
-            ]
+			]
         );
         $social_repeater->add_control(
             'social_media_url',
             [
-                'label'       => __('Social Media URL', 'themefic_themedev'),
+                'label'       => __('Link', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::URL,
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
@@ -364,25 +380,42 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'social_media_list',
             [
-                'label'   => __('Social Media List', 'themefic_themedev'),
+                'label'   => __('Social Media List', 'travelfic-toolkit'),
                 'type'    => \Elementor\Controls_Manager::REPEATER,
                 'fields'  => $social_repeater->get_controls(),
                 'default' => [
                     [
-                        'social_media_label' => 'facebook',
+                        'social_media_label' => [
+                            'value' => 'fab fa-facebook-f',
+                            'library' => 'fa-brands',
+                        ],
                     ],
                     [
-                        'social_media_label' => 'twitter',
+                        'social_media_label' => [
+                            'value' => 'fab fa-x-twitter',
+                            'library' => 'fa-brands',
+                        ],
                     ],
                     [
-                        'social_media_label' => 'linkedin',
+                        'social_media_label' => [
+                            'value' => 'fab fa-linkedin-in',
+                            'library' => 'fa-brands',
+                        ],
                     ],
                     [
-                        'social_media_label' => 'instagram',
+                        'social_media_label' => [
+                            'value' => 'fab fa-instagram',
+                            'library' => 'fa-brands',
+                        ],
                     ],
-
+                    [
+                        'social_media_label' => [
+                            'value' => 'fab fa-tiktok',
+                            'library' => 'fa-brands',
+                        ],
+                    ],
                 ],
-                'title_field' => '{{{ social_media_label }}}',
+                'title_field' => '{{{ social_media_label.value }}}',
                 'condition'   => [
                     'slider_style' => 'design-4',
                 ],
@@ -391,11 +424,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'social_share_label',
             [
-                'label'       => __('Social Box Label', 'themefic_themedev'),
+                'label'       => __('Social Box Label', 'travelfic-toolkit'),
                 'type'        => \Elementor\Controls_Manager::TEXT,
                 'label_block' => true,
                 'dynamic'     => ['active' => true],
-                'default'     => __('Share', 'themefic_themedev'),
+                'default'     => __('Share', 'travelfic-toolkit'),
                 'condition'   => [
                     'slider_style' => 'design-4',
                 ],
@@ -605,10 +638,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-2' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__two' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-2'], // Show this control only when des_style is 'design-2'
+                    'slider_style' => ['design-1', 'design-2'],
                 ],
 
             ]
@@ -634,10 +667,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'size' => 540, // Your default value here
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-3' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__three' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'slider_style' => 'design-3', // Show this control only when des_style is 'design-2'
+                    'slider_style' => 'design-3',
                 ],
 
             ]
@@ -663,7 +696,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'size' => 800, // Your default value here
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => 'design-4', // Show this control only when des_style is 'design-4'
@@ -823,29 +856,15 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#1D1D1D94',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-2', 'design-3'],
+                    'slider_style' => ['design-1', 'design-3'],
                 ],
             ]
         );
-        $this->add_control(
-            'design-4_banner_bg_color',
-            [
-                'label' => __('Background', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 57, 204, 0.03) 125.37%)',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-4', // Show this control only when des_style is 'design-2'
-                ],
-            ]
-        );
+
         $this->add_responsive_control(
             'banner_inner_padding',
             [
@@ -853,10 +872,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-hero-design-2 .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
+                    'slider_style' => 'design-2', 
                 ],
             ]
         );
@@ -875,9 +894,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
 
             ]
@@ -885,157 +904,24 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'slider_title',
-                'selector' => '{{WRAPPER}} .tft-slider-title .tft-title',
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => ['design-1'],
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'banner_title',
-                'selector' => '{{WRAPPER}} .tft-hero-content h1',
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => 'design-2',
-                ],
+                'name'     => 'slider_title_typo',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title, #tft-site-main-body #page {{WRAPPER}} .tft-hero-content h1, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--title',
+                'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
 
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'hero_slider_title',
-                'selector' => '{{WRAPPER}} .tft-hero-design-3 .tft-hero-content-box h1, {{WRAPPER}} .tft-hero-design-4__slider__item__content--title',
-                'label'    => __('Title Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => ['design-3', 'design-4'],
-                ],
-            ]
-        );
 
         $this->add_control(
             'title_color',
             [
-                'label'     => __('Title Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-2 .tft-hero-content h1' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-3 .tft-hero-content-box h1' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-4 .tft-hero-design-4__slider__item__content--title' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}} !important',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'shortcode_form_style',
-            [
-                'label'     => __('Form Style', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'slider_style' => ['design-2', 'design-3'], // Show this control only when des_style is 'design-2'
-                ]
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'shortcode_form_typo',
-                'selector' => '{{WRAPPER}} .tft-search-form, {{WRAPPER}} .tft-search-form button, {{WRAPPER}} .tft-search-form input',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
-                ],
-                'fields_options' => [
-                    'typography' => ['default' => 'yes'],
-                    'font_family' => [
-                        'default' => 'Josefin Sans',
-                    ],
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'shortcode_form_background',
-            [
-                'label'     => __('Form Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => 'rgba(48, 40, 28, 0.3)',
-                'selectors' => [
-                    '{{WRAPPER}} .tf_booking-widget-design-2' => 'background: {{VALUE}}'
-                ],
-                'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'shortcode_form_button',
-            [
-                'label'     => __('Button Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#B58E53',
-                'selectors' => [
-                    '{{WRAPPER}} .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_availability_checker_box button' => 'background: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'background: {{VALUE}} !important',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-2', // Show this control only when des_style is 'design-2'
-                ],
-            ]
-        );
-
-        // Design 3
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'design_3_shortcode_form_typo',
-                'selector' => '{{WRAPPER}} .tf-date-single-select, {{WRAPPER}} .tf-submit-button button, {{WRAPPER}} .tf-date-single-select input, .tf-date-single-select h5',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => 'design-3',
-                ],
-                'fields_options' => [
-                    'typography' => ['default' => 'yes']
-                ]
-            ]
-        );
-
-        $this->add_control(
-            'design_3_shortcode_form_background',
-            [
-                'label'     => __('Form Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#e6f2fe',
-                'selectors' => [
-                    '{{WRAPPER}} .tf-archive-search-box-wrapper' => 'background: {{VALUE}}'
-                ],
-                'condition' => [
-                    'slider_style' => 'design-3',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'design_3_shortcode_form_button',
-            [
-                'label'     => __('Button Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#0866c4',
-                'selectors' => [
-                    '{{WRAPPER}} .tf-archive-search-box-wrapper .tf-driver-location-box .tf-submit-button button' => 'background: {{VALUE}}'
-                ],
-                'condition' => [
-                    'slider_style' => 'design-3',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1043,7 +929,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_subtitle',
             [
-                'label'     => __('Sub title', 'travelfic-toolkit'),
+                'label'     => __('Subtitle', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
@@ -1055,10 +941,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_sub_title',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-sub-title p',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--subtitle',
-                ],
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-sub-title p, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1066,14 +949,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'sub_title_color',
+            'slider_sub_title_color',
             [
-                'label'     => __('Subtitle Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-sub-title p' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--subtitle' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-sub-title p' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1085,9 +967,19 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'slider_buttons_style',
             [
-                'label'     => __('Button Style', 'travelfic-toolkit'),
+                'label'     => __('Button', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
+                'condition' => [
+                    'slider_style' => ['design-1', 'design-4'],
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'button_typography',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
                 ],
@@ -1100,8 +992,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .slider-button .bttn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1115,15 +1006,35 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .slider-button .bttn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
-
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'slider_button_border',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
+                'condition' => [
+                    'slider_style' => ['design-1', 'design-4'],
+                ],
+            ]
+        );
+        $this->add_control(
+            'slider_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
         $this->start_controls_tabs('button_style_tabs_');
 
         $this->start_controls_tab(
@@ -1135,28 +1046,15 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 ],
             ]
         );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'button_typography',
-                'selectors' => [
-                    '{{WRAPPER}} .slider-button .bttn',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link',
-                ],
-                'condition' => [
-                    'slider_style' => ['design-1', 'design-4'],
-                ],
-            ]
-        );
+      
 
         $this->add_control(
             'button_text_color',
             [
-                'label'     => __('Text Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .slider-button .bttn' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1166,11 +1064,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'button_background_color',
             [
-                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .slider-button .bttn' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1186,7 +1083,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Hover', 'travelfic-toolkit'),
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
+                    'slider_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
@@ -1194,14 +1091,13 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'button_hover_color',
             [
-                'label'     => __('Text Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .slider-button .bttn:hover' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
+                    'slider_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
@@ -1209,18 +1105,26 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'button_background_hover_color',
             [
-                'label'     => __('Background Color', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .slider-button .bttn:hover' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .tft-hero-design-4__slider__item__content--link:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
+                    'slider_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
-
+        $this->add_control(
+            'button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
 
         $this->end_controls_tab();
 
@@ -1237,18 +1141,18 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'slider_nav',
+            'slider_nav_color',
             [
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-hero-design-4 .slick-dots li button'   => 'background-color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-hero-design-4 .slick-dots li.slick-active'   => 'border-color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .slick-dots li button'   => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE};',
                 ],
                 'condition' => [
-                    'slider_style' => ['design-1', 'design-4'], // Show this control only when des_style is 'design-1'
+                    'slider_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
@@ -1285,7 +1189,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__label'   => 'color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__label' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1322,7 +1226,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link i'   => 'color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link i'   => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1335,7 +1239,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'background: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1348,7 +1252,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link'   => 'border-color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1374,7 +1278,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover i'   => 'color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover i' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1382,12 +1286,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'slider_social_hover_back',
+            'slider_social_hover_background',
             [
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'background: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1400,7 +1304,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-hero-design-4__social__list__item--link:hover'   => 'border-color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1414,432 +1318,99 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
         $this->end_controls_section();
 
-
+        // search form
         $this->start_controls_section(
-            'slider_serach_style',
+            'hero_search_section',
             [
-                'label' => __('Search Style', 'travelfic-toolkit'),
+                'label' => __('Search', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
             ]
         );
 
+        //Buttons
         $this->add_control(
-            'search_box',
+            'search_buttons_style',
             [
-                'label'     => __('Search Box', 'travelfic-toolkit'),
+                'label'     => __('Tab', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'search_box_padding',
-            [
-                'label' => __('Padding', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 40,
-                    'right' => 40,
-                    'bottom' => 40,
-                    'left' => 40,
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tft-search-box-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_box_border_radius',
-            [
-                'label' => __('Border Radius', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 0,
-                    'right' => 0,
-                    'bottom' => 0,
-                    'left' => 0,
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'slider_tab',
-            [
-                'label'     => __('Search Tab', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
             ]
         );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name'     => 'slider_search_tab',
-                'label'    => __('Search Typography', 'travelfic-toolkit'),
-                'selector' => '{{WRAPPER}} .tf-booking-form-tab button',
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
+                'name'     => 'search_button_typography',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
             ]
         );
-        $this->add_control(
-            'slider_search_tab_color',
-            [
-                'label'     => __('Tab Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#000',
-                'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks' => 'color: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'slider_search_tab_background',
-            [
-                'label'     => __('Tab Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks' => 'background: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'slider_search_tab_color_active',
-            [
-                'label'     => __('Active Tab Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'condition' => [
-                    'slider_style' => 'design-1',
-                ],
-            ],
-        );
-        $this->add_control(
-            'slider_search_tab_background_active',
-            [
-                'label'     => __('Active Tab background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
-                'selectors' => [
-                    '{{WRAPPER}} button.tf-tablinks.active' => 'background: {{VALUE}} !important',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_form_tab_border_width',
-            [
-                'label' => __('Border Width', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 1,
-                    'right' => 1,
-                    'bottom' => 1,
-                    'left' => 1,
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_form_tab_border_color',
-            [
-                'label'     => __('Tab Border Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#ccc',
-                'selectors' => [
-                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-color: {{VALUE}} !important',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_form_tab_border_radius',
-            [
-                'label' => __('Border Radius', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 4,
-                    'right' => 4,
-                    'bottom' => 4,
-                    'left' => 4,
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tf-booking-form-tab button.tf-tablinks' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-
         $this->add_responsive_control(
-            'slider_search_button_padding_',
+            'search_button_margin_',
+            [
+                'label'      => __('Margin', 'travelfic-toolkit'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'search_button_padding_',
             [
                 'label'      => __('Padding', 'travelfic-toolkit'),
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tf-booking-form-tab button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'slider_search_input',
-            [
-                'label'     => __('Search Form', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_form_border_width',
-            [
-                'label' => __('Border Width', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 0,
-                    'right' => 0,
-                    'bottom' => 0,
-                    'left' => 0,
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_form_border_color',
-            [
-                'label'     => __('Border Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D3040',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-color: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_form_border_radius',
-            [
-                'label' => __('Border Radius', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 0,
-                    'right' => 0,
-                    'bottom' => 0,
-                    'left' => 0,
-                    'isLinked' => false,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_homepage-booking' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
         $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
+            \Elementor\Group_Control_Border::get_type(),
             [
-                'name'     => 'slider_search_input_style',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'selector' => '{{WRAPPER}} .tft-search-box .tf_input-inner div, .tf_homepage-booking input, .tf_homepage-booking ::placeholder, .tft-search-box .tf_input-inner',
-                'condition' => [
-                    'slider_style' => 'design-1',
-                ]
+                'name'     => 'search_button_border_',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
             ]
         );
         $this->add_control(
-            'slider_search_input_color',
+            'search_button_border_radius_',
             [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_input-inner div' => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tft-search-box .tf_input-inner' => 'color: {{VALUE}} !important;',
-                    '{{WRAPPER}} .tf_homepage-booking ::placeholder' => 'color: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'slider_button',
-            [
-                'label'     => __('Button', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'slider_search_button',
-                'label'    => __('Search Button Typo', 'travelfic-toolkit'),
-                'selector' => '{{WRAPPER}} .tft-search-box .tf_button',
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_button_border_width',
-            [
-                'label' => __('Border Width', 'travelfic-toolkit'),
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'unit' => 'px',
-                    'top' => 0,
-                    'right' => 0,
-                    'bottom' => 0,
-                    'left' => 0,
-                    'isLinked' => false,
-                ],
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
-        $this->add_control(
-            'search_button_border_color',
-            [
-                'label' => __('Border Color', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#fff',
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-color: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
-        $this->add_control(
-            'search_button_border_radius',
-            [
-                'label' => __('Border Radius', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%', 'rem'],
-                'default' => [
-                    'top' => '0',
-                    'right' => '0',
-                    'bottom' => '0',
-                    'left' => '0',
-                    'unit' => 'px',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
-            ]
-        );
+ 
+        $this->start_controls_tabs('search_button_style_tabs_'); 
 
-        $this->start_controls_tabs('button_search_button');
-
-        // Normal state tab
         $this->start_controls_tab(
-            'search_button_normal',
+            'search_button_normal_',
             [
                 'label' => __('Normal', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
             ]
         );
+
         $this->add_control(
             'search_button_text_color',
             [
-                'label'     => __('Button Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'condition' => [
-                    'slider_style' => 'design-1',
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'color: {{VALUE}};',
                 ],
             ]
         );
         $this->add_control(
             'search_button_background_color',
             [
-                'label'     => __('Button Background', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#F15D30',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button' => 'background-color: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1851,23 +1422,16 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             'search_button_hover',
             [
                 'label' => __('Hover', 'travelfic-toolkit'),
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
-                ],
             ]
         );
 
         $this->add_control(
             'search_button_hover_color',
             [
-                'label'     => __('Button Color', 'travelfic-toolkit'),
+                'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#fff',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'color: {{VALUE}} !important;',
-                ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1875,23 +1439,333 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $this->add_control(
             'search_button_background_hover_color',
             [
-                'label'     => __('Button Background', 'travelfic-toolkit'),
+                'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#D83B0B',
                 'selectors' => [
-                    '{{WRAPPER}} .tft-search-box .tf_button:hover' => 'background-color: {{VALUE}} !important;',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'background-color: {{VALUE}};',
                 ],
-                'condition' => [
-                    'slider_style' => 'design-1', // Show this control only when des_style is 'design-1'
+            ]
+        );
+
+        $this->add_control(
+            'search_button_hover_border',
+            [
+                'label'     => __('border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+            'search_button_active',
+            [
+                'label' => __('Active', 'travelfic-toolkit'),
+            ]
+        );
+
+        $this->add_control(
+            'search_button_active_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'search_button_background_active_color',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'search_button_active_border',
+            [
+                'label'     => __('border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_control(
+            'search_form_style',
+            [
+                'label'     => __('Form', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+
+        $this->add_control(
+            'search_form_background_color',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-search-box' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .default-form' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_label',
+            [
+                'label'     => __('Label', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'search_form_label_typography',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking label, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-label, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label',
+            ]
+        );
+        $this->add_control(
+            'search_form_label_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking label' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-label' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .icon svg path' => 'stroke: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_input',
+            [
+                'label'     => __('Input', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'search_form_input_typography',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking input, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .field--title',
+            ]
+        );
+        $this->add_control(
+            'search_form_input_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking input' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_input-inner > div' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_input-inner > div i' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking input::placeholder' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input::placeholder' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form_inners span' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .info-select input' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_selectperson-wrap div' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .info-select input::placeholder' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form_inners svg path' => 'fill: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .field--title' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__input' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__input::placeholder' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__field__mthyr > span' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_checkin_to_label' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .form--span path' => 'stroke: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_input_background',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking > div' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__field #tf-location' => 'background-color: {{VALUE}};'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'search_form_buttons_style',
+            [
+                'label'     => __('Button', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'search_form_button_typography',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, #tft-site-main-body #page {{WRAPPER}} .tf-search__form__submit',
+            ]
+        );
+        $this->add_responsive_control(
+            'search_form_button_margin_',
+            [
+                'label'      => __('Margin', 'travelfic-toolkit'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'search_form_button_padding_',
+            [
+                'label'      => __('Padding', 'travelfic-toolkit'),
+                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors'  => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name'     => 'search_form_button_border',
+                'label'    => __('Border', 'travelfic-toolkit'),
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit',
+            ]
+        );
+        $this->add_control(
+            'about_button_border_radius_',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+ 
+        $this->start_controls_tabs('search_form_button_style_tabs_');
+
+        $this->start_controls_tab(
+            'search_form_button_normal_',
+            [
+                'label' => __('Normal', 'travelfic-toolkit'),
+            ]
+        );
+
+        $this->add_control(
+            'search_form_button_text_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn i' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit path' => 'fill: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_button_background_color',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
 
         $this->end_controls_tab();
 
-        $this->end_controls_tabs();
+        // Hover state tab
+        $this->start_controls_tab(
+            'search_form_button_hover',
+            [
+                'label' => __('Hover', 'travelfic-toolkit'),
+            ]
+        );
 
+        $this->add_control(
+            'search_form_button_hover_color',
+            [
+                'label'     => __('Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover i' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover path' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'search_form_button_background_hover_color',
+            [
+                'label'     => __('Background', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'search_form_button_border_hover_color',
+            [
+                'label'     => __('Border', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
         $this->end_controls_section();
+
     }
 
     protected function render()
@@ -1936,11 +1810,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
         if ("design-2" == $tft_design) {
 ?>
-            <div class="tft-hero-design-2" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-design__two tft-hero-wrapper" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content">
-                    <?php
-                    if (!empty($tft_banner_title)) { ?>
-                        <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                    <?php if (!empty($tft_banner_title)) { ?>
+                        <div class="tft-content-box">
+                            <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        </div>
                     <?php } ?>
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
@@ -1950,13 +1825,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-3" == $tft_design) { ?>
-            <div class="tft-hero-design-3" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
+            <div class="tft-hero-design__three tft-hero-wrapper" style="background-image: url(<?php echo esc_url($tft_banner_image['url']); ?>);">
                 <div class="tft-hero-content-box">
                     <?php
                     if (!empty($tft_banner_title)) { ?>
-                        <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        <div class="tft-content-box">
+                            <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                        </div>
                     <?php } ?>
-
                     <?php if ($settings['search_box_switcher'] == 'yes') { ?>
                         <div class="tft-search-form">
                             <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . $car_tab_title . 'design="3"]'); ?>
@@ -1965,33 +1841,33 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 </div>
             </div>
         <?php } elseif ("design-4" == $tft_design) { ?>
-            <section class="tft-hero-design-4" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
-                <div class="container tft-hero-design-4__container">
+            <section class="tft-hero-design__four tft-hero-wrapper" style="background-image: url(<?php echo esc_url($settings['banner_image']['url']); ?>);">
+                <div class="container tft-hero-design__four__container">
                     <!-- hero banner slider -->
-                    <div class="tft-hero-design-4__slider">
+                    <div class="tft-hero-design__four__slider tft-content-box">
                         <?php foreach ($settings['design4_hero_slider_list'] as $slider):
                             $target_blank = $slider['design4_slider_bttn_url']['is_external'] ? 'target="_blank"' : '';
                         ?>
                             <!-- slider item -->
-                            <div class="tft-hero-design-4__slider__item">
-                                <div class="tft-hero-design-4__slider__item__content">
+                            <div class="tft-hero-design__four__slider__item">
+                                <div class="tft-hero-design__four__slider__item__content">
                                     <!-- slider subtitle -->
                                     <?php if (!empty($slider['design4_slider_subtitle'])) : ?>
-                                        <h2 class="tft-hero-design-4__slider__item__content--subtitle">
+                                        <h2 class="tft-hero-design__four__slider__item__content--subtitle">
                                             <?php echo esc_html($slider['design4_slider_subtitle']); ?>
                                         </h2>
                                     <?php endif; ?>
 
                                     <!-- slider title -->
                                     <?php if (!empty($slider['design4_slider_title'])): ?>
-                                        <h1 class="tft-hero-design-4__slider__item__content--title">
+                                        <h1 class="tft-hero-design__four__slider__item__content--title">
                                             <?php echo esc_html($slider['design4_slider_title']); ?>
                                         </h1>
                                     <?php endif; ?>
                                     <!-- slider button -->
                                     <?php if (!empty($slider['design4_slider_bttn_txt'])) : ?>
                                         <a href="<?php echo esc_url($slider['design4_slider_bttn_url']['url']); ?>"
-                                            class="tft-hero-design-4__slider__item__content--link tft-btn"
+                                            class="tft-hero-design__four__slider__item__content--link tft-btn"
                                             <?php echo esc_attr($target_blank); ?>>
                                             <?php echo esc_html($slider['design4_slider_bttn_txt']); ?>
                                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
@@ -2002,7 +1878,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                         <?php endforeach; ?>
                     </div>
                     <?php if ('true' === $design4_slider_arrows): ?>
-                        <div class="tft-hero-slider-nav">
+                        <div class="tft-hero-design__four__slider--nav">
                             <button type="button" class="tft-prev-slide">
                                 <i class="ri-arrow-left-line"></i>
                             </button>
@@ -2014,61 +1890,42 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
                     <!-- hero banner social -->
                     <?php if ($social_media_switcher): ?>
-                        <div class="tft-hero-design-4__social">
+                        <div class="tft-hero-design__four__social">
                             <!-- List of social media items -->
-                            <ul class="tft-hero-design-4__social__list">
+                            <ul class="tft-hero-design__four__social__list">
                                 <?php foreach ($settings['social_media_list'] as $social):
                                     $target_blank = $social['social_media_url']['is_external'] ? 'target="_blank"' : '';
-                                    $social_media_name = isset($social['social_media_label']) ? $social['social_media_label'] : '';
+                                    $social_media_icon = isset($social['social_media_label']) ? $social['social_media_label'] : '';
                                 ?>
                                     <!-- social media item-->
-                                    <li class="tft-hero-design-4__social__list__item">
+                                    <li class="tft-hero-design__four__social__list__item">
                                         <a href="<?php echo esc_url($social['social_media_url']['url']); ?>"
-                                            class="tft-hero-design-4__social__list__item--link"
-                                            <?php echo esc_attr($target_blank); ?>
-                                            aria-label="<?php echo esc_attr('Visit ' . $social_media_name . ' page'); ?>">
-                                            <span class="tft-hero-design-4__social-icon">
-                                                <?php
-
-                                                $social_icon = '';
-                                                switch ($social_media_name) {
-                                                    case 'facebook':
-                                                        $social_icon = 'fa-facebook-f';
-                                                        break;
-                                                    case 'twitter':
-                                                        $social_icon = 'fa-x-twitter';
-                                                        break;
-                                                    case 'linkedin':
-                                                        $social_icon = 'fa-linkedin-in';
-                                                        break;
-                                                    case 'instagram':
-                                                        $social_icon = 'fa-instagram';
-                                                        break;
-                                                }
-                                                ?>
-                                                <i class="fa-brands <?php echo esc_attr($social_icon); ?>" aria-hidden="true"></i>
+                                            class="tft-hero-design__four__social__list__item--link tft-bg-hover-primary"
+                                            <?php echo esc_attr($target_blank); ?>>
+                                            <span class="tft-hero-design__four__social-icon">
+                                                <i class="fa-brands <?php echo esc_attr($social_media_icon['value']); ?>" aria-hidden="true"></i>
                                             </span>
                                         </a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
 
-                            <div class="tft-hero-design-4__social__divider"></div>
+                            <div class="tft-hero-design__four__social__divider"></div>
                             <!-- social share label -->
                             <?php if (!empty($settings['social_share_label'])): ?>
-                                <h4 class="tft-hero-design-4__social__label">
+                                <div class="tft-hero-design__four__social__label">
                                     <?php echo esc_html($settings['social_share_label']); ?>
-                                </h4>
+                                </div>
                             <?php endif; ?>
                         </div>
                     <?php endif; ?>
 
-                    <div class="tft-hero-design-4__mobile--share">
+                    <div class="tft-hero-design__four__mobile--share">
                         <!-- social share label -->
                         <?php if (!empty($settings['social_share_label'])): ?>
-                            <h4 class="tft-hero-design-4__social__label">
+                            <div class="tft-hero-design__four__social__label">
                                 <?php echo esc_html($settings['social_share_label']); ?>
-                            </h4>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -2083,7 +1940,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     "use strict";
                     $(document).ready(function() {
                         // Hero slider
-                        $(".tft-hero-design-4__slider").slick({
+                        $(".tft-hero-design__four__slider").slick({
                             slidesToShow: 1,
                             slidesToScroll: 1,
                             infinite: <?php echo esc_attr($design4_slider_loop); ?>,
@@ -2110,15 +1967,15 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
             if ($settings['hero_slider_list']) { ?>
                 <!-- Slider Hero section -->
-                <div class="hero--slider-wrapper tft-hero-design-1"> <!-- tft-customizer-typography -->
+                <div class="tft-hero-design__one tft-hero-wrapper">
                     <?php $rand_number = wp_rand(100, 99999999); ?>
                     <div class="tft-hero-slider-selector tft-hero-slider-selector-<?php echo esc_html($rand_number) ?>">
-                        <?php foreach ($settings['hero_slider_list'] as $item): 
-                            ?>
+                        <?php foreach ($settings['hero_slider_list'] as $item):
+                        ?>
                             <div class="tft-hero-single-item">
                                 <div class="tft-slider-bg-img" style="background-image: url(<?php echo esc_url($item['slider_image']['url']); ?>);">
-                                    <div class="tft-container tft-hero-single-item-inner">
-                                        <div class=" slider-inner-info">
+                                    <div class="tft-container tft-hero-single-item-inner tft-content-box">
+                                        <div class="slider-inner-info">
                                             <div class="tft-slider-title">
                                                 <h1 class="tft-title title-large">
                                                     <?php
@@ -2128,14 +1985,14 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                 </h1>
                                                 <?php if ($item['slider_subtitle'] != '') { ?>
                                                     <div class="tft-sub-title">
-                                                        <p> <?php echo esc_html($item['slider_subtitle']); ?> </p>
+                                                        <p class="tft-color-white"> <?php echo esc_html($item['slider_subtitle']); ?> </p>
                                                     </div>
                                                 <?php } ?>
                                             </div>
                                             <div class="slider-button">
                                                 <?php
                                                 if (!empty($item['slider_bttn_url'])) { ?>
-                                                    <a class="bttn tft-bttn-primary" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
+                                                    <a class="tft-btn tft-btn_sharp tft-wh-auto tft-border-0" href="<?php echo esc_url($item['slider_bttn_url']['url']) ?>">
                                                         <div class="tft-custom-bttn">
                                                             <span>
                                                                 <?php
@@ -2159,10 +2016,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     </div>
                 </div>
                 <?php if ($settings['search_box_switcher'] == 'yes'):
-
-
                 ?>
-                    <div class="tft-search-box tft-hero-design-1">
+                    <div class="tft-search-box tft-hero-design__one">
                         <div class="tft-search-box-inner">
                             <?php echo do_shortcode('[tf_search_form  type="' . $type . '" ' . $tour_tab_title . $apt_tab_title . $hotel_tab_title . ']'); ?>
                         </div>
@@ -2223,7 +2078,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         if (\Elementor\Plugin::$instance->editor->is_edit_mode()) : ?>
             <script>
                 jQuery(document).ready(function($) {
-                    $(".tft-hero-design-4__slider").slick({
+                    $(".tft-hero-design__four__slider").slick({
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         infinite: <?php echo esc_attr($design4_slider_loop); ?>,

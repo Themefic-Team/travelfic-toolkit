@@ -1,1229 +1,1139 @@
-// travelfic toolkit header design 2
-header.tft-design-2 {
-  .tft-top-header {
-    background: $tft_secondary_color;
-    padding-top: 10px;
-    padding-bottom: 10px;
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
 
-    .tft-flex {
-      justify-content: space-between;
-      align-items: center;
-
+.tft-header-design {
+  &__one {
+    .tft-header-mobile{
+      &:not(.tft_has_transparent){
+        box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+      }
+      .tft-main-header-wrapper{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        box-shadow: none;
+      }
+    }
+  }
+  &__two {
+    .tft-top-header {
+      background: $tft-color-dark-brown;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      @media #{$max1024} {
+        padding: 12px 0;
+      }
       @media #{$max767} {
-        flex-wrap: wrap;
+        display: none;
       }
+      .tft-flex {
+        justify-content: space-between;
+        align-items: center;
 
-      .tft-contact-info {
         @media #{$max767} {
-          width: 100%;
+          flex-wrap: wrap;
         }
 
-        ul {
-          margin: 0;
-          padding: 0;
-          display: flex;
-
+        .tft-contact-info {
           @media #{$max767} {
-            justify-content: center;
-            flex-wrap: wrap;
-          }
-
-          li {
-            display: inline-flex;
-            color: $tft_white;
-            margin-left: 24px;
-            align-items: center;
-            font-weight: 400;
-
-            svg {
-              margin-right: 8px;
-            }
-
-            a {
-              text-decoration: none;
-              color: $tft_white;
-              transition: 0.3s all ease;
-            }
-          }
-
-          li:first-child {
-            margin: 0px;
-          }
-        }
-      }
-
-      .tft-social-share {
-        margin-top: 7px;
-
-        @media #{$max767} {
-          width: 100%;
-          text-align: center;
-          margin-top: 10px;
-        }
-
-        ul {
-          margin: 0;
-          padding: 0;
-
-          li {
-            display: inline-block;
-            margin-left: 20px;
-
-            @media #{$max767} {
-              margin: 0px 5px;
-            }
-          }
-
-          li:first-child {
-            margin: 0px;
-
-            @media #{$max767} {
-              margin: 0px 5px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .tft-menus-section {
-    background: $tft_white;
-    padding-top: 31px;
-    padding-bottom: 31px;
-
-    .tft-flex {
-      justify-content: space-between;
-      align-items: center;
-
-      .tft-menu {
-        max-width: 33%;
-        width: 100%;
-
-        ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-
-          li {
-            margin-right: 32px;
-            display: inline-block;
-
-            a {
-              text-decoration: none;
-              color: $tft_grey;
-              font-size: 16px;
-              font-style: normal;
-              font-weight: 600;
-              padding: 0px !important;
-            }
-
-            .sub-menu {
-              li {
-                margin: 0px;
-                display: block;
-                padding: 5px 10px;
-              }
-            }
-          }
-
-          li.current_page_item>a {
-            color: $tft_primary_color;
-          }
-
-          li:last-child {
-            margin: 0px;
-          }
-        }
-
-        ul.sub-menu {
-          background: #fcf4e8;
-          box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
-          padding: 8px;
-
-          li {
-            background-color: #fff;
-            margin-bottom: 4px !important;
-            padding: 10px !important;
-            transition: 0.3s all ease;
-
-            &:hover {
-              background: #faeedc;
-            }
-
-            &:last-child {
-              margin-bottom: 0px !important;
-            }
-          }
-        }
-      }
-
-      .tft-logo {
-        max-width: 33%;
-        width: 100%;
-        text-align: center;
-
-        @media #{$max991} {
-          max-width: 50%;
-          text-align: left;
-        }
-
-        a.custom-logo-link {
-          img {
-            width: 160px;
-          }
-        }
-
-        .logo-text {
-          a {
-            text-decoration: none;
-            font-size: 32px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-            color: $tft_grey;
-          }
-        }
-      }
-
-      .tft-account {
-        max-width: 33%;
-        width: 100%;
-        text-align: right;
-
-        ul {
-          margin: 0;
-          padding: 0;
-
-          li {
-            display: inline-block;
-
-            a {
-              padding: 12px 32px;
-              color: $tft_grey;
-              font-size: 16px;
-              font-style: normal;
-              font-weight: 700;
-              text-decoration: none;
-              display: inline-block;
-              transition: 0.3s all ease;
-
-              &:hover {
-                color: $tft_primary_color;
-              }
-            }
-
-            a.login {
-              border: 1px solid $tft_primary_color;
-
-              &:hover {
-                background: #917242;
-                color: #fdf9f3;
-                border-color: #917242;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .tft-menus-section.tft-header-mobile {
-    .tft-main-header-wrapper {
-      min-height: auto;
-      padding: 0 32px;
-
-      .tft-header-left {
-        .logo-text {
-          a {
-            color: $tft_grey;
-          }
-        }
-      }
-
-      .tft-header-center {
-        .tft-mobile_menubar {
-          i {
-            color: $tft_grey;
-          }
-        }
-      }
-    }
-
-    .tft-mobile-main-menu {
-      .tft-site-navigation {
-        background-color: #fcf4e8;
-        top: 31px;
-        padding: 50px 0px 45px 0px;
-
-        ul {
-          li {
-            display: block;
             width: 100%;
-            border: 0px solid;
+          }
 
-            a {
-              color: $tft_grey;
-              font-size: 16px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 130%;
-              padding: 8px 32px !important;
+          ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+
+            @media #{$max767} {
+              justify-content: center;
+              flex-wrap: wrap;
             }
 
-            ul {
-              background-color: #fcf4e8;
+            li {
+              display: inline-flex;
+              color: $tft-color-white;
+              margin-left: 24px;
+              align-items: center;
+              font-weight: 400;
 
-              li {
-                a {
-                  color: $tft_grey;
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: 600;
-                  line-height: 130%;
-                }
+              svg {
+                margin-right: 8px;
               }
+
+              a {
+                color: $tft-color-white;
+                transition: 0.3s all ease;
+              }
+            }
+
+            li:first-child {
+              margin: 0px;
             }
           }
         }
 
         .tft-social-share {
+          margin-top: 7px;
+          line-height: 1;
+
+          @media #{$max767} {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+          }
+
           ul {
-            margin: 32px 0px 0px 32px;
+            margin: 0;
+            padding: 0;
 
             li {
               display: inline-block;
-              width: auto;
+              margin-left: 20px;
+
+              @media #{$max767} {
+                margin: 0px 5px;
+              }
+            }
+
+            li:first-child {
+              margin: 0px;
+
+              @media #{$max767} {
+                margin: 0px 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .tft-menus-section {
+      background: $tft-color-white;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      @media #{$max1024} {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .tft-main-header-wrapper{
+        @media #{$max1024} {
+          padding-top: 12px;
+          padding-bottom: 12px;
+        }
+        @media #{$max767} {
+          gap: 15px;
+        }
+      }
+     
+      .tft-flex {
+        justify-content: space-between;
+        align-items: center;
+
+        .tft-menu {
+          max-width: 33%;
+          width: 100%;
+
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+              margin-right: 32px;
+              display: inline-block;
 
               a {
-                display: inline-block;
-                padding: 5px !important;
+                color: $tft-color-text;
+                font-weight: 400;
+                padding: 0px;
               }
-            }
-          }
-        }
-      }
-    }
-  }
 
-  .tft-menus-section.tft_has_transparent {
-    position: absolute;
-    left: 0;
-    right: 0;
-    z-index: 99;
-    background: rgba(48, 40, 28, 0.3);
-    backdrop-filter: blur(15px);
-
-    .tft-menu {
-      ul {
-        li {
-          a {
-            color: $tft_white;
-          }
-        }
-      }
-    }
-
-    .tft-logo {
-      .logo-text {
-        a {
-          color: $tft_white;
-        }
-      }
-    }
-
-    .tft-account {
-      ul {
-        li {
-          a {
-            color: $tft_white;
-          }
-        }
-      }
-    }
-
-    .tft-main-header-wrapper {
-      .tft-header-left {
-        .logo-text {
-          a {
-            color: $tft_white;
-          }
-        }
-      }
-
-      .tft-header-center {
-        .tft-mobile_menubar {
-          i {
-            color: $tft_white;
-          }
-        }
-      }
-    }
-  }
-
-  .tft-footer-sections {
-    padding-top: 64px;
-    padding-bottom: 32px;
-    background-color: $tft_secondary_color;
-    color: #faeedc;
-
-    a {
-      color: #faeedc;
-    }
-
-    .tft-grid {
-      display: flex;
-      justify-content: space-between;
-      align-content: flex-start;
-      flex-wrap: nowrap;
-      gap: 83px;
-
-      @media #{$max991} {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-      }
-
-      @media #{$max575} {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 0px;
-      }
-
-      .tft-footer-section {
-        width: 100%;
-      }
-
-      h2 {
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 700;
-        color: $tft_primary_color;
-        margin-bottom: 24px;
-        line-height: 32px;
-      }
-
-      ul {
-        margin: 0;
-        padding: 0;
-
-        li {
-          display: block;
-          padding-bottom: 8px;
-          margin: 0;
-
-          a {
-            text-decoration: none;
-            display: block;
-            color: #faeedc;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-
-            &:hover {
-              color: $tft_white !important;
-            }
-          }
-        }
-
-        li:last-child {
-          padding-bottom: 0px;
-        }
-      }
-
-      p {
-        margin: 0;
-      }
-    }
-
-    .tft-footer-copyright {
-      border-top: 0.5px solid #99948d;
-      margin-top: 32px;
-
-      p {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 130%;
-        margin: 0;
-        padding-top: 32px;
-        color: #99948d;
-        text-align: center;
-
-        a {
-          text-decoration: none;
-          color: #99948d;
-        }
-      }
-    }
-  }
-}
-
-// travelfic toolkit header design 3
-.tft-design-3 {
-  background: $color-blue;
-  // min-height: 151px;
-  // overflow: hidden;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  position: relative;
-  z-index: 99991;
-
-  @media #{$max767} {
-    min-height: auto;
-    background: transparent;
-  }
-
-  // container
-  &__container {
-    // max-width: 1678px;
-    @media #{$max991} {
-      padding: 0;
-    }
-
-    &.tft-fullwidth-container {
-      padding-left: 0;
-      padding-right: 0;
-
-      .tft-design-3__content-left {
-        padding-left: 32px;
-
-        @media #{$max991} {
-          padding-left: 15px;
-        }
-      }
-
-      .tft-design-3__topbar {
-        padding-left: 32px;
-
-        @media #{$max991} {
-          padding-left: 0;
-        }
-      }
-
-      .tft-design-3__bottom {
-        padding-right: 32px;
-
-        @media #{$max991} {
-          padding-right: 15px;
-        }
-      }
-    }
-  }
-
-  // logo
-  &__logo {
-    line-height: 0;
-
-    a {
-      text-decoration: none;
-      font-size: 32px;
-      font-style: normal;
-      font-weight: 700;
-      color: $color-white;
-
-      &:hover {
-        color: $color-white;
-      }
-
-      img {
-        @media #{$max991} {
-          max-width: 160px;
-        }
-      }
-    }
-  }
-
-  // header content
-  &__content {
-    @include d-flex();
-    @include align-items(center);
-
-    // @media #{$max991} {
-    //   flex-direction: column-reverse;
-    //   width: 100%;
-    //   @include align-items(start);
-    // }
-    // header left
-    &-left {
-      max-width: 500px;
-      flex: 1;
-      padding-left: 6.3%;
-
-      @media #{$max1850} {
-        padding-left: 5%;
-      }
-
-      @media #{$max1760} {
-        max-width: 450px;
-      }
-
-      @media #{$max1680} {
-        max-width: 350px;
-        padding-left: 3%;
-      }
-
-      @media #{$max1480} {
-        max-width: 300px;
-      }
-
-      @media #{$max1399} {
-        max-width: 260px;
-      }
-
-      @media #{$max1199} {
-        max-width: 250px;
-      }
-
-      @media #{$max991} {
-        max-width: 240px;
-      }
-
-      @media #{$max767} {
-        @include d-flex();
-        @include justify-content(space-between);
-        @include align-items(center);
-        width: 100%;
-        max-width: 100%;
-        background: $color-blue;
-        padding: 15px;
-        min-height: 70px;
-        flex-basis: 30%;
-      }
-    }
-
-    // header right
-    &-right {
-      flex: 1;
-      position: relative;
-      background: $color-white;
-      margin-left: 52px;
-
-      @media #{$max991} {
-        padding-left: 0;
-        clip-path: none;
-        margin-left: 0;
-        min-height: 70px;
-        @include d-flex();
-        @include align-items(center);
-        @include justify-content(end);
-        padding-right: 15px;
-      }
-
-      &::before {
-        content: "";
-        position: absolute;
-        left: -48px;
-        padding-right: 0;
-        top: 0;
-        background-color: $color-white;
-        // width: 100vw;
-        height: 100%;
-        clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
-        z-index: -1;
-        width: 205px;
-
-        @media #{$max991} {
-          width: 150px;
-          left: -35px;
-          z-index: 1;
-        }
-      }
-
-      // &::after {
-      //   content: "";
-      //   position: absolute;
-      //   left: 100%;
-      //   padding-right: 100%;
-      //   top: 0;
-      //   background-color: $color-white;
-      //   width: 100vw;
-      //   height: 100%;
-      //   @media #{$max991} {
-      //     display: none;
-      //   }
-      // }
-    }
-  }
-
-  // header topbar
-  &__topbar {
-    padding-left: 20px;
-    position: relative;
-    background: $linear-gradient;
-    min-height: 45px;
-    @include d-flex();
-    @include align-items(center);
-    @include justify-content(space-between);
-    margin-left: 30px;
-    z-index: 99;
-    padding-right: 8%;
-
-    @media #{$max1850} {
-      padding-right: 4%;
-    }
-
-    @media #{$max1760} {
-      padding-right: 3%;
-    }
-
-    @media #{$max1480} {
-      padding-right: 15px;
-    }
-
-    @media #{$max1399} {
-      padding-left: 15px;
-      margin-left: 30px;
-      min-height: 45px;
-    }
-
-    @media #{$max1366} {
-      padding-left: 5px;
-    }
-
-    @media #{$max991} {
-      padding-left: 0;
-      min-height: 40px;
-      width: 100%;
-      @include justify-content(end);
-      margin-left: 25px;
-      margin-right: -15px;
-      padding-right: 0;
-    }
-
-    @media #{$max767} {
-      display: none;
-    }
-
-    @media #{$max575} {
-      @include justify-content(center);
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: -20px;
-      padding-right: 100%;
-      top: 0;
-      background: $linear-gradient;
-      width: auto;
-      height: 100%;
-      transform: skewX(-19deg);
-      z-index: -1;
-
-      @media #{$max991} {
-        transform: skewX(-20deg);
-      }
-
-      @media #{$max767} {
-        display: none;
-      }
-    }
-
-    &-right {
-      @media #{$max991} {
-        display: none;
-      }
-
-      &.mobile-view {
-        display: none;
-
-        @media #{$max991} {
-          display: block;
-
-          a,
-          select {
-            color: $color-black;
-          }
-        }
-
-        .tft-design-3__topbar-list-item:first-child {
-          @media #{$max575} {
-            display: block;
-          }
-        }
-      }
-    }
-
-    &-left {
-      @media #{$max991} {
-        padding: 10px 15px 10px 0;
-      }
-
-      @media #{$max575} {
-        flex: 1;
-      }
-    }
-
-    &-list {
-      @include d-flex();
-      @include align-items(center);
-      gap: 30px;
-
-      @media #{$max1399} {
-        gap: 20px;
-        @include align-items(baseline);
-      }
-
-      @media #{$max991} {
-        gap: 15px;
-      }
-
-      @media #{$max575} {
-        @include justify-content(space-between);
-      }
-
-      &-item {
-        @media #{$max1399} {
-          max-height: 24px;
-          min-height: 24px;
-        }
-
-        @media #{$max1199} {
-          max-height: initial;
-          min-height: initial;
-        }
-
-        // &:first-child {
-        //   @media #{$max575} {
-        //     display: none;
-        //   }
-        // }
-      }
-
-      &-link {
-        @include d-flex();
-        @include align-items(center);
-        gap: 10.5px;
-        color: $color-white;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 18.38px;
-        font-family: $font-ubuntu;
-
-        &:hover {
-          color: $color-white;
-        }
-
-        &:visited {
-          color: $color-white;
-        }
-
-        @media #{$max1399} {
-          font-size: 15px;
-        }
-
-        @media #{$max991} {
-          font-size: 14px;
-          line-height: 18px;
-          gap: 8px;
-
-          svg {
-            width: 15px;
-          }
-        }
-
-        svg {
-          @media #{$max575} {
-            width: 14px;
-            margin-top: 1px;
-          }
-        }
-      }
-
-      &:hover {
-        color: $color-white;
-      }
-
-      &:focus {
-        color: $color-white;
-        outline: none;
-        box-shadow: none;
-      }
-
-      &-text {
-        line-height: inherit;
-      }
-
-      &-select {
-        background: transparent;
-        border: 0;
-        color: $color-white;
-        cursor: pointer;
-
-        &:focus {
-          color: $color-white;
-          outline: none;
-          box-shadow: none;
-        }
-
-        option {
-          color: $color-black;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  &__bars {
-    display: none;
-
-    @media #{$max1199} {
-      position: absolute;
-      min-height: 20px;
-      right: 15px;
-      top: 63px;
-      cursor: pointer;
-      width: 30px;
-      z-index: 999;
-      display: block;
-      line-height: 0;
-
-      &--icon {
-        width: 30px;
-        height: 2px;
-        background: $color-black;
-        position: absolute;
-        top: 0;
-        cursor: pointer;
-
-        &:nth-child(2) {
-          top: 8px;
-        }
-
-        &:nth-child(3) {
-          top: 17px;
-        }
-      }
-    }
-
-    @media #{$max991} {
-      position: relative;
-      right: inherit;
-      left: 0;
-      top: inherit;
-    }
-  }
-
-  // header bottom
-  &__bottom {
-    padding: 16px 0 16px 54.13px;
-    @include d-flex();
-    @include align-items(center);
-    @include justify-content(space-between);
-    padding-right: 8%;
-
-    @media #{$max1850} {
-      padding-right: 4%;
-      padding-left: 30px;
-    }
-
-    @media #{$max1760} {
-      padding-right: 3%;
-    }
-
-    @media #{$max1480} {
-      padding: 15px;
-      gap: 20px;
-      @include justify-content(space-between);
-    }
-
-    @media #{$max1199} {
-      gap: 15px;
-      @include justify-content(end);
-      padding: 10px 60px 10px 15px;
-    }
-
-    @media #{$max991} {
-      padding: 8px 15px 8px 15px;
-      gap: inherit;
-    }
-
-    @media #{$max767} {
-      display: none;
-    }
-
-    &__nav {
-      min-width: 754px;
-      flex: 1;
-
-      @media #{$max1680} {
-        min-width: auto;
-      }
-
-      @media #{$max1199} {
-        display: none;
-      }
-
-      &--list {
-        @include d-flex();
-        gap: 32px;
-        row-gap: 10px;
-
-        @media #{$max1680} {
-          gap: 30px;
-        }
-
-        @media #{$max1366} {
-          gap: 20px;
-        }
-
-        @media #{$max1199} {
-          @include justify-content(center);
-        }
-
-        .menu-item {
-          &.menu-item-has-children {
-            position: relative;
-            padding-right: 20px;
-
-            // Hover over parent to show the submenu
-            &:hover {
               .sub-menu {
-                visibility: visible;
-                transform: translateY(0px);
+                li {
+                  margin: 0px;
+                  display: block;
+                  padding: 5px 10px;
+                }
               }
             }
 
-            // Styling for submenus
-            .sub-menu {
-              position: absolute;
-              z-index: 9;
-              background: $color-white;
-              box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
-              margin: 0;
-              padding: 8px 0px;
-              width: max-content;
-              min-width: 220px;
-              display: flex;
-              flex-direction: column;
-              gap: 7px;
-              top: 25px;
-              display: none;
-              transform: translateY(40px);
-              @include bd-radius(4px);
-              @include transition(0.3s);
+            li.current_page_item>a {
+              color: $tft-color-primary;
+            }
 
-              // Adjust for different screen sizes
-              @media #{$max1399} {
-                left: -100px;
+            li:last-child {
+              margin: 0px;
+            }
+          }
+
+          ul.sub-menu {
+            background: $tft-color-orange-light;
+            box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+
+            li {
+              margin-bottom: 4px;
+              padding: 10px;
+              transition: 0.3s all ease;
+
+              &:last-child {
+                margin-bottom: 0px;
               }
+            }
+          }
+        }
 
-              @media #{$max1199} {
-                position: relative;
-                background: transparent;
-                box-shadow: unset;
-                display: none;
-              }
+        .tft-logo {
+          max-width: 33%;
+          width: 100%;
+          text-align: center;
+          @include d-flex();
+          @include align-items(center);
+          @include justify-content(center);
 
-              .menu-item {
-                a {
-                  display: block;
-                  padding: 10px 16px;
-                }
-              }
+          @media #{$max991} {
+            max-width: 50%;
+            text-align: left;
+          }
 
+          a {
+            @include d-flex();
+            img {
+              max-width: var(--tf-logo-width);
+              width: 100%;
+            }
+          }
 
-              .menu-item-has-children {
-                &::after {
-                  top: 50%;
-                  right: 12px;
-                  height: auto;
-                  transform: rotate(-90deg) translateX(56%);
-                }
-                .sub-menu {
-                  left: 100%;
-                  top: 0;
-                }
+          .logo-text {
+            a {
+              font-size: 2rem;
+              font-weight: 700;
+              color: $tft-color-text;
+            }
+          }
+        }
 
+        .tft-account {
+          max-width: 33%;
+          width: 100%;
+          text-align: right;
+
+          ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+              display: inline-block;
+
+              a {
+                padding: 12px 32px;
+                color: $tft-color-text;
+                font-size: 1rem;
+                font-weight: 700;
+                text-decoration: none;
+                display: inline-block;
+                transition: 0.3s all ease;
+                border: 1px solid transparent;
                 &:hover {
-                  .sub-menu {
-                    visibility: visible;
-                    transform: translateY(10px);
+                  background: $tft-color-primary;
+                  color: $tft-color-white;
+                  border-color: $tft-color-primary;
+                }
+              }
+
+              a.login {
+                border-color: $tft-color-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .tft-menus-section.tft-header-mobile {
+      .tft-main-header-wrapper {
+        min-height: auto;
+        align-items: center;
+
+        .tft-header-left {
+          flex: 1;
+          .logo-text {
+            a {
+              color: $tft-color-text;
+            }
+          }
+        }
+
+        .tft-header-center {
+          .tft-mobile_menubar {
+            i {
+              color: $tft-color-text;
+              display: block;
+            }
+          }
+        }
+      }
+
+      .tft-mobile-main-menu {
+        .tft-site-navigation {
+          background-color: $tft-color-orange-light;
+          top: 12px;
+
+          ul {
+            li {
+              display: block;
+              width: 100%;
+              border: 0px solid;
+
+              a {
+                color: $tft-color-text;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: 1.3;
+                padding: 8px 16px;
+              }
+
+              ul {
+                background-color: $tft-color-orange-light;
+
+                li {
+                  a {
+                    color: $tft-color-text;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.3;
                   }
                 }
               }
             }
           }
 
-          a {
-            font-family: $font-ubuntu;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 16.09px;
-            text-align: left;
-            color: $color-black;
-            @include transition(0.1s);
-            text-transform: uppercase;
-            padding: 24px 0;
+          .tft-social-share {
+            ul {
+              margin: 32px 16px 0;
+              @media #{$max767} {
+                margin-top: 16px;
+              }
 
-            &:hover {
-              color: $color-primary;
+              li {
+                display: inline-block;
+                width: auto;
+
+                a {
+                  display: inline-block;
+                  padding: 5px;
+                }
+              }
             }
           }
         }
       }
     }
 
-    &__right {
-      @include d-flex();
-      @include align-items(center);
-      gap: 30px;
+    .tft-menus-section.tft_has_transparent {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: rgba(48, 40, 28, 0.3);
+      backdrop-filter: blur(15px);
+      .tft-menu{
+        ul {
+          li {
+            a {
+              color: $tft-color-white;
+            }
+          }
+        }
+      } 
+      .tft-logo{
+        .logo-text {
+          a {
+            color: $tft-color-white;
+            &:hover{
+              color: $tft-color-primary;
+            }
+          }
+        }
+      }
+      .tft-header-center {
+        .tft-mobile_menubar {
+          i {
+            color: $tft-color-white;
+          }
+        }
+      }
+      .tft-account {
+        ul {
+          li{
+            a{
+              color: $tft-color-white;
+            }
+          }
+        }
+      }
+    
+      
+    }
 
-      @media #{$max1480} {
-        gap: 15px;
+    
+  }
+
+  &__three {
+    background: $tft-color-blue;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    @media #{$max767} {
+      min-height: auto;
+      overflow-x: hidden;
+    }
+
+    // container
+    &__container {
+      @media #{$max991} {
+        padding: 0;
       }
 
-      &__list {
-        @include d-flex();
-        @include align-items(center);
-        gap: 24px;
+      &.tft-fullwidth-container {
+        padding-left: 0;
+        padding-right: 0;
 
-        @media #{$max1366} {
-          gap: 20px;
+        .tft-design-3__content-left {
+          padding-left: 32px;
+
+          @media #{$max991} {
+            padding-left: 15px;
+          }
         }
 
-        @media #{$max1480} {
+        .tft-design-3__topbar {
+          padding-left: 32px;
+
+          @media #{$max991} {
+            padding-left: 0;
+          }
+        }
+
+        .tft-design-3__bottom {
+          padding-right: 32px;
+          @media #{$max991} {
+            padding-right: 15px;
+          }
+        }
+      }
+    }
+
+    // logo
+    &__logo {
+      text-align: center;
+      a {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $tft-color-white!important;
+        display: block;
+
+        &:hover {
+          color: $tft-color-white;
+        }
+
+        img {
+          vertical-align: middle;
+          max-width: var(--tf-logo-width);
+          width: 100%;
+
+          @media #{$max991} {
+            max-width: 160px;
+          }
+        }
+      }
+    }
+
+    // header content
+    &__content {
+      @include d-flex();
+      @include align-items(stretch);
+
+      @media #{$max767} {
+        align-items: inherit;
+      }
+
+      // header left
+      &-left {
+        max-width: 500px;
+        flex: 1;
+        padding-left: 6.3%;
+        @include d-flex();
+        @include align-items(center);
+
+        @media (max-width: 1850px) {
+          padding-left: 5%;
+        }
+
+        @media (max-width: 1760px) {
+          max-width: 450px;
+        }
+
+        @media (max-width: 1680px){
+          max-width: 350px;
+          padding-left: 3%;
+        }
+
+        @media (max-width: 1480px) {
+          max-width: 300px;
+        }
+
+        @media (max-width: 1399px) {
+          max-width: 260px;
+        }
+
+        @media #{$max1199} {
+          max-width: 250px;
+        }
+
+        @media #{$max991} {
+          max-width: 240px;
+        }
+
+        @media #{$max767} {
+          @include d-flex();
+          @include justify-content(space-between);
+          @include align-items(center);
+          width: 100%;
+          max-width: 100%;
+          padding: 15px;
+          min-height: 70px;
+          flex-basis: 30%;
+        }
+        @media #{$max575} {
+          flex-basis: 50%;
+        }
+      }
+
+      // header right
+      &-right {
+        flex: 1;
+        position: relative;
+        background: $tft-color-white;
+        margin-left: 52px;
+
+
+        @media #{$max991} {
+          padding-left: 0;
+          clip-path: none;
+          margin-left: 0;
+          min-height: 70px;
+          @include d-flex();
+          @include align-items(center);
+          @include justify-content(end);
+          padding-right: 15px;
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          left: -48px;
+          padding-right: 0;
+          background-color: $tft-color-white;
+          height: 100%;
+          clip-path: polygon(23.5% 0%, 2000% 0, 100% 100%, 0% 100%);
+          z-index: -1;
+          width: 205px;
+          top: 0.5px;
+          @media #{$max991} {
+            width: 150px;
+            left: -35px;
+            z-index: 1;
+            
+          }
+        }
+        &::after{
+          clip-path: none;
+          width: 100%;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+
+    // header topbar
+    &__topbar {
+      padding-left: 20px;
+      position: relative;
+      background: linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
+      min-height: 45px;
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(space-between);
+      margin-left: 30px;
+      z-index: 99;
+      padding-right: 8%;
+
+      @media (max-width: 1850px) {
+        padding-right: 4%;
+      }
+
+      @media (max-width: 1760px) {
+        padding-right: 3%;
+      }
+
+      @media (max-width: 1480px) {
+        padding-right: 15px;
+      }
+
+      @media (max-width: 1399px) {
+        padding-left: 15px;
+        margin-left: 30px;
+        min-height: 45px;
+      }
+
+      @media (max-width: 1366px) {
+        padding-left: 5px;
+      }
+
+      @media #{$max991} {
+        padding-left: 0;
+        min-height: 40px;
+        width: 100%;
+        @include justify-content(end);
+        margin-left: 25px;
+        margin-right: -15px;
+        padding-right: 0;
+      }
+
+      @media #{$max767} {
+        display: none;
+      }
+
+      @media #{$max575} {
+        @include justify-content(center);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: -20px;
+        padding-right: 100%;
+        top: 0;
+        background: linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary), linear-gradient(0deg, $tft-color-secondary, $tft-color-secondary);
+        width: auto;
+        height: 100%;
+        transform: skewX(-19deg);
+        z-index: -1;
+
+        @media #{$max991} {
+          transform: skewX(-20deg);
+        }
+
+        @media #{$max767} {
+          display: none;
+        }
+      }
+
+      &-right {
+        @media #{$max991} {
+          display: none;
+        }
+
+        &.mobile-view {
+          display: none;
+
+          @media #{$max991} {
+            display: block;
+
+            a,
+            select {
+              color: $tft-color-text;
+            }
+          }
+
+          .tft-design-3__topbar-list-item:first-child {
+            @media #{$max575} {
+              display: block;
+            }
+          }
+        }
+      }
+
+      &-left {
+        @media #{$max991} {
+          padding: 10px 15px 10px 0;
+        }
+
+        @media #{$max575} {
+          flex: 1;
+        }
+      }
+
+      &-list {
+        @include d-flex();
+        @include align-items(center);
+        gap: 30px;
+
+        @media (max-width: 1399px) {
+          gap: 20px;
+          @include align-items(baseline);
+        }
+
+        @media #{$max991} {
           gap: 15px;
         }
 
-        &__item {
-          position: relative;
-
-          &--link {
-            display: block;
-            width: 45px;
-            height: 45px;
-            @include d-flex();
-            @include align-items(center);
-            @include justify-content(center);
-            background: $color-white;
-            border: 1px dashed #060d1c;
-            @include box-circle();
-
-            @media #{$max1480} {
-              width: 42px;
-              height: 42px;
-            }
-
-            @media #{$max1199} {
-              width: 40px;
-              height: 40px;
-            }
-
-            @media #{$max991} {
-              width: 35px;
-              height: 35px;
-            }
-
-            svg {
-              @media #{$max991} {
-                width: 16px;
-                height: 16px;
-              }
-            }
-          }
-
-          &--search {
-            position: absolute;
-            left: -100px;
-            transform: translateY(40px);
-            @include transition(0.3s);
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            visibility: hidden;
-
-            @media #{$max767} {
-              left: 0;
-            }
-
-            .search-form {
-              min-width: 250px;
-
-              @media #{$max767} {
-                min-width: 200px;
-              }
-            }
-
-            input[type="search"] {
-              border: 0;
-              padding: 10px 12px;
-              font-size: 14px;
-              color: $color-black;
-              @include bd-radius(0);
-
-              @media #{$max767} {
-                padding: 6px 12px;
-              }
-            }
-
-            &__button {
-              position: absolute;
-              right: 0;
-              top: 50%;
-              transform: translateY(-50%);
-              border: 0;
-              background: $color-primary;
-              color: $color-white;
-              font-size: 14px;
-              height: 100%;
-              @include bd-radius(0);
-              cursor: pointer;
-            }
-
-            &.active {
-              visibility: visible;
-              transform: translateY(20px);
-
-              @media #{$max1399} {
-                transform: translateY(17px);
-              }
-
-              @media #{$max1199} {
-                transform: translateY(15px);
-              }
-
-              @media #{$max991} {
-                transform: translateY(9px);
-              }
-
-              @media #{$max767} {
-                transform: translateY(8px);
-              }
-            }
-          }
-        }
-      }
-
-      &__button {
         @media #{$max575} {
-          display: none;
+          @include justify-content(space-between);
         }
 
-        .tft-btn {
-          @media #{$max1366} {
-            min-width: 140px;
-            min-height: 45px;
-            font-size: 15px;
+        &-item {
+          @media (max-width: 1399px) {
+            max-height: 24px;
+            min-height: 24px;
+          }
+
+          @media #{$max1199} {
+            max-height: initial;
+            min-height: initial;
+          }
+        }
+
+        &-link {
+          @include d-flex();
+          @include align-items(center);
+          gap: 10.5px;
+          color: $tft-color-white;
+
+          &:hover {
+            color: $tft-color-white;
+          }
+
+          &:visited {
+            color: $tft-color-white;
+          }
+
+          @media (max-width: 1399px) {
+            font-size: 0.938rem;
           }
 
           @media #{$max991} {
-            min-height: 38px;
-            font-size: 14px;
-            min-width: 130px;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            gap: 8px;
+
+            svg {
+              width: 15px;
+            }
+          }
+
+          svg {
+            @media #{$max575} {
+              width: 14px;
+              margin-top: 1px;
+            }
+          }
+        }
+
+        &:hover {
+          color: $tft-color-white;
+        }
+
+        &:focus {
+          color: $tft-color-white;
+          outline: none;
+          box-shadow: none;
+        }
+
+        &-select {
+          background: transparent;
+          border: 0;
+          color: $tft-color-white;
+          cursor: pointer;
+
+          &:focus {
+            color: $tft-color-white;
+            outline: none;
+            box-shadow: none;
+          }
+
+          option {
+            color: $tft-color-heading;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &__bars {
+      display: none;
+
+      @media #{$max1199} {
+        position: absolute;
+        min-height: 20px;
+        right: 15px;
+        top: 63px;
+        cursor: pointer;
+        width: 30px;
+        z-index: 999;
+        display: block;
+        line-height: 0;
+
+        &--icon {
+          width: 30px;
+          height: 2px;
+          background: $tft-color-heading;
+          position: absolute;
+          top: 0;
+          cursor: pointer;
+
+          &:nth-child(2) {
+            top: 8px;
+          }
+
+          &:nth-child(3) {
+            top: 17px;
           }
         }
       }
 
-      &__box {
-        line-height: 15px;
+      @media #{$max991} {
+        position: relative;
+        right: inherit;
+        left: 0;
+        top: inherit;
+      }
+    }
 
-        @media #{$max575} {
+    // header bottom
+    &__bottom {
+      padding: 16px 0 16px 54.13px;
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(space-between);
+      padding-right: 8%;
+
+      @media (max-width: 1850px) {
+        padding-right: 4%;
+        padding-left: 30px;
+      }
+
+      @media (max-width: 1760px) {
+        padding-right: 3%;
+      }
+
+      @media (max-width: 1480px) {
+        padding: 15px;
+        gap: 20px;
+        @include justify-content(space-between);
+      }
+
+      @media #{$max1199} {
+        gap: 15px;
+        @include justify-content(end);
+        padding: 10px 60px 10px 15px;
+      }
+
+      @media #{$max991} {
+        padding: 8px 15px 8px 15px;
+        gap: inherit;
+      }
+
+      @media #{$max767} {
+        display: none;
+      }
+
+      &__nav {
+        min-width: 754px;
+        flex: 1;
+
+        @media (max-width: 1680px) {
+          min-width: auto;
+        }
+
+        @media #{$max1199} {
           display: none;
+        }
+
+        &--list, 
+        &--list ul {
+          @include d-flex();
+          gap: 32px;
+          row-gap: 10px;
+
+          @media (max-width: 1680px) {
+            gap: 30px;
+          }
+
+          @media (max-width: 1366px) {
+            gap: 20px;
+          }
+
+          @media #{$max1199} {
+            @include justify-content(center);
+          }
+
+          .menu-item {
+            &.menu-item-has-children {
+              &:hover {
+                .sub-menu {
+                  visibility: visible;
+                  transform: translateY(0px);
+                }
+              }
+
+              // Styling for submenus
+              .sub-menu {
+                position: absolute;
+                z-index: 9;
+                background: $tft-color-white;
+                box-shadow: 0px 4px 16px 0px rgba(2, 28, 53, 0.2);
+                margin: 0;
+                padding: 8px 0px;
+                width: max-content;
+                min-width: 220px;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                left: auto;
+                top: 25px;
+                display: none;
+                transform: translateY(40px);
+                @include bd-radius(4px);
+                @include transition(0.3s);
+                
+                // Adjust for different screen sizes
+                @media (max-width: 1399px) {
+                  left: -100px;
+                }
+
+                @media #{$max1199} {
+                  position: relative;
+                  background: transparent;
+                  box-shadow: unset;
+                  display: none;
+                }
+                &.open-left{
+                  right: 100%;
+                }
+
+                .menu-item {
+                  a {
+                    display: block;
+                    padding: 10px 16px;
+                    text-transform: capitalize;
+                  }
+                }
+
+                .menu-item-has-children {
+                  &::after {
+                    top: 50%;
+                    right: 12px;
+                    height: auto;
+                    transform: rotate(-90deg) translateX(56%);
+                  }
+
+                  .sub-menu {
+                    left: 100%;
+                    top: 0;
+                  }
+
+                  &:hover {
+                    .sub-menu {
+                      visibility: visible;
+                      transform: translateY(10px);
+                    }
+                  }
+                }
+              }
+            }
+
+            a {
+              font-size: 1rem;
+              font-weight: 700;
+              color: $tft-color-text;
+              @include transition(0.1s);
+              text-transform: uppercase;
+              padding: 24px 0;
+              text-transform: capitalize;
+              display: inline;
+
+              &:hover {
+                color: $tft-color-primary;
+              }
+            }
+          }
+        }
+
+        &.tft-site-navigation {
+          ul {
+            justify-content: start;
+            li {
+              padding: 0;
+            }
+          }
+        }
+      }
+
+      &__right {
+        @include d-flex();
+        @include align-items(center);
+        gap: 30px;
+
+        @media (max-width: 1480px) {
+          gap: 15px;
+        }
+
+        &__list {
+          @include d-flex();
+          @include align-items(center);
+          gap: 24px;
+
+          @media (max-width: 1366px) {
+            gap: 20px;
+          }
+
+          @media (max-width: 1480px) {
+            gap: 15px;
+          }
+
+          &__item {
+            position: relative;
+
+            &--link {
+              display: block;
+              width: 45px;
+              height: 45px;
+              @include d-flex();
+              @include align-items(center);
+              @include justify-content(center);
+              background: $tft-color-white;
+              border: 1px dashed $tft-color-text;
+              @include box-circle();
+
+              @media (max-width: 1480px) {
+                width: 42px;
+                height: 42px;
+              }
+
+              @media #{$max1199} {
+                width: 40px;
+                height: 40px;
+              }
+
+              @media #{$max991} {
+                width: 35px;
+                height: 35px;
+              }
+
+              svg {
+                @media #{$max991} {
+                  width: 16px;
+                  height: 16px;
+                }
+                path{
+                  fill: $tft-color-text;
+                }
+              }
+            }
+
+            &--search {
+              position: absolute;
+              left: -100px;
+              transform: translateY(40px);
+              @include transition(0.3s);
+              box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+              visibility: hidden;
+
+              @media #{$max767} {
+                left: 0;
+              }
+
+              .search-form {
+                min-width: 250px;
+                font-weight: 500;
+
+                @media #{$max767} {
+                  min-width: 200px;
+                }
+              }
+
+              input[type="search"] {
+                border: 0;
+                padding: 10px 12px;
+                font-size: 0.875rem;
+                color: $tft-color-text;
+                @include bd-radius(0);
+
+                @media #{$max767} {
+                  padding: 6px 12px;
+                }
+              }
+
+              &__button {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                border: 0;
+                background: $tft-color-primary;
+                color: $tft-color-white;
+                font-size: 0.875rem;
+                height: 100%;
+                @include bd-radius(0);
+                cursor: pointer;
+              }
+
+              &.active {
+                visibility: visible;
+                transform: translateY(20px);
+
+                @media (max-width: 1399px) {
+                  transform: translateY(17px);
+                }
+
+                @media #{$max1199} {
+                  transform: translateY(15px);
+                }
+
+                @media #{$max991} {
+                  transform: translateY(9px);
+                }
+
+                @media #{$max767} {
+                  transform: translateY(8px);
+                }
+              }
+            }
+          }
+        }
+
+        &__button {
+          @media #{$max575} {
+            display: none;
+          }
+
+          .tft-btn {
+            @media (max-width: 1366px) {
+              min-width: 140px;
+              min-height: 45px;
+              font-size: 0.938rem;
+            }
+
+            @media #{$max991} {
+              min-height: 38px;
+              font-size: 0.875rem;
+              min-width: 130px;
+            }
+          }
+        }
+
+        &__box {
+          line-height: 1;
+
+          @media #{$max575} {
+            display: none;
+          }
         }
       }
     }
   }
-
 }
-
 
 // mobile sidenav
 .mobile-sidenav {
@@ -1232,7 +1142,7 @@ header.tft-design-2 {
   left: -100%;
   height: 100%;
   width: 280px;
-  background-color: $color-dark-blue;
+  background-color: $tft-color-dark-blue;
   overflow-x: hidden;
   transition: 0.5s ease;
   z-index: 99999;
@@ -1241,8 +1151,8 @@ header.tft-design-2 {
     position: absolute;
     top: 10px;
     right: 20px;
-    font-size: 36px;
-    color: white;
+    font-size: 2.25rem;
+    color: $tft-color-white;
     background: none;
     border: none;
     cursor: pointer;
@@ -1262,19 +1172,27 @@ header.tft-design-2 {
 
         a {
           padding: 7px 25px;
-          text-decoration: none;
-          font-size: 16px;
-          color: white;
+          color: $tft-color-white;
           display: block;
           transition: 0.3s;
 
           &:hover {
-            color: $color-primary;
+            color: $tft-color-primary;
           }
         }
 
         .sub-menu {
           display: none;
+          position: relative;
+          box-shadow: none;
+          background-color: transparent;
+          left: auto;
+          padding: 0;
+          li{
+            a{
+              padding: 2px 25px;
+            }
+          }
         }
       }
     }
@@ -1298,6 +1216,7 @@ header.tft-design-2 {
 
     @media #{$max767} {
       display: block;
+      padding: 0 24px;
     }
 
     ul {
@@ -1306,22 +1225,23 @@ header.tft-design-2 {
         padding-bottom: 7px;
 
         a {
-          color: $color-white;
-          font-size: 15px;
+          color: $tft-color-white;
+          font-size: 0.938rem;
         }
       }
     }
 
     .tf-flex {
+      @include d-flex();
       margin: 10px 0;
       gap: 15px;
 
       .tft-design-3__bottom__right__list__item--link {
-        border-color: $color-white;
+        border-color: $tft-color-white;
         background: transparent;
 
         path {
-          fill: $color-white;
+          fill: $tft-color-white;
         }
       }
     }
@@ -1333,30 +1253,16 @@ header.tft-design-2 {
 
     @media #{$max767} {
       display: block;
+      padding: 10px 24px;
     }
   }
 }
 
-.tft-design-3 .menu-item-has-children:after {
-  content: "\f078";
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: bold;
-  text-rendering: auto;
-  margin-left: 0px;
-  line-height: normal;
-  font-family: "Font Awesome 5 Free";
-  z-index: 99;
-  position: absolute;
-  top: 9px;
-  height: 100%;
-  right: 3px;
-
-  @media #{$max1199} {
-    position: absolute;
-    right: 20px;
-    color: white;
-    top: 14px;
+body.wp-singular,
+body.blog,
+body.archive{
+  .tft-header-design__two {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   }
 }
 

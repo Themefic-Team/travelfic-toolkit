@@ -1,0 +1,971 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-hero-design {
+    &__one {
+        overflow: hidden;
+
+        .tft-hero-slider-selector {
+            position: relative;
+
+            .tft-hero-single-item {
+                &::before {
+                    content: "";
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    z-index: 99;
+                }
+
+                .tft-slider-bg-img {
+                    @media #{$max1024} {
+                        padding: 10px;
+                    }
+
+                    .tft-hero-single-item-inner {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+
+                        .slider-inner-info {
+                            max-width: 765px;
+                            z-index: 999;
+                            position: relative;
+
+                            .tft-slider-title {
+                                .title-large {
+                                    font-size: 5.25rem;
+                                    font-weight: 800;
+                                    color: $tft-color-white;
+                                    line-height: 1.3;
+                                    margin-bottom: 20px;
+                                    margin-top: 0px;
+                                }
+
+                                p {
+                                    color: $tft-color-white;
+                                    font-size: 1.375rem;
+                                }
+
+                            }
+
+                            .slider-button {
+                                margin-top: 40px;
+
+                                .tft-btn {
+                                    color: $tft-color-white;
+                                    font-size: 1.125rem;
+                                    padding: 17px 35px;
+                                    @include bd-radius(4px);
+                                    font-weight: 700;
+                                    background-color: $tft-color-primary;
+
+                                    &:hover {
+                                        background: $tft-color-secondary;
+                                    }
+                                }
+
+                                input {
+                                    &:hover {
+                                        background: $tft-color-secondary;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .slick-prev,
+            .slick-next {
+                top: 91%;
+                z-index: 99;
+                background: $tft-color-primary;
+                height: 45px;
+                width: 45px;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+                border: 2px solid rgba(0, 0, 0, 0);
+                color: $tft-color-white;
+                font-size: 1rem;
+
+                &::before {
+                    display: none;
+                    color: $tft-color-white;
+                }
+
+                &:hover {
+                    background: transparent !important;
+                    border: 2px solid $tft-color-border;
+                    transition: all 0.3s ease;
+                    color: $tft-color-text;
+
+                    &::before {
+                        color: $tft-color-primary;
+                    }
+                }
+            }
+
+            .slick-prev {
+                left: calc(50% - (1200px / 2) + 0px) !important;
+
+                @media (max-width: 1280px) {
+                    left: calc(50% - (1200px / 2) + 60px) !important;
+                }
+
+                @media #{$max1199} {
+                    left: calc(50% - (1200px / 2) + 90px) !important;
+                }
+
+                @media #{$max1024} {
+                    left: 20px !important;
+                }
+            }
+
+            .slick-next {
+                left: calc(50% - (1200px / 2) + 70px) !important;
+
+                @media (max-width: 1280px) {
+                    left: calc(50% - (1200px / 2) + 120px) !important;
+                }
+
+                @media #{$max1199} {
+                    left: calc(50% - (1200px / 2) + 160px) !important;
+                }
+
+                @media #{$max1024} {
+                    left: 100px !important;
+                }
+            }
+
+            .slider__counter {
+                left: calc(50% - (1200px / 2) + 180px) !important;
+                position: absolute;
+                top: 90%;
+                width: 115px;
+                text-align: right;
+                font-size: 1.5rem;
+                color: $tft-color-primary;
+                font-weight: 500;
+
+                @media (max-width: 1280px) {
+                    display: none;
+                }
+
+                @media #{$max1199} {
+                    display: none;
+                }
+
+                @media #{$max1024} {
+                    left: 210px !important;
+                }
+
+                &::before {
+                    content: "";
+                    width: 100%;
+                    height: 2px;
+                    background: rgba(255, 255, 255, 0.5);
+                    position: absolute;
+                    left: -38px;
+                    bottom: 10px;
+                }
+            }
+        }
+    }
+
+    &__two {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media #{$max767} {
+            height: auto;
+            padding: 20px 16px;
+        }
+
+        .tft-hero-content {
+            width: 1240px;
+            padding: 0 32px;
+            @media #{$max1024} {
+                padding: 0px 16px;
+            }
+            @media #{$max767} {
+                padding: 0;
+            }
+            h1 {
+                font-size: 4.5rem;
+                font-weight: 700;
+                line-height: 1.2;
+                color: $tft-color-white;
+                text-align: center;
+                padding-bottom: 100px;
+                margin-bottom: 0;
+                @media #{$max1024} {
+                    padding-top: 40px;
+                    padding-bottom: 32px; 
+                    font-size: 2.5rem;  
+                }
+  
+                @media #{$max767} {
+                    font-size: 1.5rem;
+                    padding-top: 70px;
+                    padding-bottom: 4px;
+                }
+            }
+
+            #tf-booking-search-tabs {
+                .tf-booking-form-tab {
+                    button {
+                        border: 0px;
+                        padding: 15px 30px;
+                        cursor: pointer;
+                        transition: .3s all ease;
+
+                        &.tf_btn {
+                            border: $tft-color-border;
+                            border-radius: 0px;
+                            overflow: hidden;
+                            position: relative;
+                            color: $tft-color-text;
+                            font-size: 1rem;
+                            cursor: pointer;
+                            position: relative;
+                            text-decoration: none;
+                            background-color: $tft-color-gray-platinum;
+                            padding: 15px 30px;
+                        }
+
+                        &:hover,
+                        &.active {
+                            background-color: $tft-color-primary;
+                            color: $tft-color-white;
+                        }
+                    }
+                }
+
+                .tf-booking-form-tab-mobile {
+                    select[name="tf-booking-form-tab-select"] {
+                        @media #{$max767} {
+                            color: $tft-color-orange-light;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__three {
+        background: $tft-color-gray-ish-blue;
+        height: 540px;
+        margin: 0 0 86px 0;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+
+        .tft-hero-content-box {
+            position: absolute;
+            right: 24px;
+            left: 24px;
+            bottom: -80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h1 {
+                color: $tft-color-white;
+                text-align: center;
+                font-size: 4.18rem;
+                font-weight: 700;
+                margin-bottom: 110px;
+
+                @media #{$max767} {
+                    font-size: 2rem;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .tft-search-form {
+                width: 1040px;
+
+                @media #{$max1024} {
+                    width: 100%;
+                }
+
+                .tf-booking-forms-wrapper {
+                    margin-top: 0;
+                }
+            }
+
+        }
+    }
+
+    &__four {
+        background-position: center center;
+        min-height: 800px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+        position: relative;
+        @include d-flex();
+        @include align-items(center);
+        overflow: hidden;
+
+        @media (max-width: 1366px) {
+            min-height: 700px;
+        }
+
+        @media #{$max1199} {
+            min-height: 650px;
+        }
+
+        @media #{$max991} {
+            min-height: 600px;
+        }
+
+        @media #{$max767} {
+            min-height: 500px;
+        }
+
+        @media #{$max575} {
+            min-height: 450px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background: linear-gradient(180deg, rgba(14, 61, 216, 0.8) 5.87%, rgba(0, 57, 204, 0.03) 125.37%);
+            z-index: -1;
+        }
+
+        &__container {
+            position: relative;
+            width: 100%;
+            max-width: 1678px;
+            margin: 0 auto;
+
+            @media #{$max1199} {
+                width: 100%;
+            }
+        }
+
+        // slider
+        &__slider {
+            position: relative;
+            top: 50%;
+
+            &.slick-dotted.slick-slider {
+                margin-bottom: 0;
+
+                @media #{$max575} {
+                    margin-bottom: 90px;
+                }
+            }
+
+            &__item {
+                @include d-flex();
+                @include align-items(center);
+                @include justify-content(center);
+                color: $tft-color-white;
+
+                @media #{$max767} {
+                    @include align-items(flex-start);
+                }
+
+                &__content {
+                    text-align: center;
+
+                    &--subtitle {
+                        font-size: 2.25rem;
+                        font-weight: 400;
+                        line-height: 1.25;
+                        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+                        text-transform: capitalize;
+                        color: $tft-color-white;
+
+                        @media #{$max1199} {
+                            font-size: 2rem;
+                        }
+
+                        @media #{$max991} {
+                            font-size: 1.75rem;
+                        }
+
+                        @media #{$max767} {
+                            font-size: 1.125rem;
+                        }
+                    }
+
+                    &--title {
+                        font-size: 6.25rem;
+                        font-weight: 500;
+                        line-height: 1.17;
+                        margin: 14px 0 35px;
+                        text-transform: capitalize;
+                        color: $tft-color-white;
+
+                        @media #{$max1199} {
+                            font-size: 5rem;
+                            line-height: 1.125;
+                        }
+
+                        @media #{$max991} {
+                            font-size: 4rem;
+                            line-height: 1;
+                        }
+
+                        @media #{$max767} {
+                            font-size: 3rem;
+                            line-height: 1.2;
+                            margin-bottom: 20px;
+                        }
+                    }
+
+                    &--link {
+                        padding: 0 42px;
+                        gap: 5px;
+
+                        @media #{$max767} {
+                            padding: 0 30px;
+                        }
+                    }
+                }
+            }
+
+            // slider nav
+            &--nav {
+                @media (max-width: 1399px) {
+                    margin-top: 0;
+                    position: absolute;
+                    left: 50%;
+                    bottom: -100px;
+                    transform: translateX(-50%);
+                    @include d-flex();
+                    gap: 15px;
+                }
+
+                @media (max-width: 480px) {
+                    bottom: -80px;
+                }
+
+                button {
+                    background: transparent;
+                    width: 60px;
+                    height: 60px;
+                    border-color: $tft-color-white;
+
+                    @media (max-width: 1399px) {
+                        width: 50px;
+                        height: 50px;
+                        position: relative;
+                        transform: initial;
+                        top: 0;
+                    }
+
+                    @media #{$max991} {
+                        width: 45px;
+                        height: 45px;
+
+                    }
+
+                    @media #{$max767} {
+                        width: 40px;
+                        height: 40px;
+
+                    }
+
+                    i {
+                        color: $tft-color-white;
+                        font-size: 1.25rem;
+                    }
+
+                    &:hover {
+                        background: $tft-color-primary;
+                        color: $tft-color-white;
+                        border-color: $tft-color-primary;
+                    }
+
+                    &.tft-prev-slide {
+                        left: 80px;
+
+                        @media (max-width: 1760px) {
+                            left: 100px;
+                        }
+
+                        @media (max-width: 1399px) {
+                            left: 0;
+                        }
+                    }
+
+                    &.tft-next-slide {
+                        right: 80px;
+
+                        @media (max-width: 1760px) {
+                            right: 100px;
+                        }
+
+                        @media (max-width: 1399px) {
+                            right: 0;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        // social
+        &__social {
+            position: absolute;
+            left: 7px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 99;
+            @include d-flex();
+            flex-direction: column;
+            @include justify-content(center);
+            @include align-items(center);
+            color: $tft-color-white;
+            gap: 20px;
+
+            @media (max-width: 1760px) {
+                left: 35px;
+            }
+
+            @media #{$max1199} {
+                background: $tft-color-secondary;
+                left: -60px;
+                gap: 10px;
+                padding: 14px 8px;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+
+            // social list
+            &__list {
+                @include d-flex();
+                gap: 20px;
+                flex-direction: column;
+
+                @media #{$max991} {
+                    gap: 10px;
+                }
+
+                &__item {
+                    &--link {
+                        @include d-flex();
+                        @include align-items(center);
+                        @include justify-content(center);
+                        @include box-circle();
+                        width: 45px;
+                        height: 45px;
+                        border: 1px solid $tft-color-border;
+                        @include transition(0.3s);
+
+                        @media #{$max991} {
+                            width: 30px;
+                            height: 30px;
+                        }
+
+                        &:hover {
+                            background: $tft-color-primary;
+                            border-color: $tft-color-primary;
+                        }
+
+                        i {
+                            font-size: 0.875rem;
+                            color: $tft-color-white;
+
+                            @media #{$max991} {
+                                font-size: 0.75rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // divider
+            &__divider {
+                width: 1px;
+                height: 100px;
+                background: $tft-color-silver-light;
+
+                @media #{$max767} {
+                    height: 80px;
+                }
+            }
+
+            &__label {
+                text-transform: uppercase;
+                font-weight: 500;
+                letter-spacing: 0.23em;
+                writing-mode: tb-rl;
+                transform: rotate(180deg);
+                color: $tft-color-white;
+            }
+        }
+
+        // mobile share label
+        &__mobile--share {
+            display: none;
+            min-width: 31px;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background-color: $tft-color-dark-blue;
+            padding: 10px 6px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            @media #{$max1199} {
+                display: block;
+            }
+        }
+
+        //  slick dots
+        .slick-dots {
+            position: absolute;
+            top: 50%;
+            right: 3px;
+            max-width: fit-content;
+            margin: 0 auto;
+            @include d-flex();
+            @include align-items(center);
+            @include justify-content(center);
+            gap: 20px;
+            transform: translateY(-50%);
+            z-index: 99;
+            flex-direction: column;
+            align-items: end;
+            height: fit-content;
+
+            @media (max-width: 1760px) {
+                right: 16px;
+            }
+
+            @media #{$max991} {
+                right: 0;
+                top: 100%;
+                gap: 8px;
+                transform: none;
+                flex-direction: row;
+                width: 100%;
+                margin-top: 100px;
+                max-width: inherit;
+                max-height: fit-content;
+            }
+
+            @media #{$max575} {
+                right: 0;
+                top: 100%;
+                gap: 8px;
+                transform: none;
+                flex-direction: row;
+                width: 100%;
+                margin-top: 100px;
+                max-height: fit-content;
+            }
+
+            li {
+                width: 30px;
+                height: 30px;
+                border: 2px solid transparent;
+                background: transparent;
+                @include d-flex();
+                @include align-items(center);
+                @include justify-content(center);
+                cursor: pointer;
+
+                @media #{$max767} {
+                    width: 25px;
+                    height: 25px;
+                }
+
+                &.slick-active {
+                    border-color: $tft-color-white;
+                }
+
+                button {
+                    width: 10px;
+                    height: 10px;
+                    background: $tft-color-white;
+                    border: 0;
+                    padding: 0;
+                    font-size: 0;
+                    cursor: pointer;
+                    @include bd-radius(0);
+
+                    @media #{$max767} {
+                        width: 9px;
+                        height: 9px;
+                    }
+
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // search form
+    .tft-search-box {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: $tft-color-white;
+        max-width: 1000px;
+
+        @media (max-width: 1480px) {
+            width: 900px;
+        }
+
+        @media (max-width: 1280px) {
+            width: 820px;
+        }
+
+        @media #{$max1199} {
+            width: 820px;
+        }
+
+        @media #{$max1024} {
+            position: relative;
+            max-width: 100%;
+        }
+
+        .tft-search-box-inner {
+            padding: 40px;
+            box-shadow: rgba(29, 42, 59, 0.1) 0px 4px 20px;
+            width: 1000px;
+
+            @media (max-width: 1480px) {
+                width: 900px;
+            }
+
+            @media (max-width: 1280px) {
+                width: 820px;
+            }
+
+            @media #{$max1199} {
+                width: 820px;
+            }
+
+            @media #{$max1024} {
+                width: 100%;
+            }
+
+            @media #{$max767} {
+                padding: 20px;
+            }
+
+            #tf-booking-search-tabs {
+                box-shadow: none;
+                padding: 0px;
+
+                .tf-booking-form-tab {
+                    .tf_btn {
+                        cursor: pointer;
+                        padding: 10px 18px;
+                        background-color: transparent;
+                        border: 1px solid $tft-color-border;
+                        color: $tft-color-text;
+
+                        &.active,
+                        &:hover {
+                            background-color: $tft-color-primary;
+                            border-color: $tft-color-primary;
+                            color: $tft-color-white;
+                        }
+
+                    }
+                }
+
+                .tf-booking-form-tab-mobile {
+                    @media #{$max1024} {
+                        border: 1px solid $tft-color-border;
+                        border-radius: 4px;
+                    }
+                }
+
+                .tf-booking-forms-wrapper {
+                    margin-top: 16px;
+
+                    .tf-tabcontent {
+                        #tf_hotel_aval_check {
+                            @media #{$max767} {
+                                margin-bottom: 0px;
+                            }
+                        }
+                    }
+
+                    .tf_homepage-booking {
+                        margin: 0px;
+                        border-radius: 4px 0px 0px 4px;
+
+                        @media #{$max1024} {
+                            padding: 8px;
+                        }
+
+                        @media #{$max767} {
+                            height: auto;
+                            flex-direction: column;
+                            row-gap: 16px;
+                            align-items: stretch;
+
+                            &>div {
+                                width: 100%;
+
+                                &:nth-child(2) {
+                                    width: 100% !important;
+                                }
+                            }
+                        }
+
+                        .tf_btn {
+                            &.tf-submit {
+                                @include bd-radius(0);
+                                background: $tft-color-primary;
+                            }
+                        }
+
+                        .tf_destination-wrap {
+                            border-right: 1px solid $tft-color-border;
+
+                            @media #{$max767} {
+                                padding: 0px !important;
+                            }
+                        }
+
+                        .tf_selectdate-wrap {
+                            @media #{$max1024} {
+                                padding: 8px 8px !important;
+                                border: none;
+                            }
+
+                            @media #{$max767} {
+                                padding: 0px !important;
+                            }
+                        }
+
+                        .tf_selectperson-wrap {
+                            width: 30%;
+
+                            @media #{$max1024} {
+                                padding: 8px 8px !important;
+                                border: none;
+                            }
+
+                            @media #{$max767} {
+                                width: 100% !important;
+                                padding: 0px !important;
+                            }
+
+                            .tf_input-inner {
+                                input {
+                                    padding: 0px 8px;
+                                    border-radius: 0;
+                                }
+                            }
+                        }
+
+                        .tf_input-inner *,
+                        .tf_input-inner {
+                            font-weight: 600;
+                            font-size: 1.125rem;
+                            line-height: 1.2;
+                        }
+
+                        .tf_submit-wrap {
+                            background: transparent;
+                        }
+                    }
+                }
+            }
+        }
+
+        input,
+        select {
+            font-size: 1.125rem;
+            color: $tft-color-primary;
+            font-weight: 600;
+            line-height: 1.3;
+            border: none;
+            width: 100%;
+            padding: 10px;
+
+            &:focus {
+                color: $tft-color-primary;
+            }
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 2px;
+            filter: invert(41%) sepia(99%) saturate(1595%) hue-rotate(342deg) brightness(98%) contrast(94%);
+        }
+
+        .tft-search-box-field {
+            flex-basis: 22%;
+            padding: 15px 0px;
+
+            label {
+                display: block;
+                padding-bottom: 2px;
+            }
+        }
+
+        .tft-search-box-container {
+            column-gap: 18px;
+            justify-content: space-between;
+
+            @media #{$max1024} {
+                column-gap: 10px;
+            }
+
+            @media #{$max767} {
+                display: block;
+            }
+        }
+
+        .tft-tour-serach-fields-wrap {
+            border: none;
+            box-shadow: none;
+            display: flex;
+            flex-direction: row;
+
+            &>div {
+                border: none;
+                display: flex;
+                flex-direction: column;
+                height: inherit;
+                justify-content: space-between;
+                padding: 0;
+            }
+        }
+
+        .tft_tour-fields-title {
+            color: $tft-color-text;
+        }
+
+        .tft-selectperson-field-wrap {
+            border-bottom: 1px solid rgba(241, 93, 48, 0.2509803922);
+            padding: 11px 0;
+        }
+    }
+
+}

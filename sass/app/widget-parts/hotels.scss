@@ -1,0 +1,625 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-popular-hotels-design {
+    &__one {
+        background-repeat: no-repeat;
+        background-position: top right;
+
+        .tft-popular-hotel-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            @media #{$max767} {
+                margin-bottom: 24px;
+            }
+
+            .tft-hotel-header {
+                width: 60%;
+
+                @media #{$max991} {
+                    width: auto;
+                }
+
+                h3 {
+                    font-weight: 700;
+                    line-height: 1.3;
+                    letter-spacing: 0.16px;
+                    color: $tft-color-primary;
+                    margin-bottom: 0;
+
+                    @media #{$max767} {
+                        font-size: .5rem;
+                    }
+
+                }
+
+                h2 {
+                    font-size: 3.5rem;
+                    font-weight: 700;
+                    line-height: 1.2;
+                    color: $tft-color-heading;
+                    margin-bottom: 24px;
+                    margin-top: 8px;
+
+                    @media (max-width: 1366px) {
+                        font-size: 2rem;
+                    }
+
+                    @media #{$max767} {
+                        font-size: 1.5rem;
+                        margin-bottom: 16px;
+                    }
+                }
+
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    @include d-flex();
+                    gap: 30px;
+
+                    @media #{$max991} {
+                        gap: 15px;
+                    }
+                    @media #{$max767} {
+                        gap: 8px;
+                    }
+
+                    li {
+                        .tft-btn {
+                            padding: 12px 32px;
+                            min-height: 48px;
+                            min-width: auto;
+                            @media #{$max991} {
+                                padding: 8px 12px;
+                            }
+
+                            @media #{$max991} {
+                                min-height: 36px;
+                                align-items: end;
+                            }
+
+                            &:hover {
+                                background-color: $tft-color-secondary;
+                                color: $tft-color-white;
+                            }
+
+                            &.active {
+                                background-color: $tft-color-primary;
+                                &:hover {
+                                    background-color: $tft-color-primary;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            .read-more {
+                a {
+                    background-color: $tft-color-primary;
+                    font-weight: 700;
+                    color: $tft-color-white;
+
+                    &:hover {
+                        background-color: $tft-color-secondary;
+                    }
+
+                    span{
+                        line-height: 0;
+                        svg {
+                            @media #{$max1024} {
+                                width: 32px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .tft-popular-hotels-items {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: 40px;
+            row-gap: 48px;
+
+            @media #{$max1024} {
+                grid-template-columns: auto auto;
+            }
+
+            @media #{$max767} {
+                grid-template-columns: auto;
+                gap: 24px;
+            }
+
+            .tft-popular-single-item {
+                .tft-popular-single-item-inner {
+                    padding-bottom: 85px;
+                    position: relative;
+
+                    .tft-popular-thumbnail {
+                        height: 550px;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        padding-left: 56px;
+                        padding-right: 56px;
+                        display: block;
+
+                        @media (max-width: 1650px) {
+                            padding-left: 24px;
+                            padding-right: 24px;
+                        }
+
+                        @media #{$max991} {
+                            height: 390px;
+                        }
+                    }
+
+                    .tft-hotel-details {
+                        background-color: $tft-color-orange-thin;
+                        padding: 32px;
+                        position: absolute;
+                        left: 56px;
+                        right: 56px;
+                        bottom: 0;
+                        overflow: hidden;
+                        min-height: 213px;
+
+                        @media (max-width: 1650px) {
+                            left: 24px;
+                            right: 24px;
+                        }
+
+                        @media #{$max767} {
+                            padding: 16px;
+                            left: 30px;
+                            right: 30px;
+                            min-height: auto;
+                        }
+
+                        .tft-ratings {
+                            span {
+                                color: $tft-color-text;
+
+                                i {
+                                    color: $tft-color-orange-yellow;
+                                }
+                            }
+                        }
+
+                        h3 {
+                            font-size: 2rem;
+                            font-weight: 700;
+                            line-height: 1.2;
+                            color: $tft-color-heading;
+                            margin-bottom: 16px;
+                            margin-top: 8px;
+
+                            @media (max-width: 1366px) {
+                                font-size: 2rem;
+                            }
+                            @media #{$max767} {
+                                font-size: 1.5rem;
+                            }
+
+                            &.tft-title-split {
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                &:hover {
+                                    color: $tft-color-primary;
+                                }
+                            }
+                            a {
+                                color: inherit;
+                            }
+
+                            &:hover{
+                                a{
+                                    color: $tft-color-primary;
+                                }
+                            }
+                        }
+
+                        .tft-locations {
+                            display: flex;
+                            margin: 0;
+                            color: $tft-color-text;
+                            svg {
+                                margin-right: 8px;
+                            }
+                            span{
+                                display: -webkit-box;
+                                -webkit-line-clamp: 1;   
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+                        }
+
+                        .tour-time {
+                            display: flex;
+                            margin: 0;
+                            color: $tft-color-text;
+
+                            svg {
+                                margin-right: 8px;
+                            }
+
+                            span {
+                                margin-left: 3px;
+                            }
+                        }
+
+                        .tf-others-details {
+                            max-height: 0;
+                            overflow: hidden;
+                            padding-top: 0px;
+                            transition: max-height 0.6s ease;
+
+                            a {
+                                @media #{$max991} {
+                                    font-size: 0.75rem;
+                                }
+
+                                &.btn-view-details {
+                                    display: block;
+                                    padding: 12px 32px;
+                                    background-color: $tft-color-primary;
+                                    color: $tft-color-white;
+                                    font-weight: 700;
+                                    text-align: center;
+                                    margin-top: 16px;
+                                    transition: .3s all ease;
+
+                                    &:hover {
+                                        background: $tft-color-secondary;
+                                    }
+                                }
+
+                            }
+
+                            ul {
+                                display: grid;
+                                grid-template-columns: auto auto;
+                                margin: 0;
+                                padding: 0;
+                                list-style: none;
+                                gap: 12px;
+                                padding-top: 16px;
+
+                                li {
+                                    line-height: 1.3;
+                                    color: $tft-color-text;
+                                    display: flex;
+
+                                    @media #{$max991} {
+                                        font-size: 14px;
+                                    }
+
+                                    img {
+                                        width: 20px;
+                                        margin-right: 8px;
+                                    }
+
+                                    i {
+                                        margin-right: 8px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    .tft-hotel-details {
+                        .tf-others-details {
+                            max-height: 200px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__two {
+        margin-bottom: -30px;
+
+        .container {
+            overflow: hidden;
+
+            @media (max-width: 640px) {
+                padding: 0;
+            }
+        }
+
+        .tft-heading-content {
+            text-align: center;
+            margin-bottom: 40px;
+
+            @media #{$max1199} {
+                margin-bottom: 30px;
+            }
+
+            @media #{$max991} {
+                margin-bottom: 20px;
+            }
+
+            @media #{$max767} {
+                margin-bottom: 10px;
+            }
+
+            h3{
+                color: $tft-color-primary;
+            }
+
+            h2 {
+                margin-left: auto;
+                margin-right: auto;
+                color: $tft-color-heading;
+                &::after {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+
+        .tft-destination-content {
+            position: relative;
+        }
+
+        .slick-dotted.slick-slider {
+            padding-bottom: 30px;
+
+            @media #{$max991} {
+                margin-bottom: 50px;
+                padding-bottom: 20px;
+            }
+
+            @media #{$max767} {
+                margin-bottom: 50px;
+                padding-bottom: 10px;
+            }
+        }
+
+        .tft-destination-slider {
+            display: flex;
+            gap: 24px;
+
+            .slick-track {
+                @include d-flex();
+                @include justify-content(center);
+            }
+
+            .slick-list {
+                margin: 0 -12px !important;
+                padding: 30px 0;
+            }
+
+            .slick-slide {
+                margin: 0 12px !important;
+                height: auto;
+
+                @media (max-width: 640px) {
+                    margin: 15px 7.5px !important;
+                }
+            }
+
+            .slick-dots {
+                @include d-flex();
+                @include justify-content(center);
+                @include align-items(center);
+                margin-top: 50px;
+
+                li {
+                    width: 30px;
+                    height: 30px;
+                    border: 2px dashed transparent;
+                    text-align: center;
+                    border-radius: 100px;
+                    @include d-flex();
+                    @include justify-content(center);
+                    @include align-items(center);
+
+                    button {
+                        width: 10px;
+                        height: 10px;
+                        background: $tft-color-orange-light;
+                        border-radius: 50%;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+
+                    &.slick-active {
+                        border-color: $tft-color-primary;
+
+                        button {
+                            background: $tft-color-primary;
+                        }
+                    }
+                }
+            }
+
+            .tft-single-destination {
+                @include bd-radius(15px);
+                background: $tft-color-white;
+                box-shadow: 0px 5px 35px 0px rgba(157, 143, 132, 0.15);
+                padding: 30px;
+                @include d-flex();
+                flex-direction: column;
+                flex: 1;
+
+                @media #{$max767} {
+                    padding: 16px;
+                }
+
+                .tft-destination-thumbnail {
+                    position: relative;
+                    line-height: 0;
+
+                    img {
+                        height: 280px;
+                        width: 100%;
+                        object-fit: cover;
+                        @include bd-radius(15px);
+
+                        @media (max-width: 640px) {
+                            height: 200px;
+                        }
+                    }
+
+                    .tft-destination-featured {
+                        position: absolute;
+                        left: 30px;
+                        top: 30px;
+
+                        .tft-featured {
+                            @include bd-radius(100px);
+                            padding: 8px 16px 7px 16px;
+                            background: $tft-color-primary;
+                            color: $tft-color-white;
+                            font-size: 0.813rem;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+
+                .tft-destination-content {
+                    @include d-flex();
+                    @include justify-content(space-between);
+                    flex-direction: column;
+                    flex: 1;
+
+                    .tft-destination-top-info {
+                        margin-top: 20px;
+                        margin-bottom: 30px;
+
+                        @media #{$max767} {
+                            margin-bottom: 20px;
+                        }
+
+                        .tft-destination-rating {
+                            @include d-flex();
+                            @include align-items(center);
+                            gap: 5px;
+
+                            i {
+                                color: $tft-color-primary;
+                                font-size: 0.875rem;
+                            }
+                        }
+
+                        .tft-destination-location {
+                            display: block;
+                            color: $tft-color-text;
+                            font-size: 1rem;
+                            margin-top: 8px;
+                            text-transform: capitalize;
+
+                            i {
+                                color: $tft-color-primary;
+                                float: left;
+                                margin-right: 6px;
+                                margin-top: 1px;
+                            }
+
+                            span {
+                                overflow: hidden;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
+                                color: $tft-color-text;
+                            }
+                        }
+
+                        .tft-destination-title {
+                            font-size: 1.5rem;
+                            margin-bottom: 0px;
+                            margin-top: 20px;
+                            overflow: hidden;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            color: $tft-color-heading;
+                            a {
+                                @include transition(0.2s);
+                                color: inherit;
+                                text-transform: capitalize;
+                                color: inherit;
+                                &:hover {
+                                    color: $tft-color-primary;
+                                }
+                            }
+                        }
+                    }
+
+                    .tft-destination-bottom-info {
+                        @include bd-radius(15px);
+                        border: 1px solid $tft-color-border;
+                        @include d-flex();
+                        @include align-items(center);
+                        @include justify-content(space-between);
+                        gap: 10px;
+                        padding: 30px;
+
+                        @media #{$max767} {
+                            padding: 16px;
+                        }
+
+                        .tft-destination-price {
+                            .tft-destination-price-title {
+                                display: block;
+                                font-size: 0.875rem;
+                                margin-bottom: 10px;
+                                text-transform: none;
+                                color: $tft-color-text;
+                            }
+
+                            .tft-destination-price-value {
+                                color: $tft-color-primary;
+                                font-size: 1.25rem;
+                                text-transform: none;
+                                font-weight: 700;
+                            }
+                        }
+
+                        .tft-destination-btn {
+                            .tft-btn {
+                                background: rgba(250, 100, 0, 0.1);
+                                color: $tft-color-primary;
+                                min-width: 136px;
+                                min-height: 50px;
+                                text-transform: capitalize;
+
+                                &:hover {
+                                    background: $tft-color-secondary;
+                                    color: $tft-color-white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.tft-slider-disable {
+                overflow: initial;
+
+                .slick-track {
+                    width: 100%;
+                }
+        
+                .slick-list {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
