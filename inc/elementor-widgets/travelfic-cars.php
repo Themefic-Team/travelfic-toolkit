@@ -179,7 +179,7 @@ class Travelfic_Toolkit_Cars extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_item_title',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tf-car-archive-result .tf-heading h2',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-archive-template__one .tf-car-lists-widgets .tf-heading h2',
             ]
         );
 		$this->add_control(
@@ -187,9 +187,8 @@ class Travelfic_Toolkit_Cars extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#27333f',
                 'selectors' => [
-                    '{{WRAPPER}} .tf-car-archive-result .tf-heading h2' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-archive-template__one .tf-car-lists-widgets .tf-heading h2' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -208,7 +207,7 @@ class Travelfic_Toolkit_Cars extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_item_sub_title',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tf-car-archive-result .tf-heading p',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-archive-template__one .tf-car-lists-widgets .tf-heading p',
             ]
         );
 		$this->add_control(
@@ -216,9 +215,8 @@ class Travelfic_Toolkit_Cars extends \Elementor\Widget_Base
             [
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-                'default'   => '#566676',
                 'selectors' => [
-                    '{{WRAPPER}} .tf-car-archive-result .tf-heading p' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tf-archive-template__one .tf-car-lists-widgets .tf-heading p' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -232,8 +230,10 @@ class Travelfic_Toolkit_Cars extends \Elementor\Widget_Base
         $per_pages = !empty($settings['post_items']) ? $settings['post_items'] : '';
         $sec_title = !empty($settings['sec_title']) ? $settings['sec_title'] : '';
         $sub_title = !empty($settings['sub_title']) ? $settings['sub_title'] : '';
-
-		echo do_shortcode( '[tf_cars style="' . $style . '" count="' . $per_pages . '" title="' . $sec_title . '" subtitle="' . $sub_title . '" ]' );
-		
+		?>
+			<div class="tf-archive-template__one">
+				<?php echo do_shortcode( '[tf_cars style="' . $style . '" count="' . $per_pages . '" title="' . $sec_title . '" subtitle="' . $sub_title . '" ]' );?>
+			</div>
+		<?php
 	}
 }

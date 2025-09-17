@@ -1,0 +1,435 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+// Destination design 1
+.tft-destination-design {
+    &__one {
+        .tft-destination {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .tft-single-destination {
+                flex-basis: calc(25% - 20px);
+
+                @media #{$max1199} {
+                    flex-basis: calc(33.33% - 20px);
+                }
+
+                @media #{$max991} {
+                    flex-basis: calc(50% - 20px);
+                }
+
+                @media #{$max575} {
+                    flex-basis: 100%;
+                }
+
+                .tft-destination-thumbnail {
+                    height: 275px;
+                    margin-bottom: 8px;
+
+                    a {
+                        display: block;
+
+                        img {
+                            height: 275px;
+                            object-fit: cover;
+                            width: 100%;
+                            border-radius: 10px;
+                        }
+                    }
+                }
+
+                .tft-destination-title {
+                    margin-bottom: 4px;
+
+                    a {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        margin: 6px 0px;
+                        display: block;
+                        color: $tft-color-text;
+
+                        &:hover {
+                            color: $tft-color-primary;
+                        }
+                    }
+                }
+
+                .tft-destination-details {
+                    ul {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        width: 100%;
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+
+                        li {
+                            flex-basis: 50%;
+
+                            a {
+                                font-size: 1rem;
+                                font-weight: 400;
+
+                                &:hover {
+                                    color: $tft-color-primary;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__two {
+        background-position: left top;
+
+        .tft-destination-header {
+            @include d-flex();
+            @include align-items(center);
+            @include justify-content(space-between);
+            @media #{$max767} {
+                @include align-items(center);
+            }
+            h3 {
+                font-weight: 700;
+                letter-spacing: 0.16px;
+                color: $tft-color-primary;
+                margin: 0px 0px 8px 0px;
+            }
+
+            h2 {
+                font-size: 3.5rem;
+                line-height: 1.2;
+                font-weight: 700;
+                color: $tft-color-heading;
+                margin: 0;
+                padding-bottom: 48px;
+
+                @media (max-width: 1366px) {
+                    font-size: 2rem;
+                }
+                @media #{$max767} {
+                   padding-bottom: 24px;
+                   font-size: 1.5rem;
+                }
+            }
+            .tft-destination-slides-arrows,
+            .tft-apartment-location-slider-arrows,
+            .tft-tour-destination-slides-arrows{
+                @include d-flex();
+                gap: 20px;
+                @media #{$max767} {
+                    margin-left: auto;
+                    margin-bottom: 0;
+                    gap: 16px;
+                }
+                button{
+                    width: auto;
+                    position: inherit;
+                    &::before{
+                        display: none;
+                    }
+                    svg{
+                        @media #{$max767} {
+                            width: 32px;
+                            height: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tft-destination-content {
+            
+            .tft-destination-slides {
+                margin: 0 -20px;
+                @media #{$max991} {
+                    margin: 0 -16px;
+                }
+                @media #{$max767} {
+                    margin: 0 -10px;
+                }
+                .slick-list.draggable {
+                    width: 100% !important;
+                    padding-left: 0px !important;
+                }
+
+                .tft-single-destination {
+                    margin: 0px 20px !important;
+
+                    @media #{$max991} {
+                        margin: 0px 15px !important;
+                    }
+
+                    @media #{$max767} {
+                        margin: 0px 10px !important;
+                    }
+
+                    .tft-destination-thumbnail {
+                        height: 600px;
+                        position: relative;
+                        overflow: hidden;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+
+                        @media #{$max1024} {
+                            height: 400px;
+                        }
+
+                        @media #{$max991} {
+                            height: 280px;
+                        }
+
+                        &::before {
+                            background-color: rgba(0, 0, 0, .4);
+                            position: absolute;
+                            content: "";
+                            left: 0;
+                            top: 0;
+                            height: 100%;
+                            width: 100%;
+                        }
+
+                        .tft-destination-content {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: -65px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: end;
+                            overflow: hidden;
+                            transition: .3s all ease;
+                            @media #{$max991} {
+                                bottom: 0px;
+                            }
+
+                            h3 {
+                                font-size: 2.5rem;
+                                font-weight: 700;
+                                line-height: 1.3;
+                                color: $tft-color-white;
+                                padding: 0px 48px 37px 48px;
+                                margin: 0;
+
+                                @media #{$max1024} {
+                                    font-size: 1.25rem;
+                                    line-height: 1.2;
+                                }
+
+                                @media #{$max991} {
+                                    padding: 0px 16px 16px 16px;
+                                }
+                            }
+
+                            span {
+                                background-color: $tft-color-primary;
+                                padding: 20px 48px;
+                                display: flex;
+                                font-weight: 700;
+                                color: $tft-color-white;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                @media #{$max991} {
+                                    padding: 8px 16px;
+                                    font-size: 0.75rem;
+                                }
+
+                                &:hover {
+                                    background: $tft-color-secondary;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        .tft-destination-thumbnail {
+                            .tft-destination-content {
+                                bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__three {
+        .tft-destination-content {
+            @include d-flex();
+            gap: 24px;
+
+            @media (max-width: 1760px) {
+                gap: 20px;
+            }
+
+            @media #{$max991} {
+                gap: 20px;
+            }
+
+            @media #{$max767} {
+                @include align-items(center);
+            }
+
+            .tft-heading-content {
+                flex-basis: calc(608px - 12px);
+
+                @media (max-width: 1760px) {
+                    flex-basis: calc(40% - 15px);
+                }
+
+                @media #{$max991} {
+                    flex-basis: calc(50% - 10px);
+                }
+
+                @media #{$max767} {
+                    flex-basis: 100%;
+                }
+
+                h3{
+                    color: $tft-color-primary;
+                }
+
+                h2{
+                    color: $tft-color-heading;
+                }
+
+                .tft-section-content {
+                    max-width: 490px;
+
+                    @media #{$max767} {
+                        max-width: 100%;
+                    }
+
+                    p {
+                        margin-bottom: 30px;
+                        color: $tft-color-text;
+
+                        @media #{$max767} {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+
+
+            }
+
+            .tft-single-destination {
+                flex-basis: 288px;
+
+                @media (max-width: 1760px) {
+                    flex-basis: calc(30% - 15px);
+                }
+
+                @media #{$max991} {
+                    flex-basis: calc(50% - 10px);
+                }
+
+                @media #{$max575} {
+                    flex-basis: 100%;
+                }
+
+                &:nth-child(5) {
+                    flex-basis: calc(608px - 12px);
+
+                    @media (max-width: 1760px) {
+                        flex-basis: calc(40% - 15px);
+                    }
+
+                    @media #{$max991} {
+                        flex-basis: calc(50% - 10px);
+                    }
+
+                    @media #{$max575} {
+                        flex-basis: 100%;
+                    }
+                }
+
+                .tft-destination-thumbnail {
+                    height: 300px;
+                    @include bd-radius(15px);
+                    position: relative;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center center;
+                    z-index: 1;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        background: linear-gradient(180deg,
+                                rgba(0, 0, 0, 0) 0%,
+                                rgba(0, 0, 0, 0.87) 88%);
+                        width: 100%;
+                        height: 100%;
+                        @include bd-radius(15px);
+                        z-index: -1;
+                    }
+
+                    .tft-destination-content {
+                        position: absolute;
+                        bottom: 35px;
+                        left: 35px;
+                        color: $tft-color-white;
+                        h3 {
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                            line-height: 1;
+                            margin-bottom: 10px;
+                            color: $tft-color-white;
+                            text-transform: capitalize;
+                            a {
+                                color: $tft-color-white;
+                                @include transition(0.3s);
+                                &:hover {
+                                    color: $tft-color-primary;
+                                }
+                            }
+                        }
+
+                        p {
+                            margin-bottom: 0;
+                            color: $tft-color-white;
+                            font-size: 0.875rem;
+                        }
+                    }
+                }
+            }
+
+            .tft-btn {
+                height: 50px;
+                padding: 16px 36px;
+                background: $tft-color-gray-light;
+                color: $tft-color-text;
+
+                &:hover {
+                    background: $tft-color-primary;
+                    color: $tft-color-white;
+                }
+
+                @media #{$max767} {
+                    display: none;
+                }
+
+                &--mobile {
+                    display: none;
+
+                    @media #{$max767} {
+                        display: block;
+                        margin: 10px auto 0;
+                    }
+                }
+            }
+        }
+    }
+}

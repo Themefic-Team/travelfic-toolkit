@@ -1,0 +1,97 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-brands-design {
+    &__one {
+        .tft-brands-inner {
+            .tft-section-heading {
+                max-width: 784px;
+                margin: 0 auto;
+
+                .tft-section-title {
+                    color: $tft-color-heading;
+                    text-align: center;
+                    font-size: 2.375rem;
+                    font-weight: 400;
+                    line-height: 1.2;
+                    margin-top: 0;
+                    margin-bottom: 16px;
+                }
+
+                p {
+                    color: $tft-color-text;
+                    text-align: center;
+                    margin-top: 0px;
+                    margin-bottom: 56px;
+                }
+            }
+
+            .tft-brands {
+                .slick-slide {
+                    margin-left: 16px !important;
+                    margin-right: 16px !important;
+                    @media #{$max991} {
+                        margin-left: 8px !important;
+                        margin-right: 8px !important;
+                    }
+                }
+
+                &.tft-brands-grid {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 16px;
+
+                    .tft-single-brands {
+                        width: calc(33% - 8px);
+
+                        @media #{$max991} {
+                            width: calc(50% - 8px);
+                        }
+
+                        @media #{$max575} {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .tft-single-brands {
+                    .tft-brands-thumbnail {
+                        height: 212px;
+                        background: $tft-color-silver-light;
+                        border-radius: 16px;
+                        position: relative;
+
+                        a {
+                            img {
+                                height: 100%;
+                                width: 100%;
+                                object-fit: cover;
+                                border-radius: 16px;
+                            }
+                        }
+
+                        .tft-brands-title {
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+
+                            a {
+                                color: $tft-color-text;
+                                font-size: 1.313rem;
+                                display: inline-block;
+                                padding: 4px 17px 0px 16px;
+                                background: $tft-color-silver-light;
+                                border-radius: 0px 16px 0px 0;
+                                @include transition-linear(0.2s);
+                                &:hover{
+                                    background-color: $tft-color-primary;
+                                    color: $tft-color-white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

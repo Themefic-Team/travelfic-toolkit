@@ -53,8 +53,7 @@ function travelfic_toolkit_cf7_activate_plugin_callback()
         wp_send_json_error('Permission denied');
     }
 
-    // activate the plugin
-    $activate_plugin = activate_plugin('contact-form-7/wp-contact-form-7.php');
+    //Activation
     $cf7_activate_plugin = activate_plugin('contact-form-7/wp-contact-form-7.php');
 
     if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
@@ -77,9 +76,9 @@ function travelfic_toolkit_tourfic_activate_plugin_callback()
     if (!current_user_can('install_plugins')) {
         wp_send_json_error('Permission denied');
     }
+
     //Activation
     $activate_plugin = activate_plugin('tourfic/tourfic.php');
-    $tourfic_activate_plugin = activate_plugin('tourfic/tourfic.php');
 
     if (is_plugin_active('tourfic/tourfic.php')) {
         wp_send_json_success('tourfic activated successfully.');
@@ -101,9 +100,9 @@ function travelfic_toolkit_elementor_activate_plugin_callback()
     if (!current_user_can('install_plugins')) {
         wp_send_json_error('Permission denied');
     }
+
     //Activation
     $activate_plugin = activate_plugin('elementor/elementor.php');
-    $elementor_activate_plugin = activate_plugin('elementor/elementor.php');
 
     if (is_plugin_active('elementor/elementor.php')) {
         wp_send_json_success('elementor activated successfully.');
@@ -125,9 +124,9 @@ function travelfic_toolkit_woocommerce_activate_plugin_callback()
     if (!current_user_can('install_plugins')) {
         wp_send_json_error('Permission denied');
     }
+
     //Activation
     $activate_plugin = activate_plugin('woocommerce/woocommerce.php');
-    $woocommerce_activate_plugin = activate_plugin('woocommerce/woocommerce.php');
 
     if (is_plugin_active('woocommerce/woocommerce.php')) {
         wp_send_json_success('woocommerce activated successfully.');
@@ -148,7 +147,7 @@ if (!function_exists('travelfic_transparent_header_class')) {
         $activated_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : '';
         if ($activated_theme == 'travelfic' || $activated_theme == 'travelfic-child') {
             $archive_transparent_header = get_theme_mod('travelfic_customizer_settings_archive_transparent_header');
-            if ($archive_transparent_header == "enabled") {
+            if ($archive_transparent_header) {
                 $classes[] = 'tft-archive-transparent-header';
             }
         }
@@ -167,7 +166,7 @@ if (!class_exists("\Tourfic\App\TF_Review")) {
                 'tf_comment_form_title',
                 sprintf( // WPCS: XSS OK.
                     /* translators: 1: number of comments */
-                    esc_html(_nx('%1$s review', '%1$s reviews', $number, 'comments title', 'tourfic')),
+                    esc_html(_nx('%1$s review', '%1$s reviews', $number, 'comments title', 'travelfic-toolkit')),
                     number_format_i18n($number)
                 )
             );
@@ -248,7 +247,7 @@ if (!function_exists('tf_review_star_rating')) {
         $half_star = ($tf_rating - $full_star) >= 0.5 ? 1 : 0;
         $empty_star = 5 - $full_star - $half_star;
 
-        $output = '<span class="tft-desination-rating">';
+        $output = '<span class="tft-destination-rating tft-color-primary">';
         for ($i = 0; $i < $full_star; $i++) {
             $output .= '<i class="ri-star-fill"></i>';
         }
@@ -263,24 +262,13 @@ if (!function_exists('tf_review_star_rating')) {
     }
 }
 
-
-if (!function_exists('tf_print')) {
-    function tf_print($data)
-    {
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
-    }
-}
-
 // Load elementor background image based on travelfic template version
-
 $travelfic_template_version = get_option('travelfic_template_version');
 
 if ('5' === $travelfic_template_version) {
-    add_action('wp_head', 'travelfic_load_custom_style');
+    add_action('wp_head', 'travelfic_load_elementor_background_image');
 
-    function travelfic_load_custom_style()
+    function travelfic_load_elementor_background_image()
     {
 
         global $post;
@@ -341,48 +329,48 @@ if ('5' === $travelfic_template_version) {
                 echo '<style>' . $custom_css . '</style>';
             }
         }
-
-        echo '<style>
-            .tft-single-post p, 
-            .tft-single-page p, 
-            .tft-single-post a, 
-            .tft-right-sidebar a {
-                color: #686e7a;
-            }
-            .tft-single-post h1, 
-            .tft-single-post h2, 
-            .tft-single-post h3, 
-            .tft-single-post h4, 
-            .tft-single-post h5, 
-            .tft-single-post h6, 
-            .tft-single-post li {
-                color: #060d1c;
-            }
-            .tf-bottom-booking-bar .tf-bottom-booking-field-icon,
-            .tf-archive-search-box-wrapper .tf-driver-location-box .tf-submit-button button,
-            .tf-archive-car-section .tf-archive-car-details-warper .tf-archive-header .tf-archive-view ul li.active,
-            .tf-single-car-section .tf-single-car-details-warper .tf-car-booking-form .tf-date-select-box .tf-form-submit-btn button{
-                background: #fa6400;
-            }
-            .tf-archive-search-box-wrapper .tf-driver-location-box .tf-submit-button button:hover,
-            .tf-single-car-section .tf-single-car-details-warper .tf-car-booking-form .tf-date-select-box .tf-form-submit-btn button:hover{
-                background:#0e3dd8;
-            }
-            .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn button, .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn a.view-more{
-                border-color: #fa6400;
-                color:#fa6400;
-            }
-            .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn button:hover, .tf-car-archive-result .tf-car-result .tf-single-car-view .tf-car-details .tf-booking-btn a.view-more:hover {
-                border: 1px solid #fa6400;
-                background: #fa6400;
-            }
-            .tf-single-car-section .tf-review-section .tf-review-form-container .tf-review-submit input[type="submit"]{
-                background: #fa6400!important;
-                transition: all 0.3s linear;
-            }
-            .tf-single-car-section .tf-review-section .tf-review-form-container .tf-review-submit input[type="submit"]:hover{
-                background: #0e3dd8!important;
-            }
-        </style>';
     }
 }
+
+
+/**
+ * Adds custom classes to the array of body classes.
+ *
+ * @param array $classes Classes for the body element.
+ * @return array
+ */
+function tft_body_classes( $classes ) {
+	
+	$theme = wp_get_theme(); 
+	if ( 'Travelfic' != $theme->name || 'Travelfic' != $theme->parent_theme ) {
+		$classes[] = 'tft-site-main-body';
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'tft_body_classes' );
+
+
+/** 
+ * 
+ * Travelfic Current Year Shortcode
+ * 
+*/
+function travelfic_current_year() {
+    return date('Y');
+}
+add_shortcode('year', 'travelfic_current_year');
+
+
+/** 
+ * 
+ * Travelfic Import Elementor Background Images
+ * 
+*/
+add_action( 'wp_head', function () {
+   $background_images = get_option('travelfic_elementor_background_images', array());
+   if(isset($background_images['css_rules'])){
+       $background_images['css_rules'] = str_replace("\n", '', $background_images['css_rules']);
+       echo '<style type="text/css" id="travelfic_elementor_background_images">' . $background_images['css_rules'] . '</style>';
+   }
+});

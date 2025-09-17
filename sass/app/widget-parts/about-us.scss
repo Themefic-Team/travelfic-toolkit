@@ -1,0 +1,448 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-about-us-design {
+    &__one {
+        padding-top: 30px;
+
+        .tft-about-us-grid {
+            display: grid;
+            grid-template-columns: 35% 65%;
+
+            @media #{$max991} {
+                grid-template-columns: 45% 55%;
+            }
+
+            @media #{$max767} {
+                display: flow-root;
+            }
+
+            .tft-heading-content {
+                @media #{$max767} {
+                    margin-bottom: 16px;
+                }
+
+                h3 {
+                    font-weight: 700;
+                    line-height: 1.3;
+                    letter-spacing: 0.16px;
+                    color: $tft-color-primary;
+                    margin-bottom: 8px;
+                }
+
+                h2 {
+                    font-size: 3.5rem;
+                    line-height: 1.2;
+                    color: $tft-color-heading;
+                    margin-top: 0px;
+                    margin-bottom: 32px;
+
+                    @media (max-width: 1366px) {
+                        font-size: 2rem;
+                    }
+                    @media #{$max767} {
+                        font-size: 1.5rem;
+                        margin-bottom: 24px;
+                        max-width: 70%;
+                    }
+                }
+
+
+                p {
+                    font-size: 1.125rem;
+                    color: $tft-color-text;
+                    @media #{$max767} {
+                        font-size: 0.875rem;
+                    }
+                    &.tft-about-us-quotes,
+                    &.tft-about-us-author {
+                        padding-right: 55px;
+                        margin-top: 2px;
+                        @media #{$max767} {
+                            margin-top: 0;
+                            padding-right: 0;
+                        }
+                    }
+
+                    &.tft-about-us-author {
+                        font-weight: 600;
+                    }
+
+                    &:empty {
+                        display: none;
+                    }
+                }
+
+                .read-more {
+                    @media #{$max767} {
+                        position: absolute;
+                        right: 16px;
+                        top: 6px;
+                    }
+                    @media #{$max575} {
+                        position: absolute;
+                        right: 16px;
+                        top: 20px;
+                    }
+                    a {
+                        border: 1px solid $tft-color-primary;
+                        font-weight: 700;
+                        color: $tft-color-white;
+                        background-color: $tft-color-primary;
+                        &.tft-btn-transparent {
+                            background-color: transparent;
+                            color: $tft-color-primary;
+                            &:hover{
+                                color: $tft-color-white;
+                                path{
+                                    fill: $tft-color-white;
+                                }
+                            }
+
+                            path{
+                                fill: $tft-color-primary;
+                            }
+                            
+                        }
+
+                        span{
+                            line-height: 0;
+                            svg {
+                                path {
+                                    fill: $tft-color-white;
+                                }
+                                @media #{$max991} {
+                                    width: 36px;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            background: $tft-color-secondary;
+                            border-color: $tft-color-secondary;
+                        }
+                    }
+                }
+            }
+
+            .tft-about-us-image {
+                position: relative;
+
+                .years-of-experience {
+                    position: absolute;
+                    display: inline-block;
+                    top: 0;
+                    z-index: 99;
+                    left: 30px;
+
+                    @media #{$max1199} {
+                        left: 30px;
+                    }
+
+                    @media #{$max991} {
+                        width: 145px;
+                        left: 50px;
+                    }
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+
+                    .experience-badge {
+                        animation: rotation 14s infinite linear;
+                    }
+
+                    .tft-experience-years {
+                        position: absolute;
+                        content: "";
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        @include align-center();
+
+                        h2 {
+                            font-size: 4.5rem;
+                            font-weight: 700;
+                            line-height: 1.2;
+                            color: $tft-color-heading;
+                            margin: 0;
+                            height: 64%;
+
+                            @media #{$max991} {
+                                font-size: 2rem;
+                                height: 40%;
+                            }
+                        }
+                    }
+                }
+
+                .tft-about-image {
+                    padding-left: 100px;
+                    line-height: 0;
+
+                    @media #{$max767} {
+                        padding-left: 0px;
+                    }
+
+                    img {
+                        width: 100%;
+                        margin-top: 80px;
+
+                        @media #{$max767} {
+                            margin-top: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__two {
+
+        padding-bottom: 104px;
+        position: relative;
+        overflow: hidden;
+
+        @media (max-width: 1399px) {
+            padding-bottom: 100px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        @media #{$max1199} {
+            padding-bottom: 80px;
+        }
+
+        @media #{$max991} {
+            padding-bottom: 60px;
+        }
+
+        @media #{$max767} {
+            padding-bottom: 0px;
+        }
+
+        .tft-about-us-grid {
+            @include d-flex();
+            @include justify-content(center);
+            gap: 60px;
+
+            @media #{$max991} {
+                flex-direction: column-reverse;
+                gap: 40px;
+                max-width: 600px;
+                margin: auto;
+            }
+
+            .tft-about-image {
+                min-width: 491px;
+                position: relative;
+
+                @media #{$max767} {
+                    min-width: auto;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 40px;
+                    top: 40px;
+                    width: 10px;
+                    height: 150px;
+                    background-color: $tft-color-primary;
+                    z-index: 1;
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 61px;
+                    top: 106px;
+                    width: 10px;
+                    height: 246px;
+                    background-color: $tft-color-white;
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+                }
+
+
+
+                .tft-about-curbe-image {
+                    max-width: 441px;
+                    position: relative;
+
+                    @media #{$max767} {
+                        margin: auto;
+                        max-width: 500px;
+                    }
+
+                    img {
+                        width: 100%;
+                        border-bottom-left-radius: 1000px;
+                        border-bottom-right-radius: 1000px;
+
+                        @media #{$max767} {
+                            @include bd-radius(20px);
+                        }
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 50px;
+                        top: 50px;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0px 0px 100px 100px;
+                        border: 1px solid rgba(0, 0, 0, 0.05);
+
+                        @media #{$max767} {
+                            display: none;
+                        }
+                    }
+                }
+
+                .tft-about-circle-image {
+                    position: absolute;
+                    right: -89px;
+                    bottom: -20px;
+
+                    @media #{$max1199} {
+                        right: -50px;
+                    }
+
+                    @media #{$max991} {
+                        right: -40px;
+                    }
+
+                    @media #{$max767} {
+                        display: none;
+                    }
+
+                    img {
+                        @include box-circle();
+                    }
+                }
+            }
+
+            .tft-about-us-content {
+                flex: 1;
+                @media #{$max767} {
+                    max-width: 500px;
+                    margin: auto;
+                }
+
+                h3{
+                    color: $tft-color-primary;
+                }
+
+                h2{
+                    color: $tft-color-heading;
+                }
+
+                p{
+                    color: $tft-color-text;
+
+                }
+
+                .tft-about-us-list {
+                    padding: 44px 0 44px 69px;
+                    border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+                    @media #{$max1199} {
+                        padding: 30px;
+                    }
+
+                    @media #{$max991} {
+                        padding: 24px 0;
+                    }
+
+                    ul {
+                        li {
+                            @include d-flex();
+                            gap: 15px;
+                            margin-bottom: 20px;
+
+                            @media #{$max1199} {
+                                @include align-items(center);
+                            }
+
+                            @media #{$max767} {
+                                gap: 10px;
+                                margin-bottom: 15px;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            .icon {
+                                @media #{$max767} {
+                                    line-height: 0;
+                                }
+
+                                i {
+                                    color: $tft-color-primary;
+                                    font-size: 1.125rem;
+
+                                    @media #{$max767} {
+                                        font-size: 1rem;
+                                        margin-top: 2px;
+                                    }
+                                }
+                            }
+
+                            .text {
+                                color: $tft-color-text;
+                                font-size: 1.125rem;
+
+                                @media #{$max767} {
+                                    font-size: 1rem;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .tft-about-us-button {
+                    padding-left: 69px;
+
+                    @media #{$max1199} {
+                        padding-left: 30px;
+                    }
+
+                    @media #{$max991} {
+                        padding-left: 0;
+                    }
+
+                    a {
+                        min-width: 160px;
+                    }
+                }
+            }
+        }
+
+        .tft-about-us-shape {
+            position: absolute;
+            right: -150px;
+            bottom: 0;
+            z-index: -1;
+        }
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
