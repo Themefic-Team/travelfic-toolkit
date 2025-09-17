@@ -1481,7 +1481,7 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
                     ?>
                             <div class="tft-single-destination">
                                 <div class="tft-destination-thumbnail" style="background-image: url(<?php echo esc_url($cat_image); ?>);">
-                                    <div class="tft-destination-content tft-content-box">
+                                    <div class="tft-destination-single-content tft-content-box">
                                         <h3>
                                             <a href="<?php echo esc_url(get_term_link($cat->slug, 'tour_destination')); ?>" class="tft-destination-content">
                                                 <?php echo esc_html($cat->name); ?>
