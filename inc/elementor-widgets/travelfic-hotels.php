@@ -2729,9 +2729,23 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                             <div class="tft-destination-bottom-info">
                                                 <!-- destination price -->
                                                 <div class="tft-destination-price">
-                                                    <span class="tft-destination-price-title tft-color-text"><?php echo esc_html__('From USD', 'travelfic-toolkit'); ?></span>
+                                                    <span class="tft-destination-price-title tft-color-text">
+                                                        <?php 
+                                                            if ( function_exists( 'wc_price' ) ) {
+                                                                $currency_code   = get_woocommerce_currency(); 
+                                                                echo sprintf( esc_html__( 'From %s', 'travelfic-toolkit' ), $currency_code );
+                                                            } else {
+                                                                echo esc_html__( 'From USD', 'travelfic-toolkit' );
+                                                            }
+                                                        ?>
+                                                    </span>
                                                     <span class="tft-destination-price-value tft-color-primary">
-                                                        <?php echo '$', $tf_total_price; ?>
+                                                        <?php if ( function_exists( 'wc_price' ) ) {
+                                                                echo wc_price( $tf_total_price );
+                                                            } else {
+                                                                echo '$' . number_format( $tf_total_price, 2 );
+                                                            }
+                                                        ?>
                                                     </span>
                                                 </div>
                                                 <!-- destination button -->
