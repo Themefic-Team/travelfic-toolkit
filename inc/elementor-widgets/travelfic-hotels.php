@@ -1723,6 +1723,20 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             $tft_design = $settings['tft_hotels_style'];
         }
 
+        $tf_disable_services = ! empty( travelfic_get_opt( 'disable-services' ) ) ? travelfic_get_opt( 'disable-services' ) : [];
+        $service_type = '';
+		if( $settings['tf_post_type'] == "tf_hotel" ){
+			$service_type = "hotel";
+		}elseif( $settings['tf_post_type'] == "tf_tours" ){
+			$service_type = "tour";
+		}elseif( $settings['tf_post_type'] == "tf_apartment" ){
+			$service_type = "apartment";
+		}
+
+		if (in_array($service_type, $tf_disable_services)){
+			return;
+		}
+
         $args = array(
             'post_type' => $settings['tf_post_type']
         );

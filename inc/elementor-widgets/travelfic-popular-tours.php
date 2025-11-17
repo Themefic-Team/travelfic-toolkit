@@ -291,6 +291,11 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 
+		$tf_disable_services = ! empty( travelfic_get_opt( 'disable-services' ) ) ? travelfic_get_opt( 'disable-services' ) : [];
+		if (in_array('tour', $tf_disable_services)){
+			return;
+		}
+
 		$args = array(
 			'post_type' => $settings['tf_post_type']
 		);

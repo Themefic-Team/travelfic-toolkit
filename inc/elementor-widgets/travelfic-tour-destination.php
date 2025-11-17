@@ -1023,6 +1023,11 @@ class Travelfic_Toolkit_TourDestinaions extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
+        $tf_disable_services = ! empty( travelfic_get_opt( 'disable-services' ) ) ? travelfic_get_opt( 'disable-services' ) : [];
+		if (in_array('tour', $tf_disable_services)){
+			return;
+		}
+
         if (!empty($settings['cat_order'])) {
             $order = $settings['cat_order'];
         }
