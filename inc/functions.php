@@ -15,6 +15,12 @@ if (! function_exists('travelfic_get_meta')) {
     }
 }
 
+if (! function_exists('travelfic_get_opt')) {
+    function travelfic_get_opt( $option = '', $default = null ) {
+        $options = get_option( 'tf_settings' );
+        return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
+    }
+}
 // Text Limit 
 if (! function_exists('travelfic_character_limit')) {
     function travelfic_character_limit($str, $limit)

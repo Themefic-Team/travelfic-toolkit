@@ -583,6 +583,10 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
 
    
     protected function render() {
+        $tf_disable_services = ! empty( travelfic_get_opt( 'disable-services' ) ) ? travelfic_get_opt( 'disable-services' ) : [];
+		if (in_array('hotel', $tf_disable_services)){
+			return;
+		}
         $settings = $this->get_settings_for_display();
 
         if ( !empty( $settings['hotel_cat_order'] ) ) {
