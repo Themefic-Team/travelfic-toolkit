@@ -22,6 +22,11 @@ class Travelfic_Toolkit_Template_SYNC {
     }
 
     public function travelfic_toolkit_get_api_response(){
+        // Capability check
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( 'Unauthorized', 403 );
+        }
+        
         $query_params = array(
             'plugin' => 'travelfic_toolkit', 
         );
