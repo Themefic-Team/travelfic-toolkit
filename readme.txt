@@ -148,7 +148,7 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.3.1 – January 06, 2025 =
+= 1.3.2 – January 06, 2025 =
 
 - Fixed: Resolved a security vulnerability.
 - Fixed: Corrected static text translation issues.
