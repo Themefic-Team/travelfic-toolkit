@@ -1989,6 +1989,21 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
             $tft_design = $settings['tft_hotels_style'];
         }
 
+        $tf_disable_services = ! empty( travelfic_get_opt( 'disable-services' ) ) ? travelfic_get_opt( 'disable-services' ) : [];
+
+        $service_type = '';
+		if( $settings['tf_post_type'] == "tf_hotel" ){
+			$service_type = "hotel";
+		}elseif( $settings['tf_post_type'] == "tf_tours" ){
+			$service_type = "tour";
+		}elseif( $settings['tf_post_type'] == "tf_apartment" ){
+			$service_type = "apartment";
+		}
+
+		if (in_array($service_type, $tf_disable_services)){
+			return;
+		}
+
         $args = array(
             'post_type' => $settings['tf_post_type']
         );
@@ -2164,7 +2179,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                     <span class="tft-color-text">
                                                         <?php echo (class_exists("\Tourfic\App\TF_Review")) ? esc_html(\Tourfic\App\TF_Review::tf_total_avg_rating($comments)) : esc_html(tf_total_avg_rating($comments)); ?>
                                                     </span>
-                                                    out of <?php class_exists("\Tourfic\App\TF_Review") ? esc_html(\Tourfic\App\TF_Review::tf_based_on_text(count($comments))) : esc_html(tf_based_on_text(count($comments))); ?>
+                                                    <?php echo esc_html__('out of', 'tourfic'); ?> <?php class_exists("\Tourfic\App\TF_Review") ? esc_html(\Tourfic\App\TF_Review::tf_based_on_text(count($comments))) : esc_html(tf_based_on_text(count($comments))); ?>
                                                 </span>
                                             </div>
                                         <?php } else { ?>
@@ -2172,9 +2187,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                                 <span class="tft-color-text">
                                                     <i class="fas fa-star"></i>
                                                     <span class="tft-color-text">
-                                                        0.0
+                                                        <?php echo esc_html__('0.0', 'tourfic'); ?>
                                                     </span>
-                                                    out of 0 review
+                                                    <?php echo esc_html__('out of 0 review', 'tourfic'); ?>
                                                 </span>
                                             </div>
                                         <?php } ?>

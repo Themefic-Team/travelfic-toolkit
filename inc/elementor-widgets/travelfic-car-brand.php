@@ -313,6 +313,11 @@ class Travelfic_Toolkit_CarBrands extends \Elementor\Widget_Base
 
     protected function render()
     {
+        $tf_disable_services = ! empty( travelfic_get_opt( 'disable-services' ) ) ? travelfic_get_opt( 'disable-services' ) : [];
+		if (in_array('carrentals', $tf_disable_services)){
+			return;
+		}
+        
         $settings = $this->get_settings_for_display();
 
         if (!empty($settings['cat_order'])) {
