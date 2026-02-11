@@ -721,6 +721,78 @@
         }
     }
 
+    &__five {
+        background-position: center center;
+        min-height: 800px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+        position: relative;
+        @include d-flex();
+        @include align-items(flex-end);
+        @include justify-content(center);
+        overflow: hidden;
+
+        @media (max-width: 1366px) {
+            min-height: 700px;
+        }
+
+        @media #{$max1199} {
+            min-height: 650px;
+        }
+
+        @media #{$max991} {
+            min-height: 600px;
+        }
+
+        @media #{$max767} {
+            min-height: 500px;
+        }
+
+        @media #{$max575} {
+            min-height: 450px;
+        }
+
+        .tft-hero-content {
+            width: 1240px;
+            padding: 0 10px 96px 10px;
+            display: flex;
+            @include justify-content(center);
+            gap: 56px;
+
+            .tft-content-box{
+                flex: 0 0 calc(100% - 422px);
+            }
+
+            .tft-search-form{
+                flex: 0 0 366px;
+            }
+            
+            h1 {
+                color: #F5FFFE;
+                font-size: 5.313rem;
+                font-weight: 700;
+                line-height: 1.1;
+                margin: 0 0 48px 0;
+
+                @media #{$max1024} {
+                    font-size: 2.5rem;  
+                }
+  
+                @media #{$max767} {
+                    font-size: 1.5rem;
+                }
+            }
+
+            p{
+                color: #F5FFFE;
+                font-size: 17px;
+                font-weight: 400;
+                line-height: 1.5;
+                margin: 0;
+            }            
+        }
+    }
 
     // search form
     .tft-search-box {

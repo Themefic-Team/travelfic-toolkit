@@ -1,4 +1,7 @@
 <?php
+
+use Tourfic\Classes\Helper;
+
 class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
 
 {
@@ -141,6 +144,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'design-2'  => __('Design 2', 'travelfic-toolkit'),
                     'design-3'  => __('Design 3', 'travelfic-toolkit'),
                     'design-4'  => __('Design 4', 'travelfic-toolkit'),
+                    'design-5'  => __('Design 5', 'travelfic-toolkit'),
                 ],
             ]
         );
@@ -153,7 +157,20 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Banner title', 'travelfic-toolkit'),
                 'default' => __('Embark on extraordinary voyages and explorations', 'travelfic-toolkit'),
                 'condition' => [
-                    'slider_style' => ['design-2', 'design-3'],
+                    'slider_style' => ['design-2', 'design-3', 'design-5'],
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'banner_description',
+            [
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'label' => esc_html__('Banner Description', 'travelfic-toolkit'),
+                'placeholder' => esc_html__('Banner description', 'travelfic-toolkit'),
+                'default' => __('Discover luxurious hotel at unbeatable price Discover luxurious hotel at unbeatable price Discover luxurious hotel at unbeatable price Discover luxurious hotel at unbeatable', 'travelfic-toolkit'),
+                'condition' => [
+                    'slider_style' => ['design-5'],
                 ],
             ]
         );
@@ -169,7 +186,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
                 'condition' => [
-                    'slider_style' => ['design-2', 'design-3', 'design-4'],
+                    'slider_style' => ['design-2', 'design-3', 'design-4', 'design-5'],
                 ],
             ]
         );
@@ -441,6 +458,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Search Box', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition'   => [
+                    'slider_style!' => 'design-5',
+                ],
             ]
         );
 
@@ -613,6 +633,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'label' => __('Slider Control', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition'   => [
+                    'slider_style!' => 'design-5',
+                ],
             ]
         );
 
@@ -1781,6 +1804,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         if (!empty($settings['banner_title'])) {
             $tft_banner_title = $settings['banner_title'];
         }
+        if (!empty($settings['banner_description'])) {
+            $tft_banner_description = $settings['banner_description'];
+        }
         if (!empty($settings['banner_image'])) {
             $tft_banner_image = $settings['banner_image'];
         }
@@ -1961,7 +1987,20 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     });
                 })(jQuery);
             </script>
-
+        <?php } elseif ("design-5" == $tft_design) { ?>
+            <section class="tft-hero-design__five" style="background: linear-gradient(180deg, rgba(21, 61, 58, 0.30) 0%, #153D3A 100%), url(<?php echo esc_url($settings['banner_image']['url']); ?>) lightgray 50% / cover no-repeat;">
+                <div class="tft-hero-content">
+                    <?php if (!empty($tft_banner_title) || !empty($tft_banner_description)) { ?>
+                        <div class="tft-content-box">
+                            <h1><?php echo wp_kses_post($tft_banner_title); ?></h1>
+                            <p><?php echo wp_kses_post($tft_banner_description); ?></p>
+                        </div>
+                    <?php } ?>
+                    <div class="tft-search-form">
+                        <?php echo do_shortcode('[tf_search_form type="room" design="5"]'); ?>
+                    </div>
+                </div>
+            </section>
             <?php
         } else {
 
