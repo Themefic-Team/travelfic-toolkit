@@ -124,6 +124,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-cf7-form.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-about-us.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-hotels.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-rooms.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-apartment-location.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-cars.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-car-brand.php' );
@@ -142,6 +143,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_CF7_Form() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_AboutUs() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Hotels() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Rooms() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_ApartmentLocation() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Cars() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_CarBrands() );

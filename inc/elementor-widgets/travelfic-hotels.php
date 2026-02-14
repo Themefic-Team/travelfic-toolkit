@@ -30,7 +30,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Travelfic Hotels, Rooms, Tours & Apartment', 'travelfic-toolkit');
+        return esc_html__('Travelfic Hotels, Tours & Apartment', 'travelfic-toolkit');
     }
 
     /**
@@ -87,7 +87,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
      */
     public function get_keywords()
     {
-        return ['travelfic', 'popular', 'hotels', 'rooms', 'tours', 'apartment', 'tft'];
+        return ['travelfic', 'popular', 'hotels', 'tours', 'apartment', 'tft'];
     }
 
     public function get_style_depends()
@@ -108,7 +108,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
         $this->start_controls_section(
             'tft_hotels',
             [
-                'label' => __('Hotels, Rooms, Tours & Apartment Section', 'travelfic-toolkit'),
+                'label' => __('Hotels, Tours & Apartment Section', 'travelfic-toolkit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
@@ -174,7 +174,6 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                 'default' => 'tf_hotel',
                 'options' => [
                     'tf_hotel' => __('Hotels', 'travelfic-toolkit'),
-                    'tf_room' => __('Rooms', 'travelfic-toolkit'),
                     'tf_tours' => __('Tours', 'travelfic-toolkit'),
                     'tf_apartment' => __('Apartments', 'travelfic-toolkit')
                 ]

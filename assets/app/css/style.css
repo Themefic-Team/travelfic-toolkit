@@ -437,6 +437,16 @@ textarea.tft-form-control {
     width: 36px;
   }
 }
+.tft-btn-transparent {
+  background: transparent;
+  color: var(--tf-primary);
+  border: 1px solid var(--tf-primary);
+}
+.tft-btn-transparent:hover {
+  background: var(--tf-primary);
+  color: var(--tf-color-white);
+  border-color: var(--tf-primary);
+}
 .tft-btn.tft-wh-auto {
   min-width: auto;
   min-height: auto;
@@ -5336,6 +5346,351 @@ body.archive .tft-header-design__two {
   width: 100%;
 }
 .tft-popular-hotels-design__two .tft-destination-slider.tft-slider-disable .slick-list {
+  width: 100%;
+}
+
+.tft-room-section .tft-room-sec-header {
+  margin-bottom: 56px;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  -moz-box-align: end;
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-room-section .tft-room-sec-header {
+    margin-bottom: 30px;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-room-section .tft-room-sec-header {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-room-section .tft-room-sec-header {
+    margin-bottom: 10px;
+  }
+}
+.tft-room-section .tft-room-sec-header h3 {
+  color: var(--tf-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+.tft-room-section .tft-room-sec-header h2 {
+  margin: 0;
+  color: #F5FFFE;
+  font-size: 4.063rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.tft-room-section .tft-room-sec-header .tft-btn {
+  margin-bottom: 16px;
+}
+.tft-room-section .tft-room-items {
+  position: relative;
+}
+.tft-room-section .slick-dotted.slick-slider {
+  padding-bottom: 56px;
+}
+.tft-room-section .tft-room-slider {
+  display: flex;
+}
+.tft-room-section .tft-room-slider .slick-track {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.tft-room-section .tft-room-slider .slick-list {
+  margin: 0 -12px !important;
+}
+.tft-room-section .tft-room-slider .slick-slide {
+  margin: 0 16px !important;
+  height: auto;
+}
+@media (max-width: 640px) {
+  .tft-room-section .tft-room-slider .slick-slide {
+    margin: 15px 7.5px !important;
+  }
+}
+.tft-room-section .tft-room-slider .slick-dots {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 24px;
+}
+.tft-room-section .tft-room-slider .slick-dots li {
+  width: 48px;
+  height: 16px;
+  border: 1px solid #DCE5E5;
+  text-align: center;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.tft-room-section .tft-room-slider .slick-dots li button {
+  width: 0px;
+  height: 0px;
+}
+.tft-room-section .tft-room-slider .slick-dots li button::before {
+  display: none;
+}
+.tft-room-section .tft-room-slider .slick-dots li.slick-active {
+  border-color: var(--tf-primary);
+  background: var(--tf-primary);
+}
+.tft-room-section .tft-room-slider .tft-single-room {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex: 1;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-room-section .tft-room-slider .tft-single-room {
+    padding: 16px;
+  }
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-thumbnail {
+  position: relative;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-thumbnail img {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+}
+@media (max-width: 640px) {
+  .tft-room-section .tft-room-slider .tft-single-room .tft-room-thumbnail img {
+    height: 300px;
+  }
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-thumbnail .tf-room-off {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px 12px;
+  background: #126832;
+  color: #F5FFFE;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content {
+  background-color: #0D2624;
+  padding: 24px 32px 32px 32px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  flex-direction: column;
+  flex: 1;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title-wrap {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title {
+  margin: 0px;
+  font-size: 1.563rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title a {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  color: #F5FFFE;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title a:hover {
+  color: var(--tf-primary);
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price {
+  color: #8A9393;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .sale-price,
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .discount-price {
+  color: var(--tf-primary);
+  font-size: 25px;
+  font-weight: 700;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul {
+  display: flex;
+  margin-bottom: 56px;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul li {
+  color: #8A9393;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn {
+  border-radius: 72px;
+  border: 2px solid var(--tf-primary);
+  background-color: #153D3A;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn:hover {
+  background: var(--tf-brand-dark);
+  color: var(--tf-color-white);
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info {
+    margin-bottom: 20px;
+  }
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info .tft-room-rating {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 5px;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info .tft-room-rating i {
+  color: var(--tf-primary);
+  font-size: 0.875rem;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info .tft-room-location {
+  display: block;
+  color: var(--tf-text-paragraph);
+  font-size: 1rem;
+  margin-top: 8px;
+  text-transform: capitalize;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info .tft-room-location i {
+  color: var(--tf-primary);
+  float: left;
+  margin-right: 6px;
+  margin-top: 1px;
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-top-info .tft-room-location span {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: var(--tf-text-paragraph);
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-bottom-info {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  border: 1px solid var(--tf-border-lite);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 30px;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-bottom-info {
+    padding: 16px;
+  }
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-bottom-info .tft-room-price .tft-room-price-title {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 10px;
+  text-transform: none;
+  color: var(--tf-text-paragraph);
+}
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-bottom-info .tft-room-price .tft-room-price-value {
+  color: var(--tf-primary);
+  font-size: 1.25rem;
+  text-transform: none;
+  font-weight: 700;
+}
+.tft-room-section .tft-room-slider.tft-slider-disable {
+  overflow: initial;
+}
+.tft-room-section .tft-room-slider.tft-slider-disable .slick-track {
+  width: 100%;
+}
+.tft-room-section .tft-room-slider.tft-slider-disable .slick-list {
   width: 100%;
 }
 
