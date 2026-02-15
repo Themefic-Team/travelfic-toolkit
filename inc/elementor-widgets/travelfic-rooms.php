@@ -1903,6 +1903,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                                 cssEase: 'linear',
                                 prevArrow: '.tft-room-section .tft-prev-slide',
                                 nextArrow: '.tft-room-section .tft-next-slide',
+                                variableWidth: true,
+                                adaptiveHeight: true,
                                 responsive: [{
                                         breakpoint: 1024,
                                         settings: {

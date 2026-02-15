@@ -2,12 +2,28 @@
 // color variable
 // ================================ //
 $tft-color-white: var(--tf-color-white);
+
+/* brand colors */
 $tft-color-primary: var(--tf-primary);
 $tft-color-secondary: var(--tf-brand-dark);
+$tft-color-brand-lite: var(--tf-brand-lite);
+
+/* text colors */
 $tft-color-text: var(--tf-text-paragraph);
 $tft-color-heading: var(--tf-text-heading);
-$tft-color-box-shadow: var(--tf-box-shadow-color);
+$tft-color-text-lite: var(--tf-text-lite);
+
+/* border colors */
+$tft-color-border-default: var(--tf-border-default);
 $tft-color-border: var(--tf-border-lite);
+
+/* filling colors */
+$tft-color-filling-foreground: var(--tf-filling-foreground);
+$tft-color-filling-background: var(--tf-filling-background);
+
+/* accent colors */
+$tft-color-links: var(--tf-links-color);
+$tft-color-box-shadow: var(--tf-box-shadow-color);
 
 $tft-color-blue: #07245f;
 $tft-color-orange-light: #FAEEDC;

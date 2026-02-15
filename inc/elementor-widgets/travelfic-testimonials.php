@@ -121,6 +121,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'design-2'  => __('Design 2', 'travelfic-toolkit'),
                     'design-3'  => __('Design 3', 'travelfic-toolkit'),
                     'design-4'  => __('Design 4', 'travelfic-toolkit'),
+                    'design-5'  => __('Design 5', 'travelfic-toolkit'),
                 ],
             ]
         );
@@ -147,7 +148,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Enter your title', 'travelfic-toolkit'),
                 'default' => __('What client’s say?', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-2', 'design-3'],
+                    'testimonial_style' => ['design-2', 'design-3', 'design-5'],
                 ],
             ]
         );
@@ -159,7 +160,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Enter your SubTitle', 'travelfic-toolkit'),
                 'default' => __('Testimonials', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-2', 'design-3'],
+                    'testimonial_style' => ['design-2', 'design-3', 'design-5'],
                 ],
             ]
         );
@@ -380,6 +381,82 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             ]
         );
 
+        // design 5
+        $repeater5 = new \Elementor\Repeater();
+        $repeater5->add_control(
+            'person_image',
+            [
+                'label'   => __('Image', 'travelfic-toolkit'),
+                'type'    => \Elementor\Controls_Manager::MEDIA,
+                'dynamic' => [
+                    'active' => true,
+                ],
+            ]
+        );
+        $repeater5->add_control(
+            'person_name',
+            [
+                'label'       => __('Name', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('John Doe', 'travelfic-toolkit'),
+                'label_block' => true,
+            ]
+        );
+        $repeater5->add_control(
+            'designation',
+            [
+                'label'       => __('Designation', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('from New York', 'travelfic-toolkit'),
+                'label_block' => true,
+            ]
+        );
+        $repeater5->add_control(
+            'testimonials_review_title',
+            [
+                'label'       => __('Title', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => __('Amazing service and beautiful rooms!', 'travelfic-toolkit'),
+                'label_block' => true,
+            ]
+        );
+        $repeater5->add_control(
+            'testimonials_review',
+            [
+                'label'   => __('Review Details', 'travelfic-toolkit'),
+                'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => __('We celebrated our anniversary here, and the staff went above and beyond to make it special. The room was stunning, and the view was breathtaking. Highly recommend!', 'travelfic-toolkit'),
+
+            ]
+        );
+        $repeater5->add_control(
+            'rate',
+            [
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'label'   => __('Rattings', 'travelfic-toolkit'),
+                'default' => '5',
+                'options' => [
+                    '1' => __('&#9733;', 'travelfic-toolkit'),
+                    '2' => __('&#9733;&#9733;', 'travelfic-toolkit'),
+                    '3' => __('&#9733;&#9733;&#9733;', 'travelfic-toolkit'),
+                    '4' => __('&#9733;&#9733;&#9733;&#9733;', 'travelfic-toolkit'),
+                    '5' => __('&#9733;&#9733;&#9733;&#9733;&#9733;', 'travelfic-toolkit'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'testimonials_design5_list',
+            [
+                'label'       => __('Testimonials List', 'travelfic-toolkit'),
+                'type'        => \Elementor\Controls_Manager::REPEATER,
+                'fields'      => $repeater5->get_controls(),
+                'title_field' => '{{{ person_name }}}',
+                'condition' => [
+                    'testimonial_style' => 'design-5',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -2270,6 +2347,108 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             arrows: true,
                             prevArrow: ".tft-testimonials-design__four .slick-prev",
                             nextArrow: ".tft-testimonials-design__four .slick-next",
+                            responsive: [
+                                {
+                                breakpoint: 1200,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        centerPadding: "40px",
+                                    },
+                                },
+                                {
+                                breakpoint: 991,
+                                    settings: {
+                                        slidesToShow: 2,
+                                        slidesToScroll: 1,
+                                        centerMode: false,
+                                    },
+                                },
+                                {
+                                    breakpoint: 600,
+                                    settings: {
+                                        slidesToShow: 1,
+                                        slidesToScroll: 1,
+                                        centerMode: false,
+                                    },
+                                },
+                            ],
+                        });
+
+                    });
+                }(jQuery));
+            </script>
+        <?php } elseif($settings['testimonials_design5_list'] && "design-5" == $tft_design) { ?>
+            <div class="tft-testimonials-design__five tft-customizer-typography">
+                <div class="tft-testimonial-top-header">
+                    <div class="testimonial-header-shape tft-heading-content">
+                        <?php if (!empty($tft_sec_subtitle)) { ?>
+                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
+                        <?php }if (!empty($tft_sec_title)) { ?>
+                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
+                        <?php } ?>
+                    </div>
+                    <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                        <button type='button' class='slick-prev'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type='button' class='slick-next'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="tft-testimonials-selector tft-slide-default">
+                    <?php foreach ($settings['testimonials_design5_list'] as $item) { ?>
+                        <div class="tft-single-testimonial">
+                            <div class="testimonial-header">
+                                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                                
+                            </div>
+                            <div class="testimonial-body">
+                                <h3 class="tft-content"><?php echo esc_html($item['testimonials_review']) ?></h3>
+                            </div>
+                            <div class="testimonial-footer">
+                                <div class="user-info">
+                                    <div class="person-avatar">
+                                        <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
+                                    </div>
+                                    <div class="person-info">
+                                        <div class="person-name"><?php echo esc_html($item['person_name']) ?></div>
+                                        <div class="designation"><?php echo esc_html($item['designation']) ?></div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-rating">
+                                    <span class="rating"><?php echo $this->testimonials_rattings($item['rate']); ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+            <script>
+                (function($) {
+                    "use strict";
+                    $(document).ready(function() {
+                        $(".tft-testimonials-selector").slick({
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            autoplay: true,
+                            centerMode: true,
+                            centerPadding: "100px",
+                            autoplaySpeed: 6000,
+                            speed: 700,
+                            dots: false,
+                            pauseOnHover: true,
+                            infinite: true,
+                            cssEase: "linear",
+                            arrows: true,
+                            prevArrow: ".tft-testimonials-design__five .slick-prev",
+                            nextArrow: ".tft-testimonials-design__five .slick-next",
                             responsive: [
                                 {
                                 breakpoint: 1200,
