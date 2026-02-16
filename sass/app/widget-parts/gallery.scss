@@ -1,0 +1,106 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+// gallery design 1
+.tft-gallery-design {
+    &__one{
+        .tft-gallery-top-header{
+            display: flex;
+            @include justify-content(space-between);
+            @include align-items(center);
+            gap: 56px;
+            margin-bottom: 56px;
+
+            h3{
+                color: $tft-color-links;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: 1.5;
+                margin: 0;
+            }
+
+            h2{
+                color: #0D1211;
+                font-size: 4.063rem;
+                font-weight: 400;
+                line-height: 1.2;
+                margin: 0;
+            }
+        }
+        .tft-gallery-selector{
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: #F5FFFE;
+                z-index: 1;
+            }
+        }
+        .tft-single-gallery {
+            img{
+                margin-bottom: 24px;
+            }
+            h3{
+                color: $tft-color-heading;
+                font-size: 2.313rem;
+                font-weight: 700;
+                line-height: 1.4;
+                margin: 0;
+            }
+        }
+
+        .slick-list {
+            overflow: visible;
+
+            .slick-slide {
+                width: 470px;
+                height: inherit !important;
+                margin: 0 16px !important;
+            }
+        }
+        .tft-slider-arrows{
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+
+            .slick-prev,
+            .slick-next {
+                width: 72px;
+                height: 72px;
+                background-color: #FFF8F5;
+                border-radius: 50%;
+                position: relative;
+                left: unset;
+                right: unset;
+                top: unset;
+                transform: inherit;
+                transition: all 0.2s ease;
+                svg{
+                    @media #{$max767}{
+                        width: 45px;
+                        height: 45px;
+                    }
+                    path{
+                        transition: all 0.2s ease;
+                    }
+                }
+                &:hover{
+                    path{
+                        stroke: $tft-color-text;
+                    }
+                }
+                &::before {
+                    display: none;
+                }
+
+            }
+        }
+    }
+}

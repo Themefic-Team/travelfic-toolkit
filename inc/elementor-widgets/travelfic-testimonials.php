@@ -2441,11 +2441,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             slidesToScroll: 1,
                             autoplay: true,
                             centerPadding: "32px",
-                            autoplaySpeed: 6000,
+                            autoplaySpeed: 4000,
                             speed: 700,
                             dots: false,
                             pauseOnHover: true,
-                            // infinite: true,
+                            infinite: true,
                             cssEase: "linear",
                             arrows: true,
                             prevArrow: ".tft-testimonials-design__five .slick-prev",
@@ -2454,15 +2454,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             adaptiveHeight: true,
                             responsive: [
                                 {
-                                breakpoint: 1200,
-                                    settings: {
-                                        slidesToShow: 2,
-                                        slidesToScroll: 1,
-                                        centerPadding: "40px",
-                                    },
-                                },
-                                {
-                                breakpoint: 991,
+                                    breakpoint: 991,
                                     settings: {
                                         slidesToShow: 2,
                                         slidesToScroll: 1,
