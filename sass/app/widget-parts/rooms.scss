@@ -22,7 +22,7 @@
         }
 
         h3{
-            color: $tft-color-primary;
+            color: $tft-color-links;
             font-size: 1rem;
             font-weight: 600;
             line-height: 1.5;
@@ -66,29 +66,15 @@
     .tft-room-slider {
         display: flex;
         
-
         .slick-slide {
             width: 470px;
             height: inherit !important;
-        }
-
-        .slick-track {
-            // @include d-flex();
-            // @include justify-content(center);
+            margin: 0 16px !important;
         }
 
         .slick-list {
             margin: 0 -12px !important;
             overflow: visible;
-        }
-
-        .slick-slide {
-            margin: 0 16px !important;
-            height: auto;
-
-            @media (max-width: 640px) {
-                margin: 15px 7.5px !important;
-            }
         }
 
         .slick-dots {
@@ -117,8 +103,8 @@
                 }
 
                 &.slick-active {
-                    border-color: $tft-color-primary;
-                    background: $tft-color-primary;
+                    border-color: $tft-color-links;
+                    background: $tft-color-links;
                 }
             }
         }
@@ -183,7 +169,7 @@
                         color: #F5FFFE;
                         
                         &:hover {
-                            color: $tft-color-primary;
+                            color: $tft-color-links !important;
                         }
                     }
                 }
@@ -195,7 +181,7 @@
 
                     .sale-price,
                     .discount-price{
-                        color: $tft-color-primary;
+                        color: $tft-color-links;
                         font-size: 25px;
                         font-weight: 700;
                     }
@@ -216,92 +202,15 @@
                 .tft-room-btn {
                     .tft-btn {
                         border-radius: 72px;
-                        border: 2px solid $tft-color-primary;
-                        background-color: #153D3A;
+                        border: 2px solid $tft-color-links;
+                        background-color: $tft-color-primary;
 
                         &:hover {
-                            background: $tft-color-secondary;
+                            background-color: $tft-color-links !important;
+                            border-color: $tft-color-links !important;
                             color: $tft-color-white;
                         }
                     }
-                }
-
-                .tft-room-top-info {
-                    margin-top: 20px;
-                    margin-bottom: 30px;
-
-                    @media #{$max767} {
-                        margin-bottom: 20px;
-                    }
-
-                    .tft-room-rating {
-                        @include d-flex();
-                        @include align-items(center);
-                        gap: 5px;
-
-                        i {
-                            color: $tft-color-primary;
-                            font-size: 0.875rem;
-                        }
-                    }
-
-                    .tft-room-location {
-                        display: block;
-                        color: $tft-color-text;
-                        font-size: 1rem;
-                        margin-top: 8px;
-                        text-transform: capitalize;
-
-                        i {
-                            color: $tft-color-primary;
-                            float: left;
-                            margin-right: 6px;
-                            margin-top: 1px;
-                        }
-
-                        span {
-                            overflow: hidden;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 2;
-                            -webkit-box-orient: vertical;
-                            color: $tft-color-text;
-                        }
-                    }
-
-                    
-                }
-
-                .tft-room-bottom-info {
-                    @include bd-radius(15px);
-                    border: 1px solid $tft-color-border;
-                    @include d-flex();
-                    @include align-items(center);
-                    @include justify-content(space-between);
-                    gap: 10px;
-                    padding: 30px;
-
-                    @media #{$max767} {
-                        padding: 16px;
-                    }
-
-                    .tft-room-price {
-                        .tft-room-price-title {
-                            display: block;
-                            font-size: 0.875rem;
-                            margin-bottom: 10px;
-                            text-transform: none;
-                            color: $tft-color-text;
-                        }
-
-                        .tft-room-price-value {
-                            color: $tft-color-primary;
-                            font-size: 1.25rem;
-                            text-transform: none;
-                            font-weight: 700;
-                        }
-                    }
-
-                    
                 }
             }
         }

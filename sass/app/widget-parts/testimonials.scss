@@ -695,7 +695,7 @@
             margin-bottom: 56px;
 
             h3{
-                color: $tft-color-primary;
+                color: $tft-color-links;
                 font-size: 1rem;
                 font-weight: 600;
                 line-height: 1.5;
@@ -710,6 +710,22 @@
                 margin: 0;
             }
         }
+        .tft-testimonials-selector{
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: #153D3A;
+                z-index: 1;
+            }
+        }
         .tft-single-testimonial {
             background: $tft-color-white;
             padding: 56px;
@@ -717,80 +733,80 @@
 
             .testimonial-header {
                 display: flex;
-                align-items: center;
-                column-gap: 24px;
-                padding-bottom: 32px;
-                @media #{$max767} {
-                    column-gap: 20px;
-                    padding-bottom: 20px;
+                gap: 8px;
+                margin-bottom: 8px;
+
+                .quote-icon{
+                    display: flex;
+                    gap: 4px;
+                    margin-top: 8px;
                 }
 
-                .person-avatar {
-                    max-width: 80px;
-
-                    img {
-                        border-radius: 50px;
-                        height: 80px;
-                        width: 80px;
-                        object-fit: cover;
-                    }
-                }
-
-                .person-info {
-                    .person-name {
-                        margin-top: 0px;
-                        margin-bottom: 0px;
-                        font-size: 1.5rem;
-                        @media #{$max767} {
-                            font-size: 1.125rem;
-                        }
-                    }
-                    .designation{
-                        @media #{$max767} {
-                            font-size: 1rem;
-                        }
-                    }
-
-                    p {
-                        margin: 0px;
-                    }
+                h3{
+                    color: $tft-color-heading;
+                    font-size: 2.313rem;
+                    font-weight: 400;
+                    line-height: 1.4;
+                    margin: 0;
                 }
             }
 
             .testimonial-body {
                 .tft-content {
-                    font-size: 1.125rem;
+                    color: $tft-color-text;
+                    font-size: 1rem;
                     font-weight: 400;
-                    margin-bottom: 0;
-                    @media #{$max767} {
-                        font-size: 0.938rem;
-                    }
+                    line-height: 1.5;
+                    margin: 0 0 32px 0;
                 }
             }
 
             .testimonial-footer {
-                i {
-                    color: $tft-color-primary;
+                .testimonial-rating{
+                    margin-bottom: 24px;
+                    .rating{
+                        display: flex;
+                        gap: 8px;
+                    }
+                    i{
+                        font-size: 18px;
+                        color: #E29A00;
+                    }
+                }
+                
+                .user-info{
+                    display: flex;
+                    gap: 8px;
+
+                    img{
+                        border-radius: 100%;
+                        margin-right: 8px;
+                        width: 32px;
+                        width: 32px;
+                    }
+                    .designation,
+                    .person-name{
+                        color: $tft-color-heading;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        line-height: 1.5;
+                    }
+                    .designation{
+                        font-weight: 400;
+                    }
                 }
             }
         }
 
         .slick-list {
-            margin: 0 -10px !important;
+            margin: 0 -16px !important;
             overflow: visible;
 
-            &.draggable {
-                overflow: hidden;
+            .slick-slide {
+                width: 542px;
+                height: inherit !important;
+                margin: 0 16px !important;
             }
-
-            .slick-track {
-                overflow: hidden;
-
-                .slick-slide {
-                    margin: 0 10px !important;
-                }
-            }
-
         }
         .tft-slider-arrows{
             display: flex;

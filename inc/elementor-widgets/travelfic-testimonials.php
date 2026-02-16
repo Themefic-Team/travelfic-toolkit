@@ -2405,25 +2405,27 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     <?php foreach ($settings['testimonials_design5_list'] as $item) { ?>
                         <div class="tft-single-testimonial">
                             <div class="testimonial-header">
-                                <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-                                
+                                <div class="quote-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="35" viewBox="0 0 19 35" fill="none">
+                                    <path d="M18.5 0H0V35L18.5 0Z" fill="#EE5509"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="35" viewBox="0 0 19 35" fill="none">
+                                    <path d="M18.5 0H0V35L18.5 0Z" fill="#EE5509"/>
+                                    </svg>
+                                </div>
+                                <h3><?php echo wp_kses_post($item['testimonials_review_title']); ?></h3>
                             </div>
                             <div class="testimonial-body">
-                                <h3 class="tft-content"><?php echo esc_html($item['testimonials_review']) ?></h3>
+                                <p class="tft-content"><?php echo esc_html($item['testimonials_review']) ?></p>
                             </div>
                             <div class="testimonial-footer">
-                                <div class="user-info">
-                                    <div class="person-avatar">
-                                        <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
-                                    </div>
-                                    <div class="person-info">
-                                        <div class="person-name"><?php echo esc_html($item['person_name']) ?></div>
-                                        <div class="designation"><?php echo esc_html($item['designation']) ?></div>
-                                    </div>
-                                </div>
-
                                 <div class="testimonial-rating">
                                     <span class="rating"><?php echo $this->testimonials_rattings($item['rate']); ?></span>
+                                </div>
+                                <div class="user-info">
+                                    <img src="<?php echo esc_url($item['person_image']['url']); ?>" alt="Image">
+                                    <div class="person-name"><?php echo esc_html($item['person_name']) ?></div>
+                                    <div class="designation"><?php echo esc_html($item['designation']) ?></div>
                                 </div>
                             </div>
                         </div>
@@ -2438,17 +2440,18 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             slidesToShow: 2,
                             slidesToScroll: 1,
                             autoplay: true,
-                            centerMode: true,
-                            centerPadding: "100px",
+                            centerPadding: "32px",
                             autoplaySpeed: 6000,
                             speed: 700,
                             dots: false,
                             pauseOnHover: true,
-                            infinite: true,
+                            // infinite: true,
                             cssEase: "linear",
                             arrows: true,
                             prevArrow: ".tft-testimonials-design__five .slick-prev",
                             nextArrow: ".tft-testimonials-design__five .slick-next",
+                            variableWidth: true,
+                            adaptiveHeight: true,
                             responsive: [
                                 {
                                 breakpoint: 1200,

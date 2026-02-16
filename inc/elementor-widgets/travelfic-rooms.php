@@ -1840,8 +1840,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                                                 <?php
                                                 // Adult count with singular/plural translation
                                                 $adult_count = intval( $adult_number );
-                                                echo esc_html( sprintf( '%d %s', $adult_count, _n( 'Adult', 'Adults', $adult_count, 'travelfic-toolkit' ) ) );
-                                                ?> /
+                                                echo esc_html( sprintf( ' %d %s', $adult_count, _n( 'Adult', 'Adults', $adult_count, 'travelfic-toolkit' ) ) );
+                                                ?> / 
                                             </li>
                                             <?php } ?>
 
