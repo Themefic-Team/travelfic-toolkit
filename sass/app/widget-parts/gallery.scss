@@ -47,6 +47,7 @@
         .tft-single-gallery {
             img{
                 margin-bottom: 24px;
+                object-fit: cover;
             }
             h3{
                 color: $tft-color-heading;

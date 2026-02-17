@@ -8483,6 +8483,7 @@ body.archive .tft-header-design__two {
 }
 .tft-gallery-design__one .tft-single-gallery img {
   margin-bottom: 24px;
+  object-fit: cover;
 }
 .tft-gallery-design__one .tft-single-gallery h3 {
   color: var(--tf-text-heading);

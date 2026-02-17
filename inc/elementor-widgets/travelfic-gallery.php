@@ -185,28 +185,6 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'gallery_slider_slidetoshow',
-            [
-                'label'       => __('Slide To Show', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::NUMBER,
-                'min' => 1,
-                'max' => 15,
-                'step' => 1,
-                'default' => 2,
-            ]
-        );
-        $this->add_control(
-            'gallery_slider_slidetoscroll',
-            [
-                'label'       => __('Slide To Scroll', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::NUMBER,
-                'min' => 1,
-                'max' => 10,
-                'step' => 1,
-                'default' => 1,
-            ]
-        );
-        $this->add_control(
             'gallery_slider_navigation',
             [
                 'label'       => __('Navigation', 'travelfic-toolkit'),
@@ -314,23 +292,6 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
             [
                 'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'gallery_style' => ['design-2', 'design-3'],
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_gallery_section_bg',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two' => 'background: {{VALUE}}', 
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three' => 'background: {{VALUE}}', 
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-2', 'design-3'],
-                ],
             ]
         );
         $this->add_control(
@@ -339,20 +300,14 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Title', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ]
             ]
         );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_gallery_sec_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-top-header .tft-section-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
             ]
         );
         $this->add_control(
@@ -361,10 +316,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-top-header .tft-section-title' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -375,20 +327,14 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Subtitle', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ]
             ]
         );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_gallery_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-top-header .tft-section-subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
             ]
         );
         $this->add_control(
@@ -397,158 +343,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-top-header .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-
-        // design 3 
-        $this->add_control(
-            'tft_design_3_title_head',
-            [
-                'label'     => __('Title', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ]
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'tft_design_3_sec_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => ['design-3'],
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_design_3_sec_title_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-3'],
-                ],
-            ]
-        );
-        // Title Backdrop
-        $this->add_control(
-            'tft_design_3_title_backdrop',
-            [
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__('Title Backdrop', 'travelfic-toolkit'),
-                'default' => 'yes',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_design_3_title_backdrop_head',
-            [
-                'label'     => __('Title Backdrop', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-3'],
-                    'tft_design_3_title_backdrop' => 'yes',
-                ]
-            ]
-        );
-        $this->add_control(
-            'tft_design_3_title_backdrop_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                    'tft_design_3_title_backdrop' => 'yes',
-                ],
-            ]
-        );
-
-
-        // design 3 subtitle
-        $this->add_control(
-            'tft_design_3_sub_title_head',
-            [
-                'label'     => __('Subtitle', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ]
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'tft_design_3_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content .tft-section-subtitle',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => ['design-3'],
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_design_3_sec_subtitle_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-3'],
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_design_3_content_head',
-            [
-                'label'     => __('Content', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ]
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'tft_design_3_sec_content_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content p',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => ['design-3'],
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_design_3_sec_content_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content p' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-3'],
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -557,118 +352,69 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
         $this->start_controls_section(
             'gallery_style_section',
             [
-                'label' => __('Item List', 'travelfic-toolkit'),
+                'label' => __('Items', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-2' , 'design-4'],   
-                ],
             ]
         );
+
         $this->add_control(
-            'gallery_card_head',
+            'gallery_image_head',
             [
-                'label'     => __('List', 'travelfic-toolkit'),
+                'label'     => __('Image', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'],   
-                ],
             ]
         );
+
         $this->add_control(
-            'gallery_card_color',
+            'gallery_image_width',
             [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner' => 'background: {{VALUE}}',
+                'label'     => __('Image width', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                    ],
                 ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery img' => 'width: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .slick-list .slick-slide' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
+
         $this->add_control(
-            'gallery_card_color_hover',
+            'gallery_image_height',
             [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
+                'label'     => __('Image height', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::SLIDER,
+                'range'     => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 500,
+                    ],
+                ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner:hover' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'gallery_title_space_bellow',
-            [
-                'label'     => __('Heading Space', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .gallery-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .gallery-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'gallery_card_border_rds',
-            [
-                'label'     => __('Border Radius', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
         
-        $this->add_responsive_control(
-            'gallery_tour_item_card_padding',
-            [
-                'label'      => __('Padding', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
         $this->add_control(
             'gallery_title_head',
             [
                 'label'     => __('Title', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
             ]
         );
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'gallery_title',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .person-name,#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .person-name',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery h3',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
             ]
         );
 
@@ -678,915 +424,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .person-name' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .person-name' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_title_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner:hover .person-name' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .person-name' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_designation',
-            [
-                'label'     => __('Designation', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_designation_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .designation,#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .designation',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_designation_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .designation' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .designation' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_designation_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner:hover .designation' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .designation' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_content_head',
-            [
-                'label'     => __('Content', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_content',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .gallery-body .tft-content, #tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .gallery-body .tft-content',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_content_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .gallery-body .tft-content' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .gallery-body .tft-content' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_content_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner:hover .tft-content' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .tft-content' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_head',
-            [
-                'label'     => __('Icon', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .gallery-footer i' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .gallery-footer i' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'],  
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_icon_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-inner:hover .gallery-footer i' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .gallery-footer i' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_posted_date_head',
-            [
-                'label'     => __('Posted Date', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-4', 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_posted_date_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .gallery-header .gallery-date' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-4',  
-                ],
-            ]
-        );
-
-         $this->add_control(
-            'gallery_posted_date_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .gallery-date' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-4',  
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_rating_number_head',
-            [
-                'label'     => __('Rating Number', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-4', 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_rating_number_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .gallery-rating h5' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-4',  
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_rating_number_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .gallery-rating h5' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-4',  
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_quote_icon_head',
-            [
-                'label'     => __('Quote Icon', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-4', 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_quote_icon_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .quote-icon i' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-4',  
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_quote_icon_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four .tft-gallery-inner:hover .quote-icon i' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-4',  
-                ],
-            ]
-        );
-        
-     
-        $this->add_control(
-            'gallery_2_card_head',
-            [
-                'label'     => __('List', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-
-        // Design 2 Styles
-        $this->add_responsive_control(
-            'gallery_2_card_padding',
-            [
-                'label'      => __('Padding', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_card_color',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_card_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery:hover' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_2_author',
-            [
-                'label'     => __('Author', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_2_author_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery .gallery-author .person-name',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_author_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery .gallery-author .person-name' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_author_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery:hover .gallery-author .person-name' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_designation',
-            [
-                'label'     => __('Designation', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_2_designation_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery .gallery-author .designation',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_designation_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery .gallery-author .designation' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_designation_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery:hover .gallery-author .designation' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-       
-        $this->add_control(
-            'gallery_2_content_head',
-            [
-                'label'     => __('Content', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_2_content',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery .gallery-review p',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_2_content_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery .gallery-review p' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_2_content_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .tft-gallery-slides .tft-single-gallery:hover .gallery-review .tft-content' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-2',
-                ],
-            ]
-        );
-     
-        $this->end_controls_section();
-
-        // gallery design 3 team style settings
-        $this->start_controls_section(
-            'gallery_style_3_section',
-            [
-                'label' => __('Items', 'travelfic-toolkit'),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_card_3_color',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-slides .tft-single-gallery' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'gallery_card_3_border_rds',
-            [
-                'label'      => __('Border Radius', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-slides .tft-single-gallery' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'gallery_tour_item_card_3_padding',
-            [
-                'label'      => __('Padding', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-slides .tft-single-gallery' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_title_head_3',
-            [
-                'label'     => __('Title', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_title_3',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-author .gallery-author-info h4',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_title_3_color',
-            [
-                'label'     => __('Title', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-author .gallery-author-info h4' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_designation_3',
-            [
-                'label'     => __('Designation', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_designation_3_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-author .gallery-author-info p',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_designation_3_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-author .gallery-author-info p' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_content_head_3',
-            [
-                'label'     => __('Content', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'gallery_content_3',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-review p',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_content_3_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-review p' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_image_3_head',
-            [
-                'label'     => __('Image', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gallery_image_3_size',
-            [
-                'label'     => __('Image Size', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::SLIDER,
-                'range'     => [
-                    'px' => [
-                        'min' => 0,
-                    ],
-                ],
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .tft-gallery-slides .tft-single-gallery .tft-gallery-inner .gallery-author .gallery-author-image' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'gallery_nav_style',
-            [
-                'label' => __('Nav', 'travelfic-toolkit'),
-                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-
-        $this->add_control(
-            'tft_gallery_nav_icon_head',
-            [
-                'label'     => __('Arrows', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_nav_icon_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one button.slick-arrow path' => 'stroke: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four button.slick-arrow path' => 'stroke: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_nav_icon_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one button.slick-arrow:hover path' => 'stroke: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four button.slick-arrow:hover path' => 'stroke: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_nav_icon_background_color',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one button.slick-arrow' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__four button.slick-arrow' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-1', 'design-4'], 
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'gallery_nav__arrow_width',
-            [
-                'label' => esc_html__('Size', 'travelfic-toolkit'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                    ],
-                ],
-                'default' => [
-                    'size' => 70,
-                ],
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .slick-dots li button' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-heading-content .slick-arrow' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            [
-                'name' => 'gallery_nav__arrow_border',
-                'label' => esc_html__('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one button.slick-arrow,
-                    #tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .slick-dots li.slick-active button::before, 
-                    #tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .slick-dots li.slick-active,
-                    #tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-heading-content .slick-arrow',
-                'condition' => [
-                    'gallery_style' => ['design-2','design-3'],
-                ],
-            ]
-        );
-      
-       $this->start_controls_tabs('tft_gallery_3_nav_arrow_tabs_');
-
-        $this->start_controls_tab(
-            'tft_gallery_3_nav_arrow_normal_',
-            [
-                'label' => __('Normal', 'travelfic-toolkit'),
-            ]
-        );
-
-        $this->add_control(
-            'tft_gallery_3_icon_nav_icon_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-slider-arrows .tft-arrow i' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                    'gallery_slider_navigation' => 'arrows',
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_gallery_3_icon_nav_icon_background_color',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content .tft-slider-arrows .tft-arrow' => 'background: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                    'gallery_slider_navigation' => 'arrows',
-                ],
-            ]
-        );
-        $this->end_controls_tab();
-
-        // Hover state tab
-        $this->start_controls_tab(
-            'tft_gallery_3_nav_arrow_hover',
-            [
-                'label' => __('Hover', 'travelfic-toolkit'),
-            ]
-        );
-
-        $this->add_control(
-            'tft_gallery_3_icon_nav_icon_color_hover',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-slider-arrows .tft-arrow:hover i' => 'color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                    'gallery_slider_navigation' => 'arrows',
-                ],
-            ]
-        );
-        $this->add_control(
-            'tft_gallery_3_icon_nav_icon_background_color_hover',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content .tft-slider-arrows .tft-bg-hover-primary:hover' => 'background-color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                    'gallery_slider_navigation' => 'arrows',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_nav_border_hover',
-            [
-                'label'     => __('Border', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-heading-content .tft-slider-arrows .tft-bg-hover-primary:hover' => 'border-color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => 'design-3',
-                    'gallery_slider_navigation' => 'arrows',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->end_controls_tabs();
-
-        $this->add_control(
-            'tft_gallery_nav_head',
-            [
-                'label'     => __('Dots', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'gallery_style' => ['design-2','design-3'],
-                    'gallery_slider_navigation' => 'dots',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_nav_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .slick-dots li button::before' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .slick-dots li button' => 'background-color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-2','design-3'],
-                    'gallery_slider_navigation' => 'dots',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gallery_icon_nav_color_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__two .slick-dots li:hover button::before' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__three .tft-gallery-content .tft-gallery-sliders .slick-dots li:hover button' => 'background-color: {{VALUE}}',
-                ],
-                'condition' => [
-                    'gallery_style' => ['design-2','design-3'],
-                    'gallery_slider_navigation' => 'dots',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery h3' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -1610,8 +448,6 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
         }
 
         // Items per page
-        $slideToShow = !empty($settings['gallery_slider_slidetoshow']) ? $settings['gallery_slider_slidetoshow'] : 2;
-        $gallery_slide_to_scroll = !empty($settings['gallery_slider_slidetoscroll']) ? $settings['gallery_slider_slidetoscroll'] : 1;
         $gallery_slider_nav = $settings['gallery_slider_navigation'];
         $gallery_slider_arrows = ("arrows" === $gallery_slider_nav) ? 'true' : 'false';
         $gallery_slider_dots = ("dots" === $gallery_slider_nav) ? 'true' : 'false';
@@ -1661,8 +497,8 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                     "use strict";
                     $(document).ready(function() {
                         $('.tft-gallery-design__one .tft-gallery-selector').slick({
-                            slidesToShow: <?php echo esc_attr($slideToShow); ?>,
-                            slidesToScroll: <?php echo esc_attr($gallery_slide_to_scroll); ?>,
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
                             infinite: <?php echo esc_attr($gallery_slider_loop); ?>,
                             autoplay: <?php echo esc_attr($gallery_slider_autoplay); ?>,
                             autoplaySpeed: <?php echo esc_attr($gallery_slider_autoplay_speed); ?>,
