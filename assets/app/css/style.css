@@ -5549,6 +5549,7 @@ body.archive .tft-header-design__two {
   justify-content: space-between;
   flex-direction: column;
   flex: 1;
+  min-height: 282px;
 }
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title-wrap {
   display: flex;
@@ -5582,11 +5583,17 @@ body.archive .tft-header-design__two {
   font-weight: 400;
   line-height: 1.5;
 }
+.tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .tf-price {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+}
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .sale-price,
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .discount-price {
   color: var(--tf-links-color);
   font-size: 25px;
   font-weight: 700;
+  line-height: 1.2;
 }
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul {
   display: flex;

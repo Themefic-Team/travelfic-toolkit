@@ -158,6 +158,7 @@
                 @include justify-content(space-between);
                 flex-direction: column;
                 flex: 1;
+                min-height: 282px;
 
                 .tft-room-title-wrap{
                     display: flex;
@@ -186,11 +187,18 @@
                     font-weight: 400;
                     line-height: 1.5;
 
+                    .tf-price{
+                        display: flex;
+                        gap: 4px;
+                        align-items: flex-end;
+                    }
+
                     .sale-price,
                     .discount-price{
                         color: $tft-color-links;
                         font-size: 25px;
                         font-weight: 700;
+                        line-height: 1.2;
                     }
                 }
 
