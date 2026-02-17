@@ -733,20 +733,12 @@
         @include justify-content(center);
         overflow: hidden;
 
-        @media (max-width: 1366px) {
+        @media #{$max991} {
             min-height: 700px;
         }
 
-        @media #{$max1199} {
-            min-height: 650px;
-        }
-
-        @media #{$max991} {
-            min-height: 600px;
-        }
-
         @media #{$max767} {
-            min-height: 500px;
+            min-height: 600px;
         }
 
         @media #{$max575} {

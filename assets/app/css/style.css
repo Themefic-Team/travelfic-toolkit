@@ -3598,24 +3598,14 @@ body.archive .tft-header-design__two {
   justify-content: center;
   overflow: hidden;
 }
-@media (max-width: 1366px) {
+@media only screen and (max-width: 991.98px) {
   .tft-hero-design__five {
     min-height: 700px;
   }
 }
-@media only screen and (max-width: 1199.98px) {
-  .tft-hero-design__five {
-    min-height: 650px;
-  }
-}
-@media only screen and (max-width: 991.98px) {
-  .tft-hero-design__five {
-    min-height: 600px;
-  }
-}
 @media only screen and (max-width: 767.98px) {
   .tft-hero-design__five {
-    min-height: 500px;
+    min-height: 600px;
   }
 }
 @media only screen and (max-width: 575.98px) {
