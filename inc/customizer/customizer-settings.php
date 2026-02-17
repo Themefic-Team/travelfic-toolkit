@@ -793,8 +793,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design1'],
             ],
         ],
     ]);
@@ -810,8 +810,8 @@ add_action('init', function () {
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design1'],
             ],
             [
                 'setting'  => $prefix . 'header_design_3_button',
@@ -833,8 +833,8 @@ add_action('init', function () {
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design1'],
             ],
             [
                 'setting'  => $prefix . 'header_design_3_button',
@@ -854,8 +854,8 @@ add_action('init', function () {
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design1'],
             ],
             [
                 'setting'  => $prefix . 'header_design_3_button',
@@ -877,8 +877,8 @@ add_action('init', function () {
         'required'    => [
             [
                 'setting'  => $prefix . 'header_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design1'],
             ],
             [
                 'setting'  => $prefix . 'header_design_3_button',
@@ -1069,13 +1069,13 @@ add_action('init', function () {
         'priority'    => 11,
         'tab'         => 'design',
         'default'     => '<div class="border-dashed border-bottom tf-pt-12 tf-mb-12"></div>',
-        'required' => [
-            [
-                'setting'  => $prefix . 'header_design_select',
-                'operator' => '!=',
-                'value'    => 'design1',
-            ],
-        ],
+        // 'required' => [
+        //     [
+        //         'setting'  => $prefix . 'header_design_select',
+        //         'operator' => '!=',
+        //         'value'    => 'design1',
+        //     ],
+        // ],
     ]);
 
     // header button background
@@ -1091,13 +1091,13 @@ add_action('init', function () {
             'hover'  => esc_html__('Hover', 'travelfic-toolkit'),
             'normal' => esc_html__('Normal', 'travelfic-toolkit'),
         ],
-        'required' => [
-            [
-                'setting'  => $prefix . 'header_design_select',
-                'operator' => '!=',
-                'value'    => 'design1',
-            ],
-        ],
+        // 'required' => [
+        //     [
+        //         'setting'  => $prefix . 'header_design_select',
+        //         'operator' => '!=',
+        //         'value'    => 'design1',
+        //     ],
+        // ],
     ));
 
     // separator line
@@ -1108,13 +1108,13 @@ add_action('init', function () {
         'priority'    => 12,
         'tab'         => 'design',
         'default'     => '<div class="border-dashed border-bottom tf-mb-12"></div>',
-        'required' => [
-            [
-                'setting'  => $prefix . 'header_design_select',
-                'operator' => '!=',
-                'value'    => 'design1',
-            ],
-        ],
+        // 'required' => [
+        //     [
+        //         'setting'  => $prefix . 'header_design_select',
+        //         'operator' => '!=',
+        //         'value'    => 'design1',
+        //     ],
+        // ],
     ]);
   
 
@@ -1131,13 +1131,13 @@ add_action('init', function () {
             'hover'  => esc_html__('Hover', 'travelfic-toolkit'),
             'normal' => esc_html__('Normal', 'travelfic-toolkit'),
         ],
-        'required' => [
-            [
-                'setting'  => $prefix . 'header_design_select',
-                'operator' => '!=',
-                'value'    => 'design1',
-            ],
-        ],
+        // 'required' => [
+        //     [
+        //         'setting'  => $prefix . 'header_design_select',
+        //         'operator' => '!=',
+        //         'value'    => 'design1',
+        //     ],
+        // ],
     ));
 
  

@@ -3,6 +3,12 @@
 
 .tft-header-design {
   &__one {
+    .tft-main-header-wrapper{
+      .tf-flex{
+        display: flex;
+        @include align-items(center);
+      }
+    }
     .tft-header-mobile{
       &:not(.tft_has_transparent){
         box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);

@@ -1230,6 +1230,14 @@ textarea.tft-form-control {
     margin-bottom: 90px;
   }
 }
+.tft-header-design__one .tft-main-header-wrapper .tf-flex {
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
 .tft-header-design__one .tft-header-mobile:not(.tft_has_transparent) {
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
 }
