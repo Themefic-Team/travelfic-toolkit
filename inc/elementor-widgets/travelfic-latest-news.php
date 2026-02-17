@@ -150,6 +150,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     'design-1' => __('Design 1', 'travelfic-toolkit'),
                     'design-2'  => __('Design 2', 'travelfic-toolkit'),
                     'design-3'  => __('Design 3', 'travelfic-toolkit'),
+                    'design-4'  => __('Design 4', 'travelfic-toolkit'),
                 ],
             ]
         );
@@ -161,7 +162,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Enter your title', 'travelfic-toolkit'),
                 'default' => __('We share our experiences, tips and travel stories to inspire', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => ['design-2', 'design-3'], 
+                    'blog_style' => ['design-2', 'design-3', 'design-4'], 
                 ],
             ]
         );
@@ -173,7 +174,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('Enter your SubTitle', 'travelfic-toolkit'),
                 'default' => __('BLOG & NEWS', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => ['design-2', 'design-3'], 
+                    'blog_style' => ['design-2', 'design-3', 'design-4'], 
                 ],
             ]
         );
@@ -240,7 +241,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 ],
                 'label_block' => true,
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2', 'design-4'], 
                 ],
             ]
         );
@@ -1333,7 +1334,115 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         if (!empty($settings['tft_section_subtitle'])) {
             $tft_sec_subtitle = $settings['tft_section_subtitle'];
         }
-        if ("design-3" == $design) { ?>
+        if ("design-4" == $design) { ?>
+            <div class="tft-latest-posts-design__four">
+                <div class="tft-blog-sec-header">
+                    <div class="tft-blog-header-left">
+                        <?php if (!empty($tft_sec_subtitle)) { ?>
+                            <h3 class="tft-section-subtitle"><?php echo wp_kses_post($tft_sec_subtitle); ?></h3>
+                        <?php } if (!empty($tft_sec_title)) {?>
+                            <h2 class="tft-section-title"><?php echo wp_kses_post($tft_sec_title); ?></h2>
+                        <?php } ?>
+                    </div>
+                    <div class="read-more">
+                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn">
+                            <?php esc_html_e("See All", "travelfic-toolkit"); ?>
+                        </a>
+                    </div>
+                </div>
+
+                <?php if ($query->have_posts()) :
+
+                    $row_index = 0;
+                    $post_index = 0;
+
+                    echo '<div class="tf-blog-wrapper">';
+
+                    while ($query->have_posts()) : $query->the_post();
+
+                        // Open new row for every 2 posts
+                        if ($post_index % 2 == 0) {
+
+                            $row_index++;
+
+                            // Odd row → 33/66
+                            $row_class = ($row_index % 2 == 1) ? 'row-33-66' : 'row-66-33';
+
+                            echo '<div class="tf-blog-row ' . esc_attr($row_class) . '">';
+                        }
+
+                        // Determine card type inside row
+                        $is_first_in_row = ($post_index % 2 == 0);
+
+                        // For odd row (33-66)
+                        if ($row_index % 2 == 1) {
+                            $card_class = $is_first_in_row ? 'content-only' : 'with-image';
+                        } else {
+                            // Even row (66-33)
+                            $card_class = $is_first_in_row ? 'with-image' : 'content-only';
+                        }
+                        ?>
+
+                        <div class="tf-blog-card <?php echo esc_attr($card_class); ?>">
+
+                            <?php if ($card_class === 'with-image') : ?>
+                                <div class="tf-thumb">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php
+                                        if (get_the_post_thumbnail_url(get_the_ID())) {
+                                            the_post_thumbnail('blog-thumb');
+                                        } else { ?>
+                                            <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
+                                        <?php } ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="tf-content">
+                                <h3>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php echo esc_html(travelfic_character_limit(get_the_title(), 25)); ?>
+                                    </a>
+                                </h3>
+
+                                <p>
+                                    <?php echo esc_html(travelfic_character_limit(get_the_excerpt(), 110)); ?>
+                                </p>
+
+                                <a href="<?php the_permalink(); ?>" class="tf-read-more">
+                                    <?php esc_html_e('Learn More', 'tourfic'); ?> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 7H17M17 7V17M17 7L7 17" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <?php
+                        $post_index++;
+
+                        // Close row after 2 posts
+                        if ($post_index % 2 == 0) {
+                            echo '</div>';
+                        }
+
+                    endwhile;
+
+                    // Close row if odd number of posts
+                    if ($post_index % 2 != 0) {
+                        echo '</div>';
+                    }
+
+                    echo '</div>';
+
+                    wp_reset_postdata();
+
+                endif;
+                ?>
+            </div>
+        <?php
+        } elseif ("design-3" == $design) { ?>
             <div class="tft-latest-posts-design__three">
                 <div class="tft-heading-content">
                     <?php if (!empty($tft_sec_subtitle)) { ?>

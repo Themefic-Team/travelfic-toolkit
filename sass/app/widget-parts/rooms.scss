@@ -27,6 +27,7 @@
             font-weight: 600;
             line-height: 1.5;
             margin: 0;
+            text-transform: uppercase;
         }
 
         h2 {
@@ -39,6 +40,12 @@
 
         .tft-btn{
             margin-bottom: 16px;
+            border: 2px solid $tft-color-links;
+            color: #fff;
+
+            &:hover{
+                background-color: $tft-color-links !important;
+            }
         }
     }
 

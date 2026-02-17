@@ -1783,7 +1783,7 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                         <?php } ?>
                     </div>
                     <div class="read-more">
-                        <a href="<?php echo esc_url($settings['see_all_link']['url']); ?>" class="tft-btn tft-btn-transparent tft-flex-column">
+                        <a href="<?php echo esc_url($settings['see_all_link']['url']); ?>" class="tft-btn tft-btn-transparent">
                             <?php esc_html_e("See All", "travelfic-toolkit"); ?>
                         </a>
                     </div>

@@ -1,0 +1,146 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-services-design {
+
+    &__one{
+        .tft-service-sec-header {
+            margin-bottom: 56px;
+            display: flex;
+            @include justify-content(space-between);
+            @include align-items(flex-end);
+
+            @media #{$max1199} {
+                margin-bottom: 30px;
+            }
+
+            @media #{$max991} {
+                margin-bottom: 20px;
+            }
+
+            @media #{$max767} {
+                margin-bottom: 10px;
+            }
+
+            h3{
+                color: $tft-color-links;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: 1.5;
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            h2 {
+                margin: 0;
+                color: $tft-color-heading;
+                font-size: 4.063rem;
+                font-weight: 400;
+                line-height: 1.2;
+            }
+
+            .tft-btn{
+                margin-bottom: 16px;
+                color: #fff;
+                border: 2px solid $tft-color-links;
+                background-color: $tft-color-primary;
+
+                &:hover {
+                    background-color: $tft-color-links !important;
+                    border-color: $tft-color-links !important;
+                    color: $tft-color-white;
+                }
+            }
+        }
+
+        .tft-services-items{
+            display: flex;
+
+            .tft-services-items-left{
+                width: 626px;
+                z-index: 1;
+
+                .tft-single-service{
+                    display: flex;
+                    padding: 40px;
+                    gap: 24px;
+                    background-color: $tft-color-filling-background;
+                    transition: all 0.4s ease-in-out;
+
+                    &:hover{
+                        background-color: #fff;
+                    }
+
+                    .tft-service-icon{
+                        flex: 0 0 72px;
+                        height: 72px;
+                        width: 72px;
+                        padding: auto;
+                        display: flex;
+                        @include justify-content(center);
+                        @include align-items(center);
+                        color: $tft-color-links;
+                        border-radius: 100%;
+                        transition: all 0.4s ease-in-out;
+
+                        svg {
+                            width: 40px;
+
+                            path{
+                                fill: $tft-color-links;
+                            }
+                        }
+                    }
+
+                    h3{
+                        color: $tft-color-heading;
+                        font-size: 2.313rem;
+                        font-weight: 700;
+                        line-height: 1.4;
+                        margin: 0 0 8px 0;
+                        transition: all 0.4s ease-in-out;
+                    }
+
+                    p{
+                        color: $tft-color-text;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        margin: 0;
+                        transition: all 0.4s ease-in-out;
+                    }
+
+                    &.active{
+                        width: calc(100% + 72px);
+                        background-color: $tft-color-primary;
+                        box-shadow: 0 8px 24px 0 rgba(238, 85, 9, 0.16), 0 20px 40px 0 rgba(8, 39, 36, 0.32);
+
+                        .tft-service-icon{
+                            color: #fff;
+                            background-color: $tft-color-links;
+
+                            svg path{
+                                fill: #fff;
+                            }
+                        }
+
+                        h3{
+                            color: #F5FFFE;
+                        }
+
+                        p{
+                            color: $tft-color-text-lite;
+                        }
+                    }
+                }
+            }
+            .tft-services-items-right{
+                width: calc(100% - 626px);
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
