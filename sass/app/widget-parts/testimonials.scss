@@ -694,7 +694,20 @@
             gap: 56px;
             margin-bottom: 56px;
 
-            h3{
+            @media #{$max1199} {
+                margin-bottom: 30px;
+            }
+
+            @media #{$max991} {
+                margin-bottom: 20px;
+            }
+
+            @media #{$max767} {
+                gap: 24px;
+                @include flex-direction(column);
+            }
+
+            h3.tft-section-subtitle{
                 color: $tft-color-links;
                 font-size: 1rem;
                 font-weight: 600;
@@ -703,12 +716,28 @@
                 text-transform: uppercase;
             }
 
-            h2{
-                color: #0D1211;
+            h2.tft-section-title{
+                color: $tft-color-heading;
                 font-size: 4.063rem;
                 font-weight: 400;
                 line-height: 1.2;
                 margin: 0;
+
+                @media #{$max1199} {
+                    font-size: 3.2rem;
+                }
+
+                @media #{$max991} {
+                    font-size: 2.8rem;
+                }
+
+                @media #{$max767} {
+                    font-size: 2.313rem;
+                }
+
+                @media #{$max575} {
+                    font-size: 1.563rem;
+                }
             }
         }
         .tft-testimonials-selector{
@@ -732,6 +761,10 @@
             padding: 56px;
             transition: all 0.3s ease;
 
+            @media #{$max575} {
+                padding: 24px;
+            }
+
             .testimonial-header {
                 display: flex;
                 gap: 8px;
@@ -749,6 +782,10 @@
                     font-weight: 400;
                     line-height: 1.4;
                     margin: 0;
+
+                    @media #{$max575} {
+                        font-size: 1.563rem;
+                    }
                 }
             }
 
@@ -807,6 +844,11 @@
                 width: 542px;
                 height: inherit !important;
                 margin: 0 16px !important;
+
+                @media #{$max575} {
+                    width: 300px;
+                    margin: 0 12px !important;
+                }
             }
         }
         .tft-slider-arrows{
@@ -826,11 +868,11 @@
                 top: unset;
                 transform: inherit;
                 transition: all 0.2s ease;
+                @media #{$max575} {
+                    width: 54px;
+                    height: 54px;
+                }
                 svg{
-                    @media #{$max767}{
-                        width: 45px;
-                        height: 45px;
-                    }
                     path{
                         transition: all 0.2s ease;
                     }

@@ -9,6 +9,7 @@
             display: flex;
             @include justify-content(space-between);
             @include align-items(flex-end);
+            gap: 32px;
 
             @media #{$max1199} {
                 margin-bottom: 30px;
@@ -20,6 +21,8 @@
 
             @media #{$max767} {
                 margin-bottom: 10px;
+                @include flex-direction(column);
+                @include align-items(flex-start);
             }
 
             h3{
@@ -37,6 +40,22 @@
                 font-size: 4.063rem;
                 font-weight: 400;
                 line-height: 1.2;
+
+                @media #{$max1199} {
+                    font-size: 3.2rem;
+                }
+
+                @media #{$max991} {
+                    font-size: 2.8rem;
+                }
+
+                @media #{$max767} {
+                    font-size: 2.313rem;
+                }
+
+                @media #{$max575} {
+                    font-size: 1.563rem;
+                }
             }
 
             .tft-btn{
@@ -60,12 +79,22 @@
                 width: 626px;
                 z-index: 1;
 
+                @media #{$max767} {
+                    width: calc(100% - 32px);
+                }
+                @media #{$max575} {
+                    width: 100%;
+                }
                 .tft-single-service{
                     display: flex;
                     padding: 40px;
                     gap: 24px;
                     background-color: $tft-color-filling-background;
                     transition: all 0.4s ease-in-out;
+
+                    @media #{$max575} {
+                        flex-direction: column;
+                    }
 
                     &:hover{
                         background-color: #fff;
@@ -99,6 +128,11 @@
                         line-height: 1.4;
                         margin: 0 0 8px 0;
                         transition: all 0.4s ease-in-out;
+
+                        @media #{$max767} {
+                            font-size: 1.563rem;
+                            font-weight: 400;
+                        }
                     }
 
                     p{
@@ -115,6 +149,13 @@
                         background-color: $tft-color-primary;
                         box-shadow: 0 8px 24px 0 rgba(238, 85, 9, 0.16), 0 20px 40px 0 rgba(8, 39, 36, 0.32);
 
+                        @media #{$max767} {
+                            width: calc(100% + 32px);
+                        }
+                        @media #{$max575} {
+                            width: 100%;
+                        }
+                        
                         .tft-service-icon{
                             color: #fff;
                             background-color: $tft-color-links;
@@ -136,6 +177,10 @@
             }
             .tft-services-items-right{
                 width: calc(100% - 626px);
+
+                @media #{$max767} {
+                    display: none;
+                }
 
                 img{
                     width: 100%;

@@ -8,6 +8,7 @@
         display: flex;
         @include justify-content(space-between);
         @include align-items(flex-end);
+        gap: 32px;
 
         @media #{$max1199} {
             margin-bottom: 30px;
@@ -19,6 +20,8 @@
 
         @media #{$max767} {
             margin-bottom: 10px;
+            @include flex-direction(column);
+            @include align-items(flex-start);
         }
 
         h3{
@@ -36,6 +39,22 @@
             font-size: 4.063rem;
             font-weight: 400;
             line-height: 1.2;
+
+            @media #{$max1199} {
+                font-size: 3.2rem;
+            }
+
+            @media #{$max991} {
+                font-size: 2.8rem;
+            }
+
+            @media #{$max767} {
+                font-size: 2.313rem;
+            }
+
+            @media #{$max575} {
+                font-size: 1.563rem;
+            }
         }
 
         .tft-btn{
@@ -68,19 +87,32 @@
 
     .slick-dotted.slick-slider {
         padding-bottom: 56px;
+
+        @media #{$max575} {
+            padding-bottom: 32px;
+        }
     }
 
     .tft-room-slider {
-        display: flex;
+        // display: flex;
         
         .slick-slide {
             width: 470px;
             height: inherit !important;
             margin: 0 16px !important;
+
+            @media #{$max575} {
+                width: 320px;
+                margin: 0 12px !important;
+            }
+        }
+        @media #{$max575} {
+            .slick-track{
+                margin: 0 -16px;
+            }
         }
 
         .slick-list {
-            margin: 0 -12px !important;
             overflow: visible;
         }
 
@@ -89,6 +121,10 @@
             @include justify-content(center);
             @include align-items(center);
             gap: 24px;
+
+            @media #{$max575} {
+                gap: 8px;
+            }
 
             li {
                 width: 48px;
@@ -99,6 +135,11 @@
                 @include d-flex();
                 @include justify-content(center);
                 @include align-items(center);
+
+                @media #{$max575} {
+                    width: 32px;
+                    height: 10px;
+                }
 
                 button {
                     width: 0px;
@@ -120,10 +161,6 @@
             @include d-flex();
             flex-direction: column;
             flex: 1;
-
-            @media #{$max767} {
-                padding: 16px;
-            }
 
             .tft-room-thumbnail {
                 position: relative;

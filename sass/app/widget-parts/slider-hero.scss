@@ -738,11 +738,8 @@
         }
 
         @media #{$max767} {
-            min-height: 600px;
-        }
-
-        @media #{$max575} {
-            min-height: 450px;
+            min-height: auto;
+            padding-top: 110px;
         }
 
         .tft-hero-content {
@@ -751,6 +748,13 @@
             display: flex;
             @include justify-content(center);
             gap: 56px;
+
+            @media #{$max991} {
+                padding: 0 10px 56px 10px;
+            }
+            @media #{$max767} {
+                @include flex-direction(column);
+            }
 
             .tft-content-box{
                 flex: 0 0 calc(100% - 422px);
@@ -768,11 +772,11 @@
                 margin: 0 0 48px 0;
 
                 @media #{$max1024} {
-                    font-size: 2.5rem;  
+                    font-size: 3.5rem;
                 }
   
-                @media #{$max767} {
-                    font-size: 1.5rem;
+                @media #{$max575} {
+                    font-size: 3rem;
                 }
             }
 

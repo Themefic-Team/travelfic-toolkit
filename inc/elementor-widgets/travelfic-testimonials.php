@@ -637,7 +637,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label' => __('Section', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
-                    'testimonial_style' => ['design-2', 'design-3'],
+                    'testimonial_style' => ['design-2', 'design-3', 'design-5'],
                 ],
             ]
         );
@@ -662,7 +662,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => 'design-2',
+                    'testimonial_style' => ['design-2', 'design-5']
                 ]
             ]
         );
@@ -670,10 +670,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_testimonials_sec_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-title,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-testimonial-top-header .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => 'design-2',
+                    'testimonial_style' => ['design-2', 'design-5']
                 ],
             ]
         );
@@ -684,9 +685,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-testimonial-top-header .tft-section-title' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-2',
+                    'testimonial_style' => ['design-2', 'design-5']
                 ],
             ]
         );
@@ -698,7 +700,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => 'design-2',
+                    'testimonial_style' => ['design-2', 'design-5']
                 ]
             ]
         );
@@ -706,10 +708,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_testimonials_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .tft-testimonial-top-header .tft-section-subtitle,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-testimonial-top-header .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => 'design-2',
+                    'testimonial_style' => ['design-2', 'design-5']
                 ],
             ]
         );
@@ -720,9 +723,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__two .tft-testimonial-top-header .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-testimonial-top-header .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-2',
+                    'testimonial_style' => ['design-2', 'design-5']
                 ],
             ]
         );
@@ -746,7 +750,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -759,7 +763,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -782,7 +786,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                     'tft_design_3_title_backdrop' => 'yes',
                 ]
             ]
@@ -822,7 +826,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__three .tft-heading-content .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -835,7 +839,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__three .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -857,7 +861,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__three .tft-heading-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -870,7 +874,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__three .tft-heading-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => 'design-3',
                 ],
             ]
         );
@@ -882,7 +886,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label' => __('Item List', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-2' , 'design-4'],   
+                    'testimonial_style' => ['design-1', 'design-2', 'design-4', 'design-5'],   
                 ],
             ]
         );
@@ -905,9 +909,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .tft-testimonials-inner' => 'background: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .tft-testimonials-inner' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -949,9 +954,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .tft-testimonials-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .tft-testimonials-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -965,9 +971,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors'  => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .tft-testimonials-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .tft-testimonials-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -978,7 +985,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -986,10 +993,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_title',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .person-name,#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .person-name',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .person-name,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .person-name,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-header h3',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1002,9 +1011,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .person-name' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .person-name' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-header h3' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1029,7 +1039,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1037,10 +1047,13 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_designation_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .designation,#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .designation',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .designation,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .designation,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-footer .user-info .person-name,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-footer .user-info .designation',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1052,9 +1065,11 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .designation' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .designation' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-footer .user-info .person-name' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-footer .user-info .designation' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1079,7 +1094,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1087,10 +1102,12 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'testimonials_content',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .testimonial-body .tft-content, #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .testimonial-body .tft-content',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .testimonial-body .tft-content, 
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .testimonial-body .tft-content, 
+                               #tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-body .tft-content',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1102,9 +1119,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .testimonial-body .tft-content' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .testimonial-body .tft-content' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-body .tft-content' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1129,7 +1147,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'], 
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'], 
                 ],
             ]
         );
@@ -1141,9 +1159,10 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__one .testimonial-footer i' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__four .testimonial-footer i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-testimonials-design__five .tft-single-testimonial .testimonial-footer .testimonial-rating i' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'testimonial_style' => ['design-1', 'design-4'],  
+                    'testimonial_style' => ['design-1', 'design-4', 'design-5'],  
                 ],
             ]
         );
@@ -1681,6 +1700,9 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
             [
                 'label' => __('Nav', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'testimonial_style!' => 'design-5', 
+                ],
             ]
         );
 

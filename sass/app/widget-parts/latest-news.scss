@@ -665,6 +665,7 @@
             display: flex;
             @include justify-content(space-between);
             @include align-items(flex-end);
+            gap: 32px;
 
             @media #{$max1199} {
                 margin-bottom: 30px;
@@ -676,6 +677,8 @@
 
             @media #{$max767} {
                 margin-bottom: 10px;
+                @include flex-direction(column);
+                @include align-items(flex-start);
             }
 
             h3{
@@ -693,6 +696,18 @@
                 font-size: 4.063rem;
                 font-weight: 400;
                 line-height: 1.2;
+
+                @media #{$max1199} {
+                    font-size: 3.2rem;
+                }
+
+                @media #{$max991} {
+                    font-size: 2.8rem;
+                }
+
+                @media #{$max767} {
+                    font-size: 2.313rem;
+                }
             }
 
             .tft-btn{
@@ -737,6 +752,10 @@
             &.content-only {
                 padding: 40px;
                 display: flex;
+
+                @media #{$max575} {
+                    padding: 24px;
+                }
             }
 
             &.with-image {
@@ -753,6 +772,10 @@
                     padding: 40px;
                     display: flex;
                     flex-direction: column;
+
+                    @media #{$max575} {
+                        padding: 24px;
+                    }
                 }
             }
 
@@ -764,6 +787,10 @@
                     font-weight: 400;
                     line-height: 1.4;
                     margin: 0 0 8px 0;
+
+                    @media #{$max575} {
+                        font-size: 1.563rem !important;
+                    }
 
                     a{
                         color: $tft-color-heading;
