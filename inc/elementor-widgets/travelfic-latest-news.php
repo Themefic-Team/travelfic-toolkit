@@ -1429,7 +1429,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                             <div class="tf-content">
                                 <h3>
                                     <a href="<?php the_permalink(); ?>">
-                                        <?php echo esc_html(travelfic_character_limit(get_the_title(), 25)); ?>
+                                        <?php echo esc_html(travelfic_character_limit(get_the_title(), 32)); ?>
                                     </a>
                                 </h3>
 

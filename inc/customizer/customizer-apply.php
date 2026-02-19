@@ -37,6 +37,9 @@ function travelfic_toolkit_footer_callback($travelfic_footer)
     } elseif ($travelfic_footer_check == "design3") {
         $footer_design3 =  Travelfic_Customizer_Footer::travelfic_toolkit_footer_third_design($travelfic_footer);
         return $footer_design3;
+    } elseif ($travelfic_footer_check == "design4") {
+        $footer_design4 =  Travelfic_Customizer_Footer::travelfic_toolkit_footer_fourth_design($travelfic_footer);
+        return $footer_design4;
     }
 }
 

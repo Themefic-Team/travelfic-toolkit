@@ -1884,6 +1884,7 @@ add_action('init', function () {
             'design1' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-1.png'),
             'design2' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-2.png'),
             'design3' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-3.png'),
+            'design4' => esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/footer-4.png'),
         ],
     ]);
 
@@ -1945,8 +1946,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'footer_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design4']
             ],
         ],
     ]);
@@ -1963,8 +1964,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'footer_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design4']
             ],
         ],
     ]);
@@ -1980,8 +1981,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'footer_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design4']
             ],
         ],
     ));
@@ -1998,8 +1999,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'footer_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design4']
             ],
         ],
     ]);
@@ -2016,8 +2017,8 @@ add_action('init', function () {
         'required' => [
             [
                 'setting'  => $prefix . 'footer_design_select',
-                'operator' => '==',
-                'value'    => 'design3',
+                'operator' => 'contains',
+                'value'    => ['design3', 'design4']
             ],
         ],
     ]);
