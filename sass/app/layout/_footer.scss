@@ -1,6 +1,72 @@
 @use '../abstracts/variable' as *;
 @use '../abstracts/mixins' as *;
 
+.tft-pre-footer-design{
+  &__four{
+    padding: 96px 0;
+    background-color: $tft-color-secondary;
+
+    .tft-newsletter-wrap{
+      display: flex;
+      @include align-items(center);
+      gap: 32px;
+
+      .tft-newsletter-left,
+      .tft-newsletter-right{
+        flex: 1;
+      }
+      
+      .tft-newsletter-left{
+        h2{
+          color: #F5FFFE;
+          font-size: 3.188rem;
+          font-weight: 400;
+          line-height: 1.3;
+          margin: 0 0 16px 0;
+        }
+        p{
+          color: $tft-color-text-lite;
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .tft-newslatter{
+        &>p{
+          @include d-flex();
+          gap: 16px;
+          margin: 0;
+
+          .wpcf7-form-control-wrap input{
+            width: 369px;
+            height: 56px;
+            padding: 12px 32px;
+            border-radius: 72px;
+            border: 2px solid #BB4307;
+            background: $tft-color-primary;
+            color: $tft-color-text-lite;
+
+            &::placeholder{
+              color: $tft-color-text-lite;
+            }
+          }
+
+          .wpcf7-submit{
+            padding: 12px 32px;
+            border-radius: 72px;
+            border: 2px solid #BB4307;
+            background: $tft-color-links !important;
+            color: #fff;
+            width: auto;
+            height: 56px;
+          }
+        }
+      }
+    }
+  }
+}
 .tft-footer-design {
 
   &__two {
@@ -336,67 +402,28 @@
     }
 
     .footer-widget {
-      .footer-widget-inner {
-        @include d-flex();
-        @include justify-content(space-between);
-
-        @media #{$max991} {
-          gap: 30px;
-        }
-
-        @media #{$max767} {
-          gap: 20px;
-        }
-
-        @media #{$max575} {
-          flex-direction: column;
-        }
-      }
-    }
-
-    h2.wp-block-heading,
-    h3.wp-block-heading {
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 1.15;
-      padding-bottom: 15px;
-      margin-bottom: 32px;
-      position: relative;
+      @include d-flex();
+      @include justify-content(space-between);
 
       @media #{$max991} {
-        font-size: 1.25rem;
-        margin-bottom: 25px;
-        padding-bottom: 12px;
+        gap: 30px;
       }
 
       @media #{$max767} {
-        font-size: 1.125rem;
-        margin-bottom: 18px;
-        padding-bottom: 8px;
+        gap: 20px;
       }
 
-
-    }
-
-    h3.wp-block-heading {
-      padding-bottom: 0;
-      margin: 0;
-
-      &::after {
-        display: none;
+      @media #{$max575} {
+        flex-direction: column;
       }
     }
 
-    h4.wp-block-heading {
-      color: $tft-color-white;
-      font-size: 1.125rem;
-      font-weight: 500;
+    .wp-block-heading{
+      color: #F5FFFE;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.5;
       margin-bottom: 16px;
-
-      @media #{$max767} {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
     }
 
     p {
@@ -411,24 +438,13 @@
     .wp-block-list {
       li {
         a {
-          color: $tft-color-white;
+          color: $tft-color-text-lite;
+          line-height: 1.5;
           display: block;
-          padding-bottom: 8px;
           @include transition(0.2s);
 
-          @media #{$max767} {
-            font-size: 0.938rem;
-            padding-bottom: 5px;
-          }
-
           &:hover {
-            color: $tft-color-secondary;
-          }
-        }
-
-        &:last-child {
-          a {
-            padding-bottom: 0;
+            color: $tft-color-links !important;
           }
         }
       }
@@ -440,42 +456,21 @@
       }
 
       &:first-child {
-        max-width: 205px;
-
-        @media #{$max767} {
-          font-size: 0.938rem;
-          line-height: 1.6;
-        }
+        max-width: 263px;
 
         @media #{$max575} {
           max-width: 100%;
         }
-
-        a {
-          color: $tft-color-white;
-        }
-
+        
         p {
           &:last-child {
             margin-bottom: 0;
           }
         }
-
-        h4 {
-          margin-top: 32px;
-
-          @media #{$max991} {
-            margin-top: 25px;
-          }
-
-          @media #{$max767} {
-            margin-top: 18px;
-          }
-        }
       }
 
       .wp-block-image {
-        margin-bottom: 32px;
+        margin-bottom: 16px;
       }
 
       .tft-footer-info-text{
@@ -483,6 +478,43 @@
         font-size: 25px;
         font-weight: 700;
         line-height: 1.5;
+      }
+
+      .tft-footer-contact ul li i{
+        color: $tft-color-text-lite !important;
+      }
+      .tft-footer-contact ul li a:hover{
+        color: $tft-color-links !important;
+      }
+
+      .tft-footer-social-link ul {
+        column-gap: 16px;
+        row-gap: 10px;
+
+        li {
+          margin: 0;
+
+          a {
+            height: auto;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent !important;
+
+            i {
+              color: #F5FFFE !important;
+              font-size:  24px;
+              @include transition(0.2s);
+            }
+
+            &:hover{
+              i{
+                color: $tft-color-links !important;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -669,9 +701,12 @@
   }
 
   &__four {
+    border-top: 1px solid $tft-color-border-default;
     font-size: 0.75rem;
-    color: $tft-color-white;
+    color: $tft-color-text-lite;
+    background: $tft-color-primary;
     overflow: hidden;
+    padding: 40px 0 32px 0;
 
     &__inner {
       @include d-flex();
@@ -683,29 +718,14 @@
     }
 
     &__copyright {
-      background: $tft-color-dark-blue;
       flex: 2;
-      padding: 16px 0;
       position: relative;
       @include d-flex();
       align-items: center;
 
       @media #{$max767} {
         flex: 1;
-        padding: 12px 5px;
         padding-left: 0;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        right: 100%;
-        padding-right: 100%;
-        top: 0;
-        background: $tft-color-dark-blue;
-        width: 100vw;
-        height: 100%;
-        z-index: 99;
       }
 
       p {
@@ -718,28 +738,13 @@
     }
 
     &__menu {
-      background: $tft-color-secondary;
       flex: 0.8;
-      padding: 16px 0;
       text-align: center;
       position: relative;
 
       @media #{$max767} {
         flex: 1;
-        padding: 12px 8px;
         padding-right: 0;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 100%;
-        padding-right: 100%;
-        top: 0;
-        background: $tft-color-secondary;
-        width: 100vw;
-        height: 100%;
-        z-index: 99;
       }
     }
 
