@@ -3049,6 +3049,15 @@ body.archive .tft-header-design__two {
   flex: 1 !important;
 }
 
+.tft-about-description ul {
+  padding-left: 25px;
+}
+.tft-about-description ul li {
+  list-style: disc;
+  font-size: 25px;
+  line-height: 1.4;
+}
+
 .tft-address-info .tft-info-icon-wrap {
   max-width: 70px;
 }

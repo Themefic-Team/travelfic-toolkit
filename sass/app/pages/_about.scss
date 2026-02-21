@@ -1,3 +1,14 @@
 .tft-about-left{
     flex: 1!important;
 }
+.tft-about-description{
+    ul{
+        padding-left: 25px;
+
+        li{
+            list-style: disc;
+            font-size: 25px;
+            line-height: 1.4;
+        }
+    }
+}
