@@ -131,7 +131,7 @@ class Travelfic_Customizer_Footer
             <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-footer-bottom__four__inner">
                     <div class="tft-footer-bottom__four__copyright">
-                        <p class="tft-color-white"><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
+                        <p><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
                     </div>
                     <div class="tft-footer-bottom__four__menu">
                         <ul class="tft-footer-bottom__four__nav">

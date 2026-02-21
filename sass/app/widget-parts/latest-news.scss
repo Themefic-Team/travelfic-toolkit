@@ -788,8 +788,8 @@
                     line-height: 1.4;
                     margin: 0 0 8px 0;
 
-                    @media #{$max575} {
-                        font-size: 1.563rem !important;
+                    @media #{$max767} {
+                        font-size: 1.563rem;
                     }
 
                     a{
