@@ -3057,6 +3057,11 @@ body.archive .tft-header-design__two {
   font-size: 25px;
   line-height: 1.4;
 }
+@media only screen and (max-width: 991.98px) {
+  .tft-about-description ul li {
+    font-size: 16px;
+  }
+}
 
 .tft-address-info .tft-info-icon-wrap {
   max-width: 70px;
@@ -7829,6 +7834,105 @@ body.archive .tft-header-design__two {
   .tft-team-design__two .tft_team_bottom_shape {
     display: none;
   }
+}
+.tft-team-design__three .tft-team-members {
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  gap: 32px;
+}
+.tft-team-design__three .tft-team-members .tft-single-member {
+  width: calc(33.33% - 22px);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-flex-direction: vertical;
+  -moz-flex-direction: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  background-color: var(--tf-filling-background);
+  overflow: hidden;
+}
+@media only screen and (max-width: 991.98px) {
+  .tft-team-design__three .tft-team-members .tft-single-member {
+    width: calc(50% - 16px);
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-team-design__three .tft-team-members .tft-single-member {
+    width: 100%;
+  }
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member_img img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details {
+  padding: 32px;
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details h2 {
+  color: var(--tf-text-heading);
+  font-size: 1.563rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details span {
+  color: var(--tf-text-heading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details .social-media {
+  margin-top: 24px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details .social-media a {
+  background-color: var(--tf-filling-foreground);
+  color: var(--tf-links-color);
+  height: 40px;
+  width: 40px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details .social-media a:hover {
+  background-color: var(--tf-links-color);
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details .social-media a:hover svg path {
+  stroke: var(--tf-color-white);
+}
+.tft-team-design__three .tft-team-members .tft-single-member .member-details .social-media a svg path {
+  stroke: var(--tf-links-color);
+  transition: all 0.3s ease-in-out;
 }
 
 @media only screen and (max-width: 991.98px) {
