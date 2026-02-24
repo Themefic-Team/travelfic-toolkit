@@ -72,11 +72,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $customizers_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($customizers_files);
 
-            // tourfic color palette
-            $tf_settings = ! empty( get_option( 'tf_settings') ) ? get_option( 'tf_settings') : [];
-            $tf_color_palette = isset($tf_settings['color-palette-template']) ? $tf_settings['color-palette-template'] : '';
-
-
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
 
@@ -110,97 +105,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $imported_data[ $prefix . 'design_3_login_url' ] = trailingslashit(site_url()) . ltrim($imported_data[ $prefix . 'design_3_login_url' ], '/');
                 }
 
-
-                // // header menu color
-                // if(isset($imported_data['travelfic_customizer_settings_menu_color'])){
-                //     $imported_data['travelfic_customizer_settings_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_menu_color'];
-                // }
-                // if(isset($imported_data['travelfic_customizer_settings_menu_hover_color'])){
-                //     $imported_data['travelfic_customizer_settings_header_menu_color']['hover'] = $imported_data['travelfic_customizer_settings_menu_hover_color'];
-                // }
-
-                // // header submenu color
-                // if(isset($imported_data['travelfic_customizer_settings_submenu_text_color'])){
-                //     $imported_data['travelfic_customizer_settings_header_submenu_color']['normal'] = $imported_data['travelfic_customizer_settings_submenu_text_color'];
-                // }
-                // if(isset($imported_data['travelfic_customizer_settings_submenu_text_hover_color'])){
-                //     $imported_data['travelfic_customizer_settings_header_submenu_color']['hover'] = $imported_data['travelfic_customizer_settings_submenu_text_hover_color'];
-                // }
-
-                // // transparent menu color
-                // if(isset($imported_data['travelfic_customizer_settings_transparent_menu_color'])){
-                //     $imported_data['travelfic_customizer_settings_transparent_header_menu_color']['normal'] = $imported_data['travelfic_customizer_settings_transparent_menu_color'];
-                // }
-                // if(isset($imported_data['travelfic_customizer_settings_transparent_menu_hover_color'])){
-                //     $imported_data['travelfic_customizer_settings_transparent_header_menu_color']['hover'] = $imported_data['travelfic_customizer_settings_transparent_menu_hover_color'];
-                // }
-
-                // // transparent submenu color
-                // if(isset($imported_data['travelfic_customizer_settings_transparent_submenu_text_color'])){
-                //     $imported_data['travelfic_customizer_settings_transparent_submenu_color']['normal'] = $imported_data['travelfic_customizer_settings_transparent_submenu_text_color'];
-                // }
-                // if(isset($imported_data['travelfic_customizer_settings_transparent_submenu_text_hover_color'])){
-                //     $imported_data['travelfic_customizer_settings_transparent_submenu_color']['hover'] = $imported_data['travelfic_customizer_settings_transparent_submenu_text_hover_color'];
-                // }
-
-                // // Archive transparent header
-                // if( isset($imported_data['travelfic_customizer_settings_archive_transparent_header']) && $imported_data['travelfic_customizer_settings_archive_transparent_header'] === 'disabled'){
-                //     $imported_data['travelfic_customizer_settings_archive_transparent_header'] = false;
-                // }else{
-                //     $imported_data['travelfic_customizer_settings_archive_transparent_header'] = true;
-                // }
-
-                // // transparent header
-                // if(isset($imported_data['travelfic_customizer_settings_transparent_header']) && $imported_data['travelfic_customizer_settings_transparent_header'] === 'disabled'){
-                //     $imported_data['travelfic_customizer_settings_transparent_header'] = false;
-                // }else{
-                //     $imported_data['travelfic_customizer_settings_transparent_header'] = true;
-                // }
-
-                // // footer heading color
-                // if(isset($imported_data['travelfic_customizer_settings_footer_text_color'])){
-                //     $imported_data['travelfic_customizer_settings_footer_heading_color'] = $imported_data['travelfic_customizer_settings_footer_text_color'];
-                // }
-
-                // color palette
-                $palette_choices = array(
-                    'design-1' => ['#0E3DD8', '#003C7A', '#686E7A', '#060D1C'],
-                    'design-2' => ['#B58E53', '#917242', '#99948D', '#595349'],
-                    'custom' => ['#fa6400', '#0e3dd8', '#686e7a', '#060d1c'],
-                );
-
-                $color_palette_key = $prefix . 'color_palette';
-                
-                switch ($template_key) {
-                    case '4':
-                        $selected_palette = 'design-1';
-                        $tf_color_palette = 'design-1';
-                        break;
-                    case '5':
-                        $selected_palette = 'custom';
-                        $tf_color_palette = 'custom';
-                        break;
-                    default:
-                        $selected_palette = 'design-2';
-                        $tf_color_palette = 'design-2';
-                        break;
-                }
-
-                $imported_data[$color_palette_key] = $selected_palette;
-
-                if( isset($palette_choices[$selected_palette]) ){
-                    $imported_data[$prefix .'primary_color']    = $palette_choices[$selected_palette][0];
-                    $imported_data[$prefix .'secondary_color']  = $palette_choices[$selected_palette][1];
-                    $imported_data[$prefix .'body_text_color']  = $palette_choices[$selected_palette][2];
-                    $imported_data[$prefix .'heading_color']    = $palette_choices[$selected_palette][3];
-                }
-
                 foreach ($imported_data as $key => $value) {
                     set_theme_mod($key, $value);
                 }
-
-                $tf_settings['color-palette-template'] = $tf_color_palette;
-                update_option('tf_settings', $tf_settings);
 
                 die();
             }
