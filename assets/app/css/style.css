@@ -1158,6 +1158,31 @@ textarea.tft-form-control {
 .tft-footer-design__four .wp-block-list li a:hover {
   color: var(--tf-links-color) !important;
 }
+.tft-footer-design__four .wp-block-media-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.tft-footer-design__four .wp-block-media-text .wp-block-media-text__media {
+  margin: 0;
+  flex: 0 0 24px;
+}
+.tft-footer-design__four .wp-block-media-text a:hover {
+  color: var(--tf-links-color) !important;
+}
+.tft-footer-design__four .wp-block-social-links {
+  gap: 16px;
+}
+.tft-footer-design__four .wp-block-social-links li {
+  margin: 0;
+}
+.tft-footer-design__four .wp-block-social-links li a svg path {
+  fill: #fff;
+}
+.tft-footer-design__four .wp-block-social-links li a:hover svg path {
+  fill: var(--tf-links-color) !important;
+}
 @media only screen and (max-width: 767.98px) {
   .tft-footer-design__four .tft-footer-section {
     margin-bottom: 0;

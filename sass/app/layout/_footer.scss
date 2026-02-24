@@ -469,6 +469,44 @@
       }
     }
 
+    .wp-block-media-text{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+
+      .wp-block-media-text__media{
+        margin: 0;
+        flex: 0 0 24px;
+      }
+
+      a:hover{
+        color: $tft-color-links !important;
+      }
+    }
+
+    .wp-block-social-links{
+      gap: 16px;
+      li{
+        margin: 0;
+        a{
+          svg{
+            path{
+              fill: #fff;
+            }
+          }
+
+          &:hover{
+            svg{
+              path{
+                fill: $tft-color-links !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .tft-footer-section {
       @media #{$max767} {
         margin-bottom: 0;
