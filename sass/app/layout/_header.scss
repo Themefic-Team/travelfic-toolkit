@@ -19,6 +19,12 @@
         box-shadow: none;
       }
     }
+
+    .tft-btn{
+      &:hover{
+        box-shadow: $tft-color-links-box-shadow;
+      }
+    }
   }
   &__two {
     .tft-top-header {

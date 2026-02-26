@@ -781,6 +781,9 @@ textarea.tft-form-control {
   width: auto;
   height: 56px;
 }
+.tft-pre-footer-design__four .tft-newsletter-wrap .tft-newslatter > p .wpcf7-submit:hover {
+  box-shadow: 0 40px 40px 0 color-mix(in srgb, var(--tf-links-color) 16%, transparent), 0 32px 32px 0 color-mix(in srgb, var(--tf-links-color) 14%, transparent), 0 24px 24px 0 color-mix(in srgb, var(--tf-links-color) 12%, transparent), 0 20px 20px 0 color-mix(in srgb, var(--tf-links-color) 10%, transparent), 0 16px 16px 0 color-mix(in srgb, var(--tf-links-color) 8%, transparent), 0 12px 12px 0 color-mix(in srgb, var(--tf-links-color) 6%, transparent), 0 8px 8px 0 color-mix(in srgb, var(--tf-links-color) 4%, transparent), 0 4px 4px 0 color-mix(in srgb, var(--tf-links-color) 2%, transparent);
+}
 
 .tft-footer-design__two {
   padding-top: 60px;
@@ -1585,6 +1588,9 @@ textarea.tft-form-control {
   padding-top: 15px;
   padding-bottom: 15px;
   box-shadow: none;
+}
+.tft-header-design__one .tft-btn:hover {
+  box-shadow: 0 40px 40px 0 color-mix(in srgb, var(--tf-links-color) 16%, transparent), 0 32px 32px 0 color-mix(in srgb, var(--tf-links-color) 14%, transparent), 0 24px 24px 0 color-mix(in srgb, var(--tf-links-color) 12%, transparent), 0 20px 20px 0 color-mix(in srgb, var(--tf-links-color) 10%, transparent), 0 16px 16px 0 color-mix(in srgb, var(--tf-links-color) 8%, transparent), 0 12px 12px 0 color-mix(in srgb, var(--tf-links-color) 6%, transparent), 0 8px 8px 0 color-mix(in srgb, var(--tf-links-color) 4%, transparent), 0 4px 4px 0 color-mix(in srgb, var(--tf-links-color) 2%, transparent);
 }
 .tft-header-design__two .tft-top-header {
   background: #595349;
@@ -4023,7 +4029,7 @@ body.archive .tft-header-design__two {
   background-color: var(--tf-links-color);
 }
 .tft-hero-design__five .tft-hero-content .tf_btn:hover {
-  background-color: #BB4307;
+  box-shadow: 0 40px 40px 0 color-mix(in srgb, var(--tf-links-color) 16%, transparent), 0 32px 32px 0 color-mix(in srgb, var(--tf-links-color) 14%, transparent), 0 24px 24px 0 color-mix(in srgb, var(--tf-links-color) 12%, transparent), 0 20px 20px 0 color-mix(in srgb, var(--tf-links-color) 10%, transparent), 0 16px 16px 0 color-mix(in srgb, var(--tf-links-color) 8%, transparent), 0 12px 12px 0 color-mix(in srgb, var(--tf-links-color) 6%, transparent), 0 8px 8px 0 color-mix(in srgb, var(--tf-links-color) 4%, transparent), 0 4px 4px 0 color-mix(in srgb, var(--tf-links-color) 2%, transparent);
 }
 .tft-hero-design .tft-search-box {
   position: absolute;
@@ -5945,9 +5951,7 @@ body.archive .tft-header-design__two {
   background-color: var(--tf-primary);
 }
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn:hover {
-  background-color: var(--tf-links-color) !important;
-  border-color: var(--tf-links-color) !important;
-  color: var(--tf-color-white);
+  box-shadow: 0 40px 40px 0 color-mix(in srgb, var(--tf-links-color) 16%, transparent), 0 32px 32px 0 color-mix(in srgb, var(--tf-links-color) 14%, transparent), 0 24px 24px 0 color-mix(in srgb, var(--tf-links-color) 12%, transparent), 0 20px 20px 0 color-mix(in srgb, var(--tf-links-color) 10%, transparent), 0 16px 16px 0 color-mix(in srgb, var(--tf-links-color) 8%, transparent), 0 12px 12px 0 color-mix(in srgb, var(--tf-links-color) 6%, transparent), 0 8px 8px 0 color-mix(in srgb, var(--tf-links-color) 4%, transparent), 0 4px 4px 0 color-mix(in srgb, var(--tf-links-color) 2%, transparent);
 }
 .tft-room-section .tft-room-slider.tft-slider-disable {
   overflow: initial;

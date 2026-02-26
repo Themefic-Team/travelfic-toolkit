@@ -793,7 +793,7 @@
                 background-color: $tft-color-links;
 
                 &:hover{
-                    background-color: #BB4307;
+                    box-shadow: $tft-color-links-box-shadow;
                 }
             }
         }

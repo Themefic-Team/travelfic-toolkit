@@ -82,6 +82,10 @@
             color: #fff;
             width: auto;
             height: 56px;
+
+            &:hover{
+              box-shadow: $tft-color-links-box-shadow;
+            }
           }
         }
       }
