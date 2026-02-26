@@ -486,7 +486,9 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 <div class="tft-gallery-selector tft-slide-default">
                     <?php foreach ($settings['galleries'] as $item) { ?>
                         <div class="tft-single-gallery">
-                            <img src="<?php echo esc_url($item['image']['url']); ?>" alt="Image"/>
+                            <div class="tft-single-thumb">
+                                <img src="<?php echo esc_url($item['image']['url']); ?>" alt="Image"/>
+                            </div>
                             <h3><?php echo esc_html($item['title']) ?></h3>
                         </div>
                     <?php } ?>

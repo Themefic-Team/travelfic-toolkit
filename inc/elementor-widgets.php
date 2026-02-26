@@ -129,7 +129,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         require_once( __DIR__ . '/elementor-widgets/travelfic-cars.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-car-brand.php' );
         require_once( __DIR__ . '/elementor-widgets/travelfic-gallery.php' );
-        require_once( __DIR__ . '/elementor-widgets/travelfic-services.php' );
+        require_once( __DIR__ . '/elementor-widgets/travelfic-features.php' );
 
 
         // Register widget
@@ -150,7 +150,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Cars() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_CarBrands() );
         \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Gallery() );
-        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Services() );
+        \Elementor\Plugin::instance()->widgets_manager->register( new \Travelfic_Toolkit_Features() );
        
     }
 }

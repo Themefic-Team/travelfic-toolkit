@@ -471,13 +471,24 @@
 
     .wp-block-media-text{
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 8px;
       margin-bottom: 8px;
 
       .wp-block-media-text__media{
         margin: 0;
         flex: 0 0 24px;
+        height: 26px;
+        padding-top: 4px;
+
+        img {
+          vertical-align: baseline;
+          width: auto;
+        }
+      }
+
+      .wp-block-media-text__content{
+        padding: 0;
       }
 
       a:hover{
@@ -487,9 +498,14 @@
 
     .wp-block-social-links{
       gap: 16px;
+
       li{
         margin: 0;
+        background-color: transparent !important;
+
         a{
+          padding: 0 !important;
+
           svg{
             path{
               fill: #fff;

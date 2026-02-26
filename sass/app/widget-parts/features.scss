@@ -1,81 +1,13 @@
 @use '../abstracts/variable' as *;
 @use '../abstracts/mixins' as *;
 
-.tft-services-design {
+.tft-features-design {
 
     &__one{
-        .tft-service-sec-header {
-            margin-bottom: 56px;
-            display: flex;
-            @include justify-content(space-between);
-            @include align-items(flex-end);
-            gap: 32px;
-
-            @media #{$max1199} {
-                margin-bottom: 30px;
-            }
-
-            @media #{$max991} {
-                margin-bottom: 20px;
-            }
-
-            @media #{$max767} {
-                margin-bottom: 10px;
-                @include flex-direction(column);
-                @include align-items(flex-start);
-            }
-
-            h3{
-                color: $tft-color-links;
-                font-size: 1rem;
-                font-weight: 600;
-                line-height: 1.5;
-                margin: 0;
-                text-transform: uppercase;
-            }
-
-            h2 {
-                margin: 0;
-                color: $tft-color-heading;
-                font-size: 4.063rem;
-                font-weight: 400;
-                line-height: 1.2;
-
-                @media #{$max1199} {
-                    font-size: 3.2rem;
-                }
-
-                @media #{$max991} {
-                    font-size: 2.8rem;
-                }
-
-                @media #{$max767} {
-                    font-size: 2.313rem;
-                }
-
-                @media #{$max575} {
-                    font-size: 1.563rem;
-                }
-            }
-
-            .tft-btn{
-                margin-bottom: 16px;
-                color: #fff;
-                border: 2px solid $tft-color-links;
-                background-color: $tft-color-primary;
-
-                &:hover {
-                    background-color: $tft-color-links !important;
-                    border-color: $tft-color-links !important;
-                    color: $tft-color-white;
-                }
-            }
-        }
-
-        .tft-services-items{
+        .tft-features-items{
             display: flex;
 
-            .tft-services-items-left{
+            .tft-features-items-left{
                 width: 626px;
                 z-index: 1;
 
@@ -85,12 +17,15 @@
                 @media #{$max575} {
                     width: 100%;
                 }
-                .tft-single-service{
+                .tft-single-feature{
                     display: flex;
                     padding: 40px;
                     gap: 24px;
                     background-color: $tft-color-filling-background;
-                    transition: all 0.4s ease-in-out;
+                    width: 100%;
+                    box-sizing: border-box;
+                    transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, color 0.4s ease-in-out;
+                    cursor: pointer;
 
                     @media #{$max575} {
                         flex-direction: column;
@@ -100,7 +35,7 @@
                         background-color: #fff;
                     }
 
-                    .tft-service-icon{
+                    .tft-feature-icon{
                         flex: 0 0 72px;
                         height: 72px;
                         width: 72px;
@@ -148,6 +83,8 @@
                         width: calc(100% + 72px);
                         background-color: $tft-color-primary;
                         box-shadow: 0 8px 24px 0 rgba(238, 85, 9, 0.16), 0 20px 40px 0 rgba(8, 39, 36, 0.32);
+                        z-index: 3;
+                        position: relative;
 
                         @media #{$max767} {
                             width: calc(100% + 32px);
@@ -156,7 +93,7 @@
                             width: 100%;
                         }
                         
-                        .tft-service-icon{
+                        .tft-feature-icon{
                             color: #fff;
                             background-color: $tft-color-links;
 
@@ -175,7 +112,7 @@
                     }
                 }
             }
-            .tft-services-items-right{
+            .tft-features-items-right{
                 width: calc(100% - 626px);
 
                 @media #{$max767} {

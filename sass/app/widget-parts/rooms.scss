@@ -3,71 +3,6 @@
 
 .tft-room-section {
 
-    .tft-room-sec-header {
-        margin-bottom: 56px;
-        display: flex;
-        @include justify-content(space-between);
-        @include align-items(flex-end);
-        gap: 32px;
-
-        @media #{$max1199} {
-            margin-bottom: 30px;
-        }
-
-        @media #{$max991} {
-            margin-bottom: 20px;
-        }
-
-        @media #{$max767} {
-            margin-bottom: 10px;
-            @include flex-direction(column);
-            @include align-items(flex-start);
-        }
-
-        h3{
-            color: $tft-color-links;
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.5;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        h2 {
-            margin: 0;
-            color: #F5FFFE;
-            font-size: 4.063rem;
-            font-weight: 400;
-            line-height: 1.2;
-
-            @media #{$max1199} {
-                font-size: 3.2rem;
-            }
-
-            @media #{$max991} {
-                font-size: 2.8rem;
-            }
-
-            @media #{$max767} {
-                font-size: 2.313rem;
-            }
-
-            @media #{$max575} {
-                font-size: 1.563rem;
-            }
-        }
-
-        .tft-btn{
-            margin-bottom: 16px;
-            border: 2px solid $tft-color-links;
-            color: #fff;
-
-            &:hover{
-                background-color: $tft-color-links !important;
-            }
-        }
-    }
-
     .tft-room-items {
         position: relative;
         z-index: 2;
@@ -208,6 +143,10 @@
                     font-size: 1.563rem;
                     font-weight: 700;
                     line-height: 1.5;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
 
                     a {
                         @include transition(0.2s);

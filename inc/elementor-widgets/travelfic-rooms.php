@@ -124,24 +124,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 ],
             ]
         );
-        $this->add_control(
-            'tft_section_title',
-            [
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'label' => esc_html__('Title', 'travelfic-toolkit'),
-                'placeholder' => esc_html__('Enter your title', 'travelfic-toolkit'),
-                'default' => __('Our facilities are your playground', 'travelfic-toolkit'),
-            ]
-        );
-        $this->add_control(
-            'tft_section_subtitle',
-            [
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'label' => esc_html__('SubTitle', 'travelfic-toolkit'),
-                'placeholder' => esc_html__('Enter your SubTitle', 'travelfic-toolkit'),
-                'default' => __('Our Rooms', 'travelfic-toolkit'),
-            ]
-        );
         // Order by.
         $this->add_control(
             'post_order_by',
@@ -190,21 +172,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                     'Split' => __('Split', 'travelfic-toolkit'),
                     'Full' => __('Full Title', 'travelfic-toolkit')
                 ],
-            ]
-        );
-
-        $this->add_control(
-            'see_all_link',
-            [
-                'type' => \Elementor\Controls_Manager::URL,
-                'label' => esc_html__('See ALL URL', 'travelfic-toolkit'),
-                'placeholder' => esc_html__('Enter Link', 'travelfic-toolkit'),
-                'default' => [
-                    'url' => '#',
-                    'is_external' => true,
-                    'nofollow' => true,
-                ],
-                'label_block' => true,
             ]
         );
 
@@ -330,220 +297,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             ]
         );
 
-        // Design 1 style settings 
-
-        // title head
-        $this->add_control(
-            'popular_section_title_head',
-            [
-                'label'     => __('Title', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'popular_section_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-heading-content .tft-section-title,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .tft-section-title',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-            ]
-        );
-        $this->add_control(
-            'popular_section_title_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .tft-section-title' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        // subtitle head
-        $this->add_control(
-            'popular_section_subtitle_head',
-            [
-                'label'     => __('Subtitle', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'popular_section_subtitle_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-heading-content .tft-section-subtitle,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .tft-section-subtitle',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-            ]
-        );
-        $this->add_control(
-            'popular_section_subtitle_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .tft-section-subtitle' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-      
-
-        // button head
-        $this->add_control(
-            'popular_section_button_head',
-            [
-                'label'     => __('Button', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'popular_section_button_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-            ]
-        );
-
-        $this->add_responsive_control(
-            'popular_design1_hotel_button_margin_',
-            [
-                'label'      => __('Margin', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'popular_design1_hotel_button_padding_',
-            [
-                'label'      => __('Padding', 'travelfic-toolkit'),
-                'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            [
-                'name'     => 'popular_design1_hotel_button_border_',
-                'label'    => __('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn',
-            ]
-        );
-
-        $this->add_control(
-            'popular_design1_hotel_button_radius_',
-            [
-                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', 'em', '%', 'rem' ],
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        
-
-        $this->end_controls_tabs();
-
-        $this->start_controls_tabs('popular_section_design1_button_tabs');
-        $this->start_controls_tab(
-            'popular_section_design1_button_normal',
-            [
-                'label'     => __('Normal', 'travelfic-toolkit'),
-            ]
-        );
-
-        $this->add_control(
-            'popular_section_button_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn span svg path' => 'fill: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'popular_section_button_bg',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-
-        $this->start_controls_tab(
-            'popular_section_design1_button_hover',
-            [
-                'label'     => __('Hover', 'travelfic-toolkit'),
-            ]
-        );
-        $this->add_control(
-            'popular_section_button_hover_color',
-            [
-                'label'     => __('Color', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn:hover' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn:hover span svg path' => 'fill: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn:hover' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'popular_section_button_hover_bg',
-            [
-                'label'     => __('Background', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn:hover' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn:hover' => 'background: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'popular_section_button_border_hover_color',
-            [
-                'label'     => __('Border', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .read-more .tft-btn:hover' => 'border-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-sec-header .read-more .tft-btn:hover' => 'border-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->end_controls_tab();
-        $this->end_controls_tabs();
-
         // card head
         $this->add_control(
             'popular_card_heading',
@@ -633,6 +386,32 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul li' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+        $this->add_control(
+            'popular_card_price_head',
+            [
+                'label'     => __('Price', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'after',
+            ]
+        );
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name'     => 'popular_hotel_card_price_typo',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price',
+                'label'    => __('Typography', 'travelfic-toolkit'),
+            ]
+        );
+        $this->add_control(
+            'popular_hotel_card_price_color',
+            [
+                'label'     => __('Price Color', 'travelfic-toolkit'),
+                'type'      => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -779,9 +558,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
 
         $query = new \WP_Query($args);
 
-        $tft_sec_title = !empty($settings['tft_section_title']) ? $settings['tft_section_title'] : '';
-        $tft_sec_subtitle = !empty($settings['tft_section_subtitle']) ? $settings['tft_section_subtitle'] : '';
-
         // slider control settings check
         $room_slider_nav = $settings['tft_room_slider_navigation'];
         $room_slider_arrows = ("arrows" === $room_slider_nav) ? 'true' : 'false';
@@ -797,20 +573,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
         
         if ('design-1' == $tft_design): ?>
             <div class="tft-room-section tft-customizer-typography">
-                <div class="tft-room-sec-header">
-                    <div class="tft-room-header-left">
-                        <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle"><?php echo wp_kses_post($tft_sec_subtitle); ?></h3>
-                        <?php } if (!empty($tft_sec_title)) {?>
-                            <h2 class="tft-section-title"><?php echo wp_kses_post($tft_sec_title); ?></h2>
-                        <?php } ?>
-                    </div>
-                    <div class="read-more">
-                        <a href="<?php echo esc_url($settings['see_all_link']['url']); ?>" class="tft-btn tft-btn-transparent">
-                            <?php esc_html_e("See All", "travelfic-toolkit"); ?>
-                        </a>
-                    </div>
-                </div>
                 <div class="tft-room-items">
                     <div class="tft-room-slider">
                         <?php if ($query->have_posts()): ?>

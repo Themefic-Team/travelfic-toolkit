@@ -75,9 +75,13 @@
             }
         }
         .tft-single-gallery {
-            img{
+            .tft-single-thumb{
                 margin-bottom: 24px;
+                overflow: hidden;
+            }
+            img{
                 object-fit: cover;
+                transition: all 0.5s ease-in-out;
             }
             h3{
                 color: $tft-color-heading;
@@ -89,6 +93,12 @@
                 @media #{$max575} {
                     font-size: 1.563rem;
                     font-weight: 400;
+                }
+            }
+
+            &:hover{
+                img{
+                    transform: scale(1.2);
                 }
             }
         }

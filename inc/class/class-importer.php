@@ -379,10 +379,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
                 'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
                 'design-3' => ['#fa6400', '#0e3dd8', '#686e7a', '#fa6400'],
+                'design-4' => ['#153d3a', '#0d2624', '#334745', '#ee5509'],
             ];
 
             // Fallback to design-1
             switch ($template_key) {
+                case '6':
+                    $selected = 'design-4';
+                    break;
                 case '5':
                     $selected = 'design-3';
                     break;
