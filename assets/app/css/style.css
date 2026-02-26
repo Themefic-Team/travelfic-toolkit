@@ -782,6 +782,7 @@ textarea.tft-form-control {
   height: 56px;
 }
 .tft-pre-footer-design__four .tft-newsletter-wrap .tft-newslatter > p .wpcf7-submit:hover {
+  border-color: #BB4307 !important;
   box-shadow: 0 40px 40px 0 color-mix(in srgb, var(--tf-links-color) 16%, transparent), 0 32px 32px 0 color-mix(in srgb, var(--tf-links-color) 14%, transparent), 0 24px 24px 0 color-mix(in srgb, var(--tf-links-color) 12%, transparent), 0 20px 20px 0 color-mix(in srgb, var(--tf-links-color) 10%, transparent), 0 16px 16px 0 color-mix(in srgb, var(--tf-links-color) 8%, transparent), 0 12px 12px 0 color-mix(in srgb, var(--tf-links-color) 6%, transparent), 0 8px 8px 0 color-mix(in srgb, var(--tf-links-color) 4%, transparent), 0 4px 4px 0 color-mix(in srgb, var(--tf-links-color) 2%, transparent);
 }
 

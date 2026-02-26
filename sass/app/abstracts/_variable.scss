@@ -26,6 +26,7 @@ $tft-color-links: var(--tf-links-color);
 $tft-color-box-shadow: var(--tf-box-shadow-color);
 $tft-color-links-box-shadow: 0 40px 40px 0 color-mix(in srgb, $tft-color-links 16%, transparent), 0 32px 32px 0 color-mix(in srgb, $tft-color-links 14%, transparent), 0 24px 24px 0 color-mix(in srgb, $tft-color-links 12%, transparent), 0 20px 20px 0 color-mix(in srgb, $tft-color-links 10%, transparent), 0 16px 16px 0 color-mix(in srgb, $tft-color-links 8%, transparent), 0 12px 12px 0 color-mix(in srgb, $tft-color-links 6%, transparent), 0 8px 8px 0 color-mix(in srgb, $tft-color-links 4%, transparent), 0 4px 4px 0 color-mix(in srgb, $tft-color-links 2%, transparent);
 
+$tft-color-links-dark: #BB4307;
 $tft-color-blue: #07245f;
 $tft-color-orange-light: #FAEEDC;
 $tft-color-orange-thin: #FCF4E8;
