@@ -7,6 +7,13 @@
       .tf-flex{
         display: flex;
         @include align-items(center);
+
+        @media #{$max1024} {
+          padding: 0 32px;
+        }
+        @media #{$max767} {
+          padding: 0 24px;
+        }
       }
     }
     .tft-header-mobile{

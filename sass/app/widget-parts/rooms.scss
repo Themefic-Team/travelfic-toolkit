@@ -197,6 +197,7 @@
                         background-color: $tft-color-primary;
 
                         &:hover {
+                            background-color: $tft-color-primary !important;
                             box-shadow: $tft-color-links-box-shadow;
                         }
                     }

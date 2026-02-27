@@ -739,7 +739,7 @@
 
         @media #{$max767} {
             min-height: auto;
-            padding-top: 110px;
+            padding-top: 138px;
         }
 
         .tft-hero-content {
@@ -749,11 +749,13 @@
             @include justify-content(center);
             gap: 56px;
 
-            @media #{$max991} {
-                padding: 0 10px 56px 10px;
+            @media #{$max1024} {
+                padding: 0 32px 56px 32px;
             }
             @media #{$max767} {
                 @include flex-direction(column);
+                gap: 40px;
+                padding: 0 16px 32px 16px;
             }
 
             .tft-content-box{
@@ -772,7 +774,8 @@
                 margin: 0 0 48px 0;
 
                 @media #{$max1024} {
-                    font-size: 3.5rem;
+                    font-size: 3.188rem;
+                    margin: 0 0 24px 0;
                 }
   
                 @media #{$max575} {

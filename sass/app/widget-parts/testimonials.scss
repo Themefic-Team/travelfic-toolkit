@@ -694,17 +694,8 @@
             gap: 56px;
             margin-bottom: 56px;
 
-            @media #{$max1199} {
-                margin-bottom: 30px;
-            }
-
-            @media #{$max991} {
-                margin-bottom: 20px;
-            }
-
-            @media #{$max767} {
-                gap: 24px;
-                @include flex-direction(column);
+            @media #{$max1024} {
+                margin-bottom: 32px;
             }
 
             h3.tft-section-subtitle{
@@ -723,20 +714,18 @@
                 line-height: 1.2;
                 margin: 0;
 
-                @media #{$max1199} {
-                    font-size: 3.2rem;
-                }
-
-                @media #{$max991} {
-                    font-size: 2.8rem;
-                }
-
-                @media #{$max767} {
+                @media #{$max1024} {
                     font-size: 2.313rem;
                 }
 
-                @media #{$max575} {
+                @media #{$max767} {
                     font-size: 1.563rem;
+                }
+            }
+
+            .tft-slider-arrows{
+                @media #{$max767} {
+                    display: none;
                 }
             }
         }
@@ -783,7 +772,7 @@
                     line-height: 1.4;
                     margin: 0;
 
-                    @media #{$max575} {
+                    @media #{$max1024} {
                         font-size: 1.563rem;
                     }
                 }
@@ -886,6 +875,15 @@
                     display: none;
                 }
 
+            }
+        }
+
+        .tft-testimonial-mobile-slider-arrow{
+            margin-top: 32px;
+            display: none;
+
+            @media #{$max767} {
+                display: block;
             }
         }
     }
