@@ -701,9 +701,9 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                                     {
                                         breakpoint: 640,
                                         settings: {
+                                            variableWidth: false,
                                             slidesToShow: 1,
                                             slidesToScroll: 1,
-                                            centerMode: true
                                         }
                                     }
                                 ]

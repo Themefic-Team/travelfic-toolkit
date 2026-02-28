@@ -8,15 +8,17 @@
         z-index: 2;
         overflow: hidden;
 
-        &::before {
-            position: absolute;
-            content: "";
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #153D3A;
-            z-index: 1;
+        @media #{$min576} {
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: #153D3A;
+                z-index: 1;
+            }
         }
     }
 
@@ -32,23 +34,25 @@
         // display: flex;
         
         .slick-slide {
-            width: 470px;
-            height: inherit !important;
-            margin: 0 16px !important;
-
-            @media #{$max575} {
-                width: 320px;
-                margin: 0 12px !important;
-            }
+            margin: 0 10px !important;
         }
-        @media #{$max575} {
-            .slick-track{
-                margin: 0 -16px;
+        .slick-track{
+            // margin: 0 -16px;
+        }
+        @media #{$min576} {
+            .slick-slide {
+                width: 470px;
+                height: inherit !important;
             }
         }
 
+        @media #{$min576} {
+            .slick-list {
+                overflow: visible;
+            }
+        }
         .slick-list {
-            overflow: visible;
+            padding: 0 !important
         }
 
         .slick-dots {

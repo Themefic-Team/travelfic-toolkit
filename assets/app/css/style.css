@@ -5748,15 +5748,17 @@ body.archive .tft-header-design__two {
   z-index: 2;
   overflow: hidden;
 }
-.tft-room-section .tft-room-items::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: #153D3A;
-  z-index: 1;
+@media only screen and (min-width: 576px) {
+  .tft-room-section .tft-room-items::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #153D3A;
+    z-index: 1;
+  }
 }
 .tft-room-section .slick-dotted.slick-slider {
   padding-bottom: 56px;
@@ -5767,23 +5769,21 @@ body.archive .tft-header-design__two {
   }
 }
 .tft-room-section .tft-room-slider .slick-slide {
-  width: 470px;
-  height: inherit !important;
-  margin: 0 16px !important;
+  margin: 0 10px !important;
 }
-@media only screen and (max-width: 575.98px) {
+@media only screen and (min-width: 576px) {
   .tft-room-section .tft-room-slider .slick-slide {
-    width: 320px;
-    margin: 0 12px !important;
+    width: 470px;
+    height: inherit !important;
   }
 }
-@media only screen and (max-width: 575.98px) {
-  .tft-room-section .tft-room-slider .slick-track {
-    margin: 0 -16px;
+@media only screen and (min-width: 576px) {
+  .tft-room-section .tft-room-slider .slick-list {
+    overflow: visible;
   }
 }
 .tft-room-section .tft-room-slider .slick-list {
-  overflow: visible;
+  padding: 0 !important;
 }
 .tft-room-section .tft-room-slider .slick-dots {
   display: -webkit-box;
