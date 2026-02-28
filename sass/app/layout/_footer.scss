@@ -478,13 +478,13 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
 
       .wp-block-media-text__media{
         margin: 0;
         flex: 0 0 24px;
         height: 26px;
-        padding-top: 4px;
+        padding-top: 2px;
 
         img {
           vertical-align: baseline;

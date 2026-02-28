@@ -1166,13 +1166,13 @@ textarea.tft-form-control {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .tft-footer-design__four .wp-block-media-text .wp-block-media-text__media {
   margin: 0;
   flex: 0 0 24px;
   height: 26px;
-  padding-top: 4px;
+  padding-top: 2px;
 }
 .tft-footer-design__four .wp-block-media-text .wp-block-media-text__media img {
   vertical-align: baseline;
@@ -7057,6 +7057,15 @@ body.archive .tft-header-design__two {
 .tft-latest-posts-design__four .tf-blog-card.with-image {
   display: flex;
 }
+@media only screen and (max-width: 575.98px) {
+  .tft-latest-posts-design__four .tf-blog-card.with-image {
+    -webkit-flex-direction: vertical;
+    -moz-flex-direction: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
 .tft-latest-posts-design__four .tf-blog-card.with-image .tf-thumb {
   flex: 0 0 309px;
 }
@@ -7072,6 +7081,11 @@ body.archive .tft-header-design__two {
   width: 100%;
   height: 328px;
   object-fit: cover;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-latest-posts-design__four .tf-blog-card.with-image .tf-thumb img {
+    height: 310px;
+  }
 }
 .tft-latest-posts-design__four .tf-blog-card.with-image .tf-content {
   padding: 40px;
