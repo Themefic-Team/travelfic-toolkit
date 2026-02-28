@@ -171,6 +171,11 @@
                         display: flex;
                         gap: 4px;
                         align-items: flex-end;
+
+                        @media #{$max767} {
+                            align-items: flex-start;
+                            @include flex-direction(column);
+                        }
                     }
 
                     .sale-price,

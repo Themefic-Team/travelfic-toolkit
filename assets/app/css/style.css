@@ -5942,6 +5942,16 @@ body.archive .tft-header-design__two {
   gap: 4px;
   align-items: flex-end;
 }
+@media only screen and (max-width: 767.98px) {
+  .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .tf-price {
+    align-items: flex-start;
+    -webkit-flex-direction: vertical;
+    -moz-flex-direction: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .sale-price,
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tf-room-price .discount-price {
   color: var(--tf-links-color);
@@ -9164,6 +9174,11 @@ body.archive .tft-header-design__two {
   box-sizing: border-box;
   transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, color 0.4s ease-in-out;
   cursor: pointer;
+}
+@media only screen and (max-width: 767.98px) {
+  .tft-features-design__one .tft-features-items .tft-features-items-left .tft-single-feature {
+    padding: 24px;
+  }
 }
 @media only screen and (max-width: 575.98px) {
   .tft-features-design__one .tft-features-items .tft-features-items-left .tft-single-feature {
