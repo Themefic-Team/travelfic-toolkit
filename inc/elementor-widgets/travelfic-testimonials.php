@@ -467,7 +467,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'label' => __('Slider Control', 'travelfic-toolkit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
                 'condition' => [
-                    'testimonial_style' => ['design-3'],
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
 
             ]
@@ -512,7 +512,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     'arrows' => __('Arrows', 'travelfic-toolkit'),
                 ],
                 'condition'   => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -523,7 +523,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
                 'default'     => 'yes',
                 'condition'   => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -543,7 +543,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -563,7 +563,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -574,7 +574,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
                 'default'     => 'yes',
                 'condition'   => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -587,7 +587,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
                 'default'     => 'no',
                 'condition'   => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -598,7 +598,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
                 'default'     => 'no',
                 'condition'   => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -621,7 +621,7 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                 'type'        => \Elementor\Controls_Manager::SWITCHER,
                 'default'     => 'yes',
                 'condition'   => [
-                    'testimonial_style' => 'design-3',
+                    'testimonial_style' => ['design-3', 'design-5'],
                 ],
             ]
         );
@@ -2410,18 +2410,20 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                             <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
-                    <div class="tft-slider-arrows tft-slider-arrows--mobile">
-                        <button type='button' class='slick-prev'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button type='button' class='slick-next'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
+                    <?php if ('true' === $design3_slider_arrows): ?>
+                        <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                            <button type='button' class='slick-prev'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type='button' class='slick-next'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="tft-testimonials-selector tft-slide-default">
                     <?php foreach ($settings['testimonials_design5_list'] as $item) { ?>
@@ -2453,20 +2455,22 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                         </div>
                     <?php } ?>
                 </div>
-                <div class="tft-testimonial-mobile-slider-arrow">
-                    <div class="tft-slider-arrows tft-slider-arrows--mobile">
-                        <button type='button' class='slick-prev'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button type='button' class='slick-next'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                <?php if ('true' === $design3_slider_arrows): ?>
+                    <div class="tft-testimonial-mobile-slider-arrow">
+                        <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                            <button type='button' class='slick-prev'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type='button' class='slick-next'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <script>
                 (function($) {
@@ -2475,15 +2479,17 @@ class Travelfic_Toolkit_Testimonials extends \Elementor\Widget_Base
                         $(".tft-testimonials-selector").slick({
                             slidesToShow: 2,
                             slidesToScroll: 1,
-                            autoplay: true,
-                            centerPadding: "32px",
-                            autoplaySpeed: 4000,
-                            speed: 700,
-                            dots: false,
-                            pauseOnHover: true,
-                            infinite: true,
+                            infinite: <?php echo esc_attr($design3_slider_loop); ?>,
+                            autoplay: <?php echo esc_attr($design3_slider_autoplay); ?>,
+                            autoplaySpeed: <?php echo esc_attr($design3_slider_autoplay_speed); ?>,
+                            speed: <?php echo esc_attr($design3_slider_autoplay_interval); ?>,
+                            dots: <?php echo esc_attr($design3_slider_dots); ?>,
+                            arrows: <?php echo esc_attr($design3_slider_arrows); ?>,
+                            pauseOnHover: <?php echo esc_attr($design3_slider_pause_on_hover); ?>,
+                            pauseOnFocus: <?php echo esc_attr($design3_slider_pause_on_focus); ?>,
+                            rtl: <?php echo esc_attr($design3_slider_rtl); ?>,
+                            draggable: <?php echo esc_attr($design3_slider_draggable); ?>,
                             cssEase: "linear",
-                            arrows: true,
                             prevArrow: ".tft-testimonials-design__five .slick-prev",
                             nextArrow: ".tft-testimonials-design__five .slick-next",
                             variableWidth: true,

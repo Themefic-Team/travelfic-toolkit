@@ -267,17 +267,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'tft_room_slider_rtl',
-            [
-                'label' => esc_html__('RTL', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'default'     => 'no',
-                'condition'   => [
-                    'tft_room_slider_loop!' => 'yes',
-                ],
-            ]
-        );
-        $this->add_control(
             'tft_room_slider_draggable',
             [
                 'label' => esc_html__('Draggable', 'travelfic-toolkit'),
@@ -568,7 +557,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
         $room_slider_loop = ('yes' === $settings['tft_room_slider_loop']) ? 'true' : 'false';
         $room_slider_pause_on_hover = ('yes' === $settings['tft_room_slider_pause_on_hover']) ? 'true' : 'false';
         $room_slider_pause_on_focus = ('yes' === $settings['tft_room_slider_pause_on_focus']) ? 'true' : 'false';
-        $room_slider_rtl = ('yes' === $settings['tft_room_slider_rtl']) ? 'true' : 'false';
         $room_slider_draggable = ('yes' === $settings['tft_room_slider_draggable']) ? 'true' : 'false';
         
         if ('design-1' == $tft_design): ?>
@@ -683,7 +671,6 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                                 arrows: <?php echo esc_attr($room_slider_arrows); ?>,
                                 pauseOnHover: <?php echo esc_attr($room_slider_pause_on_hover); ?>,
                                 pauseOnFocus: <?php echo esc_attr($room_slider_pause_on_focus); ?>,
-                                rtl: <?php echo esc_attr($room_slider_rtl); ?>,
                                 draggable: <?php echo esc_attr($room_slider_draggable); ?>,
                                 cssEase: 'linear',
                                 prevArrow: '.tft-room-section .tft-prev-slide',

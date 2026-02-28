@@ -8951,6 +8951,14 @@ body.archive .tft-header-design__two {
 .tft-testimonials-design__five .tft-single-testimonial .testimonial-footer .user-info .designation {
   font-weight: 400;
 }
+.tft-testimonials-design__five .slick-dotted.slick-slider {
+  padding-bottom: 56px;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-testimonials-design__five .slick-dotted.slick-slider {
+    padding-bottom: 32px;
+  }
+}
 .tft-testimonials-design__five .slick-list {
   overflow: visible;
 }
@@ -9001,6 +9009,71 @@ body.archive .tft-header-design__two {
 .tft-testimonials-design__five .tft-slider-arrows .slick-prev::before,
 .tft-testimonials-design__five .tft-slider-arrows .slick-next::before {
   display: none;
+}
+.tft-testimonials-design__five .slick-dots {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 24px;
+  bottom: 5px;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-testimonials-design__five .slick-dots {
+    gap: 8px;
+  }
+}
+.tft-testimonials-design__five .slick-dots li {
+  width: 48px;
+  height: 16px;
+  border: 1px solid var(--tf-links-color);
+  text-align: center;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-testimonials-design__five .slick-dots li {
+    width: 32px;
+    height: 10px;
+  }
+}
+.tft-testimonials-design__five .slick-dots li button {
+  width: 0px;
+  height: 0px;
+}
+.tft-testimonials-design__five .slick-dots li button::before {
+  display: none;
+}
+.tft-testimonials-design__five .slick-dots li.slick-active {
+  border-color: var(--tf-links-color);
+  background: var(--tf-links-color);
 }
 .tft-testimonials-design__five .tft-testimonial-mobile-slider-arrow {
   margin-top: 32px;
@@ -9101,6 +9174,14 @@ body.archive .tft-header-design__two {
 .tft-gallery-design__one .tft-single-gallery:hover img {
   transform: scale(1.2);
 }
+.tft-gallery-design__one .slick-dotted.slick-slider {
+  padding-bottom: 56px;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-gallery-design__one .slick-dotted.slick-slider {
+    padding-bottom: 32px;
+  }
+}
 .tft-gallery-design__one .slick-list {
   overflow: visible;
 }
@@ -9151,6 +9232,71 @@ body.archive .tft-header-design__two {
 .tft-gallery-design__one .tft-slider-arrows .slick-prev::before,
 .tft-gallery-design__one .tft-slider-arrows .slick-next::before {
   display: none;
+}
+.tft-gallery-design__one .slick-dots {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 24px;
+  bottom: 5px;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-gallery-design__one .slick-dots {
+    gap: 8px;
+  }
+}
+.tft-gallery-design__one .slick-dots li {
+  width: 48px;
+  height: 16px;
+  border: 1px solid var(--tf-links-color);
+  text-align: center;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+@media only screen and (max-width: 575.98px) {
+  .tft-gallery-design__one .slick-dots li {
+    width: 32px;
+    height: 10px;
+  }
+}
+.tft-gallery-design__one .slick-dots li button {
+  width: 0px;
+  height: 0px;
+}
+.tft-gallery-design__one .slick-dots li button::before {
+  display: none;
+}
+.tft-gallery-design__one .slick-dots li.slick-active {
+  border-color: var(--tf-links-color);
+  background: var(--tf-links-color);
 }
 .tft-gallery-design__one .tft-gallery-mobile-slider-arrow {
   margin-top: 32px;

@@ -266,14 +266,6 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
             ]
         );
         $this->add_control(
-            'gallery_slider_rtl',
-            [
-                'label' => esc_html__('RTL', 'travelfic-toolkit'),
-                'type'        => \Elementor\Controls_Manager::SWITCHER,
-                'default'     => 'no',
-            ]
-        );
-        $this->add_control(
             'gallery_slider_draggable',
             [
                 'label' => esc_html__('Draggable', 'travelfic-toolkit'),
@@ -457,7 +449,6 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
         $gallery_slider_loop = ('yes' === $settings['gallery_slider_loop']) ? 'true' : 'false';
         $gallery_slider_pause_on_hover = ('yes' === $settings['gallery_slider_pause_on_hover']) ? 'true' : 'false';
         $gallery_slider_pause_on_focus = ('yes' === $settings['gallery_slider_pause_on_focus']) ? 'true' : 'false';
-        $gallery_slider_rtl = ('yes' === $settings['gallery_slider_rtl']) ? 'true' : 'false';
         $gallery_slider_draggable = ('yes' === $settings['gallery_slider_draggable']) ? 'true' : 'false';
 
         if($settings['galleries'] && "design-1" == $tft_design) { ?>
@@ -470,18 +461,21 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                             <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
                         <?php } ?>
                     </div>
-                    <div class="tft-slider-arrows tft-slider-arrows--mobile">
-                        <button type='button' class='slick-prev'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button type='button' class='slick-next'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
+                    <!-- gallery slider navigation -->
+                    <?php if ('true' === $gallery_slider_arrows): ?>
+                        <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                            <button type='button' class='slick-prev'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type='button' class='slick-next'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="tft-gallery-selector tft-slide-default">
                     <?php foreach ($settings['galleries'] as $item) { ?>
@@ -493,20 +487,23 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                         </div>
                     <?php } ?>
                 </div>
-                <div class="tft-gallery-mobile-slider-arrow">
-                    <div class="tft-slider-arrows tft-slider-arrows--mobile">
-                        <button type='button' class='slick-prev'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button type='button' class='slick-next'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                <!-- gallery slider navigation -->
+                <?php if ('true' === $gallery_slider_arrows): ?>
+                    <div class="tft-gallery-mobile-slider-arrow">
+                        <div class="tft-slider-arrows tft-slider-arrows--mobile">
+                            <button type='button' class='slick-prev'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type='button' class='slick-next'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
             <script>
                 (function($) {
@@ -523,7 +520,6 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                             arrows: <?php echo esc_attr($gallery_slider_arrows); ?>,
                             pauseOnHover: <?php echo esc_attr($gallery_slider_pause_on_hover); ?>,
                             pauseOnFocus: <?php echo esc_attr($gallery_slider_pause_on_focus); ?>,
-                            rtl: <?php echo esc_attr($gallery_slider_rtl); ?>,
                             draggable: <?php echo esc_attr($gallery_slider_draggable); ?>,
                             prevArrow: ".tft-gallery-design__one .slick-prev",
                             nextArrow: ".tft-gallery-design__one .slick-next",

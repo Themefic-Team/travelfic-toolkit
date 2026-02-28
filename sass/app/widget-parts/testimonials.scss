@@ -826,6 +826,14 @@
             }
         }
 
+        .slick-dotted.slick-slider {
+            padding-bottom: 56px;
+
+            @media #{$max575} {
+                padding-bottom: 32px;
+            }
+        }
+        
         .slick-list {
             overflow: visible;
 
@@ -875,6 +883,48 @@
                     display: none;
                 }
 
+            }
+        }
+
+        .slick-dots {
+            @include d-flex();
+            @include justify-content(center);
+            @include align-items(center);
+            gap: 24px;
+            bottom: 5px;
+
+            @media #{$max575} {
+                gap: 8px;
+            }
+
+            li {
+                width: 48px;
+                height: 16px;
+                border: 1px solid $tft-color-links;
+                text-align: center;
+                border-radius: 100px;
+                @include d-flex();
+                @include justify-content(center);
+                @include align-items(center);
+
+                @media #{$max575} {
+                    width: 32px;
+                    height: 10px;
+                }
+
+                button {
+                    width: 0px;
+                    height: 0px;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                &.slick-active {
+                    border-color: $tft-color-links;
+                    background: $tft-color-links;
+                }
             }
         }
 
