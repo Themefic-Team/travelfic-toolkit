@@ -390,7 +390,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_hotel_card_price_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .sale-price',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -401,6 +402,7 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .sale-price' => 'color: {{VALUE}}',
                 ],
             ]
         );
