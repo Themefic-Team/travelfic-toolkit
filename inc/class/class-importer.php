@@ -76,7 +76,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             if ( (int) $template_key === 6 ) {
 
                 $extra_css = '#tft-site-main-body .site .tft-site-navigation li.current-menu-item > a[aria-current="page"]{
-                    color: #fff;
+                    color: var(--tf-links-color);
                 }';
 
                 // Get existing custom CSS (if any)
