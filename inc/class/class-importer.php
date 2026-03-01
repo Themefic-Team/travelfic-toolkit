@@ -72,6 +72,23 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $customizers_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($customizers_files);
 
+            // Add extra CSS for template version 6
+            if ( (int) $template_key === 6 ) {
+
+                $extra_css = '#tft-site-main-body .site .tft-site-navigation li.current-menu-item > a[aria-current="page"]{
+                    color: #fff;
+                }';
+
+                // Get existing custom CSS (if any)
+                $existing_css = wp_get_custom_css();
+
+                // Append new CSS
+                $new_css = $existing_css . "\n\n" . $extra_css;
+
+                // Update custom CSS properly
+                wp_update_custom_css_post( $new_css );
+            }
+            
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
 
