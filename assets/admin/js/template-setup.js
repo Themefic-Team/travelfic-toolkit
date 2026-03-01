@@ -419,6 +419,7 @@
                     url: travelfic_toolkit_script_params.ajax_url,
                     data: {
                         action: 'travelfic-demo-hotel-import',
+                        template_version: template_design,
                         _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                     },
                     success: function(response) {

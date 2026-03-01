@@ -927,6 +927,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
 
+            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $hotels_post = array(
                 'post_type' => 'tf_hotel',
                 'posts_per_page' => -1,
@@ -940,7 +941,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
 
-            $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/hotel-data.csv';
+            if($template_key == 6){
+                $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/single-hotel-data.csv';
+            } else {
+                $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/hotel-data.csv';
+            }
             if (file_exists($dummy_hotels_files)) {
                 $dummy_hotel_fields = array(
                     'id',
