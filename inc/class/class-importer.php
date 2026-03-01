@@ -943,9 +943,531 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             if($template_key == 6){
                 $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/single-hotel-data.csv';
+                $this->prepare_travelfic_hotel_new_imports($dummy_hotels_files);
             } else {
                 $dummy_hotels_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/hotel-data.csv';
+                $this->prepare_travelfic_hotel_old_imports($dummy_hotels_files);
             }
+		}
+
+        public function prepare_travelfic_hotel_new_imports($dummy_hotels_files){
+            if (file_exists($dummy_hotels_files)) {
+                $dummy_hotel_fields = array(
+                    'id',
+                    'post_title',
+                    'slug',
+                    'content',
+                    'thumbnail',
+                    '[map][address]',
+                    '[map][latitude]',
+                    '[map][longitude]',
+                    '[map][zoom]',
+                    'gallery',
+                    'video',
+                    'featured',
+                    'featured_text',
+                    'tf_single_hotel_layout_opt',
+                    'tf_single_hotel_template',
+                    'room-section-title',
+                    'tf_rooms',
+                    'hotel_feature',
+                    'features_icon',
+                    'hotel_location',
+                    'hotel_type',
+                    'airport_service',
+                    'airport_service_type',
+                    '[airport_pickup_price][airport_pickup_price_type]',
+                    '[airport_pickup_price][airport_service_fee_adult]',
+                    '[airport_pickup_price][airport_service_fee_children]',
+                    '[airport_pickup_price][airport_service_fee_fixed]' ,
+                    '[airport_dropoff_price][airport_pickup_price_type]',
+                    '[airport_dropoff_price][airport_service_fee_adult]',
+                    '[airport_dropoff_price][airport_service_fee_children]',
+                    '[airport_dropoff_price][airport_service_fee_fixed]',
+                    '[airport_pickup_dropoff_price][airport_pickup_price_type]',
+                    '[airport_pickup_dropoff_price][airport_service_fee_adult]',
+                    '[airport_pickup_dropoff_price][airport_service_fee_children]',
+                    '[airport_pickup_dropoff_price][airport_service_fee_fixed]',
+                    'faq-section-title',
+                    'faq',
+                    'h-enquiry-section',
+                    'h-enquiry-option-icon',
+                    'h-enquiry-option-title',
+                    'h-enquiry-option-content',
+                    'h-enquiry-option-btn',
+                    'h-review',
+                    'h-share',
+                    'h-wishlist',
+                    'popular-section-title',
+                    'review-section-title',
+                    'tc-section-title',
+                    'tc',
+                    'enable_guest_info',
+                    'booking-by',
+                    'external-booking-type',
+                    'booking-url',
+                    'booking-code',
+                    'hide_booking_form',
+                    'hide_price',
+                    'booking-attribute',
+                    'booking-query',
+                    'is_taxable',
+                    'taxable_class',
+                    'section-title',
+                    'nearby-places',
+                    'facilities-section-title',
+                    'hotel-facilities',
+                    'tf-hotel-tags',
+                    'post_date',
+                );
+                
+                //save column mapping data
+                if( isset( $dummy_hotel_fields ) ){
+                    $column_mapping_data = $dummy_hotel_fields;
+                    $csv_data            = array_map( 'str_getcsv', file( $dummy_hotels_files ) );
+                    
+                    //skip the first row
+                    array_shift( $csv_data );
+                    $post_meta     = array();
+
+                    /**
+                     * loop thorugh each row
+                     */
+                    foreach( $csv_data as $row_index => $row ){
+                        $post_id = '';
+                        $post_title = '';
+                        $post_default_slug   = '';
+                        $post_slug   = '';
+                        $post_content = '';
+                        $post_date = '';
+                        $room_datas = array();
+                        $taxonomies = array();
+                        $features_icons = array();
+
+                        foreach( $column_mapping_data as $column_index => $field ){
+                            //assign the taxonomies values to $taxonomies array
+                            if( ( $field === 'hotel_feature' || $field === 'hotel_location' || $field === 'hotel_type' ) && ! empty( $row[$column_index] ) ){
+                                $taxonomies[$field] = $row[$column_index];
+                            } 
+                            if( $field === 'features_icon' && ! empty( $row[$column_index] ) ){
+                                $field == 'features_icon' ? $field = 'hotel_feature' : '';
+                                $features_icons[$field] = $row[$column_index];
+                            }
+                        }
+
+                        // Assign taxonomies to the post
+                        if (!empty($taxonomies)) {
+                            foreach ($taxonomies as $taxonomy => $values) {
+                                // Extract the taxonomy terms from the CSV row
+                                $taxonomy_terms = explode(',', $values);
+                                foreach ($taxonomy_terms as $taxonomy_term) {
+                                    // Get the taxonomy name based on the column name
+                                    $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
+
+                                    // Check if ">" string is present in the text
+                                    if (strpos($taxonomy_term, '>') !== false) {
+                                        $taxonomy_parts = explode('>', $taxonomy_term);
+                                        $parent_name = trim($taxonomy_parts[0]);
+                                        if (strpos($taxonomy_parts[1], '+') !== false) {
+                                            $child_terms = explode('+', $taxonomy_parts[1]);
+                                        } else {
+                                            $child_terms = array($taxonomy_parts[1]);
+                                        }
+
+                                        // Get or create the parent term
+                                        $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                        if (!$parent_term) {
+                                            $parent_result = wp_insert_term($parent_name, $taxonomy_name);
+                                            if (!is_wp_error($parent_result)) {
+                                                $parent_term_id = $parent_result['term_id'];
+                                            } else {
+                                                // Handle error if necessary
+                                                echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message());
+                                                continue;
+                                            }
+                                        } else {
+                                            $parent_term_id = $parent_term->term_id;
+
+                                            // Check if the parent term is already assigned to the post
+                                            $assigned_terms = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
+                                            if (!in_array($parent_term_id, $assigned_terms)) {
+                                                // Parent term is not assigned to the post, assign it
+                                                wp_set_post_terms($post_id, $parent_term_id, $taxonomy_name, true);
+                                            }
+                                        }
+
+                                        // Get or create the child terms under the parent term
+                                        foreach ($child_terms as $child_name) {
+                                            $child_name = trim($child_name);
+
+                                            $child_term = get_term_by('name', $child_name, $taxonomy_name);
+                                            if (!$child_term) {
+                                                $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
+                                                if (!is_wp_error($child_result)) {
+                                                    $child_term_id = $child_result['term_id'];
+                                                } else {
+                                                    // Handle error if necessary
+                                                    echo 'Error creating child term: ' . esc_html($child_result->get_error_message());
+                                                    continue;
+                                                }
+                                            } else {
+                                                $child_term_id = $child_term->term_id;
+                                            }
+
+                                            // Assign the child term to the post
+                                            wp_set_post_terms($post_id, $child_term_id, $taxonomy_name, true);
+                                        }
+                                    } else {
+                                        // No hierarchy, it's a standalone term
+                                        $term_name = trim($taxonomy_term);
+
+                                        // Get or create the term by name and taxonomy
+                                        $term = get_term_by('name', $term_name, $taxonomy_name);
+
+                                        if (!$term) {
+                                            // Term does not exist, create a new one
+                                            $term_result = wp_insert_term($term_name, $taxonomy_name);
+
+                                            if (!is_wp_error($term_result)) {
+                                                // Term already exists, assign it to the post
+                                                $term_id = $term_result['term_id'];
+                                                wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
+                                            } else {
+                                                // Handle error if necessary
+                                                echo 'Error creating term: ' . esc_html($term_result->get_error_message());
+                                            }
+                                        } else {
+                                            wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        
+                        //assign features icons
+                        if( ! empty( $features_icons ) ){
+                            foreach( $features_icons as $feature => $values ){
+
+                                // Parse the data format to extract term names and icons (image URLs).
+                                $terms_with_icons = explode( ',', $values );
+                                foreach ( $terms_with_icons as $term_with_icon ) {
+                                    $parts = explode('(', $term_with_icon);
+                                    $term_name = trim($parts[0]);
+                                    $icon_value = trim(str_replace(')', '', $parts[1]));
+
+                                    // Get the term ID for the given term name.
+                                    $term = get_term_by( 'name', $term_name, $feature );
+                                    if ($term) {
+                                        $term_id = $term->term_id;
+
+                                        // Check if the icon value is an image URL or FontAwesome icon class.
+                                        if ( filter_var( $icon_value, FILTER_VALIDATE_URL ) ) {
+                                            $tf_hotel_feature_data = [
+                                                'icon-type' => 'c',
+                                                'icon-c' => $icon_value,
+                                            ];
+                                        } else {
+                                            $tf_hotel_feature_data = [
+                                                'icon-type' => 'fa',
+                                                'icon-fa' => $icon_value,
+                                            ];
+                                            
+                                        }
+                                        update_term_meta( $term_id, 'tf_hotel_feature', $tf_hotel_feature_data );
+                                    }
+                                }
+                            }
+                        } 
+                        
+                        foreach( $column_mapping_data as $column_index => $field ){
+                            if( $field == 'id' ){
+                                $post_id = $row[$column_index];
+                            }elseif( $field == 'post_title' ){
+                                $post_default_slug = $row[$column_index];
+                                $post_title = ucwords(str_replace('-', ' ', $row[$column_index]));
+                                if( empty( $post_title ) ){
+                                    $post_title = 'No Title';
+                                }
+                            }elseif( $field == 'content' ){
+                                $post_content = $row[$column_index];
+                                if( empty( $post_content ) ){
+                                    $post_content = 'No Content';
+                                }
+                            }
+                            if ( $field == 'slug' ) {
+                                $post_slug = $row[$column_index];
+                            }
+                            if( $field == 'post_date' ){
+                                $post_date = $row[$column_index];
+                            }
+
+                            if( $field == 'thumbnail' ){
+                                $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
+                                if ( $attach_id ) {
+                                    $post_meta['_thumbnail_id'] = $attach_id;
+                                }
+
+                            } else if( $field == 'airport_service_type' && ! empty( $row[$column_index] ) ){
+                                $airport_service_type = explode( ',', $row[$column_index] );
+                                $post_meta['tf_hotels_opt']['airport_service_type'] = $airport_service_type;
+                            }else if( $field == 'faq' && ! empty( $row[$column_index] ) ){
+                                $faqs = json_decode( $row[$column_index], true );
+                                $post_meta['tf_hotels_opt'][$field] = serialize( $faqs );
+
+                            }else if( $field == 'nearby-places' && ! empty( $row[$column_index] ) ){
+                                $nearby_places = json_decode( $row[$column_index], true );
+                                $post_meta['tf_hotels_opt'][$field] = serialize( $nearby_places );
+
+                            }else if( $field == 'hotel-facilities' && ! empty( $row[$column_index] ) ){
+                                $hotel_facilities = json_decode( $row[$column_index], true );
+                                $post_meta['tf_hotels_opt'][$field] = serialize( $hotel_facilities );
+
+                            }else if( $field == 'tf-hotel-tags' && ! empty( $row[$column_index] ) ){
+                                $hotel_tags = json_decode( $row[$column_index], true );
+                                if (!empty($hotel_tags) && is_array($hotel_tags)) {
+                                    foreach ($hotel_tags as $key => $value) {
+                                        // Add '#' to the background and font color codes
+                                        if (isset($value['hotel-tag-color-settings']['background'])) {
+                                            $hotel_tags[$key]['hotel-tag-color-settings']['background'] = '#' . ltrim($value['hotel-tag-color-settings']['background'], '#');
+                                        }
+                                        if (isset($value['hotel-tag-color-settings']['font'])) {
+                                            $hotel_tags[$key]['hotel-tag-color-settings']['font'] = '#' . ltrim($value['hotel-tag-color-settings']['font'], '#');
+                                        }
+                                    }
+                                }
+                                $post_meta['tf_hotels_opt'][$field] = serialize( $hotel_tags );
+
+                            }else if( $field === 'gallery' && ! empty( $row[ $column_index ] ) ) {
+                                // Extract the image URLs from the CSV row
+                                $image_urls     = explode( ',', $row[$column_index] );
+                                $gallery_images = array();
+                                
+                                foreach ( $image_urls as $image_url ) {
+                                    $attach_id = $this->travelfic_import_image( $image_url, $post_id );
+                                    if ( $attach_id ) {
+                                        $gallery_images[] = $attach_id;
+                                    }
+                                }
+
+                                // Combine the attachment IDs into a comma-separated string
+                                $gallery_ids_string = implode( ',', $gallery_images );
+                                // Assign the gallery IDs string to the tour_gallery meta field
+                                $post_meta['tf_hotels_opt']['gallery'] = $gallery_ids_string;
+                            }else {
+                                $post_meta['tf_hotels_opt'][$field] = $row[$column_index];
+                            }
+                            if( $field == 'tc-section-title' ){
+                                $post_meta['tf_hotels_opt']['tc-section-title'] =  $row[$column_index]; 
+                            }
+
+                            if( $field == 'tf_rooms'){
+                                $rooms = json_decode( $row[$column_index], true );
+                                
+                                if(!empty($rooms)){
+                                    $room_datas = $rooms;
+                                }
+                            }
+                            
+                            if ( strpos( $field, '[' ) !== false && strpos( $field, ']' ) !== false ) {
+                                //exclude title, post content, features from adding into the array
+                                // Field is a multidimensional array key, e.g., [location][latitude]
+                                $nested_keys = explode( '][', trim($field, '[]' ) );
+                                $meta_value = &$post_meta['tf_hotels_opt'];
+                            
+                                // Iterate through nested keys except the last one
+                                for ( $i = 0; $i < count( $nested_keys ) - 1; $i++ ) {
+                                    $nested_key = $nested_keys[$i];
+                            
+                                    // Create the nested array if it doesn't exist
+                                    if ( !isset( $meta_value[$nested_key] ) ) {
+                                        $meta_value[$nested_key] = array();
+                                    }
+                            
+                                    $meta_value = &$meta_value[$nested_key];
+                                }
+                            
+                                // Assign the value to the last nested key
+                                $last_nested_key = end( $nested_keys );
+                                $meta_value[$last_nested_key] = $row[$column_index];
+
+                            }
+                        }
+                        //update or insert hotels
+                        if ( ! function_exists( 'post_exists' ) ) {
+                            require_once ABSPATH . 'wp-includes/post.php';
+                        }
+
+                        // Create an array to store the post data for the current row
+                        $post_data = array(
+                            'post_type'    => 'tf_hotel',
+                            'post_title'   => $post_title,
+                            'post_content' => $post_content,
+                            'post_status'  => 'publish',
+                            'post_date'    => $post_date,
+                            'meta_input'   => $post_meta,
+                            'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
+                        );
+
+                        $post_id = wp_insert_post( $post_data );
+            
+                        if(!empty($room_datas)){
+                            $room_ids = [];
+                            foreach($room_datas as $room_id => $room){
+                                $room['tf_room_opt']['tf_hotel'] = $post_id;
+
+                                $attachment_id = $this->travelfic_import_image( $room['room_preview_img'], $room_id );
+                                // if ( $attachment_id ) {
+                                //     set_post_thumbnail( $room_id, $attachment_id );
+                                // }
+
+                                if(!empty($room['tf_room_opt']['gallery'])){
+                                    
+                                    $gallery_images = array();
+                                    $image_urls        = explode( ',', $room['tf_room_opt']['gallery'] );
+                
+                                    foreach ( $image_urls as $image_url ) {
+                                        $attach_id = $this->travelfic_import_image( $image_url, $room_id );
+                                        if ( $attach_id ) {
+                                            $gallery_images[] = $attach_id;
+                                        }
+                                    }
+                                    
+                                    // Combine the attachment IDs into a comma-separated string
+                                    $gallery_ids_string = implode( ',', $gallery_images );
+                                    // Assign the gallery IDs string to the tour_gallery meta field
+                                    $room['tf_room_opt']['gallery'] = $gallery_ids_string;
+                                }
+
+                                if(!empty($room['tf_room_opt']['features'])){
+                                    $room_features = array();
+                                    foreach( $room['tf_room_opt']['features'] as $key => $feature ){
+                                        $term = get_term_by( 'name', $feature, 'hotel_feature' );
+                                        $term_id = $term->term_id;
+                                        $room_features[$key] = $term_id;
+                                    }
+                                    $room['tf_room_opt']['features'] = $room_features;
+                                }
+
+                                $room_data = array(
+                                    'post_type'    => 'tf_room',
+                                    'post_title'   => sanitize_text_field($room['title']),
+                                    'post_content' => $room['description'],
+                                    'post_status'  => 'publish',
+                                    'meta_input'   => array(
+                                        '_thumbnail_id' => $attachment_id,
+                                        'tf_room_opt' => $room['tf_room_opt'],
+                                    ),
+                                );
+
+                                $_room_id = wp_insert_post( $room_data );
+
+                                $room_ids[] = $_room_id;
+                            }
+                            
+                            $post_meta['tf_hotels_opt']['tf_rooms'] = $room_ids;
+                            update_post_meta( $post_id, 'tf_hotels_opt', $post_meta['tf_hotels_opt'] );
+                        }
+
+                        // Assign taxonomies to the post
+                        if (!empty($taxonomies)) {
+                            foreach ($taxonomies as $taxonomy => $values) {
+                                // Extract the taxonomy terms from the CSV row
+                                $taxonomy_terms = explode(',', $values);
+                                foreach ($taxonomy_terms as $taxonomy_term) {
+                                    // Get the taxonomy name based on the column name
+                                    $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
+
+                                    // Check if ">" string is present in the text
+                                    if (strpos($taxonomy_term, '>') !== false) {
+                                        $taxonomy_parts = explode('>', $taxonomy_term);
+                                        $parent_name = trim($taxonomy_parts[0]);
+                                        if (strpos($taxonomy_parts[1], '+') !== false) {
+                                            $child_terms = explode('+', $taxonomy_parts[1]);
+                                        } else {
+                                            $child_terms = array($taxonomy_parts[1]);
+                                        }
+
+                                        // Get or create the parent term
+                                        $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                        if (!$parent_term) {
+                                            $parent_result = wp_insert_term($parent_name, $taxonomy_name);
+                                            if (!is_wp_error($parent_result)) {
+                                                $parent_term_id = $parent_result['term_id'];
+                                            } else {
+                                                // Handle error if necessary
+                                                echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message());
+                                                continue;
+                                            }
+                                        } else {
+                                            $parent_term_id = $parent_term->term_id;
+
+                                            // Check if the parent term is already assigned to the post
+                                            $assigned_terms = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
+                                            if (!in_array($parent_term_id, $assigned_terms)) {
+                                                // Parent term is not assigned to the post, assign it
+                                                wp_set_post_terms($post_id, $parent_term_id, $taxonomy_name, true);
+                                            }
+                                        }
+
+                                        // Get or create the child terms under the parent term
+                                        foreach ($child_terms as $child_name) {
+                                            $child_name = trim($child_name);
+
+                                            $child_term = get_term_by('name', $child_name, $taxonomy_name);
+                                            if (!$child_term) {
+                                                $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
+                                                if (!is_wp_error($child_result)) {
+                                                    $child_term_id = $child_result['term_id'];
+                                                } else {
+                                                    // Handle error if necessary
+                                                    echo 'Error creating child term: ' . esc_html($child_result->get_error_message());
+                                                    continue;
+                                                }
+                                            } else {
+                                                $child_term_id = $child_term->term_id;
+                                            }
+
+                                            // Assign the child term to the post
+                                            wp_set_post_terms($post_id, $child_term_id, $taxonomy_name, true);
+                                        }
+                                    } else {
+                                        // No hierarchy, it's a standalone term
+                                        $term_name = trim($taxonomy_term);
+
+                                        // Get or create the term by name and taxonomy
+                                        $term = get_term_by('name', $term_name, $taxonomy_name);
+
+                                        if (!$term) {
+                                            // Term does not exist, create a new one
+                                            $term_result = wp_insert_term($term_name, $taxonomy_name);
+
+                                            if (!is_wp_error($term_result)) {
+                                                // Term already exists, assign it to the post
+                                                $term_id = $term_result['term_id'];
+                                                wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
+                                            } else {
+                                                // Handle error if necessary
+                                                echo 'Error creating term: ' . esc_html($term_result->get_error_message());
+                                            }
+                                        } else {
+                                            wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        //reset the post meta array
+                        $post_meta = array();
+                        $room_datas = array();
+                    } 
+                }
+                wp_die();
+            }
+        }
+
+        public function prepare_travelfic_hotel_old_imports($dummy_hotels_files){
             if (file_exists($dummy_hotels_files)) {
                 $dummy_hotel_fields = array(
                     'id',
@@ -1443,9 +1965,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 	            $this->travelfic_regenerate_room_meta();
                 wp_die();
             }
-
-
-		}
+        }
 
         /**
 		 * Tourfic Tour importer Settings
