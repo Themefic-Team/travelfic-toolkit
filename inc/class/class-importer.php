@@ -407,6 +407,91 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
             ];
 
+            // Typography presets per design
+            $typography_presets = [
+                'design-1' => [
+                    [
+                        '_id'   => 'primary',
+                        'title' => 'Primary',
+                        'typography_typography' => 'custom',
+                        'typography_font_family' => 'Libre Baskerville',
+                        'typography_font_weight' => '400',
+                        'typography_font_size' => [
+                            'unit' => 'px',
+                            'size' => 65,
+                            'sizes' => [
+                                'tablet' => 37,
+                                'mobile' => 25,
+                            ],
+                        ],
+                        'typography_line_height' => [
+                            'unit' => 'px',
+                            'size' => 78,
+                            'sizes' => [
+                                'tablet' => 52,
+                                'mobile' => 37,
+                            ],
+                        ],
+                    ],
+                    [
+                        '_id'   => 'secondary',
+                        'title' => 'Secondary',
+                        'typography_typography' => 'custom',
+                        'typography_font_family' => 'Work Sans',
+                        'typography_font_weight' => '600',
+                        'typography_font_size' => [
+                            'unit' => 'px',
+                            'size' => 17,
+                        ],
+                        'typography_line_height' => [
+                            'unit' => 'px',
+                            'size' => 25,
+                        ],
+                    ],
+                    [
+                        '_id'   => 'text',
+                        'title' => 'Text',
+                        'typography_typography' => 'custom',
+                        'typography_font_family' => 'Work Sans',
+                        'typography_font_weight' => '400',
+                        'typography_font_size' => [
+                            'unit' => 'px',
+                            'size' => 17,
+                        ],
+                        'typography_line_height' => [
+                            'unit' => 'px',
+                            'size' => 25,
+                        ],
+                    ],
+                    [
+                        '_id'   => 'accent',
+                        'title' => 'Accent',
+                        'typography_typography' => 'custom',
+                        'typography_font_family' => 'Work Sans',
+                        'typography_font_weight' => '600',
+                        'typography_font_size' => [
+                            'unit' => 'px',
+                            'size' => 17,
+                        ],
+                        'typography_line_height' => [
+                            'unit' => 'px',
+                            'size' => 25,
+                        ],
+                    ],
+                ],
+            ];
+
+            switch ($template_key) {
+                case '6':
+                    $font_selected = 'design-1';
+                    break;
+                default:
+                    $font_selected = 'design-1';
+            }
+
+            // Assign the chosen typography preset based on selected design
+            $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
+
             update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
             die();
 
