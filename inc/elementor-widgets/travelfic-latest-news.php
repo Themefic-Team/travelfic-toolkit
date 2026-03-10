@@ -1483,7 +1483,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                 <div class="tft-content-details">
                                     <div class="tft-post-meta">
                                         <p class="tft-meta"><i class="ri-time-line"></i><?php echo get_the_date('j M, Y'); ?></p>
-                                        <p class="tft-meta"><i class="ri-user-line"></i> <?php echo 'by' . ' ' . get_the_author(); ?></p>
+                                        <p class="tft-meta"><i class="ri-user-line"></i> <?php echo esc_html__( 'by', 'travelfic-toolkit' ) . ' ' . get_the_author(); ?></p>
                                     </div>
                                     <h3 class="tft-title">
                                         <a href="<?php echo esc_url(get_permalink()); ?>">

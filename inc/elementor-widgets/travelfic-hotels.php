@@ -2657,13 +2657,31 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         // pricing
                                         $tf_pricing = !empty($option_meta['pricing']) ? $option_meta['pricing'] : '';
 
-
                                         if ($tf_pricing === 'group') {
                                             $tf_total_price = $option_meta['group_price'] ?? 0;
                                         } else {
-                                            $tf_adult_price = $option_meta['adult_price'] ?? 0;
-                                            $tf_child_price = $option_meta['child_price'] ?? 0;
-                                            $tf_total_price = min($tf_adult_price, $tf_child_price);
+                                            $disable_adult_price  = !empty($option_meta['disable_adult_price']) ? $option_meta['disable_adult_price'] : false;
+                                            $disable_child_price  = !empty($option_meta['disable_child_price']) ? $option_meta['disable_child_price'] : false;
+                                            $disable_infant_price = !empty($option_meta['disable_infant_price']) ? $option_meta['disable_infant_price'] : false;
+
+                                            $person_prices = [];
+
+                                            $tf_adult_price = isset($option_meta['adult_price']) ? $option_meta['adult_price'] : '';
+                                            if (!$disable_adult_price && '' !== $tf_adult_price) {
+                                                $person_prices[] = (float) $tf_adult_price;
+                                            }
+
+                                            $tf_child_price = isset($option_meta['child_price']) ? $option_meta['child_price'] : '';
+                                            if (!$disable_child_price && '' !== $tf_child_price) {
+                                                $person_prices[] = (float) $tf_child_price;
+                                            }
+
+                                            $tf_infant_price = isset($option_meta['infant_price']) ? $option_meta['infant_price'] : '';
+                                            if (!$disable_infant_price && '' !== $tf_infant_price) {
+                                                $person_prices[] = (float) $tf_infant_price;
+                                            }
+
+                                            $tf_total_price = !empty($person_prices) ? min($person_prices) : 0;
                                         }
 
                                         // location
