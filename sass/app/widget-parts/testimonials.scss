@@ -763,6 +763,10 @@
                     display: flex;
                     gap: 4px;
                     margin-top: 8px;
+
+                    svg path{
+                        fill: $tft-color-links;
+                    }
                 }
 
                 h3{
@@ -872,6 +876,7 @@
                 svg{
                     path{
                         transition: all 0.2s ease;
+                        stroke: $tft-color-links;
                     }
                 }
                 &:hover{

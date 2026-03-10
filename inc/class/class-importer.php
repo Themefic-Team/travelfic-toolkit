@@ -436,18 +436,27 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'typography_font_size' => [
                             'unit' => 'px',
                             'size' => 65,
-                            'sizes' => [
-                                'tablet' => 37,
-                                'mobile' => 25,
-                            ],
                         ],
+                        'typography_font_size_tablet' => [
+                            'unit' => 'px',
+                            'size' => 37,
+                        ],
+                        'typography_font_size_mobile' => [
+                            'unit' => 'px',
+                            'size' => 25,
+                        ],
+
                         'typography_line_height' => [
                             'unit' => 'px',
                             'size' => 78,
-                            'sizes' => [
-                                'tablet' => 52,
-                                'mobile' => 37,
-                            ],
+                        ],
+                        'typography_line_height_tablet' => [
+                            'unit' => 'px',
+                            'size' => 52,
+                        ],
+                        'typography_line_height_mobile' => [
+                            'unit' => 'px',
+                            'size' => 37,
                         ],
                     ],
                     [

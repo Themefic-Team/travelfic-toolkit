@@ -466,12 +466,12 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                         <div class="tft-slider-arrows tft-slider-arrows--mobile">
                             <button type='button' class='slick-prev'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                             <button type='button' class='slick-next'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>
@@ -493,12 +493,12 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                         <div class="tft-slider-arrows tft-slider-arrows--mobile">
                             <button type='button' class='slick-prev'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 8L2 12M2 12L6 16M2 12L22 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                             <button type='button' class='slick-next'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke="#EE5509" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18 8L22 12M22 12L18 16M22 12L2 12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </button>
                         </div>

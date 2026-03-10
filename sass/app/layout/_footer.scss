@@ -61,7 +61,7 @@
             height: 56px;
             padding: 12px 32px;
             border-radius: 72px;
-            border: 2px solid #BB4307;
+            border: 2px solid $tft-color-links;
             background: $tft-color-primary;
             color: $tft-color-text-lite;
 
@@ -77,14 +77,14 @@
           .wpcf7-submit{
             padding: 12px 32px;
             border-radius: 72px;
-            border: 2px solid $tft-color-links-dark;
+            border: 2px solid $tft-color-links;
             background: $tft-color-links !important;
             color: #fff;
             width: auto;
             height: 56px;
 
             &:hover{
-              border-color: $tft-color-links-dark !important;
+              border-color: $tft-color-links !important;
               box-shadow: $tft-color-links-box-shadow;
             }
           }

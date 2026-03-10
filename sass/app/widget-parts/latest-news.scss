@@ -838,17 +838,21 @@
                     display: flex;
                     @include align-items(center);
                     gap: 8px;
+
+                    svg path{
+                        stroke: $tft-color-links;
+                    }
                 }
             }
         }
 
         @media (max-width: 992px) {
             .tf-blog-row {
-            grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr !important;
             }
 
             .tf-blog-card.with-image {
-            grid-template-columns: 1fr;
+                grid-template-columns: 1fr;
             }
         }
 
