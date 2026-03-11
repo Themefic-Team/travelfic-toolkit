@@ -27,6 +27,14 @@
       .tft-newsletter-left,
       .tft-newsletter-right{
         flex: 1;
+
+        .wpcf7 form .wpcf7-response-output{
+          color: $tft-color-text-lite;
+
+          @media #{$max1199} {
+            margin-top: 20px;
+          }
+        }
       }
       
       .tft-newsletter-left{

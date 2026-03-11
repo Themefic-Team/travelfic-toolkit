@@ -726,6 +726,16 @@ textarea.tft-form-control {
 .tft-pre-footer-design__four .tft-newsletter-wrap .tft-newsletter-right {
   flex: 1;
 }
+.tft-pre-footer-design__four .tft-newsletter-wrap .tft-newsletter-left .wpcf7 form .wpcf7-response-output,
+.tft-pre-footer-design__four .tft-newsletter-wrap .tft-newsletter-right .wpcf7 form .wpcf7-response-output {
+  color: var(--tf-text-lite);
+}
+@media only screen and (max-width: 1199.98px) {
+  .tft-pre-footer-design__four .tft-newsletter-wrap .tft-newsletter-left .wpcf7 form .wpcf7-response-output,
+  .tft-pre-footer-design__four .tft-newsletter-wrap .tft-newsletter-right .wpcf7 form .wpcf7-response-output {
+    margin-top: 20px;
+  }
+}
 .tft-pre-footer-design__four .tft-newsletter-wrap .tft-newsletter-left h2 {
   color: #F5FFFE;
   font-size: 3.188rem;
@@ -5919,6 +5929,8 @@ body.archive .tft-header-design__two {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  color: #F5FFFE;
+  -webkit-text-fill-color: #F5FFFE;
 }
 .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title a {
   -webkit-transition: all 0.2s ease;

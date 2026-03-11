@@ -151,6 +151,8 @@
                     -webkit-box-orient: vertical;
                     -webkit-line-clamp: 2;
                     overflow: hidden;
+                    color: #F5FFFE;
+                    -webkit-text-fill-color: #F5FFFE;
 
                     a {
                         @include transition(0.2s);
