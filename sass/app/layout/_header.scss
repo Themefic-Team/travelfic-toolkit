@@ -3,6 +3,19 @@
 
 .tft-header-design {
   &__one {
+    .tft-main-header-wrapper{
+      .tf-flex{
+        display: flex;
+        @include align-items(center);
+
+        @media #{$max1024} {
+          padding: 0 32px;
+        }
+        @media #{$max767} {
+          padding: 0 24px;
+        }
+      }
+    }
     .tft-header-mobile{
       &:not(.tft_has_transparent){
         box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
@@ -11,6 +24,12 @@
         padding-top: 15px;
         padding-bottom: 15px;
         box-shadow: none;
+      }
+    }
+
+    .tft-btn{
+      &:hover{
+        box-shadow: $tft-color-links-box-shadow;
       }
     }
   }

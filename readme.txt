@@ -3,7 +3,7 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 6.9
-Stable tag: 1.3.6
+Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -147,6 +147,16 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.4.0 – March 12, 2026 =
+
+- New: Pre-built template for single room booking.
+- New: Elementor page template support for the demo template.
+- New: Elementor widgets for the single room booking demo template.
+- Added: Travelfic theme support for the room booking template.
+- Added: New design for single and archive pages for rooms.
+- Added: Customization settings for the demo template.
+- Improved: System stability has been improved.
 
 = 1.3.6 – February 03, 2026 =
 

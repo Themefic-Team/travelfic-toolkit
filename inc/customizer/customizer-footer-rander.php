@@ -87,4 +87,75 @@ class Travelfic_Customizer_Footer
         $travelfic_footer = ob_get_clean();
         return $travelfic_footer;
     }
+
+    public static function travelfic_toolkit_footer_fourth_design($travelfic_footer) {
+        $travelfic_prefix = 'travelfic_customizer_settings_';
+        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
+        $travelfic_menu_1_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_1', 'Privacy Policy');
+        $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_1', '#');
+        $travelfic_menu_2_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_2', 'View on Maps');
+        $travelfic_menu_2_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_2', '#');
+        $footer_newsletter_heading = get_theme_mod($travelfic_prefix . 'footer_newsletter_heading', 'Stay in the Loop');
+        $footer_newsletter_desc = get_theme_mod($travelfic_prefix . 'footer_newsletter_desc', 'Subscribe to our newsletter for exclusive offers, travel tips, and updates');
+        $footer_newsletter_shortcode = get_theme_mod($travelfic_prefix . 'footer_newsletter_shortcode', '');
+
+        ob_start();
+        ?>
+        <!-- footer -->
+        <div class="tft-pre-footer-design__four">
+            <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                <div class="tft-newsletter-wrap">
+                    <div class="tft-newsletter-left">
+                        <h2><?php echo esc_html($footer_newsletter_heading); ?></h2>
+                        <p><?php echo wp_kses_post($footer_newsletter_desc); ?></p>
+                    </div>
+                    <div class="tft-newsletter-right">
+                        <?php echo do_shortcode($footer_newsletter_shortcode); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="tft-footer-design__four tft-site-footer">
+            <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                <div class="footer-widget">
+                    <?php if (is_active_sidebar('footer_widgets')) : ?>
+                        <?php dynamic_sidebar('footer_widgets'); ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </footer>
+
+        <!-- footer bottom -->
+        <div class="tft-footer-bottom__four tft-footer-bottom">
+            <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
+                <div class="tft-footer-bottom__four__inner">
+                    <div class="tft-footer-bottom__four__copyright">
+                        <p><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
+                    </div>
+                    <div class="tft-footer-bottom__four__menu">
+                        <ul class="tft-footer-bottom__four__nav">
+                            <?php if (!empty($travelfic_menu_1_label)): ?>
+                                <li>
+                                    <a href="<?php echo esc_url($travelfic_menu_1_url); ?>">
+                                        <?php echo esc_html($travelfic_menu_1_label); ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if (!empty($travelfic_menu_2_label)): ?>
+                                <li>
+                                    <a href="<?php echo esc_url($travelfic_menu_2_url); ?>">
+                                        <?php echo esc_html($travelfic_menu_2_label); ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        $travelfic_footer = ob_get_clean();
+        return $travelfic_footer;
+    }
 }

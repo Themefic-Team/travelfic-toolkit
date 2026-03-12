@@ -658,6 +658,205 @@
             }
         }
     }
+
+    &__four {
+        .tft-blog-sec-header {
+            margin-bottom: 56px;
+            display: flex;
+            @include justify-content(space-between);
+            @include align-items(flex-end);
+            gap: 32px;
+
+            @media #{$max1199} {
+                margin-bottom: 30px;
+            }
+
+            @media #{$max991} {
+                margin-bottom: 20px;
+            }
+
+            @media #{$max767} {
+                margin-bottom: 10px;
+                @include flex-direction(column);
+                @include align-items(flex-start);
+            }
+
+            h3{
+                color: $tft-color-links;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: 1.5;
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            h2 {
+                margin: 0;
+                color: $tft-color-heading;
+                font-size: 4.063rem;
+                font-weight: 400;
+                line-height: 1.2;
+
+                @media #{$max1199} {
+                    font-size: 3.2rem;
+                }
+
+                @media #{$max991} {
+                    font-size: 2.8rem;
+                }
+
+                @media #{$max767} {
+                    font-size: 2.313rem;
+                }
+            }
+
+            .tft-btn{
+                margin-bottom: 16px;
+                border: 2px solid $tft-color-links;
+                color: #fff;
+
+                &:hover{
+                    background-color: $tft-color-links !important;
+                }
+            }
+        }
+        
+        .tf-blog-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .tf-blog-row {
+            display: grid;
+            gap: 30px;
+
+            &.row-33-66 {
+                grid-template-columns: 1fr 2fr;
+            }
+
+            &.row-66-33 {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .tf-blog-card {
+            background: $tft-color-filling-foreground;
+            overflow: hidden;
+            transition: 0.3s ease;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            &.content-only {
+                padding: 40px;
+                display: flex;
+
+                @media #{$max575} {
+                    padding: 24px;
+                }
+            }
+
+            &.with-image {
+                display: flex;
+
+                @media #{$max575} {
+                    @include flex-direction(column);
+                }
+
+                .tf-thumb{
+                    flex: 0 0 309px;
+
+                    a{
+                        @include d-flex();
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 328px;
+                        object-fit: cover;
+
+                        @media #{$max575} {
+                            height: 310px;
+                        }
+                    }
+                }
+
+                .tf-content {
+                    padding: 40px;
+                    display: flex;
+                    flex-direction: column;
+
+                    @media #{$max575} {
+                        padding: 24px;
+                    }
+                }
+            }
+
+            .tf-content {
+                h3 {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 2.313rem;
+                    font-weight: 400;
+                    line-height: 1.4;
+                    margin: 0 0 8px 0;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+
+                    @media #{$max1024} {
+                        font-size: 1.563rem;
+                    }
+
+                    a{
+                        color: $tft-color-heading;
+
+                        &:hover{
+                            color: $tft-color-links;
+                        }
+                    }
+                }
+
+                p {
+                    overflow: hidden;
+                    color: $tft-color-text;
+                    text-overflow: ellipsis;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    margin: 0 0 32px 0;
+                }
+
+                .tf-read-more {
+                    color: $tft-color-links;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.5;
+                    display: flex;
+                    @include align-items(center);
+                    gap: 8px;
+
+                    svg path{
+                        stroke: $tft-color-links;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 992px) {
+            .tf-blog-row {
+                grid-template-columns: 1fr !important;
+            }
+
+            .tf-blog-card.with-image {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    }
 }
 
 #items-count {

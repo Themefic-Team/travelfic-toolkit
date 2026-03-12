@@ -1,0 +1,231 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-room-section {
+
+    .tft-room-items {
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+
+        @media #{$min576} {
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: #153D3A;
+                z-index: 1;
+            }
+        }
+    }
+
+    .slick-dotted.slick-slider {
+        padding-bottom: 56px;
+
+        @media #{$max575} {
+            padding-bottom: 32px;
+        }
+    }
+
+    .tft-room-slider {
+        // display: flex;
+        
+        .slick-slide {
+            margin: 0 10px !important;
+        }
+        .slick-track{
+            // margin: 0 -16px;
+        }
+        @media #{$min576} {
+            .slick-slide {
+                width: 470px;
+                height: inherit !important;
+            }
+        }
+
+        @media #{$min576} {
+            .slick-list {
+                overflow: visible;
+            }
+        }
+        .slick-list {
+            padding: 0 !important
+        }
+
+        .slick-dots {
+            @include d-flex();
+            @include justify-content(center);
+            @include align-items(center);
+            gap: 24px;
+
+            @media #{$max575} {
+                gap: 8px;
+            }
+
+            li {
+                width: 48px;
+                height: 16px;
+                border: 1px solid #DCE5E5;
+                text-align: center;
+                border-radius: 100px;
+                @include d-flex();
+                @include justify-content(center);
+                @include align-items(center);
+
+                @media #{$max575} {
+                    width: 32px;
+                    height: 10px;
+                }
+
+                button {
+                    width: 0px;
+                    height: 0px;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                &.slick-active {
+                    border-color: $tft-color-links;
+                    background: $tft-color-links;
+                }
+            }
+        }
+
+        .tft-single-room {
+            @include d-flex();
+            flex-direction: column;
+            flex: 1;
+
+            .tft-room-thumbnail {
+                position: relative;
+
+                img {
+                    height: 450px;
+                    width: 100%;
+                    object-fit: cover;
+
+                    @media (max-width: 640px) {
+                        height: 300px;
+                    }
+                }
+
+                .tf-room-off {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    padding: 8px 12px;
+                    background: #126832;
+                    color: #F5FFFE;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.5;
+                }
+            }
+
+            .tft-room-content {
+                background-color: #0D2624;
+                padding: 24px 32px 32px 32px;
+                @include d-flex();
+                @include justify-content(space-between);
+                flex-direction: column;
+                flex: 1;
+                min-height: 282px;
+
+                .tft-room-title-wrap{
+                    display: flex;
+                    gap: 24px;
+                    margin-bottom: 16px;
+                    @include justify-content(space-between);
+                }
+                .tft-room-title {
+                    margin: 0px;
+                    font-size: 1.563rem;
+                    font-weight: 700;
+                    line-height: 1.5;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    color: #F5FFFE;
+                    -webkit-text-fill-color: #F5FFFE;
+
+                    a {
+                        @include transition(0.2s);
+                        color: #F5FFFE;
+                        
+                        &:hover {
+                            color: $tft-color-links !important;
+                        }
+                    }
+                }
+                .tf-room-price{
+                    color: #8A9393;
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+
+                    .tf-price{
+                        display: flex;
+                        gap: 4px;
+                        align-items: flex-end;
+
+                        @media #{$max767} {
+                            align-items: flex-start;
+                            @include flex-direction(column);
+                        }
+                    }
+
+                    .sale-price,
+                    .discount-price{
+                        color: $tft-color-links;
+                        font-size: 25px;
+                        font-weight: 700;
+                        line-height: 1.2;
+                    }
+                }
+
+                ul{
+                    display: flex;
+                    margin-bottom: 56px;
+
+                    li{
+                        color: #8A9393;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                    }
+                }
+                
+                .tft-room-btn {
+                    .tft-btn {
+                        border-radius: 72px;
+                        border: 2px solid $tft-color-links;
+                        background-color: $tft-color-primary;
+
+                        &:hover {
+                            background-color: $tft-color-primary !important;
+                            box-shadow: $tft-color-links-box-shadow;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.tft-slider-disable {
+            overflow: initial;
+
+            .slick-track {
+                width: 100%;
+            }
+    
+            .slick-list {
+                width: 100%;
+            }
+        }
+    }
+}
