@@ -1,0 +1,131 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+.tft-features-design {
+
+    &__one{
+        .tft-features-items{
+            display: flex;
+
+            .tft-features-items-left{
+                width: 626px;
+                z-index: 1;
+
+                @media #{$max767} {
+                    width: calc(100% - 32px);
+                }
+                @media #{$max575} {
+                    width: 100%;
+                }
+                .tft-single-feature{
+                    display: flex;
+                    padding: 40px;
+                    gap: 24px;
+                    background-color: $tft-color-filling-background;
+                    width: 100%;
+                    box-sizing: border-box;
+                    transition: width 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, color 0.4s ease-in-out;
+                    cursor: pointer;
+
+                    @media #{$max767} {
+                        padding: 24px;
+                    }
+                    @media #{$max575} {
+                        flex-direction: column;
+                    }
+
+                    &:hover{
+                        background-color: #fff;
+                    }
+
+                    .tft-feature-icon{
+                        flex: 0 0 72px;
+                        height: 72px;
+                        width: 72px;
+                        padding: auto;
+                        display: flex;
+                        @include justify-content(center);
+                        @include align-items(center);
+                        color: $tft-color-links;
+                        border-radius: 100%;
+                        transition: all 0.4s ease-in-out;
+
+                        svg {
+                            width: 40px;
+
+                            path{
+                                fill: $tft-color-links;
+                            }
+                        }
+                    }
+
+                    h3{
+                        color: $tft-color-heading;
+                        font-size: 2.313rem;
+                        font-weight: 700;
+                        line-height: 1.4;
+                        margin: 0 0 8px 0;
+                        transition: all 0.4s ease-in-out;
+
+                        @media #{$max767} {
+                            font-size: 1.563rem;
+                            font-weight: 400;
+                        }
+                    }
+
+                    p{
+                        color: $tft-color-text;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        margin: 0;
+                        transition: all 0.4s ease-in-out;
+                    }
+
+                    &.active{
+                        width: calc(100% + 72px);
+                        background-color: $tft-color-primary;
+                        box-shadow: 0 8px 24px 0 rgba(238, 85, 9, 0.16), 0 20px 40px 0 rgba(8, 39, 36, 0.32);
+                        z-index: 3;
+                        position: relative;
+
+                        @media #{$max767} {
+                            width: calc(100% + 32px);
+                        }
+                        @media #{$max575} {
+                            width: 100%;
+                        }
+                        
+                        .tft-feature-icon{
+                            color: #fff;
+                            background-color: $tft-color-links;
+
+                            svg path{
+                                fill: #fff;
+                            }
+                        }
+
+                        h3{
+                            color: #F5FFFE;
+                        }
+
+                        p{
+                            color: $tft-color-text-lite;
+                        }
+                    }
+                }
+            }
+            .tft-features-items-right{
+                width: calc(100% - 626px);
+
+                @media #{$max767} {
+                    display: none;
+                }
+
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

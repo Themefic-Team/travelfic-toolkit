@@ -47,6 +47,9 @@
 // hotels
 @use './widget-parts/hotels';
 
+// rooms
+@use './widget-parts/rooms';
+
 // icon with text
 @use './widget-parts/icon-with-text';
 
@@ -61,6 +64,12 @@
 
 // testimonials
 @use './widget-parts/testimonials';
+
+// gallery
+@use './widget-parts/gallery';
+
+// service
+@use './widget-parts/features';
 
 // Tour Destination
 @use './widget-parts/tour-destination';

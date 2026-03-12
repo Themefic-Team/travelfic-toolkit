@@ -117,6 +117,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'options' => [
 					'design-1' => __('Design 1', 'travelfic-toolkit'),
 					'design-2' => __('Design 2', 'travelfic-toolkit'),
+					'design-3' => __('Design 3', 'travelfic-toolkit'),
 				],
 			]
 		);
@@ -186,7 +187,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label' => __('Member Details', 'travelfic-toolkit'),
 				'label_block' => true,
 				'default' => 'A There are many variatio of passage of Lorem for a Ipsum available ',
-
 			]
 		);
 
@@ -225,7 +225,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			'member_social_insta',
 			[
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'label' => __('Twitter', 'travelfic-toolkit'),
+				'label' => __('Instagram', 'travelfic-toolkit'),
 				'default' => '#'
 			]
 		);
@@ -564,18 +564,30 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				],
 			]
 		);
-		$this->add_responsive_control(
-			'team_card_border_radius',
-			[
-				'label'      => __('Border Radius', 'travelfic-toolkit'),
-				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
-					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
+		// $this->add_responsive_control(
+		// 	'team_card_border_radius',
+		// 	[
+		// 		'label'      => __('Border Radius', 'travelfic-toolkit'),
+		// 		'type'       => \Elementor\Controls_Manager::DIMENSIONS,
+		// 		'size_units' => ['px', '%', 'em'],
+		// 		'selectors' => [
+		// 			'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 			'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 			'#tft-site-main-body #page {{WRAPPER}} .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 		],
+		// 	]
+		// );
+		$this->add_control(
+            'team_card_border_radius',
+            [
+                'label' => __( 'Border Radius', 'travelfic-toolkit' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em', '%', 'rem' ],
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-single-member' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
 		$this->add_control(
 			'team_card_title',
 			[
@@ -583,7 +595,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
 				'condition' => [
-					'tft_team_style' => 'design-1',
+					'tft_team_style' => ['design-1', 'design-3'],
 				]
 			]
 		);
@@ -592,10 +604,11 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_title_typo',
-				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title, 
+							   #tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details .tft-title',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
-					'tft_team_style' => 'design-1',
+					'tft_team_style' => ['design-1', 'design-3']
 				]
 			]
 		);
@@ -631,6 +644,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'selectors' => [
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -667,7 +681,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'type'      => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'after',
 				'condition' => [
-					'tft_team_style' => 'design-2',
+					'tft_team_style' => ['design-2', 'design-3']
 				]
 			]
 		);
@@ -677,10 +691,11 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_subtitle_typo_desing_2',
-				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3,
+							   #tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details span',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
-					'tft_team_style' => 'design-2',
+					'tft_team_style' => ['design-2', 'design-3'],
 				]
 			]
 		);
@@ -692,6 +707,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'selectors' => [
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-subtitle' => 'color: {{VALUE}}',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details span' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -748,6 +764,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'color: {{VALUE}}',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons button i' => 'color: {{VALUE}}',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons .social-media a' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .social-media a svg path' => 'stroke: {{VALUE}}',
 				],
 			]
 		);
@@ -760,6 +777,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'background-color: {{VALUE}}',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons button' => 'background-color: {{VALUE}}',
 					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons button' => 'background-color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .social-media a' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -850,8 +868,6 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		$container_max_width = ("true" === $design2_slider_arrows) ? ' tft-container-width' : '';
 
 		$design2_slider_autoplay = ("yes" === $settings['team_design2_slider_autoplay']) ? 'true' : 'false';
-		$design2_slider_autoplay_speed = !empty($settings['team_design2_slider_autoplay_speed']) ? $settings['team_design2_slider_autoplay_speed']['size'] : 0;
-		$design2_slider_autoplay_interval = !empty($settings['team_design2_slider_autoplay_interval']) ? $settings['team_design2_slider_autoplay_interval']['size'] : 0;
 		$design2_slider_loop = ('yes' === $settings['team_design2_slider_loop']) ? 'true' : 'false';
 		$design2_slider_pause_on_hover = ('yes' === $settings['team_design2_slider_pause_on_hover']) ? 'true' : 'false';
 		$design2_slider_pause_on_focus = ('yes' === $settings['team_design2_slider_pause_on_focus']) ? 'true' : 'false';
@@ -906,7 +922,10 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 
 				</div>
 			</div>
-		<?php elseif ('design-2' == $tft_design):  ?>
+		<?php elseif ('design-2' == $tft_design): 
+			$design2_slider_autoplay_speed = !empty($settings['team_design2_slider_autoplay_speed']) ? $settings['team_design2_slider_autoplay_speed']['size'] : 0;
+			$design2_slider_autoplay_interval = !empty($settings['team_design2_slider_autoplay_interval']) ? $settings['team_design2_slider_autoplay_interval']['size'] : 0;
+			?>
 			<div class="tft-team-design__two tft-customizer-typography tft-section-space-top">
 				<div class="container<?php echo esc_attr($tftDisableClass . $container_max_width); ?>">
 					<div class="tft-heading-content">
@@ -981,48 +1000,99 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 					<img src="<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/app/img/team-banner-shape.png'); ?>" alt="Team background shape">
 				</div>
 			</div>
+			<script>
+				jQuery(document).ready(function($) {
+					<?php if ($tftSliderDisable == false) : ?>
+						$(".tft-team-design__two .tft-team-members").slick({
+							slidesToShow: <?php echo esc_attr($slideToShow); ?>,
+							slidesToScroll: <?php echo esc_attr($design2_slide_to_scroll); ?>,
+							infinite: <?php echo esc_attr($design2_slider_loop); ?>,
+							autoplay: <?php echo esc_attr($design2_slider_autoplay); ?>,
+							autoplaySpeed: <?php echo esc_attr($design2_slider_autoplay_speed); ?>,
+							speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
+							dots: <?php echo esc_attr($design2_slider_dots); ?>,
+							arrows: <?php echo esc_attr($design2_slider_arrows); ?>,
+							pauseOnHover: <?php echo esc_attr($design2_slider_pause_on_hover); ?>,
+							pauseOnFocus: <?php echo esc_attr($design2_slider_pause_on_focus); ?>,
+							rtl: <?php echo esc_attr($design2_slider_rtl); ?>,
+							draggable: <?php echo esc_attr($design2_slider_draggable); ?>,
+							prevArrow: '.tft-team-design__two .tft-prev-slide',
+							nextArrow: '.tft-team-design__two .tft-next-slide',
+							responsive: [{
+									breakpoint: 991,
+									settings: {
+										slidesToShow: 2,
+										slidesToScroll: 2,
+									}
+								},
+								{
+									breakpoint: 640,
+									settings: {
+										slidesToShow: 1,
+										slidesToScroll: 1,
+										centerMode: true,
+										adaptiveHeight: false,
+									}
+								},
+							]
+						});
+
+					<?php endif; ?>
+				})
+			</script>
+		<?php elseif ('design-3' == $tft_design):  ?>
+			<div class="tft-team-design__three tft-customizer-typography">
+				<div class="tft-team-members tft-flex">
+					<?php foreach ($settings['members_list'] as $item) : ?>
+						<div class="tft-single-member">
+							<?php if (!empty($item['member_img']['url'])) { ?>
+								<div class="member_img">
+									<img src="<?php echo esc_url($item['member_img']['url']);  ?>" alt="">
+								</div>
+							<?php } ?>
+							<div class="member-details">
+								<h2 class="tft-title"><?php echo esc_html($item['member_name']); ?></h2>
+								<span class="tft-subtitle"> <?php echo esc_html($item['member_designation']); ?></span>
+								<div class="social-media">
+									<?php if ($item['member_social_fb'] !== '') { ?>
+										<a href="<?php echo esc_url($item['member_social_fb']); ?>">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</a>
+									<?php } ?>
+									<?php if ($item['member_social_ld'] !== '') { ?>
+										<a href="<?php echo esc_url($item['member_social_ld']); ?>">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+											<path d="M6 9H2V21H6V9Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+											<path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</a>
+									<?php } ?>
+									<?php if ($item['member_social_tw'] !== '') { ?>
+										<a href="<?php echo esc_url($item['member_social_tw']); ?>">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M22 4C22 4 21.3 6.1 20 7.4C21.6 17.4 10.6 24.7 2 19C4.2 19.1 6.4 18.4 8 17C3 15.5 0.5 9.6 3 5C5.2 7.6 8.6 9.1 12 9C11.1 4.8 16 2.4 19 5.2C20.1 5.2 22 4 22 4Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</a>
+									<?php } ?>
+									<?php if ($item['member_social_insta'] !== '') { ?>
+										<a href="<?php echo esc_url($item['member_social_insta']); ?>">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+											<path d="M17.5 6.5H17.51M7 2H17C19.7614 2 22 4.23858 22 7V17C22 19.7614 19.7614 22 17 22H7C4.23858 22 2 19.7614 2 17V7C2 4.23858 4.23858 2 7 2ZM16 11.37C16.1234 12.2022 15.9813 13.0522 15.5938 13.799C15.2063 14.5458 14.5931 15.1514 13.8416 15.5297C13.0901 15.9079 12.2384 16.0396 11.4078 15.9059C10.5771 15.7723 9.80976 15.3801 9.21484 14.7852C8.61992 14.1902 8.22773 13.4229 8.09407 12.5922C7.9604 11.7616 8.09207 10.9099 8.47033 10.1584C8.84859 9.40685 9.45419 8.79374 10.201 8.40624C10.9478 8.01874 11.7978 7.87659 12.63 8C13.4789 8.12588 14.2649 8.52146 14.8717 9.12831C15.4785 9.73515 15.8741 10.5211 16 11.37Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+											</svg>
+										</a>
+									<?php } ?>
+								</div>
+							</div>
+						</div>
+					<?php endforeach ?>
+				</div>
+			</div>
 		<?php endif; ?>
 
-		<script>
-			jQuery(document).ready(function($) {
-				<?php if ($tftSliderDisable == false) : ?>
-					$(".tft-team-design__two .tft-team-members").slick({
-						slidesToShow: <?php echo esc_attr($slideToShow); ?>,
-						slidesToScroll: <?php echo esc_attr($design2_slide_to_scroll); ?>,
-						infinite: <?php echo esc_attr($design2_slider_loop); ?>,
-						autoplay: <?php echo esc_attr($design2_slider_autoplay); ?>,
-						autoplaySpeed: <?php echo esc_attr($design2_slider_autoplay_speed); ?>,
-						speed: <?php echo esc_attr($design2_slider_autoplay_interval); ?>,
-						dots: <?php echo esc_attr($design2_slider_dots); ?>,
-						arrows: <?php echo esc_attr($design2_slider_arrows); ?>,
-						pauseOnHover: <?php echo esc_attr($design2_slider_pause_on_hover); ?>,
-						pauseOnFocus: <?php echo esc_attr($design2_slider_pause_on_focus); ?>,
-						rtl: <?php echo esc_attr($design2_slider_rtl); ?>,
-						draggable: <?php echo esc_attr($design2_slider_draggable); ?>,
-						prevArrow: '.tft-team-design__two .tft-prev-slide',
-						nextArrow: '.tft-team-design__two .tft-next-slide',
-						responsive: [{
-								breakpoint: 991,
-								settings: {
-									slidesToShow: 2,
-									slidesToScroll: 2,
-								}
-							},
-							{
-								breakpoint: 640,
-								settings: {
-									slidesToShow: 1,
-									slidesToScroll: 1,
-									centerMode: true,
-									adaptiveHeight: false,
-								}
-							},
-						]
-					});
-
-				<?php endif; ?>
-			})
-		</script>
+		
 
 <?php }
 }

@@ -1,6 +1,106 @@
 @use '../abstracts/variable' as *;
 @use '../abstracts/mixins' as *;
 
+.tft-pre-footer-design{
+  &__four{
+    padding: 96px 0;
+    background-color: $tft-color-secondary;
+
+    @media #{$max1024} {
+      padding: 56px 0;
+    }
+
+    @media #{$max767} {
+      padding: 24px 0;
+    }
+
+    .tft-newsletter-wrap{
+      display: flex;
+      @include align-items(center);
+      gap: 32px;
+
+      @media #{$max1024} {
+        @include flex-direction(column);
+        @include align-items(flex-start);
+      }
+
+      .tft-newsletter-left,
+      .tft-newsletter-right{
+        flex: 1;
+
+        .wpcf7 form .wpcf7-response-output{
+          color: $tft-color-text-lite;
+
+          @media #{$max1199} {
+            margin-top: 20px;
+          }
+        }
+      }
+      
+      .tft-newsletter-left{
+        h2{
+          color: #F5FFFE;
+          font-size: 3.188rem;
+          font-weight: 400;
+          line-height: 1.3;
+          margin: 0 0 16px 0;
+          
+          @media #{$max1024} {
+            font-size: 2.313rem;
+          }
+        }
+        p{
+          color: $tft-color-text-lite;
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 1.5;
+          margin: 0;
+        }
+      }
+
+      .tft-newslatter{
+        &>p{
+          @include d-flex();
+          gap: 16px;
+          margin: 0;
+
+          .wpcf7-form-control-wrap input{
+            width: 369px;
+            height: 56px;
+            padding: 12px 32px;
+            border-radius: 72px;
+            border: 2px solid $tft-color-links;
+            background: $tft-color-primary;
+            color: $tft-color-text-lite;
+
+            &::placeholder{
+              color: $tft-color-text-lite;
+            }
+
+            @media #{$max1024} {
+              width: 100%;
+            }
+          }
+
+          .wpcf7-submit{
+            padding: 12px 32px;
+            border-radius: 72px;
+            border: 2px solid $tft-color-links;
+            background: $tft-color-links !important;
+            color: #fff;
+            width: auto;
+            height: 56px;
+
+            &:hover{
+              border-color: $tft-color-links !important;
+              box-shadow: $tft-color-links-box-shadow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 .tft-footer-design {
 
   &__two {
@@ -325,6 +425,173 @@
     }
   }
 
+  &__four {
+    padding: 96px 0 32px 0;
+    color: $tft-color-white;
+    z-index: 1;
+    position: relative;
+
+    @media #{$max767} {
+      padding-top: 56px;
+    }
+
+    @media #{$max575} {
+      padding: 32px 0 24px 0;
+    }
+
+    .footer-widget {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 56px;
+
+      @media #{$max767} {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+    }
+
+    .wp-block-heading{
+      color: #F5FFFE;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 0;
+
+      @media #{$max767} {
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+    }
+
+    .wp-block-list {
+      li {
+        a {
+          color: $tft-color-text-lite;
+          line-height: 1.5;
+          display: block;
+          @include transition(0.2s);
+
+          &:hover {
+            color: $tft-color-links !important;
+          }
+        }
+      }
+    }
+
+    .wp-block-media-text{
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+
+      .wp-block-media-text__media{
+        margin: 0;
+        flex: 0 0 24px;
+        height: 26px;
+        padding-top: 2px;
+
+        img {
+          vertical-align: baseline;
+          width: auto;
+        }
+      }
+
+      .wp-block-media-text__content{
+        padding: 0;
+      }
+
+      a:hover{
+        color: $tft-color-links !important;
+      }
+    }
+
+    .wp-block-social-links{
+      gap: 16px;
+
+      li{
+        margin: 0;
+        background-color: transparent !important;
+
+        a{
+          padding: 0 !important;
+
+          svg{
+            path{
+              fill: #fff;
+            }
+          }
+
+          &:hover{
+            svg{
+              path{
+                fill: $tft-color-links !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .tft-footer-section {
+      @media #{$max767} {
+        margin-bottom: 0;
+      }
+
+      .wp-block-image {
+        margin-bottom: 16px;
+      }
+
+      .tft-footer-info-text{
+        color: $tft-color-text-lite !important;
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 0;
+      }
+
+      .tft-footer-contact ul li i{
+        color: $tft-color-text-lite !important;
+      }
+      .tft-footer-contact ul li a:hover{
+        color: $tft-color-links !important;
+      }
+
+      .tft-footer-social-link ul {
+        column-gap: 16px;
+        row-gap: 10px;
+
+        li {
+          margin: 0;
+
+          a {
+            height: auto;
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent !important;
+
+            i {
+              color: #F5FFFE !important;
+              font-size:  24px;
+              @include transition(0.2s);
+            }
+
+            &:hover{
+              i{
+                color: $tft-color-links !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   &__one,
   &__two,
   &__three {
@@ -501,6 +768,81 @@
 
         &:hover {
           color: $tft-color-primary;
+        }
+      }
+    }
+  }
+
+  &__four {
+    border-top: 1px solid $tft-color-border-default;
+    color: $tft-color-text-lite;
+    background: $tft-color-primary;
+    overflow: hidden;
+    padding: 40px 0 32px 0;
+
+    @media #{$max767} {
+      padding: 24px 0;
+    }
+
+    &__inner {
+      @include d-flex();
+      align-items: stretch;
+
+      @media #{$max575} {
+        @include flex-direction(column);
+        gap: 24px
+      }
+    }
+
+    &__copyright {
+      flex: 2;
+      position: relative;
+      @include d-flex();
+      align-items: center;
+
+      @media #{$max767} {
+        flex: 1;
+        padding-left: 0;
+      }
+      @media #{$max575} {
+        text-align: center;
+      }
+
+      p {
+        margin-bottom: 0;
+        line-height: 1.5;
+      }
+    }
+
+    &__menu {
+      flex: 0.8;
+      text-align: right;
+      position: relative;
+
+      @media #{$max767} {
+        flex: 1;
+        padding-right: 0;
+      }
+    }
+
+    &__nav {
+      @include d-flex();
+      @include align-items(center);
+      @include justify-content(end);
+      gap: 22px;
+
+      @media #{$max575} {
+        justify-content: center;
+        gap: 10px;
+        
+      }
+
+      a {
+        color: $tft-color-links;
+        @include transition(0.2s);
+
+        &:hover {
+          color: $tft-color-links;
         }
       }
     }

@@ -1,0 +1,206 @@
+@use '../abstracts/variable' as *;
+@use '../abstracts/mixins' as *;
+
+// gallery design 1
+.tft-gallery-design {
+    &__one{
+        .tft-gallery-top-header{
+            display: flex;
+            @include justify-content(space-between);
+            @include align-items(center);
+            gap: 56px;
+            margin-bottom: 56px;
+
+            @media #{$max1024} {
+                margin-bottom: 32px;
+            }
+
+            h3{
+                color: $tft-color-links;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: 1.5;
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            h2{
+                color: $tft-color-heading;
+                font-size: 4.063rem;
+                font-weight: 400;
+                line-height: 1.2;
+                margin: 0;
+
+                @media #{$max1024} {
+                    font-size: 2.313rem;
+                }
+
+                @media #{$max767} {
+                    font-size: 1.563rem;
+                }
+            }
+
+            .tft-slider-arrows{
+                @media #{$max767} {
+                    display: none;
+                }
+            }
+        }
+        .tft-gallery-selector{
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: #F5FFFE;
+                z-index: 1;
+            }
+        }
+        .tft-single-gallery {
+            .tft-single-thumb{
+                margin-bottom: 24px;
+                overflow: hidden;
+            }
+            img{
+                object-fit: cover;
+                transition: all 0.5s ease-in-out;
+            }
+            h3{
+                color: $tft-color-heading;
+                font-size: 2.313rem;
+                font-weight: 700;
+                line-height: 1.4;
+                margin: 0;
+
+                @media #{$max1024} {
+                    font-size: 1.563rem;
+                    font-weight: 400;
+                }
+            }
+
+            &:hover{
+                img{
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        .slick-dotted.slick-slider {
+            padding-bottom: 56px;
+
+            @media #{$max575} {
+                padding-bottom: 32px;
+            }
+        }
+
+        .slick-list {
+            overflow: visible;
+
+            .slick-slide {
+                width: 470px;
+                height: inherit !important;
+                margin: 0 16px !important;
+
+                @media #{$max575} {
+                    width: 270px;
+                    margin: 0 12px !important;
+                }
+            }
+        }
+        .tft-slider-arrows{
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+
+            .slick-prev,
+            .slick-next {
+                width: 72px;
+                height: 72px;
+                background-color: $tft-color-filling-foreground;
+                border-radius: 50%;
+                position: relative;
+                left: unset;
+                right: unset;
+                top: unset;
+                transform: inherit;
+                transition: all 0.2s ease;
+                @media #{$max575} {
+                    width: 54px;
+                    height: 54px;
+                }
+                svg{
+                    path{
+                        transition: all 0.2s ease;
+                        stroke: $tft-color-links;
+                    }
+                }
+                &:hover{
+                    path{
+                        stroke: $tft-color-text;
+                    }
+                }
+                &::before {
+                    display: none;
+                }
+
+            }
+        }
+
+        .slick-dots {
+            @include d-flex();
+            @include justify-content(center);
+            @include align-items(center);
+            gap: 24px;
+            bottom: 5px;
+
+            @media #{$max575} {
+                gap: 8px;
+            }
+
+            li {
+                width: 48px;
+                height: 16px;
+                border: 1px solid $tft-color-links;
+                text-align: center;
+                border-radius: 100px;
+                @include d-flex();
+                @include justify-content(center);
+                @include align-items(center);
+
+                @media #{$max575} {
+                    width: 32px;
+                    height: 10px;
+                }
+
+                button {
+                    width: 0px;
+                    height: 0px;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                &.slick-active {
+                    border-color: $tft-color-links;
+                    background: $tft-color-links;
+                }
+            }
+        }
+
+        .tft-gallery-mobile-slider-arrow{
+            margin-top: 32px;
+            display: none;
+
+            @media #{$max767} {
+                display: block;
+            }
+        }
+    }
+}

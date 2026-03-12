@@ -68,6 +68,18 @@
     }
   }
 
+  &-transparent{
+    background: transparent;
+    color: $tft-color-primary;
+    border: 1px solid $tft-color-primary;
+
+    &:hover {
+      background: $tft-color-primary;
+      color: $tft-color-white;
+      border-color: $tft-color-primary;
+    }
+  }
+
   &.tft-wh-auto {
     min-width: auto;
     min-height: auto;

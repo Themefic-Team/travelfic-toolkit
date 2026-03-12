@@ -376,6 +376,88 @@
         }
     }
 
+    &__three {
+        .tft-team-members {
+            flex-wrap: wrap;
+            @include justify-content(center);
+            gap: 32px;
+
+            .tft-single-member {
+                width: calc(33.33% - 22px);
+                @include d-flex();
+                @include flex-direction(column);
+                background-color: $tft-color-filling-background;
+                overflow: hidden;
+
+                @media #{$max991} {
+                    width: calc(50% - 16px);
+                }
+
+                @media #{$max767} {
+                    width: 100%;
+                }
+
+                .member_img {
+                    img {
+                        height: 100%;
+                        object-fit: cover;
+                        width: 100%;
+                    }
+                }
+
+                .member-details {
+                    padding: 32px;
+
+                    h2 {
+                        color: $tft-color-heading;
+                        font-size: 1.563rem;
+                        font-weight: 700;
+                        line-height: 1.5;
+                        margin: 0 0 16px 0;
+                    }
+
+                    span {
+                        color: $tft-color-heading;
+                        font-size: 17px;
+                        font-weight: 400;
+                        line-height: 1.5;
+                    }
+
+                    .social-media {
+                        margin-top: 24px;
+                        @include d-flex();
+                        gap: 24px;
+
+                        a {
+                            background-color: $tft-color-filling-foreground;
+                            color: $tft-color-links;
+                            height: 40px;
+                            width: 40px;
+                            @include d-flex();
+                            @include justify-content(center);
+                            @include align-items(center);
+                            transition: all 0.3s ease-in-out;
+
+                            &:hover {
+                                background-color: $tft-color-links;
+
+                                svg path{
+                                    stroke: $tft-color-white;
+                                }
+                            }
+
+                            svg{
+                                path{
+                                    stroke: $tft-color-links;
+                                    transition: all 0.3s ease-in-out;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .tft-destination-slider-nav,

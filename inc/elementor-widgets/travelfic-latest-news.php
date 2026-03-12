@@ -150,6 +150,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     'design-1' => __('Design 1', 'travelfic-toolkit'),
                     'design-2'  => __('Design 2', 'travelfic-toolkit'),
                     'design-3'  => __('Design 3', 'travelfic-toolkit'),
+                    'design-4'  => __('Design 4', 'travelfic-toolkit'),
                 ],
             ]
         );
@@ -240,7 +241,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 ],
                 'label_block' => true,
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2', 'design-4'], 
                 ],
             ]
         );
@@ -282,7 +283,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -290,10 +291,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-title,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'],
                 ],
             ]
         );
@@ -306,7 +308,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -330,6 +332,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-heading-content h2' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'blog_style' => ['design-2', 'design-3'],
@@ -356,7 +359,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                     'blog_section_design3_title_backdrop' => 'yes',
                 ]
             ]
@@ -384,7 +387,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'],
                 ],
             ]
         );
@@ -392,10 +395,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_subtitle_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-subtitle',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-subtitle,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'],
                 ],
             ]
         );
@@ -407,7 +411,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -430,6 +434,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'blog_style' => ['design-2', 'design-3'], 
@@ -445,7 +450,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -453,10 +458,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_button_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -468,9 +474,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -482,9 +489,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -494,9 +502,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'name'     => 'blog_section_button_border_',
                 'label'    => __('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn',
                 'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -509,9 +518,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -523,7 +533,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label' => __('Normal', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -536,9 +546,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a span svg path' => 'fill: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -549,9 +560,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -563,7 +575,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label' => __('Hover', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => 'design-2',
+                    'blog_style' => ['design-2'],
                 ]
             ]
         );
@@ -575,9 +587,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a:hover' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a:hover span svg path' => 'fill: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -588,9 +601,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a:hover' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn:hover' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -601,9 +615,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .read-more a:hover' => 'border-color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-btn:hover' => 'border-color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2'], 
                 ],
             ]
         );
@@ -628,9 +643,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'selectors'  => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__one .tft-post-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card.content-only' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card.with-image .tf-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-1', 'design-3'], 
+                    'blog_style' => ['design-1', 'design-3', 'design-4'], 
                 ],
             ]
         );
@@ -656,6 +673,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                  'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3', 
@@ -670,9 +688,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-3', 
+                    'blog_style' => ['design-3', 'design-4'] 
                 ],
             ]
         );
@@ -771,7 +790,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-1'],
+                    'blog_style' => ['design-1', 'design-4'],
                 ],
             ]
         );
@@ -782,9 +801,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'name'     => 'news_title_typo',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__one .tft-post-content-wrap .tft-post-title .tft-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__one .tft-post-content-wrap .tft-post-title .tft-title,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content h3',
                 'condition' => [
-                    'blog_style' => 'design-1', 
+                    'blog_style' => ['design-1', 'design-4']
                 ],
             ]
         );
@@ -796,9 +816,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__one .tft-post-content-wrap .tft-post-title .tft-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content h3 a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-1'], 
+                    'blog_style' => ['design-1', 'design-4'], 
                 ],
             ]
         );
@@ -990,7 +1011,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2', 'design-4']
                 ],
             ]
         );
@@ -999,9 +1020,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'name'     => 'news_design2_content_typo',
                 'label'    => __('Typography', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item p.content',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item p.content,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content p',
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2', 'design-4'] 
                 ],
             ]
         );
@@ -1012,9 +1034,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-gird-section .tft-post-single-item p.content' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => 'design-2', 
+                    'blog_style' => ['design-2', 'design-4'] 
                 ],
             ]
         );
@@ -1027,7 +1050,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1055,7 +1078,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1068,7 +1091,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1080,7 +1103,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1119,7 +1142,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1127,9 +1150,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'news_design3_button_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a,
+                               #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1143,9 +1167,10 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1159,7 +1184,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1171,7 +1196,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'    => __('Border', 'travelfic-toolkit'),
                 'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a',
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1186,7 +1211,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1198,7 +1223,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label' => __('Normal', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1210,9 +1235,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more svg path' => 'fill: {{VALUE}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1225,7 +1252,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1238,7 +1265,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'label' => __('Hover', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1250,9 +1277,11 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more:hover svg path' => 'fill: {{VALUE}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => ['design-3', 'design-4']
                 ],
             ]
         );
@@ -1266,7 +1295,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1280,7 +1309,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
-                    'blog_style' => ['design-3'],
+                    'blog_style' => 'design-3',
                 ],
             ]
         );
@@ -1333,7 +1362,100 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
         if (!empty($settings['tft_section_subtitle'])) {
             $tft_sec_subtitle = $settings['tft_section_subtitle'];
         }
-        if ("design-3" == $design) { ?>
+        if ("design-4" == $design) { ?>
+            <div class="tft-latest-posts-design__four">
+                <?php if ($query->have_posts()) :
+
+                    $row_index = 0;
+                    $post_index = 0;
+
+                    echo '<div class="tf-blog-wrapper">';
+
+                    while ($query->have_posts()) : $query->the_post();
+
+                        // Open new row for every 2 posts
+                        if ($post_index % 2 == 0) {
+
+                            $row_index++;
+
+                            // Odd row → 33/66
+                            $row_class = ($row_index % 2 == 1) ? 'row-33-66' : 'row-66-33';
+
+                            echo '<div class="tf-blog-row ' . esc_attr($row_class) . '">';
+                        }
+
+                        // Determine card type inside row
+                        $is_first_in_row = ($post_index % 2 == 0);
+
+                        // For odd row (33-66)
+                        if ($row_index % 2 == 1) {
+                            $card_class = $is_first_in_row ? 'content-only' : 'with-image';
+                        } else {
+                            // Even row (66-33)
+                            $card_class = $is_first_in_row ? 'with-image' : 'content-only';
+                        }
+                        ?>
+
+                        <div class="tf-blog-card <?php echo esc_attr($card_class); ?>">
+
+                            <?php if ($card_class === 'with-image') : ?>
+                                <div class="tf-thumb">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php
+                                        if (get_the_post_thumbnail_url(get_the_ID())) {
+                                            the_post_thumbnail('blog-thumb');
+                                        } else { ?>
+                                            <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
+                                        <?php } ?>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="tf-content">
+                                <h3>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php echo esc_html(travelfic_character_limit(get_the_title(), 32)); ?>
+                                    </a>
+                                </h3>
+
+                                <p>
+                                    <?php echo esc_html(travelfic_character_limit(get_the_excerpt(), 110)); ?>
+                                </p>
+
+                                <a href="<?php the_permalink(); ?>" class="tf-read-more">
+                                    <?php esc_html_e('Learn More', 'tourfic'); ?> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 7H17M17 7V17M17 7L7 17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <?php
+                        $post_index++;
+
+                        // Close row after 2 posts
+                        if ($post_index % 2 == 0) {
+                            echo '</div>';
+                        }
+
+                    endwhile;
+
+                    // Close row if odd number of posts
+                    if ($post_index % 2 != 0) {
+                        echo '</div>';
+                    }
+
+                    echo '</div>';
+
+                    wp_reset_postdata();
+
+                endif;
+                ?>
+            </div>
+        <?php
+        } elseif ("design-3" == $design) { ?>
             <div class="tft-latest-posts-design__three">
                 <div class="tft-heading-content">
                     <?php if (!empty($tft_sec_subtitle)) { ?>
