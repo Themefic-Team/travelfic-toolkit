@@ -1,9 +1,102 @@
 <?php
 
 use \Tourfic\Classes\Hotel\Pricing as Hotel_Price;
+use \Tourfic\Classes\Tour\Pricing as Tour_Price;
+use \Tourfic\Classes\Helper as Tourfic_Helper;
 
 class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
 {
+
+	/**
+	 * Get minimum tour card price from Tourfic pricing engine with legacy fallback.
+	 *
+	 * @param int   $post_id     Tour post id.
+	 * @param array $option_meta Tour options meta.
+	 * @return float
+	 */
+	protected function tft_get_tour_card_price( $post_id, $option_meta = array() ) {
+		$option_meta = is_array( $option_meta ) ? $option_meta : array();
+		$pricing_rule = ! empty( $option_meta['pricing'] ) ? $option_meta['pricing'] : '';
+		$minimum_setting = class_exists( '\Tourfic\Classes\Helper' ) && ! empty( Tourfic_Helper::tfopt( 'tour_archive_price_minimum_settings' ) ) ? Tourfic_Helper::tfopt( 'tour_archive_price_minimum_settings' ) : 'adult';
+		$disable_adult_price = ! empty( $option_meta['disable_adult_price'] );
+		$disable_child_price = ! empty( $option_meta['disable_child_price'] );
+		$disable_infant_price = ! empty( $option_meta['disable_infant_price'] );
+
+		if ( class_exists( '\Tourfic\Classes\Tour\Pricing' ) ) {
+			$avail_prices = Tour_Price::instance( $post_id )->get_avail_price();
+			$calculated_prices = array();
+
+			if ( 'group' === $pricing_rule && ! empty( $avail_prices['group_price'] ) ) {
+				$calculated_prices[] = (float) $avail_prices['group_price'];
+			}
+
+			if ( 'person' === $pricing_rule || 'package' === $pricing_rule ) {
+				if ( 'all' === $minimum_setting ) {
+					if ( ! empty( $avail_prices['adult_price'] ) && ! $disable_adult_price ) {
+						$calculated_prices[] = (float) $avail_prices['adult_price'];
+					}
+					if ( ! empty( $avail_prices['child_price'] ) && ! $disable_child_price ) {
+						$calculated_prices[] = (float) $avail_prices['child_price'];
+					}
+				}
+				if ( 'adult' === $minimum_setting && ! empty( $avail_prices['adult_price'] ) && ! $disable_adult_price ) {
+					$calculated_prices[] = (float) $avail_prices['adult_price'];
+				}
+				if ( 'child' === $minimum_setting && ! empty( $avail_prices['child_price'] ) && ! $disable_child_price ) {
+					$calculated_prices[] = (float) $avail_prices['child_price'];
+				}
+			}
+
+			if ( 'package' === $pricing_rule && ! empty( $avail_prices['group_price'] ) ) {
+				$calculated_prices[] = (float) $avail_prices['group_price'];
+			}
+
+			if ( ! empty( $calculated_prices ) ) {
+				return (float) min( $calculated_prices );
+			}
+
+			$fallback_prices = array();
+
+			if ( ! empty( $avail_prices['adult_price'] ) && ! $disable_adult_price ) {
+				$fallback_prices[] = (float) $avail_prices['adult_price'];
+			}
+			if ( ! empty( $avail_prices['child_price'] ) && ! $disable_child_price ) {
+				$fallback_prices[] = (float) $avail_prices['child_price'];
+			}
+			if ( ! empty( $avail_prices['infant_price'] ) && ! $disable_infant_price ) {
+				$fallback_prices[] = (float) $avail_prices['infant_price'];
+			}
+			if ( ! empty( $avail_prices['group_price'] ) && ( 'group' === $pricing_rule || 'package' === $pricing_rule ) ) {
+				$fallback_prices[] = (float) $avail_prices['group_price'];
+			}
+
+			if ( ! empty( $fallback_prices ) ) {
+				return (float) min( $fallback_prices );
+			}
+		}
+
+		if ( 'group' === $pricing_rule ) {
+			return isset( $option_meta['group_price'] ) ? (float) $option_meta['group_price'] : 0;
+		}
+
+		$person_prices = array();
+		$adult_price = isset( $option_meta['adult_price'] ) ? $option_meta['adult_price'] : '';
+		if ( ! $disable_adult_price && '' !== $adult_price ) {
+			$person_prices[] = (float) $adult_price;
+		}
+
+		$child_price = isset( $option_meta['child_price'] ) ? $option_meta['child_price'] : '';
+		if ( ! $disable_child_price && '' !== $child_price ) {
+			$person_prices[] = (float) $child_price;
+		}
+
+		$infant_price = isset( $option_meta['infant_price'] ) ? $option_meta['infant_price'] : '';
+		if ( ! $disable_infant_price && '' !== $infant_price ) {
+			$person_prices[] = (float) $infant_price;
+		}
+
+		return ! empty( $person_prices ) ? (float) min( $person_prices ) : 0;
+	}
 
     /**
      * Get widget name.
@@ -2655,34 +2748,7 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         $tf_featured_text = !empty($option_meta['featured_text']) ? $option_meta['featured_text'] : 'Featured';
 
                                         // pricing
-                                        $tf_pricing = !empty($option_meta['pricing']) ? $option_meta['pricing'] : '';
-
-                                        if ($tf_pricing === 'group') {
-                                            $tf_total_price = $option_meta['group_price'] ?? 0;
-                                        } else {
-                                            $disable_adult_price  = !empty($option_meta['disable_adult_price']) ? $option_meta['disable_adult_price'] : false;
-                                            $disable_child_price  = !empty($option_meta['disable_child_price']) ? $option_meta['disable_child_price'] : false;
-                                            $disable_infant_price = !empty($option_meta['disable_infant_price']) ? $option_meta['disable_infant_price'] : false;
-
-                                            $person_prices = [];
-
-                                            $tf_adult_price = isset($option_meta['adult_price']) ? $option_meta['adult_price'] : '';
-                                            if (!$disable_adult_price && '' !== $tf_adult_price) {
-                                                $person_prices[] = (float) $tf_adult_price;
-                                            }
-
-                                            $tf_child_price = isset($option_meta['child_price']) ? $option_meta['child_price'] : '';
-                                            if (!$disable_child_price && '' !== $tf_child_price) {
-                                                $person_prices[] = (float) $tf_child_price;
-                                            }
-
-                                            $tf_infant_price = isset($option_meta['infant_price']) ? $option_meta['infant_price'] : '';
-                                            if (!$disable_infant_price && '' !== $tf_infant_price) {
-                                                $person_prices[] = (float) $tf_infant_price;
-                                            }
-
-                                            $tf_total_price = !empty($person_prices) ? min($person_prices) : 0;
-                                        }
+                                        $tf_total_price = $this->tft_get_tour_card_price( $post_id, $option_meta );
 
                                         // location
                                         if (is_array($option_meta) && isset($option_meta['location'])) {
