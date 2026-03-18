@@ -150,7 +150,7 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 = 1.4.1 – March 18, 2026 =
 
-- Fixed: Role and user capability assignment issue with null objects.
+- Fixed: Demo 4 tour card price mismatch with Tourfic pricing engine.
 
 = 1.4.0 – March 12, 2026 =
 
