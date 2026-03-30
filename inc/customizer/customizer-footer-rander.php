@@ -36,7 +36,7 @@ class Travelfic_Customizer_Footer
         
         $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
         $travelfic_menu_1_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_1', 'Privacy Policy');
-        $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_2', '#');
+        $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_1', '#');
         $travelfic_menu_2_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_2', 'View on Maps');
         $travelfic_menu_2_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_2', '#');
 
