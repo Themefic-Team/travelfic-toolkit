@@ -35,6 +35,9 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  */
 function travelfic_toolkit_settings() {
     $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+    if ( $current_active_theme == 'bricks' || $current_active_theme == 'bricks-child' ) {
+        return;
+    }
     if($current_active_theme == 'travelfic' || $current_active_theme == 'travelfic-child'){
         $theme_folder = wp_get_theme( 'travelfic' );
     }elseif($current_active_theme == 'ultimate-hotel-booking' || $current_active_theme == 'ultimate-hotel-booking-child'){
@@ -205,7 +208,8 @@ function travelfic_toolkit_front_page_script() {
             'activated'      => __( 'Activated', 'travelfic-toolkit' ),
             'install_failed' => __( 'Install failed', 'travelfic-toolkit' ),
             'actives_plugins' => $travelfic_toolkit_active_plugins,
-            'facts' => $travelfic_toolkit_facts
+            'facts' => $travelfic_toolkit_facts,
+            'current_theme'  => !empty(get_option('stylesheet')) ? get_option('stylesheet') : '',
         )
     );
 

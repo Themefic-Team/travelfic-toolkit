@@ -235,6 +235,24 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="plug-active-woocommerce-btn" style="display: none;"><?php esc_html_e("Woocommerce Active", "travelfic-toolkit"); ?></span>
                         <span class="plug-active-elementor-btn" style="display: none;"><?php esc_html_e("Elementor Active", "travelfic-toolkit"); ?></span>
                     </div>
+                    <div class="travelfic-builder-selector-container">
+                        <div class="travelfic-builder-tabs">
+                            <button class="travelfic-builder-tab active" data-builder="elementor">
+                                <svg class="builder-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0C5.37193 0 0 5.37193 0 12C0 18.6259 5.37193 24 12 24C18.6281 24 24 18.6281 24 12C23.9978 5.37193 18.6259 0 12 0ZM9.00054 16.9984H7.00164V6.99948H9.00054V16.9984ZM16.9984 16.9984H10.9994V14.9995H16.9984V16.9984ZM16.9984 12.9983H10.9994V10.9994H16.9984V12.9983ZM16.9984 8.99838H10.9994V6.99948H16.9984V8.99838Z" fill="currentColor"/>
+                                </svg>
+                                <span><?php esc_html_e("Elementor", "travelfic-toolkit"); ?></span>
+                            </button>
+                            <button class="travelfic-builder-tab" data-builder="bricks">
+                                <svg class="builder-tab-icon" width="18" height="18" viewBox="0 0 5120 5120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(0,5120) scale(1,-1)">
+                                        <path fill="currentColor" d="M1600 4191 l-315 -36 -3 -1597 -2 -1598 315 0 315 0 0 131 c0 151 -12 145 104 48 129 -109 310 -191 483 -220 97 -16 312 -13 417 6 233 41 424 142 596 315 53 52 117 125 143 162 94 134 166 304 204 488 27 128 25 431 -4 561 -29 129 -56 208 -108 312 -60 118 -109 188 -202 287 -202 216 -449 334 -750 360 -247 21 -454 -21 -670 -135 l-103 -54 0 489 0 489 -22 15 c-29 20 -25 20 -398 -23z m1145 -1433 c129 -37 236 -117 310 -232 134 -210 136 -522 4 -726 -114 -177 -273 -261 -489 -261 -180 0 -295 46 -415 166 -122 122 -169 250 -169 455 0 140 14 211 66 319 57 119 194 236 330 280 100 33 248 32 363 -1z"/>
+                                    </g>
+                                </svg>
+                                <span><?php esc_html_e("Bricks Builder", "travelfic-toolkit"); ?></span>
+                            </button>
+                        </div>
+                    </div>
                     <div class="travelfic-template-filter">
                         <div class="travelfic-search-form">
                             <input type="text" id="travelfic_template_search" placeholder="<?php esc_html_e("Search for templates", "travelfic-toolkit"); ?>">
@@ -419,7 +437,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 				update_option( 'travelfic_toolkit_template_wizard', 'active' );
 
                 $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
-                if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' && $current_active_theme != 'ultimate-hotel-booking' && $current_active_theme != 'ultimate-hotel-booking-child' ) {
+                if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' && $current_active_theme != 'ultimate-hotel-booking' && $current_active_theme != 'ultimate-hotel-booking-child' && $current_active_theme != 'bricks' && $current_active_theme != 'bricks-child' ) {
                     wp_redirect( admin_url( 'themes.php' ) );
                 }else{
 				    wp_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );

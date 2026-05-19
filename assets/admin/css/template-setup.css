@@ -75,6 +75,7 @@ body.admin_page_travelfic-template-list {
 }
 .travelfic-template-list-wrapper .travelfic-template-list-container .travelfic-template-list-heading h2{
     color: #27333F;
+    text-align: center;
     font-family: Inter;
     font-size: 32px;
     font-style: normal;
@@ -887,4 +888,80 @@ body.admin_page_travelfic-template-list {
     height: 52px;
     box-sizing: border-box;
     margin-top: 50px;
+}
+
+/* Page Builder Selector Container */
+.travelfic-builder-selector-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Gorgeous Segmented Controller Capsule */
+.travelfic-builder-tabs {
+    display: inline-flex;
+    background: #EBF1F7;
+    border-radius: 50px;
+    padding: 6px;
+    gap: 4px;
+    position: relative;
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.05), 
+                0px 10px 30px rgba(0, 60, 122, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Individual Tab Segment */
+.travelfic-builder-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #5C6E80;
+    padding: 12px 36px;
+    border-radius: 40px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Subtle Hover Effect for Tabs */
+.travelfic-builder-tab:hover {
+    color: #003C79;
+}
+
+/* Cohesive brand blue gradient and shadow for active tabs */
+.travelfic-builder-tab.active {
+    background: linear-gradient(135deg, #0056B3 0%, #003C79 100%) !important;
+    box-shadow: 0px 6px 20px rgba(0, 60, 122, 0.25);
+    color: #FFFFFF !important;
+}
+
+/* SVGs inside the tabs */
+.travelfic-builder-tab .builder-tab-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Micro-interaction: scale SVG on hover or active */
+.travelfic-builder-tab:hover .builder-tab-icon {
+    transform: scale(1.15);
+}
+
+.travelfic-builder-tab.active .builder-tab-icon {
+    fill: #FFFFFF !important;
 }

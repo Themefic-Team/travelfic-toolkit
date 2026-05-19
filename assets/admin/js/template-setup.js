@@ -7,11 +7,30 @@
     let plugin_slugs = travelfic_toolkit_script_params.actives_plugins;
     let plugin_facts = travelfic_toolkit_script_params.facts;
     let travelfic_imports_data = '';
+    let active_builder = 'elementor';
 
     let plugin_slug_length = plugin_slugs.length-1;
 
+    // Page Builder Selector Tab Click
+    $(document).on('click', '.travelfic-builder-tab', function (e) {
+        e.preventDefault();
+        let current = $(this);
+        $('.travelfic-builder-tab').removeClass('active');
+        current.addClass('active');
+        active_builder = current.attr('data-builder');
+
+        if (active_builder === 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks-child') {
+            alert('Warning: Bricks Builder theme is not active. Please activate the Bricks theme to import Bricks templates successfully.');
+        }
+    });
+
     // Import Template
     $(document).on('click', '.template-import-btn', function (e) {
+
+        if (active_builder === 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks-child') {
+            alert('Warning: Bricks Builder theme is not active. Please activate the Bricks theme before importing Bricks templates.');
+            return;
+        }
 
         $('.travelfic-import-confirmaiton-msg').addClass('show');
         template_type = $(this).attr('data-template');
@@ -26,6 +45,14 @@
             return $(this).val();
         }).get();
         travelfic_imports_data = imports_data;
+
+        // Exclude Elementor from plugins to install/activate if Bricks is selected
+        if (active_builder === 'bricks') {
+            plugin_slugs = plugin_slugs.filter(function(slug) {
+                return slug !== 'elementor';
+            });
+            plugin_slug_length = plugin_slugs.length - 1;
+        }
 
         // hide sync btn
         $('.travelfic-templte-sync-btn').hide();
@@ -76,7 +103,7 @@
                             if("woocommerce"==slug){
                                 $('.plug-woocommerce-btn').click();
                             }
-                            if("elementor"==slug){
+                            if("elementor"==slug && active_builder !== 'bricks'){
                                 $('.plug-elementor-btn').click();
                             }
                         }
@@ -390,6 +417,7 @@
                 data: {
                     action: 'travelfic-demo-pages-import',
                     template_version: template_design,
+                    builder: active_builder,
                     _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 },
                 success: function(response) {

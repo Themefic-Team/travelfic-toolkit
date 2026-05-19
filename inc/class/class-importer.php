@@ -190,6 +190,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
 
             update_option('travelfic_template_version', $template_key);
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
@@ -214,7 +215,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
             
-            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            if ( 'bricks' === $builder ) {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages-bricks.json';
+            } else {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            }
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
 
@@ -254,8 +259,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $pages_images = $page['media_urls'];
 
                     $elementor_data = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
-                
                     $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
+
+                    $bricks_content_str = !empty($page['_bricks_page_content_2']) ? wp_slash(wp_json_encode($page['_bricks_page_content_2'])) : '';
+                    $bricks_settings_str = !empty($page['_bricks_page_settings_2']) ? wp_slash(wp_json_encode($page['_bricks_page_settings_2'])) : '';
 
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
@@ -297,12 +304,21 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
                         foreach ($update_media_url as $local_url => $old_url) {
-                            $elementor_content = str_replace($old_url, $local_url, $elementor_content);
+                            if ('bricks' === $builder) {
+                                if (!empty($bricks_content_str)) {
+                                    $bricks_content_str = str_replace($old_url, $local_url, $bricks_content_str);
+                                }
+                                if (!empty($bricks_settings_str)) {
+                                    $bricks_settings_str = str_replace($old_url, $local_url, $bricks_settings_str);
+                                }
+                            } else {
+                                $elementor_content = str_replace($old_url, $local_url, $elementor_content);
+                            }
                         }
                     }
                     
                     // Process Elementor data to find and replace background images
-                    if (!empty($elementor_data)) {
+                    if (!empty($elementor_data) && 'elementor' === $builder) {
                         foreach ($elementor_data as &$element) {
                           $this->prepare_travelfic_elementor_background_images($element);
                         }
@@ -371,154 +387,169 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
                         update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
                         update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
-                        update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-                        update_post_meta($new_page_id, '_elementor_data', $elementor_content);
-                        update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
-                        update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                        
+                        if ('bricks' === $builder) {
+                            if (!empty($bricks_content_str)) {
+                                update_post_meta($new_page_id, '_bricks_page_content_2', json_decode(wp_unslash($bricks_content_str), true));
+                            }
+                            if (!empty($bricks_settings_str)) {
+                                update_post_meta($new_page_id, '_bricks_page_settings_2', json_decode(wp_unslash($bricks_settings_str), true));
+                            }
+                            update_post_meta($new_page_id, '_bricks_editor_mode', 'bricks');
+                        } else {
+                            update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
+                            update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                            update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
+                            update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                        }
                     }
                 }
                 
-                delete_option('_elementor_global_css');
-		        delete_option('elementor-custom-breakpoints-files');
+                if ( 'elementor' === $builder ) {
+                    delete_option('_elementor_global_css');
+                    delete_option('elementor-custom-breakpoints-files');
+                }
             }
 
-            // Update the elementor global colors
-            $elementor_kit_id = get_option('elementor_active_kit');
-            $settings = get_post_meta($elementor_kit_id, '_elementor_page_settings', true);
+            if ( 'elementor' === $builder ) {
+                // Update the elementor global colors
+                $elementor_kit_id = get_option('elementor_active_kit');
+                $settings = get_post_meta($elementor_kit_id, '_elementor_page_settings', true);
 
-            // Ensure settings is an array
-            if (!is_array($settings)) {
-                $settings = [];
+                // Ensure settings is an array
+                if (!is_array($settings)) {
+                    $settings = [];
+                }
+
+                // Define palettes
+                $color_palette = [
+                    'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
+                    'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
+                    'design-3' => ['#fa6400', '#0e3dd8', '#686e7a', '#fa6400'],
+                    'design-4' => ['#153d3a', '#0d1211', '#334745', '#ee5509'],
+                ];
+
+                // Fallback to design-1
+                switch ($template_key) {
+                    case '6':
+                        $selected = 'design-4';
+                        break;
+                    case '5':
+                        $selected = 'design-3';
+                        break;
+                    case '4':
+                        $selected = 'design-2';
+                        break;
+                    default:
+                        $selected = 'design-1';
+                }
+
+                list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
+
+                // Update colors
+                $settings['system_colors'] = [
+                    ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
+                    ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
+                    ['_id' => 'text',      'title' => 'Text',      'color' => $text_color],
+                    ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
+                ];
+
+                // Typography presets per design
+                $typography_presets = [
+                    'design-1' => [
+                        [
+                            '_id'   => 'primary',
+                            'title' => 'Primary',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Libre Baskerville',
+                            'typography_font_weight' => '400',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 65,
+                            ],
+                            'typography_font_size_tablet' => [
+                                'unit' => 'px',
+                                'size' => 37,
+                            ],
+                            'typography_font_size_mobile' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 78,
+                            ],
+                            'typography_line_height_tablet' => [
+                                'unit' => 'px',
+                                'size' => 52,
+                            ],
+                            'typography_line_height_mobile' => [
+                                'unit' => 'px',
+                                'size' => 37,
+                            ],
+                        ],
+                        [
+                            '_id'   => 'secondary',
+                            'title' => 'Secondary',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Work Sans',
+                            'typography_font_weight' => '600',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 17,
+                            ],
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+                        ],
+                        [
+                            '_id'   => 'text',
+                            'title' => 'Text',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Work Sans',
+                            'typography_font_weight' => '400',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 17,
+                            ],
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+                        ],
+                        [
+                            '_id'   => 'accent',
+                            'title' => 'Accent',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Work Sans',
+                            'typography_font_weight' => '600',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 17,
+                            ],
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+                        ],
+                    ],
+                ];
+
+                switch ($template_key) {
+                    case '6':
+                        $font_selected = 'design-1';
+                        break;
+                    default:
+                        $font_selected = 'design-1';
+                }
+
+                // Assign the chosen typography preset based on selected design
+                $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
+
+                update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
             }
-
-            // Define palettes
-            $color_palette = [
-                'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
-                'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
-                'design-3' => ['#fa6400', '#0e3dd8', '#686e7a', '#fa6400'],
-                'design-4' => ['#153d3a', '#0d1211', '#334745', '#ee5509'],
-            ];
-
-            // Fallback to design-1
-            switch ($template_key) {
-                case '6':
-                    $selected = 'design-4';
-                    break;
-                case '5':
-                    $selected = 'design-3';
-                    break;
-                case '4':
-                    $selected = 'design-2';
-                    break;
-                default:
-                    $selected = 'design-1';
-            }
-
-            list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
-
-            // Update colors
-            $settings['system_colors'] = [
-                ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
-                ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
-                ['_id' => 'text',      'title' => 'Text',      'color' => $text_color],
-                ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
-            ];
-
-            // Typography presets per design
-            $typography_presets = [
-                'design-1' => [
-                    [
-                        '_id'   => 'primary',
-                        'title' => 'Primary',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Libre Baskerville',
-                        'typography_font_weight' => '400',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 65,
-                        ],
-                        'typography_font_size_tablet' => [
-                            'unit' => 'px',
-                            'size' => 37,
-                        ],
-                        'typography_font_size_mobile' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 78,
-                        ],
-                        'typography_line_height_tablet' => [
-                            'unit' => 'px',
-                            'size' => 52,
-                        ],
-                        'typography_line_height_mobile' => [
-                            'unit' => 'px',
-                            'size' => 37,
-                        ],
-                    ],
-                    [
-                        '_id'   => 'secondary',
-                        'title' => 'Secondary',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Work Sans',
-                        'typography_font_weight' => '600',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-                    ],
-                    [
-                        '_id'   => 'text',
-                        'title' => 'Text',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Work Sans',
-                        'typography_font_weight' => '400',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-                    ],
-                    [
-                        '_id'   => 'accent',
-                        'title' => 'Accent',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Work Sans',
-                        'typography_font_weight' => '600',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-                    ],
-                ],
-            ];
-
-            switch ($template_key) {
-                case '6':
-                    $font_selected = 'design-1';
-                    break;
-                default:
-                    $font_selected = 'design-1';
-            }
-
-            // Assign the chosen typography preset based on selected design
-            $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
-
-            update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
             die();
 
 		}
