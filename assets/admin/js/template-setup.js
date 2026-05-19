@@ -25,24 +25,16 @@
             if (active_theme !== 'bricks' && active_theme !== 'bricks-child' && bricks_active !== 'yes') {
                 if (bricks_installed === 'yes') {
                     notice_banner.html(`
-                        <div class="travelfic-bricks-warning-card">
-                            <span class="warning-icon">⚠️</span>
-                            <div class="warning-details">
-                                <strong>Bricks theme is inactive</strong>
-                                <p>Please activate the Bricks theme to import and use Bricks templates successfully.</p>
-                            </div>
-                            <a href="${activate_url}" class="button travelfic-notice-btn">Activate Bricks Theme</a>
+                        <div class="notice notice-error" style="margin: 15px auto 5px; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-radius: 6px;">
+                            <p style="margin: 0; font-weight: 500;">${travelfic_toolkit_script_params.bricks_installed === 'yes' ? 'Please activate the Bricks theme to import and use Bricks templates successfully.' : ''}</p>
+                            <a href="${activate_url}" class="button button-secondary" style="margin-left: 15px; font-weight: 600;">Activate Bricks Theme</a>
                         </div>
                     `).slideDown(300);
                 } else {
                     notice_banner.html(`
-                        <div class="travelfic-bricks-warning-card">
-                            <span class="warning-icon">⚠️</span>
-                            <div class="warning-details">
-                                <strong>Bricks theme is required</strong>
-                                <p>Bricks is a premium builder theme. Please purchase, install, and activate the Bricks theme to import Bricks templates.</p>
-                            </div>
-                            <a href="https://bricksbuilder.io" target="_blank" class="button travelfic-notice-btn">Get Bricks Builder</a>
+                        <div class="notice notice-error" style="margin: 15px auto 5px; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-radius: 6px;">
+                            <p style="margin: 0; font-weight: 500;">Bricks Builder theme is required to import Bricks templates successfully.</p>
+                            <a href="https://bricksbuilder.io" target="_blank" class="button button-secondary" style="margin-left: 15px; font-weight: 600;">Get Bricks Theme</a>
                         </div>
                     `).slideDown(300);
                 }
