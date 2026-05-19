@@ -236,8 +236,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="plug-active-elementor-btn" style="display: none;"><?php esc_html_e("Elementor Active", "travelfic-toolkit"); ?></span>
                     </div>
                     <?php
-                    $elementor_active = did_action( 'elementor/loaded' );
-                    $bricks_active    = ( function_exists( 'bricks_is_builder' ) || defined( 'BRICKS_VERSION' ) );
+                    if ( ! function_exists( 'is_plugin_active' ) ) {
+                        include_once ABSPATH . 'wp-admin/includes/plugin.php';
+                    }
+                    $elementor_active = is_plugin_active( 'elementor/elementor.php' );
+                    
+                    $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+                    $bricks_active = ( $current_active_theme === 'bricks' || $current_active_theme === 'bricks-child' || wp_get_theme()->get_template() === 'bricks' );
 
                     $elementor_installed = file_exists( WP_PLUGIN_DIR . '/elementor/elementor.php' );
                     $bricks_theme_installed = wp_get_theme( 'bricks' )->exists();

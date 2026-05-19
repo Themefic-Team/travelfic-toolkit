@@ -968,47 +968,47 @@ body.admin_page_travelfic-template-list {
 
 /* Builder Notices Wrapper */
 .travelfic-builder-notices {
-    margin-top: 15px;
+    margin-top: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-/* Notice Item capsule styling */
+/* Notice Item - clean text line instead of a card */
 .travelfic-builder-notice-item {
-    background: #FFF8E6;
-    border: 1px solid #FFEBA6;
-    border-radius: 30px;
-    padding: 8px 24px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: #855C00;
-    box-shadow: 0px 4px 12px rgba(255, 193, 0, 0.08);
+    color: #FF3B30; /* Clean warning red color */
     transition: all 0.3s ease;
 }
 
 /* Notice Text */
 .travelfic-builder-notice-item .notice-text {
-    font-weight: 500;
+    font-weight: 600;
 }
 
-/* Action button inside notice */
+/* Action link (underlined, inline link) */
 .travelfic-builder-notice-item .notice-action-btn {
-    background: #003C79;
-    color: #FFFFFF !important;
-    text-decoration: none;
+    background: transparent !important;
+    color: #003C79 !important;
+    text-decoration: underline !important;
     font-weight: 700;
-    font-size: 13px;
-    padding: 6px 16px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    font-size: 14px;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    transition: color 0.2s ease;
 }
 
 .travelfic-builder-notice-item .notice-action-btn:hover {
-    background: #002B57;
-    box-shadow: 0px 4px 10px rgba(0, 60, 122, 0.2);
+    color: #0056B3 !important;
+    box-shadow: none !important;
 }
