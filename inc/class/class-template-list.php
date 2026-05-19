@@ -235,22 +235,57 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         <span class="plug-active-woocommerce-btn" style="display: none;"><?php esc_html_e("Woocommerce Active", "travelfic-toolkit"); ?></span>
                         <span class="plug-active-elementor-btn" style="display: none;"><?php esc_html_e("Elementor Active", "travelfic-toolkit"); ?></span>
                     </div>
+                    <?php
+                    $elementor_active = did_action( 'elementor/loaded' );
+                    $bricks_active    = ( function_exists( 'bricks_is_builder' ) || defined( 'BRICKS_VERSION' ) );
+
+                    $elementor_installed = file_exists( WP_PLUGIN_DIR . '/elementor/elementor.php' );
+                    $bricks_theme_installed = wp_get_theme( 'bricks' )->exists();
+                    ?>
                     <div class="travelfic-builder-selector-container">
-                        <div class="travelfic-builder-tabs">
-                            <button class="travelfic-builder-tab active" data-builder="elementor">
-                                <svg class="builder-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 0C5.37193 0 0 5.37193 0 12C0 18.6259 5.37193 24 12 24C18.6281 24 24 18.6281 24 12C23.9978 5.37193 18.6259 0 12 0ZM9.00054 16.9984H7.00164V6.99948H9.00054V16.9984ZM16.9984 16.9984H10.9994V14.9995H16.9984V16.9984ZM16.9984 12.9983H10.9994V10.9994H16.9984V12.9983ZM16.9984 8.99838H10.9994V6.99948H16.9984V8.99838Z" fill="currentColor"/>
-                                </svg>
-                                <span><?php esc_html_e("Elementor", "travelfic-toolkit"); ?></span>
-                            </button>
-                            <button class="travelfic-builder-tab" data-builder="bricks">
-                                <svg class="builder-tab-icon" width="18" height="18" viewBox="0 0 5120 5120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g transform="translate(0,5120) scale(1,-1)">
-                                        <path fill="currentColor" d="M1600 4191 l-315 -36 -3 -1597 -2 -1598 315 0 315 0 0 131 c0 151 -12 145 104 48 129 -109 310 -191 483 -220 97 -16 312 -13 417 6 233 41 424 142 596 315 53 52 117 125 143 162 94 134 166 304 204 488 27 128 25 431 -4 561 -29 129 -56 208 -108 312 -60 118 -109 188 -202 287 -202 216 -449 334 -750 360 -247 21 -454 -21 -670 -135 l-103 -54 0 489 0 489 -22 15 c-29 20 -25 20 -398 -23z m1145 -1433 c129 -37 236 -117 310 -232 134 -210 136 -522 4 -726 -114 -177 -273 -261 -489 -261 -180 0 -295 46 -415 166 -122 122 -169 250 -169 455 0 140 14 211 66 319 57 119 194 236 330 280 100 33 248 32 363 -1z"/>
-                                    </g>
-                                </svg>
-                                <span><?php esc_html_e("Bricks Builder", "travelfic-toolkit"); ?></span>
-                            </button>
+                        <div class="travelfic-builder-tabs-wrapper">
+                            <div class="travelfic-builder-tabs">
+                                <button class="travelfic-builder-tab active" data-builder="elementor">
+                                    <svg class="builder-tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 0C5.37193 0 0 5.37193 0 12C0 18.6259 5.37193 24 12 24C18.6281 24 24 18.6281 24 12C23.9978 5.37193 18.6259 0 12 0ZM9.00054 16.9984H7.00164V6.99948H9.00054V16.9984ZM16.9984 16.9984H10.9994V14.9995H16.9984V16.9984ZM16.9984 12.9983H10.9994V10.9994H16.9984V12.9983ZM16.9984 8.99838H10.9994V6.99948H16.9984V8.99838Z" fill="currentColor"/>
+                                    </svg>
+                                    <span><?php esc_html_e("Elementor", "travelfic-toolkit"); ?></span>
+                                </button>
+                                <button class="travelfic-builder-tab" data-builder="bricks">
+                                    <svg class="builder-tab-icon" width="18" height="18" viewBox="0 0 5120 5120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g transform="translate(0,5120) scale(1,-1)">
+                                            <path fill="currentColor" d="M1600 4191 l-315 -36 -3 -1597 -2 -1598 315 0 315 0 0 131 c0 151 -12 145 104 48 129 -109 310 -191 483 -220 97 -16 312 -13 417 6 233 41 424 142 596 315 53 52 117 125 143 162 94 134 166 304 204 488 27 128 25 431 -4 561 -29 129 -56 208 -108 312 -60 118 -109 188 -202 287 -202 216 -449 334 -750 360 -247 21 -454 -21 -670 -135 l-103 -54 0 489 0 489 -22 15 c-29 20 -25 20 -398 -23z m1145 -1433 c129 -37 236 -117 310 -232 134 -210 136 -522 4 -726 -114 -177 -273 -261 -489 -261 -180 0 -295 46 -415 166 -122 122 -169 250 -169 455 0 140 14 211 66 319 57 119 194 236 330 280 100 33 248 32 363 -1z"/>
+                                        </g>
+                                    </svg>
+                                    <span><?php esc_html_e("Bricks Builder", "travelfic-toolkit"); ?></span>
+                                </button>
+                            </div>
+
+                            <div class="travelfic-builder-notices">
+                                <div class="travelfic-builder-notice-item elementor-notice" style="<?php echo $elementor_active ? 'display: none;' : ''; ?>">
+                                    <?php if ( ! $elementor_installed ) : ?>
+                                        <span class="notice-text"><?php esc_html_e( 'Elementor is required to import Elementor templates.', 'travelfic-toolkit' ); ?></span>
+                                        <a class="notice-action-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' ) ); ?>">
+                                            <?php esc_html_e( 'Install Elementor', 'travelfic-toolkit' ); ?>
+                                        </a>
+                                    <?php elseif ( current_user_can( 'activate_plugins' ) ) : ?>
+                                        <span class="notice-text"><?php esc_html_e( 'Elementor is inactive.', 'travelfic-toolkit' ); ?></span>
+                                        <a class="notice-action-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=elementor/elementor.php' ), 'activate-plugin_elementor/elementor.php' ) ); ?>">
+                                            <?php esc_html_e( 'Activate Elementor', 'travelfic-toolkit' ); ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="travelfic-builder-notice-item bricks-notice" style="<?php echo $bricks_active ? 'display: none;' : 'display: none;'; ?>">
+                                    <?php if ( $bricks_theme_installed && current_user_can( 'switch_themes' ) ) : ?>
+                                        <span class="notice-text"><?php esc_html_e( 'Bricks theme is inactive.', 'travelfic-toolkit' ); ?></span>
+                                        <a class="notice-action-btn" href="<?php echo esc_url( wp_nonce_url( admin_url( 'themes.php?action=activate&stylesheet=bricks' ), 'switch-theme_bricks' ) ); ?>">
+                                            <?php esc_html_e( 'Activate Bricks Theme', 'travelfic-toolkit' ); ?>
+                                        </a>
+                                    <?php else : ?>
+                                        <span class="notice-text"><?php esc_html_e( 'Bricks Builder theme is required to import Bricks templates.', 'travelfic-toolkit' ); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="travelfic-template-filter">

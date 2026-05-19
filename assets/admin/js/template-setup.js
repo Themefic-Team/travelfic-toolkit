@@ -19,10 +19,26 @@
         current.addClass('active');
         active_builder = current.attr('data-builder');
 
+        // Toggle builder required notices
+        $('.travelfic-builder-notice-item').hide();
+        if (active_builder === 'elementor') {
+            $('.elementor-notice').show();
+        } else if (active_builder === 'bricks') {
+            $('.bricks-notice').show();
+        }
+
         if (active_builder === 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks-child') {
             alert('Warning: Bricks Builder theme is not active. Please activate the Bricks theme to import Bricks templates successfully.');
         }
     });
+
+    // Show initial notice on load
+    $('.travelfic-builder-notice-item').hide();
+    if (active_builder === 'elementor') {
+        $('.elementor-notice').show();
+    } else if (active_builder === 'bricks') {
+        $('.bricks-notice').show();
+    }
 
     // Import Template
     $(document).on('click', '.template-import-btn', function (e) {

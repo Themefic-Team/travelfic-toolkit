@@ -965,3 +965,50 @@ body.admin_page_travelfic-template-list {
 .travelfic-builder-tab.active .builder-tab-icon {
     fill: #FFFFFF !important;
 }
+
+/* Builder Notices Wrapper */
+.travelfic-builder-notices {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Notice Item capsule styling */
+.travelfic-builder-notice-item {
+    background: #FFF8E6;
+    border: 1px solid #FFEBA6;
+    border-radius: 30px;
+    padding: 8px 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #855C00;
+    box-shadow: 0px 4px 12px rgba(255, 193, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+/* Notice Text */
+.travelfic-builder-notice-item .notice-text {
+    font-weight: 500;
+}
+
+/* Action button inside notice */
+.travelfic-builder-notice-item .notice-action-btn {
+    background: #003C79;
+    color: #FFFFFF !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.travelfic-builder-notice-item .notice-action-btn:hover {
+    background: #002B57;
+    box-shadow: 0px 4px 10px rgba(0, 60, 122, 0.2);
+}
