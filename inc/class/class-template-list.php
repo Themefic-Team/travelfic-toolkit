@@ -239,13 +239,12 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                     if ( ! function_exists( 'is_plugin_active' ) ) {
                         include_once ABSPATH . 'wp-admin/includes/plugin.php';
                     }
-                    $elementor_active = is_plugin_active( 'elementor/elementor.php' );
-                    
-                    $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
-                    $bricks_active = ( $current_active_theme === 'bricks' || $current_active_theme === 'bricks-child' || wp_get_theme()->get_template() === 'bricks' );
-
+                    $elementor_slug = 'elementor/elementor.php';
                     $elementor_installed = file_exists( WP_PLUGIN_DIR . '/elementor/elementor.php' );
-                    $bricks_theme_installed = wp_get_theme( 'bricks' )->exists();
+                    $elementor_active    = $elementor_installed && is_plugin_active( $elementor_slug );
+
+                    $bricks_installed = wp_get_theme( 'bricks' )->exists();
+                    $bricks_active    = ( get_stylesheet() === 'bricks' || get_template() === 'bricks' );
                     ?>
                     <div class="travelfic-builder-selector-container">
                         <div class="travelfic-builder-tabs-wrapper">
@@ -268,22 +267,42 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 
                             <div class="travelfic-builder-notices">
                                 <div class="travelfic-builder-notice-item elementor-notice" style="<?php echo $elementor_active ? 'display: none;' : ''; ?>">
-                                    <?php if ( ! $elementor_installed ) : ?>
-                                        <span class="notice-text"><?php esc_html_e( 'Elementor is required to import Elementor templates.', 'travelfic-toolkit' ); ?></span>
-                                        <a class="notice-action-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' ) ); ?>">
-                                            <?php esc_html_e( 'Install Elementor', 'travelfic-toolkit' ); ?>
-                                        </a>
-                                    <?php elseif ( current_user_can( 'activate_plugins' ) ) : ?>
-                                        <span class="notice-text"><?php esc_html_e( 'Elementor is inactive.', 'travelfic-toolkit' ); ?></span>
-                                        <a class="notice-action-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=elementor/elementor.php' ), 'activate-plugin_elementor/elementor.php' ) ); ?>">
-                                            <?php esc_html_e( 'Activate Elementor', 'travelfic-toolkit' ); ?>
-                                        </a>
+                                    <?php if ( ! $elementor_active ) : ?>
+                                        <?php if ( ! $elementor_installed ) : ?>
+                                            <?php
+                                            $install_url = wp_nonce_url(
+                                                self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ),
+                                                'install-plugin_elementor'
+                                            );
+                                            ?>
+                                            <span class="notice-text"><?php esc_html_e( 'Elementor is required to import Elementor templates.', 'travelfic-toolkit' ); ?></span>
+                                            <a class="notice-action-btn" href="<?php echo esc_url( $install_url ); ?>">
+                                                <?php esc_html_e( 'Install Elementor', 'travelfic-toolkit' ); ?>
+                                            </a>
+                                        <?php elseif ( current_user_can( 'activate_plugins' ) ) : ?>
+                                            <?php
+                                            $activate_url = wp_nonce_url(
+                                                self_admin_url( 'plugins.php?action=activate&plugin=' . $elementor_slug ),
+                                                'activate-plugin_' . $elementor_slug
+                                            );
+                                            ?>
+                                            <span class="notice-text"><?php esc_html_e( 'Elementor is inactive.', 'travelfic-toolkit' ); ?></span>
+                                            <a class="notice-action-btn" href="<?php echo esc_url( $activate_url ); ?>">
+                                                <?php esc_html_e( 'Activate Elementor', 'travelfic-toolkit' ); ?>
+                                            </a>
+                                        <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
                                 <div class="travelfic-builder-notice-item bricks-notice" style="<?php echo $bricks_active ? 'display: none;' : 'display: none;'; ?>">
-                                    <?php if ( $bricks_theme_installed && current_user_can( 'switch_themes' ) ) : ?>
+                                    <?php if ( ! $bricks_active && $bricks_installed && current_user_can( 'switch_themes' ) ) : ?>
+                                        <?php
+                                        $activate_url = wp_nonce_url(
+                                            admin_url( 'themes.php?action=activate&stylesheet=bricks' ),
+                                            'switch-theme_bricks'
+                                        );
+                                        ?>
                                         <span class="notice-text"><?php esc_html_e( 'Bricks theme is inactive.', 'travelfic-toolkit' ); ?></span>
-                                        <a class="notice-action-btn" href="<?php echo esc_url( wp_nonce_url( admin_url( 'themes.php?action=activate&stylesheet=bricks' ), 'switch-theme_bricks' ) ); ?>">
+                                        <a class="notice-action-btn" href="<?php echo esc_url( $activate_url ); ?>">
                                             <?php esc_html_e( 'Activate Bricks Theme', 'travelfic-toolkit' ); ?>
                                         </a>
                                     <?php else : ?>
