@@ -210,6 +210,9 @@ function travelfic_toolkit_front_page_script() {
             'actives_plugins' => $travelfic_toolkit_active_plugins,
             'facts' => $travelfic_toolkit_facts,
             'current_theme'  => !empty(get_option('stylesheet')) ? get_option('stylesheet') : '',
+            'bricks_installed' => wp_get_theme( 'bricks' )->exists() ? 'yes' : 'no',
+            'bricks_active' => ( get_stylesheet() === 'bricks' || get_template() === 'bricks' ) ? 'yes' : 'no',
+            'bricks_activate_url' => wp_nonce_url( admin_url( 'themes.php?action=activate&stylesheet=bricks' ), 'switch-theme_bricks' ),
         )
     );
 

@@ -11,6 +11,50 @@
 
     let plugin_slug_length = plugin_slugs.length-1;
 
+    // Dynamic Bricks theme notice handler
+    function update_builder_notices() {
+        let notice_banner = $('.travelfic-bricks-notice-banner');
+        notice_banner.hide().html('');
+
+        if (active_builder === 'bricks') {
+            let active_theme = travelfic_toolkit_script_params.current_theme;
+            let bricks_installed = travelfic_toolkit_script_params.bricks_installed;
+            let bricks_active = travelfic_toolkit_script_params.bricks_active;
+            let activate_url = travelfic_toolkit_script_params.bricks_activate_url;
+
+            if (active_theme !== 'bricks' && active_theme !== 'bricks-child' && bricks_active !== 'yes') {
+                if (bricks_installed === 'yes') {
+                    notice_banner.html(`
+                        <div class="travelfic-bricks-warning-card">
+                            <span class="warning-icon">⚠️</span>
+                            <div class="warning-details">
+                                <strong>Bricks theme is inactive</strong>
+                                <p>Please activate the Bricks theme to import and use Bricks templates successfully.</p>
+                            </div>
+                            <a href="${activate_url}" class="button travelfic-notice-btn">Activate Bricks Theme</a>
+                        </div>
+                    `).slideDown(300);
+                } else {
+                    notice_banner.html(`
+                        <div class="travelfic-bricks-warning-card">
+                            <span class="warning-icon">⚠️</span>
+                            <div class="warning-details">
+                                <strong>Bricks theme is required</strong>
+                                <p>Bricks is a premium builder theme. Please purchase, install, and activate the Bricks theme to import Bricks templates.</p>
+                            </div>
+                            <a href="https://bricksbuilder.io" target="_blank" class="button travelfic-notice-btn">Get Bricks Builder</a>
+                        </div>
+                    `).slideDown(300);
+                }
+            }
+        }
+    }
+
+    // Initialize notices on page load
+    $(document).ready(function() {
+        update_builder_notices();
+    });
+
     // Page Builder Selector Tab Click
     $(document).on('click', '.travelfic-builder-tab', function (e) {
         e.preventDefault();
@@ -18,33 +62,19 @@
         $('.travelfic-builder-tab').removeClass('active');
         current.addClass('active');
         active_builder = current.attr('data-builder');
-
-        // Toggle builder required notices
-        $('.travelfic-builder-notice-item').hide();
-        if (active_builder === 'elementor') {
-            $('.elementor-notice').show();
-        } else if (active_builder === 'bricks') {
-            $('.bricks-notice').show();
-        }
-
-        if (active_builder === 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks-child') {
-            alert('Warning: Bricks Builder theme is not active. Please activate the Bricks theme to import Bricks templates successfully.');
-        }
+        update_builder_notices();
     });
-
-    // Show initial notice on load
-    $('.travelfic-builder-notice-item').hide();
-    if (active_builder === 'elementor') {
-        $('.elementor-notice').show();
-    } else if (active_builder === 'bricks') {
-        $('.bricks-notice').show();
-    }
 
     // Import Template
     $(document).on('click', '.template-import-btn', function (e) {
 
         if (active_builder === 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks' && travelfic_toolkit_script_params.current_theme !== 'bricks-child') {
-            alert('Warning: Bricks Builder theme is not active. Please activate the Bricks theme before importing Bricks templates.');
+            let bricks_installed = travelfic_toolkit_script_params.bricks_installed;
+            if (bricks_installed === 'yes') {
+                alert('Please activate the Bricks Theme before importing templates. Use the activation button shown under the builder selector.');
+            } else {
+                alert('Bricks Theme is not installed. Please purchase and activate the Bricks theme before importing templates.');
+            }
             return;
         }
 
