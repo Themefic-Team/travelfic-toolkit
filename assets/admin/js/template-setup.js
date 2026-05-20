@@ -7,7 +7,7 @@
     let plugin_slugs = travelfic_toolkit_script_params.actives_plugins;
     let plugin_facts = travelfic_toolkit_script_params.facts;
     let travelfic_imports_data = '';
-    let active_builder = 'elementor';
+    let active_builder = $('.travelfic-builder-tab.active').attr('data-builder') || 'elementor';
 
     let plugin_slug_length = plugin_slugs.length-1;
 
@@ -51,6 +51,9 @@
     $(document).on('click', '.travelfic-builder-tab', function (e) {
         e.preventDefault();
         let current = $(this);
+        if (current.is(':disabled') || current.prop('disabled') || current.attr('disabled')) {
+            return;
+        }
         $('.travelfic-builder-tab').removeClass('active');
         current.addClass('active');
         active_builder = current.attr('data-builder');

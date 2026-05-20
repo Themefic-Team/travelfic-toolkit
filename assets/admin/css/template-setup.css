@@ -935,6 +935,12 @@ body.admin_page_travelfic-template-list {
     overflow: hidden;
 }
 
+.travelfic-builder-tab[disabled] {
+    opacity: 0.55;
+    cursor: not-allowed !important;
+    pointer-events: none;
+}
+
 /* Subtle Hover Effect for Tabs */
 .travelfic-builder-tab:hover {
     color: #003C79;
