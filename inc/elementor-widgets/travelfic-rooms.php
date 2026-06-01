@@ -302,9 +302,9 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details' => 'left: {{LEFT}}{{UNIT}};right: {{RIGHT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-popular-thumbnail' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details' => 'left: {{LEFT}}{{UNIT}};right: {{RIGHT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -314,9 +314,9 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -333,8 +333,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_hotel_card_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3,
+                               {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -344,8 +344,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details h3' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-title a' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -362,8 +362,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_hotel_card_features_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul li',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li,
+                               {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul li',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -373,8 +373,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Features Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul li' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details ul li' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content ul li' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -390,8 +390,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_hotel_card_price_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .sale-price',
+                'selector' => '{{WRAPPER}} .tft-room-content .tf-room-price .discount-price,
+                               {{WRAPPER}} .tft-room-content .tf-room-price .sale-price',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -401,8 +401,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Price Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .discount-price' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-content .tf-room-price .sale-price' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-content .tf-room-price .discount-price' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-content .tf-room-price .sale-price' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -418,8 +418,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'popular_hotel_card_button_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details,
-                               #tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn',
+                'selector' => '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details,
+                               {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -430,8 +430,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -442,8 +442,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -462,8 +462,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -473,8 +473,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn' => 'background: {{VALUE}}',
                 ],
             ]
         );
@@ -493,8 +493,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -504,8 +504,8 @@ class Travelfic_Toolkit_Rooms extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover' => 'background: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-popular-hotels-design__one .tft-popular-hotels-items .tft-popular-single-item .tft-hotel-details .tf-others-details a.btn-view-details:hover' => 'background: {{VALUE}}',
+                    '{{WRAPPER}} .tft-room-section .tft-room-slider .tft-single-room .tft-room-content .tft-room-btn .tft-btn:hover' => 'background: {{VALUE}}',
                 ],
             ]
         );

@@ -660,7 +660,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                     'size' => 800, // Your default value here
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img' => 'height: {{SIZE}}{{UNIT}};',
                     '{{WRAPPER}} .tft-hero-design__two' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
@@ -880,7 +880,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label' => __('Background', 'travelfic-toolkit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-slider-selector .tft-hero-single-item::before' => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-3'],
@@ -895,7 +895,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => 'design-2', 
@@ -917,9 +917,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-content h1' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .title-large' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
 
             ]
@@ -928,7 +928,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title, #tft-site-main-body #page {{WRAPPER}} .tft-hero-content h1, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--title',
+                'selector' => '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .title-large, {{WRAPPER}} .tft-hero-content h1, {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1, {{WRAPPER}} .tft-hero-design__four__slider__item__content--title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -940,12 +940,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-slider-title .tft-title' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__five .tft-hero-content h1' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .title-large' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__two .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__five .tft-hero-content h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__three .tft-hero-content-box h1' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-hero-content .tf-booking-form-tab button.active' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -965,7 +965,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_sub_title',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-sub-title p, #tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle',
+                'selector' => '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .tft-sub-title p, {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -978,8 +978,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-sub-title p' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .tft-sub-title p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__slider__item__content--subtitle' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1002,7 +1002,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'slider_description',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content p',
+                'selector' => '{{WRAPPER}} .tft-hero-content p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'slider_style' => ['design-5'],
@@ -1015,7 +1015,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-content p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-content p' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-5'],
@@ -1039,7 +1039,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'button_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
+                'selector' => '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, {{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
                 ],
@@ -1052,7 +1052,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1066,7 +1067,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1078,7 +1080,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'name'     => 'slider_button_border',
                 'label'    => __('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn',
+                'selector' => '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, {{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
                 ],
@@ -1091,7 +1093,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1117,7 +1120,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1130,7 +1134,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1157,7 +1162,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1171,7 +1177,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-content-box .tft-btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1184,7 +1191,8 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1209,10 +1217,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .slick-dots li button'   => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector button.slick-arrow' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__one .tft-hero-slider-selector .slider__counter'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .slick-dots li button'   => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .slick-dots li.slick-active'   => 'border-color: {{VALUE};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-1', 'design-4'],
@@ -1252,7 +1260,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__social__label' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1289,7 +1297,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link i'   => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link i'   => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1302,7 +1310,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1315,7 +1323,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link'   => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1341,7 +1349,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four__social__list__item--link:hover i' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1354,7 +1362,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__social__list__item--link.tft-bg-hover-primary:hover' => 'background: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1367,7 +1375,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-hero-wrapper .tft-bg-hover-primary:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-hero-design__four .tft-hero-design__four__social__list__item--link.tft-bg-hover-primary:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => ['design-4'],
@@ -1406,7 +1414,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'search_button_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
+                'selector' => '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
                 'condition' => [
                     'slider_style' => '!design-5', 
                 ],
@@ -1419,7 +1427,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1433,7 +1441,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1445,7 +1453,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'name'     => 'search_button_border_',
                 'label'    => __('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
+                'selector' => '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn',
                 'condition' => [
                     'slider_style' => '!design-5', 
                 ],
@@ -1458,7 +1466,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1484,7 +1492,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1497,7 +1505,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1524,7 +1532,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1538,7 +1546,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1552,7 +1560,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1577,7 +1585,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1591,7 +1599,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1605,7 +1613,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-form-tab .tf-tablinks.tf_btn.active' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'slider_style' => '!design-5', 
@@ -1633,9 +1641,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-search-box' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .default-form' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tft-search-box' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .default-form' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1651,10 +1659,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'search_form_label_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking label, 
-                               #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-label, 
-                               #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label,
-                               #tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper label',
+                'selector' => '{{WRAPPER}} .tf_homepage-booking label, 
+                               {{WRAPPER}} .tf-booking-forms-wrapper .tf-label, 
+                               {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label,
+                               {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper label',
             ]
         );
         $this->add_control(
@@ -1663,11 +1671,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking label' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-label' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .icon svg path' => 'stroke: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .icon svg path' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper label' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1683,12 +1691,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'search_form_input_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking input, 
-                               #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input, 
-                               #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .field--title,
-                               #tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field,
-                               #tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field input,
-                               #tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field .tf-guest',
+                'selector' => '{{WRAPPER}} .tf_homepage-booking input, 
+                               {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input, 
+                               {{WRAPPER}} .tf-booking-forms-wrapper .field--title,
+                               {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field,
+                               {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field input,
+                               {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field .tf-guest',
             ]
         );
         $this->add_control(
@@ -1697,26 +1705,26 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking input' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_input-inner > div' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_input-inner > div i' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking input::placeholder' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input::placeholder' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form_inners span' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .info-select input' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_selectperson-wrap div' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .info-select input::placeholder' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form_inners svg path' => 'fill: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .field--title' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__input' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__input::placeholder' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__field__mthyr > span' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_checkin_to_label' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .form--span path' => 'stroke: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field input' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field .tf-guest' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking input' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_input-inner > div' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_input-inner > div i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking input::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner input::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_form_inners span' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .info-select input' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_selectperson-wrap div' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .info-select input::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_form_inners svg path' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .field--title' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__input' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__input::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__field__mthyr > span' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_checkin_to_label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .form--span path' => 'stroke: {{VALUE}};',
+                    '{{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field input' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field .tf-guest' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1726,10 +1734,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking > div' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__field #tf-location' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field' => 'background-color: {{VALUE}};'
+                    '{{WRAPPER}} .tf_homepage-booking > div' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf_form-inner' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__field #tf-location' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field' => 'background-color: {{VALUE}};'
                 ],
             ]
         );
@@ -1746,7 +1754,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'search_form_button_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, #tft-site-main-body #page {{WRAPPER}} .tf-search__form__submit',
+                'selector' => '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, {{WRAPPER}} .tf_availability_checker_box button, {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, {{WRAPPER}} .tf-search__form__submit',
             ]
         );
         $this->add_responsive_control(
@@ -1756,10 +1764,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} {{WRAPPER}} .tf_availability_checker_box button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1770,10 +1778,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf_availability_checker_box button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1782,7 +1790,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             [
                 'name'     => 'search_form_button_border',
                 'label'    => __('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, #tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit',
+                'selector' => '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, {{WRAPPER}} .tf_availability_checker_box button, {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn, {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit',
             ]
         );
         $this->add_control(
@@ -1792,9 +1800,9 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, #tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit, {{WRAPPER}} .tf_availability_checker_box button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1814,12 +1822,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn i' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit path' => 'fill: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_availability_checker_box button' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit path' => 'fill: {{VALUE}};',
                 ],
             ]
         );
@@ -1829,10 +1837,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_availability_checker_box button' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1853,12 +1861,12 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover i' => 'color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover path' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_availability_checker_box button:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover path' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -1869,10 +1877,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'background-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_availability_checker_box button:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -1882,10 +1890,10 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'border-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf_availability_checker_box button:hover' => 'border-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'border-color: {{VALUE}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_homepage-booking .tf_btn.tf-submit:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf_availability_checker_box button:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-submit-button .tf_btn:hover' => 'border-color: {{VALUE}};',
+                    '{{WRAPPER}} .tf-booking-forms-wrapper .tf-search__form__submit:hover' => 'border-color: {{VALUE}};',
                 ],
             ]
         );

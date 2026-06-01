@@ -298,7 +298,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_gallery_sec_title_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-title',
+                'selector' => '{{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -308,7 +308,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-title' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -325,7 +325,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'tft_gallery_sec_subtitle_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-subtitle',
+                'selector' => '{{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -335,7 +335,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-subtitle' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-gallery-design__one .tft-gallery-top-header .tft-section-subtitle' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -370,8 +370,8 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery img' => 'width: {{SIZE}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .slick-list .slick-slide' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-gallery-design__one .tft-single-gallery img' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-gallery-design__one .slick-list .slick-slide' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -388,7 +388,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery img' => 'height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .tft-gallery-design__one .tft-single-gallery img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -405,7 +405,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'gallery_title',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery h3',
+                'selector' => '{{WRAPPER}} .tft-gallery-design__one .tft-single-gallery h3',
                 'label'    => __('Typography', 'travelfic-toolkit'),
             ]
         );
@@ -416,7 +416,7 @@ class Travelfic_Toolkit_Gallery extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-gallery-design__one .tft-single-gallery h3' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .tft-gallery-design__one .tft-single-gallery h3' => 'color: {{VALUE}}',
                 ],
             ]
         );

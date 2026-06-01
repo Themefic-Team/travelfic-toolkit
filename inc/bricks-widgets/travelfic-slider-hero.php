@@ -325,7 +325,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'height',
-					'selector' => '.tft-slider-bg-img',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img',
 				],
 				[
 					'property' => 'height',
@@ -525,7 +525,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'   => [
 				[
 					'property' => 'padding',
-					'selector' => '.tft-hero-content h1, .tft-slider-title .tft-title, .tft-hero-design__four__slider__item__content--title',
+					'selector' => '.tft-hero-content h1, .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .title-large, .tft-hero-design__four__slider__item__content--title',
 				],
 			],
 		];
@@ -539,7 +539,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'exclude' => [ 'text-align' ],
 			'css'     => [
 				[
-					'selector' => '.tft-slider-title .tft-title, .tft-hero-content h1, .tft-hero-design__three .tft-hero-content-box h1, .tft-hero-design__four__slider__item__content--title, .tft-hero-design__five .tft-hero-content h1, .tft-hero-content .tf-booking-form-tab button.active',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .title-large, .tft-hero-content h1, .tft-hero-design__three .tft-hero-content-box h1, .tft-hero-design__four__slider__item__content--title, .tft-hero-design__five .tft-hero-content h1, .tft-hero-content .tf-booking-form-tab button.active',
 				],
 			],
 		];
@@ -563,7 +563,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'required' => [ 'slider_style', '=', [ 'design-1', 'design-4' ] ],
 			'css'      => [
 				[
-					'selector' => '.tft-sub-title p, .tft-hero-design__four__slider__item__content--subtitle',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .tft-slider-title .tft-sub-title p, .tft-hero-design__four__slider__item__content--subtitle',
 				],
 			],
 		];
@@ -611,7 +611,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'required' => [ 'slider_style', '=', [ 'design-1', 'design-4' ] ],
 			'css'      => [
 				[
-					'selector' => '.tft-hero-wrapper .tft-btn',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
 				],
 			],
 		];
@@ -625,7 +625,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'margin',
-					'selector' => '.tft-hero-wrapper .tft-btn',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
 				],
 			],
 		];
@@ -639,7 +639,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'padding',
-					'selector' => '.tft-hero-wrapper .tft-btn',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
 				],
 			],
 		];
@@ -653,7 +653,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'border',
-					'selector' => '.tft-hero-wrapper .tft-btn',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
 				],
 			],
 		];
@@ -667,7 +667,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'background-color',
-					'selector' => '.tft-hero-wrapper .tft-content-box .tft-btn',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img .tft-hero-single-item-inner .slider-inner-info .slider-button .tft-btn, .tft-hero-design__four .tft-hero-design__four__slider__item__content--link.tft-btn',
 				],
 			],
 		];
@@ -690,11 +690,11 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'background-color',
-					'selector' => '.tft-hero-wrapper .tft-hero-slider-selector button.slick-arrow',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector button.slick-arrow',
 				],
 				[
 					'property' => 'color',
-					'selector' => '.tft-hero-wrapper .tft-hero-slider-selector .slider__counter',
+					'selector' => '.tft-hero-design__one .tft-hero-slider-selector .slider__counter',
 				],
 				[
 					'property' => 'background-color',
