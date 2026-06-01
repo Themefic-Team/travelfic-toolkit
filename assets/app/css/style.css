@@ -3186,6 +3186,11 @@ body.archive .tft-header-design__two {
   bottom: 0;
   z-index: 99;
 }
+.tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 @media only screen and (max-width: 1024.98px) {
   .tft-hero-design__one .tft-hero-slider-selector .tft-hero-single-item .tft-slider-bg-img {
     padding: 10px;
@@ -9924,4 +9929,4 @@ body.archive .tft-header-design__two {
   color: var(--tf-primary);
 }
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style.css.map*/

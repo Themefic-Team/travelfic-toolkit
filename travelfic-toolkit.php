@@ -108,9 +108,23 @@ require_once dirname(__FILE__) . '/inc/customizer/customizer-header-rander.php';
 require_once dirname(__FILE__) . '/inc/customizer/customizer-footer-rander.php';
 
 /**
+ * Shared Components (used by both Elementor and Bricks widgets)
+ */
+foreach ( glob( dirname( __FILE__ ) . '/inc/Components/*.php' ) ?: [] as $_tf_component_file ) {
+    require_once $_tf_component_file;
+}
+unset( $_tf_component_file );
+
+/**
  * Elementor Widgets
 */
 require_once dirname( __FILE__ ) . '/inc/elementor-widgets.php';
+/**
+ * Bricks Widgets
+*/
+if ( file_exists( dirname( __FILE__ ) . '/inc/bricks-widgets.php' ) ) {
+    require_once dirname( __FILE__ ) . '/inc/bricks-widgets.php';
+}
 /**
  * Plugin Functions
 */

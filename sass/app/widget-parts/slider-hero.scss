@@ -22,6 +22,10 @@
                 }
 
                 .tft-slider-bg-img {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+
                     @media #{$max1024} {
                         padding: 10px;
                     }
