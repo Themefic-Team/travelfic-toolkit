@@ -178,7 +178,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -196,7 +196,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_item_title',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title',
             ]
         );
 		$this->add_control(
@@ -205,7 +205,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-title' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -222,7 +222,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_item_meta',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content',
             ]
         );
 		$this->add_control(
@@ -231,7 +231,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-content' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -248,7 +248,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
             [
                 'name'     => 'popular_tour_price_typo',
                 'label'    => __( 'Typography', 'travelfic-toolkit' ),
-                'selector' => '{{WRAPPER}} .tft-popular-tour-items .tft-pricing',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-pricing',
             ]
         );
 		$this->add_control(
@@ -257,7 +257,7 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-pricing' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-pricing' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -275,8 +275,8 @@ class Travelfic_Toolkit_PopularTours extends \Elementor\Widget_Base
                 'label'     => __( 'Color', 'travelfic-toolkit' ),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .tft-popular-tour-items  .slick-arrow i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items .tft-popular-item-info .tft-popular-sub-info p i' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-popular-tour-items  .slick-arrow i' => 'color: {{VALUE}}',
                 ],
             ]
         );

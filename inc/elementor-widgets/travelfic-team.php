@@ -437,7 +437,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'team_sec_title_typo',
-				'selector' => '{{WRAPPER}} .tft-heading-content .tft-section-title',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-title',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -450,7 +450,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -488,7 +488,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-heading-content .tft-section-title::after' => 'background: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-title::after' => 'background: {{VALUE}}',
 				],
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -513,7 +513,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'team_sec_subtitle_typo',
-				'selector' => '{{WRAPPER}} .tft-heading-content .tft-section-subtitle',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-subtitle',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -526,7 +526,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-subtitle' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -559,8 +559,8 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors'  => [
-					'{{WRAPPER}} .member-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'#tft-site-main-body #page {{WRAPPER}} .member-details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -571,9 +571,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 		// 		'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 		// 		'size_units' => ['px', '%', 'em'],
 		// 		'selectors' => [
-		// 			'{{WRAPPER}} .tft-team-design__one .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
-		// 			'{{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
-		// 			'{{WRAPPER}} .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 			'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 			'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
+		// 			'#tft-site-main-body #page {{WRAPPER}} .tft-single-member' => 'border-radius: {{SIZE}}{{UNIT}};',
 		// 		],
 		// 	]
 		// );
@@ -584,7 +584,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors' => [
-                    '{{WRAPPER}} .tft-single-member' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-single-member' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -604,8 +604,8 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_title_typo',
-				'selector' => '{{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title, 
-							   {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details .tft-title',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title, 
+							   #tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details .tft-title',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => ['design-1', 'design-3']
@@ -629,7 +629,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_title_typo_design_2',
-				'selector' => '{{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details .tft-title',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details .tft-title',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-2',
@@ -642,9 +642,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details .tft-title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -665,7 +665,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_subtitle_typo',
-				'selector' => '{{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-subtitle',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-subtitle',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-1',
@@ -691,8 +691,8 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'icon-team_card_subtitle_typo_desing_2',
-				'selector' => '{{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3,
-							   {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details span',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3,
+							   #tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details span',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => ['design-2', 'design-3'],
@@ -705,9 +705,9 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-subtitle' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details span' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-subtitle' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .tft-single-member .member-details h3' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .tft-team-members .tft-single-member .member-details span' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -726,7 +726,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'team_card_content_typo',
-				'selector' => '{{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-content',
+				'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-content',
 				'label'    => __('Typography', 'travelfic-toolkit'),
 				'condition' => [
 					'tft_team_style' => 'design-1',
@@ -739,7 +739,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-content' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .member-details .tft-content' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'tft_team_style' => 'design-1',
@@ -761,10 +761,10 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__two .social-media-icons button i' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__two .social-media-icons .social-media a' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__three .social-media a svg path' => 'stroke: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons button i' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons .social-media a' => 'color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .social-media a svg path' => 'stroke: {{VALUE}}',
 				],
 			]
 		);
@@ -774,10 +774,10 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Background', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__two .social-media-icons button' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__two .social-media-icons button' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .tft-team-design__three .social-media a' => 'background-color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__one .tft-single-member .social-media a' => 'background-color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons button' => 'background-color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .social-media-icons button' => 'background-color: {{VALUE}}',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__three .social-media a' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -801,7 +801,7 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li button' => 'background-color: {{VALUE}};',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li button' => 'background-color: {{VALUE}};',
 				],
 				'condition' => [
 					'tft_team_style' => ['design-2'],
@@ -814,8 +814,8 @@ class Travelfic_Toolkit_TeamMembers extends \Elementor\Widget_Base
 				'label'     => __('Active Color', 'travelfic-toolkit'),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li.slick-active button' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li.slick-active' => 'border-color: {{VALUE}};',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li.slick-active button' => 'background-color: {{VALUE}};',
+					'#tft-site-main-body #page {{WRAPPER}} .tft-team-design__two .tft-team-members .slick-dots li.slick-active' => 'border-color: {{VALUE}};',
 				],
 				'condition' => [
 					'tft_team_style' => ['design-2'],
