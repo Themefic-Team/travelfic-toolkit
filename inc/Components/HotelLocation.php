@@ -189,7 +189,6 @@ class HotelLocation {
 						?>
 					</div>
 				</div>
-				<?php if ( 'bricks' !== $builder ) : ?>
 				<script>
 					// Destination Slider
 					(function($) {
@@ -225,7 +224,6 @@ class HotelLocation {
 						});
 					}(jQuery));
 				</script>
-				<?php endif; ?>
 			</div>
 			<?php
 		}

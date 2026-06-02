@@ -366,7 +366,7 @@ class Travelfic_Toolkit_Bricks_HotelLocation extends \Bricks\Element {
 			'css'      => [
 				[
 					'property' => 'fill',
-					'selector' => '.tft-destination-design__two .tft-destination-content .tft-destination-slides .slick-arrow path',
+					'selector' => '.tft-destination-design__two .tft-destination-header .tft-destination-slides-arrows button svg path',
 				],
 			],
 			'required' => [ 'hotel_location_style', '=', 'design-2' ],

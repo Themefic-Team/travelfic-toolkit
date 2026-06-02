@@ -572,7 +572,7 @@ class Travelfic_Toolkit_HotelLocation extends \Elementor\Widget_Base{
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-destination-content .tft-destination-slides .slick-arrow path' => 'fill: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-destination-design__two .tft-destination-header .tft-destination-slides-arrows button svg path' => 'fill: {{VALUE}}',
                 ],
                 'condition' => [
                     'hotel_location_style' => 'design-2',
