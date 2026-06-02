@@ -1117,7 +1117,7 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'label'   => esc_html__( 'Border', 'travelfic-toolkit' ),
 			'type'    => 'number',
 			'min'     => 0,
-			'max'     => 10,
+			'max'     => 5,
 			'step'    => 1,
 			'units'   => true,
 			'css'     => [
