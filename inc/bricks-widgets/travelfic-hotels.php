@@ -90,9 +90,6 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'group'   => 'tft_hotels',
 			'label'   => esc_html__( 'Section Background', 'travelfic-toolkit' ),
 			'type'    => 'image',
-			'default' => [
-				'url' => TRAVELFIC_TOOLKIT_URL . 'assets/app/img/hotel-lists-bg.png',
-			],
 		];
 
 		$this->controls['tft_posts_type'] = [
@@ -815,6 +812,19 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'type'     => 'separator',
 			'required' => [ 'tft_hotels_style', '=', 'design-2' ],
 		];
+		
+		$this->controls['popular_design2_hotel_card_image_border'] = [
+			'tab'      => 'style',
+			'group'    => 'popular_design2_card_tab',
+			'label'    => esc_html__( 'Border', 'travelfic-toolkit' ),
+			'type'     => 'border',
+			'css'      => [
+				[
+					'selector' => '.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-thumbnail img',
+				],
+			],
+			'required' => [ 'tft_hotels_style', '=', 'design-2' ],
+		];
 
 		$this->controls['popular_design2_hotel_card_featured_heading'] = [
 			'tab'      => 'style',
@@ -928,7 +938,7 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'exclude'  => [ 'text-align' ],
 			'css'      => [
 				[
-					'selector' => '.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-location',
+					'selector' => '.tft-popular-hotels-design__two .tft-destination-slider .tft-single-destination .tft-destination-content .tft-destination-top-info .tft-destination-location span',
 				],
 			],
 			'required' => [ 'tft_hotels_style', '=', 'design-2' ],
@@ -937,11 +947,12 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 		$this->controls['popular_design2_hotel_card_icon_meta_typo'] = [
 			'tab'     => 'style',
 			'group'   => 'popular_design2_card_tab',
-			'label'   => esc_html__( 'Size', 'travelfic-toolkit' ),
+			'label'   => esc_html__( 'Icon Size', 'travelfic-toolkit' ),
 			'type'    => 'number',
 			'min'     => 1,
 			'max'     => 100,
 			'step'    => 1,
+			'units'   => true,
 			'css'     => [
 				[
 					'property' => 'font-size',
@@ -953,7 +964,7 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 		$this->controls['popular_design2_hotel_card_icon_meta_color'] = [
 			'tab'      => 'style',
 			'group'    => 'popular_design2_card_tab',
-			'label'    => esc_html__( 'Color', 'travelfic-toolkit' ),
+			'label'    => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
 			'type'     => 'color',
 			'css'      => [
 				[
@@ -1087,6 +1098,7 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'type'    => 'number',
 			'min'     => 0,
 			'step'    => 1,
+			'units'   => true,
 			'css'     => [
 				[
 					'property' => 'width',
@@ -1107,6 +1119,7 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'min'     => 0,
 			'max'     => 10,
 			'step'    => 1,
+			'units'   => true,
 			'css'     => [
 				[
 					'property' => 'border-width',
