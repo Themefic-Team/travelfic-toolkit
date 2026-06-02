@@ -135,7 +135,18 @@ class SliderHero {
 			<div class="container tft-hero-design__four__container">
 
 				<!-- Hero banner slider -->
-				<div class="tft-hero-design__four__slider tft-content-box">
+				<div class="tft-hero-design__four__slider tft-content-box"
+				     data-loop="<?php echo esc_attr( $loop ); ?>"
+				     data-autoplay="<?php echo esc_attr( $autoplay ); ?>"
+				     data-autoplay-speed="<?php echo absint( $ap_speed ); ?>"
+				     data-speed="<?php echo absint( $ap_int ); ?>"
+				     data-fade="<?php echo esc_attr( $fade ); ?>"
+				     data-dots="<?php echo esc_attr( $dots ); ?>"
+				     data-arrows="<?php echo esc_attr( $arrows ); ?>"
+				     data-pause-on-hover="<?php echo esc_attr( $pause_h ); ?>"
+				     data-pause-on-focus="<?php echo esc_attr( $pause_f ); ?>"
+				     data-rtl="<?php echo esc_attr( $rtl ); ?>"
+				     data-draggable="<?php echo esc_attr( $draggable ); ?>">
 					<?php foreach ( $slider_items as $item ) : ?>
 						<?php
 						$btn_url      = self::get_link_url( $item, 'design4_slider_bttn_url' );

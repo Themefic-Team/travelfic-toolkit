@@ -97,6 +97,7 @@
                 border: 2px solid rgba(0, 0, 0, 0);
                 color: $tft-color-white;
                 font-size: 1rem;
+                text-align: center;
 
                 &::before {
                     display: none;
@@ -722,6 +723,42 @@
                     }
                 }
             }
+        }
+
+        .tft-prev-slide,
+        .tft-next-slide {
+            z-index: 99;
+            background: $tft-color-primary;
+            height: 45px;
+            width: 45px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 0, 0, 0);
+            color: $tft-color-white;
+            font-size: 1rem;
+            text-align: center;
+
+            &::before {
+                display: none;
+                color: $tft-color-white;
+            }
+
+            &:hover {
+                background: transparent !important;
+                border: 2px solid $tft-color-border;
+                transition: all 0.3s ease;
+                color: $tft-color-text;
+
+                &::before {
+                    color: $tft-color-primary;
+                }
+            }
+        }
+
+        &__slider--nav {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
         }
     }
 

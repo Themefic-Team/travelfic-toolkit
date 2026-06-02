@@ -12,6 +12,27 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 	public $category = 'travelfic';
 	public $name     = 'tft-slider-hero';
 	public $icon     = 'ti-layout-slider';
+	public $scripts  = [ 'tftBricksSliderHero' ];
+
+	public function add_actions() {
+		add_action( 'wp_enqueue_scripts', [ $this, 'register_script' ], 12 );
+	}
+
+	public function register_script() {
+		$path = TRAVELFIC_TOOLKIT_PATH . 'assets/app/js/bricks/slider-hero.js';
+
+		wp_register_script(
+			'tft-bricks-slider-hero',
+			TRAVELFIC_TOOLKIT_URL . 'assets/app/js/bricks/slider-hero.js',
+			[ 'bricks-scripts', 'jquery', 'tf-slick' ],
+			file_exists( $path ) ? (string) filemtime( $path ) : TRAVELFIC_TOOLKIT_VERSION,
+			true
+		);
+	}
+
+	public function enqueue_scripts() {
+		wp_enqueue_script( 'tft-bricks-slider-hero' );
+	}
 
 	public function get_label() {
 		return esc_html__( 'Travelfic Hero', 'travelfic-toolkit' );
@@ -489,7 +510,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'required' => [ 'slider_style', '=', [ 'design-1', 'design-3' ] ],
 			'css'      => [
 				[
-					'property' => 'background',
+					'property' => 'background-color',
 					'selector' => '.tft-hero-slider-selector .tft-hero-single-item::before',
 				],
 			],
@@ -691,6 +712,10 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 				[
 					'property' => 'background-color',
 					'selector' => '.tft-hero-design__one .tft-hero-slider-selector button.slick-arrow',
+				],
+				[
+					'property' => 'background-color',
+					'selector' => '.tft-hero-design__four .tft-prev-slide, .tft-hero-design__four .tft-next-slide',
 				],
 				[
 					'property' => 'color',
@@ -936,6 +961,26 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'group' => 'hero_search_section',
 			'label' => esc_html__( 'Label', 'travelfic-toolkit' ),
 			'type'  => 'separator',
+			'required' => [ 'slider_style', '!=', 'design-1' ],
+		];
+
+		//label icon color
+		$this->controls['search_form_label_icon_color'] = [
+			'tab'   => 'style',
+			'group' => 'hero_search_section',
+			'label' => esc_html__( 'Label Icon Color', 'travelfic-toolkit' ),
+			'type'  => 'color',
+			'css'   => [
+				[
+					'property' => 'stroke',
+					'selector' => '.tf-archive-search-box-wrapper .tf-date-select-box .tf-date-single-select .tf-select-date svg path',
+				],
+				[
+					'property' => 'fill',
+					'selector' => '.tf-booking-forms-wrapper .tf-search__form__field__icon svg path',
+				],
+			],
+			'required' => [ 'slider_style', '=', ['design-3', 'design-4']],
 		];
 
 		// Rule 9: Typography handles color. No separate search_form_label_color control added.
@@ -947,9 +992,10 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'exclude' => [ 'text-align' ],
 			'css'     => [
 				[
-					'selector' => '.tf_homepage-booking label, .tf-booking-forms-wrapper .tf-label, .tf-booking-forms-wrapper .tf-search__form__label, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper label',
+					'selector' => '.tf_homepage-booking label, .tf-booking-forms-wrapper .tf-label, .tf-booking-forms-wrapper .tf-search__form__label, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper label, .tf-archive-search-box-wrapper .tf-date-select-box .tf-date-single-select .tf-select-date .info-select h5',
 				],
 			],
+			'required' => [ 'slider_style', '!=', 'design-1' ],
 		];
 
 		$this->controls['search_form_input_heading'] = [
@@ -957,6 +1003,20 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'group' => 'hero_search_section',
 			'label' => esc_html__( 'Input', 'travelfic-toolkit' ),
 			'type'  => 'separator',
+		];
+
+		$this->controls['search_form_input_wrapper_background'] = [
+			'tab'   => 'style',
+			'group' => 'hero_search_section',
+			'label' => esc_html__( 'Wrapper Background', 'travelfic-toolkit' ),
+			'type'  => 'color',
+			'css'   => [
+				[
+					'property' => 'background-color',
+					'selector' => '.tf-archive-search-box-wrapper .tf-date-select-box .tf-date-single-select',
+				],
+			],
+			'required' => [ 'slider_style', '=', ['design-3']],
 		];
 
 		// Rule 9: Typography handles color. No separate search_form_input_color control added.
@@ -968,7 +1028,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'exclude' => [ 'text-align' ],
 			'css'     => [
 				[
-					'selector' => '.tf_homepage-booking input, .tf-booking-forms-wrapper .tf_form-inner input, .tf-booking-forms-wrapper .field--title, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field input, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field .tf-guest',
+					'selector' => '.tf_homepage-booking input, .tf-booking-forms-wrapper .tf_form-inner input, .tf-booking-forms-wrapper .field--title, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field input, .tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field .tf-guest, .tf-booking-forms-wrapper .info-select input, .tf-archive-search-box-wrapper .tf-date-select-box .tf-date-single-select .tf-select-date .info-select .tf_selectperson-wrap .tf_input-inner>div, .tf-shortcode-design-2-tab .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_form_fields .tf_checkin_date .tf_form_inners .tf_checkin_dates span, .tf-shortcode-design-2-tab .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_form_fields .tf_checkin_date .tf_form_inners .tf_checkout_dates span, .tf-shortcode-design-2-tab .tf_booking-widget-design-2 .tf_hotel_searching .tf_form_innerbody .tf_form_fields .tf_guest_info .tf_input-inner .tf_form_inners .tf_guest_calculation .tf_guest_number span, .tf_selectperson-wrap .tf_input-inner, .tf-booking-forms-wrapper .tf-search__form__input, .tf-booking-forms-wrapper .tf-search__form__field__mthyr',
 				],
 			],
 		];
@@ -994,6 +1054,10 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 				[
 					'property' => 'background-color',
 					'selector' => '.tf-search-tabs__design--5 .tf-archive-search-box-wrapper .tf-search-field',
+				],
+				[
+					'property' => 'background-color',
+					'selector' => '.tf-booking-forms-wrapper .info-select input',
 				],
 			],
 		];
