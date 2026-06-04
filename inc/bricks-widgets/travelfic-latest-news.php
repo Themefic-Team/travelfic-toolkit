@@ -52,12 +52,13 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 
 		$this->control_groups['blog_design_2_section_style'] = [
 			'title' => esc_html__( 'Style', 'travelfic-toolkit' ),
-			'tab'   => 'style',
+			'tab'   => 'content',
+			'required' => ['blog_style', '!=', 'design-1',],
 		];
 
 		$this->control_groups['news_style_section'] = [
-			'title' => esc_html__( 'News List', 'travelfic-toolkit' ),
-			'tab'   => 'style',
+			'title' => esc_html__( 'News List Style', 'travelfic-toolkit' ),
+			'tab'   => 'content',
 		];
 	}
 
@@ -411,6 +412,19 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 			'required' => [ 'blog_style', '=', [ 'design-3', 'design-4' ] ],
 		];
 
+		$this->controls['news_card_radius_design_3'] = [
+			'tab'      => 'style',
+			'group'    => 'news_style_section',
+			'label'    => esc_html__( 'Card Border', 'travelfic-toolkit' ),
+			'type'     => 'border',
+			'css'      => [
+				[
+					'selector' => '.tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item, .tft-latest-posts-design__four .tf-blog-card',
+				],
+			],
+			'required' => [ 'blog_style', '=', [ 'design-3', 'design-4' ] ],
+		];
+
 		$this->controls['news_card_gradient'] = [
 			'tab'      => 'style',
 			'group'    => 'news_style_section',
@@ -434,6 +448,19 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 			'label'    => esc_html__( 'Background Gradient 2', 'travelfic-toolkit' ),
 			'type'     => 'color',
 			'default'  => '#1d2a3b00',
+			'required' => [ 'blog_style', '=', 'design-1' ],
+		];
+
+		$this->controls['news_card_radius'] = [
+			'tab'      => 'style',
+			'group'    => 'news_style_section',
+			'label'    => esc_html__( 'Image Border', 'travelfic-toolkit' ),
+			'type'     => 'border',
+			'css'      => [
+				[
+					'selector' => '.tft-latest-posts-design__one .tft-post-thumbnail img',
+				],
+			],
 			'required' => [ 'blog_style', '=', 'design-1' ],
 		];
 

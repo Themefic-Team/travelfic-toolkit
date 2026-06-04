@@ -285,7 +285,7 @@ class LatestNews {
 						background: linear-gradient(360deg, <?php echo esc_attr( $settings['news_item_card_gradient_1_hover'] ); ?> -9.6%, <?php echo esc_attr( $settings['news_item_card_gradient_2_hover'] ); ?> 109.78%);
 					}
 				<?php endif; ?>
-				<?php if ( ! empty( $settings['news_card_radius'] ) ) : ?>
+				<?php if ( 'bricks' !== $builder && ! empty( $settings['news_card_radius'] ) ) : ?>
 					.tft-latest-posts .tft-post-thumbnail img {
 						border-radius: <?php echo esc_attr( $settings['news_card_radius'] ); ?>px;
 					}
