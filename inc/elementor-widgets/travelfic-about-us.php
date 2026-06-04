@@ -452,7 +452,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_sec_quotes_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-quotes',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content .tft-about-us-quotes p',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -465,7 +465,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content p.tft-about-us-quotes' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content .tft-section-content .tft-about-us-quotes p' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'tft_about_style' => 'design-1',
@@ -851,7 +851,6 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             [
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
-
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a' => 'background-color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-button a' => 'background-color: {{VALUE}};',
@@ -926,7 +925,7 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'about_us_design2_sec_list_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i, .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'tft_about_style' => 'design-2',
@@ -947,35 +946,11 @@ class Travelfic_Toolkit_AboutUs extends \Elementor\Widget_Base
                 ],
             ]
         );
-      
-        $this->add_control(
-            'about_us_sec_list_icon_head',
-            [
-                'label'     => __('Icon ', 'travelfic-toolkit'),
-                'type'      => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'after',
-                'condition' => [
-                    'tft_about_style' => 'design-2',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name'     => 'about_us_sec_list_icon_typo',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
-                'label'    => __('Typography', 'travelfic-toolkit'),
-                'condition' => [
-                    'tft_about_style' => 'design-2',
-                ],
-            ]
-        );
 
         $this->add_control(
             'about_us_sec_list_icon_color',
             [
-                'label'     => __('Color', 'travelfic-toolkit'),
+                'label'     => __('Icon Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i' => 'color: {{VALUE}}',

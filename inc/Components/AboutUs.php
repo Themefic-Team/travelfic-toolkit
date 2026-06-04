@@ -43,17 +43,8 @@ class AboutUs {
 		$readme_attrs = self::get_link_target_and_rel( $settings, 'readme_link' );
 
 		// Backdrop switcher logic
-		// Elementor: 'yes' (string). Bricks: true/false (boolean).
-		$has_backdrop = true;
-		if ( isset( $settings['about_us_design2_title_backdrop'] ) ) {
-			$val = $settings['about_us_design2_title_backdrop'];
-			if ( 'elementor' === $builder ) {
-				$has_backdrop = ( 'yes' === $val );
-			} else {
-				$has_backdrop = ! empty( $val );
-			}
-		}
-		$section_title_backdrop = ! $has_backdrop ? ' tft-no-backdrop' : '';
+		$has_backdrop = tft_get_switcher_value($settings, 'about_us_design2_title_backdrop', 'yes', $builder);
+		$section_title_backdrop = 'yes' != $has_backdrop ? ' tft-no-backdrop' : '';
 
 		if ( 'design-1' == $tft_design ) {
 			?>
@@ -74,7 +65,7 @@ class AboutUs {
 								<?php endif; ?>
 
 								<?php if ( ! empty( $tft_sec_quotes ) ) : ?>
-									<p class="tft-about-us-quotes"><?php echo wp_kses_post( $tft_sec_quotes ); ?></p>
+									<div class="tft-about-us-quotes"><?php echo wp_kses_post( $tft_sec_quotes ); ?></div>
 								<?php endif; ?>
 
 								<?php if ( ! empty( $tft_sec_author ) ) : ?>

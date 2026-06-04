@@ -429,3 +429,23 @@ function tft_bricks_body_modifier_callback( $buffer ) {
     return $buffer;
 }
 
+/**
+ * Return normalized switcher value for listing components and builders.
+ *
+ * @param array  $settings Settings array (usually widget settings).
+ * @param string $key      The key to read from settings.
+ * @param string $default  Default value when key not present (default: 'yes').
+ * @param string $builder  Optional builder identifier (e.g., 'bricks').
+ * @return string 'yes' or 'no'
+ */
+if (!function_exists('tft_get_switcher_value')) {
+    function tft_get_switcher_value( $settings, $key, $default = 'yes', $builder = '' ) {
+        if ( 'bricks' === $builder ) {
+            return ! empty( $settings[ $key ] ) ? 'yes' : 'no';
+        }
+
+        $value = isset( $settings[ $key ] ) ? $settings[ $key ] : $default;
+
+        return 'yes' === $value ? 'yes' : 'no';
+    }
+}

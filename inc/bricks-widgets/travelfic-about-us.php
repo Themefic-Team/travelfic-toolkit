@@ -31,7 +31,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 		// Style Group
 		$this->control_groups['about_us_style'] = [
 			'title' => esc_html__( 'Style', 'travelfic-toolkit' ),
-			'tab'   => 'style',
+			'tab'   => 'content',
 		];
 	}
 
@@ -268,7 +268,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 			'exclude'  => [ 'text-align' ],
 			'css'      => [
 				[
-					'selector' => '.tft-heading-content .tft-section-content p.tft-about-us-quotes',
+					'selector' => '.tft-heading-content .tft-section-content .tft-about-us-quotes p',
 				],
 			],
 			'required' => [ 'tft_about_style', '=', 'design-1' ],
@@ -444,7 +444,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 		$this->controls['about_us_button_design1_head'] = [
 			'tab'      => 'style',
 			'group'    => 'about_us_style',
-			'label'    => esc_html__( 'Button Design 1', 'travelfic-toolkit' ),
+			'label'    => esc_html__( 'Button', 'travelfic-toolkit' ),
 			'type'     => 'separator',
 			'required' => [ 'tft_about_style', '=', 'design-1' ],
 		];
@@ -462,11 +462,25 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 			],
 			'required' => [ 'tft_about_style', '=', 'design-1' ],
 		];
+		//button icon color
+		$this->controls['about_button_icon_color'] = [
+			'tab'    => 'style',
+			'group'  => 'about_us_style',
+			'label'  => esc_html__( 'Button Icon Color', 'travelfic-toolkit' ),
+			'type'   => 'color',
+			'css'    => [
+				[
+					'selector' => '.tft-about-us-design__one .tft-about-us-grid .tft-about-us-content .read-more a svg path',
+					'property' => 'fill',
+				],
+			],
+			'required' => [ 'tft_about_style', '=', 'design-1' ],
+		];
 
 		$this->controls['about_us_button_design2_head'] = [
 			'tab'      => 'style',
 			'group'    => 'about_us_style',
-			'label'    => esc_html__( 'Button Design 2', 'travelfic-toolkit' ),
+			'label'    => esc_html__( 'Button', 'travelfic-toolkit' ),
 			'type'     => 'separator',
 			'required' => [ 'tft_about_style', '=', 'design-2' ],
 		];
@@ -483,7 +497,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 				],
 			],
 			'required' => [ 'tft_about_style', '=', 'design-2' ],
-		];
+		]; 
 
 		$this->controls['about_button_margin_'] = [
 			'tab'    => 'style',
@@ -552,7 +566,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 			'exclude'  => [ 'text-align' ],
 			'css'      => [
 				[
-					'selector' => '.tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
+					'selector' => '.tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i, .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text',
 				],
 			],
 			'required' => [ 'tft_about_style', '=', 'design-2' ],
@@ -561,33 +575,11 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 		$this->controls['about_us_sec_list_color'] = [
 			'tab'      => 'style',
 			'group'    => 'about_us_style',
-			'label'    => esc_html__( 'List Text Color', 'travelfic-toolkit' ),
+			'label'    => esc_html__( 'Icon Color', 'travelfic-toolkit' ),
 			'type'     => 'color',
 			'css'      => [
 				[
 					'property' => 'color',
-					'selector' => '.tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .text',
-				],
-			],
-			'required' => [ 'tft_about_style', '=', 'design-2' ],
-		];
-
-		$this->controls['about_us_sec_list_icon_head'] = [
-			'tab'      => 'style',
-			'group'    => 'about_us_style',
-			'label'    => esc_html__( 'Icon', 'travelfic-toolkit' ),
-			'type'     => 'separator',
-			'required' => [ 'tft_about_style', '=', 'design-2' ],
-		];
-
-		$this->controls['about_us_sec_list_icon_typo'] = [
-			'tab'      => 'style',
-			'group'    => 'about_us_style',
-			'label'    => esc_html__( 'Icon Typography', 'travelfic-toolkit' ),
-			'type'     => 'typography',
-			'exclude'  => [ 'text-align' ],
-			'css'      => [
-				[
 					'selector' => '.tft-about-us-design__two .tft-about-us-grid .tft-about-us-content .tft-about-us-list ul li .icon i',
 				],
 			],

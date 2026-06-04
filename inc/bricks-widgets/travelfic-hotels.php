@@ -380,6 +380,21 @@ class Travelfic_Toolkit_Bricks_Hotels extends \Bricks\Element {
 			'required' => [ 'tft_hotels_style', '=', 'design-1' ],
 		];
 
+		//button icon color
+		$this->controls['popular_section_button_icon_color'] = [
+			'tab'    => 'style',
+			'group'  => 'popular_tour_style_section',
+			'label'  => esc_html__( 'Button Icon Color', 'travelfic-toolkit' ),
+			'type'   => 'color',
+			'css'    => [
+				[
+					'selector' => '.tft-popular-hotels-design__one .read-more .tft-btn svg path',
+					'property' => 'fill',
+				],
+			],
+			'required' => [ 'tft_hotels_style', '=', 'design-1' ],
+		];
+
 		$this->controls['popular_design1_hotel_button_margin_'] = [
 			'tab'      => 'style',
 			'group'    => 'popular_tour_style_section',
