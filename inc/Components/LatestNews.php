@@ -273,8 +273,13 @@ class LatestNews {
 			</div>
 			<?php
 		} else {
-			$news_item_card_gradient_1 = ! empty( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1'] : '#1D2A3B';
-			$news_item_card_gradient_2 = ! empty( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2'] : '#1d2a3b00';
+			if($builder == 'elementor') {
+				$news_item_card_gradient_1 = ! empty( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1'] : '#1D2A3B';
+				$news_item_card_gradient_2 = ! empty( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2'] : '#1d2a3b00';
+			} elseif($builder == 'bricks') {
+				$news_item_card_gradient_1 = ! empty( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1']['raw'] : '#1D2A3B';
+				$news_item_card_gradient_2 = ! empty( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2']['raw'] : '#1d2a3b00';
+			}
 			?>
 			<style>
 				.tft-latest-posts .tft-post-thumbnail a::before {
