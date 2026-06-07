@@ -4495,12 +4495,10 @@ body.archive .tft-header-design__two {
   line-height: 1.2;
   color: var(--tf-text-heading);
   margin: 0;
-  height: 64%;
 }
 @media only screen and (max-width: 991.98px) {
   .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image .years-of-experience .tft-experience-years h2 {
     font-size: 2rem;
-    height: 40%;
   }
 }
 .tft-about-us-design__one .tft-about-us-grid .tft-about-us-image .tft-about-image {
@@ -9908,6 +9906,8 @@ body.archive .tft-header-design__two {
   bottom: 35px;
   left: 35px;
   color: var(--tf-color-white);
+  flex-direction: column;
+  gap: 8px;
 }
 .tft-destination-design__three .tft-destination-content .tft-single-destination .tft-destination-thumbnail .tft-destination-content h3 {
   font-size: 1.5rem;

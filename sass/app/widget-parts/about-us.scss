@@ -167,11 +167,9 @@
                             line-height: 1.2;
                             color: $tft-color-heading;
                             margin: 0;
-                            height: 64%;
 
                             @media #{$max991} {
                                 font-size: 2rem;
-                                height: 40%;
                             }
                         }
                     }
