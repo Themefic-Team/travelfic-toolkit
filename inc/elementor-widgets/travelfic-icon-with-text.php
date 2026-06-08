@@ -786,91 +786,30 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-        if (!empty($settings['tft_icon_style'])) {
-            $tft_design = $settings['tft_icon_style'];
-        }
-    
-        if (!empty($settings['sec_title'])) {
-            $tft_sec_title = $settings['sec_title'];
-        }
-        $section_title_backdrop = $settings['sec_title_backdrop'] !== 'yes' ? ' tft-no-backdrop' : '';
-        if (!empty($settings['sec_subtitle'])) {
-            $tft_sec_subtitle = $settings['sec_subtitle'];
-        }
-        $iconGradientOne = $settings['icon_color_outter_gradient_1'];
-        $iconGradientTwo = $settings['icon_color_outter_gradient_2'];
-?>
 
-        <?php if ($settings['icon_text_list'] && "design-2" == $tft_design) : ?>
-            <div class="tft-icon-text-design__two tft-customizer-typography tft-section-space">
-                <div class="container">
-                    <div class="tft-heading-content">
-                        <?php if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                        <?php }
-                        if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop); ?>"><?php echo esc_html($tft_sec_title); ?></h2>
-                        <?php } ?>
-                    </div>
-                    <div class="tft-icon-text-items tft-section-space-bottom">
-                        <?php foreach ($settings['icon_text_list'] as $item): ?>
-                            <div class="tft-icon-text-single">
-                                <div class="tft-icon-text-single-inner tft-center">
-                                    <div class="icon_outter">
-                                        <?php if (!empty($item['box_image']['url'])) : ?>
-                                            <div class="img-box">
-                                                <img src="<?php echo esc_url($item['box_image']['url']); ?> " alt="">
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <h3 class="tft-title">
-                                        <?php echo esc_html($item['box_title']); ?>
-                                    </h3>
-                                    <p class="tft-details">
-                                        <?php echo esc_html($item['box_details']); ?>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </div>
-        <?php elseif ($settings['icon_text_list']): ?>
-            <div class="tft-icon-text-design__one tft-customizer-typography">
-                <div class="tft-icon-text-items tft-flex">
-                    <?php foreach ($settings['icon_text_list'] as $item): 
-                        
-                        error_log(print_r($item, true));
-                        ?>
+        // Convert Elementor 'yes' values to Bricks compatible format
+        if ( ! empty( $settings['icon_text_list'] ) ) {
+            foreach ( $settings['icon_text_list'] as &$item ) {
+                // Convert image_icon_switcher from 'yes'/'no' to 'image'/'icon'
+                if ( isset( $item['image_icon_switcher'] ) ) {
+                    $item['image_icon_switcher'] = ( 'yes' === $item['image_icon_switcher'] ) ? 'image' : 'icon';
+                } else {
+                    $item['image_icon_switcher'] = 'image'; // default to image
+                }
+                
+                // Convert active_gap from 'yes'/'no' to true/false
+                if ( isset( $item['active_gap'] ) ) {
+                    $item['active_gap'] = ( 'yes' === $item['active_gap'] ) ? true : false;
+                }
+            }
+        }
 
-                        <div class="tft-icon-text-single" <?php if ($item['active_gap'] == 'yes'): ?>
-                            style="margin-top:<?php echo esc_html($settings['items_gap']); ?>px;" <?php else: ?>
-                            style="margin-bottom:<?php echo esc_html($settings['items_gap']); ?>px;" <?php endif ?>>
-                            <div class="tft-icon-text-single-inner tft-center">
-                                <div class="icon_outter" style="background: radial-gradient(52.1% 52.66% at 80.79% 21.03%, <?php echo esc_attr($iconGradientOne); ?> 6.09%, <?php echo esc_attr($iconGradientTwo); ?> 100%);">
-                                    <?php
-                                    if (!empty($item['box_image']['url'])) : ?>
-                                        <img src="<?php echo esc_url($item['box_image']['url']); ?> " alt="">
-                                        <?php else :
-                                        if (!empty($item['box_icon']['value'])) : ?>
-                                            <div class="tft-icon">
-                                                <?php \Elementor\Icons_Manager::render_icon($item['box_icon'], ['aria-hidden' => 'true']); ?>
-                                            </div>
-                                    <?php endif;
-                                    endif; ?>
-                                </div>
-                                <h3 class="tft-title">
-                                    <?php echo esc_html($item['box_title']); ?>
-                                </h3>
-                                <p class="tft-details">
-                                    <?php echo esc_html($item['box_details']); ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        <?php endif ?>
-<?php
+        // Convert sec_title_backdrop from 'yes' to true
+        if ( isset( $settings['sec_title_backdrop'] ) ) {
+            $settings['sec_title_backdrop'] = ( 'yes' === $settings['sec_title_backdrop'] ) ? true : false;
+        }
+
+        // Render using global component
+        \Travelfic_Toolkit\Components\IconWithText::render( $settings, 'elementor' );
     }
 }
