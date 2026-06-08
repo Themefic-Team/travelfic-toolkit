@@ -268,6 +268,14 @@ class Travelfic_Toolkit_Bricks_IconWithText extends \Bricks\Element {
 					'property' => 'font-size',
 					'selector' => '.tft-icon-text-design__one .tft-icon i, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box i',
 				],
+				[
+					'property' => 'width',
+					'selector' => '.tft-icon-text-design__one .tft-icon img, .tft-icon-text-design__one .tft-icon svg, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box img, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box svg',
+				],
+				[
+					'property' => 'height',
+					'selector' => '.tft-icon-text-design__one .tft-icon img, .tft-icon-text-design__one .tft-icon svg, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box img, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box svg',
+				],
 			],
 		];
 

@@ -460,10 +460,9 @@ class Travelfic_Toolkit_IconWithText extends \Elementor\Widget_Base
                     ],
                 ],
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-icon-text-design__one .tft-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
-                ],
-                'condition' => [
-                    'tft_icon_style' => ['design-1'],
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-icon-text-design__one .tft-icon i, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-icon-text-design__one .tft-icon svg, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-icon-text-design__one .tft-icon-text-items .tft-icon-text-single .tft-icon-text-single-inner .icon_outter img, .tft-icon-text-design__two .tft-icon-text-items .tft-icon-text-single .icon_outter .img-box img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

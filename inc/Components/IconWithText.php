@@ -174,7 +174,6 @@ class IconWithText {
 	 */
 	private static function render_icon( $icon_data, $builder ) {
         $box_icon_html = '';
-        
 		if ( 'elementor' === $builder && class_exists( '\Elementor\Icons_Manager' ) ) {
             if ( is_array( $icon_data ) && ! empty( $icon_data['value'] ) ) {
                 ob_start();
@@ -196,7 +195,7 @@ class IconWithText {
         }
         
         if ( ! empty( $box_icon_html ) ) {
-            echo wp_kses_post( '<div class="tft-icon">' . $box_icon_html . '</div>' );
+            echo '<div class="tft-icon">' . $box_icon_html . '</div>';
         }
 	}
 
