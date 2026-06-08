@@ -28,11 +28,8 @@ class SectionHeading {
 		$tf_heading_details = ! empty( $settings['tf_heading_details'] ) ? $settings['tf_heading_details'] : '';
 		$suffix_title = ! empty( $settings['suffix_title'] ) ? $settings['suffix_title'] : '';
 		$text_align = ! empty( $settings['text_align'] ) ? $settings['text_align'] : 'center';
-
-		$show_suffix = true;
-		if ( isset( $settings['title_suffix'] ) ) {
-			$show_suffix = ( true === $settings['title_suffix'] || 'yes' === $settings['title_suffix'] || 1 === $settings['title_suffix'] || '1' === $settings['title_suffix'] );
-		}
+		$has_suffix = tft_get_switcher_value( $settings, 'title_suffix', 'yes', $builder );
+		$show_suffix = 'yes' === $has_suffix;
 
 		if ( 'design-2' === $tft_design ) {
 			self::render_design_2( $tf_heading, $suffix_title, $show_suffix, $text_align );

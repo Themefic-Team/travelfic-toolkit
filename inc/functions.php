@@ -441,7 +441,10 @@ function tft_bricks_body_modifier_callback( $buffer ) {
 if (!function_exists('tft_get_switcher_value')) {
     function tft_get_switcher_value( $settings, $key, $default = 'yes', $builder = '' ) {
         if ( 'bricks' === $builder ) {
-            return ! empty( $settings[ $key ] ) ? 'yes' : 'no';
+            if ( isset( $settings[ $key ] ) ) {
+                return ! empty( $settings[ $key ] ) ? 'yes' : 'no';
+            }
+            return ( true === $default || 'yes' === $default || 1 === $default || '1' === $default ) ? 'yes' : 'no';
         }
 
         $value = isset( $settings[ $key ] ) ? $settings[ $key ] : $default;
