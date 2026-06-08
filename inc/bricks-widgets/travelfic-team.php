@@ -12,7 +12,23 @@ class Travelfic_Toolkit_Bricks_TeamMembers extends \Bricks\Element {
 	public $category = 'travelfic';
 	public $name     = 'tft-team-members';
 	public $icon     = 'ti-user'; // using Themify user icon
-	public $scripts  = [];
+	public $scripts  = [ 'tftBricksTeam' ];
+
+	public function add_actions() {
+		add_action( 'wp_enqueue_scripts', [ $this, 'register_script' ], 12 );
+	}
+
+	public function register_script() {
+		$path = TRAVELFIC_TOOLKIT_PATH . 'assets/app/js/bricks/team.js';
+
+		wp_register_script(
+			'tft-bricks-team',
+			TRAVELFIC_TOOLKIT_URL . 'assets/app/js/bricks/team.js',
+			[ 'bricks-scripts', 'jquery', 'tf-slick' ],
+			file_exists( $path ) ? (string) filemtime( $path ) : TRAVELFIC_TOOLKIT_VERSION,
+			true
+		);
+	}
 
 	public function get_label() {
 		return esc_html__( 'Travelfic Team Members', 'travelfic-toolkit' );
@@ -20,7 +36,7 @@ class Travelfic_Toolkit_Bricks_TeamMembers extends \Bricks\Element {
 
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'travelfic-toolkit-team' );
-		wp_enqueue_script( 'tf-slick' );
+		wp_enqueue_script( 'tft-bricks-team' );
 	}
 
 	public function set_control_groups() {

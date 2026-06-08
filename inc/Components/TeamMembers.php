@@ -159,7 +159,20 @@ class TeamMembers {
 					<?php } ?>
 				</div>
 				<div class="tft-team-content">
-					<div id="<?php echo esc_attr( $slider_id ); ?>" class="tft-team-members <?php echo esc_attr( $slider_box_hidden ); ?>">
+					<div id="<?php echo esc_attr( $slider_id ); ?>" class="tft-team-members <?php echo esc_attr( $slider_box_hidden ); ?>"
+						 data-slider-disable="<?php echo $tftSliderDisable ? 'true' : 'false'; ?>"
+						 data-slides-to-show="<?php echo esc_attr( $slideToShow ); ?>"
+						 data-slides-to-scroll="<?php echo esc_attr( $design2_slide_to_scroll ); ?>"
+						 data-loop="<?php echo esc_attr( $design2_slider_loop ); ?>"
+						 data-autoplay="<?php echo esc_attr( $design2_slider_autoplay ); ?>"
+						 data-autoplay-speed="<?php echo esc_attr( $design2_slider_autoplay_speed ); ?>"
+						 data-speed="<?php echo esc_attr( $design2_slider_autoplay_interval ); ?>"
+						 data-dots="<?php echo esc_attr( $design2_slider_dots ); ?>"
+						 data-arrows="<?php echo esc_attr( $design2_slider_arrows ); ?>"
+						 data-pause-on-hover="<?php echo esc_attr( $design2_slider_pause_on_hover ); ?>"
+						 data-pause-on-focus="<?php echo esc_attr( $design2_slider_pause_on_focus ); ?>"
+						 data-rtl="<?php echo esc_attr( $design2_slider_rtl ); ?>"
+						 data-draggable="<?php echo esc_attr( $design2_slider_draggable ); ?>">
 						<?php foreach ( $members_list as $item ) : ?>
 							<div class="tft-single-member tft-card-default">
 								<div class="team-members-inner">
