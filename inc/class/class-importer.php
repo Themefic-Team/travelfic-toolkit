@@ -550,6 +550,159 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                 update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
             }
+
+            if ( 'bricks' === $builder ) {
+                // Import Color Palette
+                $color_palette_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/bricks-color-palette.json';
+                $color_palette_response = wp_remote_get( $color_palette_url );
+                if ( ! is_wp_error( $color_palette_response ) && wp_remote_retrieve_response_code( $color_palette_response ) === 200 ) {
+                    $color_palette_data = json_decode( wp_remote_retrieve_body( $color_palette_response ), true );
+                    if ( ! empty( $color_palette_data ) ) {
+                        update_option( 'bricks_color_palette', $color_palette_data );
+                    }
+                }
+
+                // Import Theme Style
+                $theme_style_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/bricks-theme-style.json';
+                $theme_style_response = wp_remote_get( $theme_style_url );
+                if ( ! is_wp_error( $theme_style_response ) && wp_remote_retrieve_response_code( $theme_style_response ) === 200 ) {
+                    $theme_style_data = json_decode( wp_remote_retrieve_body( $theme_style_response ), true );
+                    if ( ! empty( $theme_style_data ) ) {
+                        update_option( 'bricks_theme_styles', $theme_style_data );
+                    }
+                }
+
+                // Import Templates (Header & Footer)
+                $templates_to_import = array(
+                    'header' => 'bricks-header.json',
+                    'footer' => 'bricks-footer.json',
+                );
+
+                foreach ( $templates_to_import as $template_type => $file_name ) {
+                    $template_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/' . $file_name;
+                    $template_response = wp_remote_get( $template_url );
+                    if ( ! is_wp_error( $template_response ) && wp_remote_retrieve_response_code( $template_response ) === 200 ) {
+                        $template_data = json_decode( wp_remote_retrieve_body( $template_response ), true );
+                        if ( ! empty( $template_data ) ) {
+                            $title = ! empty( $template_data['title'] ) ? $template_data['title'] : 'Imported ' . ucfirst($template_type);
+                            
+                            // Find and delete existing template of the same title and type
+                            $existing_templates = get_posts(array(
+                                'post_type'   => 'bricks_template',
+                                'title'       => $title,
+                                'post_status' => 'any',
+                                'numberposts' => -1,
+                                'meta_query'  => array(
+                                    array(
+                                        'key'     => '_bricks_template_type',
+                                        'value'   => $template_type,
+                                    )
+                                )
+                            ));
+                            foreach ($existing_templates as $existing_template) {
+                                wp_delete_post($existing_template->ID, true);
+                            }
+
+                            // Insert new template
+                            $new_template_id = wp_insert_post(array(
+                                'post_title'  => $title,
+                                'post_status' => 'publish',
+                                'post_type'   => 'bricks_template',
+                            ));
+
+                            if ($new_template_id && !is_wp_error($new_template_id)) {
+                                update_post_meta($new_template_id, '_bricks_template_type', $template_type);
+                                update_post_meta($new_template_id, '_bricks_editor_mode', 'bricks');
+                                
+                                $meta_key = '_bricks_page_content_2';
+                                if ($template_type === 'header') {
+                                    $meta_key = '_bricks_page_header_2';
+                                } elseif ($template_type === 'footer') {
+                                    $meta_key = '_bricks_page_footer_2';
+                                }
+                                
+                                $elements = isset($template_data[$template_type]) ? $template_data[$template_type] : (isset($template_data['content']) ? $template_data['content'] : array());
+                                
+                                // Download and replace media URLs if present
+                                $template_images = !empty($template_data['media_urls']) ? $template_data['media_urls'] : '';
+                                if(!empty($template_images)){
+                                    $media_urls = explode(", ", $template_images);
+                                    $update_media_url = [];
+
+                                    foreach($media_urls as $media){
+                                        if(!empty($media)){
+                                            $image_response = wp_remote_get( $media );
+                                            if ( ! is_wp_error( $image_response ) && wp_remote_retrieve_response_code( $image_response ) === 200 ) {
+                                                $page_image_data = wp_remote_retrieve_body($image_response);
+                                                $page_filename   = basename( $media );
+                                                $page_upload_dir = wp_upload_dir();
+                                                $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+                                        
+                                                // Save the image file to the uploads directory
+                                                file_put_contents( $page_image_path, $page_image_data );
+                                                
+                                                if (file_exists($page_image_path)) {
+                                                    $page_attachment = array(
+                                                        'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                                                        'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
+                                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                                                        'post_content'   => '',
+                                                        'post_status'    => 'inherit'
+                                                    );
+                                                    $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+                                                    
+                                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
+                                                    $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
+                                                    wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
+                                        
+                                                    $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Replace URLs in element structure and settings
+                                    $elements_str = wp_json_encode($elements);
+                                    $page_settings_str = isset($template_data['pageSettings']) ? wp_json_encode($template_data['pageSettings']) : '';
+                                    $template_settings_str = isset($template_data['templateSettings']) ? wp_json_encode($template_data['templateSettings']) : '';
+
+                                    foreach ($update_media_url as $local_url => $old_url) {
+                                        if (!empty($elements_str)) {
+                                            $elements_str = str_replace($old_url, $local_url, $elements_str);
+                                        }
+                                        if (!empty($page_settings_str)) {
+                                            $page_settings_str = str_replace($old_url, $local_url, $page_settings_str);
+                                        }
+                                        if (!empty($template_settings_str)) {
+                                            $template_settings_str = str_replace($old_url, $local_url, $template_settings_str);
+                                        }
+                                    }
+
+                                    if (!empty($elements_str)) {
+                                        $elements = json_decode($elements_str, true);
+                                    }
+                                    if (!empty($page_settings_str)) {
+                                        $template_data['pageSettings'] = json_decode($page_settings_str, true);
+                                    }
+                                    if (!empty($template_settings_str)) {
+                                        $template_data['templateSettings'] = json_decode($template_settings_str, true);
+                                    }
+                                }
+
+                                if (!empty($elements)) {
+                                    update_post_meta($new_template_id, $meta_key, $elements);
+                                }
+                                if (isset($template_data['pageSettings'])) {
+                                    update_post_meta($new_template_id, '_bricks_page_settings', $template_data['pageSettings']);
+                                }
+                                if (isset($template_data['templateSettings'])) {
+                                    update_post_meta($new_template_id, '_bricks_template_settings', $template_data['templateSettings']);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             die();
 
 		}
