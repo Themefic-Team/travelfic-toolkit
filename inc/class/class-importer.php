@@ -259,10 +259,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $pages_images = $page['media_urls'];
 
                     $elementor_data = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
-                    $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
-
-                    $bricks_content_str = !empty($page['_bricks_page_content_2']) ? wp_slash(wp_json_encode($page['_bricks_page_content_2'])) : '';
-                    $bricks_settings_str = !empty($page['_bricks_page_settings_2']) ? wp_slash(wp_json_encode($page['_bricks_page_settings_2'])) : '';
+                    $bricks_content = !empty($page['_bricks_page_content_2']) ? $page['_bricks_page_content_2'] : [];
+                    $bricks_settings = !empty($page['_bricks_page_settings_2']) ? $page['_bricks_page_settings_2'] : [];
 
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
@@ -303,16 +301,16 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 }
                             }
                         }
-                        foreach ($update_media_url as $local_url => $old_url) {
-                            if ('bricks' === $builder) {
-                                if (!empty($bricks_content_str)) {
-                                    $bricks_content_str = str_replace($old_url, $local_url, $bricks_content_str);
-                                }
-                                if (!empty($bricks_settings_str)) {
-                                    $bricks_settings_str = str_replace($old_url, $local_url, $bricks_settings_str);
-                                }
-                            } else {
-                                $elementor_content = str_replace($old_url, $local_url, $elementor_content);
+                        if ('bricks' === $builder) {
+                            if (!empty($bricks_content)) {
+                                $bricks_content = $this->travelfic_importer_replace_urls_recursive($bricks_content, $update_media_url);
+                            }
+                            if (!empty($bricks_settings)) {
+                                $bricks_settings = $this->travelfic_importer_replace_urls_recursive($bricks_settings, $update_media_url);
+                            }
+                        } else {
+                            if (!empty($elementor_data)) {
+                                $elementor_data = $this->travelfic_importer_replace_urls_recursive($elementor_data, $update_media_url);
                             }
                         }
                     }
@@ -368,7 +366,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     );
 
 
-                 
+                
                     // Insert the page into the database
                     $new_page_id = wp_insert_post($new_page);
                     if(!empty($is_front)){
@@ -380,28 +378,32 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_option( 'page_for_posts', $new_page_id );
                     }
 
-                    if(!empty($page['_wp_page_template'])){
-                        update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
-                        update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
-                        update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
+                    update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', isset($page['tft-pmb-disable-sidebar']) ? $page['tft-pmb-disable-sidebar'] : 0);
+                    update_post_meta($new_page_id, 'tft-pmb-banner', isset($page['tft-pmb-banner']) ? $page['tft-pmb-banner'] : 0);
+                    update_post_meta($new_page_id, 'tft-pmb-transfar-header', isset($page['tft-pmb-transfar-header']) ? $page['tft-pmb-transfar-header'] : 0);
+                    if (!empty($page['_wp_page_template'])) {
                         update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
-                        update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
-                        update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
-                        
-                        if ('bricks' === $builder) {
-                            if (!empty($bricks_content_str)) {
-                                update_post_meta($new_page_id, '_bricks_page_content_2', json_decode(wp_unslash($bricks_content_str), true));
+                    }
+                    update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
+                    update_post_meta($new_page_id, 'tft-pmb-subtitle', isset($page['tft-pmb-subtitle']) ? $page['tft-pmb-subtitle'] : '');
+                    
+                    if ('bricks' === $builder) {
+                        if (!empty($bricks_content)) {
+                            if (is_array($bricks_content) && !empty($bricks_content['content']) && is_array($bricks_content['content'])) {
+                                $bricks_content = $bricks_content['content'];
                             }
-                            if (!empty($bricks_settings_str)) {
-                                update_post_meta($new_page_id, '_bricks_page_settings_2', json_decode(wp_unslash($bricks_settings_str), true));
-                            }
-                            update_post_meta($new_page_id, '_bricks_editor_mode', 'bricks');
-                        } else {
-                            update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-                            update_post_meta($new_page_id, '_elementor_data', $elementor_content);
-                            update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
-                            update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                            update_post_meta($new_page_id, '_bricks_page_content_2', $bricks_content);
                         }
+                        if (!empty($bricks_settings)) {
+                            update_post_meta($new_page_id, '_bricks_page_settings_2', $bricks_settings);
+                        }
+                        update_post_meta($new_page_id, '_bricks_editor_mode', 'bricks');
+                    } else {
+                        $elementor_content = !empty($elementor_data) ? wp_slash(wp_json_encode($elementor_data)) : '';
+                        update_post_meta($new_page_id, '_elementor_template_type', isset($page['_elementor_template_type']) ? $page['_elementor_template_type'] : '');
+                        update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                        update_post_meta($new_page_id, '_elementor_page_assets', isset($page['_elementor_page_assets']) ? $page['_elementor_page_assets'] : '');
+                        update_post_meta($new_page_id, '_elementor_edit_mode', isset($page['_elementor_edit_mode']) ? $page['_elementor_edit_mode'] : '');
                     }
                 }
                 
@@ -661,31 +663,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                         }
                                     }
                                     
-                                    // Replace URLs in element structure and settings
-                                    $elements_str = wp_json_encode($elements);
-                                    $page_settings_str = isset($template_data['pageSettings']) ? wp_json_encode($template_data['pageSettings']) : '';
-                                    $template_settings_str = isset($template_data['templateSettings']) ? wp_json_encode($template_data['templateSettings']) : '';
-
-                                    foreach ($update_media_url as $local_url => $old_url) {
-                                        if (!empty($elements_str)) {
-                                            $elements_str = str_replace($old_url, $local_url, $elements_str);
-                                        }
-                                        if (!empty($page_settings_str)) {
-                                            $page_settings_str = str_replace($old_url, $local_url, $page_settings_str);
-                                        }
-                                        if (!empty($template_settings_str)) {
-                                            $template_settings_str = str_replace($old_url, $local_url, $template_settings_str);
-                                        }
+                                    if (!empty($elements)) {
+                                        $elements = $this->travelfic_importer_replace_urls_recursive($elements, $update_media_url);
                                     }
-
-                                    if (!empty($elements_str)) {
-                                        $elements = json_decode($elements_str, true);
+                                    if (isset($template_data['pageSettings'])) {
+                                        $template_data['pageSettings'] = $this->travelfic_importer_replace_urls_recursive($template_data['pageSettings'], $update_media_url);
                                     }
-                                    if (!empty($page_settings_str)) {
-                                        $template_data['pageSettings'] = json_decode($page_settings_str, true);
-                                    }
-                                    if (!empty($template_settings_str)) {
-                                        $template_data['templateSettings'] = json_decode($template_settings_str, true);
+                                    if (isset($template_data['templateSettings'])) {
+                                        $template_data['templateSettings'] = $this->travelfic_importer_replace_urls_recursive($template_data['templateSettings'], $update_media_url);
                                     }
                                 }
 
@@ -3355,6 +3340,24 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 			}
 		}
+
+        /**
+         * Recursively replace URLs in an array or string
+         */
+        private function travelfic_importer_replace_urls_recursive($data, $update_media_url) {
+            if (is_array($data)) {
+                foreach ($data as $key => $value) {
+                    $data[$key] = $this->travelfic_importer_replace_urls_recursive($value, $update_media_url);
+                }
+            } elseif (is_string($data)) {
+                foreach ($update_media_url as $local_url => $old_url) {
+                    if (!empty($old_url) && !empty($local_url)) {
+                        $data = str_replace($old_url, $local_url, $data);
+                    }
+                }
+            }
+            return $data;
+        }
 	}
 
 
