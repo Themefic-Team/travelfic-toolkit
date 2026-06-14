@@ -559,7 +559,16 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 if ( ! is_wp_error( $color_palette_response ) && wp_remote_retrieve_response_code( $color_palette_response ) === 200 ) {
                     $color_palette_data = json_decode( wp_remote_retrieve_body( $color_palette_response ), true );
                     if ( ! empty( $color_palette_data ) ) {
-                        update_option( 'bricks_color_palette', $color_palette_data );
+                        $option_name = defined( 'BRICKS_DB_COLOR_PALETTES' ) ? BRICKS_DB_COLOR_PALETTES : ( defined( 'BRICKS_DB_COLOR_PALETTE' ) ? BRICKS_DB_COLOR_PALETTE : 'bricks_color_palette' );
+                        $existing_palettes = get_option( $option_name, [] );
+                        if ( ! is_array( $existing_palettes ) ) {
+                            $existing_palettes = [];
+                        }
+                        
+                        foreach ( $color_palette_data as $id => $palette ) {
+                            $existing_palettes[ $id ] = $palette;
+                        }
+                        update_option( $option_name, $existing_palettes );
                     }
                 }
 
@@ -569,7 +578,24 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 if ( ! is_wp_error( $theme_style_response ) && wp_remote_retrieve_response_code( $theme_style_response ) === 200 ) {
                     $theme_style_data = json_decode( wp_remote_retrieve_body( $theme_style_response ), true );
                     if ( ! empty( $theme_style_data ) ) {
-                        update_option( 'bricks_theme_styles', $theme_style_data );
+                        $option_name = defined( 'BRICKS_DB_THEME_STYLES' ) ? BRICKS_DB_THEME_STYLES : 'bricks_theme_styles';
+                        $existing_styles = get_option( $option_name, [] );
+                        if ( ! is_array( $existing_styles ) ) {
+                            $existing_styles = [];
+                        }
+
+                        foreach ( $theme_style_data as $id => $style ) {
+                            // Bricks only applies theme styles that have at least one matching condition.
+                            if ( ! isset( $style['conditions'] ) ) {
+                                $style['conditions'] = [
+                                    [
+                                        'type' => 'entireWebsite',
+                                    ],
+                                ];
+                            }
+                            $existing_styles[ $id ] = $style;
+                        }
+                        update_option( $option_name, $existing_styles );
                     }
                 }
 
