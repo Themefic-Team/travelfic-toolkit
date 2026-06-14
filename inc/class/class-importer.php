@@ -384,10 +384,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             update_post_meta($new_page_id, '_bricks_page_content_2', json_decode(wp_unslash($bricks_content_str), true));
                         }
                         if (!empty($bricks_settings_str)) {
-                            update_post_meta($new_page_id, '_bricks_page_settings_2', json_decode(wp_unslash($bricks_settings_str), true));
+                            update_post_meta($new_page_id, '_bricks_page_settings_2', wp_slash(json_decode(wp_unslash($bricks_settings_str), true)));
                         }
                         update_post_meta($new_page_id, '_bricks_editor_mode', 'bricks');
-                        update_post_meta($new_page_id, '_bricks_template_type', 'content');
                     }
 
                     if(!empty($page['_wp_page_template'])){
@@ -617,11 +616,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 update_post_meta($new_template_id, '_bricks_editor_mode', 'bricks');
                                 
                                 $meta_key = '_bricks_page_content_2';
-                                if ($template_type === 'header') {
-                                    $meta_key = '_bricks_page_header_2';
-                                } elseif ($template_type === 'footer') {
-                                    $meta_key = '_bricks_page_footer_2';
-                                }
                                 
                                 $elements = isset($template_data[$template_type]) ? $template_data[$template_type] : (isset($template_data['content']) ? $template_data['content'] : array());
                                 
@@ -692,13 +686,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 }
 
                                 if (!empty($elements)) {
-                                    update_post_meta($new_template_id, $meta_key, $elements);
+                                    update_post_meta($new_template_id, $meta_key, wp_slash($elements));
                                 }
+                                
                                 if (isset($template_data['pageSettings'])) {
-                                    update_post_meta($new_template_id, '_bricks_page_settings', $template_data['pageSettings']);
+                                    update_post_meta($new_template_id, '_bricks_page_settings_2', wp_slash($template_data['pageSettings']));
                                 }
                                 if (isset($template_data['templateSettings'])) {
-                                    update_post_meta($new_template_id, '_bricks_template_settings', $template_data['templateSettings']);
+                                    update_post_meta($new_template_id, '_bricks_template_settings', wp_slash($template_data['templateSettings']));
                                 }
                             }
                         }
