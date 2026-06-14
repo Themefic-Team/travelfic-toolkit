@@ -462,9 +462,9 @@
                     _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 },
                 success: function(response) {
-                    $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
-                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
-                    $(".demo-hotel-import-btn").click();
+                    $('.demo-importing-loader .loader-heading .loader-precent').text('78%');
+                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "78%");
+                    $(".bricks-assets-import-btn").click();
                 },
                 error: function(error) {
                     console.log(error);
@@ -476,6 +476,40 @@
             $(".demo-hotel-import-btn").click();
         }
     });
+
+    // Bricks Assets importer (color palette, theme style, header & footer templates)
+    $(document).on('click', '.bricks-assets-import-btn', function (e) {
+        if (active_builder === 'bricks') {
+            $('.demo-importing-loader .loader-heading .loader-label').text("Bricks templates importing...");
+            $.ajax({
+                type: 'post',
+                url: travelfic_toolkit_script_params.ajax_url,
+                data: {
+                    action: 'travelfic-demo-bricks-assets-import',
+                    template_version: template_design,
+                    _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                },
+                success: function(response) {
+                    $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
+                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
+                    $(".demo-hotel-import-btn").click();
+                },
+                error: function(error) {
+                    console.log(error);
+                    // Still proceed even on error so the rest of the import continues
+                    $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
+                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
+                    $(".demo-hotel-import-btn").click();
+                }
+            });
+        } else {
+            $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
+            $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
+            $(".demo-hotel-import-btn").click();
+        }
+    });
+
+
 
     // Demo Hotel importer
     $(document).on('click', '.demo-hotel-import-btn', function (e) {
