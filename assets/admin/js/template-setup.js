@@ -429,6 +429,7 @@
                 data: {
                     action: 'travelfic-demo-menu-import',
                     template_version: template_design,
+                    builder: active_builder,
                     _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 },
                 success: function(response) {

@@ -616,14 +616,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_option( 'page_for_posts', $new_page_id );
                     }
 
-                    if ( 'bricks' === $builder ) {
-                        // Bricks builder meta
+                    if ( 'bricks' === $builder && ! empty( $page['_bricks_page_content_2'] ) ) {
+                        // Bricks builder meta — only for pages that actually have Bricks content.
+                        // Pages without _bricks_page_content_2 (e.g. Blog page) are imported
+                        // as plain WordPress pages with no builder meta.
                         update_post_meta( $new_page_id, 'tf_builder_type', 'bricks' );
                         update_post_meta( $new_page_id, '_bricks_template_type', 'content' );
                         update_post_meta( $new_page_id, '_bricks_editor_mode', 'bricks' );
-                        // if ( ! empty( $page['content'] ) && is_array( $page['content'] ) ) {
-                            update_post_meta( $new_page_id, '_bricks_page_content_2', wp_slash( $page['_bricks_page_content_2'] ) );
-                        // }
+                        update_post_meta( $new_page_id, '_bricks_page_content_2', wp_slash( $page['_bricks_page_content_2'] ) );
                     }
 
                     if(!empty($page['_wp_page_template'])){ 
@@ -910,7 +910,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		public function prepare_travelfic_menus_imports() {
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
-            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/menu.txt';
+            $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
+
+            if( 'bricks' === $builder ) {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/bricks-menu.txt';
+            } else {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/menu.txt';
+            }
+
             $serialized_menu = wp_remote_get( $demo_data_url );
             $serialized_menu = wp_remote_retrieve_body($serialized_menu);
             if (!empty($serialized_menu)) {
