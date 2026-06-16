@@ -434,7 +434,11 @@
                 success: function(response) {
                     $('.demo-importing-loader .loader-heading .loader-precent').text('65%');
                     $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "65%");
-                    $(".demo-page-import-btn").click();
+                    if (active_builder === 'bricks') {
+                        $(".bricks-template-import-btn").click();
+                    } else {
+                        $(".demo-page-import-btn").click();
+                    }
                 },
                 error: function(error) {
                     console.log(error);
@@ -443,11 +447,38 @@
         }else{
             $('.demo-importing-loader .loader-heading .loader-precent').text('65%');
             $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "65%");
-            $(".demo-page-import-btn").click();
+            if (active_builder === 'bricks') {
+                $(".bricks-template-import-btn").click();
+            } else {
+                $(".demo-page-import-btn").click();
+            }
         }
     });
 
-    // Demo Pages importer
+    // Bricks Template importer (header, footer, color palette, theme styles)
+    $(document).on('click', '.bricks-template-import-btn', function (e) {
+        $('.demo-importing-loader .loader-heading .loader-label').text("Bricks templates importing...");
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic-bricks-template-import',
+                template_version: template_design,
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+            },
+            success: function(response) {
+                $('.demo-importing-loader .loader-heading .loader-precent').text('75%');
+                $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "75%");
+                $(".demo-page-import-btn").click();
+            },
+            error: function(error) {
+                console.log(error);
+                // Continue even on error so the rest of the import isn't blocked
+                $(".demo-page-import-btn").click();
+            }
+        });
+    });
+
     $(document).on('click', '.demo-page-import-btn', function (e) {
         
         if ($.inArray("demo", travelfic_imports_data) !== -1) {

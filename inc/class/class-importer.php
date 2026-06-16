@@ -33,8 +33,254 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_ajax_travelfic-demo-pages-import', array( $this, 'prepare_travelfic_pages_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-widget-import', array( $this, 'prepare_travelfic_widgets_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-menu-import', array( $this, 'prepare_travelfic_menus_imports' ) );
+			add_action( 'wp_ajax_travelfic-bricks-template-import', array( $this, 'prepare_bricks_template_import' ) );
 			add_action( 'wp_head', array( $this, 'prepare_travelfic_elementor_background_images' ));
 		}
+
+		/**
+		 * Bricks Builder Template Import
+		 * Imports header, transparent header (optional), footer templates,
+		 * color palette, and theme styles for Bricks Builder.
+		 * @since 1.0.0
+		 */
+		public function prepare_bricks_template_import() {
+			check_ajax_referer( 'updates', '_ajax_nonce' );
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error( 'Not allowed.' );
+			}
+
+			$template_key = ! empty( $_POST['template_version'] ) ? sanitize_key( $_POST['template_version'] ) : 1;
+			$base_url     = 'https://api.themefic.com/tourfic/demos/v' . $template_key . '/';
+			$results      = [];
+
+			/**
+			 * ── 1. Import Bricks header/footer templates ──────────────────────────────
+			 *
+			 * Each JSON file follows Bricks' export format:
+			 * { "title": "...", "templateType": "header"|"footer", "header": [...] | "footer": [...] }
+			 *
+			 * Bricks requires at least one condition in templateSettings for the
+			 * header/footer to be applied. We inject ['main' => 'any'] if missing.
+			 */
+			$template_files = [
+				'bricks-header.json'              => 'header',
+				'bricks-header-transparent.json'  => 'header',
+				'bricks-footer.json'              => 'footer',
+			];
+
+			foreach ( $template_files as $filename => $area ) {
+				$url      = $base_url . $filename;
+				$response = wp_remote_get( $url );
+
+				if ( is_wp_error( $response ) ) {
+					$results[ $filename ] = 'fetch_error';
+					continue;
+				}
+
+				$body = wp_remote_retrieve_body( $response );
+				$code = wp_remote_retrieve_response_code( $response );
+
+				// Skip if file not found (transparent header is optional)
+				if ( 200 !== (int) $code || empty( $body ) ) {
+					$results[ $filename ] = 'not_found';
+					continue;
+				}
+
+				$template_data = json_decode( $body, true );
+
+				if ( empty( $template_data ) || ! is_array( $template_data ) ) {
+					$results[ $filename ] = 'invalid_json';
+					continue;
+				}
+
+				// Determine the title from JSON or fall back to filename
+				$post_title = ! empty( $template_data['title'] ) ? sanitize_text_field( $template_data['title'] ) : ucwords( str_replace( [ '-', '.json' ], [ ' ', '' ], $filename ) );
+
+				// Delete any existing template with the same title to avoid duplicates
+				$existing = get_posts( [
+					'post_type'   => 'bricks_template',
+					'title'       => $post_title,
+					'post_status' => 'any',
+					'numberposts' => -1,
+					'fields'      => 'ids',
+				] );
+				foreach ( $existing as $existing_id ) {
+					wp_delete_post( $existing_id, true );
+				}
+
+				// Insert new bricks_template post
+				$new_id = wp_insert_post( [
+					'post_title'  => $post_title,
+					'post_type'   => 'bricks_template',
+					'post_status' => 'publish',
+				] );
+
+				if ( is_wp_error( $new_id ) ) {
+					$results[ $filename ] = 'insert_error';
+					continue;
+				}
+
+				// Save template type meta (_bricks_template_type)
+				$template_type = ! empty( $template_data['templateType'] ) ? sanitize_text_field( $template_data['templateType'] ) : $area;
+				update_post_meta( $new_id, '_bricks_template_type', $template_type );
+
+				// Save page settings if present
+				if ( isset( $template_data['pageSettings'] ) ) {
+					update_post_meta( $new_id, '_bricks_page_settings', $template_data['pageSettings'] );
+				}
+
+				/**
+				 * Template conditions (templateSettings):
+				 * Bricks only applies header/footer templates that have at least one
+				 * matching condition. Ensure 'main' => 'any' is always present so
+				 * the template is applied site-wide.
+				 */
+				$template_settings = isset( $template_data['templateSettings'] ) && is_array( $template_data['templateSettings'] )
+					? $template_data['templateSettings']
+					: [];
+
+				$conditions = isset( $template_settings['conditions'] ) && is_array( $template_settings['conditions'] )
+					? $template_settings['conditions']
+					: [];
+
+				$condition_rules = isset( $conditions['conditions'] ) && is_array( $conditions['conditions'] )
+					? $conditions['conditions']
+					: [];
+
+				// Inject a site-wide condition if no conditions exist
+				if ( empty( $condition_rules ) ) {
+					$conditions['conditions'] = [
+						[
+							'id'   => 'imported',
+							'main' => 'any',
+						],
+					];
+					$template_settings['conditions'] = $conditions;
+				}
+
+				update_post_meta( $new_id, '_bricks_template_settings', $template_settings );
+
+				// Determine which meta key stores elements (header vs footer vs content)
+				$meta_key = '_bricks_page_content_2'; // default
+				$elements = false;
+
+				if ( ! empty( $template_data['header'] ) ) {
+					$meta_key = '_bricks_page_header_2';
+					$elements = $template_data['header'];
+				} elseif ( ! empty( $template_data['footer'] ) ) {
+					$meta_key = '_bricks_page_footer_2';
+					$elements = $template_data['footer'];
+				} elseif ( ! empty( $template_data['content'] ) ) {
+					$meta_key = '_bricks_page_content_2';
+					$elements = $template_data['content'];
+				}
+
+				if ( $elements && is_array( $elements ) ) {
+					update_post_meta( $new_id, $meta_key, wp_slash( $elements ) );
+				}
+
+				$results[ $filename ] = 'imported';
+			}
+
+			/**
+			 * ── 2. Import Bricks Color Palette ───────────────────────────────────────
+			 *
+			 * The option `bricks_color_palette` holds a numerically-indexed array
+			 * of palette objects (each with 'id', 'name', 'colors').
+			 * We append/replace our palette matched by its `id`.
+			 */
+			$palette_url      = $base_url . 'bricks-color-palette.json';
+			$palette_response = wp_remote_get( $palette_url );
+
+			if ( ! is_wp_error( $palette_response ) && 200 === (int) wp_remote_retrieve_response_code( $palette_response ) ) {
+				$palette_data = json_decode( wp_remote_retrieve_body( $palette_response ), true );
+
+				if ( ! empty( $palette_data ) && is_array( $palette_data ) ) {
+					$existing_palettes = get_option( 'bricks_color_palette', [] );
+					if ( ! is_array( $existing_palettes ) ) {
+						$existing_palettes = [];
+					}
+
+					// Replace palette with matching id, or append
+					$palette_id    = ! empty( $palette_data['id'] ) ? $palette_data['id'] : '';
+					$palette_found = false;
+					foreach ( $existing_palettes as $idx => $palette ) {
+						if ( $palette_id && ! empty( $palette['id'] ) && $palette['id'] === $palette_id ) {
+							$existing_palettes[ $idx ] = $palette_data;
+							$palette_found             = true;
+							break;
+						}
+					}
+					if ( ! $palette_found ) {
+						$existing_palettes[] = $palette_data;
+					}
+
+					update_option( 'bricks_color_palette', $existing_palettes );
+					$results['bricks-color-palette.json'] = 'imported';
+				}
+			} else {
+				$results['bricks-color-palette.json'] = 'not_found';
+			}
+
+			/**
+			 * ── 3. Import Bricks Theme Style ─────────────────────────────────────────
+			 *
+			 * IMPORTANT: The option `bricks_theme_styles` is a KEYED associative array
+			 * indexed by the style's ID (e.g. ['tourfic' => ['label'=>..., 'settings'=>..., 'id'=>...]]).
+			 * This is NOT a numerically-indexed array.
+			 *
+			 * The JSON file contains a single style object with 'id', 'label', 'settings'.
+			 * We store/replace it at $existing_styles[$style_id].
+			 *
+			 * Bricks also requires at least one condition in settings.conditions for the
+			 * theme style to be applied. We inject ['main' => 'any'] if missing.
+			 */
+			$theme_style_url      = $base_url . 'bricks-theme-style.json';
+			$theme_style_response = wp_remote_get( $theme_style_url );
+
+			if ( ! is_wp_error( $theme_style_response ) && 200 === (int) wp_remote_retrieve_response_code( $theme_style_response ) ) {
+				$theme_style_data = json_decode( wp_remote_retrieve_body( $theme_style_response ), true );
+
+				if ( ! empty( $theme_style_data ) && is_array( $theme_style_data ) ) {
+					// bricks_theme_styles is keyed by style ID
+					$existing_styles = get_option( 'bricks_theme_styles', [] );
+					if ( ! is_array( $existing_styles ) ) {
+						$existing_styles = [];
+					}
+
+					$style_id = ! empty( $theme_style_data['id'] ) ? $theme_style_data['id'] : 'tourfic';
+
+					// Ensure conditions exist so the theme style is applied site-wide
+					$ts_settings   = isset( $theme_style_data['settings'] ) && is_array( $theme_style_data['settings'] )
+						? $theme_style_data['settings']
+						: [];
+					$ts_conditions = isset( $ts_settings['conditions'] ) && is_array( $ts_settings['conditions'] )
+						? $ts_settings['conditions']
+						: [];
+					$ts_rules      = isset( $ts_conditions['conditions'] ) && is_array( $ts_conditions['conditions'] )
+						? $ts_conditions['conditions']
+						: [];
+
+					if ( empty( $ts_rules ) ) {
+						$ts_conditions['conditions']     = [ [ 'main' => 'any' ] ];
+						$ts_settings['conditions']       = $ts_conditions;
+						$theme_style_data['settings']    = $ts_settings;
+					}
+
+					// Store as keyed array entry (this is the correct Bricks DB structure)
+					$existing_styles[ $style_id ] = $theme_style_data;
+
+					update_option( 'bricks_theme_styles', $existing_styles );
+					$results['bricks-theme-style.json'] = 'imported';
+				}
+			} else {
+				$results['bricks-theme-style.json'] = 'not_found';
+			}
+
+			wp_send_json_success( $results );
+		}
+
 
 		/**
 		 * Tourfic Global Settings
@@ -190,6 +436,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
 
             update_option('travelfic_template_version', $template_key);
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
@@ -214,7 +461,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
             
-            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            if ( 'bricks' === $builder ) {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages-bricks.json';
+            } else {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            }
+
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
 
@@ -364,18 +616,33 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_option( 'page_for_posts', $new_page_id );
                     }
 
-                    if(!empty($page['_wp_page_template'])){
+                    if ( 'bricks' === $builder ) {
+                        // Bricks builder meta
+                        update_post_meta( $new_page_id, 'tf_builder_type', 'bricks' );
+                        update_post_meta( $new_page_id, '_bricks_template_type', 'content' );
+                        update_post_meta( $new_page_id, '_bricks_editor_mode', 'bricks' );
+                        // if ( ! empty( $page['content'] ) && is_array( $page['content'] ) ) {
+                            update_post_meta( $new_page_id, '_bricks_page_content_2', wp_slash( $page['_bricks_page_content_2'] ) );
+                        // }
+                    }
+
+                    if(!empty($page['_wp_page_template'])){ 
                         update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
                         update_post_meta($new_page_id, 'tft-pmb-banner', $page['tft-pmb-banner']);
                         update_post_meta($new_page_id, 'tft-pmb-transfar-header', $page['tft-pmb-transfar-header']);
                         update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
                         update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
                         update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
-                        update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-                        update_post_meta($new_page_id, '_elementor_data', $elementor_content);
-                        update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
-                        update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+
+                        if ( 'elementor' === $builder ) {
+                            // Elementor builder meta
+                            update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
+                            update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                            update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
+                            update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                        }
                     }
+
                 }
                 
                 delete_option('_elementor_global_css');
