@@ -190,6 +190,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             check_ajax_referer('updates', '_ajax_nonce');
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
 
             update_option('travelfic_template_version', $template_key);
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
@@ -214,7 +215,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
             
-            $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            if ( 'bricks' === $builder ) {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages-bricks.json';
+            } else {
+                $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/pages.json';
+            }
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
 
@@ -254,8 +259,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $pages_images = $page['media_urls'];
 
                     $elementor_data = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
-                
                     $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
+
+                    $bricks_content_str = !empty($page['_bricks_page_content_2']) ? wp_slash(wp_json_encode($page['_bricks_page_content_2'])) : '';
+                    $bricks_settings_str = !empty($page['_bricks_page_settings_2']) ? wp_slash(wp_json_encode($page['_bricks_page_settings_2'])) : '';
 
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
@@ -297,12 +304,21 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
                         foreach ($update_media_url as $local_url => $old_url) {
-                            $elementor_content = str_replace($old_url, $local_url, $elementor_content);
+                            if ('bricks' === $builder) {
+                                if (!empty($bricks_content_str)) {
+                                    $bricks_content_str = str_replace($old_url, $local_url, $bricks_content_str);
+                                }
+                                if (!empty($bricks_settings_str)) {
+                                    $bricks_settings_str = str_replace($old_url, $local_url, $bricks_settings_str);
+                                }
+                            } else {
+                                $elementor_content = str_replace($old_url, $local_url, $elementor_content);
+                            }
                         }
                     }
                     
                     // Process Elementor data to find and replace background images
-                    if (!empty($elementor_data)) {
+                    if (!empty($elementor_data) && 'elementor' === $builder) {
                         foreach ($elementor_data as &$element) {
                           $this->prepare_travelfic_elementor_background_images($element);
                         }
@@ -342,7 +358,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
 
-
                     // Create a new page programmatically
                     $new_page = array(
                         'post_title' => $title,
@@ -351,8 +366,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         'post_type' => 'page'
                     );
 
-
-                 
                     // Insert the page into the database
                     $new_page_id = wp_insert_post($new_page);
                     if(!empty($is_front)){
@@ -363,6 +376,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     if(!empty($is_blog)){
                         update_option( 'page_for_posts', $new_page_id );
                     }
+                    if ('bricks' === $builder) {
+                        if (!empty($bricks_content_str)) {
+                            update_post_meta($new_page_id, '_bricks_page_content_2', json_decode(wp_unslash($bricks_content_str), true));
+                        }
+                        if (!empty($bricks_settings_str)) {
+                            update_post_meta($new_page_id, '_bricks_page_settings_2', wp_slash(json_decode(wp_unslash($bricks_settings_str), true)));
+                        }
+                        update_post_meta($new_page_id, '_bricks_editor_mode', 'bricks');
+                    }
 
                     if(!empty($page['_wp_page_template'])){
                         update_post_meta($new_page_id, 'tft-pmb-disable-sidebar', $page['tft-pmb-disable-sidebar']);
@@ -371,154 +393,310 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($new_page_id, '_wp_page_template', $page['_wp_page_template']);
                         update_post_meta($new_page_id, 'tft-pmb-background-img', $tft_header_bg);
                         update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
-                        update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-                        update_post_meta($new_page_id, '_elementor_data', $elementor_content);
-                        update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
-                        update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                        
+                        if ('elementor' === $builder) {
+                            update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
+                            update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                            update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
+                            update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
+                        }
                     }
                 }
                 
-                delete_option('_elementor_global_css');
-		        delete_option('elementor-custom-breakpoints-files');
+                if ( 'elementor' === $builder ) {
+                    delete_option('_elementor_global_css');
+                    delete_option('elementor-custom-breakpoints-files');
+                }
             }
 
-            // Update the elementor global colors
-            $elementor_kit_id = get_option('elementor_active_kit');
-            $settings = get_post_meta($elementor_kit_id, '_elementor_page_settings', true);
+            if ( 'elementor' === $builder ) {
+                // Update the elementor global colors
+                $elementor_kit_id = get_option('elementor_active_kit');
+                $settings = get_post_meta($elementor_kit_id, '_elementor_page_settings', true);
 
-            // Ensure settings is an array
-            if (!is_array($settings)) {
-                $settings = [];
+                // Ensure settings is an array
+                if (!is_array($settings)) {
+                    $settings = [];
+                }
+
+                // Define palettes
+                $color_palette = [
+                    'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
+                    'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
+                    'design-3' => ['#fa6400', '#0e3dd8', '#686e7a', '#fa6400'],
+                    'design-4' => ['#153d3a', '#0d1211', '#334745', '#ee5509'],
+                ];
+
+                // Fallback to design-1
+                switch ($template_key) {
+                    case '6':
+                        $selected = 'design-4';
+                        break;
+                    case '5':
+                        $selected = 'design-3';
+                        break;
+                    case '4':
+                        $selected = 'design-2';
+                        break;
+                    default:
+                        $selected = 'design-1';
+                }
+
+                list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
+
+                // Update colors
+                $settings['system_colors'] = [
+                    ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
+                    ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
+                    ['_id' => 'text',      'title' => 'Text',      'color' => $text_color],
+                    ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
+                ];
+
+                // Typography presets per design
+                $typography_presets = [
+                    'design-1' => [
+                        [
+                            '_id'   => 'primary',
+                            'title' => 'Primary',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Libre Baskerville',
+                            'typography_font_weight' => '400',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 65,
+                            ],
+                            'typography_font_size_tablet' => [
+                                'unit' => 'px',
+                                'size' => 37,
+                            ],
+                            'typography_font_size_mobile' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 78,
+                            ],
+                            'typography_line_height_tablet' => [
+                                'unit' => 'px',
+                                'size' => 52,
+                            ],
+                            'typography_line_height_mobile' => [
+                                'unit' => 'px',
+                                'size' => 37,
+                            ],
+                        ],
+                        [
+                            '_id'   => 'secondary',
+                            'title' => 'Secondary',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Work Sans',
+                            'typography_font_weight' => '600',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 17,
+                            ],
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+                        ],
+                        [
+                            '_id'   => 'text',
+                            'title' => 'Text',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Work Sans',
+                            'typography_font_weight' => '400',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 17,
+                            ],
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+                        ],
+                        [
+                            '_id'   => 'accent',
+                            'title' => 'Accent',
+                            'typography_typography' => 'custom',
+                            'typography_font_family' => 'Work Sans',
+                            'typography_font_weight' => '600',
+                            'typography_font_size' => [
+                                'unit' => 'px',
+                                'size' => 17,
+                            ],
+                            'typography_line_height' => [
+                                'unit' => 'px',
+                                'size' => 25,
+                            ],
+                        ],
+                    ],
+                ];
+
+                switch ($template_key) {
+                    case '6':
+                        $font_selected = 'design-1';
+                        break;
+                    default:
+                        $font_selected = 'design-1';
+                }
+
+                // Assign the chosen typography preset based on selected design
+                $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
+
+                update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
             }
 
-            // Define palettes
-            $color_palette = [
-                'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
-                'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
-                'design-3' => ['#fa6400', '#0e3dd8', '#686e7a', '#fa6400'],
-                'design-4' => ['#153d3a', '#0d1211', '#334745', '#ee5509'],
-            ];
+            if ( 'bricks' === $builder ) {
+                // Import Color Palette
+                $color_palette_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/bricks-color-palette.json';
+                $color_palette_response = wp_remote_get( $color_palette_url );
+                if ( ! is_wp_error( $color_palette_response ) && wp_remote_retrieve_response_code( $color_palette_response ) === 200 ) {
+                    $color_palette_data = json_decode( wp_remote_retrieve_body( $color_palette_response ), true );
+                    if ( ! empty( $color_palette_data ) ) {
+                        update_option( 'bricks_color_palette', $color_palette_data );
+                    }
+                }
 
-            // Fallback to design-1
-            switch ($template_key) {
-                case '6':
-                    $selected = 'design-4';
-                    break;
-                case '5':
-                    $selected = 'design-3';
-                    break;
-                case '4':
-                    $selected = 'design-2';
-                    break;
-                default:
-                    $selected = 'design-1';
+                // Import Theme Style
+                $theme_style_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/bricks-theme-style.json';
+                $theme_style_response = wp_remote_get( $theme_style_url );
+                if ( ! is_wp_error( $theme_style_response ) && wp_remote_retrieve_response_code( $theme_style_response ) === 200 ) {
+                    $theme_style_data = json_decode( wp_remote_retrieve_body( $theme_style_response ), true );
+                    if ( ! empty( $theme_style_data ) ) {
+                        update_option( 'bricks_theme_styles', $theme_style_data );
+                    }
+                }
+
+                // Import Templates (Header & Footer)
+                $templates_to_import = array(
+                    'header' => 'bricks-header.json',
+                    'footer' => 'bricks-footer.json',
+                );
+
+                foreach ( $templates_to_import as $template_type => $file_name ) {
+                    $template_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/' . $file_name;
+                    $template_response = wp_remote_get( $template_url );
+                    if ( ! is_wp_error( $template_response ) && wp_remote_retrieve_response_code( $template_response ) === 200 ) {
+                        $template_data = json_decode( wp_remote_retrieve_body( $template_response ), true );
+                        if ( ! empty( $template_data ) ) {
+                            $title = ! empty( $template_data['title'] ) ? $template_data['title'] : 'Imported ' . ucfirst($template_type);
+                            
+                            // Find and delete existing template of the same title and type
+                            $existing_templates = get_posts(array(
+                                'post_type'   => 'bricks_template',
+                                'title'       => $title,
+                                'post_status' => 'any',
+                                'numberposts' => -1,
+                                'meta_query'  => array(
+                                    array(
+                                        'key'     => '_bricks_template_type',
+                                        'value'   => $template_type,
+                                    )
+                                )
+                            ));
+                            foreach ($existing_templates as $existing_template) {
+                                wp_delete_post($existing_template->ID, true);
+                            }
+
+                            // Insert new template
+                            $new_template_id = wp_insert_post(array(
+                                'post_title'  => $title,
+                                'post_status' => 'publish',
+                                'post_type'   => 'bricks_template',
+                            ));
+
+                            if ($new_template_id && !is_wp_error($new_template_id)) {
+                                update_post_meta($new_template_id, '_bricks_template_type', $template_type);
+                                update_post_meta($new_template_id, '_bricks_editor_mode', 'bricks');
+                                
+                                $meta_key = '_bricks_page_content_2';
+                                
+                                $elements = isset($template_data[$template_type]) ? $template_data[$template_type] : (isset($template_data['content']) ? $template_data['content'] : array());
+                                
+                                // Download and replace media URLs if present
+                                $template_images = !empty($template_data['media_urls']) ? $template_data['media_urls'] : '';
+                                if(!empty($template_images)){
+                                    $media_urls = explode(", ", $template_images);
+                                    $update_media_url = [];
+
+                                    foreach($media_urls as $media){
+                                        if(!empty($media)){
+                                            $image_response = wp_remote_get( $media );
+                                            if ( ! is_wp_error( $image_response ) && wp_remote_retrieve_response_code( $image_response ) === 200 ) {
+                                                $page_image_data = wp_remote_retrieve_body($image_response);
+                                                $page_filename   = basename( $media );
+                                                $page_upload_dir = wp_upload_dir();
+                                                $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+                                        
+                                                // Save the image file to the uploads directory
+                                                file_put_contents( $page_image_path, $page_image_data );
+                                                
+                                                if (file_exists($page_image_path)) {
+                                                    $page_attachment = array(
+                                                        'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                                                        'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
+                                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                                                        'post_content'   => '',
+                                                        'post_status'    => 'inherit'
+                                                    );
+                                                    $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+                                                    
+                                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
+                                                    $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
+                                                    wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
+                                        
+                                                    $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Replace URLs in element structure and settings
+                                    $elements_str = wp_json_encode($elements);
+                                    $page_settings_str = isset($template_data['pageSettings']) ? wp_json_encode($template_data['pageSettings']) : '';
+                                    $template_settings_str = isset($template_data['templateSettings']) ? wp_json_encode($template_data['templateSettings']) : '';
+
+                                    foreach ($update_media_url as $local_url => $old_url) {
+                                        if (!empty($elements_str)) {
+                                            $elements_str = str_replace($old_url, $local_url, $elements_str);
+                                        }
+                                        if (!empty($page_settings_str)) {
+                                            $page_settings_str = str_replace($old_url, $local_url, $page_settings_str);
+                                        }
+                                        if (!empty($template_settings_str)) {
+                                            $template_settings_str = str_replace($old_url, $local_url, $template_settings_str);
+                                        }
+                                    }
+
+                                    if (!empty($elements_str)) {
+                                        $elements = json_decode($elements_str, true);
+                                    }
+                                    if (!empty($page_settings_str)) {
+                                        $template_data['pageSettings'] = json_decode($page_settings_str, true);
+                                    }
+                                    if (!empty($template_settings_str)) {
+                                        $template_data['templateSettings'] = json_decode($template_settings_str, true);
+                                    }
+                                }
+
+                                if (!empty($elements)) {
+                                    update_post_meta($new_template_id, $meta_key, wp_slash($elements));
+                                }
+                                
+                                if (isset($template_data['pageSettings'])) {
+                                    update_post_meta($new_template_id, '_bricks_page_settings_2', wp_slash($template_data['pageSettings']));
+                                }
+                                if (isset($template_data['templateSettings'])) {
+                                    update_post_meta($new_template_id, '_bricks_template_settings', wp_slash($template_data['templateSettings']));
+                                }
+                            }
+                        }
+                    }
+                }
             }
-
-            list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
-
-            // Update colors
-            $settings['system_colors'] = [
-                ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
-                ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
-                ['_id' => 'text',      'title' => 'Text',      'color' => $text_color],
-                ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
-            ];
-
-            // Typography presets per design
-            $typography_presets = [
-                'design-1' => [
-                    [
-                        '_id'   => 'primary',
-                        'title' => 'Primary',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Libre Baskerville',
-                        'typography_font_weight' => '400',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 65,
-                        ],
-                        'typography_font_size_tablet' => [
-                            'unit' => 'px',
-                            'size' => 37,
-                        ],
-                        'typography_font_size_mobile' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 78,
-                        ],
-                        'typography_line_height_tablet' => [
-                            'unit' => 'px',
-                            'size' => 52,
-                        ],
-                        'typography_line_height_mobile' => [
-                            'unit' => 'px',
-                            'size' => 37,
-                        ],
-                    ],
-                    [
-                        '_id'   => 'secondary',
-                        'title' => 'Secondary',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Work Sans',
-                        'typography_font_weight' => '600',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-                    ],
-                    [
-                        '_id'   => 'text',
-                        'title' => 'Text',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Work Sans',
-                        'typography_font_weight' => '400',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-                    ],
-                    [
-                        '_id'   => 'accent',
-                        'title' => 'Accent',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Work Sans',
-                        'typography_font_weight' => '600',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-                    ],
-                ],
-            ];
-
-            switch ($template_key) {
-                case '6':
-                    $font_selected = 'design-1';
-                    break;
-                default:
-                    $font_selected = 'design-1';
-            }
-
-            // Assign the chosen typography preset based on selected design
-            $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
-
-            update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
             die();
 
 		}
