@@ -623,7 +623,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta( $new_page_id, 'tf_builder_type', 'bricks' );
                         update_post_meta( $new_page_id, '_bricks_template_type', 'content' );
                         update_post_meta( $new_page_id, '_bricks_editor_mode', 'bricks' );
-                        update_post_meta( $new_page_id, '_bricks_page_content_2', wp_slash( $page['_bricks_page_content_2'] ) );
+
+                        // Sideload remote images so Bricks can resolve attachment IDs on this site.
+                        $bricks_content = $this->process_bricks_media( $page['_bricks_page_content_2'] );
+                        update_post_meta( $new_page_id, '_bricks_page_content_2', wp_slash( $bricks_content ) );
                     }
 
                     if(!empty($page['_wp_page_template'])){ 
@@ -903,7 +906,81 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             return true;
         }
-      
+
+        /**
+         * Recursively walk a Bricks elements array and sideload any remote images.
+         *
+         * Bricks stores image references as an associative array with an integer `id`
+         * (WordPress attachment ID) and a string `url`. After importing content from
+         * another site the attachment IDs are invalid, causing images to be invisible
+         * even though the widget appears selected. We download each remote image, create
+         * a local attachment, and replace the `id` so Bricks can resolve the image.
+         *
+         * @param  array $data  A Bricks elements array or any nested sub-array.
+         * @return array        The same structure with remote image IDs replaced.
+         */
+        private function process_bricks_media( $data ) {
+            if ( ! is_array( $data ) ) {
+                return $data;
+            }
+
+            // Detect a Bricks image reference: array with an integer 'id' and a remote 'url'.
+            // Bricks element node IDs are random strings (e.g. 'brxe-d253f6'), never integers.
+            if (
+                isset( $data['id'], $data['url'] )
+                && is_int( $data['id'] )
+                && is_string( $data['url'] )
+                && filter_var( $data['url'], FILTER_VALIDATE_URL )
+                && strpos( $data['url'], home_url() ) === false
+            ) {
+                $attachment_id = $this->sideload_bricks_image( $data['url'] );
+                if ( $attachment_id && ! is_wp_error( $attachment_id ) ) {
+                    $data['id']  = $attachment_id;
+                    $data['url'] = wp_get_attachment_url( $attachment_id );
+                }
+                return $data;
+            }
+
+            // Recurse into every key of the array.
+            foreach ( $data as $key => $value ) {
+                $data[ $key ] = $this->process_bricks_media( $value );
+            }
+
+            return $data;
+        }
+
+        /**
+         * Download a remote image and insert it as a WordPress attachment.
+         *
+         * @param  string   $url  Remote image URL.
+         * @return int|false      New attachment ID, or false on failure.
+         */
+        private function sideload_bricks_image( $url ) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/image.php';
+            require_once ABSPATH . 'wp-admin/includes/media.php';
+
+            $tmp = download_url( $url );
+            if ( is_wp_error( $tmp ) ) {
+                return false;
+            }
+
+            $file_array = [
+                'name'     => basename( wp_parse_url( $url, PHP_URL_PATH ) ),
+                'tmp_name' => $tmp,
+            ];
+
+            $attachment_id = media_handle_sideload( $file_array, 0 );
+
+            if ( is_wp_error( $attachment_id ) ) {
+                // Clean up temp file on failure.
+                @unlink( $tmp );
+                return false;
+            }
+
+            return $attachment_id;
+        }
+
         /**
 		 * Tourfic Menu importer Settings
 		 */
