@@ -861,6 +861,52 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
 
             update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
+
+            // Update Bricks transparent header conditions after pages are imported
+            if ( 'bricks' === $builder && $template_key == '1' ) {
+                $transparent_header = get_page_by_title( 'Bricks Header Transparent', OBJECT, 'bricks_template' );
+                if ( $transparent_header ) {
+                    $template_settings = get_post_meta( $transparent_header->ID, '_bricks_template_settings', true );
+                    if ( ! is_array( $template_settings ) ) {
+                        $template_settings = [];
+                    }
+
+                    $template_conditions = [
+                        [
+                            'id'   => 'trans-front',
+                            'main' => 'frontpage',
+                        ],
+                        [
+                            'id'          => 'trans-archive',
+                            'main'        => 'archiveType',
+                            'archiveType' => [ 'postType' ],
+                        ],
+                    ];
+
+                    $individual_page_titles = [
+                        'About Us – Bricks',
+                        'Contact Us – Bricks',
+                    ];
+                    $individual_ids = [];
+                    foreach ( $individual_page_titles as $page_title ) {
+                        $page = get_page_by_title( $page_title, OBJECT, 'page' );
+                        if ( $page && ! is_wp_error( $page ) ) {
+                            $individual_ids[] = $page->ID;
+                        }
+                    }
+                    if ( ! empty( $individual_ids ) ) {
+                        $template_conditions[] = [
+                            'id'   => 'trans-individual',
+                            'main' => 'ids',
+                            'ids'  => $individual_ids,
+                        ];
+                    }
+
+                    $template_settings['templateConditions'] = $template_conditions;
+                    update_post_meta( $transparent_header->ID, '_bricks_template_settings', $template_settings );
+                }
+            }
+
             die();
 
 		}
