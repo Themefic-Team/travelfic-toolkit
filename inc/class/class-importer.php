@@ -131,35 +131,107 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 
 				/**
-				 * Template conditions (templateSettings):
-				 * Bricks only applies header/footer templates that have at least one
-				 * matching condition. Ensure 'main' => 'any' is always present so
-				 * the template is applied site-wide.
+				 * Template conditions — `templateConditions` inside `_bricks_template_settings`.
+				 *
+				 * IMPORTANT: Bricks reads `templateConditions` as a flat array of condition objects
+				 * stored inside `_bricks_template_settings`. Bricks intentionally strips
+				 * `templateConditions` from its own JSON export, so the imported JSON will never
+				 * contain them. We inject the correct conditions per filename here.
+				 *
+				 * Condition keys: id (unique string), main, archiveType[], ids[], exclude (bool)
+				 *
+				 * Header         → Exclude: frontpage | Exclude: archiveType(postType) | Include: any
+				 * Footer         → Include: any (entire website)
+				 * Header Trans.  → Include: frontpage | Include: archiveType(postType) | Include: ids(pages by title)
 				 */
 				$template_settings = isset( $template_data['templateSettings'] ) && is_array( $template_data['templateSettings'] )
 					? $template_data['templateSettings']
 					: [];
 
-				$conditions = isset( $template_settings['conditions'] ) && is_array( $template_settings['conditions'] )
-					? $template_settings['conditions']
-					: [];
+				if ( $template_key == '1' ) {
+					if ( $filename === 'bricks-header.json' ) {
+						$template_conditions = [
+							[
+								'id'          => 'hdr-excl-front',
+								'main'        => 'frontpage',
+								'exclude'     => true,
+							],
+							[
+								'id'          => 'hdr-excl-archive',
+								'main'        => 'archiveType',
+								'archiveType' => [ 'postType' ],
+								'exclude'     => true,
+							],
+							[
+								'id'   => 'hdr-entire-site',
+								'main' => 'any',
+							],
+						];
 
-				$condition_rules = isset( $conditions['conditions'] ) && is_array( $conditions['conditions'] )
-					? $conditions['conditions']
-					: [];
+					} elseif ( $filename === 'bricks-footer.json' ) {
+						$template_conditions = [
+							[
+								'id'   => 'ftr-entire-site',
+								'main' => 'any',
+							],
+						];
 
-				// Inject a site-wide condition if no conditions exist
-				if ( empty( $condition_rules ) ) {
-					$conditions['conditions'] = [
+					} elseif ( $filename === 'bricks-header-transparent.json' ) {
+						$template_conditions = [
+							[
+								'id'   => 'trans-front',
+								'main' => 'frontpage',
+							],
+							[
+								'id'          => 'trans-archive',
+								'main'        => 'archiveType',
+								'archiveType' => [ 'postType' ],
+							],
+						];
+
+						// Resolve Individual page IDs by title for pages already imported on this site.
+						// Pages that are not yet imported will simply be skipped (they can be re-imported later).
+						$individual_page_titles = [
+							'About Us – Bricks',
+							'Contact Us – Bricks',
+						];
+						$individual_ids = [];
+						foreach ( $individual_page_titles as $page_title ) {
+							$page = get_page_by_title( $page_title, OBJECT, 'page' );
+							if ( $page && ! is_wp_error( $page ) ) {
+								$individual_ids[] = $page->ID;
+							}
+						}
+						if ( ! empty( $individual_ids ) ) {
+							$template_conditions[] = [
+								'id'   => 'trans-individual',
+								'main' => 'ids',
+								'ids'  => $individual_ids,
+							];
+						}
+
+					} else {
+						// Unknown filename — default to entire website.
+						$template_conditions = [
+							[
+								'id'   => 'default-any',
+								'main' => 'any',
+							],
+						];
+					}
+				} else {
+					// For versions other than v1, default to entire website.
+					$template_conditions = [
 						[
-							'id'   => 'imported',
+							'id'   => 'default-any',
 							'main' => 'any',
 						],
 					];
-					$template_settings['conditions'] = $conditions;
 				}
 
+				$template_settings['templateConditions'] = $template_conditions;
 				update_post_meta( $new_id, '_bricks_template_settings', $template_settings );
+
 
 				// Determine which meta key stores elements (header vs footer vs content)
 				$meta_key = '_bricks_page_content_2'; // default
