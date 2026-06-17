@@ -148,7 +148,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					? $template_data['templateSettings']
 					: [];
 
-				if ( $template_key == '1' ) {
+				if ( $template_key == '1' || $template_key == '2' ) {
 					if ( $filename === 'bricks-header.json' ) {
 						$template_conditions = [
 							[
@@ -249,6 +249,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 
 				if ( $elements && is_array( $elements ) ) {
+					// Sideload remote images (e.g. logos) so Bricks can resolve attachment IDs on this site.
+					$elements = $this->process_bricks_media( $elements );
 					update_post_meta( $new_id, $meta_key, wp_slash( $elements ) );
 				}
 
