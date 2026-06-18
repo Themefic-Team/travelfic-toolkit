@@ -273,21 +273,32 @@ class LatestNews {
 			</div>
 			<?php
 		} else {
+			$news_item_card_gradient_1 = '#1D2A3B';
+			$news_item_card_gradient_2 = '#1d2a3b00';
+			$news_item_card_gradient_1_hover = '';
+			$news_item_card_gradient_2_hover = '';
+
 			if($builder == 'elementor') {
 				$news_item_card_gradient_1 = ! empty( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1'] : '#1D2A3B';
 				$news_item_card_gradient_2 = ! empty( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2'] : '#1d2a3b00';
+				
+				$news_item_card_gradient_1_hover = ! empty( $settings['news_item_card_gradient_1_hover'] ) ? $settings['news_item_card_gradient_1_hover'] : '';
+				$news_item_card_gradient_2_hover = ! empty( $settings['news_item_card_gradient_2_hover'] ) ? $settings['news_item_card_gradient_2_hover'] : '';
 			} elseif($builder == 'bricks') {
-				$news_item_card_gradient_1 = isset( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1']['raw'] : '#1D2A3B';
-				$news_item_card_gradient_2 = isset( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2']['raw'] : '#1d2a3b00';
+				$news_item_card_gradient_1 = isset( $settings['news_item_card_gradient_1'] ) ? ( is_array( $settings['news_item_card_gradient_1'] ) ? ( $settings['news_item_card_gradient_1']['raw'] ?? $settings['news_item_card_gradient_1']['hex'] ?? '#1D2A3B' ) : $settings['news_item_card_gradient_1'] ) : '#1D2A3B';
+				$news_item_card_gradient_2 = isset( $settings['news_item_card_gradient_2'] ) ? ( is_array( $settings['news_item_card_gradient_2'] ) ? ( $settings['news_item_card_gradient_2']['raw'] ?? $settings['news_item_card_gradient_2']['hex'] ?? '#1d2a3b00' ) : $settings['news_item_card_gradient_2'] ) : '#1d2a3b00';
+				
+				$news_item_card_gradient_1_hover = isset( $settings['news_item_card_gradient_1_hover'] ) ? ( is_array( $settings['news_item_card_gradient_1_hover'] ) ? ( $settings['news_item_card_gradient_1_hover']['raw'] ?? $settings['news_item_card_gradient_1_hover']['hex'] ?? '' ) : $settings['news_item_card_gradient_1_hover'] ) : '';
+				$news_item_card_gradient_2_hover = isset( $settings['news_item_card_gradient_2_hover'] ) ? ( is_array( $settings['news_item_card_gradient_2_hover'] ) ? ( $settings['news_item_card_gradient_2_hover']['raw'] ?? $settings['news_item_card_gradient_2_hover']['hex'] ?? '' ) : $settings['news_item_card_gradient_2_hover'] ) : '';
 			}
 			?>
 			<style>
 				.tft-latest-posts .tft-post-thumbnail a::before {
 					background: linear-gradient(360deg, <?php echo esc_attr( $news_item_card_gradient_1 ); ?> -9.6%, <?php echo esc_attr( $news_item_card_gradient_2 ); ?> 109.78%);
 				}
-				<?php if ( ! empty( $settings['news_item_card_gradient_1_hover'] ) || ! empty( $settings['news_item_card_gradient_2_hover'] ) ) : ?>
+				<?php if ( ! empty( $news_item_card_gradient_1_hover ) || ! empty( $news_item_card_gradient_2_hover ) ) : ?>
 					.tft-latest-posts .tft-post-thumbnail a:hover::before {
-						background: linear-gradient(360deg, <?php echo esc_attr( $settings['news_item_card_gradient_1_hover'] ); ?> -9.6%, <?php echo esc_attr( $settings['news_item_card_gradient_2_hover'] ); ?> 109.78%);
+						background: linear-gradient(360deg, <?php echo esc_attr( $news_item_card_gradient_1_hover ); ?> -9.6%, <?php echo esc_attr( $news_item_card_gradient_2_hover ); ?> 109.78%);
 					}
 				<?php endif; ?>
 				<?php if ( 'bricks' !== $builder && ! empty( $settings['news_card_radius'] ) ) : ?>
