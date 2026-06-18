@@ -219,6 +219,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 							],
 						];
 					}
+				} elseif ( $template_key == '3' ) {
+					if ( $filename === 'bricks-header.json' ) {
+						$template_conditions = [
+							[
+								'id'          => 'hdr-excl-front',
+								'main'        => 'frontpage',
+								'exclude'     => true,
+							],
+							[
+								'id'   => 'hdr-entire-site',
+								'main' => 'any',
+							],
+						];
+
+					} elseif ( $filename === 'bricks-footer.json' ) {
+						$template_conditions = [
+							[
+								'id'   => 'ftr-entire-site',
+								'main' => 'any',
+							],
+						];
+
+					} elseif ( $filename === 'bricks-header-transparent.json' ) {
+						$template_conditions = [
+							[
+								'id'   => 'trans-front',
+								'main' => 'frontpage',
+							],
+						];
+					} else {
+						// Unknown filename — default to entire website.
+						$template_conditions = [
+							[
+								'id'   => 'default-any',
+								'main' => 'any',
+							],
+						];
+					}
 				} else {
 					// For versions other than v1, default to entire website.
 					$template_conditions = [
