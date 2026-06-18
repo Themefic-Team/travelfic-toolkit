@@ -277,8 +277,8 @@ class LatestNews {
 				$news_item_card_gradient_1 = ! empty( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1'] : '#1D2A3B';
 				$news_item_card_gradient_2 = ! empty( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2'] : '#1d2a3b00';
 			} elseif($builder == 'bricks') {
-				$news_item_card_gradient_1 = ! empty( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1']['raw'] : '#1D2A3B';
-				$news_item_card_gradient_2 = ! empty( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2']['raw'] : '#1d2a3b00';
+				$news_item_card_gradient_1 = isset( $settings['news_item_card_gradient_1'] ) ? $settings['news_item_card_gradient_1']['raw'] : '#1D2A3B';
+				$news_item_card_gradient_2 = isset( $settings['news_item_card_gradient_2'] ) ? $settings['news_item_card_gradient_2']['raw'] : '#1d2a3b00';
 			}
 			?>
 			<style>
