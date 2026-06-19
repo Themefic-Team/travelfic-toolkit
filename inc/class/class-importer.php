@@ -219,7 +219,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 							],
 						];
 					}
-				} elseif ( $template_key == '3' ) {
+				} elseif ( $template_key == '4' ) {
 					if ( $filename === 'bricks-header.json' ) {
 						$template_conditions = [
 							[
