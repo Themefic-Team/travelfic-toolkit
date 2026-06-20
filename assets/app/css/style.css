@@ -9431,6 +9431,9 @@ body.archive .tft-header-design__two {
 .tft-features-design__one .tft-features-items .tft-features-items-left .tft-single-feature .tft-feature-icon svg path {
   fill: var(--tf-links-color);
 }
+.tft-features-design__one .tft-features-items .tft-features-items-left .tft-single-feature .tft-feature-icon i {
+  font-size: 32px;
+}
 .tft-features-design__one .tft-features-items .tft-features-items-left .tft-single-feature h3 {
   color: var(--tf-text-heading);
   font-size: 2.313rem;
