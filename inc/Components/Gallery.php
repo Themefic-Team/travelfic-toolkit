@@ -76,21 +76,21 @@ class Gallery {
 		$gallery_slider_draggable = $draggable ? 'true' : 'false';
 
 		// Normalizing slider speed values (Elementor has range array, Bricks has simple number value)
-		$autoplay_speed = 3000;
+		$gallery_slider_autoplay_speed = 3000;
 		if ( isset( $settings['gallery_slider_autoplay_speed'] ) ) {
 			if ( is_array( $settings['gallery_slider_autoplay_speed'] ) ) {
-				$autoplay_speed = isset( $settings['gallery_slider_autoplay_speed']['size'] ) ? $settings['gallery_slider_autoplay_speed']['size'] : 3000;
+				$gallery_slider_autoplay_speed = isset( $settings['gallery_slider_autoplay_speed']['size'] ) ? $settings['gallery_slider_autoplay_speed']['size'] : 3000;
 			} else {
-				$autoplay_speed = $settings['gallery_slider_autoplay_speed'];
+				$gallery_slider_autoplay_speed = $settings['gallery_slider_autoplay_speed'];
 			}
 		}
 
-		$autoplay_interval = 1500;
+		$gallery_slider_autoplay_interval = 1500;
 		if ( isset( $settings['gallery_slider_autoplay_interval'] ) ) {
 			if ( is_array( $settings['gallery_slider_autoplay_interval'] ) ) {
-				$autoplay_interval = isset( $settings['gallery_slider_autoplay_interval']['size'] ) ? $settings['gallery_slider_autoplay_interval']['size'] : 1500;
+				$gallery_slider_autoplay_interval = isset( $settings['gallery_slider_autoplay_interval']['size'] ) ? $settings['gallery_slider_autoplay_interval']['size'] : 1500;
 			} else {
-				$autoplay_interval = $settings['gallery_slider_autoplay_interval'];
+				$gallery_slider_autoplay_interval = $settings['gallery_slider_autoplay_interval'];
 			}
 		}
 
@@ -125,8 +125,8 @@ class Gallery {
 				<div class="tft-gallery-selector tft-slide-default" 
 					data-loop="<?php echo esc_attr( $gallery_slider_loop ); ?>"
 					data-autoplay="<?php echo esc_attr( $gallery_slider_autoplay ); ?>"
-					data-autoplay-speed="<?php echo esc_attr( $autoplay_speed ); ?>"
-					data-speed="<?php echo esc_attr( $autoplay_interval ); ?>"
+					data-autoplay-speed="<?php echo esc_attr( $gallery_slider_autoplay_speed ); ?>"
+					data-speed="<?php echo esc_attr( $gallery_slider_autoplay_interval ); ?>"
 					data-dots="<?php echo esc_attr( $gallery_slider_dots ); ?>"
 					data-arrows="<?php echo esc_attr( $gallery_slider_arrows ); ?>"
 					data-pause-on-hover="<?php echo esc_attr( $gallery_slider_pause_on_hover ); ?>"

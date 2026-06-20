@@ -133,25 +133,27 @@ class Travelfic_Toolkit_Bricks_Gallery extends \Bricks\Element {
 		];
 
 		$this->controls['gallery_slider_autoplay_speed'] = [
-			'tab'     => 'content',
-			'group'   => 'gallery_slider_control',
-			'label'   => esc_html__( 'Autoplay Speed', 'travelfic-toolkit' ),
-			'type'    => 'number',
-			'default' => 3000,
-			'min'     => 100,
-			'max'     => 1000,
-			'step'    => 100,
+			'tab'      => 'content',
+			'group'    => 'gallery_slider_control',
+			'label'    => esc_html__( 'Autoplay Speed', 'travelfic-toolkit' ),
+			'type'     => 'number',
+			'default'  => 3000,
+			'min'      => 100,
+			'max'      => 1000,
+			'step'     => 100,
+			'required' => [ 'gallery_slider_autoplay', '=', true ],
 		];
 
 		$this->controls['gallery_slider_autoplay_interval'] = [
-			'tab'     => 'content',
-			'group'   => 'gallery_slider_control',
-			'label'   => esc_html__( 'Autoplay Interval', 'travelfic-toolkit' ),
-			'type'    => 'number',
-			'default' => 1500,
-			'min'     => 100,
-			'max'     => 1000,
-			'step'    => 100,
+			'tab'      => 'content',
+			'group'    => 'gallery_slider_control',
+			'label'    => esc_html__( 'Autoplay Interval', 'travelfic-toolkit' ),
+			'type'     => 'number',
+			'default'  => 1500,
+			'min'      => 100,
+			'max'      => 1000,
+			'step'     => 100,
+			'required' => [ 'gallery_slider_autoplay', '=', true ],
 		];
 
 		$this->controls['gallery_slider_loop'] = [
