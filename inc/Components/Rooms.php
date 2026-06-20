@@ -100,21 +100,21 @@ class Rooms {
 		$room_slider_draggable = $draggable ? 'true' : 'false';
 
 		// Normalizing slider speed/interval values
-		$autoplay_speed = 2000;
+		$room_slider_autoplay_speed = 2000;
 		if ( isset( $settings['tft_room_slider_autoplay_speed'] ) ) {
 			if ( is_array( $settings['tft_room_slider_autoplay_speed'] ) ) {
-				$autoplay_speed = isset( $settings['tft_room_slider_autoplay_speed']['size'] ) ? $settings['tft_room_slider_autoplay_speed']['size'] : 2000;
+				$room_slider_autoplay_speed = isset( $settings['tft_room_slider_autoplay_speed']['size'] ) ? $settings['tft_room_slider_autoplay_speed']['size'] : 2000;
 			} else {
-				$autoplay_speed = $settings['tft_room_slider_autoplay_speed'];
+				$room_slider_autoplay_speed = $settings['tft_room_slider_autoplay_speed'];
 			}
 		}
 
-		$autoplay_interval = 1500;
+		$room_slider_autoplay_interval = 1500;
 		if ( isset( $settings['tft_room_slider_autoplay_interval'] ) ) {
 			if ( is_array( $settings['tft_room_slider_autoplay_interval'] ) ) {
-				$autoplay_interval = isset( $settings['tft_room_slider_autoplay_interval']['size'] ) ? $settings['tft_room_slider_autoplay_interval']['size'] : 1500;
+				$room_slider_autoplay_interval = isset( $settings['tft_room_slider_autoplay_interval']['size'] ) ? $settings['tft_room_slider_autoplay_interval']['size'] : 1500;
 			} else {
-				$autoplay_interval = $settings['tft_room_slider_autoplay_interval'];
+				$room_slider_autoplay_interval = $settings['tft_room_slider_autoplay_interval'];
 			}
 		}
 
@@ -127,8 +127,8 @@ class Rooms {
 					<div class="tft-room-slider"
 						data-loop="<?php echo esc_attr( $room_slider_loop ); ?>"
 						data-autoplay="<?php echo esc_attr( $room_slider_autoplay ); ?>"
-						data-autoplay-speed="<?php echo esc_attr( $autoplay_speed ); ?>"
-						data-speed="<?php echo esc_attr( $autoplay_interval ); ?>"
+						data-autoplay-speed="<?php echo esc_attr( $room_slider_autoplay_speed ); ?>"
+						data-speed="<?php echo esc_attr( $room_slider_autoplay_interval ); ?>"
 						data-dots="<?php echo esc_attr( $room_slider_dots ); ?>"
 						data-arrows="<?php echo esc_attr( $room_slider_arrows ); ?>"
 						data-pause-on-hover="<?php echo esc_attr( $room_slider_pause_on_hover ); ?>"

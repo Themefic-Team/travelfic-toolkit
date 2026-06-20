@@ -139,25 +139,27 @@ class Travelfic_Toolkit_Bricks_Rooms extends \Bricks\Element {
 		];
 
 		$this->controls['tft_room_slider_autoplay_speed'] = [
-			'tab'     => 'content',
-			'group'   => 'team_slider_control',
-			'label'   => esc_html__( 'Autoplay Speed', 'travelfic-toolkit' ),
-			'type'    => 'number',
-			'default' => 2000,
-			'min'     => 100,
-			'max'     => 5000,
-			'step'    => 100,
+			'tab'      => 'content',
+			'group'    => 'team_slider_control',
+			'label'    => esc_html__( 'Autoplay Speed', 'travelfic-toolkit' ),
+			'type'     => 'number',
+			'default'  => 2000,
+			'min'      => 100,
+			'max'      => 5000,
+			'step'     => 100,
+			'required' => [ 'tft_room_slider_autoplay', '=', true ],
 		];
 
 		$this->controls['tft_room_slider_autoplay_interval'] = [
-			'tab'     => 'content',
-			'group'   => 'team_slider_control',
-			'label'   => esc_html__( 'Autoplay Interval', 'travelfic-toolkit' ),
-			'type'    => 'number',
-			'default' => 1500,
-			'min'     => 100,
-			'max'     => 5000,
-			'step'    => 100,
+			'tab'      => 'content',
+			'group'    => 'team_slider_control',
+			'label'    => esc_html__( 'Autoplay Interval', 'travelfic-toolkit' ),
+			'type'     => 'number',
+			'default'  => 1500,
+			'min'      => 100,
+			'max'      => 5000,
+			'step'     => 100,
+			'required' => [ 'tft_room_slider_autoplay', '=', true ],
 		];
 
 		$this->controls['tft_room_slider_loop'] = [
