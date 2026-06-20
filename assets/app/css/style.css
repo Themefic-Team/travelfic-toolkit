@@ -9045,6 +9045,7 @@ body.archive .tft-header-design__two {
   top: unset;
   transform: inherit;
   transition: all 0.2s ease;
+  text-align: center;
 }
 @media only screen and (max-width: 575.98px) {
   .tft-testimonials-design__five .tft-slider-arrows .slick-prev,
@@ -9269,6 +9270,7 @@ body.archive .tft-header-design__two {
   top: unset;
   transform: inherit;
   transition: all 0.2s ease;
+  text-align: center;
 }
 @media only screen and (max-width: 575.98px) {
   .tft-gallery-design__one .tft-slider-arrows .slick-prev,

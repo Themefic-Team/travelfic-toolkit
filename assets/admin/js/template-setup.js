@@ -435,11 +435,7 @@
                 success: function(response) {
                     $('.demo-importing-loader .loader-heading .loader-precent').text('65%');
                     $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "65%");
-                    if (active_builder === 'bricks') {
-                        $(".bricks-template-import-btn").click();
-                    } else {
-                        $(".demo-page-import-btn").click();
-                    }
+                    $(".demo-page-import-btn").click();
                 },
                 error: function(error) {
                     console.log(error);
@@ -448,36 +444,8 @@
         }else{
             $('.demo-importing-loader .loader-heading .loader-precent').text('65%');
             $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "65%");
-            if (active_builder === 'bricks') {
-                $(".bricks-template-import-btn").click();
-            } else {
-                $(".demo-page-import-btn").click();
-            }
+            $(".demo-page-import-btn").click();
         }
-    });
-
-    // Bricks Template importer (header, footer, color palette, theme styles)
-    $(document).on('click', '.bricks-template-import-btn', function (e) {
-        $('.demo-importing-loader .loader-heading .loader-label').text("Bricks templates importing...");
-        $.ajax({
-            type: 'post',
-            url: travelfic_toolkit_script_params.ajax_url,
-            data: {
-                action: 'travelfic-bricks-template-import',
-                template_version: template_design,
-                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
-            },
-            success: function(response) {
-                $('.demo-importing-loader .loader-heading .loader-precent').text('75%');
-                $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "75%");
-                $(".demo-page-import-btn").click();
-            },
-            error: function(error) {
-                console.log(error);
-                // Continue even on error so the rest of the import isn't blocked
-                $(".demo-page-import-btn").click();
-            }
-        });
     });
 
     $(document).on('click', '.demo-page-import-btn', function (e) {
@@ -494,19 +462,51 @@
                     _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 },
                 success: function(response) {
-                    $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
-                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
-                    $(".demo-hotel-import-btn").click();
+                    $('.demo-importing-loader .loader-heading .loader-precent').text('75%');
+                    $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "75%");
+                    if (active_builder === 'bricks') {
+                        $(".bricks-template-import-btn").click();
+                    } else {
+                        $(".demo-hotel-import-btn").click();
+                    }
                 },
                 error: function(error) {
                     console.log(error);
                 }
             });
         }else{
-            $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
-            $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
-            $(".demo-hotel-import-btn").click();
+            $('.demo-importing-loader .loader-heading .loader-precent').text('75%');
+            $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "75%");
+            if (active_builder === 'bricks') {
+                $(".bricks-template-import-btn").click();
+            } else {
+                $(".demo-hotel-import-btn").click();
+            }
         }
+    });
+
+    // Bricks Template importer (header, footer, color palette, theme styles)
+    $(document).on('click', '.bricks-template-import-btn', function (e) {
+        $('.demo-importing-loader .loader-heading .loader-label').text("Bricks templates importing...");
+        $.ajax({
+            type: 'post',
+            url: travelfic_toolkit_script_params.ajax_url,
+            data: {
+                action: 'travelfic-bricks-template-import',
+                template_version: template_design,
+                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+            },
+            success: function(response) {
+                $('.demo-importing-loader .loader-heading .loader-precent').text('85%');
+                $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "85%");
+                $(".demo-hotel-import-btn").click();
+            },
+            error: function(error) {
+                console.log(error);
+                // Continue even on error so the rest of the import isn't blocked
+                $(".demo-hotel-import-btn").click();
+            }
+        });
     });
 
     // Demo Hotel importer

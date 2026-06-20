@@ -257,8 +257,70 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 							],
 						];
 					}
+				} elseif ( $template_key == '6' ) {
+					if ( $filename === 'bricks-header.json' ) {
+						// Normal header: Blog singles (post) + Blog archive page (individual).
+						// Room archive intentionally excluded — it uses the transparent header.
+						$template_conditions = [
+							[
+								'id'       => 'hdr-post-type-post',
+								'main'     => 'postType',
+								'postType' => [ 'post' ],
+							],
+						];
+
+						$individual_page_titles = [
+							'Blog',
+						];
+						$individual_ids = [];
+						foreach ( $individual_page_titles as $page_title ) {
+							$page = get_page_by_title( $page_title, OBJECT, 'page' );
+							if ( $page && ! is_wp_error( $page ) ) {
+								$individual_ids[] = $page->ID;
+							}
+						}
+						if ( ! empty( $individual_ids ) ) {
+							$template_conditions[] = [
+								'id'   => 'trans-individual',
+								'main' => 'ids',
+								'ids'  => $individual_ids,
+							];
+						}
+
+					} elseif ( $filename === 'bricks-footer.json' ) {
+						$template_conditions = [
+							[
+								'id'   => 'ftr-entire-site',
+								'main' => 'any',
+							],
+						];
+
+					} elseif ( $filename === 'bricks-header-transparent.json' ) {
+						// Transparent header: entire website EXCEPT blog singles and blog page
+						// (those use the normal header). Room archive falls under 'any'.
+						$template_conditions = [
+							[
+								'id'       => 'trans-excl-post-type-post',
+								'main'     => 'postType',
+								'postType' => [ 'post' ],
+								'exclude'  => true,
+							],
+							[
+								'id'   => 'trans-entire-site',
+								'main' => 'any',
+							],
+						];
+					} else {
+						// Unknown filename — default to entire website.
+						$template_conditions = [
+							[
+								'id'   => 'default-any',
+								'main' => 'any',
+							],
+						];
+					}
 				} else {
-					// For versions other than v1, default to entire website.
+					// For versions other than the above, default to entire website.
 					$template_conditions = [
 						[
 							'id'   => 'default-any',
