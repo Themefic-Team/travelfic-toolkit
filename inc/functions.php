@@ -449,3 +449,27 @@ if (!function_exists('tft_get_switcher_value')) {
         return 'yes' === $value ? 'yes' : 'no';
     }
 }
+
+/**
+ * Ensure Bricks editor is enabled for our template builder CPT.
+ */
+function ensure_bricks_page_support() {
+    if ( function_exists( 'bricks_is_builder' ) || defined( 'BRICKS_VERSION' ) ) {
+        // Bricks stores enabled post types in this option.
+        $settings = get_option( 'bricks_global_settings', [] );
+
+        if ( ! is_array( $settings ) ) {
+            $settings = [];
+        }
+
+        if ( empty( $settings['postTypes'] ) || ! is_array( $settings['postTypes'] ) ) {
+            $settings['postTypes'] = [];
+        }
+
+        if ( ! in_array( 'page', $settings['postTypes'], true ) ) {
+            $settings['postTypes'][] = 'page';
+            update_option( 'bricks_global_settings', $settings );
+        }
+    }
+}
+add_action( 'init', 'ensure_bricks_page_support' );
