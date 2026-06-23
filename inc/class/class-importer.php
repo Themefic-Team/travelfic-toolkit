@@ -1173,36 +1173,47 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             return $data;
         }
 
-        /**
-         * Download a remote image and insert it as a WordPress attachment.
-         *
-         * @param  string   $url  Remote image URL.
-         * @return int|false      New attachment ID, or false on failure.
-         */
         private function sideload_bricks_image( $url ) {
             require_once ABSPATH . 'wp-admin/includes/file.php';
             require_once ABSPATH . 'wp-admin/includes/image.php';
             require_once ABSPATH . 'wp-admin/includes/media.php';
 
-            $tmp = download_url( $url );
-            if ( is_wp_error( $tmp ) ) {
+            // Use file_get_contents as download_url may fail on some servers
+            $page_image_data = @file_get_contents( $url );
+            if ( empty( $page_image_data ) ) {
                 return false;
             }
 
-            $file_array = [
-                'name'     => basename( wp_parse_url( $url, PHP_URL_PATH ) ),
-                'tmp_name' => $tmp,
-            ];
+            $page_filename   = basename( wp_parse_url( $url, PHP_URL_PATH ) );
+            $page_upload_dir = wp_upload_dir();
+            
+            // Ensure unique filename to prevent overwriting
+            $page_filename   = wp_unique_filename( $page_upload_dir['path'], $page_filename );
+            $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
 
-            $attachment_id = media_handle_sideload( $file_array, 0 );
+            // Save the image file to the uploads directory
+            file_put_contents( $page_image_path, $page_image_data );
+            
+            if (file_exists($page_image_path)) {
+                $file_type = wp_check_filetype( $page_filename, null );
+                $page_attachment = array(
+                    'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
+                    'post_mime_type' => $file_type['type'],
+                    'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
+                    'post_content'   => '',
+                    'post_status'    => 'inherit'
+                );
+                
+                $attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
 
-            if ( is_wp_error( $attachment_id ) ) {
-                // Clean up temp file on failure.
-                @unlink( $tmp );
-                return false;
+                if ( ! is_wp_error( $attachment_id ) ) {
+                    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $page_image_path );
+                    wp_update_attachment_metadata( $attachment_id, $attachment_data );
+                    return $attachment_id;
+                }
             }
 
-            return $attachment_id;
+            return false;
         }
 
         /**
