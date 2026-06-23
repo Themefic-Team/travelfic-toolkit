@@ -1144,11 +1144,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 return $data;
             }
 
-            // Detect a Bricks image reference: array with a numeric 'id' and a remote 'url'.
-            // Bricks element node IDs are random strings (e.g. 'brxe-d253f6'), never purely numeric.
+            // Detect a Bricks image reference: array with an integer 'id' and a remote 'url'.
+            // Bricks element node IDs are random strings (e.g. 'brxe-d253f6'), never integers.
             if (
                 isset( $data['id'], $data['url'] )
-                && is_numeric( $data['id'] )
+                && ( is_int( $data['id'] ) || is_string( $data['id'] ) )
                 && is_string( $data['url'] )
                 && filter_var( $data['url'], FILTER_VALIDATE_URL )
                 && strpos( $data['url'], home_url() ) === false
@@ -1279,15 +1279,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
                 $added_items[$item_key] = $menu_item_id;
         
-                if ( ! empty( $menu_item['sub_menu'] ) && is_array( $menu_item['sub_menu'] ) ) {
-                    foreach ( $menu_item['sub_menu'] as $sub_menu_item ) {
-
-                        if ( ! is_array( $sub_menu_item ) || empty( $sub_menu_item['title'] ) ) {
-                            continue;
-                        }
-
+                if (!empty($menu_item['sub_menu'])) {
+                    foreach ($menu_item['sub_menu'] as $sub_menu_item) {
                         // Process sub-menu URL
-                        $sub_menu_item_url = ! empty( $sub_menu_item['url'] ) ? $sub_menu_item['url'] : '#';
+                        $sub_menu_item_url = $sub_menu_item['url'];
                         if ($sub_menu_item_url !== '#') {
                             $sub_menu_item_path = parse_url($sub_menu_item_url, PHP_URL_PATH);
                             $sub_menu_item_url  = rtrim($site_url, '/') . $sub_menu_item_path;
