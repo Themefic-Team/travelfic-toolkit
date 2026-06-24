@@ -1144,13 +1144,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 return $data;
             }
 
-            // Detect a Bricks image reference: an associative array with an INTEGER 'id'
-            // (WordPress attachment ID) and a remote 'url' string.
-            // Bricks element node IDs are always short alphanumeric strings (e.g. 'ywnxal'),
-            // NEVER integers — so restricting to is_int() prevents false positives on element nodes.
+            // Detect a Bricks image reference: array with a positive integer 'id' and a remote 'url'.
+            // Bricks element node IDs are always random strings (e.g. 'ywnxal'), never positive integers.
+            // We use is_int() OR (is_numeric() with a positive value) to catch integers decoded from JSON.
             if (
                 isset( $data['id'], $data['url'] )
-                && is_int( $data['id'] )
+                && ( is_int( $data['id'] ) || ( is_numeric( $data['id'] ) && (int) $data['id'] > 0 ) )
                 && is_string( $data['url'] )
                 && filter_var( $data['url'], FILTER_VALIDATE_URL )
                 && strpos( $data['url'], home_url() ) === false
@@ -1158,14 +1157,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $source_url    = ! empty( $data['full'] ) ? $data['full'] : $data['url'];
                 $attachment_id = $this->sideload_bricks_image( $source_url );
                 if ( $attachment_id && ! is_wp_error( $attachment_id ) ) {
-                    $local_url       = wp_get_attachment_url( $attachment_id );
-                    $data['id']      = $attachment_id;
-                    $data['url']     = $local_url;
+                    $data['id']  = $attachment_id;
+                    $data['url'] = wp_get_attachment_url( $attachment_id );
                     if ( isset( $data['full'] ) ) {
-                        $data['full'] = $local_url;
+                        $data['full'] = $data['url'];
                     }
                     if ( isset( $data['filename'] ) ) {
-                        $data['filename'] = basename( $local_url );
+                        $data['filename'] = basename( $data['url'] );
                     }
                 }
                 return $data;
@@ -1181,76 +1179,70 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
         /**
          * Download a remote image and insert it as a WordPress attachment.
-         *
-         * Before downloading, we check whether the image has already been imported into
-         * the local media library (e.g. by the media_urls pre-download step). This avoids
-         * duplicate attachments and — critically — ensures the correct local attachment ID
-         * is returned even when the remote host refuses a second download request.
-         *
-         * Lookup order:
-         *   1. By the remote source URL stored as the attachment `guid`.
-         *   2. By the image filename (post_name slug) — handles cases where media_urls
-         *      already saved the file but with a different guid format.
+         * Checks for an already-imported attachment first (by source URL meta or GUID)
+         * to avoid duplicates and prevent leaving stale remote IDs in Bricks data.
          *
          * @param  string   $url  Remote image URL.
-         * @return int|false      Local attachment ID, or false on failure.
+         * @return int|false      New attachment ID, or false on failure.
          */
         private function sideload_bricks_image( $url ) {
-            global $wpdb;
-
-            // ── 1. Check by source URL stored as attachment guid ──────────────────────
-            $existing_id = (int) $wpdb->get_var(
-                $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts}
-                     WHERE post_type = 'attachment'
-                       AND guid = %s
-                     LIMIT 1",
-                    $url
-                )
-            );
-            if ( $existing_id > 0 ) {
-                return $existing_id;
-            }
-
-            // ── 2. Check by filename (post_name slug) ─────────────────────────────────
-            $filename      = basename( wp_parse_url( $url, PHP_URL_PATH ) );
-            $slug          = sanitize_title( pathinfo( $filename, PATHINFO_FILENAME ) );
-            $existing_slug = $wpdb->get_var(
-                $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts}
-                     WHERE post_type = 'attachment'
-                       AND post_name   = %s
-                     LIMIT 1",
-                    $slug
-                )
-            );
-            if ( $existing_slug > 0 ) {
-                return (int) $existing_slug;
-            }
-
-            // ── 3. Also check by partial guid LIKE match (handles size-suffixed filenames) ──
-            $base_filename = pathinfo( $filename, PATHINFO_FILENAME );
-            $existing_like = $wpdb->get_var(
-                $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts}
-                     WHERE post_type = 'attachment'
-                       AND guid LIKE %s
-                     LIMIT 1",
-                    '%' . $wpdb->esc_like( $base_filename ) . '%'
-                )
-            );
-            if ( $existing_like > 0 ) {
-                return (int) $existing_like;
-            }
-
-            // ── 4. Download fresh if not found locally ────────────────────────────────
             require_once ABSPATH . 'wp-admin/includes/file.php';
             require_once ABSPATH . 'wp-admin/includes/image.php';
             require_once ABSPATH . 'wp-admin/includes/media.php';
 
+            // 1. Check if already imported by source URL meta (fastest lookup).
+            $existing_by_meta = get_posts( [
+                'post_type'   => 'attachment',
+                'post_status' => 'inherit',
+                'meta_key'    => '_bricks_source_url',
+                'meta_value'  => $url,
+                'numberposts' => 1,
+                'fields'      => 'ids',
+            ] );
+            if ( ! empty( $existing_by_meta ) ) {
+                return $existing_by_meta[0];
+            }
+
+            // 2. Check by filename in the uploads GUID — catches images imported via media_urls.
+            $filename = basename( wp_parse_url( $url, PHP_URL_PATH ) );
+            global $wpdb;
+            $existing_by_guid = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts}
+                     WHERE post_type = 'attachment'
+                       AND post_status = 'inherit'
+                       AND guid LIKE %s
+                     LIMIT 1",
+                    '%/' . $wpdb->esc_like( $filename )
+                )
+            );
+            if ( $existing_by_guid ) {
+                // Store source URL so future lookups are instant.
+                update_post_meta( (int) $existing_by_guid, '_bricks_source_url', $url );
+                return (int) $existing_by_guid;
+            }
+
+            // 3. Download and sideload the image.
             $tmp = download_url( $url );
             if ( is_wp_error( $tmp ) ) {
                 return false;
+            }
+
+            // 4. Check for duplicate by file hash (catches re-imports).
+            $file_hash = md5_file( $tmp );
+            $existing_by_hash = get_posts( [
+                'post_type'   => 'attachment',
+                'post_status' => 'inherit',
+                'meta_key'    => '_file_hash',
+                'meta_value'  => $file_hash,
+                'numberposts' => 1,
+                'fields'      => 'ids',
+            ] );
+            if ( ! empty( $existing_by_hash ) ) {
+                @unlink( $tmp );
+                $existing_id = $existing_by_hash[0];
+                update_post_meta( $existing_id, '_bricks_source_url', $url );
+                return $existing_id;
             }
 
             $file_array = [
@@ -1265,6 +1257,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 @unlink( $tmp );
                 return false;
             }
+
+            // Store both metas for future duplicate detection.
+            update_post_meta( $attachment_id, '_bricks_source_url', $url );
+            update_post_meta( $attachment_id, '_file_hash', $file_hash );
 
             return $attachment_id;
         }
