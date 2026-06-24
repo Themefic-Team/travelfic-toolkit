@@ -1144,22 +1144,28 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 return $data;
             }
 
-            // Detect a Bricks image reference: array with an integer 'id' and a remote 'url'.
-            // Bricks element node IDs are random strings (e.g. 'brxe-d253f6'), never integers.
+            // Detect a Bricks image reference: an associative array with an INTEGER 'id'
+            // (WordPress attachment ID) and a remote 'url' string.
+            // Bricks element node IDs are always short alphanumeric strings (e.g. 'ywnxal'),
+            // NEVER integers — so restricting to is_int() prevents false positives on element nodes.
             if (
                 isset( $data['id'], $data['url'] )
-                && ( is_int( $data['id'] ) || is_string( $data['id'] ) )
+                && is_int( $data['id'] )
                 && is_string( $data['url'] )
                 && filter_var( $data['url'], FILTER_VALIDATE_URL )
                 && strpos( $data['url'], home_url() ) === false
             ) {
-                $source_url = ! empty( $data['full'] ) ? $data['full'] : $data['url'];
+                $source_url    = ! empty( $data['full'] ) ? $data['full'] : $data['url'];
                 $attachment_id = $this->sideload_bricks_image( $source_url );
                 if ( $attachment_id && ! is_wp_error( $attachment_id ) ) {
-                    $data['id']  = $attachment_id;
-                    $data['url'] = wp_get_attachment_url( $attachment_id );
+                    $local_url       = wp_get_attachment_url( $attachment_id );
+                    $data['id']      = $attachment_id;
+                    $data['url']     = $local_url;
                     if ( isset( $data['full'] ) ) {
-                        $data['full'] = $data['url'];
+                        $data['full'] = $local_url;
+                    }
+                    if ( isset( $data['filename'] ) ) {
+                        $data['filename'] = basename( $local_url );
                     }
                 }
                 return $data;
@@ -1173,47 +1179,94 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             return $data;
         }
 
+        /**
+         * Download a remote image and insert it as a WordPress attachment.
+         *
+         * Before downloading, we check whether the image has already been imported into
+         * the local media library (e.g. by the media_urls pre-download step). This avoids
+         * duplicate attachments and — critically — ensures the correct local attachment ID
+         * is returned even when the remote host refuses a second download request.
+         *
+         * Lookup order:
+         *   1. By the remote source URL stored as the attachment `guid`.
+         *   2. By the image filename (post_name slug) — handles cases where media_urls
+         *      already saved the file but with a different guid format.
+         *
+         * @param  string   $url  Remote image URL.
+         * @return int|false      Local attachment ID, or false on failure.
+         */
         private function sideload_bricks_image( $url ) {
+            global $wpdb;
+
+            // ── 1. Check by source URL stored as attachment guid ──────────────────────
+            $existing_id = (int) $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts}
+                     WHERE post_type = 'attachment'
+                       AND guid = %s
+                     LIMIT 1",
+                    $url
+                )
+            );
+            if ( $existing_id > 0 ) {
+                return $existing_id;
+            }
+
+            // ── 2. Check by filename (post_name slug) ─────────────────────────────────
+            $filename      = basename( wp_parse_url( $url, PHP_URL_PATH ) );
+            $slug          = sanitize_title( pathinfo( $filename, PATHINFO_FILENAME ) );
+            $existing_slug = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts}
+                     WHERE post_type = 'attachment'
+                       AND post_name   = %s
+                     LIMIT 1",
+                    $slug
+                )
+            );
+            if ( $existing_slug > 0 ) {
+                return (int) $existing_slug;
+            }
+
+            // ── 3. Also check by partial guid LIKE match (handles size-suffixed filenames) ──
+            $base_filename = pathinfo( $filename, PATHINFO_FILENAME );
+            $existing_like = $wpdb->get_var(
+                $wpdb->prepare(
+                    "SELECT ID FROM {$wpdb->posts}
+                     WHERE post_type = 'attachment'
+                       AND guid LIKE %s
+                     LIMIT 1",
+                    '%' . $wpdb->esc_like( $base_filename ) . '%'
+                )
+            );
+            if ( $existing_like > 0 ) {
+                return (int) $existing_like;
+            }
+
+            // ── 4. Download fresh if not found locally ────────────────────────────────
             require_once ABSPATH . 'wp-admin/includes/file.php';
             require_once ABSPATH . 'wp-admin/includes/image.php';
             require_once ABSPATH . 'wp-admin/includes/media.php';
 
-            // Use file_get_contents as download_url may fail on some servers
-            $page_image_data = @file_get_contents( $url );
-            if ( empty( $page_image_data ) ) {
+            $tmp = download_url( $url );
+            if ( is_wp_error( $tmp ) ) {
                 return false;
             }
 
-            $page_filename   = basename( wp_parse_url( $url, PHP_URL_PATH ) );
-            $page_upload_dir = wp_upload_dir();
-            
-            // Ensure unique filename to prevent overwriting
-            $page_filename   = wp_unique_filename( $page_upload_dir['path'], $page_filename );
-            $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
+            $file_array = [
+                'name'     => $filename,
+                'tmp_name' => $tmp,
+            ];
 
-            // Save the image file to the uploads directory
-            file_put_contents( $page_image_path, $page_image_data );
-            
-            if (file_exists($page_image_path)) {
-                $file_type = wp_check_filetype( $page_filename, null );
-                $page_attachment = array(
-                    'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                    'post_mime_type' => $file_type['type'],
-                    'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
-                    'post_content'   => '',
-                    'post_status'    => 'inherit'
-                );
-                
-                $attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
+            $attachment_id = media_handle_sideload( $file_array, 0 );
 
-                if ( ! is_wp_error( $attachment_id ) ) {
-                    $attachment_data = wp_generate_attachment_metadata( $attachment_id, $page_image_path );
-                    wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                    return $attachment_id;
-                }
+            if ( is_wp_error( $attachment_id ) ) {
+                // Clean up temp file on failure.
+                @unlink( $tmp );
+                return false;
             }
 
-            return false;
+            return $attachment_id;
         }
 
         /**
