@@ -34,7 +34,17 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_ajax_travelfic-demo-widget-import', array( $this, 'prepare_travelfic_widgets_imports' ) );
 			add_action( 'wp_ajax_travelfic-demo-menu-import', array( $this, 'prepare_travelfic_menus_imports' ) );
 			add_action( 'wp_ajax_travelfic-bricks-template-import', array( $this, 'prepare_bricks_template_import' ) );
+			add_action( 'wp_ajax_travelfic-switch-to-travelfic-theme', array( $this, 'switch_to_travelfic_theme' ) );
 			add_action( 'wp_head', array( $this, 'prepare_travelfic_elementor_background_images' ));
+		}
+
+		public function switch_to_travelfic_theme() {
+			check_ajax_referer('updates', '_ajax_nonce');
+			if ( current_user_can( 'switch_themes' ) ) {
+				switch_theme( 'travelfic' );
+				wp_send_json_success();
+			}
+			wp_send_json_error();
 		}
 
 		// =========================================================================
@@ -264,20 +274,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				if ( $template_key == '1' || $template_key == '2' ) {
 					if ( $filename === 'bricks-header.json' ) {
 						$template_conditions = [
-							[ 'id' => 'hdr-excl-front',    'main' => 'frontpage',   'exclude' => true ],
-							[ 'id' => 'hdr-excl-archive',  'main' => 'archiveType', 'archiveType' => [ 'postType' ], 'exclude' => true ],
-							[ 'id' => 'hdr-entire-site',   'main' => 'any' ],
+							[ 'id' => 'hdr-post-type-post', 'main' => 'postType', 'postType' => [ 'post' ] ],
 						];
-					} elseif ( $filename === 'bricks-footer.json' ) {
-						$template_conditions = [
-							[ 'id' => 'ftr-entire-site', 'main' => 'any' ],
-						];
-					} elseif ( $filename === 'bricks-header-transparent.json' ) {
-						$template_conditions = [
-							[ 'id' => 'trans-front',   'main' => 'frontpage' ],
-							[ 'id' => 'trans-archive', 'main' => 'archiveType', 'archiveType' => [ 'postType' ] ],
-						];
-						$individual_page_titles = [ 'About Us – Bricks', 'Contact Us – Bricks' ];
+						if ( $template_key == '1' ) {
+							$template_conditions[] = [ 'id' => 'hdr-post-type-hotel', 'main' => 'postType', 'postType' => [ 'tf_hotel' ] ];
+						} else {
+							$template_conditions[] = [ 'id' => 'hdr-post-type-tour', 'main' => 'postType', 'postType' => [ 'tf_tours' ] ];
+						}
+						$individual_page_titles = [ 'Blog' ];
 						$individual_ids = [];
 						foreach ( $individual_page_titles as $page_title ) {
 							$page = get_page_by_title( $page_title, OBJECT, 'page' );
@@ -287,6 +291,22 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						}
 						if ( ! empty( $individual_ids ) ) {
 							$template_conditions[] = [ 'id' => 'trans-individual', 'main' => 'ids', 'ids' => $individual_ids ];
+						}
+					} elseif ( $filename === 'bricks-footer.json' ) {
+						$template_conditions = [ [ 'id' => 'ftr-entire-site', 'main' => 'any' ] ];
+					} elseif ( $filename === 'bricks-header-transparent.json' ) {
+						if ( $template_key == '1' ) {
+							$template_conditions = [
+								[ 'id' => 'trans-excl-post-type-post', 'main' => 'postType', 'postType' => [ 'post' ], 'exclude' => true ],
+								[ 'id' => 'trans-excl-post-type-hotel', 'main' => 'postType', 'postType' => [ 'tf_hotel' ], 'exclude' => true ],
+								[ 'id' => 'trans-entire-site', 'main' => 'any' ],
+							];
+						} else {
+							$template_conditions = [
+								[ 'id' => 'trans-excl-post-type-post', 'main' => 'postType', 'postType' => [ 'post' ], 'exclude' => true ],
+								[ 'id' => 'trans-excl-post-type-tour', 'main' => 'postType', 'postType' => [ 'tf_tours' ], 'exclude' => true ],
+								[ 'id' => 'trans-entire-site', 'main' => 'any' ],
+							];
 						}
 					} else {
 						$template_conditions = [ [ 'id' => 'default-any', 'main' => 'any' ] ];

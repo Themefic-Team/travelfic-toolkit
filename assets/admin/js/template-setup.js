@@ -93,6 +93,17 @@
                 return slug !== 'elementor';
             });
             plugin_slug_length = plugin_slugs.length - 1;
+        } else if (active_builder === 'elementor' && (travelfic_toolkit_script_params.current_theme === 'bricks' || travelfic_toolkit_script_params.current_theme === 'bricks-child')) {
+            // Switch to travelfic theme if Elementor is selected but Bricks is currently active
+            $.ajax({
+                type: 'post',
+                url: travelfic_toolkit_script_params.ajax_url,
+                data: {
+                    action: 'travelfic-switch-to-travelfic-theme',
+                    _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                },
+                async: false,
+            });
         }
 
         // hide sync btn
