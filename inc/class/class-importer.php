@@ -37,6 +37,143 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_head', array( $this, 'prepare_travelfic_elementor_background_images' ));
 		}
 
+		// =========================================================================
+		// BRICKS MEDIA PROCESSING
+		// =========================================================================
+
+		/**
+		 * Sideload a remote image and return local attachment ID.
+		 * Deduplicates using _source_url meta to avoid re-downloading.
+		 */
+		private function sideload_bricks_image( $url ) {
+			if ( empty( $url ) ) {
+				return false;
+			}
+
+			// Strip query strings for cleaner matching
+			$clean_url = strtok( $url, '?' );
+
+			// Check by _source_url meta first
+			$existing = get_posts( [
+				'post_type'      => 'attachment',
+				'post_status'    => 'inherit',
+				'meta_key'       => '_source_url',
+				'meta_value'     => $clean_url,
+				'numberposts'    => 1,
+				'fields'         => 'ids',
+			] );
+			if ( ! empty( $existing ) ) {
+				return $existing[0];
+			}
+
+			// Also check by guid (WordPress sometimes stores source URL here)
+			global $wpdb;
+			$existing_by_guid = $wpdb->get_var( $wpdb->prepare(
+				"SELECT ID FROM {$wpdb->posts} WHERE guid = %s AND post_type = 'attachment' LIMIT 1",
+				$clean_url
+			) );
+			if ( $existing_by_guid ) {
+				// Backfill _source_url so future lookups are faster
+				update_post_meta( (int) $existing_by_guid, '_source_url', $clean_url );
+				return (int) $existing_by_guid;
+			}
+
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			require_once ABSPATH . 'wp-admin/includes/media.php';
+			require_once ABSPATH . 'wp-admin/includes/image.php';
+
+			$tmp = download_url( $url );
+			if ( is_wp_error( $tmp ) ) {
+				return false;
+			}
+
+			$filename   = basename( parse_url( $url, PHP_URL_PATH ) );
+			$file_array = [
+				'name'     => $filename,
+				'tmp_name' => $tmp,
+			];
+
+			$attach_id = media_handle_sideload( $file_array, 0 );
+
+			if ( is_wp_error( $attach_id ) ) {
+				@unlink( $tmp );
+				return false;
+			}
+
+			// Store source URL for future dedup lookups
+			update_post_meta( $attach_id, '_source_url', $clean_url );
+
+			return $attach_id;
+		}
+
+		/**
+		 * Recursively walk a Bricks settings array and remap every image object
+		 * { id, url, full, filename, size } to use the local attachment ID.
+		 *
+		 * Handles:
+		 *  - logo.settings.logo
+		 *  - image.settings.image
+		 *  - section/block background: settings._background.image
+		 *  - custom widget fields (about_us_image, banner_image, member_img, box_image, etc.)
+		 *  - repeater items containing image objects
+		 */
+		private function remap_bricks_image_fields( array &$settings ) {
+			foreach ( $settings as $key => &$value ) {
+				if ( ! is_array( $value ) ) {
+					continue;
+				}
+
+				// Detect a Bricks image object by shape:
+				// Must have numeric 'id' AND at least one of 'url'/'full'
+				// AND must NOT be a color object (those have 'raw'/'light' keys)
+				if (
+					isset( $value['id'] ) &&
+					is_numeric( $value['id'] ) &&
+					(int) $value['id'] > 0 &&
+					( isset( $value['url'] ) || isset( $value['full'] ) ) &&
+					! isset( $value['raw'] )  // exclude color objects
+				) {
+					$remote_url = ! empty( $value['full'] ) ? $value['full'] : $value['url'];
+
+					if ( ! empty( $remote_url ) && filter_var( $remote_url, FILTER_VALIDATE_URL ) ) {
+						$local_id = $this->sideload_bricks_image( $remote_url );
+
+						if ( $local_id ) {
+							$local_url = wp_get_attachment_url( $local_id );
+
+							$value['id'] = $local_id;
+							$value['url'] = $local_url;
+
+							if ( isset( $value['full'] ) ) {
+								$value['full'] = $local_url;
+							}
+							// 'filename' and 'size' are cosmetic — leave as-is
+						}
+					}
+				} else {
+					// Recurse: nested arrays, repeater rows, background objects, etc.
+					$this->remap_bricks_image_fields( $value );
+				}
+			}
+		}
+
+		/**
+		 * Top-level: process a flat Bricks elements array and remap all media.
+		 * Bricks elements are flat (children are IDs, not nested objects),
+		 * so we just iterate and process each element's settings.
+		 */
+		private function process_bricks_media( array &$elements ) {
+			foreach ( $elements as &$el ) {
+				if ( ! empty( $el['settings'] ) && is_array( $el['settings'] ) ) {
+					$this->remap_bricks_image_fields( $el['settings'] );
+				}
+			}
+		}
+
+		// =========================================================================
+		// BRICKS TEMPLATE IMPORT
+		// =========================================================================
+
 		/**
 		 * Bricks Builder Template Import
 		 * Imports header, transparent header (optional), footer templates,
@@ -56,12 +193,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 			/**
 			 * ── 1. Import Bricks header/footer templates ──────────────────────────────
-			 *
-			 * Each JSON file follows Bricks' export format:
-			 * { "title": "...", "templateType": "header"|"footer", "header": [...] | "footer": [...] }
-			 *
-			 * Bricks requires at least one condition in templateSettings for the
-			 * header/footer to be applied. We inject ['main' => 'any'] if missing.
 			 */
 			$template_files = [
 				'bricks-header.json'              => 'header',
@@ -81,7 +212,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				$body = wp_remote_retrieve_body( $response );
 				$code = wp_remote_retrieve_response_code( $response );
 
-				// Skip if file not found (transparent header is optional)
 				if ( 200 !== (int) $code || empty( $body ) ) {
 					$results[ $filename ] = 'not_found';
 					continue;
@@ -94,10 +224,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					continue;
 				}
 
-				// Determine the title from JSON or fall back to filename
 				$post_title = ! empty( $template_data['title'] ) ? sanitize_text_field( $template_data['title'] ) : ucwords( str_replace( [ '-', '.json' ], [ ' ', '' ], $filename ) );
 
-				// Delete any existing template with the same title to avoid duplicates
+				// Delete any existing template with the same title
 				$existing = get_posts( [
 					'post_type'   => 'bricks_template',
 					'title'       => $post_title,
@@ -109,7 +238,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					wp_delete_post( $existing_id, true );
 				}
 
-				// Insert new bricks_template post
 				$new_id = wp_insert_post( [
 					'post_title'  => $post_title,
 					'post_type'   => 'bricks_template',
@@ -121,29 +249,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					continue;
 				}
 
-				// Save template type meta (_bricks_template_type)
 				$template_type = ! empty( $template_data['templateType'] ) ? sanitize_text_field( $template_data['templateType'] ) : $area;
 				update_post_meta( $new_id, '_bricks_template_type', $template_type );
 
-				// Save page settings if present
 				if ( isset( $template_data['pageSettings'] ) ) {
 					update_post_meta( $new_id, '_bricks_page_settings', $template_data['pageSettings'] );
 				}
 
-				/**
-				 * Template conditions — `templateConditions` inside `_bricks_template_settings`.
-				 *
-				 * IMPORTANT: Bricks reads `templateConditions` as a flat array of condition objects
-				 * stored inside `_bricks_template_settings`. Bricks intentionally strips
-				 * `templateConditions` from its own JSON export, so the imported JSON will never
-				 * contain them. We inject the correct conditions per filename here.
-				 *
-				 * Condition keys: id (unique string), main, archiveType[], ids[], exclude (bool)
-				 *
-				 * Header         → Exclude: frontpage | Exclude: archiveType(postType) | Include: any
-				 * Footer         → Include: any (entire website)
-				 * Header Trans.  → Include: frontpage | Include: archiveType(postType) | Include: ids(pages by title)
-				 */
+				// Build template conditions
 				$template_settings = isset( $template_data['templateSettings'] ) && is_array( $template_data['templateSettings'] )
 					? $template_data['templateSettings']
 					: [];
@@ -151,50 +264,20 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				if ( $template_key == '1' || $template_key == '2' ) {
 					if ( $filename === 'bricks-header.json' ) {
 						$template_conditions = [
-							[
-								'id'          => 'hdr-excl-front',
-								'main'        => 'frontpage',
-								'exclude'     => true,
-							],
-							[
-								'id'          => 'hdr-excl-archive',
-								'main'        => 'archiveType',
-								'archiveType' => [ 'postType' ],
-								'exclude'     => true,
-							],
-							[
-								'id'   => 'hdr-entire-site',
-								'main' => 'any',
-							],
+							[ 'id' => 'hdr-excl-front',    'main' => 'frontpage',   'exclude' => true ],
+							[ 'id' => 'hdr-excl-archive',  'main' => 'archiveType', 'archiveType' => [ 'postType' ], 'exclude' => true ],
+							[ 'id' => 'hdr-entire-site',   'main' => 'any' ],
 						];
-
 					} elseif ( $filename === 'bricks-footer.json' ) {
 						$template_conditions = [
-							[
-								'id'   => 'ftr-entire-site',
-								'main' => 'any',
-							],
+							[ 'id' => 'ftr-entire-site', 'main' => 'any' ],
 						];
-
 					} elseif ( $filename === 'bricks-header-transparent.json' ) {
 						$template_conditions = [
-							[
-								'id'   => 'trans-front',
-								'main' => 'frontpage',
-							],
-							[
-								'id'          => 'trans-archive',
-								'main'        => 'archiveType',
-								'archiveType' => [ 'postType' ],
-							],
+							[ 'id' => 'trans-front',   'main' => 'frontpage' ],
+							[ 'id' => 'trans-archive', 'main' => 'archiveType', 'archiveType' => [ 'postType' ] ],
 						];
-
-						// Resolve Individual page IDs by title for pages already imported on this site.
-						// Pages that are not yet imported will simply be skipped (they can be re-imported later).
-						$individual_page_titles = [
-							'About Us – Bricks',
-							'Contact Us – Bricks',
-						];
+						$individual_page_titles = [ 'About Us – Bricks', 'Contact Us – Bricks' ];
 						$individual_ids = [];
 						foreach ( $individual_page_titles as $page_title ) {
 							$page = get_page_by_title( $page_title, OBJECT, 'page' );
@@ -203,75 +286,30 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 							}
 						}
 						if ( ! empty( $individual_ids ) ) {
-							$template_conditions[] = [
-								'id'   => 'trans-individual',
-								'main' => 'ids',
-								'ids'  => $individual_ids,
-							];
+							$template_conditions[] = [ 'id' => 'trans-individual', 'main' => 'ids', 'ids' => $individual_ids ];
 						}
-
 					} else {
-						// Unknown filename — default to entire website.
-						$template_conditions = [
-							[
-								'id'   => 'default-any',
-								'main' => 'any',
-							],
-						];
+						$template_conditions = [ [ 'id' => 'default-any', 'main' => 'any' ] ];
 					}
 				} elseif ( $template_key == '4' ) {
 					if ( $filename === 'bricks-header.json' ) {
 						$template_conditions = [
-							[
-								'id'          => 'hdr-excl-front',
-								'main'        => 'frontpage',
-								'exclude'     => true,
-							],
-							[
-								'id'   => 'hdr-entire-site',
-								'main' => 'any',
-							],
+							[ 'id' => 'hdr-excl-front',  'main' => 'frontpage', 'exclude' => true ],
+							[ 'id' => 'hdr-entire-site', 'main' => 'any' ],
 						];
-
 					} elseif ( $filename === 'bricks-footer.json' ) {
-						$template_conditions = [
-							[
-								'id'   => 'ftr-entire-site',
-								'main' => 'any',
-							],
-						];
-
+						$template_conditions = [ [ 'id' => 'ftr-entire-site', 'main' => 'any' ] ];
 					} elseif ( $filename === 'bricks-header-transparent.json' ) {
-						$template_conditions = [
-							[
-								'id'   => 'trans-front',
-								'main' => 'frontpage',
-							],
-						];
+						$template_conditions = [ [ 'id' => 'trans-front', 'main' => 'frontpage' ] ];
 					} else {
-						// Unknown filename — default to entire website.
-						$template_conditions = [
-							[
-								'id'   => 'default-any',
-								'main' => 'any',
-							],
-						];
+						$template_conditions = [ [ 'id' => 'default-any', 'main' => 'any' ] ];
 					}
 				} elseif ( $template_key == '6' ) {
 					if ( $filename === 'bricks-header.json' ) {
-						// Normal header: Blog singles (post) + Blog archive page (individual).
-						// Room archive intentionally excluded — it uses the transparent header.
 						$template_conditions = [
-							[
-								'id'       => 'hdr-post-type-post',
-								'main'     => 'postType',
-								'postType' => [ 'post' ],
-							],
+							[ 'id' => 'hdr-post-type-post', 'main' => 'postType', 'postType' => [ 'post' ] ],
 						];
-
-						$individual_page_titles = [
-							'Blog',
-						];
+						$individual_page_titles = [ 'Blog' ];
 						$individual_ids = [];
 						foreach ( $individual_page_titles as $page_title ) {
 							$page = get_page_by_title( $page_title, OBJECT, 'page' );
@@ -280,61 +318,27 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 							}
 						}
 						if ( ! empty( $individual_ids ) ) {
-							$template_conditions[] = [
-								'id'   => 'trans-individual',
-								'main' => 'ids',
-								'ids'  => $individual_ids,
-							];
+							$template_conditions[] = [ 'id' => 'trans-individual', 'main' => 'ids', 'ids' => $individual_ids ];
 						}
-
 					} elseif ( $filename === 'bricks-footer.json' ) {
-						$template_conditions = [
-							[
-								'id'   => 'ftr-entire-site',
-								'main' => 'any',
-							],
-						];
-
+						$template_conditions = [ [ 'id' => 'ftr-entire-site', 'main' => 'any' ] ];
 					} elseif ( $filename === 'bricks-header-transparent.json' ) {
-						// Transparent header: entire website EXCEPT blog singles and blog page
-						// (those use the normal header). Room archive falls under 'any'.
 						$template_conditions = [
-							[
-								'id'       => 'trans-excl-post-type-post',
-								'main'     => 'postType',
-								'postType' => [ 'post' ],
-								'exclude'  => true,
-							],
-							[
-								'id'   => 'trans-entire-site',
-								'main' => 'any',
-							],
+							[ 'id' => 'trans-excl-post-type-post', 'main' => 'postType', 'postType' => [ 'post' ], 'exclude' => true ],
+							[ 'id' => 'trans-entire-site', 'main' => 'any' ],
 						];
 					} else {
-						// Unknown filename — default to entire website.
-						$template_conditions = [
-							[
-								'id'   => 'default-any',
-								'main' => 'any',
-							],
-						];
+						$template_conditions = [ [ 'id' => 'default-any', 'main' => 'any' ] ];
 					}
 				} else {
-					// For versions other than the above, default to entire website.
-					$template_conditions = [
-						[
-							'id'   => 'default-any',
-							'main' => 'any',
-						],
-					];
+					$template_conditions = [ [ 'id' => 'default-any', 'main' => 'any' ] ];
 				}
 
 				$template_settings['templateConditions'] = $template_conditions;
 				update_post_meta( $new_id, '_bricks_template_settings', $template_settings );
 
-
-				// Determine which meta key stores elements (header vs footer vs content)
-				$meta_key = '_bricks_page_content_2'; // default
+				// Determine meta key and elements
+				$meta_key = '_bricks_page_content_2';
 				$elements = false;
 
 				if ( ! empty( $template_data['header'] ) ) {
@@ -349,8 +353,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				}
 
 				if ( $elements && is_array( $elements ) ) {
-					// Sideload remote images (e.g. logos) so Bricks can resolve attachment IDs on this site.
-					$elements = $this->process_bricks_media( $elements );
+					// Process and remap all media to local attachments
+					$this->process_bricks_media( $elements );
 					update_post_meta( $new_id, $meta_key, wp_slash( $elements ) );
 				}
 
@@ -359,10 +363,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 			/**
 			 * ── 2. Import Bricks Color Palette ───────────────────────────────────────
-			 *
-			 * The option `bricks_color_palette` holds a numerically-indexed array
-			 * of palette objects (each with 'id', 'name', 'colors').
-			 * We append/replace our palette matched by its `id`.
 			 */
 			$palette_url      = $base_url . 'bricks-color-palette.json';
 			$palette_response = wp_remote_get( $palette_url );
@@ -376,7 +376,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						$existing_palettes = [];
 					}
 
-					// Replace palette with matching id, or append
 					$palette_id    = ! empty( $palette_data['id'] ) ? $palette_data['id'] : '';
 					$palette_found = false;
 					foreach ( $existing_palettes as $idx => $palette ) {
@@ -399,16 +398,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 			/**
 			 * ── 3. Import Bricks Theme Style ─────────────────────────────────────────
-			 *
-			 * IMPORTANT: The option `bricks_theme_styles` is a KEYED associative array
-			 * indexed by the style's ID (e.g. ['tourfic' => ['label'=>..., 'settings'=>..., 'id'=>...]]).
-			 * This is NOT a numerically-indexed array.
-			 *
-			 * The JSON file contains a single style object with 'id', 'label', 'settings'.
-			 * We store/replace it at $existing_styles[$style_id].
-			 *
-			 * Bricks also requires at least one condition in settings.conditions for the
-			 * theme style to be applied. We inject ['main' => 'any'] if missing.
 			 */
 			$theme_style_url      = $base_url . 'bricks-theme-style.json';
 			$theme_style_response = wp_remote_get( $theme_style_url );
@@ -417,7 +406,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				$theme_style_data = json_decode( wp_remote_retrieve_body( $theme_style_response ), true );
 
 				if ( ! empty( $theme_style_data ) && is_array( $theme_style_data ) ) {
-					// bricks_theme_styles is keyed by style ID
 					$existing_styles = get_option( 'bricks_theme_styles', [] );
 					if ( ! is_array( $existing_styles ) ) {
 						$existing_styles = [];
@@ -425,7 +413,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 					$style_id = ! empty( $theme_style_data['id'] ) ? $theme_style_data['id'] : 'tourfic';
 
-					// Ensure conditions exist so the theme style is applied site-wide
 					$ts_settings   = isset( $theme_style_data['settings'] ) && is_array( $theme_style_data['settings'] )
 						? $theme_style_data['settings']
 						: [];
@@ -437,14 +424,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						: [];
 
 					if ( empty( $ts_rules ) ) {
-						$ts_conditions['conditions']     = [ [ 'main' => 'any' ] ];
-						$ts_settings['conditions']       = $ts_conditions;
-						$theme_style_data['settings']    = $ts_settings;
+						$ts_conditions['conditions']  = [ [ 'main' => 'any' ] ];
+						$ts_settings['conditions']    = $ts_conditions;
+						$theme_style_data['settings'] = $ts_settings;
 					}
 
-					// Store as keyed array entry (this is the correct Bricks DB structure)
 					$existing_styles[ $style_id ] = $theme_style_data;
-
 					update_option( 'bricks_theme_styles', $existing_styles );
 					$results['bricks-theme-style.json'] = 'imported';
 				}
@@ -455,6 +440,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			wp_send_json_success( $results );
 		}
 
+
+		// =========================================================================
+		// GLOBAL SETTINGS / CUSTOMIZER
+		// =========================================================================
 
 		/**
 		 * Tourfic Global Settings
@@ -492,37 +481,26 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $customizers_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($customizers_files);
 
-            // Add extra CSS for template version 6
             if ( (int) $template_key === 6 ) {
-
                 $extra_css = '#tft-site-main-body .site .tft-site-navigation li.current-menu-item > a[aria-current="page"]{
                     color: var(--tf-links-color);
                 }';
-
-                // Get existing custom CSS (if any)
                 $existing_css = wp_get_custom_css();
-
-                // Append new CSS
                 $new_css = $existing_css . "\n\n" . $extra_css;
-
-                // Update custom CSS properly
                 wp_update_custom_css_post( $new_css );
             }
             
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
 
-                // site title
                 if (isset($imported_data['blogname']) && !empty($imported_data['blogname'])) {
                     update_option('blogname', $imported_data['blogname']);
                 }
 
-                // site tagline
                 if (isset($imported_data['blogdescription']) && !empty($imported_data['blogdescription'])) {
                     update_option('blogdescription', $imported_data['blogdescription']); 
                 }
 
-                // site icon
                 if (isset($imported_data['site_icon_url']) && !empty($imported_data['site_icon_url'])) {
                     $icon_id = $this->travelfic_import_image($imported_data['site_icon_url']);
                     if ($icon_id) {
@@ -550,6 +528,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
 		}
 
+		// =========================================================================
+		// GENERIC IMAGE IMPORTER (used by hotels, tours, cars, customizer)
+		// =========================================================================
+
         /**
          * Import image from URL but prevent duplicates
          */
@@ -558,7 +540,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 return false;
             }
 
-            // Extract filename
             $filename = basename( parse_url( $image_url, PHP_URL_PATH ) );
 
             $tmp = download_url( $image_url );
@@ -577,7 +558,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             ) );
 
             if ( ! empty( $existing ) ) {
-                @unlink( $tmp ); // cleanup temp file
+                @unlink( $tmp );
                 return $existing[0];
             }
 
@@ -597,11 +578,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 return false;
             }
 
-            // Save file hash for future duplicate checks
             update_post_meta( $attach_id, '_file_hash', $file_hash );
 
             return $attach_id;
         }
+
+		// =========================================================================
+		// PAGES IMPORT
+		// =========================================================================
 
         /**
 		 * Tourfic Pages Importer Settings
@@ -619,15 +603,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             if (!empty($forms_imported_data)) {
                 $forms_imported_data = json_decode( $forms_imported_data, true );
                 foreach($forms_imported_data as $form){
-
                     $form_title = !empty($form['title']) ? $form['title'] : '';
                     $form_properties = !empty($form['properties']) ? json_decode($form['properties'],true) : '';
-                    // tf_var_dump($form_properties);
                     if ( class_exists( 'WPCF7' ) ) {
                         $contact_form = WPCF7_ContactForm::get_template(
-                            array( 
-                                'title' => $form_title,
-                            )
+                            array( 'title' => $form_title )
                         ); 
                         $contact_form->set_properties($form_properties);
                         $contact_form->save();
@@ -644,21 +624,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $pages_files = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($pages_files);
 
-            // existing pages to delete
             if (!empty($imported_data)) {
                 $imported_data = json_decode( $imported_data, true );
+
+                // Delete existing pages first
                 foreach ($imported_data as $page) {
                     $title = !empty($page['title']) ? $page['title'] : '';
                     if (!empty($title)) {
-                        // Find any existing pages with this title
                         $existing_pages = get_posts(array(
-                            'post_type' => 'page',
-                            'title' => $title,
+                            'post_type'   => 'page',
+                            'title'       => $title,
                             'post_status' => 'any',
                             'numberposts' => -1
                         ));
-                        
-                        // Delete all found pages
                         foreach ($existing_pages as $existing_page) {
                             if (get_option('page_on_front') == $existing_page->ID) {
                                 update_option('page_on_front', 0);
@@ -672,35 +650,30 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
 
                 foreach($imported_data as $page){
-                    $is_front = !empty($page['is_front']) ? $page['is_front'] : '';
-                    $is_blog = !empty($page['is_blog']) ? $page['is_blog'] : '';
-                    $title = !empty($page['title']) ? $page['title'] : '';
-                    $content = !empty($page['content']) ? $page['content'] : '';
-                    $tft_header_bg =  !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
-                    $pages_images = $page['media_urls'];
+                    $is_front    = !empty($page['is_front']) ? $page['is_front'] : '';
+                    $is_blog     = !empty($page['is_blog']) ? $page['is_blog'] : '';
+                    $title       = !empty($page['title']) ? $page['title'] : '';
+                    $content     = !empty($page['content']) ? $page['content'] : '';
+                    $tft_header_bg = !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
+                    $pages_images  = $page['media_urls'];
 
-                    $elementor_data = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
-                
-                    $elementor_content =  !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
+                    $elementor_data    = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
+                    $elementor_content = !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
 
+                    // Import Elementor page media
                     if(!empty($pages_images)){
                         $media_urls = explode(", ", $pages_images);
                         $update_media_url = [];
 
                         foreach($media_urls as $media){
                             if(!empty($media)){
-
-                                // Download the image file
                                 $page_image_data = file_get_contents( $media );
                                 $page_filename   = basename( $media );
                                 $page_upload_dir = wp_upload_dir();
                                 $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
-                        
-                                // Save the image file to the uploads directory
                                 file_put_contents( $page_image_path, $page_image_data );
                                 
                                 if (file_exists($page_image_path)) {
-                                    // Create the attachment for the uploaded image
                                     $page_attachment = array(
                                         'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
                                         'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
@@ -708,16 +681,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                         'post_content'   => '',
                                         'post_status'    => 'inherit'
                                     );
-                                    // Insert the attachment
                                     $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
-                        
-                                    // Include the necessary file for media_handle_sideload().
                                     require_once(ABSPATH . 'wp-admin/includes/image.php');
-                        
-                                    // Generate the attachment metadata
                                     $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
                                     wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
-                        
                                     $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
                                 }
                             }
@@ -727,26 +694,20 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
                     
-                    // Process Elementor data to find and replace background images
                     if (!empty($elementor_data)) {
                         foreach ($elementor_data as &$element) {
                           $this->prepare_travelfic_elementor_background_images($element);
                         }
                     }
-    
 
                     if(!empty($tft_header_bg)){
-                        // Download the image file
                         $page_image_data = file_get_contents( $tft_header_bg );
                         $page_filename   = basename( $tft_header_bg );
                         $page_upload_dir = wp_upload_dir();
                         $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
-                
-                        // Save the image file to the uploads directory
                         file_put_contents( $page_image_path, $page_image_data );
                         
                         if (file_exists($page_image_path)) {
-                            // Create the attachment for the uploaded image
                             $page_attachment = array(
                                 'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
                                 'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
@@ -754,33 +715,23 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                 'post_content'   => '',
                                 'post_status'    => 'inherit'
                             );
-                            // Insert the attachment
                             $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
-                
-                            // Include the necessary file for media_handle_sideload().
                             require_once(ABSPATH . 'wp-admin/includes/image.php');
-                
-                            // Generate the attachment metadata
                             $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
                             wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
-                
                             $tft_header_bg = wp_get_attachment_url($page_attachment_id);
                         }
                     }
 
-
-                    // Create a new page programmatically
                     $new_page = array(
-                        'post_title' => $title,
+                        'post_title'   => $title,
                         'post_content' => $content,
-                        'post_status' => 'publish',
-                        'post_type' => 'page'
+                        'post_status'  => 'publish',
+                        'post_type'    => 'page'
                     );
 
-
-                 
-                    // Insert the page into the database
                     $new_page_id = wp_insert_post($new_page);
+
                     if(!empty($is_front)){
                         update_option( 'page_on_front', $new_page_id );
                         update_option( 'show_on_front', 'page' );
@@ -791,15 +742,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     }
 
                     if ( 'bricks' === $builder && ! empty( $page['_bricks_page_content_2'] ) ) {
-                        // Bricks builder meta — only for pages that actually have Bricks content.
-                        // Pages without _bricks_page_content_2 (e.g. Blog page) are imported
-                        // as plain WordPress pages with no builder meta.
+                        $bricks_content = $page['_bricks_page_content_2'];
+
+                        // Remap all Bricks image/logo/background media to local attachments
+                        $this->process_bricks_media( $bricks_content );
+
                         update_post_meta( $new_page_id, 'tf_builder_type', 'bricks' );
                         update_post_meta( $new_page_id, '_bricks_template_type', 'content' );
                         update_post_meta( $new_page_id, '_bricks_editor_mode', 'bricks' );
-
-                        // Sideload remote images so Bricks can resolve attachment IDs on this site.
-                        $bricks_content = $this->process_bricks_media( $page['_bricks_page_content_2'] );
                         update_post_meta( $new_page_id, '_bricks_page_content_2', wp_slash( $bricks_content ) );
                     }
 
@@ -812,30 +762,25 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($new_page_id, 'tft-pmb-subtitle', $page['tft-pmb-subtitle']);
 
                         if ( 'elementor' === $builder ) {
-                            // Elementor builder meta
                             update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
                             update_post_meta($new_page_id, '_elementor_data', $elementor_content);
                             update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
                             update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
                         }
                     }
-
                 }
                 
                 delete_option('_elementor_global_css');
 		        delete_option('elementor-custom-breakpoints-files');
             }
 
-            // Update the elementor global colors
+            // Update elementor global colors
             $elementor_kit_id = get_option('elementor_active_kit');
             $settings = get_post_meta($elementor_kit_id, '_elementor_page_settings', true);
-
-            // Ensure settings is an array
             if (!is_array($settings)) {
                 $settings = [];
             }
 
-            // Define palettes
             $color_palette = [
                 'design-1' => ['#B58E53', '#917242', '#99948D', '#B58E53'],
                 'design-2' => ['#0E3DD8', '#003C7A', '#686E7A', '#0E3DD8'],
@@ -843,24 +788,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 'design-4' => ['#153d3a', '#0d1211', '#334745', '#ee5509'],
             ];
 
-            // Fallback to design-1
             switch ($template_key) {
-                case '6':
-                    $selected = 'design-4';
-                    break;
-                case '5':
-                    $selected = 'design-3';
-                    break;
-                case '4':
-                    $selected = 'design-2';
-                    break;
-                default:
-                    $selected = 'design-1';
+                case '6': $selected = 'design-4'; break;
+                case '5': $selected = 'design-3'; break;
+                case '4': $selected = 'design-2'; break;
+                default:  $selected = 'design-1';
             }
 
             list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
 
-            // Update colors
             $settings['system_colors'] = [
                 ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
                 ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
@@ -868,100 +804,56 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
             ];
 
-            // Typography presets per design
             $typography_presets = [
                 'design-1' => [
                     [
                         '_id'   => 'primary',
                         'title' => 'Primary',
-                        'typography_typography' => 'custom',
-                        'typography_font_family' => 'Libre Baskerville',
-                        'typography_font_weight' => '400',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 65,
-                        ],
-                        'typography_font_size_tablet' => [
-                            'unit' => 'px',
-                            'size' => 37,
-                        ],
-                        'typography_font_size_mobile' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
-
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 78,
-                        ],
-                        'typography_line_height_tablet' => [
-                            'unit' => 'px',
-                            'size' => 52,
-                        ],
-                        'typography_line_height_mobile' => [
-                            'unit' => 'px',
-                            'size' => 37,
-                        ],
+                        'typography_typography'          => 'custom',
+                        'typography_font_family'         => 'Libre Baskerville',
+                        'typography_font_weight'         => '400',
+                        'typography_font_size'           => [ 'unit' => 'px', 'size' => 65 ],
+                        'typography_font_size_tablet'    => [ 'unit' => 'px', 'size' => 37 ],
+                        'typography_font_size_mobile'    => [ 'unit' => 'px', 'size' => 25 ],
+                        'typography_line_height'         => [ 'unit' => 'px', 'size' => 78 ],
+                        'typography_line_height_tablet'  => [ 'unit' => 'px', 'size' => 52 ],
+                        'typography_line_height_mobile'  => [ 'unit' => 'px', 'size' => 37 ],
                     ],
                     [
                         '_id'   => 'secondary',
                         'title' => 'Secondary',
-                        'typography_typography' => 'custom',
+                        'typography_typography'  => 'custom',
                         'typography_font_family' => 'Work Sans',
                         'typography_font_weight' => '600',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
+                        'typography_font_size'   => [ 'unit' => 'px', 'size' => 17 ],
+                        'typography_line_height' => [ 'unit' => 'px', 'size' => 25 ],
                     ],
                     [
                         '_id'   => 'text',
                         'title' => 'Text',
-                        'typography_typography' => 'custom',
+                        'typography_typography'  => 'custom',
                         'typography_font_family' => 'Work Sans',
                         'typography_font_weight' => '400',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
+                        'typography_font_size'   => [ 'unit' => 'px', 'size' => 17 ],
+                        'typography_line_height' => [ 'unit' => 'px', 'size' => 25 ],
                     ],
                     [
                         '_id'   => 'accent',
                         'title' => 'Accent',
-                        'typography_typography' => 'custom',
+                        'typography_typography'  => 'custom',
                         'typography_font_family' => 'Work Sans',
                         'typography_font_weight' => '600',
-                        'typography_font_size' => [
-                            'unit' => 'px',
-                            'size' => 17,
-                        ],
-                        'typography_line_height' => [
-                            'unit' => 'px',
-                            'size' => 25,
-                        ],
+                        'typography_font_size'   => [ 'unit' => 'px', 'size' => 17 ],
+                        'typography_line_height' => [ 'unit' => 'px', 'size' => 25 ],
                     ],
                 ],
             ];
 
             switch ($template_key) {
-                case '6':
-                    $font_selected = 'design-1';
-                    break;
-                default:
-                    $font_selected = 'design-1';
+                default: $font_selected = 'design-1';
             }
 
-            // Assign the chosen typography preset based on selected design
             $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
-
             update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
 
             // Update Bricks transparent header conditions after pages are imported
@@ -974,21 +866,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     }
 
                     $template_conditions = [
-                        [
-                            'id'   => 'trans-front',
-                            'main' => 'frontpage',
-                        ],
-                        [
-                            'id'          => 'trans-archive',
-                            'main'        => 'archiveType',
-                            'archiveType' => [ 'postType' ],
-                        ],
+                        [ 'id' => 'trans-front',   'main' => 'frontpage' ],
+                        [ 'id' => 'trans-archive', 'main' => 'archiveType', 'archiveType' => [ 'postType' ] ],
                     ];
 
-                    $individual_page_titles = [
-                        'About Us – Bricks',
-                        'Contact Us – Bricks',
-                    ];
+                    $individual_page_titles = [ 'About Us – Bricks', 'Contact Us – Bricks' ];
                     $individual_ids = [];
                     foreach ( $individual_page_titles as $page_title ) {
                         $page = get_page_by_title( $page_title, OBJECT, 'page' );
@@ -997,11 +879,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
                     if ( ! empty( $individual_ids ) ) {
-                        $template_conditions[] = [
-                            'id'   => 'trans-individual',
-                            'main' => 'ids',
-                            'ids'  => $individual_ids,
-                        ];
+                        $template_conditions[] = [ 'id' => 'trans-individual', 'main' => 'ids', 'ids' => $individual_ids ];
                     }
 
                     $template_settings['templateConditions'] = $template_conditions;
@@ -1010,30 +888,29 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
 
             die();
-
 		}
+
+		// =========================================================================
+		// ELEMENTOR BACKGROUND IMAGES
+		// =========================================================================
 
         public function prepare_travelfic_elementor_background_images($element) {
             $this->generated_css = '';
             $this->check_element_for_background($element);
         
             if (!empty($this->generated_css)) {
-                // Get existing data
                 $existing_data = get_option('travelfic_elementor_background_images', array());
                 
-                // If no existing data, create new structure
                 if (empty($existing_data)) {
                     $background_data = array(
-                        'css_rules' => $this->generated_css,
-                        'timestamp' => current_time('mysql'),
+                        'css_rules'  => $this->generated_css,
+                        'timestamp'  => current_time('mysql'),
                     );
                 } else {
-                    // Process existing CSS rules to remove duplicates for the same element IDs
                     $existing_rules = $this->remove_duplicate_rules($existing_data['css_rules'], $this->generated_css);
-                    
                     $background_data = array(
-                        'css_rules' => $existing_rules . "\n" . $this->generated_css,
-                        'timestamp' => current_time('mysql'),
+                        'css_rules'  => $existing_rules . "\n" . $this->generated_css,
+                        'timestamp'  => current_time('mysql'),
                     );
                 }
 
@@ -1041,9 +918,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
         }
 
-        // Helper function to remove duplicate rules for the same element IDs
         private function remove_duplicate_rules($existing_css, $new_css) {
-            // Extract all element IDs from the new CSS
             preg_match_all('/\[data-id="([^"]+)"/', $new_css, $matches);
             $new_ids = array_unique($matches[1]);
             
@@ -1051,21 +926,17 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 return $existing_css;
             }
             
-            // Split existing rules into lines
             $existing_rules = explode('}', $existing_css);
             $filtered_rules = array();
             
             foreach ($existing_rules as $rule) {
                 $keep_rule = true;
-                
-                // Check if this rule contains any of the new IDs
                 foreach ($new_ids as $id) {
                     if (strpos($rule, '[data-id="' . $id . '"') !== false) {
                         $keep_rule = false;
                         break;
                     }
                 }
-                
                 if ($keep_rule && trim($rule)) {
                     $filtered_rules[] = $rule . '}';
                 }
@@ -1074,22 +945,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             return implode(' ', $filtered_rules);
         }
 
-        // Recursive function to check for background images
         private function check_element_for_background($element) {
             if (!isset($element['id'])) {
                 return false;
             }
 
-            $element_id = $element['id'];
-
+            $element_id    = $element['id'];
             $background_image = isset($element['settings']['background_image']['url']) ? $element['settings']['background_image']['url'] : '';
-            $overlay_image = isset($element['settings']['background_overlay_image']['url'])  ? $element['settings']['background_overlay_image']['url'] : '';
-            $selected_icon = isset($element['settings']['selected_icon']['value']['url']) ? $element['settings']['selected_icon']['value']['url'] : '';
+            $overlay_image    = isset($element['settings']['background_overlay_image']['url'])  ? $element['settings']['background_overlay_image']['url'] : '';
+            $selected_icon    = isset($element['settings']['selected_icon']['value']['url']) ? $element['settings']['selected_icon']['value']['url'] : '';
 
             $has_background = !empty($background_image) || !empty($overlay_image) || !empty($selected_icon);
 
             if ($has_background) {
-                // Generate CSS for main background
                 if (!empty($background_image)) {
                     $this->generated_css .= sprintf(
                         '[data-id="%s"] { background-image: url("%s"); } ',
@@ -1097,8 +965,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         esc_url($background_image)
                     );
                 }
-
-                // Generate CSS for overlay
                 if (!empty($overlay_image)) {
                     $this->generated_css .= sprintf(
                         '[data-id="%s"] { background-image: url("%s"); } ',
@@ -1106,8 +972,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         esc_url($overlay_image)
                     );
                 }
-
-                // Generate CSS for selected icon
                 if (!empty($selected_icon)) {
                     $this->generated_css .= sprintf(
                         '[data-id="%s"] .elementor-icon { background-image: url("%s"); background-repeat: no-repeat; background-position: center center; } ',
@@ -1117,7 +981,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
 
-            // Check nested elements
             if (isset($element['elements'])) {
                 foreach ($element['elements'] as $child_element) {
                     $this->check_element_for_background($child_element);
@@ -1127,143 +990,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             return true;
         }
 
-        /**
-         * Recursively walk a Bricks elements array and sideload any remote images.
-         *
-         * Bricks stores image references as an associative array with an integer `id`
-         * (WordPress attachment ID) and a string `url`. After importing content from
-         * another site the attachment IDs are invalid, causing images to be invisible
-         * even though the widget appears selected. We download each remote image, create
-         * a local attachment, and replace the `id` so Bricks can resolve the image.
-         *
-         * @param  array $data  A Bricks elements array or any nested sub-array.
-         * @return array        The same structure with remote image IDs replaced.
-         */
-        private function process_bricks_media( $data ) {
-            if ( ! is_array( $data ) ) {
-                return $data;
-            }
-
-            // Detect a Bricks image reference: array with a positive integer 'id' and a remote 'url'.
-            // Bricks element node IDs are always random strings (e.g. 'ywnxal'), never positive integers.
-            // We use is_int() OR (is_numeric() with a positive value) to catch integers decoded from JSON.
-            if (
-                isset( $data['id'], $data['url'] )
-                && ( is_int( $data['id'] ) || ( is_numeric( $data['id'] ) && (int) $data['id'] > 0 ) )
-                && is_string( $data['url'] )
-                && filter_var( $data['url'], FILTER_VALIDATE_URL )
-                && strpos( $data['url'], home_url() ) === false
-            ) {
-                $source_url    = ! empty( $data['full'] ) ? $data['full'] : $data['url'];
-                $attachment_id = $this->sideload_bricks_image( $source_url );
-                if ( $attachment_id && ! is_wp_error( $attachment_id ) ) {
-                    $data['id']  = $attachment_id;
-                    $data['url'] = wp_get_attachment_url( $attachment_id );
-                    if ( isset( $data['full'] ) ) {
-                        $data['full'] = $data['url'];
-                    }
-                    if ( isset( $data['filename'] ) ) {
-                        $data['filename'] = basename( $data['url'] );
-                    }
-                }
-                return $data;
-            }
-
-            // Recurse into every key of the array.
-            foreach ( $data as $key => $value ) {
-                $data[ $key ] = $this->process_bricks_media( $value );
-            }
-
-            return $data;
-        }
-
-        /**
-         * Download a remote image and insert it as a WordPress attachment.
-         * Checks for an already-imported attachment first (by source URL meta or GUID)
-         * to avoid duplicates and prevent leaving stale remote IDs in Bricks data.
-         *
-         * @param  string   $url  Remote image URL.
-         * @return int|false      New attachment ID, or false on failure.
-         */
-        private function sideload_bricks_image( $url ) {
-            require_once ABSPATH . 'wp-admin/includes/file.php';
-            require_once ABSPATH . 'wp-admin/includes/image.php';
-            require_once ABSPATH . 'wp-admin/includes/media.php';
-
-            // 1. Check if already imported by source URL meta (fastest lookup).
-            $existing_by_meta = get_posts( [
-                'post_type'   => 'attachment',
-                'post_status' => 'inherit',
-                'meta_key'    => '_bricks_source_url',
-                'meta_value'  => $url,
-                'numberposts' => 1,
-                'fields'      => 'ids',
-            ] );
-            if ( ! empty( $existing_by_meta ) ) {
-                return $existing_by_meta[0];
-            }
-
-            // 2. Check by filename in the uploads GUID — catches images imported via media_urls.
-            $filename = basename( wp_parse_url( $url, PHP_URL_PATH ) );
-            global $wpdb;
-            $existing_by_guid = $wpdb->get_var(
-                $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts}
-                     WHERE post_type = 'attachment'
-                       AND post_status = 'inherit'
-                       AND guid LIKE %s
-                     LIMIT 1",
-                    '%/' . $wpdb->esc_like( $filename )
-                )
-            );
-            if ( $existing_by_guid ) {
-                // Store source URL so future lookups are instant.
-                update_post_meta( (int) $existing_by_guid, '_bricks_source_url', $url );
-                return (int) $existing_by_guid;
-            }
-
-            // 3. Download and sideload the image.
-            $tmp = download_url( $url );
-            if ( is_wp_error( $tmp ) ) {
-                return false;
-            }
-
-            // 4. Check for duplicate by file hash (catches re-imports).
-            $file_hash = md5_file( $tmp );
-            $existing_by_hash = get_posts( [
-                'post_type'   => 'attachment',
-                'post_status' => 'inherit',
-                'meta_key'    => '_file_hash',
-                'meta_value'  => $file_hash,
-                'numberposts' => 1,
-                'fields'      => 'ids',
-            ] );
-            if ( ! empty( $existing_by_hash ) ) {
-                @unlink( $tmp );
-                $existing_id = $existing_by_hash[0];
-                update_post_meta( $existing_id, '_bricks_source_url', $url );
-                return $existing_id;
-            }
-
-            $file_array = [
-                'name'     => $filename,
-                'tmp_name' => $tmp,
-            ];
-
-            $attachment_id = media_handle_sideload( $file_array, 0 );
-
-            if ( is_wp_error( $attachment_id ) ) {
-                // Clean up temp file on failure.
-                @unlink( $tmp );
-                return false;
-            }
-
-            // Store both metas for future duplicate detection.
-            update_post_meta( $attachment_id, '_bricks_source_url', $url );
-            update_post_meta( $attachment_id, '_file_hash', $file_hash );
-
-            return $attachment_id;
-        }
+		// =========================================================================
+		// MENUS
+		// =========================================================================
 
         /**
 		 * Tourfic Menu importer Settings
@@ -1291,15 +1020,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             
             die();
         }
+
         public static function travelfic_toolkit_create_menu_from_imported_data($menu_data, $template_key) {
-            $menu_name = 'Imported Main Menu';
+            $menu_name   = 'Imported Main Menu';
             $menu_exists = wp_get_nav_menu_object($menu_name);
             if (!$menu_exists) {
                 $menu_id = wp_create_nav_menu($menu_name);
             } else {
                 $menu_id = $menu_exists->term_id;
-
-                // Delete existing menu items
                 $existing_items = wp_get_nav_menu_items($menu_id);
                 if(!empty($existing_items)){
                     foreach ($existing_items as $item) {
@@ -1308,14 +1036,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
             }
 
-            // Get the current site's URL and protocol
             $site_url = site_url();
 
-            $template_key = $template_key;
             foreach ($menu_data as $menu_item) {
-                // Process the URL
                 $menu_item_url = $menu_item['url'];
-                
                 if ($menu_item_url !== '#') {
                     $menu_item_path = parse_url($menu_item_url, PHP_URL_PATH);
                     $menu_item_url  = rtrim($site_url, '/') . $menu_item_path;
@@ -1325,23 +1049,21 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 if(isset($added_items[$item_key])){
                     continue;
                 }
-                // Add top-level menu items.
+
                 $menu_item_data = array(
-                    'menu-item-title' => $menu_item['title'],
-                    'menu-item-url' => $menu_item_url,
+                    'menu-item-title'  => $menu_item['title'],
+                    'menu-item-url'    => $menu_item_url,
                     'menu-item-object' => 'custom',
                     'menu-item-parent' => 0,
-                    'menu-item-type' => 'custom',
+                    'menu-item-type'   => 'custom',
                     'menu-item-status' => 'publish'
                 );
 
-                // Insert the top-level menu item.
                 $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
                 $added_items[$item_key] = $menu_item_id;
         
                 if (!empty($menu_item['sub_menu'])) {
                     foreach ($menu_item['sub_menu'] as $sub_menu_item) {
-                        // Process sub-menu URL
                         $sub_menu_item_url = $sub_menu_item['url'];
                         if ($sub_menu_item_url !== '#') {
                             $sub_menu_item_path = parse_url($sub_menu_item_url, PHP_URL_PATH);
@@ -1353,24 +1075,21 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             continue;
                         }
 
-                        // Prepare data for sub-menu items.
                         $sub_menu_item_data = array(
-                            'menu-item-title' => $sub_menu_item['title'],
-                            'menu-item-url' => $sub_menu_item_url,
-                            'menu-item-object' => 'custom',
+                            'menu-item-title'     => $sub_menu_item['title'],
+                            'menu-item-url'       => $sub_menu_item_url,
+                            'menu-item-object'    => 'custom',
                             'menu-item-parent-id' => $menu_item_id,
-                            'menu-item-type' => 'custom',
-                            'menu-item-status' => 'publish'
+                            'menu-item-type'      => 'custom',
+                            'menu-item-status'    => 'publish'
                         );
-        
-                        // Insert the sub-menu items.
+
                         wp_update_nav_menu_item($menu_id, 0, $sub_menu_item_data);
                         $added_items[$sub_item_key] = $menu_item_id;
                     }
                 }
             }
         
-            // Assign the created menu to a menu location.
             $locations = get_theme_mod('nav_menu_locations');
             $locations['primary_menu'] = $menu_id;
             set_theme_mod('nav_menu_locations', $locations);
@@ -1378,21 +1097,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
         function replace_menu_url($menu_item_url) {
             $parsed_url = parse_url($menu_item_url);
-            $site_url = parse_url(site_url());
-
-            // Replace scheme and host
+            $site_url   = parse_url(site_url());
             $parsed_url['scheme'] = $site_url['scheme'];
-            $parsed_url['host'] = $site_url['host'];
-
-            // Optional: Replace port if present in site_url
+            $parsed_url['host']   = $site_url['host'];
             if (isset($site_url['port'])) {
                 $parsed_url['port'] = $site_url['port'];
             }
-
             return $this->build_url($parsed_url);
         }
 
-        // Helper to rebuild URL from parsed parts
         function build_url($parts) {
             return (isset($parts['scheme']) ? "{$parts['scheme']}://" : '') .
                 (isset($parts['user']) ? "{$parts['user']}" . (isset($parts['pass']) ? ":{$parts['pass']}" : '') . '@' : '') .
@@ -1403,6 +1116,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 (isset($parts['fragment']) ? "#{$parts['fragment']}" : '');
         }
 
+		// =========================================================================
+		// WIDGETS
+		// =========================================================================
+
         /**
 		 * Tourfic Widget importer Settings
 		 */
@@ -1410,30 +1127,26 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
             
             self::travelfic_toolkit_clear_widgets();
-            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $template_key  = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/widget.json';
 
-            $import_file = wp_remote_get( $demo_data_url );
+            $import_file   = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($import_file);
-            $json_data = json_decode( $imported_data, true );
+            $json_data     = json_decode( $imported_data, true );
 
             $sidebar_data = $json_data[0];
-            $widget_data = $json_data[1];
+            $widget_data  = $json_data[1];
 
             $widgets = [];
             foreach ($sidebar_data as $key => $value) {
                 foreach ($value as $item) {
-                    // Adjusted regular expression to match underscores
                     preg_match('/^([a-zA-Z_]+)-(\d+)$/', $item, $matches);
-
                     if (count($matches) === 3) {
                         $prefix = $matches[1];
                         $number = (int) $matches[2];
-
                         if (!isset($widgets[$prefix])) {
                             $widgets[$prefix] = [];
                         }
-
                         $widgets[$prefix][$number] = 'on';
                     }
                 }
@@ -1464,33 +1177,29 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $response->send();
         }
 
-        
         public static function travelfic_toolkit_clear_widgets() {
             $sidebars = wp_get_sidebars_widgets();
             $inactive = isset($sidebars['wp_inactive_widgets']) ? $sidebars['wp_inactive_widgets'] : array();
-
             unset($sidebars['wp_inactive_widgets']);
-
             foreach ( $sidebars as $sidebar => $widgets ) {
                 $inactive = array_merge($inactive, $widgets);
                 $sidebars[$sidebar] = array();
             }
-
             $sidebars['wp_inactive_widgets'] = $inactive;
             wp_set_sidebars_widgets( $sidebars );
         }
 
         public static function travelfic_toolkit_parse_import_data( $import_array ) {
             $sidebars_data = $import_array[0];
-            $widget_data = $import_array[1];
+            $widget_data   = $import_array[1];
 
             $sidebars_widget_data = array(
-                "tf-sidebar" => array(),
-                "footer_widgets" => array(),
-                "tf_archive_booking_sidebar" => array(),
-                "tf_search_result" => array(),
-                "wp_inactive_widgets" => array(),
-                "array_version" => 3
+                "tf-sidebar"                  => array(),
+                "footer_widgets"              => array(),
+                "tf_archive_booking_sidebar"  => array(),
+                "tf_search_result"            => array(),
+                "wp_inactive_widgets"         => array(),
+                "array_version"               => 3
             );
             update_option('sidebars_widgets', $sidebars_widget_data);
             
@@ -1498,15 +1207,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $new_widgets = array( );
 
             foreach ( $sidebars_data as $import_sidebar => $import_widgets ) :
-
                 foreach ( $import_widgets as $import_widget ) :
-                    //if the sidebar exists
                     if ( isset( $current_sidebars[$import_sidebar] ) ) :
-                        $title = trim( substr( $import_widget, 0, strrpos( $import_widget, '-' ) ) );
-                        $index = trim( substr( $import_widget, strrpos( $import_widget, '-' ) + 1 ) );
+                        $title     = trim( substr( $import_widget, 0, strrpos( $import_widget, '-' ) ) );
+                        $index     = trim( substr( $import_widget, strrpos( $import_widget, '-' ) + 1 ) );
                         $current_widget_data = get_option( 'widget_' . $title );
-                        $new_widget_name = self::travelfic_toolkit_get_new_widget_name( $title, $index );
-                        $new_index = trim( substr( $new_widget_name, strrpos( $new_widget_name, '-' ) + 1 ) );
+                        $new_widget_name     = self::travelfic_toolkit_get_new_widget_name( $title, $index );
+                        $new_index           = trim( substr( $new_widget_name, strrpos( $new_widget_name, '-' ) + 1 ) );
 
                         if ( !empty( $new_widgets[ $title ] ) && is_array( $new_widgets[$title] ) ) {
                             while ( array_key_exists( $new_index, $new_widgets[$title] ) ) {
@@ -1522,25 +1229,22 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         } else {
                             $current_widget_data[$new_index] = $widget_data[$title][$index];
                             $current_multiwidget = $current_widget_data['_multiwidget'];
-                            $new_multiwidget = isset($widget_data[$title]['_multiwidget']) ? $widget_data[$title]['_multiwidget'] : false;
-                            $multiwidget = ($current_multiwidget != $new_multiwidget) ? $current_multiwidget : 1;
+                            $new_multiwidget     = isset($widget_data[$title]['_multiwidget']) ? $widget_data[$title]['_multiwidget'] : false;
+                            $multiwidget         = ($current_multiwidget != $new_multiwidget) ? $current_multiwidget : 1;
                             unset( $current_widget_data['_multiwidget'] );
                             $current_widget_data['_multiwidget'] = $multiwidget;
                             $new_widgets[$title] = $current_widget_data;
                         }
-
                     endif;
                 endforeach;
             endforeach;
 
             if ( isset( $new_widgets ) && isset( $current_sidebars ) ) {
                 update_option( 'sidebars_widgets', $current_sidebars );
-
                 foreach ( $new_widgets as $title => $content ) {
                     $content = apply_filters( 'widget_data_import', $content, $title );
                     update_option( 'widget_' . $title, $content );
                 }
-
                 return true;
             }
 
@@ -1560,9 +1264,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             while ( in_array( $widget_name . '-' . $widget_index, $all_widget_array ) ) {
                 $widget_index++;
             }
-            $new_widget_name = $widget_name . '-' . $widget_index;
-            return $new_widget_name;
+            return $widget_name . '-' . $widget_index;
         }
+
+		// =========================================================================
+		// HOTELS
+		// =========================================================================
 
         /**
 		 * Tourfic Hotel importer Settings
@@ -1572,8 +1279,8 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
-            $hotels_post = array(
-                'post_type' => 'tf_hotel',
+            $hotels_post  = array(
+                'post_type'      => 'tf_hotel',
                 'posts_per_page' => -1,
             );
             
@@ -1597,33 +1304,16 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         public function prepare_travelfic_hotel_new_imports($dummy_hotels_files){
             if (file_exists($dummy_hotels_files)) {
                 $dummy_hotel_fields = array(
-                    'id',
-                    'post_title',
-                    'slug',
-                    'content',
-                    'thumbnail',
-                    '[map][address]',
-                    '[map][latitude]',
-                    '[map][longitude]',
-                    '[map][zoom]',
-                    'gallery',
-                    'video',
-                    'featured',
-                    'featured_text',
-                    'tf_single_hotel_layout_opt',
-                    'tf_single_hotel_template',
-                    'room-section-title',
-                    'tf_rooms',
-                    'hotel_feature',
-                    'features_icon',
-                    'hotel_location',
-                    'hotel_type',
-                    'airport_service',
-                    'airport_service_type',
+                    'id','post_title','slug','content','thumbnail',
+                    '[map][address]','[map][latitude]','[map][longitude]','[map][zoom]',
+                    'gallery','video','featured','featured_text',
+                    'tf_single_hotel_layout_opt','tf_single_hotel_template',
+                    'room-section-title','tf_rooms','hotel_feature','features_icon',
+                    'hotel_location','hotel_type','airport_service','airport_service_type',
                     '[airport_pickup_price][airport_pickup_price_type]',
                     '[airport_pickup_price][airport_service_fee_adult]',
                     '[airport_pickup_price][airport_service_fee_children]',
-                    '[airport_pickup_price][airport_service_fee_fixed]' ,
+                    '[airport_pickup_price][airport_service_fee_fixed]',
                     '[airport_dropoff_price][airport_pickup_price_type]',
                     '[airport_dropoff_price][airport_service_fee_adult]',
                     '[airport_dropoff_price][airport_service_fee_children]',
@@ -1632,64 +1322,36 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     '[airport_pickup_dropoff_price][airport_service_fee_adult]',
                     '[airport_pickup_dropoff_price][airport_service_fee_children]',
                     '[airport_pickup_dropoff_price][airport_service_fee_fixed]',
-                    'faq-section-title',
-                    'faq',
-                    'h-enquiry-section',
-                    'h-enquiry-option-icon',
-                    'h-enquiry-option-title',
-                    'h-enquiry-option-content',
-                    'h-enquiry-option-btn',
-                    'h-review',
-                    'h-share',
-                    'h-wishlist',
-                    'popular-section-title',
-                    'review-section-title',
-                    'tc-section-title',
-                    'tc',
-                    'enable_guest_info',
-                    'booking-by',
-                    'external-booking-type',
-                    'booking-url',
-                    'booking-code',
-                    'hide_booking_form',
-                    'hide_price',
-                    'booking-attribute',
-                    'booking-query',
-                    'is_taxable',
-                    'taxable_class',
-                    'section-title',
-                    'nearby-places',
-                    'facilities-section-title',
-                    'hotel-facilities',
-                    'tf-hotel-tags',
-                    'post_date',
+                    'faq-section-title','faq',
+                    'h-enquiry-section','h-enquiry-option-icon','h-enquiry-option-title',
+                    'h-enquiry-option-content','h-enquiry-option-btn',
+                    'h-review','h-share','h-wishlist',
+                    'popular-section-title','review-section-title','tc-section-title','tc',
+                    'enable_guest_info','booking-by','external-booking-type','booking-url',
+                    'booking-code','hide_booking_form','hide_price',
+                    'booking-attribute','booking-query','is_taxable','taxable_class',
+                    'section-title','nearby-places','facilities-section-title','hotel-facilities',
+                    'tf-hotel-tags','post_date',
                 );
                 
-                //save column mapping data
                 if( isset( $dummy_hotel_fields ) ){
                     $column_mapping_data = $dummy_hotel_fields;
                     $csv_data            = array_map( 'str_getcsv', file( $dummy_hotels_files ) );
-                    
-                    //skip the first row
                     array_shift( $csv_data );
-                    $post_meta     = array();
+                    $post_meta = array();
 
-                    /**
-                     * loop thorugh each row
-                     */
                     foreach( $csv_data as $row_index => $row ){
-                        $post_id = '';
-                        $post_title = '';
-                        $post_default_slug   = '';
-                        $post_slug   = '';
-                        $post_content = '';
-                        $post_date = '';
-                        $room_datas = array();
-                        $taxonomies = array();
-                        $features_icons = array();
+                        $post_id           = '';
+                        $post_title        = '';
+                        $post_default_slug = '';
+                        $post_slug         = '';
+                        $post_content      = '';
+                        $post_date         = '';
+                        $room_datas        = array();
+                        $taxonomies        = array();
+                        $features_icons    = array();
 
                         foreach( $column_mapping_data as $column_index => $field ){
-                            //assign the taxonomies values to $taxonomies array
                             if( ( $field === 'hotel_feature' || $field === 'hotel_location' || $field === 'hotel_type' ) && ! empty( $row[$column_index] ) ){
                                 $taxonomies[$field] = $row[$column_index];
                             } 
@@ -1699,86 +1361,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
 
-                        // Assign taxonomies to the post
                         if (!empty($taxonomies)) {
                             foreach ($taxonomies as $taxonomy => $values) {
-                                // Extract the taxonomy terms from the CSV row
                                 $taxonomy_terms = explode(',', $values);
                                 foreach ($taxonomy_terms as $taxonomy_term) {
-                                    // Get the taxonomy name based on the column name
-                                    $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-
-                                    // Check if ">" string is present in the text
+                                    $taxonomy_name = $taxonomy;
                                     if (strpos($taxonomy_term, '>') !== false) {
                                         $taxonomy_parts = explode('>', $taxonomy_term);
-                                        $parent_name = trim($taxonomy_parts[0]);
-                                        if (strpos($taxonomy_parts[1], '+') !== false) {
-                                            $child_terms = explode('+', $taxonomy_parts[1]);
-                                        } else {
-                                            $child_terms = array($taxonomy_parts[1]);
-                                        }
-
-                                        // Get or create the parent term
-                                        $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                        $parent_name    = trim($taxonomy_parts[0]);
+                                        $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                        $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                         if (!$parent_term) {
                                             $parent_result = wp_insert_term($parent_name, $taxonomy_name);
                                             if (!is_wp_error($parent_result)) {
                                                 $parent_term_id = $parent_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message());
-                                                continue;
-                                            }
+                                            } else { continue; }
                                         } else {
-                                            $parent_term_id = $parent_term->term_id;
-
-                                            // Check if the parent term is already assigned to the post
-                                            $assigned_terms = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
+                                            $parent_term_id    = $parent_term->term_id;
+                                            $assigned_terms    = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
                                             if (!in_array($parent_term_id, $assigned_terms)) {
-                                                // Parent term is not assigned to the post, assign it
                                                 wp_set_post_terms($post_id, $parent_term_id, $taxonomy_name, true);
                                             }
                                         }
-
-                                        // Get or create the child terms under the parent term
                                         foreach ($child_terms as $child_name) {
                                             $child_name = trim($child_name);
-
                                             $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                             if (!$child_term) {
                                                 $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                                if (!is_wp_error($child_result)) {
-                                                    $child_term_id = $child_result['term_id'];
-                                                } else {
-                                                    // Handle error if necessary
-                                                    echo 'Error creating child term: ' . esc_html($child_result->get_error_message());
-                                                    continue;
-                                                }
-                                            } else {
-                                                $child_term_id = $child_term->term_id;
-                                            }
-
-                                            // Assign the child term to the post
+                                                if (!is_wp_error($child_result)) { $child_term_id = $child_result['term_id']; } else { continue; }
+                                            } else { $child_term_id = $child_term->term_id; }
                                             wp_set_post_terms($post_id, $child_term_id, $taxonomy_name, true);
                                         }
                                     } else {
-                                        // No hierarchy, it's a standalone term
                                         $term_name = trim($taxonomy_term);
-
-                                        // Get or create the term by name and taxonomy
-                                        $term = get_term_by('name', $term_name, $taxonomy_name);
-
+                                        $term      = get_term_by('name', $term_name, $taxonomy_name);
                                         if (!$term) {
-                                            // Term does not exist, create a new one
                                             $term_result = wp_insert_term($term_name, $taxonomy_name);
-
                                             if (!is_wp_error($term_result)) {
-                                                // Term already exists, assign it to the post
-                                                $term_id = $term_result['term_id'];
-                                                wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating term: ' . esc_html($term_result->get_error_message());
+                                                wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
                                             }
                                         } else {
                                             wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
@@ -1788,35 +1408,20 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
 
-                        
-                        //assign features icons
                         if( ! empty( $features_icons ) ){
                             foreach( $features_icons as $feature => $values ){
-
-                                // Parse the data format to extract term names and icons (image URLs).
                                 $terms_with_icons = explode( ',', $values );
                                 foreach ( $terms_with_icons as $term_with_icon ) {
-                                    $parts = explode('(', $term_with_icon);
+                                    $parts     = explode('(', $term_with_icon);
                                     $term_name = trim($parts[0]);
                                     $icon_value = trim(str_replace(')', '', $parts[1]));
-
-                                    // Get the term ID for the given term name.
                                     $term = get_term_by( 'name', $term_name, $feature );
                                     if ($term) {
                                         $term_id = $term->term_id;
-
-                                        // Check if the icon value is an image URL or FontAwesome icon class.
                                         if ( filter_var( $icon_value, FILTER_VALIDATE_URL ) ) {
-                                            $tf_hotel_feature_data = [
-                                                'icon-type' => 'c',
-                                                'icon-c' => $icon_value,
-                                            ];
+                                            $tf_hotel_feature_data = [ 'icon-type' => 'c', 'icon-c' => $icon_value ];
                                         } else {
-                                            $tf_hotel_feature_data = [
-                                                'icon-type' => 'fa',
-                                                'icon-fa' => $icon_value,
-                                            ];
-                                            
+                                            $tf_hotel_feature_data = [ 'icon-type' => 'fa', 'icon-fa' => $icon_value ];
                                         }
                                         update_term_meta( $term_id, 'tf_hotel_feature', $tf_hotel_feature_data );
                                     }
@@ -1825,53 +1430,34 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         } 
                         
                         foreach( $column_mapping_data as $column_index => $field ){
-                            if( $field == 'id' ){
-                                $post_id = $row[$column_index];
-                            }elseif( $field == 'post_title' ){
+                            if( $field == 'id' ){ $post_id = $row[$column_index]; }
+                            elseif( $field == 'post_title' ){
                                 $post_default_slug = $row[$column_index];
                                 $post_title = ucwords(str_replace('-', ' ', $row[$column_index]));
-                                if( empty( $post_title ) ){
-                                    $post_title = 'No Title';
-                                }
-                            }elseif( $field == 'content' ){
+                                if( empty( $post_title ) ) $post_title = 'No Title';
+                            }
+                            elseif( $field == 'content' ){
                                 $post_content = $row[$column_index];
-                                if( empty( $post_content ) ){
-                                    $post_content = 'No Content';
-                                }
+                                if( empty( $post_content ) ) $post_content = 'No Content';
                             }
-                            if ( $field == 'slug' ) {
-                                $post_slug = $row[$column_index];
-                            }
-                            if( $field == 'post_date' ){
-                                $post_date = $row[$column_index];
-                            }
+                            if ( $field == 'slug' ) { $post_slug = $row[$column_index]; }
+                            if( $field == 'post_date' ) { $post_date = $row[$column_index]; }
 
                             if( $field == 'thumbnail' ){
                                 $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
-                                if ( $attach_id ) {
-                                    $post_meta['_thumbnail_id'] = $attach_id;
-                                }
-
+                                if ( $attach_id ) { $post_meta['_thumbnail_id'] = $attach_id; }
                             } else if( $field == 'airport_service_type' && ! empty( $row[$column_index] ) ){
-                                $airport_service_type = explode( ',', $row[$column_index] );
-                                $post_meta['tf_hotels_opt']['airport_service_type'] = $airport_service_type;
-                            }else if( $field == 'faq' && ! empty( $row[$column_index] ) ){
-                                $faqs = json_decode( $row[$column_index], true );
-                                $post_meta['tf_hotels_opt'][$field] = serialize( $faqs );
-
-                            }else if( $field == 'nearby-places' && ! empty( $row[$column_index] ) ){
-                                $nearby_places = json_decode( $row[$column_index], true );
-                                $post_meta['tf_hotels_opt'][$field] = serialize( $nearby_places );
-
-                            }else if( $field == 'hotel-facilities' && ! empty( $row[$column_index] ) ){
-                                $hotel_facilities = json_decode( $row[$column_index], true );
-                                $post_meta['tf_hotels_opt'][$field] = serialize( $hotel_facilities );
-
-                            }else if( $field == 'tf-hotel-tags' && ! empty( $row[$column_index] ) ){
+                                $post_meta['tf_hotels_opt']['airport_service_type'] = explode( ',', $row[$column_index] );
+                            } else if( $field == 'faq' && ! empty( $row[$column_index] ) ){
+                                $post_meta['tf_hotels_opt'][$field] = serialize( json_decode( $row[$column_index], true ) );
+                            } else if( $field == 'nearby-places' && ! empty( $row[$column_index] ) ){
+                                $post_meta['tf_hotels_opt'][$field] = serialize( json_decode( $row[$column_index], true ) );
+                            } else if( $field == 'hotel-facilities' && ! empty( $row[$column_index] ) ){
+                                $post_meta['tf_hotels_opt'][$field] = serialize( json_decode( $row[$column_index], true ) );
+                            } else if( $field == 'tf-hotel-tags' && ! empty( $row[$column_index] ) ){
                                 $hotel_tags = json_decode( $row[$column_index], true );
                                 if (!empty($hotel_tags) && is_array($hotel_tags)) {
                                     foreach ($hotel_tags as $key => $value) {
-                                        // Add '#' to the background and font color codes
                                         if (isset($value['hotel-tag-color-settings']['background'])) {
                                             $hotel_tags[$key]['hotel-tag-color-settings']['background'] = '#' . ltrim($value['hotel-tag-color-settings']['background'], '#');
                                         }
@@ -1881,68 +1467,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                     }
                                 }
                                 $post_meta['tf_hotels_opt'][$field] = serialize( $hotel_tags );
-
-                            }else if( $field === 'gallery' && ! empty( $row[ $column_index ] ) ) {
-                                // Extract the image URLs from the CSV row
+                            } else if( $field === 'gallery' && ! empty( $row[ $column_index ] ) ) {
                                 $image_urls     = explode( ',', $row[$column_index] );
                                 $gallery_images = array();
-                                
                                 foreach ( $image_urls as $image_url ) {
                                     $attach_id = $this->travelfic_import_image( $image_url, $post_id );
-                                    if ( $attach_id ) {
-                                        $gallery_images[] = $attach_id;
-                                    }
+                                    if ( $attach_id ) { $gallery_images[] = $attach_id; }
                                 }
-
-                                // Combine the attachment IDs into a comma-separated string
-                                $gallery_ids_string = implode( ',', $gallery_images );
-                                // Assign the gallery IDs string to the tour_gallery meta field
-                                $post_meta['tf_hotels_opt']['gallery'] = $gallery_ids_string;
-                            }else {
+                                $post_meta['tf_hotels_opt']['gallery'] = implode( ',', $gallery_images );
+                            } else {
                                 $post_meta['tf_hotels_opt'][$field] = $row[$column_index];
                             }
+
                             if( $field == 'tc-section-title' ){
-                                $post_meta['tf_hotels_opt']['tc-section-title'] =  $row[$column_index]; 
+                                $post_meta['tf_hotels_opt']['tc-section-title'] = $row[$column_index]; 
                             }
 
                             if( $field == 'tf_rooms'){
                                 $rooms = json_decode( $row[$column_index], true );
-                                
-                                if(!empty($rooms)){
-                                    $room_datas = $rooms;
-                                }
+                                if(!empty($rooms)) { $room_datas = $rooms; }
                             }
                             
                             if ( strpos( $field, '[' ) !== false && strpos( $field, ']' ) !== false ) {
-                                //exclude title, post content, features from adding into the array
-                                // Field is a multidimensional array key, e.g., [location][latitude]
                                 $nested_keys = explode( '][', trim($field, '[]' ) );
-                                $meta_value = &$post_meta['tf_hotels_opt'];
-                            
-                                // Iterate through nested keys except the last one
+                                $meta_value  = &$post_meta['tf_hotels_opt'];
                                 for ( $i = 0; $i < count( $nested_keys ) - 1; $i++ ) {
                                     $nested_key = $nested_keys[$i];
-                            
-                                    // Create the nested array if it doesn't exist
-                                    if ( !isset( $meta_value[$nested_key] ) ) {
-                                        $meta_value[$nested_key] = array();
-                                    }
-                            
+                                    if ( !isset( $meta_value[$nested_key] ) ) { $meta_value[$nested_key] = array(); }
                                     $meta_value = &$meta_value[$nested_key];
                                 }
-                            
-                                // Assign the value to the last nested key
                                 $last_nested_key = end( $nested_keys );
                                 $meta_value[$last_nested_key] = $row[$column_index];
-
                             }
                         }
-                        //update or insert hotels
+
                         if ( ! function_exists( 'post_exists' ) ) {
                             require_once ABSPATH . 'wp-includes/post.php';
                         }
 
-                        // Create an array to store the post data for the current row
                         $post_data = array(
                             'post_type'    => 'tf_hotel',
                             'post_title'   => $post_title,
@@ -1959,36 +1521,23 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             $room_ids = [];
                             foreach($room_datas as $room_id => $room){
                                 $room['tf_room_opt']['tf_hotel'] = $post_id;
-
                                 $attachment_id = $this->travelfic_import_image( $room['room_preview_img'], $room_id );
-                                // if ( $attachment_id ) {
-                                //     set_post_thumbnail( $room_id, $attachment_id );
-                                // }
 
                                 if(!empty($room['tf_room_opt']['gallery'])){
-                                    
                                     $gallery_images = array();
-                                    $image_urls        = explode( ',', $room['tf_room_opt']['gallery'] );
-                
+                                    $image_urls     = explode( ',', $room['tf_room_opt']['gallery'] );
                                     foreach ( $image_urls as $image_url ) {
                                         $attach_id = $this->travelfic_import_image( $image_url, $room_id );
-                                        if ( $attach_id ) {
-                                            $gallery_images[] = $attach_id;
-                                        }
+                                        if ( $attach_id ) { $gallery_images[] = $attach_id; }
                                     }
-                                    
-                                    // Combine the attachment IDs into a comma-separated string
-                                    $gallery_ids_string = implode( ',', $gallery_images );
-                                    // Assign the gallery IDs string to the tour_gallery meta field
-                                    $room['tf_room_opt']['gallery'] = $gallery_ids_string;
+                                    $room['tf_room_opt']['gallery'] = implode( ',', $gallery_images );
                                 }
 
                                 if(!empty($room['tf_room_opt']['features'])){
                                     $room_features = array();
                                     foreach( $room['tf_room_opt']['features'] as $key => $feature ){
                                         $term = get_term_by( 'name', $feature, 'hotel_feature' );
-                                        $term_id = $term->term_id;
-                                        $room_features[$key] = $term_id;
+                                        $room_features[$key] = $term->term_id;
                                     }
                                     $room['tf_room_opt']['features'] = $room_features;
                                 }
@@ -2000,12 +1549,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                     'post_status'  => 'publish',
                                     'meta_input'   => array(
                                         '_thumbnail_id' => $attachment_id,
-                                        'tf_room_opt' => $room['tf_room_opt'],
+                                        'tf_room_opt'   => $room['tf_room_opt'],
                                     ),
                                 );
 
-                                $_room_id = wp_insert_post( $room_data );
-
+                                $_room_id   = wp_insert_post( $room_data );
                                 $room_ids[] = $_room_id;
                             }
                             
@@ -2013,86 +1561,43 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             update_post_meta( $post_id, 'tf_hotels_opt', $post_meta['tf_hotels_opt'] );
                         }
 
-                        // Assign taxonomies to the post
+                        // Re-assign taxonomies after post insert
                         if (!empty($taxonomies)) {
                             foreach ($taxonomies as $taxonomy => $values) {
-                                // Extract the taxonomy terms from the CSV row
                                 $taxonomy_terms = explode(',', $values);
                                 foreach ($taxonomy_terms as $taxonomy_term) {
-                                    // Get the taxonomy name based on the column name
-                                    $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-
-                                    // Check if ">" string is present in the text
+                                    $taxonomy_name = $taxonomy;
                                     if (strpos($taxonomy_term, '>') !== false) {
                                         $taxonomy_parts = explode('>', $taxonomy_term);
-                                        $parent_name = trim($taxonomy_parts[0]);
-                                        if (strpos($taxonomy_parts[1], '+') !== false) {
-                                            $child_terms = explode('+', $taxonomy_parts[1]);
-                                        } else {
-                                            $child_terms = array($taxonomy_parts[1]);
-                                        }
-
-                                        // Get or create the parent term
-                                        $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                        $parent_name    = trim($taxonomy_parts[0]);
+                                        $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                        $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                         if (!$parent_term) {
                                             $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                            if (!is_wp_error($parent_result)) {
-                                                $parent_term_id = $parent_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message());
-                                                continue;
-                                            }
+                                            if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { continue; }
                                         } else {
                                             $parent_term_id = $parent_term->term_id;
-
-                                            // Check if the parent term is already assigned to the post
                                             $assigned_terms = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
                                             if (!in_array($parent_term_id, $assigned_terms)) {
-                                                // Parent term is not assigned to the post, assign it
                                                 wp_set_post_terms($post_id, $parent_term_id, $taxonomy_name, true);
                                             }
                                         }
-
-                                        // Get or create the child terms under the parent term
                                         foreach ($child_terms as $child_name) {
                                             $child_name = trim($child_name);
-
                                             $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                             if (!$child_term) {
                                                 $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                                if (!is_wp_error($child_result)) {
-                                                    $child_term_id = $child_result['term_id'];
-                                                } else {
-                                                    // Handle error if necessary
-                                                    echo 'Error creating child term: ' . esc_html($child_result->get_error_message());
-                                                    continue;
-                                                }
-                                            } else {
-                                                $child_term_id = $child_term->term_id;
-                                            }
-
-                                            // Assign the child term to the post
+                                                if (!is_wp_error($child_result)) { $child_term_id = $child_result['term_id']; } else { continue; }
+                                            } else { $child_term_id = $child_term->term_id; }
                                             wp_set_post_terms($post_id, $child_term_id, $taxonomy_name, true);
                                         }
                                     } else {
-                                        // No hierarchy, it's a standalone term
                                         $term_name = trim($taxonomy_term);
-
-                                        // Get or create the term by name and taxonomy
-                                        $term = get_term_by('name', $term_name, $taxonomy_name);
-
+                                        $term      = get_term_by('name', $term_name, $taxonomy_name);
                                         if (!$term) {
-                                            // Term does not exist, create a new one
                                             $term_result = wp_insert_term($term_name, $taxonomy_name);
-
                                             if (!is_wp_error($term_result)) {
-                                                // Term already exists, assign it to the post
-                                                $term_id = $term_result['term_id'];
-                                                wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating term: ' . esc_html($term_result->get_error_message());
+                                                wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
                                             }
                                         } else {
                                             wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
@@ -2102,8 +1607,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
 
-                        //reset the post meta array
-                        $post_meta = array();
+                        $post_meta  = array();
                         $room_datas = array();
                     } 
                 }
@@ -2114,33 +1618,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         public function prepare_travelfic_hotel_old_imports($dummy_hotels_files){
             if (file_exists($dummy_hotels_files)) {
                 $dummy_hotel_fields = array(
-                    'id',
-                    'post_title',
-                    'slug',
-                    'content',
-                    'thumbnail',
-                    'address',
-                    '[map][address]',
-                    '[map][latitude]',
-                    '[map][longitude]',
-                    '[map][zoom]',
-                    'gallery',
-                    'video',
-                    'featured',
-                    'featured_text',
-                    'tf_single_hotel_layout_opt',
-                    'tf_single_hotel_template',
-                    'room-section-title',
-                    'room',
-                    'room_gallery',
-                    'features',
-                    'avail_date',
-                    'hotel_feature',
-                    'features_icon',
-                    'hotel_location',
-                    'hotel_type',
-                    'airport_service',
-                    'airport_service_type',
+                    'id','post_title','slug','content','thumbnail','address',
+                    '[map][address]','[map][latitude]','[map][longitude]','[map][zoom]',
+                    'gallery','video','featured','featured_text',
+                    'tf_single_hotel_layout_opt','tf_single_hotel_template',
+                    'room-section-title','room','room_gallery','features','avail_date',
+                    'hotel_feature','features_icon','hotel_location','hotel_type',
+                    'airport_service','airport_service_type',
                     '[airport_pickup_price][airport_pickup_price_type]',
                     '[airport_pickup_price][airport_service_fee_adult]',
                     '[airport_pickup_price][airport_service_fee_children]',
@@ -2153,48 +1637,31 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     '[airport_pickup_dropoff_price][airport_service_fee_adult]',
                     '[airport_pickup_dropoff_price][airport_service_fee_children]',
                     '[airport_pickup_dropoff_price][airport_service_fee_fixed]',
-                    'faq-section-title',
-                    'faq',
-                    'h-enquiry-section',
-                    'h-enquiry-option-icon',
-                    'h-enquiry-option-title',
-                    'h-enquiry-option-content',
-                    'h-enquiry-option-btn',
-                    'h-review',
-                    'h-share',
-                    'h-wishlist',
-                    'popular-section-title',
-                    'review-section-title',
-                    'tc-section-title',
-                    'tc',
+                    'faq-section-title','faq',
+                    'h-enquiry-section','h-enquiry-option-icon','h-enquiry-option-title',
+                    'h-enquiry-option-content','h-enquiry-option-btn',
+                    'h-review','h-share','h-wishlist',
+                    'popular-section-title','review-section-title','tc-section-title','tc',
                     'post_date'
                 );
-                
 
-                //save column mapping data
                 if( isset( $dummy_hotel_fields ) ){
                     $column_mapping_data = $dummy_hotel_fields;
                     $csv_data            = array_map( 'str_getcsv', file( $dummy_hotels_files ) );
-                    
-                    //skip the first row
                     array_shift( $csv_data );
-                    $post_meta     = array();
+                    $post_meta = array();
 
-                    /**
-                     * loop thorugh each row
-                     */
                     foreach( $csv_data as $row_index => $row ){ 
-                        $post_id = '';
-                        $post_title = '';
-                        $post_default_slug   = '';
-                        $post_slug   = '';
-                        $post_content = '';
-                        $post_date = '';
-                        $taxonomies = array();
-                        $features_icons = array();
+                        $post_id           = '';
+                        $post_title        = '';
+                        $post_default_slug = '';
+                        $post_slug         = '';
+                        $post_content      = '';
+                        $post_date         = '';
+                        $taxonomies        = array();
+                        $features_icons    = array();
 
                         foreach( $column_mapping_data as $column_index => $field ){
-                            //assign the taxonomies values to $taxonomies array
                             if( ( $field === 'hotel_feature' || $field === 'hotel_location' || $field === 'hotel_type' ) && ! empty( $row[$column_index] ) ){
                                 $taxonomies[$field] = $row[$column_index];
                             } 
@@ -2204,87 +1671,43 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
 
-                        // Assign taxonomies to the post
                         if (!empty($taxonomies)) {
                             foreach ($taxonomies as $taxonomy => $values) {
-                                // Extract the taxonomy terms from the CSV row
                                 $taxonomy_terms = explode(',', $values);
                                 foreach ($taxonomy_terms as $taxonomy_term) {
-                                    // Get the taxonomy name based on the column name
-                                    $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-
-                                    // Check if ">" string is present in the text
+                                    $taxonomy_name = $taxonomy;
                                     if (strpos($taxonomy_term, '>') !== false) {
                                         $taxonomy_parts = explode('>', $taxonomy_term);
-                                        $parent_name = trim($taxonomy_parts[0]);
-                                        if (strpos($taxonomy_parts[1], '+') !== false) {
-                                            $child_terms = explode('+', $taxonomy_parts[1]);
-                                        } else {
-                                            $child_terms = array($taxonomy_parts[1]);
-                                        }
-
-                                        // Get or create the parent term
-                                        $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                        $parent_name    = trim($taxonomy_parts[0]);
+                                        $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                        $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                         if (!$parent_term) {
                                             $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                            if (!is_wp_error($parent_result)) {
-                                                $parent_term_id = $parent_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
-                                                continue;
-                                            }
+                                            if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message()); continue; }
                                         } else {
                                             $parent_term_id = $parent_term->term_id;
-
-                                            // Check if the parent term is already assigned to the post
                                             $assigned_terms = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
                                             if (!in_array($parent_term_id, $assigned_terms)) {
-                                                // Parent term is not assigned to the post, assign it
                                                 wp_set_post_terms($post_id, $parent_term_id, $taxonomy_name, true);
                                             }
                                         }
-
-                                        // Get or create the child terms under the parent term
                                         foreach ($child_terms as $child_name) {
                                             $child_name = trim($child_name);
-
                                             $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                             if (!$child_term) {
                                                 $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                                if (!is_wp_error($child_result)) {
-                                                    $child_term_id = $child_result['term_id'];
-                                                } else {
-                                                    // Handle error if necessary
-                                                    echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
-                                                    continue;
-                                                }
-                                            } else {
-                                                $child_term_id = $child_term->term_id;
-                                            }
-
-                                            // Assign the child term to the post
+                                                if (!is_wp_error($child_result)) { $child_term_id = $child_result['term_id']; } else { echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message()); continue; }
+                                            } else { $child_term_id = $child_term->term_id; }
                                             wp_set_post_terms($post_id, $child_term_id, $taxonomy_name, true);
                                         }
                                     } else {
-                                        // No hierarchy, it's a standalone term
                                         $term_name = trim($taxonomy_term);
-
-                                        // Get or create the term by name and taxonomy
-                                        $term = get_term_by('name', $term_name, $taxonomy_name);
-
+                                        $term      = get_term_by('name', $term_name, $taxonomy_name);
                                         if (!$term) {
-                                            // Term does not exist, create a new one
                                             $term_result = wp_insert_term($term_name, $taxonomy_name);
-
                                             if (!is_wp_error($term_result)) {
-                                                // Term already exists, assign it to the post
-                                                $term_id = $term_result['term_id'];
-                                                wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
-                                            }
+                                                wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
+                                            } else { echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message()); }
                                         } else {
                                             wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
                                         }
@@ -2293,29 +1716,20 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
 
-                        //assign features icons
                         if( ! empty( $features_icons ) ){
                             foreach( $features_icons as $feature => $values ){
-
-                                // Parse the data format to extract term names and icons (image URLs).
                                 $terms_with_icons = explode( ',', $values );
                                 foreach ( $terms_with_icons as $term_with_icon ) {
-                                    $parts = explode('(', $term_with_icon);
-                                    $term_name = trim($parts[0]);
+                                    $parts      = explode('(', $term_with_icon);
+                                    $term_name  = trim($parts[0]);
                                     $icon_value = trim(str_replace(')', '', $parts[1]));
-
-                                    // Get the term ID for the given term name.
                                     $term = get_term_by( 'name', $term_name, $feature );
                                     if ($term) {
                                         $term_id = $term->term_id;
-
-                                        // Check if the icon value is an image URL or FontAwesome icon class.
                                         if ( filter_var( $icon_value, FILTER_VALIDATE_URL ) ) {
-                                            // Update the custom field (icon) with the image URL for the term.
                                             update_term_meta( $term_id, 'tf_hotel_feature[icon-type]', 'c' );
                                             update_term_meta( $term_id, 'tf_hotel_feature[icon-c]', $icon_value );
                                         } else {
-                                            // Update the custom field (icon) with the FontAwesome icon class for the term.
                                             update_term_meta( $term_id, 'tf_hotel_feature[icon-type]', 'fa' );
                                             update_term_meta( $term_id, 'tf_hotel_feature[icon-fa]', $icon_value );
                                         }
@@ -2325,137 +1739,90 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         } 
                         
                         foreach( $column_mapping_data as $column_index => $field ){
-                            if( $field == 'id' ){
-                                $post_id = $row[$column_index];
-                            }elseif( $field == 'post_title' ){
+                            if( $field == 'id' ) { $post_id = $row[$column_index]; }
+                            elseif( $field == 'post_title' ){
                                 $post_default_slug = $row[$column_index];
                                 $post_title = ucwords(str_replace('-', ' ', $row[$column_index]));
-                                if( empty( $post_title ) ){
-                                    $post_title = 'No Title';
-                                }
-                            }elseif( $field == 'content' ){
+                                if( empty( $post_title ) ) $post_title = 'No Title';
+                            }
+                            elseif( $field == 'content' ){
                                 $post_content = $row[$column_index];
-                                if( empty( $post_content ) ){
-                                    $post_content = 'No Content';
-                                }
+                                if( empty( $post_content ) ) $post_content = 'No Content';
                             }
-                            if ( $field == 'slug' ) {
-                                $post_slug = $row[$column_index];
-                            }
-                            if( $field == 'post_date' ){
-                                $post_date = $row[$column_index];
-                            }
+                            if ( $field == 'slug' ) { $post_slug = $row[$column_index]; }
+                            if( $field == 'post_date' ) { $post_date = $row[$column_index]; }
 
                             if( $field == 'thumbnail' ){
                                 $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
-                                if ( $attach_id ) {
-                                    $post_meta['_thumbnail_id'] = $attach_id;
-                                }
+                                if ( $attach_id ) { $post_meta['_thumbnail_id'] = $attach_id; }
                             } else if( $field == 'airport_service_type' && ! empty( $row[$column_index] ) ){
-                                $airport_service_type = explode( ',', $row[$column_index] );
-                                $post_meta['tf_hotels_opt']['airport_service_type'] = $airport_service_type;
-                            }else if( $field == 'faq' && ! empty( $row[$column_index] ) ){
-                                $faqs = json_decode( $row[$column_index], true );
-                                //$faqs = $row[$column_index];
-                                $post_meta['tf_hotels_opt'][$field] = serialize( $faqs );
-
-                            }else if( $field === 'gallery' && ! empty( $row[ $column_index ] ) ) {
-                                // Extract the image URLs from the CSV row
+                                $post_meta['tf_hotels_opt']['airport_service_type'] = explode( ',', $row[$column_index] );
+                            } else if( $field == 'faq' && ! empty( $row[$column_index] ) ){
+                                $post_meta['tf_hotels_opt'][$field] = serialize( json_decode( $row[$column_index], true ) );
+                            } else if( $field === 'gallery' && ! empty( $row[ $column_index ] ) ) {
                                 $image_urls     = explode( ',', $row[$column_index] );
                                 $gallery_images = array();
-
                                 foreach ( $image_urls as $image_url ) {
                                     $attach_id = $this->travelfic_import_image( $image_url, $post_id );
-                                    if ( $attach_id ) {
-                                        $gallery_images[] = $attach_id;
-                                    }
+                                    if ( $attach_id ) { $gallery_images[] = $attach_id; }
                                 }
-
-                                // Combine the attachment IDs into a comma-separated string
-                                $gallery_ids_string = implode( ',', $gallery_images );
-                                // Assign the gallery IDs string to the tour_gallery meta field
-                                $post_meta['tf_hotels_opt']['gallery'] = $gallery_ids_string;
-                            }else {
+                                $post_meta['tf_hotels_opt']['gallery'] = implode( ',', $gallery_images );
+                            } else {
                                 $post_meta['tf_hotels_opt'][$field] = $row[$column_index];
                             }
+
                             if( $field == 'tc-section-title' ){
-                                $post_meta['tf_hotels_opt']['tc-section-title'] =  $row[$column_index]; 
+                                $post_meta['tf_hotels_opt']['tc-section-title'] = $row[$column_index]; 
                             }
 
                             if( $field == 'room_gallery' && ! empty( $row[ $column_index ] ) ){
                                 $room_gall_gallery_array = json_decode( $row[ $column_index ], true );
                                 $total_gall = count( $room_gall_gallery_array ) - 1;
                                 for( $room_gall = 0; $room_gall <= $total_gall; $room_gall++ ){
-                                    // Extract the image URLs from the CSV row                           
                                     $gallery_images = array();
-                                    $gallery_index     = $room_gall + 1;
-                                    $image_urls        = explode( ',', $room_gall_gallery_array[$gallery_index] );
-                
+                                    $gallery_index  = $room_gall + 1;
+                                    $image_urls     = explode( ',', $room_gall_gallery_array[$gallery_index] );
                                     foreach ( $image_urls as $image_url ) {
                                         $attach_id = $this->travelfic_import_image( $image_url, $post_id );
-                                        if ( $attach_id ) {
-                                            $gallery_images[] = $attach_id;
-                                        }
+                                        if ( $attach_id ) { $gallery_images[] = $attach_id; }
                                     }
-                                    
                                     if( !empty($post_meta['tf_hotels_opt']['room']) && gettype($post_meta['tf_hotels_opt']['room'])=="string" ){
                                         $tf_hotel_exc_value = preg_replace_callback ( '!s:(\d+):"(.*?)";!', function($match) {
                                             return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
                                         }, $post_meta['tf_hotels_opt']['room'] );
                                         $room = unserialize( $tf_hotel_exc_value );
                                     }
-                                    // Combine the attachment IDs into a comma-separated string
-                                    $gallery_ids_string = implode( ',', $gallery_images );
-                                    // Assign the gallery IDs string to the tour_gallery meta field
-                                    $room[$room_gall]['gallery'] = $gallery_ids_string;
-                                    
-                                    $post_meta['tf_hotels_opt']['room'] = serialize($room );
+                                    $room[$room_gall]['gallery'] = implode( ',', $gallery_images );
+                                    $post_meta['tf_hotels_opt']['room'] = serialize( $room );
                                 }
-
                             }
-                            
 
                             if ( strpos( $field, '[' ) !== false && strpos( $field, ']' ) !== false ) {
-                                //exclude title, post content, features from adding into the array
-                                // Field is a multidimensional array key, e.g., [location][latitude]
                                 $nested_keys = explode( '][', trim($field, '[]' ) );
-                                $meta_value = &$post_meta['tf_hotels_opt'];
-                            
-                                // Iterate through nested keys except the last one
+                                $meta_value  = &$post_meta['tf_hotels_opt'];
                                 for ( $i = 0; $i < count( $nested_keys ) - 1; $i++ ) {
                                     $nested_key = $nested_keys[$i];
-                            
-                                    // Create the nested array if it doesn't exist
-                                    if ( !isset( $meta_value[$nested_key] ) ) {
-                                        $meta_value[$nested_key] = array();
-                                    }
-                            
+                                    if ( !isset( $meta_value[$nested_key] ) ) { $meta_value[$nested_key] = array(); }
                                     $meta_value = &$meta_value[$nested_key];
                                 }
-                            
-                                // Assign the value to the last nested key
                                 $last_nested_key = end( $nested_keys );
                                 $meta_value[$last_nested_key] = $row[$column_index];
-
                             }
 
                             if( $field == 'features' ){
-
                                 if( !empty($post_meta['tf_hotels_opt']['room']) && gettype($post_meta['tf_hotels_opt']['room'])=="string" ){
                                     $tf_hotel_exc_value = preg_replace_callback ( '!s:(\d+):"(.*?)";!', function($match) {
                                         return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
                                     }, $post_meta['tf_hotels_opt']['room'] );
                                     $room = unserialize( $tf_hotel_exc_value );
                                 }
-
-                                $features = json_decode ( $row[$column_index], true );
+                                $features      = json_decode ( $row[$column_index], true );
                                 $room_features = array();
                                 foreach( $features as $fkey => $feature ){
                                     foreach( $feature as $key => $value ){
                                         $term = get_term_by( 'name', $value, 'hotel_feature' );
                                         if ( $term && ! is_wp_error( $term ) ) {
-                                            $term_id = $term->term_id;
-                                            $room_features[$fkey][$key] = $term_id;
+                                            $room_features[$fkey][$key] = $term->term_id;
                                         }
                                     }
                                 }
@@ -2463,22 +1830,18 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                     for( $room_key = 0; $room_key <= count($room) -1; $room_key++ ){
                                         $room[$room_key]['features'] = $room_features[$room_key];
                                     }
-                                    
-                                $post_meta['tf_hotels_opt']['room'] = serialize( $room );
+                                    $post_meta['tf_hotels_opt']['room'] = serialize( $room );
                                 }
-
                             }
 
                             if( $field == 'avail_date' ){
-
                                 if( !empty($post_meta['tf_hotels_opt']['room']) && gettype($post_meta['tf_hotels_opt']['room'])=="string" ){
                                     $tf_hotel_exc_value = preg_replace_callback ( '!s:(\d+):"(.*?)";!', function($match) {
                                         return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
                                     }, $post_meta['tf_hotels_opt']['room'] );
                                     $room = unserialize( $tf_hotel_exc_value );
                                 }
-
-                                $field_values = explode( '|', $row[$column_index] );
+                                $field_values        = explode( '|', $row[$column_index] );
                                 $room_available_data = array();
                                 foreach( $field_values as $fkey => $feature ){
                                     $room_available_data[$fkey] = $feature;
@@ -2490,20 +1853,18 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                                     $post_meta['tf_hotels_opt']['room'] = $room;
                                 }
                             }
-
                         }
-                        //update or insert hotels
+
                         if ( ! function_exists( 'post_exists' ) ) {
                             require_once ABSPATH . 'wp-includes/post.php';
                         }
 
-                        // Create an array to store the post data for the current row
                         $post_data = array(
                             'post_type'    => 'tf_hotel',
                             'post_title'   => $post_title,
                             'post_content' => $post_content,
                             'post_status'  => 'publish',
-                            'author'  => get_current_user_id(),
+                            'author'       => get_current_user_id(),
                             'post_date'    => $post_date,
                             'meta_input'   => $post_meta,
                             'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -2511,87 +1872,43 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                         $post_id = wp_insert_post( $post_data );
 
-                        // Assign taxonomies to the post
                         if (!empty($taxonomies)) {
                             foreach ($taxonomies as $taxonomy => $values) {
-                                // Extract the taxonomy terms from the CSV row
                                 $taxonomy_terms = explode(',', $values);
                                 foreach ($taxonomy_terms as $taxonomy_term) {
-                                    // Get the taxonomy name based on the column name
-                                    $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-
-                                    // Check if ">" string is present in the text
+                                    $taxonomy_name = $taxonomy;
                                     if (strpos($taxonomy_term, '>') !== false) {
                                         $taxonomy_parts = explode('>', $taxonomy_term);
-                                        $parent_name = trim($taxonomy_parts[0]);
-                                        if (strpos($taxonomy_parts[1], '+') !== false) {
-                                            $child_terms = explode('+', $taxonomy_parts[1]);
-                                        } else {
-                                            $child_terms = array($taxonomy_parts[1]);
-                                        }
-
-                                        // Get or create the parent term
-                                        $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                        $parent_name    = trim($taxonomy_parts[0]);
+                                        $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                        $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                         if (!$parent_term) {
                                             $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                            if (!is_wp_error($parent_result)) {
-                                                $parent_term_id = $parent_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
-                                                continue;
-                                            }
+                                            if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message()); continue; }
                                         } else {
                                             $parent_term_id = $parent_term->term_id;
-
-                                            // Check if the parent term is already assigned to the post
                                             $assigned_terms = wp_get_post_terms($post_id, $taxonomy_name, array('fields' => 'ids'));
                                             if (!in_array($parent_term_id, $assigned_terms)) {
-                                                // Parent term is not assigned to the post, assign it
                                                 wp_set_post_terms($post_id, $parent_term_id, $taxonomy_name, true);
                                             }
                                         }
-
-                                        // Get or create the child terms under the parent term
                                         foreach ($child_terms as $child_name) {
                                             $child_name = trim($child_name);
-
                                             $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                             if (!$child_term) {
                                                 $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                                if (!is_wp_error($child_result)) {
-                                                    $child_term_id = $child_result['term_id'];
-                                                } else {
-                                                    // Handle error if necessary
-                                                    echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
-                                                    continue;
-                                                }
-                                            } else {
-                                                $child_term_id = $child_term->term_id;
-                                            }
-
-                                            // Assign the child term to the post
+                                                if (!is_wp_error($child_result)) { $child_term_id = $child_result['term_id']; } else { echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message()); continue; }
+                                            } else { $child_term_id = $child_term->term_id; }
                                             wp_set_post_terms($post_id, $child_term_id, $taxonomy_name, true);
                                         }
                                     } else {
-                                        // No hierarchy, it's a standalone term
                                         $term_name = trim($taxonomy_term);
-
-                                        // Get or create the term by name and taxonomy
-                                        $term = get_term_by('name', $term_name, $taxonomy_name);
-
+                                        $term      = get_term_by('name', $term_name, $taxonomy_name);
                                         if (!$term) {
-                                            // Term does not exist, create a new one
                                             $term_result = wp_insert_term($term_name, $taxonomy_name);
-
                                             if (!is_wp_error($term_result)) {
-                                                // Term already exists, assign it to the post
-                                                $term_id = $term_result['term_id'];
-                                                wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
-                                            }
+                                                wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
+                                            } else { echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message()); }
                                         } else {
                                             wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
                                         }
@@ -2600,16 +1917,18 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
 
-                        //reset the post meta array
                         $post_meta = array();
                     }
-                    
                 }
 
 	            $this->travelfic_regenerate_room_meta();
                 wp_die();
             }
         }
+
+		// =========================================================================
+		// TOURS
+		// =========================================================================
 
         /**
 		 * Tourfic Tour importer Settings
@@ -2619,253 +1938,110 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $tours_post = array(
-                'post_type' => 'tf_tours',
+                'post_type'      => 'tf_tours',
                 'posts_per_page' => -1,
             );
-            
             $tours_query = new WP_Query($tours_post);
             if(!empty($tours_query)){
                 $tours_count = $tours_query->post_count;
-                if($tours_count>=5){
-                    return;
-                }
+                if($tours_count>=5){ return; }
             }
             
-            $dummy_tours_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/tour-data.csv';
+            $dummy_tours_files  = TRAVELFIC_TOOLKIT_PATH.'inc/demo/tour-data.csv';
             $dummy_tours_fields = array(
-                'id',
-                'post_title',
-                'slug',
-                'post_content',
-                'thumbnail',
-                'adult_price',
-                'child_price',
-                'infant_price',
-                'tour_as_featured',
-                'tf_single_tour_layout_opt',
-                'tf_single_tour_template',
-                'tour_types',
-                'refund_des',
-                'highlights-section-title',
-                'contact-info-section-title',
-                'tour-traveller-info',
-                'booking-by',
-                'booking-url',
-                'booking-attribute',
-                'booking-query',
-                'itinerary-section-title',
-                'faq-section-title',
-                't-enquiry-section',
-                't-enquiry-option-icon',
-                't-enquiry-option-title',
-                't-enquiry-option-content',
-                't-enquiry-option-btn',
-                'tc-section-title',
-                'booking-section-title',
-                'description-section-title',
-                'map-section-title',
-                'review-section-title',
-                't-wishlist',
-                'type',
-                'pricing',
-                'discount_type',
-                'discount_price',
-                'disable_adult_price',
-                'disable_child_price',
-                'disable_infant_price',
-                'allow_deposit',
-                'deposit_type',
-                'deposit_amount',
-                'text_location',
-                '[location][address]',
-                '[location][latitude]',
-                '[location][longitude]',
-                '[location][zoom]',
-                'group_price',
-                'allowed_time',
-                'min_days_before_book',
-                'disable_same_day',
-                'disable_range',
-                'disabled_day',
-                'disable_specific',
-                'cont_min_people',
-                'cont_max_people',
-                'custom_avail',
-                'custom_pricing_by',
-                'cont_custom_date',
-                'min_seat',
-                'max_seat',
-                '[fixed_availability][date][from]',
-                '[fixed_availability][date][to]',
-                'max_capacity',
-                'itinerary-downloader',
-                'itinerary-downloader-title',
-                'itinerary-downloader-desc',
-                'itinerary-downloader-button',
-                'tour_thumbnail_height',
-                'tour_thumbnail_width',
-                'company_logo',
-                'company_desc',
-                'company_email',
-                'company_address',
-                'company_phone',
-                'itinerary-expert',
-                'expert_label',
-                'expert_name',
-                'expert_email',
-                'expert_phone',
-                'expert_logo',
-                'itinerary-expert-viber',
-                'itinerary-expert-whatsapp',
-                't-review',
-                't-share',
-                't-wishlist',
-                't-related',
-                'tour-traveler-info',
-                'cont_max_capacity',
-                'tour_destination',
-                'destinations_icon',
-                'tour_features',
-                'features_icon',
-                'tour_activities',
-                'activities_icon',
-                'tour_attraction',
-                'attraction_icon',
-                'tour_gallery',
-                'tour_video',
-                'additional_information',
-                'hightlights_thumbnail',
-                'duration',
-                'duration_time',
-                'night',
-                'night_count',
-                'group_size',
-                'language',
-                'email',
-                'phone',
-                'fax',
-                'website',
-                'tour-extra',
-                'faqs',
-                'included',
-                'excluded',
-                'included_icon',
-                'excluded_icon',
-                'inc_exc_bg',
-                'itinerary',
-                'itinerary_gallery',
-                'terms_conditions',
-                'post_date',
+                'id','post_title','slug','post_content','thumbnail',
+                'adult_price','child_price','infant_price','tour_as_featured',
+                'tf_single_tour_layout_opt','tf_single_tour_template','tour_types',
+                'refund_des','highlights-section-title','contact-info-section-title',
+                'tour-traveller-info','booking-by','booking-url','booking-attribute','booking-query',
+                'itinerary-section-title','faq-section-title',
+                't-enquiry-section','t-enquiry-option-icon','t-enquiry-option-title',
+                't-enquiry-option-content','t-enquiry-option-btn',
+                'tc-section-title','booking-section-title','description-section-title',
+                'map-section-title','review-section-title','t-wishlist',
+                'type','pricing','discount_type','discount_price',
+                'disable_adult_price','disable_child_price','disable_infant_price',
+                'allow_deposit','deposit_type','deposit_amount',
+                'text_location','[location][address]','[location][latitude]','[location][longitude]','[location][zoom]',
+                'group_price','allowed_time','min_days_before_book','disable_same_day','disable_range',
+                'disabled_day','disable_specific','cont_min_people','cont_max_people',
+                'custom_avail','custom_pricing_by','cont_custom_date','min_seat','max_seat',
+                '[fixed_availability][date][from]','[fixed_availability][date][to]','max_capacity',
+                'itinerary-downloader','itinerary-downloader-title','itinerary-downloader-desc','itinerary-downloader-button',
+                'tour_thumbnail_height','tour_thumbnail_width',
+                'company_logo','company_desc','company_email','company_address','company_phone',
+                'itinerary-expert','expert_label','expert_name','expert_email','expert_phone','expert_logo',
+                'itinerary-expert-viber','itinerary-expert-whatsapp',
+                't-review','t-share','t-wishlist','t-related','tour-traveler-info','cont_max_capacity',
+                'tour_destination','destinations_icon','tour_features','features_icon',
+                'tour_activities','activities_icon','tour_attraction','attraction_icon',
+                'tour_gallery','tour_video','additional_information','hightlights_thumbnail',
+                'duration','duration_time','night','night_count','group_size',
+                'language','email','phone','fax','website',
+                'tour-extra','faqs','included','excluded','included_icon','excluded_icon','inc_exc_bg',
+                'itinerary','itinerary_gallery','terms_conditions','post_date',
             );
+
             if ( isset( $dummy_tours_files ) ) {
                 $column_mapping_data = $dummy_tours_fields;
                 $csv_data            = array_map( 'str_getcsv', file( $dummy_tours_files ) );
-                
-                //skip the first row
                 array_shift( $csv_data );
-                $post_meta     = array();
+                $post_meta = array();
         
                 foreach ( $csv_data as $row_index => $row ) {
                     $post_id      = '';
                     $post_title   = '';
-                    $post_default_slug   = '';
-                    $post_slug   = '';
+                    $post_default_slug = '';
+                    $post_slug    = '';
                     $post_content = '';
                     $post_date    = '';
-                    //$disable_day = array();
                     $taxonomies   = array();
                     $tax_icons    = array();
         
                     foreach ( $column_mapping_data as $column_index => $field ) {
                         if( ( $field == 'tour_destination' || $field == 'tour_activities' || $field == 'tour_attraction' || $field == 'tour_features' || $field == 'tour_types' ) && ! empty( $row[$column_index] ) ){
-                            if($field == 'tour_types'){
-                                $taxonomies['tour_type'] = $row[$column_index];
-                            }else{
-                                $taxonomies[$field] = $row[$column_index];
-                            }
+                            $taxonomies[ $field == 'tour_types' ? 'tour_type' : $field ] = $row[$column_index];
                         }
                     }
         
                     if (!empty($taxonomies)) {
                         foreach ($taxonomies as $taxonomy => $values) {
-                            // Extract the taxonomy terms from the CSV row
                             $taxonomy_terms = explode(',', $values);
-        
                             foreach ($taxonomy_terms as $taxonomy_term) {
-                                // Get the taxonomy name based on the column name
-                                $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-        
-                                // Check if ">" string is present in the text
+                                $taxonomy_name = $taxonomy;
                                 if (strpos($taxonomy_term, '>') !== false) {
                                     $taxonomy_parts = explode('>', $taxonomy_term);
                                     $parent_name    = trim($taxonomy_parts[0]);
-                                    if(  strpos( $taxonomy_parts[1], '+' ) !== false ){
-                                        $child_terms = explode('+', $taxonomy_parts[1]);
-                                    }else{
-                                        $child_terms = array( $taxonomy_parts[1] );
-                                    }
-        
-                                    // Get or create the parent term
-                                    $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                    $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                    $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                     if (!$parent_term) {
                                         $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                        if (!is_wp_error($parent_result)) {
-                                            $parent_term_id = $parent_result['term_id'];
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
-                                            continue;
-                                        }
+                                        if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message()); continue; }
                                     } else {
                                         $parent_term_id = $parent_term->term_id;
-                                        //check if parrent term is already assigned to the post
                                         $assigned_terms = wp_get_post_terms( $post_id, $taxonomy_name, array( 'fields' => 'ids' ) );
                                         if( ! in_array( $parent_term_id, $assigned_terms ) ){
                                             wp_set_post_terms( $post_id, $parent_term_id, $taxonomy_name, true );
                                         }
                                     }
-        
-                                    // Get or create the child terms under the parent term
                                     $child_term_ids = array();
                                     foreach ($child_terms as $child_name) {
                                         $child_name = trim($child_name);
-        
                                         $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                         if (!$child_term) {
                                             $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                            if (!is_wp_error($child_result)) {
-                                                $child_term_ids[] = $child_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
-                                                continue;
-                                            }
-                                        } else {
-                                            $child_term_ids[] = $child_term->term_id;
-                                        }
+                                            if (!is_wp_error($child_result)) { $child_term_ids[] = $child_result['term_id']; } else { echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message()); continue; }
+                                        } else { $child_term_ids[] = $child_term->term_id; }
                                     }
-        
-                                    // Assign the parent and child terms to the post
                                     wp_set_post_terms($post_id, array_merge(array($parent_term_id), $child_term_ids), $taxonomy_name, true);
                                 } else {
-                                    // No hierarchy, it's a standalone term
                                     $term_name = trim($taxonomy_term);
-        
-                                    // Get or create the term by name and taxonomy
-                                    $term = get_term_by('name', $term_name, $taxonomy_name);
-        
+                                    $term      = get_term_by('name', $term_name, $taxonomy_name);
                                     if (!$term) {
-                                        // Term does not exist, create a new one
                                         $term_result = wp_insert_term($term_name, $taxonomy_name);
-        
                                         if (!is_wp_error($term_result)) {
-                                            // Term already exists, assign it to the post
-                                            $term_id = $term_result['term_id'];
-                                            wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
-                                        }
+                                            wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
+                                        } else { echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message()); }
                                     } else {
                                         wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
                                     }
@@ -2874,246 +2050,157 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
         
-                    //update all the custom taxonomies icons if has any
                     if( ! empty( $tax_icons ) ){
                         foreach( $tax_icons as $tax => $values ){
-                            // Parse the data format to extract term names and icons (image URLs).
                             $terms_with_icons = explode( ',', $values );
-        
                             foreach ( $terms_with_icons as $term_with_icon ) {
-                                $parts = explode('(', $term_with_icon);
-                                $term_name = trim($parts[0]);
+                                $parts      = explode('(', $term_with_icon);
+                                $term_name  = trim($parts[0]);
                                 $icon_value = trim(str_replace(')', '', $parts[1]));
-        
-                                // Get the term ID for the given term name.
                                 $term = get_term_by( 'name', $term_name, $tax );
                                 if ($term) {
-                                    $term_id = $term->term_id;
-        
-                                    // Check if the icon value is an image URL or FontAwesome icon class.
-                                    if ( filter_var( $icon_value, FILTER_VALIDATE_URL ) ) {
-                                        // Step 3a: Update the custom field (icon) with the image URL for the term.
-                                        update_term_meta( $term_id, 'tour_features[icon-c]', $icon_value );
-                                    } else {
-                                        // Step 3b: Update the custom field (icon) with the FontAwesome icon class for the term.
-                                        update_term_meta( $term_id, 'tour_features[icon-c]', $icon_value );
-                                    }
+                                    update_term_meta( $term->term_id, 'tour_features[icon-c]', $icon_value );
                                 }
                             }
-        
-        
                         } 
                     }
         
                     foreach ( $column_mapping_data as $column_index => $field ) {
-                        if( $field == 'id' ){
-                            $post_id = $row[$column_index];
-                        }
+                        if( $field == 'id' ) { $post_id = $row[$column_index]; }
                         if ( $field == 'post_title' ) {
                             $post_default_slug = $row[$column_index];
                             $post_title = ucwords(str_replace('-', ' ', $row[$column_index]));
-                            if( empty( $post_title ) ){
-                                $post_title = 'No Title';
-                            }
+                            if( empty( $post_title ) ) $post_title = 'No Title';
                         } else if ( $field == 'post_content' ) {
                             $post_content = $row[$column_index];
-                            if( empty( $post_content ) ){
-                                $post_content = 'No Content';
-                            }
+                            if( empty( $post_content ) ) $post_content = 'No Content';
                         }
-                        if ( $field == 'slug' ) {
-                            $post_slug = $row[$column_index];
-                        }
+                        if ( $field == 'slug' ) { $post_slug = $row[$column_index]; }
                         if( $field == 'thumbnail' ){
                             $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
-                            if ( $attach_id ) {
-                                $post_meta['_thumbnail_id'] = $attach_id;
-                            }
+                            if ( $attach_id ) { $post_meta['_thumbnail_id'] = $attach_id; }
                         }
-                        if( $field == 'post_date' ){
-                            $post_date = $row[$column_index];
-                        }
+                        if( $field == 'post_date' ) { $post_date = $row[$column_index]; }
         
                         if( $field == 'longitude' ){
                             $post_meta['tf_tours_opt']['location'][$field] = $row[$column_index];
-                        }else if( $field == 'latitude' ){
+                        } else if( $field == 'latitude' ){
                             $post_meta['tf_tours_opt']['location'][$field] = $row[$column_index];
-                        }else if( $field == 'min_seat' ){
+                        } else if( $field == 'min_seat' ){
                             $post_meta['tf_tours_opt']['fixed_availability'][$field] = $row[$column_index];
-                        }else if( $field == 'max_seat' ){
+                        } else if( $field == 'max_seat' ){
                             $post_meta['tf_tours_opt']['fixed_availability'][$field] = $row[$column_index];
-                        }else if ( $field === 'tour_gallery' && ! empty( $row[ $column_index ] ) ) {
-                            // Extract the image URLs from the CSV row
-                            $image_urls = explode( ',', $row[ $column_index] );
-            
+                        } else if ( $field === 'tour_gallery' && ! empty( $row[ $column_index ] ) ) {
+                            $image_urls     = explode( ',', $row[ $column_index] );
                             $gallery_images = array();
-        
-                            //include image.php for wp_generate_attachment_metadata() function
                             if( ! function_exists( 'wp_crop_image' ) ){
                                 require_once ABSPATH . 'wp-admin/includes/image.php';
                             }
-        
                             foreach ( $image_urls as $image_url ) {
                                 $attach_id = $this->travelfic_import_image( $image_url, $post_id );
-                                if ( $attach_id ) {
-                                    $gallery_images[] = $attach_id;
-                                }
+                                if ( $attach_id ) { $gallery_images[] = $attach_id; }
                             }
-        
-                            // Combine the attachment IDs into a comma-separated string
-                            $gallery_ids_string = implode( ',', $gallery_images );
-            
-                            // Assign the gallery IDs string to the tour_gallery meta field
-                            $post_meta['tf_tours_opt']['tour_gallery'] = $gallery_ids_string;
-        
+                            $post_meta['tf_tours_opt']['tour_gallery'] = implode( ',', $gallery_images );
                         } else if ( strpos( $field, '[' ) !== false && strpos( $field, ']' ) !== false ) {
-                            //exclude title, post content, features from adding into the array
-                            // Field is a multidimensional array key, e.g., [location][latitude]
                             $nested_keys = explode( '][', trim($field, '[]' ) );
-                            $meta_value = &$post_meta['tf_tours_opt'];
-                        
-                            // Iterate through nested keys except the last one
+                            $meta_value  = &$post_meta['tf_tours_opt'];
                             for ( $i = 0; $i < count( $nested_keys ) - 1; $i++ ) {
                                 $nested_key = $nested_keys[$i];
-                        
-                                // Create the nested array if it doesn't exist
-                                if ( !isset( $meta_value[$nested_key] ) ) {
-                                    $meta_value[$nested_key] = array();
-                                }
-                        
+                                if ( !isset( $meta_value[$nested_key] ) ) { $meta_value[$nested_key] = array(); }
                                 $meta_value = &$meta_value[$nested_key];
                             }
-                        
-                            // Assign the value to the last nested key
                             $last_nested_key = end( $nested_keys );
                             $meta_value[$last_nested_key] = $row[$column_index];
-        
-        
                         } else if( $field == 'tour_features' ){
-                            $features = explode( ',', $row[$column_index] );
+                            $features        = explode( ',', $row[$column_index] );
                             $tf_tour_features = array();
                             foreach( $features as $feature ){
                                 $term = get_term_by( 'name', $feature, 'tour_features' );
-                                $term_id = $term->term_id;
-                                $tf_tour_features[] = $term_id;
+                                if ( $term ) { $tf_tour_features[] = $term->term_id; }
                             }
                             $post_meta['tf_tours_opt']['features'] = $tf_tour_features;
-        
                         } else if( $field == 'tour_types' ){
-                            $tour_types = explode( ',', $row[$column_index] );
-                            $tf_tour_types = array();
+                            $tour_types      = explode( ',', $row[$column_index] );
+                            $tf_tour_types   = array();
                             foreach( $tour_types as $feature ){
                                 $term = get_term_by( 'name', $feature, 'tour_type' );
-                                $term_id = $term->term_id;
-                                $tf_tour_types[] = $term_id;
+                                if ( $term ) { $tf_tour_types[] = $term->term_id; }
                             }
                             $post_meta['tf_tours_opt']['tour_types'] = $tf_tour_types;
-        
-                        }else if( $field == 'features_icon' || $field == 'destinations_icon' || $field == 'activities_icon' || $field == 'attraction_icon' ){
-                            $field == 'features_icon' ? $field = 'tour_features' : '';
+                        } else if( $field == 'features_icon' || $field == 'destinations_icon' || $field == 'activities_icon' || $field == 'attraction_icon' ){
+                            $field == 'features_icon'    ? $field = 'tour_features'    : '';
                             $field == 'destinations_icon' ? $field = 'tour_destination' : '';
-                            $field == 'activities_icon' ? $field = 'tour_activities' : '';
-                            $field == 'attraction_icon' ? $field = 'tour_attraction' : '';
+                            $field == 'activities_icon'  ? $field = 'tour_activities'  : '';
+                            $field == 'attraction_icon'  ? $field = 'tour_attraction'  : '';
                             $tax_icons[$field] = $row[$column_index];
-                        
                         } else if( $field == 'included' && ! empty( $row[$column_index] ) ){
-                            $includes  = explode(',', $row[$column_index] );
-                            $total_includes = count( $includes ) - 1;
-                            for( $inc = 0; $inc <= $total_includes; $inc++ ){
-                                $inc_index = $inc;
-                                $post_meta['tf_tours_opt']['inc'][$inc_index]['inc'] = $includes[$inc_index];
+                            $includes = explode(',', $row[$column_index] );
+                            foreach( $includes as $inc => $val ){
+                                $post_meta['tf_tours_opt']['inc'][$inc]['inc'] = $val;
                             }
                         } else if( $field == 'excluded' && ! empty( $row[$column_index] ) ){
-                            $excludes  = explode(',', $row[$column_index] );
-                            $total_excludes = count( $excludes ) - 1;
-                            for( $exc = 0; $exc <= $total_excludes; $exc++ ){
-                                $exc_index = $exc;
-                                $post_meta['tf_tours_opt']['exc'][$exc_index]['exc'] = $excludes[$exc_index];
+                            $excludes = explode(',', $row[$column_index] );
+                            foreach( $excludes as $exc => $val ){
+                                $post_meta['tf_tours_opt']['exc'][$exc]['exc'] = $val;
                             }
                         } else if( $field == 'included_icon' && ! empty( $row[$column_index] ) ){
-                            $inc_icon  = !empty($row[$column_index]) ? $row[$column_index] : '';
-                            $post_meta['tf_tours_opt']['inc_icon'] = $inc_icon;
+                            $post_meta['tf_tours_opt']['inc_icon'] = $row[$column_index];
                         } else if( $field == 'excluded_icon' && ! empty( $row[$column_index] ) ){
-                            $exc_icon  = !empty($row[$column_index]) ? $row[$column_index] : '';
-                            $post_meta['tf_tours_opt']['exc_icon'] = $exc_icon;
+                            $post_meta['tf_tours_opt']['exc_icon'] = $row[$column_index];
                         } else if( $field == 'cont_custom_date' && ! empty( $row[$column_index] ) ){
-                            $cont_custom_date = json_decode( $row[$column_index], true );
-                            $response['cont_custom_date'] = $cont_custom_date;
-                            $post_meta['tf_tours_opt']['cont_custom_date'] = $cont_custom_date;
-        
+                            $post_meta['tf_tours_opt']['cont_custom_date'] = json_decode( $row[$column_index], true );
                         } else {
-                            // Create an array to store post meta for the current row
                             $post_meta['tf_tours_opt'][$field] = $row[$column_index];
                         }    
         
                         if( $field == 'faqs' && ! empty( $row[$column_index] ) ){
-                            $faqs = json_decode( $row[$column_index], true );
-                            //$faqs = $row[$column_index];
-                            $post_meta['tf_tours_opt'][$field] = serialize( $faqs );
-        
+                            $post_meta['tf_tours_opt'][$field] = serialize( json_decode( $row[$column_index], true ) );
                         }
-        
-                        if( $field == 'disabled_day'  && ! empty( $row[$column_index] ) ){
+                        if( $field == 'disabled_day' && ! empty( $row[$column_index] ) ){
                             $post_meta['tf_tours_opt']['disabled_day'] = unserialize( $row[$column_index] );
                         }
-        
                         if( $field == 'tc-section-title' ){
-                            $post_meta['tf_tours_opt']['tc-section-title'] =  $row[$column_index]; 
+                            $post_meta['tf_tours_opt']['tc-section-title'] = $row[$column_index]; 
                         }
                         if( $field == 't-enquiry-option-icon' ){
                             $post_meta['tf_tours_opt']['t-enquiry-option-icon'] = $row[$column_index];
                         }
                         if( $field == 'itinerary_gallery' && ! empty( $row[ $column_index ] ) ){
                             $itn_gallery_array = json_decode( $row[ $column_index ], true );
-                            $total_itn = count( $itn_gallery_array ) - 1;
+                            $total_itn         = count( $itn_gallery_array ) - 1;
                             for( $itn = 0; $itn <= $total_itn; $itn++ ){
-                                // Extract the image URLs from the CSV row                           
-                                $gallery_index     = $itn + 1;
-                                $image_urls        = explode( ',', $itn_gallery_array[$gallery_index] );
-                
+                                $gallery_index = $itn + 1;
+                                $image_urls    = explode( ',', $itn_gallery_array[$gallery_index] );
                                 $gallery_images = array();
-            
-                                //include image.php for wp_generate_attachment_metadata() function
                                 if( ! function_exists( 'wp_crop_image' ) ){
                                     require_once ABSPATH . 'wp-admin/includes/image.php';
                                 }
-            
                                 foreach ( $image_urls as $image_url ) {
                                     $attach_id = $this->travelfic_import_image( $image_url, $post_id );
-                                    if ( $attach_id ) {
-                                        $gallery_images[] = $attach_id;
-                                    }
+                                    if ( $attach_id ) { $gallery_images[] = $attach_id; }
                                 }
-                                
                                 if( !empty($post_meta['tf_tours_opt']['itinerary']) && gettype($post_meta['tf_tours_opt']['itinerary'])=="string" ){
                                     $tf_hotel_exc_value = preg_replace_callback ( '!s:(\d+):"(.*?)";!', function($match) {
                                         return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
                                     }, $post_meta['tf_tours_opt']['itinerary'] );
                                     $itinerary = unserialize( $tf_hotel_exc_value );
                                 }
-                                
-                                // Combine the attachment IDs into a comma-separated string
-                                $gallery_ids_string = implode( ',', $gallery_images );
-                                // Assign the gallery IDs string to the tour_gallery meta field
-                                $itinerary[$itn]['gallery_image'] = $gallery_ids_string;
-                                $post_meta['tf_tours_opt']['itinerary'] = serialize($itinerary );
+                                $itinerary[$itn]['gallery_image'] = implode( ',', $gallery_images );
+                                $post_meta['tf_tours_opt']['itinerary'] = serialize( $itinerary );
                             }
-        
                         }
-                        
                     }      
         
                     if ( ! function_exists( 'post_exists' ) ) {
                         require_once ABSPATH . 'wp-includes/post.php';
                     }
                    
-                    // Create an array to store the post data for the current row
                     $post_data = array(
                         'post_type'    => 'tf_tours',
                         'post_title'   => $post_title,
                         'post_content' => $post_content,
                         'post_status'  => 'publish',
-                        'author'  => get_current_user_id(),
+                        'author'       => get_current_user_id(),
                         'post_date'    => $post_date,
                         'meta_input'   => $post_meta,
                         'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -3121,87 +2208,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
     
                     $post_id = wp_insert_post( $post_data );
         
-                    //assign or create taxonomies to the imported tours
                     if (!empty($taxonomies)) {
                         foreach ($taxonomies as $taxonomy => $values) {
-                            // Extract the taxonomy terms from the CSV row
                             $taxonomy_terms = explode(',', $values);
-        
                             foreach ($taxonomy_terms as $taxonomy_term) {
-                                // Get the taxonomy name based on the column name
-                                $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-        
-                                // Check if ">" string is present in the text
+                                $taxonomy_name = $taxonomy;
                                 if (strpos($taxonomy_term, '>') !== false) {
                                     $taxonomy_parts = explode('>', $taxonomy_term);
                                     $parent_name    = trim($taxonomy_parts[0]);
-                                    if(  strpos( $taxonomy_parts[1], '+' ) !== false ){
-                                        $child_terms = explode('+', $taxonomy_parts[1]);
-                                    }else{
-                                        $child_terms = array( $taxonomy_parts[1] );
-                                    }
-        
-                                    // Get or create the parent term
-                                    $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                    $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                    $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                     if (!$parent_term) {
                                         $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                        if (!is_wp_error($parent_result)) {
-                                            $parent_term_id = $parent_result['term_id'];
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message());
-                                            continue;
-                                        }
+                                        if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { echo 'Error creating parent term: ' . wp_kses_post($parent_result->get_error_message()); continue; }
                                     } else {
                                         $parent_term_id = $parent_term->term_id;
-                                        //check if parrent term is already assigned to the post
                                         $assigned_terms = wp_get_post_terms( $post_id, $taxonomy_name, array( 'fields' => 'ids' ) );
                                         if( ! in_array( $parent_term_id, $assigned_terms ) ){
                                             wp_set_post_terms( $post_id, $parent_term_id, $taxonomy_name, true );
                                         }
                                     }
-        
-                                    // Get or create the child terms under the parent term
                                     $child_term_ids = array();
                                     foreach ($child_terms as $child_name) {
                                         $child_name = trim($child_name);
-        
                                         $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                         if (!$child_term) {
                                             $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                            if (!is_wp_error($child_result)) {
-                                                $child_term_ids[] = $child_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message());
-                                                continue;
-                                            }
-                                        } else {
-                                            $child_term_ids[] = $child_term->term_id;
-                                        }
+                                            if (!is_wp_error($child_result)) { $child_term_ids[] = $child_result['term_id']; } else { echo 'Error creating child term: ' . wp_kses_post($child_result->get_error_message()); continue; }
+                                        } else { $child_term_ids[] = $child_term->term_id; }
                                     }
-        
-                                    // Assign the parent and child terms to the post
                                     wp_set_post_terms($post_id, array_merge(array($parent_term_id), $child_term_ids), $taxonomy_name, true);
                                 } else {
-                                    // No hierarchy, it's a standalone term
                                     $term_name = trim($taxonomy_term);
-        
-                                    // Get or create the term by name and taxonomy
-                                    $term = get_term_by('name', $term_name, $taxonomy_name);
-        
+                                    $term      = get_term_by('name', $term_name, $taxonomy_name);
                                     if (!$term) {
-                                        // Term does not exist, create a new one
                                         $term_result = wp_insert_term($term_name, $taxonomy_name);
-        
                                         if (!is_wp_error($term_result)) {
-                                            // Term already exists, assign it to the post
-                                            $term_id = $term_result['term_id'];
-                                            wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message());
-                                        }
+                                            wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
+                                        } else { echo 'Error creating term: ' . wp_kses_post($term_result->get_error_message()); }
                                     } else {
                                         wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
                                     }
@@ -3209,13 +2253,16 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
                     }
-                    //reset the post meta array
                     $post_meta = array();           
                 }
         
                 wp_die();
             }
         }
+
+		// =========================================================================
+		// CARS
+		// =========================================================================
 
         /**
 		 * Tourfic Car importer Settings
@@ -3224,233 +2271,104 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             check_ajax_referer('updates', '_ajax_nonce');
 
             $tours_post = array(
-                'post_type' => 'tf_carrental',
+                'post_type'      => 'tf_carrental',
                 'posts_per_page' => -1,
             );
-            
             $tours_query = new WP_Query($tours_post);
             if(!empty($tours_query)){
                 $tours_count = $tours_query->post_count;
-                if($tours_count>=3){
-                    return;
-                }
+                if($tours_count>=3){ return; }
             }
             
-            $dummy_cars_files = TRAVELFIC_TOOLKIT_PATH.'inc/demo/car-data.csv';
+            $dummy_cars_files  = TRAVELFIC_TOOLKIT_PATH.'inc/demo/car-data.csv';
             $dummy_cars_fields = array(
-                'id',
-                'post_title',
-                'post_slug',
-                'post_content',
-                'thumbnail',
-                'car_gallery',
-                'tf_single_car_layout_opt',
-                'tf_single_car_template',
-                'location_title',
-                '[map][address]',
-                '[map][latitude]',
-                '[map][longitude]',
-                '[map][zoom]',
-                'car_info_sec_title',
-                'car_as_featured',
-                'passengers',
-                'baggage',
-                'auto_transmission',
-                'pay_pickup',
-                'shuttle_car',
-                'shuttle_car_fee_type',
-                'shuttle_car_fee',
-                'fuel_included',
-                'unlimited_mileage',
-                'mileage_type',
-                'mileage',
-                'car_custom_info',
-                'driver_included',
-                'car_driverinfo_section',
-                'driver_sec_title',
-                'driver_name',
-                'driver_email',
-                'driver_phone',
-                'driver_age',
-                'driver_address',
-                'driver_image',
-                'benefits_section',
-                'benefits_sec_title',
-                'benefits',
-                'inc_exc_section',
-                'inc_sec_title',
-                'inc',
-                'inc_icon',
-                'exc_sec_title',
-                'exc',
-                'exc_icon',
-                'badge',
-                'information_section',
-                'owner_sec_title',
-                'owner_name',
-                'email',
-                'phone',
-                'website',
-                'fax',
-                'owner_image',
-                'price_by',
-                'car_rent',
-                'custom_availability',
-                'pricing_type',
-                'day_prices',
-                'date_prices',
-                'discount_type',
-                'discount_price',
-                'car_numbers',
-                'allow_deposit',
-                'deposit_type',
-                'deposit_amount',
-                'car_extra_sec_title',
-                'extras',
-                'protection_section',
-                'protection_tab_title',
-                'protections',
-                'instructions_section',
-                'instructions_content',
-                'cancellation_section',
-                'calcellation_policy',
-                'booking-by',
-                'booking-url',
-                'booking-attribute',
-                'booking-query',
-                'is_taxable',
-                'taxable_class',
-                'faq_sec_title',
-                'faq',
-                'car-tc-section-title',
-                'terms_conditions',
-                'review_sec_title',
-                'c-share',
-                'c-wishlist',
-                'locations',
-                'categories',
-                'brands',
-                'fuel_types',
-                'engine_years',
-                'post_date',
+                'id','post_title','post_slug','post_content','thumbnail','car_gallery',
+                'tf_single_car_layout_opt','tf_single_car_template',
+                'location_title','[map][address]','[map][latitude]','[map][longitude]','[map][zoom]',
+                'car_info_sec_title','car_as_featured','passengers','baggage',
+                'auto_transmission','pay_pickup','shuttle_car','shuttle_car_fee_type','shuttle_car_fee',
+                'fuel_included','unlimited_mileage','mileage_type','mileage','car_custom_info',
+                'driver_included','car_driverinfo_section','driver_sec_title',
+                'driver_name','driver_email','driver_phone','driver_age','driver_address','driver_image',
+                'benefits_section','benefits_sec_title','benefits',
+                'inc_exc_section','inc_sec_title','inc','inc_icon','exc_sec_title','exc','exc_icon',
+                'badge','information_section','owner_sec_title','owner_name','email','phone','website','fax','owner_image',
+                'price_by','car_rent','custom_availability','pricing_type','day_prices','date_prices',
+                'discount_type','discount_price','car_numbers','allow_deposit','deposit_type','deposit_amount',
+                'car_extra_sec_title','extras','protection_section','protection_tab_title','protections',
+                'instructions_section','instructions_content','cancellation_section','calcellation_policy',
+                'booking-by','booking-url','booking-attribute','booking-query',
+                'is_taxable','taxable_class','faq_sec_title','faq','car-tc-section-title','terms_conditions',
+                'review_sec_title','c-share','c-wishlist',
+                'locations','categories','brands','fuel_types','engine_years','post_date',
             );
             
             if ( isset( $dummy_cars_files ) ) {
                 $column_mapping_data = $dummy_cars_fields;
                 $csv_data            = array_map( 'str_getcsv', file( $dummy_cars_files ) );
-                
-                //skip the first row
                 array_shift( $csv_data );
-                $post_meta     = array();
+                $post_meta = array();
         
                 foreach ( $csv_data as $row_index => $row ) {
                     $post_id      = '';
                     $post_title   = '';
-                    $post_default_slug   = '';
-                    $post_slug   = '';
+                    $post_default_slug = '';
+                    $post_slug    = '';
                     $post_content = '';
                     $post_date    = '';
                     $taxonomies   = array();
-                    $tax_icons    = array();
         
                     foreach ( $column_mapping_data as $column_index => $field ) {
                         if( ( $field == 'locations' || $field == 'categories' || $field == 'brands' || $field == 'fuel_types' || $field == 'engine_years' ) && ! empty( $row[$column_index] ) ){
-                            if($field == 'locations'){
-                                $taxonomies['carrental_location'] = $row[$column_index];
-                            }elseif($field == 'categories'){
-                                $taxonomies['carrental_category'] = $row[$column_index];
-                            }elseif($field == 'brands'){
-                                $taxonomies['carrental_brand'] = $row[$column_index];
-                            }elseif($field == 'fuel_types'){
-                                $taxonomies['carrental_fuel_type'] = $row[$column_index];
-                            }elseif($field == 'engine_years'){
-                                $taxonomies['carrental_engine_year'] = $row[$column_index];
-                            }else{
-                                $taxonomies[$field] = $row[$column_index];
-                            }
+                            $tax_map = [
+                                'locations'   => 'carrental_location',
+                                'categories'  => 'carrental_category',
+                                'brands'      => 'carrental_brand',
+                                'fuel_types'  => 'carrental_fuel_type',
+                                'engine_years'=> 'carrental_engine_year',
+                            ];
+                            $taxonomies[ $tax_map[$field] ] = $row[$column_index];
                         }
                     }
         
                     if (!empty($taxonomies)) {
                         foreach ($taxonomies as $taxonomy => $values) {
-                            // Extract the taxonomy terms from the CSV row
                             $taxonomy_terms = explode(',', $values);
-        
                             foreach ($taxonomy_terms as $taxonomy_term) {
-                                // Get the taxonomy name based on the column name
-                                $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-        
-                                // Check if ">" string is present in the text
+                                $taxonomy_name = $taxonomy;
                                 if (strpos($taxonomy_term, '>') !== false) {
                                     $taxonomy_parts = explode('>', $taxonomy_term);
                                     $parent_name    = trim($taxonomy_parts[0]);
-                                    if(  strpos( $taxonomy_parts[1], '+' ) !== false ){
-                                        $child_terms = explode('+', $taxonomy_parts[1]);
-                                    }else{
-                                        $child_terms = array( $taxonomy_parts[1] );
-                                    }
-        
-                                    // Get or create the parent term
-                                    $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                    $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                    $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                     if (!$parent_term) {
                                         $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                        if (!is_wp_error($parent_result)) {
-                                            $parent_term_id = $parent_result['term_id'];
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message());
-                                            continue;
-                                        }
+                                        if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message()); continue; }
                                     } else {
                                         $parent_term_id = $parent_term->term_id;
-                                        //check if parrent term is already assigned to the post
                                         $assigned_terms = wp_get_post_terms( $post_id, $taxonomy_name, array( 'fields' => 'ids' ) );
                                         if( ! in_array( $parent_term_id, $assigned_terms ) ){
                                             wp_set_post_terms( $post_id, $parent_term_id, $taxonomy_name, true );
                                         }
                                     }
-        
-                                    // Get or create the child terms under the parent term
                                     $child_term_ids = array();
                                     foreach ($child_terms as $child_name) {
                                         $child_name = trim($child_name);
-        
                                         $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                         if (!$child_term) {
                                             $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                            if (!is_wp_error($child_result)) {
-                                                $child_term_ids[] = $child_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating child term: ' . esc_html($child_result->get_error_message());
-                                                continue;
-                                            }
-                                        } else {
-                                            $child_term_ids[] = $child_term->term_id;
-                                        }
+                                            if (!is_wp_error($child_result)) { $child_term_ids[] = $child_result['term_id']; } else { echo 'Error creating child term: ' . esc_html($child_result->get_error_message()); continue; }
+                                        } else { $child_term_ids[] = $child_term->term_id; }
                                     }
-        
-                                    // Assign the parent and child terms to the post
                                     wp_set_post_terms($post_id, array_merge(array($parent_term_id), $child_term_ids), $taxonomy_name, true);
                                 } else {
-                                    // No hierarchy, it's a standalone term
                                     $term_name = trim($taxonomy_term);
-        
-                                    // Get or create the term by name and taxonomy
-                                    $term = get_term_by('name', $term_name, $taxonomy_name);
-        
+                                    $term      = get_term_by('name', $term_name, $taxonomy_name);
                                     if (!$term) {
-                                        // Term does not exist, create a new one
                                         $term_result = wp_insert_term($term_name, $taxonomy_name);
-        
                                         if (!is_wp_error($term_result)) {
-                                            // Term already exists, assign it to the post
-                                            $term_id = $term_result['term_id'];
-                                            wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating term: ' . esc_html($term_result->get_error_message());
-                                        }
+                                            wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
+                                        } else { echo 'Error creating term: ' . esc_html($term_result->get_error_message()); }
                                     } else {
                                         wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
                                     }
@@ -3460,193 +2378,98 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     }     
 
                     foreach ( $column_mapping_data as $column_index => $field ) {
-                        if( $field == 'id' ){
-                            $post_id = $row[$column_index];
-                        }
+                        if( $field == 'id' ) { $post_id = $row[$column_index]; }
                         if ( $field == 'post_title' ) {
                             $post_default_slug = $row[$column_index];
                             $post_title = ucwords(str_replace('-', ' ', $row[$column_index]));
-                            if( empty( $post_title ) ){
-                                $post_title = 'No Title';
-                            }
+                            if( empty( $post_title ) ) $post_title = 'No Title';
                         } else if ( $field == 'post_content' ) {
                             $post_content = $row[$column_index];
-                            if( empty( $post_content ) ){
-                                $post_content = 'No Content';
-                            }
+                            if( empty( $post_content ) ) $post_content = 'No Content';
                         }
-                        if ( $field == 'slug' ) {
-                            $post_slug = $row[$column_index];
-                        }
+                        if ( $field == 'slug' ) { $post_slug = $row[$column_index]; }
                         if( $field == 'thumbnail' ){
                             $attach_id = $this->travelfic_import_image( $row[$column_index], $post_id );
-                            if ( $attach_id ) {
-                                $post_meta['_thumbnail_id'] = $attach_id;
-                            }
+                            if ( $attach_id ) { $post_meta['_thumbnail_id'] = $attach_id; }
                         }
-                        if( $field == 'post_date' ){
-                            $post_date = $row[$column_index];
-                        }
+                        if( $field == 'post_date' ) { $post_date = $row[$column_index]; }
         
-                        if( $field == 'longitude' ){
-                            $post_meta['tf_carrental_opt']['map'][$field] = $row[$column_index];
-                        }else if( $field == 'latitude' ){
-                            $post_meta['tf_carrental_opt']['map'][$field] = $row[$column_index];
-                        }else if( $field == 'zoom' ){
-                            $post_meta['tf_carrental_opt']['map'][$field] = $row[$column_index];
-                        } else if ( strpos( $field, '[' ) !== false && strpos( $field, ']' ) !== false ) {
-                            //exclude title, post content, features from adding into the array
-                            // Field is a multidimensional array key, e.g., [location][latitude]
+                        if ( strpos( $field, '[' ) !== false && strpos( $field, ']' ) !== false ) {
                             $nested_keys = explode( '][', trim($field, '[]' ) );
-                            $meta_value = &$post_meta['tf_carrental_opt'];
-                        
-                            // Iterate through nested keys except the last one
+                            $meta_value  = &$post_meta['tf_carrental_opt'];
                             for ( $i = 0; $i < count( $nested_keys ) - 1; $i++ ) {
                                 $nested_key = $nested_keys[$i];
-                        
-                                // Create the nested array if it doesn't exist
-                                if ( !isset( $meta_value[$nested_key] ) ) {
-                                    $meta_value[$nested_key] = array();
-                                }
-                        
+                                if ( !isset( $meta_value[$nested_key] ) ) { $meta_value[$nested_key] = array(); }
                                 $meta_value = &$meta_value[$nested_key];
                             }
-                            // Assign the value to the last nested key
                             $last_nested_key = end( $nested_keys );
                             $meta_value[$last_nested_key] = $row[$column_index];
-        
                         } else if( $field == 'brands' ){
                             $features = explode( ',', $row[$column_index] );
-                            $tf_carrental_brand = array();
+                            $tf_brands = array();
                             foreach( $features as $feature ){
                                 $term = get_term_by( 'name', $feature, 'carrental_brand' );
-                                $term_id = $term ? $term->term_id : '';
-                                $tf_carrental_brand[] = !empty($term_id) ? $term_id : '';
+                                if ( $term ) { $tf_brands[] = $term->term_id; }
                             }
-                            $post_meta['tf_carrental_opt']['brands'] = $tf_carrental_brand;
-        
+                            $post_meta['tf_carrental_opt']['brands'] = $tf_brands;
                         } else if( $field == 'fuel_types' ){
-                            $carrental_fuel_type = explode( ',', $row[$column_index] );
-                            $tf_carrental_fuel_type = array();
-                            foreach( $carrental_fuel_type as $feature ){
-                                $term = get_term_by( 'name', $feature, 'carrental_fuel_type' );
-                                $term_id = $term ? $term->term_id : '';
-                                $tf_carrental_fuel_type[] = !empty($term_id) ? $term_id : '';
+                            $items = explode( ',', $row[$column_index] );
+                            $tf_items = array();
+                            foreach( $items as $item ){
+                                $term = get_term_by( 'name', $item, 'carrental_fuel_type' );
+                                if ( $term ) { $tf_items[] = $term->term_id; }
                             }
-                            $post_meta['tf_carrental_opt']['fuel_types'] = $tf_carrental_fuel_type;
-        
-                        }else if( $field == 'engine_years' ){
-                            $carrental_engine_year = explode( ',', $row[$column_index] );
-                            $tf_carrental_engine_year = array();
-                            foreach( $carrental_engine_year as $feature ){
-                                $term = get_term_by( 'name', $feature, 'carrental_engine_year' );
-                                $term_id = $term ? $term->term_id : '';
-                                $tf_carrental_engine_year[] = !empty($term_id) ? $term_id : '';
+                            $post_meta['tf_carrental_opt']['fuel_types'] = $tf_items;
+                        } else if( $field == 'engine_years' ){
+                            $items = explode( ',', $row[$column_index] );
+                            $tf_items = array();
+                            foreach( $items as $item ){
+                                $term = get_term_by( 'name', $item, 'carrental_engine_year' );
+                                if ( $term ) { $tf_items[] = $term->term_id; }
                             }
-                            $post_meta['tf_carrental_opt']['engine_year'] = $tf_carrental_engine_year;
-        
-                        }else {
-                            // Create an array to store post meta for the current row
+                            $post_meta['tf_carrental_opt']['engine_year'] = $tf_items;
+                        } else {
                             $post_meta['tf_carrental_opt'][$field] = !empty($row[$column_index]) ? $row[$column_index] : '';
                         }    
         
                         if( $field == 'car_custom_info' && ! empty( $row[$column_index] ) ){
-                            $car_custom_info = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $car_custom_info;
+                            $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true );
                         }
-        
                         if ( $field === 'car_gallery' && ! empty( $row[ $column_index ] ) ) {
-                            // Extract the image URLs from the CSV row
-                            $image_urls = explode( ',', $row[ $column_index] );
+                            $image_urls     = explode( ',', $row[ $column_index] );
                             $gallery_images = array();
-                            
-                            //include image.php for wp_generate_attachment_metadata() function
                             if( ! function_exists( 'wp_crop_image' ) ){
                                 require_once ABSPATH . 'wp-admin/includes/image.php';
                             }
-        
                             foreach ( $image_urls as $image_url ) {
                                 $attach_id = $this->travelfic_import_image( $image_url, $post_id );
-                                if ( $attach_id ) {
-                                    $gallery_images[] = $attach_id;
-                                }
+                                if ( $attach_id ) { $gallery_images[] = $attach_id; }
                             }
-        
-                            // Combine the attachment IDs into a comma-separated string
-                            $gallery_ids_string = implode( ',', $gallery_images );
-            
-                            // Assign the gallery IDs string to the tour_gallery meta field
-                            $post_meta['tf_carrental_opt']['car_gallery'] = $gallery_ids_string;
+                            $post_meta['tf_carrental_opt']['car_gallery'] = implode( ',', $gallery_images );
                         }
-        
-                        if( $field == 'inc' && ! empty( $row[$column_index] ) ){
-                            $inc = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $inc;
-                        }
-        
-                        if( $field == 'day_prices' && ! empty( $row[$column_index] ) ){
-                            $day_prices = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $day_prices;
-                        }
-        
-                        if( $field == 'date_prices' && ! empty( $row[$column_index] ) ){
-                            $date_prices = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $date_prices;
-                        }
-        
-                        if( $field == 'exc' && ! empty( $row[$column_index] ) ){
-                            $exc = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $exc;
-                        }
-        
-                        if( $field == 'benefits' && ! empty( $row[$column_index] ) ){
-                            $benefits = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $benefits;
-                        }
-        
-                        if( $field == 'badge' && ! empty( $row[$column_index] ) ){
-                            $badge = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $badge;
-                        }
-        
-                        if( $field == 'extras' && ! empty( $row[$column_index] ) ){
-                            $extras = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $extras;
-                        }
-        
-                        if( $field == 'protections' && ! empty( $row[$column_index] ) ){
-                            $protections = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $protections;
-                        }
-        
-                        if( $field == 'cancellation_type' && ! empty( $row[$column_index] ) ){
-                            $cancellation_types = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $cancellation_types;
-                        }
-        
-                        if( $field == 'faq' && ! empty( $row[$column_index] ) ){
-                            $faqs = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $faqs;
-                        }
-        
-                        if( $field == 'terms_conditions' && ! empty( $row[$column_index] ) ){
-                            $terms_conditions = json_decode( $row[$column_index], true );
-                            $post_meta['tf_carrental_opt'][$field] = $terms_conditions;
-                        }
-                        
+                        if( $field == 'inc'             && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'day_prices'      && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'date_prices'     && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'exc'             && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'benefits'        && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'badge'           && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'extras'          && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'protections'     && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'cancellation_type' && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'faq'             && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+                        if( $field == 'terms_conditions' && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
                     }
         
                     if ( ! function_exists( 'post_exists' ) ) {
                         require_once ABSPATH . 'wp-includes/post.php';
                     }
                    
-                    // Create an array to store the post data for the current row
                     $post_data = array(
                         'post_type'    => 'tf_carrental',
                         'post_title'   => $post_title,
                         'post_content' => $post_content,
                         'post_status'  => 'publish',
-                        'author'  => get_current_user_id(),
+                        'author'       => get_current_user_id(),
                         'post_date'    => $post_date,
                         'meta_input'   => $post_meta,
                         'post_name'    => !empty($post_slug) ? $post_slug : $post_default_slug,
@@ -3658,87 +2481,44 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         update_post_meta($post_id, 'tf_search_driver_age', 24);
                     }
         
-                    //assign or create taxonomies to the imported cars
                     if (!empty($taxonomies)) {
                         foreach ($taxonomies as $taxonomy => $values) {
-                            // Extract the taxonomy terms from the CSV row
                             $taxonomy_terms = explode(',', $values);
-
                             foreach ($taxonomy_terms as $taxonomy_term) {
-                                // Get the taxonomy name based on the column name
-                                $taxonomy_name = $taxonomy; // Assuming the column names match the taxonomy names
-
-                                // Check if ">" string is present in the text
+                                $taxonomy_name = $taxonomy;
                                 if (strpos($taxonomy_term, '>') !== false) {
                                     $taxonomy_parts = explode('>', $taxonomy_term);
                                     $parent_name    = trim($taxonomy_parts[0]);
-                                    if(  strpos( $taxonomy_parts[1], '+' ) !== false ){
-                                        $child_terms = explode('+', $taxonomy_parts[1]);
-                                    }else{
-                                        $child_terms = array( $taxonomy_parts[1] );
-                                    }
-
-                                    // Get or create the parent term
-                                    $parent_term = get_term_by('name', $parent_name, $taxonomy_name);
+                                    $child_terms    = strpos($taxonomy_parts[1], '+') !== false ? explode('+', $taxonomy_parts[1]) : array($taxonomy_parts[1]);
+                                    $parent_term    = get_term_by('name', $parent_name, $taxonomy_name);
                                     if (!$parent_term) {
                                         $parent_result = wp_insert_term($parent_name, $taxonomy_name);
-                                        if (!is_wp_error($parent_result)) {
-                                            $parent_term_id = $parent_result['term_id'];
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message());
-                                            continue;
-                                        }
+                                        if (!is_wp_error($parent_result)) { $parent_term_id = $parent_result['term_id']; } else { echo 'Error creating parent term: ' . esc_html($parent_result->get_error_message()); continue; }
                                     } else {
                                         $parent_term_id = $parent_term->term_id;
-                                        //check if parrent term is already assigned to the post
                                         $assigned_terms = wp_get_post_terms( $post_id, $taxonomy_name, array( 'fields' => 'ids' ) );
                                         if( ! in_array( $parent_term_id, $assigned_terms ) ){
                                             wp_set_post_terms( $post_id, $parent_term_id, $taxonomy_name, true );
                                         }
                                     }
-
-                                    // Get or create the child terms under the parent term
                                     $child_term_ids = array();
                                     foreach ($child_terms as $child_name) {
                                         $child_name = trim($child_name);
-
                                         $child_term = get_term_by('name', $child_name, $taxonomy_name);
                                         if (!$child_term) {
                                             $child_result = wp_insert_term($child_name, $taxonomy_name, array('parent' => $parent_term_id));
-                                            if (!is_wp_error($child_result)) {
-                                                $child_term_ids[] = $child_result['term_id'];
-                                            } else {
-                                                // Handle error if necessary
-                                                echo 'Error creating child term: ' . esc_html($child_result->get_error_message());
-                                                continue;
-                                            }
-                                        } else {
-                                            $child_term_ids[] = $child_term->term_id;
-                                        }
+                                            if (!is_wp_error($child_result)) { $child_term_ids[] = $child_result['term_id']; } else { echo 'Error creating child term: ' . esc_html($child_result->get_error_message()); continue; }
+                                        } else { $child_term_ids[] = $child_term->term_id; }
                                     }
-
-                                    // Assign the parent and child terms to the post
                                     wp_set_post_terms($post_id, array_merge(array($parent_term_id), $child_term_ids), $taxonomy_name, true);
                                 } else {
-                                    // No hierarchy, it's a standalone term
                                     $term_name = trim($taxonomy_term);
-
-                                    // Get or create the term by name and taxonomy
-                                    $term = get_term_by('name', $term_name, $taxonomy_name);
-
+                                    $term      = get_term_by('name', $term_name, $taxonomy_name);
                                     if (!$term) {
-                                        // Term does not exist, create a new one
                                         $term_result = wp_insert_term($term_name, $taxonomy_name);
-
                                         if (!is_wp_error($term_result)) {
-                                            // Term already exists, assign it to the post
-                                            $term_id = $term_result['term_id'];
-                                            wp_set_post_terms($post_id, $term_id, $taxonomy_name, true);
-                                        } else {
-                                            // Handle error if necessary
-                                            echo 'Error creating term: ' . esc_html($term_result->get_error_message());
-                                        }
+                                            wp_set_post_terms($post_id, $term_result['term_id'], $taxonomy_name, true);
+                                        } else { echo 'Error creating term: ' . esc_html($term_result->get_error_message()); }
                                     } else {
                                         wp_set_post_terms($post_id, $term->term_id, $taxonomy_name, true);
                                     }
@@ -3746,7 +2526,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             }
                         }
                     }
-                    //reset the post meta array
                     $post_meta = array();           
                 }
         
@@ -3754,12 +2533,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
         }
 
-		function travelfic_regenerate_room_meta() {
+		// =========================================================================
+		// ROOM META REGENERATION
+		// =========================================================================
 
+		function travelfic_regenerate_room_meta() {
 			$args  = array(
 				'post_type'      => 'tf_hotel',
 				'post_status'    => 'publish',
-				'posts_per_page' => - 1
+				'posts_per_page' => -1
 			);
 			$posts = new \WP_Query( $args );
 			if ( $posts->have_posts() ) {
@@ -3767,19 +2549,19 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					$posts->the_post();
 					$post_id = get_the_ID();
 					$meta    = get_post_meta( $post_id, 'tf_hotels_opt', true );
+					$rooms   = ! empty( $meta['room'] ) ? $meta['room'] : '';
 
-					$rooms = ! empty( $meta['room'] ) ? $meta['room'] : '';
 					if ( ! empty( $rooms ) && gettype( $rooms ) == "string" ) {
 						$tf_hotel_rooms_value = preg_replace_callback( '!s:(\d+):"(.*?)";!', function ( $match ) {
 							return ( $match[1] == strlen( $match[2] ) ) ? $match[0] : 's:' . strlen( $match[2] ) . ':"' . $match[2] . '";';
 						}, $rooms );
-						$rooms                = unserialize( $tf_hotel_rooms_value );
+						$rooms = unserialize( $tf_hotel_rooms_value );
 					}
 
 					$current_user_id = get_current_user_id();
                     $room_ids = array();
 					foreach ( $rooms as $room ) {
-						$post_data        = array(
+						$post_data = array(
 							'post_type'    => 'tf_room',
 							'post_title'   => ! empty( $room['title'] ) ? $room['title'] : 'No Title',
 							'post_status'  => 'publish',
@@ -3787,12 +2569,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 							'post_content' => ! empty( $room['description'] ) ? $room['description'] : '',
 						);
 						$room['tf_hotel'] = $post_id;
-
-						$room_post_id = wp_insert_post( $post_data );
+						$room_post_id     = wp_insert_post( $post_data );
 						update_post_meta( $room_post_id, 'tf_room_opt', $room );
-                        $room_ids[] = $room_post_id;
+                        $room_ids[]       = $room_post_id;
 
-						// Import thumbnail (prevent duplicates)
                         if ( ! empty( $room['room_preview_img'] ) ) {
                             $attachment_id = $this->travelfic_import_image( $room['room_preview_img'], $room_post_id );
                             if ( $attachment_id ) {
@@ -3808,7 +2588,5 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		}
 	}
 
-
+	new Travelfic_Template_Importer();
 }
-
-new Travelfic_Template_Importer();
