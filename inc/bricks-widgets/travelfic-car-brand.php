@@ -11,7 +11,7 @@ class Travelfic_Toolkit_Bricks_CarBrands extends \Bricks\Element {
 
 	public $category = 'travelfic';
 	public $name     = 'tft-car-brands';
-	public $icon     = 'ti-carousel';
+	public $icon     = 'ti-car';
 	public $scripts  = [ 'tftBricksCarBrands' ];
 
 	public function add_actions() {
