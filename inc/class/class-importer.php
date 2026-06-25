@@ -40,7 +40,20 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 		public function switch_to_travelfic_theme() {
 			check_ajax_referer('updates', '_ajax_nonce');
-			if ( current_user_can( 'switch_themes' ) ) {
+			if ( current_user_can( 'switch_themes' ) && current_user_can( 'install_themes' ) ) {
+				$theme = wp_get_theme( 'travelfic' );
+				if ( ! $theme->exists() ) {
+					require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+					require_once ABSPATH . 'wp-admin/includes/theme.php';
+					require_once ABSPATH . 'wp-admin/includes/file.php';
+
+					$api = themes_api( 'theme_information', array( 'slug' => 'travelfic', 'fields' => array( 'sections' => false ) ) );
+					if ( ! is_wp_error( $api ) ) {
+						$upgrader = new Theme_Upgrader( new Automatic_Upgrader_Skin() );
+						$upgrader->install( $api->download_link );
+					}
+				}
+				
 				switch_theme( 'travelfic' );
 				wp_send_json_success();
 			}
