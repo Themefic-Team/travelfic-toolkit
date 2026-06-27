@@ -284,7 +284,12 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                             </a>
                                         </span>
                                     <?php else : ?>
-                                        <span><?php esc_html_e( 'Bricks theme is required to import Bricks templates.', 'travelfic-toolkit' ); ?></span>
+                                        <span>
+                                            <?php esc_html_e( 'Bricks theme is required to import Bricks templates.', 'travelfic-toolkit' ); ?>
+                                            <a href="<?php echo esc_url( admin_url( 'theme-install.php' ) ); ?>" style="color: #D8004C; font-weight: 700; text-decoration: underline; margin-left: 4px;">
+                                                <?php esc_html_e( 'Add Bricks Theme', 'travelfic-toolkit' ); ?>
+                                            </a>
+                                        </span>
                                     <?php endif; ?>
                                 </div>
                             <?php endif; ?>
