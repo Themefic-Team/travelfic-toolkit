@@ -311,16 +311,8 @@ class TourDestinations {
 			$btn_url = '#';
 		}
 
-		// Get background image
-		$bg_image = ! empty( $settings['location_section_bg'] ) ? $settings['location_section_bg'] : '';
-		if ( is_array( $bg_image ) && ! empty( $bg_image['url'] ) ) {
-			$bg_url = $bg_image['url'];
-		} elseif ( is_object( $bg_image ) && ! empty( $bg_image->url ) ) {
-			$bg_url = $bg_image->url;
-		}
-
 		?>
-		<div class="tft-destination-design__three tft-section-space" style="background-image: url(<?php echo ! empty( $bg_url ) ? esc_url( $bg_url ) : ''; ?>);">
+		<div class="tft-destination-design__three tft-section-space">
 			<div class="tft-destination-content">
 				<div class="tft-heading-content">
 					<?php if ( ! empty( $subtitle ) ) { ?>

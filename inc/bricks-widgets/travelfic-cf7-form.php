@@ -125,7 +125,7 @@ class Travelfic_Toolkit_Bricks_CF7_Form extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'tour_destination_style',
 			'label' => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'padding',
@@ -158,7 +158,7 @@ class Travelfic_Toolkit_Bricks_CF7_Form extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'tour_destination_style',
 			'label' => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'padding',
@@ -171,7 +171,7 @@ class Travelfic_Toolkit_Bricks_CF7_Form extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'tour_destination_style',
 			'label' => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'margin',

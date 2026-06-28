@@ -222,7 +222,7 @@ class Travelfic_Toolkit_Bricks_IconWithText extends \Bricks\Element {
 		$this->controls['item_card_padding'] = [
 			'tab'      => 'style',
 			'group'    => 'icon_text_item_style',
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
 			'css'      => [
 				[

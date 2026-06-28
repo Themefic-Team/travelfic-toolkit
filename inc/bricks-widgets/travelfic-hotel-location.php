@@ -227,7 +227,7 @@ class Travelfic_Toolkit_Bricks_HotelLocation extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hotel_location_style_tab',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',
@@ -312,7 +312,7 @@ class Travelfic_Toolkit_Bricks_HotelLocation extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hotel_location_style_tab',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'margin',
@@ -326,7 +326,7 @@ class Travelfic_Toolkit_Bricks_HotelLocation extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hotel_location_style_tab',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',

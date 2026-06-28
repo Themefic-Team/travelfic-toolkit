@@ -224,7 +224,7 @@ class Travelfic_Toolkit_Bricks_ApartmentLocation extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'apartments_locations_style',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',
@@ -300,7 +300,7 @@ class Travelfic_Toolkit_Bricks_ApartmentLocation extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'apartments_locations_style',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'margin',
@@ -314,7 +314,7 @@ class Travelfic_Toolkit_Bricks_ApartmentLocation extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'apartments_locations_style',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',

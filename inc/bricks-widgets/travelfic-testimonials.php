@@ -544,7 +544,7 @@ class Travelfic_Toolkit_Bricks_Testimonials extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'testimonials_style_section',
 			'label'    => esc_html__( 'Heading Space', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'testimonial_style', '=', [ 'design-1', 'design-4' ] ],
 			'css'      => [
 				[ 'property' => 'padding', 'selector' => '.tft-testimonials-design__one .testimonial-header' ],
@@ -556,7 +556,7 @@ class Travelfic_Toolkit_Bricks_Testimonials extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'testimonials_style_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'testimonial_style', '=', [ 'design-1', 'design-4', 'design-5' ] ],
 			'css'      => [
 				[ 'property' => 'padding', 'selector' => '.tft-testimonials-design__one .tft-testimonials-inner' ],
@@ -715,7 +715,7 @@ class Travelfic_Toolkit_Bricks_Testimonials extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'testimonials_style_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'testimonial_style', '=', 'design-2' ],
 			'css'      => [
 				[ 'property' => 'padding', 'selector' => '.tft-testimonials-design__two .tft-testimonials-slides .tft-single-testimonial' ],
@@ -809,7 +809,7 @@ class Travelfic_Toolkit_Bricks_Testimonials extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'testimonials_style_3_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'testimonial_style', '=', 'design-3' ],
 			'css'      => [
 				[ 'property' => 'padding', 'selector' => '.tft-testimonials-design__three .tft-testimonials-slides .tft-single-testimonial' ],

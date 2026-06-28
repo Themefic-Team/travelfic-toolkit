@@ -380,7 +380,7 @@ class Travelfic_Toolkit_Bricks_TeamMembers extends \Bricks\Element {
 		$this->controls['team_card_padding'] = [
 			'tab'   => 'style',
 			'group' => 'team_style_section',
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'label' => esc_html__( 'Padding', 'travelfic-toolkit' ),
 			'css'   => [
 				[

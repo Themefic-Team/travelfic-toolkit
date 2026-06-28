@@ -144,7 +144,7 @@ class Travelfic_Toolkit_Bricks_Features extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'features_style_section',
 			'label' => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'padding',

@@ -152,6 +152,12 @@ class Travelfic_Toolkit_Bricks_TourDestinations extends \Bricks\Element {
 			'required' => [ 'des_style', '=', 'design-3' ],
 		];
 
+		$this->controls['tour_destination_destination_head'] = [
+			'group' => 'tour_destination',
+			'label' => esc_html__( 'Destination Lists', 'travelfic-toolkit' ),
+			'type'  => 'separator',
+		];
+
 		// Tour
 		$this->controls['categories_id'] = [
 			'tab'      => 'content',
@@ -259,7 +265,7 @@ class Travelfic_Toolkit_Bricks_TourDestinations extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'tour_destination_style',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',
@@ -333,7 +339,7 @@ class Travelfic_Toolkit_Bricks_TourDestinations extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'tour_destination_style',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'margin',
@@ -347,7 +353,7 @@ class Travelfic_Toolkit_Bricks_TourDestinations extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'tour_destination_style',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',
@@ -568,7 +574,7 @@ class Travelfic_Toolkit_Bricks_TourDestinations extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'tour_destination_style',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'margin',
@@ -582,7 +588,7 @@ class Travelfic_Toolkit_Bricks_TourDestinations extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'tour_destination_style',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',

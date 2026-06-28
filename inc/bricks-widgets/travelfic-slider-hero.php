@@ -57,6 +57,11 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'required' => [ 'slider_style', '!=', 'design-5' ],
 		];
 
+		$this->control_groups['hero_search_section'] = [
+			'title' => esc_html__( 'Search Style', 'travelfic-toolkit' ),
+			'tab'   => 'content',
+		];
+
 		$this->control_groups['slider_settings'] = [
 			'title'    => esc_html__( 'Slider Control', 'travelfic-toolkit' ),
 			'tab'      => 'content',
@@ -65,19 +70,14 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 
 		// Style Tabs
 		$this->control_groups['hero_style_section'] = [
-			'title' => esc_html__( 'Slider', 'travelfic-toolkit' ),
+			'title' => esc_html__( 'Slider Style', 'travelfic-toolkit' ),
 			'tab'   => 'content',
 		];
 
 		$this->control_groups['slider_social_style'] = [
-			'title'    => esc_html__( 'Social', 'travelfic-toolkit' ),
+			'title'    => esc_html__( 'Social Style', 'travelfic-toolkit' ),
 			'tab'      => 'content',
 			'required' => [ 'slider_style', '=', 'design-4' ],
-		];
-
-		$this->control_groups['hero_search_section'] = [
-			'title' => esc_html__( 'Search', 'travelfic-toolkit' ),
-			'tab'   => 'content',
 		];
 	}
 
@@ -520,7 +520,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hero_style_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'slider_style', '=', 'design-2' ],
 			'css'      => [
 				[
@@ -542,7 +542,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'hero_style_section',
 			'label' => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'padding',
@@ -641,7 +641,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hero_style_section',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'slider_style', '=', [ 'design-1', 'design-4' ] ],
 			'css'      => [
 				[
@@ -655,7 +655,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hero_style_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'slider_style', '=', [ 'design-1', 'design-4' ] ],
 			'css'      => [
 				[
@@ -833,7 +833,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hero_search_section',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'slider_style', '!=', 'design-5' ],
 			'css'      => [
 				[
@@ -847,7 +847,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'      => 'style',
 			'group'    => 'hero_search_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'required' => [ 'slider_style', '!=', 'design-5' ],
 			'css'      => [
 				[
@@ -1087,7 +1087,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'hero_search_section',
 			'label' => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'margin',
@@ -1100,7 +1100,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'tab'   => 'style',
 			'group' => 'hero_search_section',
 			'label' => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'  => 'dimensions',
+			'type'  => 'spacing',
 			'css'   => [
 				[
 					'property' => 'padding',

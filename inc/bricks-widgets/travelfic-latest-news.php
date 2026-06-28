@@ -295,7 +295,7 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 		$this->controls['blog_section_button_margin_'] = [
 			'group'    => 'blog_design_2_section_style',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'margin',
@@ -308,7 +308,7 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 		$this->controls['blog_section_button_padding_'] = [
 			'group'    => 'blog_design_2_section_style',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',
@@ -360,7 +360,7 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 		$this->controls['news_item_card_padding'] = [
 			'group'    => 'news_style_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',
@@ -620,7 +620,7 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 		$this->controls['news_design3_button_margin_'] = [
 			'group'    => 'news_style_section',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'margin',
@@ -633,7 +633,7 @@ class Travelfic_Toolkit_Bricks_LatestNews extends \Bricks\Element {
 		$this->controls['news_design3_button_padding_'] = [
 			'group'    => 'news_style_section',
 			'label'    => esc_html__( 'Padding', 'travelfic-toolkit' ),
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'css'      => [
 				[
 					'property' => 'padding',

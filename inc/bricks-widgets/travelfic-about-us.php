@@ -503,7 +503,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 			'tab'    => 'style',
 			'group'  => 'about_us_style',
 			'label'  => esc_html__( 'Button Margin', 'travelfic-toolkit' ),
-			'type'   => 'dimensions',
+			'type'   => 'spacing',
 			'css'    => [
 				[
 					'property' => 'margin',
@@ -516,7 +516,7 @@ class Travelfic_Toolkit_Bricks_AboutUs extends \Bricks\Element {
 			'tab'    => 'style',
 			'group'  => 'about_us_style',
 			'label'  => esc_html__( 'Button Padding', 'travelfic-toolkit' ),
-			'type'   => 'dimensions',
+			'type'   => 'spacing',
 			'css'    => [
 				[
 					'property' => 'padding',

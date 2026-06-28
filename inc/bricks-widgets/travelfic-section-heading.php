@@ -146,7 +146,7 @@ class Travelfic_Toolkit_Bricks_SectionHeading extends \Bricks\Element {
 		$this->controls['spacing_margin'] = [
 			'tab'      => 'style',
 			'group'    => 'tft_heading_style_section',
-			'type'     => 'dimensions',
+			'type'     => 'spacing',
 			'label'    => esc_html__( 'Margin', 'travelfic-toolkit' ),
 			'css'      => [
 				[
