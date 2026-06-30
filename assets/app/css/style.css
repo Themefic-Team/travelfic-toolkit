@@ -358,6 +358,19 @@ textarea.tft-form-control {
   margin: auto;
 }
 
+.tft-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tft-center {
+  text-align: center;
+}
+
+.border-rds-4 {
+  border-radius: 4px;
+}
+
 .tft-btn {
   display: block;
   min-height: 55px;

@@ -77,6 +77,13 @@ class CarBrands {
 	private static function render_brands( $categories, $title, $subtitle, $style ) {
 		$rand_number = wp_rand( 100, 99999999 );
 		$style_class = 'slider' === $style ? 'tft-brands-slider-selector-' . $rand_number : 'tft-brands-grid';
+
+		$item_count = 0;
+		foreach ( $categories as $cat ) {
+			if ( $cat->category_parent == 0 ) {
+				$item_count++;
+			}
+		}
 		?>
 		<div class="tft-brands-design__one tft-customizer-typography">
 			<div class="tft-brands-inner">
@@ -117,6 +124,25 @@ class CarBrands {
 				</div>
 			</div>
 			<?php if ( 'slider' === $style ) { ?>
+				<?php if ( $item_count === 1 ) { ?>
+					<style>
+						.tft-brands-slider-selector-<?php echo esc_attr( $rand_number ); ?> .slick-track {
+							display: flex !important;
+							justify-content: center !important;
+							transform: none !important;
+						}
+					</style>
+				<?php } elseif ( $item_count === 2 ) { ?>
+					<style>
+						@media (min-width: 1025px) {
+							.tft-brands-slider-selector-<?php echo esc_attr( $rand_number ); ?> .slick-track {
+								display: flex !important;
+								justify-content: center !important;
+								transform: none !important;
+							}
+						}
+					</style>
+				<?php } ?>
 				<script>
 					// Car Brands Slider
 					(function($) {
@@ -126,10 +152,10 @@ class CarBrands {
 								slidesToScroll: 1,
 								dots: false,
 								arrows: false,
-								centerMode: true,
+								centerMode: <?php echo $item_count > 2 ? 'true' : 'false'; ?>,
 								focusOnSelect: true,
-								infinite: true,
-								autoplay: true,
+								infinite: <?php echo $item_count > 2 ? 'true' : 'false'; ?>,
+								autoplay: <?php echo $item_count > 2 ? 'true' : 'false'; ?>,
 								speed: 900,
 								autoplaySpeed: 6000,
 								responsive: [{
@@ -137,7 +163,7 @@ class CarBrands {
 										settings: {
 											slidesToShow: 2,
 											slidesToScroll: 1,
-											infinite: true,
+											infinite: <?php echo $item_count > 2 ? 'true' : 'false'; ?>,
 										}
 									},
 									{
@@ -152,7 +178,9 @@ class CarBrands {
 										breakpoint: 580,
 										settings: {
 											slidesToShow: 1,
-											slidesToScroll: 1
+											slidesToScroll: 1,
+											infinite: <?php echo $item_count > 1 ? 'true' : 'false'; ?>,
+											autoplay: <?php echo $item_count > 1 ? 'true' : 'false'; ?>
 										}
 									}
 								]
