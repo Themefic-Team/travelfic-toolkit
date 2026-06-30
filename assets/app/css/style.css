@@ -4620,6 +4620,9 @@ body.archive .tft-header-design__two {
   width: 100%;
   border-bottom-left-radius: 1000px;
   border-bottom-right-radius: 1000px;
+  min-height: 600px;
+  object-fit: cover;
+  object-position: center;
 }
 @media only screen and (max-width: 767.98px) {
   .tft-about-us-design__two .tft-about-us-grid .tft-about-image .tft-about-curbe-image img {
@@ -4667,6 +4670,10 @@ body.archive .tft-header-design__two {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
 }
 .tft-about-us-design__two .tft-about-us-grid .tft-about-us-content {
   flex: 1;

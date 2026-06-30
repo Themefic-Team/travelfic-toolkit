@@ -30,15 +30,14 @@ class Travelfic_Toolkit_Bricks_CF7_Form extends \Bricks\Element {
 				'post_type'      => 'wpcf7_contact_form',
 				'posts_per_page' => -1,
 			);
-			$query = new \WP_Query( $args );
+			$cf7_posts = get_posts( $args );
 
-			if ( $query->have_posts() ) {
-				while ( $query->have_posts() ) {
-					$query->the_post();
-					$forms[] = \WPCF7_ContactForm::get_instance( get_the_ID() );
+			if ( ! empty( $cf7_posts ) ) {
+				foreach ( $cf7_posts as $cf7_post ) {
+					$forms[] = \WPCF7_ContactForm::get_instance( $cf7_post->ID );
 				}
 			}
-			wp_reset_postdata();
+			
 			return $forms;
 		}
 		return [];
