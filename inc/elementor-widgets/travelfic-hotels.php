@@ -2197,25 +2197,25 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                             <?php
                             if ("alls" == $tft_posts_tabs) { ?>
                                 <li data-id="all">
-                                    <button class="tft-btn active tft-btn_sharp"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
+                                    <button class="tft-btn active tft-btn_sharp"><?php esc_html_e( "All", "travelfic-toolkit" ); ?></button>
                                 </li>
                                 <li data-id="featured">
-                                    <button class="tft-btn tft-btn_gray tft-btn_sharp"><?php echo esc_html_e("Featured", "travelfic-toolkit"); ?></button>
+                                    <button class="tft-btn tft-btn_gray tft-btn_sharp"><?php esc_html_e( "Featured", "travelfic-toolkit" ); ?></button>
                                 </li>
                             <?php } elseif ("all" == $tft_posts_tabs) { ?>
                                 <li data-id="all">
-                                    <button class="tft-btn active tft-btn_sharp"><?php echo esc_html_e("All", "travelfic-toolkit"); ?></button>
+                                    <button class="tft-btn active tft-btn_sharp"><?php esc_html_e( "All", "travelfic-toolkit" ); ?></button>
                                 </li>
                             <?php } elseif ("featured" == $tft_posts_tabs) { ?>
                                 <li data-id="featured">
-                                    <button class="tft-btn active tft-btn_sharp"><?php echo esc_html_e("Featured", "travelfic-toolkit"); ?></button>
+                                    <button class="tft-btn active tft-btn_sharp"><?php esc_html_e( "Featured", "travelfic-toolkit" ); ?></button>
                                 </li>
                             <?php } ?>
                         </ul>
                     </div>
                     <div class="read-more">
                         <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
-                            <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
+                            <?php esc_html_e( "View All", "travelfic-toolkit" ); ?>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
                                     <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4" />
@@ -2731,6 +2731,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         // // featured
                                         $tf_featured = isset($option_meta['featured']) ? $option_meta['featured'] : false;
                                         $tf_featured_text = !empty($option_meta['featured_text']) ? $option_meta['featured_text'] : 'Featured';
+                                        if ( 'Featured' === $tf_featured_text ) {
+                                            $tf_featured_text = esc_html__( 'Featured', 'travelfic-toolkit' );
+                                        }
 
                                         // // location
                                         if (is_array($option_meta) && isset($option_meta['map'])) {
@@ -2746,6 +2749,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         // featured
                                         $tf_featured = isset($option_meta['tour_as_featured']) ? $option_meta['tour_as_featured'] : '';;
                                         $tf_featured_text = !empty($option_meta['featured_text']) ? $option_meta['featured_text'] : 'Featured';
+                                        if ( 'Featured' === $tf_featured_text ) {
+                                            $tf_featured_text = esc_html__( 'Featured', 'travelfic-toolkit' );
+                                        }
 
                                         // pricing
                                         $tf_total_price = $this->tft_get_tour_card_price( $post_id, $option_meta );
@@ -2764,6 +2770,9 @@ class Travelfic_Toolkit_Hotels extends \Elementor\Widget_Base
                                         // featured
                                         $tf_featured = isset($option_meta['apartment_as_featured']) ? $option_meta['apartment_as_featured'] : '';;
                                         $tf_featured_text = !empty($option_meta['featured_text']) ? $option_meta['featured_text'] : 'Featured';
+                                        if ( 'Featured' === $tf_featured_text ) {
+                                            $tf_featured_text = esc_html__( 'Featured', 'travelfic-toolkit' );
+                                        }
 
                                         // pricing
                                         $tf_pricing = $option_meta['pricing_type'];

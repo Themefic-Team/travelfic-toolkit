@@ -1997,10 +1997,16 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                     <?php endif; ?>
                                     <!-- slider button -->
                                     <?php if (!empty($slider['design4_slider_bttn_txt'])) : ?>
+                                        <?php
+                                        $design4_slider_button_text = $slider['design4_slider_bttn_txt'];
+                                        if ( 'Explore Now' === $design4_slider_button_text ) {
+                                            $design4_slider_button_text = esc_html__( 'Explore Now', 'travelfic-toolkit' );
+                                        }
+                                        ?>
                                         <a href="<?php echo esc_url($slider['design4_slider_bttn_url']['url']); ?>"
                                             class="tft-hero-design__four__slider__item__content--link tft-btn"
                                             <?php echo esc_attr($target_blank); ?>>
-                                            <?php echo esc_html($slider['design4_slider_bttn_txt']); ?>
+                                            <?php echo esc_html( $design4_slider_button_text ); ?>
                                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                                         </a>
                                     <?php endif; ?>
@@ -2141,7 +2147,11 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
                                                             <span>
                                                                 <?php
                                                                 if (!empty($item['slider_bttn_txt'])) {
-                                                                    echo esc_html($item['slider_bttn_txt']);
+                                                                    $slider_button_text = $item['slider_bttn_txt'];
+                                                                    if ( 'Explore Now' === $slider_button_text ) {
+                                                                        $slider_button_text = esc_html__( 'Explore Now', 'travelfic-toolkit' );
+                                                                    }
+                                                                    echo esc_html( $slider_button_text );
                                                                 } ?>
                                                             </span>
                                                         </div>
