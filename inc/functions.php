@@ -380,3 +380,96 @@ add_action( 'wp_head', function () {
        echo '<style type="text/css" id="travelfic_elementor_background_images">' . $background_images['css_rules'] . '</style>';
    }
 });
+
+/**
+ * Add tft-site-main-body ID in body and wrap the whole page content with <div id="page" class="site"> when Bricks is active.
+ */
+function tft_bricks_theme_body_modifier() {
+    $theme = wp_get_theme();
+    if ( 'bricks' === $theme->template || 'bricks' === $theme->stylesheet ) {
+        // Only run on front-end pages and non-API/non-AJAX requests
+        if ( ! is_admin() && ! wp_doing_ajax() && ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+            ob_start( 'tft_bricks_body_modifier_callback' );
+        }
+    }
+}
+add_action( 'template_redirect', 'tft_bricks_theme_body_modifier' );
+
+function tft_bricks_body_modifier_callback( $buffer ) {
+    if ( empty( $buffer ) || stripos( $buffer, '<body' ) === false ) {
+        return $buffer;
+    }
+
+    // 1. Add id="tft-site-main-body" to <body ...> tag
+    if ( preg_match( '/<body([^>]*)/i', $buffer, $matches ) ) {
+        $body_attributes = $matches[1];
+        
+        if ( strpos( $body_attributes, 'id="tft-site-main-body"' ) === false ) {
+            // Replace any existing id attribute or append it
+            if ( preg_match( '/\bid\s*=\s*["\']([^"\']*)["\']/i', $body_attributes, $id_matches ) ) {
+                $new_body_attributes = preg_replace( '/\bid\s*=\s*["\']([^"\']*)["\']/i', 'id="tft-site-main-body"', $body_attributes );
+            } else {
+                $new_body_attributes = $body_attributes . ' id="tft-site-main-body"';
+            }
+            
+            $buffer = str_replace( $matches[0], '<body' . $new_body_attributes, $buffer );
+        }
+    }
+
+    // 2. Wrap page content with <div id="page" class="site">...</div>
+    if ( preg_match( '/<body[^>]*>/i', $buffer, $matches ) ) {
+        $body_tag = $matches[0];
+        
+        if ( strpos( $buffer, '<div id="page" class="site">' ) === false ) {
+            $buffer = str_replace( $body_tag, $body_tag . '<div id="page" class="site">', $buffer );
+            $buffer = preg_replace( '/<\/body>/i', '</div></body>', $buffer );
+        }
+    }
+
+    return $buffer;
+}
+
+/**
+ * Return normalized switcher value for listing components and builders.
+ *
+ * @param array  $settings Settings array (usually widget settings).
+ * @param string $key      The key to read from settings.
+ * @param string $default  Default value when key not present (default: 'yes').
+ * @param string $builder  Optional builder identifier (e.g., 'bricks').
+ * @return string 'yes' or 'no'
+ */
+if (!function_exists('tft_get_switcher_value')) {
+    function tft_get_switcher_value( $settings, $key, $default = 'yes', $builder = '' ) {
+        if ( 'bricks' === $builder ) {
+            return ! empty( $settings[ $key ] ) ? 'yes' : 'no';
+        }
+
+        $value = isset( $settings[ $key ] ) ? $settings[ $key ] : $default;
+
+        return 'yes' === $value ? 'yes' : 'no';
+    }
+}
+
+/**
+ * Ensure Bricks editor is enabled for our template builder CPT.
+ */
+function ensure_bricks_page_support() {
+    if ( function_exists( 'bricks_is_builder' ) || defined( 'BRICKS_VERSION' ) ) {
+        // Bricks stores enabled post types in this option.
+        $settings = get_option( 'bricks_global_settings', [] );
+
+        if ( ! is_array( $settings ) ) {
+            $settings = [];
+        }
+
+        if ( empty( $settings['postTypes'] ) || ! is_array( $settings['postTypes'] ) ) {
+            $settings['postTypes'] = [];
+        }
+
+        if ( ! in_array( 'page', $settings['postTypes'], true ) ) {
+            $settings['postTypes'][] = 'page';
+            update_option( 'bricks_global_settings', $settings );
+        }
+    }
+}
+add_action( 'init', 'ensure_bricks_page_support' );

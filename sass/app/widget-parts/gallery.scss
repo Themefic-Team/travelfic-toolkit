@@ -3,8 +3,8 @@
 
 // gallery design 1
 .tft-gallery-design {
-    &__one{
-        .tft-gallery-top-header{
+    &__one {
+        .tft-gallery-top-header {
             display: flex;
             @include justify-content(space-between);
             @include align-items(center);
@@ -15,7 +15,7 @@
                 margin-bottom: 32px;
             }
 
-            h3{
+            h3 {
                 color: $tft-color-links;
                 font-size: 1rem;
                 font-weight: 600;
@@ -24,7 +24,7 @@
                 text-transform: uppercase;
             }
 
-            h2{
+            h2 {
                 color: $tft-color-heading;
                 font-size: 4.063rem;
                 font-weight: 400;
@@ -40,13 +40,14 @@
                 }
             }
 
-            .tft-slider-arrows{
+            .tft-slider-arrows {
                 @media #{$max767} {
                     display: none;
                 }
             }
         }
-        .tft-gallery-selector{
+
+        .tft-gallery-selector {
             position: relative;
             z-index: 2;
             overflow: hidden;
@@ -62,16 +63,19 @@
                 z-index: 1;
             }
         }
+
         .tft-single-gallery {
-            .tft-single-thumb{
+            .tft-single-thumb {
                 margin-bottom: 24px;
                 overflow: hidden;
             }
-            img{
+
+            img {
                 object-fit: cover;
                 transition: all 0.5s ease-in-out;
             }
-            h3{
+
+            h3 {
                 color: $tft-color-heading;
                 font-size: 2.313rem;
                 font-weight: 700;
@@ -84,8 +88,8 @@
                 }
             }
 
-            &:hover{
-                img{
+            &:hover {
+                img {
                     transform: scale(1.2);
                 }
             }
@@ -113,7 +117,8 @@
                 }
             }
         }
-        .tft-slider-arrows{
+
+        .tft-slider-arrows {
             display: flex;
             justify-content: center;
             gap: 24px;
@@ -130,21 +135,26 @@
                 top: unset;
                 transform: inherit;
                 transition: all 0.2s ease;
+                text-align: center;
+
                 @media #{$max575} {
                     width: 54px;
                     height: 54px;
                 }
-                svg{
-                    path{
+
+                svg {
+                    path {
                         transition: all 0.2s ease;
                         stroke: $tft-color-links;
                     }
                 }
-                &:hover{
-                    path{
+
+                &:hover {
+                    path {
                         stroke: $tft-color-text;
                     }
                 }
+
                 &::before {
                     display: none;
                 }
@@ -194,7 +204,7 @@
             }
         }
 
-        .tft-gallery-mobile-slider-arrow{
+        .tft-gallery-mobile-slider-arrow {
             margin-top: 32px;
             display: none;
 
