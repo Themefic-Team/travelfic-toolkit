@@ -151,6 +151,10 @@ class SliderHero {
 						<?php
 						$btn_url      = self::get_link_url( $item, 'design4_slider_bttn_url' );
 						$btn_target   = self::get_link_target( $item, 'design4_slider_bttn_url' );
+						$button_text  = ! empty( $item['design4_slider_bttn_txt'] ) ? $item['design4_slider_bttn_txt'] : '';
+						if ( 'Explore Now' === $button_text ) {
+							$button_text = esc_html__( 'Explore Now', 'travelfic-toolkit' );
+						}
 						?>
 						<div class="tft-hero-design__four__slider__item">
 							<div class="tft-hero-design__four__slider__item__content">
@@ -164,11 +168,11 @@ class SliderHero {
 										<?php echo esc_html( $item['design4_slider_title'] ); ?>
 									</h1>
 								<?php endif; ?>
-								<?php if ( ! empty( $item['design4_slider_bttn_txt'] ) ) : ?>
+								<?php if ( ! empty( $button_text ) ) : ?>
 									<a href="<?php echo esc_url( $btn_url ); ?>"
 									   class="tft-hero-design__four__slider__item__content--link tft-btn"
 									   <?php echo esc_attr( $btn_target ); ?>>
-										<?php echo esc_html( $item['design4_slider_bttn_txt'] ); ?>
+										<?php echo esc_html( $button_text ); ?>
 										<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
 									</a>
 								<?php endif; ?>
@@ -297,6 +301,10 @@ class SliderHero {
 				<?php foreach ( $slider_list as $item ) :
 					$img_url  = self::get_image_url( $item, 'slider_image' );
 					$btn_url  = self::get_link_url( $item, 'slider_bttn_url' );
+					$button_text = ! empty( $item['slider_bttn_txt'] ) ? $item['slider_bttn_txt'] : '';
+					if ( 'Explore Now' === $button_text ) {
+						$button_text = esc_html__( 'Explore Now', 'travelfic-toolkit' );
+					}
 					?>
 					<div class="tft-hero-single-item">
 						<div class="tft-slider-bg-img"
@@ -319,7 +327,7 @@ class SliderHero {
 											   href="<?php echo esc_url( $btn_url ); ?>">
 												<div class="tft-custom-bttn">
 													<span>
-														<?php echo ! empty( $item['slider_bttn_txt'] ) ? esc_html( $item['slider_bttn_txt'] ) : ''; ?>
+														<?php echo esc_html( $button_text ); ?>
 													</span>
 												</div>
 											</a>

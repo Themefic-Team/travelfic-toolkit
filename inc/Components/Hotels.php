@@ -787,6 +787,9 @@ class Hotels {
 										// // featured
 										$tf_featured = isset( $option_meta['featured'] ) ? $option_meta['featured'] : false;
 										$tf_featured_text = ! empty( $option_meta['featured_text'] ) ? $option_meta['featured_text'] : 'Featured';
+										if ( 'Featured' === $tf_featured_text ) {
+											$tf_featured_text = esc_html__( 'Featured', 'travelfic-toolkit' );
+										}
 
 										// // location
 										if ( is_array( $option_meta ) && isset( $option_meta['map'] ) ) {
@@ -802,6 +805,9 @@ class Hotels {
 										// featured
 										$tf_featured = isset( $option_meta['tour_as_featured'] ) ? $option_meta['tour_as_featured'] : '';
 										$tf_featured_text = ! empty( $option_meta['featured_text'] ) ? $option_meta['featured_text'] : 'Featured';
+										if ( 'Featured' === $tf_featured_text ) {
+											$tf_featured_text = esc_html__( 'Featured', 'travelfic-toolkit' );
+										}
 
 										// pricing
 										$tf_total_price = self::tft_get_tour_card_price( $post_id, $option_meta );
@@ -820,6 +826,9 @@ class Hotels {
 										// featured
 										$tf_featured = isset( $option_meta['apartment_as_featured'] ) ? $option_meta['apartment_as_featured'] : '';
 										$tf_featured_text = ! empty( $option_meta['featured_text'] ) ? $option_meta['featured_text'] : 'Featured';
+										if ( 'Featured' === $tf_featured_text ) {
+											$tf_featured_text = esc_html__( 'Featured', 'travelfic-toolkit' );
+										}
 
 										// pricing
 										$tf_pricing = ! empty( $option_meta['pricing_type'] ) ? $option_meta['pricing_type'] : '';
