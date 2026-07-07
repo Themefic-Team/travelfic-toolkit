@@ -3,7 +3,7 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 7.0
-Stable tag: 1.4.2
+Stable tag: 1.5.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -147,6 +147,15 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.5.0 – July 07, 2026 =
+
+- Added: Pre-built Bricks template import.
+- Added: Landing page support for Bricks Builder.
+- Added: 18+ Bricks Builder widgets for Tourfic-powered websites.
+- Fixed: Footer Design 3 menu URL mapping.
+- Improved: Default widget label translations.
+- Updated: Hotels, Latest News, and Slider Hero Elementor widgets.
 
 = 1.4.2 – June 02, 2026 =
 
