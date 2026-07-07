@@ -225,15 +225,6 @@ class Travelfic_Toolkit_Cars extends \Elementor\Widget_Base
 	protected function render()
 	{
 		$settings = $this->get_settings_for_display();
-
-        $style = !empty($settings['car_style']) ? $settings['car_style'] : '';
-        $per_pages = !empty($settings['post_items']) ? $settings['post_items'] : '';
-        $sec_title = !empty($settings['sec_title']) ? $settings['sec_title'] : '';
-        $sub_title = !empty($settings['sub_title']) ? $settings['sub_title'] : '';
-		?>
-			<div class="tf-archive-template__one">
-				<?php echo do_shortcode( '[tf_cars style="' . $style . '" count="' . $per_pages . '" title="' . $sec_title . '" subtitle="' . $sub_title . '" ]' );?>
-			</div>
-		<?php
+		\Travelfic_Toolkit\Components\Cars::render( $settings, 'elementor' );
 	}
 }

@@ -194,7 +194,8 @@ function travelfic_toolkit_customizer_style()
 ?>
 
     <style>
-        <?php if ('travelfic' !== $travelfic_current_active_theme && 'travelfic-child' !== $travelfic_current_active_theme): ?>
+        <?php if (('travelfic' !== $travelfic_current_active_theme && 'travelfic-child' !== $travelfic_current_active_theme) &&
+                    ('bricks' !== $travelfic_current_active_theme && 'bricks-child' !== $travelfic_current_active_theme)): ?>
                 :root {
                     --tf-color-white: #ffffff;
                     --tf-primary: <?php echo esc_attr($travelfic_primary_color); ?> ;

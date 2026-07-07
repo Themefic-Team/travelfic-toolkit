@@ -283,7 +283,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-2'], 
+                    'blog_style' => 'design-2', 
                 ],
             ]
         );
@@ -295,7 +295,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => ['design-2'],
+                    'blog_style' => 'design-2',
                 ],
             ]
         );
@@ -316,7 +316,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'blog_section_title_typo_design_3',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-heading-content h2',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-heading-content h2.tft-section-title',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
                     'blog_style' => 'design-3', 
@@ -331,7 +331,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__two .tft-blog-header .tft-heading-content .tft-section-title' => 'color: {{VALUE}}',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-heading-content h2' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-heading-content h2.tft-section-title' => 'color: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header h2' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
@@ -370,7 +370,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2::after' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-heading-content h2.tft-title-shape::after' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -387,7 +387,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'      => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'after',
                 'condition' => [
-                    'blog_style' => ['design-2'],
+                    'blog_style' => 'design-2',
                 ],
             ]
         );
@@ -399,7 +399,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                                #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tft-blog-sec-header .tft-section-subtitle',
                 'label'    => __('Typography', 'travelfic-toolkit'),
                 'condition' => [
-                    'blog_style' => ['design-2'],
+                    'blog_style' => 'design-2',
                 ],
             ]
         );
@@ -642,7 +642,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'size_units' => ['px', '%', 'em'],
                 'selectors'  => [
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__one .tft-post-content-wrap' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card.content-only' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card.with-image .tf-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -671,9 +671,9 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label' => __( 'Border Radius', 'travelfic-toolkit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
-                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item' => 'border-radius: {{SIZE}}{{UNIT}};',
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card' => 'border-radius: {{SIZE}}{{UNIT}};',
+                'selectors' => [
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3', 
@@ -687,7 +687,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Card Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-col-item' => 'background: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-col-item' => 'background: {{VALUE}}',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card' => 'background: {{VALUE}}',
                 ],
                 'condition' => [
@@ -1075,7 +1075,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1088,7 +1088,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Hover', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover' => 'color: {{VALUE}}',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-title a:hover' => 'color: {{VALUE}}',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1150,7 +1150,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name'     => 'news_design3_button_typography',
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a,
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a,
                                #tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more',
                 'condition' => [
                     'blog_style' => ['design-3', 'design-4']
@@ -1166,7 +1166,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
@@ -1181,7 +1181,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type'       => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1194,7 +1194,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
             [
                 'name'     => 'news_design3_button_border_',
                 'label'    => __('Border', 'travelfic-toolkit'),
-                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a',
+                'selector' => '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a',
                 'condition' => [
                     'blog_style' => 'design-3',
                 ],
@@ -1208,7 +1208,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', 'em', '%', 'rem' ],
                 'selectors'  => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1234,7 +1234,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more' => 'color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more svg path' => 'fill: {{VALUE}};',
                 ],
@@ -1249,7 +1249,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1276,7 +1276,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Color', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more:hover' => 'color: {{VALUE}};',
                     '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__four .tf-blog-card .tf-content .tf-read-more:hover svg path' => 'fill: {{VALUE}};',
                 ],
@@ -1292,7 +1292,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Background', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'background-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1306,7 +1306,7 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
                 'label'     => __('Border', 'travelfic-toolkit'),
                 'type'      => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .container .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'border-color: {{VALUE}};',
+                    '#tft-site-main-body #page {{WRAPPER}} .tft-latest-posts-design__three .tft-blog-gird-section .tft-post-single-item .tft-content-details .tft-read-more a:hover' => 'border-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'blog_style' => 'design-3',
@@ -1322,298 +1322,6 @@ class Travelfic_Toolkit_LatestNews extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-
-        $args = array(
-            'post_type'   => 'post'
-        );
-
-        // Design
-        if (! empty($settings['blog_style'])) {
-            $design = $settings['blog_style'];
-        }
-
-        // Display posts in category.
-        if (! empty($settings['post_category'])) {
-            $args['category_name'] = implode(',', $settings['post_category']);
-        }
-
-        // Items per page
-        if (! empty($settings['post_items'])) {
-            $args['posts_per_page'] = $settings['post_items'];
-        }
-
-        // Items Order By
-        if (! empty($settings['post_order_by'])) {
-            $args['orderby'] = $settings['post_order_by'];
-        }
-
-        // Items Order
-        if (! empty($settings['post_order'])) {
-            $args['order'] = $settings['post_order'];
-        }
-
-        $query = new \WP_Query($args);
-        $items_count = $settings['post_items'];
-
-        if (!empty($settings['tft_section_title'])) {
-            $tft_sec_title = $settings['tft_section_title'];
-        }
-        $section_title_backdrop = $settings['blog_section_design3_title_backdrop' ] !== 'yes' ? ' tft-no-backdrop' : '';
-        if (!empty($settings['tft_section_subtitle'])) {
-            $tft_sec_subtitle = $settings['tft_section_subtitle'];
-        }
-        if ("design-4" == $design) { ?>
-            <div class="tft-latest-posts-design__four">
-                <?php if ($query->have_posts()) :
-
-                    $row_index = 0;
-                    $post_index = 0;
-
-                    echo '<div class="tf-blog-wrapper">';
-
-                    while ($query->have_posts()) : $query->the_post();
-
-                        // Open new row for every 2 posts
-                        if ($post_index % 2 == 0) {
-
-                            $row_index++;
-
-                            // Odd row → 33/66
-                            $row_class = ($row_index % 2 == 1) ? 'row-33-66' : 'row-66-33';
-
-                            echo '<div class="tf-blog-row ' . esc_attr($row_class) . '">';
-                        }
-
-                        // Determine card type inside row
-                        $is_first_in_row = ($post_index % 2 == 0);
-
-                        // For odd row (33-66)
-                        if ($row_index % 2 == 1) {
-                            $card_class = $is_first_in_row ? 'content-only' : 'with-image';
-                        } else {
-                            // Even row (66-33)
-                            $card_class = $is_first_in_row ? 'with-image' : 'content-only';
-                        }
-                        ?>
-
-                        <div class="tf-blog-card <?php echo esc_attr($card_class); ?>">
-
-                            <?php if ($card_class === 'with-image') : ?>
-                                <div class="tf-thumb">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <?php
-                                        if (get_the_post_thumbnail_url(get_the_ID())) {
-                                            the_post_thumbnail('blog-thumb');
-                                        } else { ?>
-                                            <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
-                                        <?php } ?>
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-
-                            <div class="tf-content">
-                                <h3>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <?php echo esc_html(travelfic_character_limit(get_the_title(), 32)); ?>
-                                    </a>
-                                </h3>
-
-                                <p>
-                                    <?php echo esc_html(travelfic_character_limit(get_the_excerpt(), 110)); ?>
-                                </p>
-
-                                <a href="<?php the_permalink(); ?>" class="tf-read-more">
-                                    <?php esc_html_e('Learn More', 'tourfic'); ?> 
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M7 7H17M17 7V17M17 7L7 17" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <?php
-                        $post_index++;
-
-                        // Close row after 2 posts
-                        if ($post_index % 2 == 0) {
-                            echo '</div>';
-                        }
-
-                    endwhile;
-
-                    // Close row if odd number of posts
-                    if ($post_index % 2 != 0) {
-                        echo '</div>';
-                    }
-
-                    echo '</div>';
-
-                    wp_reset_postdata();
-
-                endif;
-                ?>
-            </div>
-        <?php
-        } elseif ("design-3" == $design) { ?>
-            <div class="tft-latest-posts-design__three">
-                <div class="tft-heading-content">
-                    <?php if (!empty($tft_sec_subtitle)) { ?>
-                        <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                    <?php }
-                    if (!empty($tft_sec_title)) { ?>
-                        <h2 class="tft-section-title tft-title-shape <?php echo esc_attr($section_title_backdrop);?>"><?php echo esc_html($tft_sec_title); ?></h2>
-                    <?php } ?>
-                </div>
-
-                <div class="tft-blog-gird-section">
-                    <?php if ($query->have_posts()) : ?>
-                        <?php while ($query->have_posts()) : $query->the_post(); ?>
-
-                            <div class="tft-col-item tft-post-single-item">
-
-                                <div class="tft-blog-thumbnail">
-                                    <?php
-                                    if (get_the_post_thumbnail_url(get_the_ID())) {
-                                        the_post_thumbnail('blog-thumb');
-                                    } else { ?>
-                                        <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
-                                    <?php } ?>
-                                </div>
-                                <div class="tft-content-details">
-                                    <div class="tft-post-meta">
-                                        <p class="tft-meta"><i class="ri-time-line"></i><?php echo get_the_date('j M, Y'); ?></p>
-                                        <p class="tft-meta"><i class="ri-user-line"></i> <?php echo esc_html__( 'by', 'travelfic-toolkit' ) . ' ' . get_the_author(); ?></p>
-                                    </div>
-                                    <h3 class="tft-title">
-                                        <a href="<?php echo esc_url(get_permalink()); ?>">
-                                            <?php echo esc_html(travelfic_character_limit(get_the_title(), 70)); ?>
-                                        </a>
-                                    </h3>
-                                    <div class="tft-read-more">
-                                        <a href="<?php echo esc_url(get_permalink()); ?>" class="tft-btn tft-btn_gray">
-                                            <?php echo esc_html_e("Read Details", "travelfic-toolkit"); ?>
-                                            <i class="ri-arrow-right-line"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-        <?php
-        } else if ("design-2" == $design) { ?>
-            <div class="tft-latest-posts-design__two">
-                <div class="tft-blog-header">
-                    <div class="tft-news-header tft-heading-content">
-                        <?php
-                        if (!empty($tft_sec_subtitle)) { ?>
-                            <h3 class="tft-section-subtitle"><?php echo esc_html($tft_sec_subtitle); ?></h3>
-                        <?php } if (!empty($tft_sec_title)) { ?>
-                            <h2 class="tft-section-title"><?php echo esc_html($tft_sec_title); ?></h2>
-                        <?php } ?>
-                    </div>
-                    <div class="read-more">
-                        <a href="<?php echo esc_url($settings['view_all_link']['url']); ?>" class="tft-btn tft-large-circle tft-wh-auto tft-flex-column">
-                            <?php echo esc_html_e("View All", "travelfic-toolkit"); ?>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="57" height="16" viewBox="0 0 57 16" fill="none">
-                                    <path d="M56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM0 9H56V7H0V9Z" fill="#FDF9F4" />
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="tft-blog-gird-section blog-grid-item-<?php echo esc_attr($items_count); ?>">
-                    <?php if ($query->have_posts()) : ?>
-                        <?php while ($query->have_posts()) : $query->the_post(); ?>
-
-                            <div class="tft-col-item tft-post-single-item">
-                                <a id="post-<?php the_ID(); ?>" href="<?php echo esc_url(get_permalink()); ?>">
-
-                                    <div class="tft-blog-thumbnail">
-                                        <?php
-                                        if (get_the_post_thumbnail_url(get_the_ID())) {
-                                            the_post_thumbnail('blog-thumb');
-                                        } else { ?>
-                                            <img src="<?php echo esc_url(site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png'); ?>" alt="Post">
-                                        <?php } ?>
-                                    </div>
-                                    <div class="tft-content-details">
-                                        <p class="tft-meta"><i class="fas fa-clock"></i> <?php echo get_the_date('j M, Y'); ?></p>
-                                        <h3 class="tft-title">
-                                            <?php
-                                            echo esc_html(travelfic_character_limit(get_the_title(), 22));
-                                            ?>
-                                        </h3>
-                                        <?php
-                                        // $travelfic_blog_content = wp_trim_words(get_the_content(), 15, '<span> ...Read more</span>');
-
-                                        $blog_single_cont = wp_strip_all_tags(get_the_content());
-
-                                        if (strlen($blog_single_cont) > 28) {
-                                            $blog_single_cont = substr($blog_single_cont, 0, 28) . '<span> ...Read more</span>';
-                                        } else {
-                                            $blog_single_cont = $blog_single_cont;
-                                        }
-                                        echo '<p class="content">' . wp_kses_post($blog_single_cont) . '</p>';
-
-                                        // echo '<p class="content">' . wp_kses_post( $travelfic_blog_content ) . '</p>';
-                                        ?>
-                                    </div>
-                                </a>
-                            </div>
-
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                </div>
-            </div>
-        <?php
-        } else { ?>
-            <style>
-                .tft-latest-posts .tft-post-thumbnail a::before {
-                    background: linear-gradient(360deg, <?php echo esc_attr($settings['news_item_card_gradient_1']); ?> -9.6%, <?php echo esc_attr($settings['news_item_card_gradient_2']); ?> 109.78%);
-                }
-
-                .tft-latest-posts .tft-post-thumbnail a:hover::before {
-                    background: linear-gradient(360deg, <?php echo esc_attr($settings['news_item_card_gradient_1_hover']); ?> -9.6%, <?php echo esc_attr($settings['news_item_card_gradient_2_hover']); ?> 109.78%);
-                }
-
-                .tft-latest-posts .tft-post-thumbnail img {
-                    border-radius: <?php echo esc_attr($settings['news_card_radius']); ?>px;
-                }
-            </style>
-
-            <div class="tft-latest-posts-design__one tft-customizer-typography">
-                <div class="tft-latest-posts">
-                    <div id="items-count-<?php echo esc_html($items_count); ?>" class="tft-latest-post-items">
-                        <?php if ($query->have_posts()) : ?>
-                            <?php while ($query->have_posts()) : $query->the_post(); ?>
-                                <div class="tft-col-item tft-post-single-item">
-                                    <div class="tft-post-thumbnail tft-thumbnail">
-                                        <div class="tft-thumbnail-url">
-                                            <a id="post-<?php the_ID(); ?>" <?php post_class('single-blog'); ?> href="<?php echo esc_url(get_permalink()); ?>">
-                                                <?php the_post_thumbnail('blog-thumb'); ?>
-                                                <div class="tft-post-content-wrap tft-content-box">
-                                                    <div class="tft-meta-wrap">
-                                                        <p class="tft-meta tft-color-white"><i class="fas fa-clock"></i> <?php echo get_the_date(); ?></p>
-                                                    </div>
-                                                    <div class="tft-post-title">
-                                                        <h3 class="tft-title"><?php the_title(); ?></h3>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endwhile; ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
-<?php
+        \Travelfic_Toolkit\Components\LatestNews::render( $settings, 'elementor' );
     }
 }
