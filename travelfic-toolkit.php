@@ -4,7 +4,7 @@
  * Plugin URI: https://tourfic.site/travelfic/
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
- * Version: 1.4.2
+ * Version: 1.5.0
  * Tested up to: 7.0
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
@@ -24,7 +24,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_ASSETS', TRAVELFIC_TOOLKIT_URL . 'assets/' );
-define( 'TRAVELFIC_TOOLKIT_VERSION', '1.4.2' );
+define( 'TRAVELFIC_TOOLKIT_VERSION', '1.5.0' );
 
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
     require_once __DIR__ . '/vendor/autoload.php';
@@ -35,6 +35,9 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
  */
 function travelfic_toolkit_settings() {
     $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
+    if ( $current_active_theme == 'bricks' || $current_active_theme == 'bricks-child' ) {
+        return;
+    }
     if($current_active_theme == 'travelfic' || $current_active_theme == 'travelfic-child'){
         $theme_folder = wp_get_theme( 'travelfic' );
     }elseif($current_active_theme == 'ultimate-hotel-booking' || $current_active_theme == 'ultimate-hotel-booking-child'){
@@ -105,9 +108,23 @@ require_once dirname(__FILE__) . '/inc/customizer/customizer-header-rander.php';
 require_once dirname(__FILE__) . '/inc/customizer/customizer-footer-rander.php';
 
 /**
+ * Shared Components (used by both Elementor and Bricks widgets)
+ */
+foreach ( glob( dirname( __FILE__ ) . '/inc/Components/*.php' ) ?: [] as $_tf_component_file ) {
+    require_once $_tf_component_file;
+}
+unset( $_tf_component_file );
+
+/**
  * Elementor Widgets
 */
 require_once dirname( __FILE__ ) . '/inc/elementor-widgets.php';
+/**
+ * Bricks Widgets
+*/
+if ( file_exists( dirname( __FILE__ ) . '/inc/bricks-widgets.php' ) ) {
+    require_once dirname( __FILE__ ) . '/inc/bricks-widgets.php';
+}
 /**
  * Plugin Functions
 */
@@ -205,7 +222,11 @@ function travelfic_toolkit_front_page_script() {
             'activated'      => __( 'Activated', 'travelfic-toolkit' ),
             'install_failed' => __( 'Install failed', 'travelfic-toolkit' ),
             'actives_plugins' => $travelfic_toolkit_active_plugins,
-            'facts' => $travelfic_toolkit_facts
+            'facts' => $travelfic_toolkit_facts,
+            'current_theme'  => !empty(get_option('stylesheet')) ? get_option('stylesheet') : '',
+            'bricks_installed' => wp_get_theme( 'bricks' )->exists() ? 'yes' : 'no',
+            'bricks_active' => ( get_stylesheet() === 'bricks' || get_template() === 'bricks' ) ? 'yes' : 'no',
+            'bricks_activate_url' => wp_nonce_url( admin_url( 'themes.php?action=activate&stylesheet=bricks' ), 'switch-theme_bricks' ),
         )
     );
 

@@ -167,11 +167,9 @@
                             line-height: 1.2;
                             color: $tft-color-heading;
                             margin: 0;
-                            height: 64%;
 
                             @media #{$max991} {
                                 font-size: 2rem;
-                                height: 40%;
                             }
                         }
                     }
@@ -286,6 +284,9 @@
                         width: 100%;
                         border-bottom-left-radius: 1000px;
                         border-bottom-right-radius: 1000px;
+                        min-height: 600px;
+                        object-fit: cover;
+                        object-position: center;
 
                         @media #{$max767} {
                             @include bd-radius(20px);
@@ -327,6 +328,10 @@
 
                     img {
                         @include box-circle();
+                        width: 350px;
+                        height: 350px;
+                        object-fit: cover;
+                        object-position: center;
                     }
                 }
             }

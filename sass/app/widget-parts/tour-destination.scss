@@ -381,6 +381,9 @@
                         bottom: 35px;
                         left: 35px;
                         color: $tft-color-white;
+                        flex-direction: column;
+                        gap: 8px;
+
                         h3 {
                             font-size: 1.5rem;
                             font-weight: 500;

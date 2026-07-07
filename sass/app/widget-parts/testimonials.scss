@@ -869,6 +869,7 @@
                 top: unset;
                 transform: inherit;
                 transition: all 0.2s ease;
+                text-align: center;
                 @media #{$max575} {
                     width: 54px;
                     height: 54px;
