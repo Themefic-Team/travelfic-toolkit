@@ -3,7 +3,7 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 7.0
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -136,6 +136,10 @@ Yes, you can use Travelfic as a WordPress theme specifically designed for travel
 
 Yes, You can create your own professional tour operator and travel agency website within 59 minutes, just like Booking.com, Agoda, Hotels.com, Airbnb, etc.
 
+= Does Tourfic Toolkit support Elementor and Bricks Builder? =
+
+Yes, Tourfic Toolkit supports both Elementor and Bricks Builder. You can create travel, car rental, hotel, tour, and apartment booking websites using dedicated widgets and pre-built templates for these page builders.
+
 = Is the free version supported? =
 
 We provide full support on the WordPress.org forums. In addition, please feel free to post questions or bug reports through [Our Website](https://portal.themefic.com/support/) or [Facebook Group](https://www.facebook.com/groups/tourfic/). For details, please read our [Support Policy](https://themefic.com/support-policy/).
@@ -147,6 +151,10 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.5.1 – July 27, 2026 =
+
+- Compatibility: Added compatibility with Elementor 4.2.
 
 = 1.5.0 – July 07, 2026 =
 
@@ -214,35 +222,6 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 - Fixed: Responsive design issues.
 - Fixed: Hotel, tour, and apartment search price range issue.
 - Fixed: Search and filter issue.
-
-= 1.2.5 - 24 June 2025 =
-
-- Fixed: Testimonial widget slider arrow issue.
-- Updated: Slider arrow color for improved visibility.
-
-= 1.2.4 - 20 April 2025 =
-
-- Fixed: Hero section button issue on mobile devices.
-
-= 1.2.3 - 08 April 2025 =
-
-- Fixed: Security vulnerability issue has been resolved.
-
-= 1.2.2 - 08 March 2025 =
-
-- Fixed: The import/export issue has been resolved.
-- Improved: System stability for better performance.
-
-= 1.2.1 - 06 March 2025 =
-
-- Fixed: Price currency issue has been resolved.
-- Fixed: Car layout responsiveness issue has been fixed.
-
-= 1.2.0 - 19 January 2025 =
-
-- Introduced: A new demo for Tourfic called "Tragaway".
-- Improved: System stability has been improved.
-- Fixed: Minor bugs and issues have been fixed.
 
 = 1.0.0 =
 
