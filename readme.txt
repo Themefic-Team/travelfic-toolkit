@@ -136,6 +136,10 @@ Yes, you can use Travelfic as a WordPress theme specifically designed for travel
 
 Yes, You can create your own professional tour operator and travel agency website within 59 minutes, just like Booking.com, Agoda, Hotels.com, Airbnb, etc.
 
+= Does Tourfic Toolkit support Elementor and Bricks Builder? =
+
+Yes, Tourfic Toolkit supports both Elementor and Bricks Builder. You can create travel, car rental, hotel, tour, and apartment booking websites using dedicated widgets and pre-built templates for these page builders.
+
 = Is the free version supported? =
 
 We provide full support on the WordPress.org forums. In addition, please feel free to post questions or bug reports through [Our Website](https://portal.themefic.com/support/) or [Facebook Group](https://www.facebook.com/groups/tourfic/). For details, please read our [Support Policy](https://themefic.com/support-policy/).
