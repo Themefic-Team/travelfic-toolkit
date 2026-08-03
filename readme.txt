@@ -3,12 +3,12 @@ Contributors: themefic, kamrul0424, jahidcse, hasanet, mdashikul
 Tags: tour operator, travel, hotel reservation, travel itinerary, tour packages
 Requires at least: 5.4
 Tested up to: 7.0
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A companion plugin to the Travelfic and Ultimate Hotel Booking with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
+Companion plugin for Travelfic and Ultimate Hotel Booking to build hotel, tour, travel, and accommodation booking websites on WordPress.
 
 == Description ==
 
@@ -17,7 +17,7 @@ A companion plugin to the Travelfic and Ultimate Hotel Booking with which you ca
 👉 Theme Live Demo Link: [Click Here](https://theme-demo.themefic.com/?utm_source=wp_readme&utm_medium=toolkit_top_slot&utm_campaign=demo_link)
 👉 Our Travel Booking Engine: [Tourfic](https://wordpress.org/plugins/tourfic/)
 👉 Explore Pro: [Play with Backend Options](https://app.instawp.io/launch?t=tourfic-backend-demo&d=v2)
-👉 Video Guide on [Youtube](https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N)
+👉 Video Guide on [YouTube](https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N)
 👉 Our [Documentation](https://themefic.com/docs/tourfic/?utm_source=wp_readme&utm_medium=toolkit_top_slot&utm_campaign=plugin_docs)
 👉 Get Support: [Click Here](https://portal.themefic.com/support/?utm_source=wp_readme&utm_medium=toolkit_top_slot&utm_campaign=plugin_support)
 👉 Join Our [Facebook Group](https://www.facebook.com/groups/tourfic)
@@ -151,6 +151,10 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 3. Demo Importing Finished
 
 == Changelog ==
+
+= 1.5.3 – August 03, 2026 =
+
+- Updated: readme.txt information.
 
 = 1.5.2 – August 03, 2026 =
 
