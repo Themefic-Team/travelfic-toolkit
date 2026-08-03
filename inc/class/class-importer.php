@@ -38,6 +38,22 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			add_action( 'wp_head', array( $this, 'prepare_travelfic_elementor_background_images' ));
 		}
 
+		/**
+		 * Verify an AJAX demo-import request.
+		 */
+		private function verify_import_request() {
+			check_ajax_referer( 'updates', '_ajax_nonce' );
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error(
+					array(
+						'message' => esc_html__( 'You are not allowed to import demo content.', 'travelfic-toolkit' ),
+					),
+					403
+				);
+			}
+		}
+
 		public function switch_to_travelfic_theme() {
 			check_ajax_referer('updates', '_ajax_nonce');
 			if ( current_user_can( 'switch_themes' ) && current_user_can( 'install_themes' ) ) {
@@ -204,11 +220,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * @since 1.0.0
 		 */
 		public function prepare_bricks_template_import() {
-			check_ajax_referer( 'updates', '_ajax_nonce' );
-
-			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_send_json_error( 'Not allowed.' );
-			}
+			$this->verify_import_request();
 
 			$template_key = ! empty( $_POST['template_version'] ) ? sanitize_key( $_POST['template_version'] ) : 1;
 			$base_url     = 'https://api.themefic.com/tourfic/demos/v' . $template_key . '/';
@@ -482,7 +494,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Global Settings
 		 */
 		public function prepare_travelfic_global_settings() {
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/settings-v2.json';
             $settings_files = wp_remote_get( $demo_data_url );
@@ -506,7 +518,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Customizer Importer Settings
 		 */
 		public function prepare_travelfic_customizer_settings() {
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
             remove_theme_mods();
             $prefix = 'travelfic_customizer_settings_';
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
@@ -625,7 +637,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_pages_imports() {
 
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
 
@@ -1031,7 +1043,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Menu importer Settings
 		 */
 		public function prepare_travelfic_menus_imports() {
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
 
@@ -1157,7 +1169,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Widget importer Settings
 		 */
 		public function prepare_travelfic_widgets_imports() {
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
             
             self::travelfic_toolkit_clear_widgets();
             $template_key  = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
@@ -1309,7 +1321,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_hotel_imports() {
 
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
 
             $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
             $hotels_post  = array(
@@ -1968,7 +1980,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_tour_imports() {
 
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
 
             $tours_post = array(
                 'post_type'      => 'tf_tours',
@@ -2301,7 +2313,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Car importer Settings
 		 */
         public function prepare_travelfic_car_imports() {
-            check_ajax_referer('updates', '_ajax_nonce');
+			$this->verify_import_request();
 
             $tours_post = array(
                 'post_type'      => 'tf_carrental',
