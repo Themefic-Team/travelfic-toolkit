@@ -508,7 +508,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         $imported_data['search-result-page'] = $tf_search_page->ID;
                     }
                 }
-                update_option( 'tf_settings', $imported_data );
+                update_option( 'tourfic_settings', $imported_data );
                 wp_send_json_success($imported_data);
                 die();
             }

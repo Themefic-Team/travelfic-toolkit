@@ -1145,11 +1145,7 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 			'carrentals' => esc_html__( 'Car', 'travelfic-toolkit' ),
 		);
 
-		if ( function_exists( 'is_tf_pro' ) && is_tf_pro() ) {
-			$types['booking']   = esc_html__( 'Booking.com', 'travelfic-toolkit' );
-			$types['tp-flight'] = esc_html__( 'TravelPayouts Flight', 'travelfic-toolkit' );
-			$types['tp-hotel']  = esc_html__( 'TravelPayouts Hotel', 'travelfic-toolkit' );
-		}
+		$types = apply_filters( 'travelfic_slider_search_types', $types, 'bricks' );
 
 		return $types;
 	}
@@ -1166,4 +1162,3 @@ class Travelfic_Toolkit_Bricks_SliderHero extends \Bricks\Element {
 		echo '</div>';
 	}
 }
-

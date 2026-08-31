@@ -29,7 +29,7 @@ class Cars {
 		$sub_title = ! empty( $settings['sub_title'] ) ? $settings['sub_title'] : '';
 		?>
 		<div class="tf-archive-template__one">
-			<?php echo do_shortcode( '[tf_cars style="' . esc_attr( $style ) . '" count="' . esc_attr( $per_pages ) . '" title="' . esc_attr( $sec_title ) . '" subtitle="' . esc_attr( $sub_title ) . '" ]' ); ?>
+			<?php echo do_shortcode( '[tourfic_cars style="' . esc_attr( $style ) . '" count="' . esc_attr( $per_pages ) . '" title="' . esc_attr( $sec_title ) . '" subtitle="' . esc_attr( $sub_title ) . '" ]' ); ?>
 		</div>
 		<?php
 	}

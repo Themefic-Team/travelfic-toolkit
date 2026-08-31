@@ -341,13 +341,13 @@ class Hotels {
 											<span>
 												<?php
 												if ( "tf_hotel" == $post_type_setting ) {
-													echo ! empty( tf_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tf_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
+													echo ! empty( tourfic_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tourfic_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
 												}
 												if ( "tf_tours" == $post_type_setting ) {
-													echo ! empty( tf_data_types( $option_meta['location'] )['address'] ) ? esc_html( travelfic_character_limit( tf_data_types( $option_meta['location'] )['address'], 40 ) ) : '';
+													echo ! empty( tourfic_data_types( $option_meta['location'] )['address'] ) ? esc_html( travelfic_character_limit( tourfic_data_types( $option_meta['location'] )['address'], 40 ) ) : '';
 												}
 												if ( "tf_apartment" == $post_type_setting ) {
-													echo ! empty( tf_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tf_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
+													echo ! empty( tourfic_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tourfic_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
 												}
 												?>
 											</span>
@@ -435,7 +435,7 @@ class Hotels {
 											?>
 											<?php
 											if ( "tf_apartment" == $post_type_setting ) {
-												$amenitiess = ! empty( $option_meta['amenities'] ) ? tf_data_types( $option_meta['amenities'] ) : '';
+												$amenitiess = ! empty( $option_meta['amenities'] ) ? tourfic_data_types( $option_meta['amenities'] ) : '';
 												if ( ! empty( $amenitiess ) ) {
 													$rm_features = [];
 													foreach ( $amenitiess as $key => $apartment ) {
@@ -603,13 +603,13 @@ class Hotels {
 											<span>
 												<?php
 												if ( "tf_hotel" == $post_type_setting ) {
-													echo ! empty( tf_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tf_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
+													echo ! empty( tourfic_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tourfic_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
 												}
 												if ( "tf_tours" == $post_type_setting ) {
-													echo ! empty( tf_data_types( $option_meta['location'] )['address'] ) ? esc_html( travelfic_character_limit( tf_data_types( $option_meta['location'] )['address'], 40 ) ) : '';
+													echo ! empty( tourfic_data_types( $option_meta['location'] )['address'] ) ? esc_html( travelfic_character_limit( tourfic_data_types( $option_meta['location'] )['address'], 40 ) ) : '';
 												}
 												if ( "tf_apartment" == $post_type_setting ) {
-													echo ! empty( tf_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tf_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
+													echo ! empty( tourfic_data_types( $option_meta['map'] )['address'] ) ? esc_html( travelfic_character_limit( tourfic_data_types( $option_meta['map'] )['address'], 40 ) ) : '';
 												}
 												?>
 											</span>

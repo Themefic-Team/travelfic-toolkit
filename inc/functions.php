@@ -17,7 +17,7 @@ if (! function_exists('travelfic_get_meta')) {
 
 if (! function_exists('travelfic_get_opt')) {
     function travelfic_get_opt( $option = '', $default = null ) {
-        $options = get_option( 'tf_settings' );
+        $options = get_option( 'tourfic_settings' );
         return ( isset( $options[ $option ] ) ) ? $options[ $option ] : $default;
     }
 }
@@ -169,7 +169,7 @@ if (!class_exists("\Tourfic\App\TF_Review")) {
         function tf_based_on_text($number)
         {
             $comments_title = apply_filters(
-                'tf_comment_form_title',
+                'tourfic_comment_form_title',
                 sprintf( // WPCS: XSS OK.
                     /* translators: 1: number of comments */
                     esc_html(_nx('%1$s review', '%1$s reviews', $number, 'comments title', 'travelfic-toolkit')),
@@ -185,20 +185,20 @@ if (!class_exists("\Tourfic\App\TF_Review")) {
         {
 
             foreach ($comments as $comment) {
-                $tf_comment_meta = get_comment_meta($comment->comment_ID, TF_COMMENT_META, true);
-                $tf_base_rate    = get_comment_meta($comment->comment_ID, TF_BASE_RATE, true);
+                $tf_comment_meta = get_comment_meta($comment->comment_ID, TOURFIC_COMMENT_META, true);
+                $tf_base_rate    = get_comment_meta($comment->comment_ID, TOURFIC_BASE_RATE, true);
 
                 if ($tf_comment_meta) {
-                    $total_rate[] = tf_average_rating_change_on_base(tf_average_ratings($tf_comment_meta), $tf_base_rate);
+                    $total_rate[] = tourfic_average_rating_change_on_base(tourfic_average_ratings($tf_comment_meta), $tf_base_rate);
                 }
             }
 
-            return tf_average_ratings($total_rate);
+            return tourfic_average_ratings($total_rate);
         }
     }
 
-    if (!function_exists('tf_average_rating_change_on_base')) {
-        function tf_average_rating_change_on_base($rating, $base_rate = 5)
+    if (!function_exists('tourfic_average_rating_change_on_base')) {
+        function tourfic_average_rating_change_on_base($rating, $base_rate = 5)
         {
 
             $settings_base = ! empty(tfopt('r-base')) ? tfopt('r-base') : 5;
@@ -216,8 +216,8 @@ if (!class_exists("\Tourfic\App\TF_Review")) {
         }
     }
 
-    if (!function_exists('tf_average_ratings')) {
-        function tf_average_ratings($ratings = [])
+    if (!function_exists('tourfic_average_ratings')) {
+        function tourfic_average_ratings($ratings = [])
         {
 
             if (! $ratings) {

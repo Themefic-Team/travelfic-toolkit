@@ -114,11 +114,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
             'carrentals'  => __('Car', 'travelfic-toolkit'),
         );
 
-        if (function_exists('is_tf_pro') && is_tf_pro()) {
-            $types['booking'] = __('Booking.com', 'travelfic-toolkit');
-            $types['tp-flight'] = __('TravelPayouts Flight', 'travelfic-toolkit');
-            $types['tp-hotel'] = __('TravelPayouts Hotel', 'travelfic-toolkit');
-        }
+		$types = apply_filters( 'travelfic_slider_search_types', $types, 'elementor' );
 
         return $types;
     }

@@ -117,7 +117,7 @@ class PopularTours {
 											<p class="tft-content">
 												<i class="fas fa-location-arrow"></i>
 												<?php
-												$tour_location_address = (isset($option_meta['location']) && ! empty( tf_data_types( $option_meta['location'] ) )) ? tf_data_types( $option_meta['location'] )['address'] : '';
+												$tour_location_address = (isset($option_meta['location']) && ! empty( tourfic_data_types( $option_meta['location'] ) )) ? tourfic_data_types( $option_meta['location'] )['address'] : '';
 												if ( ! empty( $tour_location_address ) ) {
 													echo esc_html( travelfic_character_limit( $tour_location_address, 45 ) );
 												}

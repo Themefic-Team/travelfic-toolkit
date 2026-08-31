@@ -28,7 +28,7 @@ class SliderHero {
 
 		$design = ! empty( $settings['slider_style'] ) ? $settings['slider_style'] : 'design-1';
 
-		// Build the [tf_search_form] shortcode tab-title attributes.
+		// Build the [tourfic_search_form] shortcode tab-title attributes.
 		$tab_attrs  = self::get_tab_attrs( $settings );
 
 		// Resolve the search-box enabled flag (differs per builder).
@@ -77,7 +77,7 @@ class SliderHero {
 				<?php endif; ?>
 				<?php if ( $show_search ) : ?>
 					<div class="tft-search-form">
-						<?php echo do_shortcode( '[tf_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . 'design="2"]' ); ?>
+						<?php echo do_shortcode( '[tourfic_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . 'design="2"]' ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
@@ -99,7 +99,7 @@ class SliderHero {
 				<?php endif; ?>
 				<?php if ( $show_search ) : ?>
 					<div class="tft-search-form">
-						<?php echo do_shortcode( '[tf_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . 'design="3"]' ); ?>
+						<?php echo do_shortcode( '[tourfic_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . 'design="3"]' ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
@@ -231,7 +231,7 @@ class SliderHero {
 
 		<?php if ( $show_search ) : ?>
 			<div class="tft-search-form">
-				<?php echo do_shortcode( '[tf_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . 'design="4"]' ); ?>
+				<?php echo do_shortcode( '[tourfic_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . 'design="4"]' ); ?>
 			</div>
 		<?php endif; ?>
 
@@ -276,7 +276,7 @@ class SliderHero {
 					</div>
 				<?php endif; ?>
 				<div class="tft-search-form">
-					<?php echo do_shortcode( '[tf_search_form type="room" design="5"]' ); ?>
+					<?php echo do_shortcode( '[tourfic_search_form type="room" design="5"]' ); ?>
 				</div>
 			</div>
 		</section>
@@ -345,7 +345,7 @@ class SliderHero {
 		<?php if ( $show_search ) : ?>
 			<div class="tft-search-box tft-hero-design__one">
 				<div class="tft-search-box-inner">
-					<?php echo do_shortcode( '[tf_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . ']' ); ?>
+					<?php echo do_shortcode( '[tourfic_search_form type="' . esc_attr( $type ) . '" ' . $tab_attrs . ']' ); ?>
 				</div>
 			</div>
 		<?php endif; ?>
@@ -483,7 +483,7 @@ class SliderHero {
 	}
 
 	/**
-	 * Build the comma-separated type string for [tf_search_form].
+	 * Build the comma-separated type string for [tourfic_search_form].
 	 */
 	private static function get_type( array $settings ): string {
 		$type_raw = $settings['type'] ?? [ 'all' ];
@@ -494,7 +494,7 @@ class SliderHero {
 	}
 
 	/**
-	 * Build the extra tab-title attribute string for [tf_search_form].
+	 * Build the extra tab-title attribute string for [tourfic_search_form].
 	 */
 	private static function get_tab_attrs( array $settings ): string {
 		$attrs = '';

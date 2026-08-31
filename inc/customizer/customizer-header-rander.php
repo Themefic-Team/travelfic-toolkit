@@ -15,9 +15,9 @@ class Travelfic_Customizer_Header
         $design_2_registration_url = get_theme_mod($travelfic_prefix . 'design_2_registration_url', '/my-account');
         $design_2_login_url = get_theme_mod($travelfic_prefix . 'design_2_login_url', '/my-account');
         
-        $dashboard_url = (get_option("tf_dashboard_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
-        $login_url = (get_option("tf_login_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_login_page_id")) : $design_2_login_url;
-        $registration_url = (get_option("tf_register_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_register_page_id")) : $design_2_registration_url;
+        $dashboard_url = (get_option("tourfic_dashboard_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tourfic_dashboard_page_id")) : site_url('my-account/');
+        $login_url = (get_option("tourfic_login_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tourfic_login_page_id")) : $design_2_login_url;
+        $registration_url = (get_option("tourfic_register_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tourfic_register_page_id")) : $design_2_registration_url;
 
         if ( in_array('subscriber', $user_roles) ) {
             $dashboard_url = site_url('my-account/');
@@ -528,7 +528,7 @@ class Travelfic_Customizer_Header
 
         $user = wp_get_current_user();
         $user_roles = $user->roles;
-        $dashboard_url = (get_option("tf_dashboard_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tf_dashboard_page_id")) : site_url('my-account/');
+        $dashboard_url = (get_option("tourfic_dashboard_page_id") && $is_tourfic_pro_active) ? get_permalink(get_option("tourfic_dashboard_page_id")) : site_url('my-account/');
         if ( in_array('subscriber', $user_roles) ) {
             $dashboard_url = site_url('my-account/');
         }

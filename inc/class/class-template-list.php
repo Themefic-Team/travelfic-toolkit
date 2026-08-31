@@ -471,9 +471,9 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		 * redirect to set up wizard when active plugin
 		 */
 		public function travelfic_toolkit_activation_redirect() {
-            if ( ! get_option( 'tf_setup_wizard' ) && ! get_option( 'tf_settings' ) ) {
-                update_option( 'tf_setup_wizard', 'active' );
-                update_option( 'tf_settings', '' );
+            if ( ! get_option( 'tourfic_setup_wizard' ) && ! get_option( 'tourfic_settings' ) ) {
+                update_option( 'tourfic_setup_wizard', 'active' );
+                update_option( 'tourfic_settings', '' );
             }
 			if ( ! get_option( 'travelfic_toolkit_template_wizard' ) ) {
 				update_option( 'travelfic_toolkit_template_wizard', 'active' );

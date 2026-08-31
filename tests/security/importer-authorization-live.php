@@ -57,7 +57,7 @@ function travelfic_import_live_site_snapshot() {
 				'page_for_posts'             => get_option( 'page_for_posts' ),
 				'permalink_structure'        => get_option( 'permalink_structure' ),
 				'sidebars_widgets'           => get_option( 'sidebars_widgets' ),
-				'tf_settings'                => get_option( 'tf_settings' ),
+				'tf_settings'                => get_option( 'tourfic_settings' ),
 				'travelfic_template_version' => get_option( 'travelfic_template_version' ),
 				'theme_mods'                 => get_option( 'theme_mods_' . get_option( 'stylesheet' ) ),
 				'post_counts'                => $post_counts,
