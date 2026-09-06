@@ -385,6 +385,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		 */
 		private function travelfic_setup_theme() {
             $this->template_list_header_footer();
+			$tourfic_settings_page = defined( 'TOURFIC_SETTINGS_MENU_SLUG' ) ? TOURFIC_SETTINGS_MENU_SLUG : 'tf_settings';
 		?>
         <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png'); ?>), #F8FAFC 50% / cover no-repeat;">
             <div class="travelfic-template-import-container">
@@ -450,7 +451,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     </g>
                                 </svg>
                             </a>
-                            <a href="<?php echo esc_url(admin_url('admin.php?page=tf_settings')); ?>">
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $tourfic_settings_page ) ); ?>">
                                 <?php esc_html_e("Tourfic Settings", "travelfic-toolkit"); ?>
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
