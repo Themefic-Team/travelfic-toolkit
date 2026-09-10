@@ -26,6 +26,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		public function __construct() {
 			add_action( 'admin_menu', [ $this, 'travelfic_template_list_menu' ], 100 );
 			add_filter( 'woocommerce_enable_setup_wizard', '__return_false' );
+			add_action( 'admin_init', [ $this, 'travelfic_tourfic_settings_redirect' ], 5 );
 			add_action( 'admin_init', [ $this, 'travelfic_toolkit_activation_redirect' ] );
 //			add_action( 'wp_ajax_tf_setup_wizard_submit', [ $this, 'tf_setup_wizard_submit_ajax' ] );
 			add_action( 'in_admin_header', [ $this, 'remove_notice' ], 1000 );
@@ -385,7 +386,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		 */
 		private function travelfic_setup_theme() {
             $this->template_list_header_footer();
-			$tourfic_settings_page = defined( 'TOURFIC_SETTINGS_MENU_SLUG' ) ? TOURFIC_SETTINGS_MENU_SLUG : 'tf_settings';
+			$tourfic_settings_url = wp_nonce_url(
+				admin_url( 'admin.php?page=travelfic-template-list&travelfic_tourfic_settings=1' ),
+				'travelfic_tourfic_settings_redirect'
+			);
 		?>
         <div class="travelfic-template-list-wrapper" id="travelfic-template-importing-wrapper" style="background: url(<?php echo esc_url(TRAVELFIC_TOOLKIT_URL . 'assets/admin/img/template_list_bg.png'); ?>), #F8FAFC 50% / cover no-repeat;">
             <div class="travelfic-template-import-container">
@@ -451,7 +455,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     </g>
                                 </svg>
                             </a>
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=' . $tourfic_settings_page ) ); ?>">
+                            <a href="<?php echo esc_url( $tourfic_settings_url ); ?>">
                                 <?php esc_html_e("Tourfic Settings", "travelfic-toolkit"); ?>
                                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="content">
@@ -466,6 +470,36 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
             </div>
         </div>
         <?php
+		}
+
+		/**
+		 * Redirect to the settings page registered by the active Tourfic version.
+		 */
+		public function travelfic_tourfic_settings_redirect() {
+			$redirect_requested = isset( $_GET['travelfic_tourfic_settings'] )
+				? sanitize_key( wp_unslash( $_GET['travelfic_tourfic_settings'] ) )
+				: '';
+
+			if ( '1' !== $redirect_requested ) {
+				return;
+			}
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die(
+					esc_html__( 'You are not allowed to access Tourfic settings.', 'travelfic-toolkit' ),
+					esc_html__( 'Access denied', 'travelfic-toolkit' ),
+					array( 'response' => 403 )
+				);
+			}
+
+			check_admin_referer( 'travelfic_tourfic_settings_redirect' );
+
+			$tourfic_settings_page = defined( 'TOURFIC_SETTINGS_MENU_SLUG' )
+				? sanitize_key( TOURFIC_SETTINGS_MENU_SLUG )
+				: 'tf_settings';
+
+			wp_safe_redirect( admin_url( 'admin.php?page=' . $tourfic_settings_page ) );
+			exit;
 		}
 
 		/**
