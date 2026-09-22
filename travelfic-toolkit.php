@@ -18,7 +18,7 @@
 if ( !defined( 'ABSPATH' ) ) {
     die( '-1' );
 }
-
+ 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
