@@ -155,7 +155,7 @@ class Rooms {
 										<?php if ( ! empty( $min_discount_amount ) ) : ?>
 											<div class="tf-room-off">
 												<span>
-													<?php echo 'percent' === $min_discount_type ? esc_html( $min_discount_amount ) . '%' : wp_kses_post( wc_price( $min_discount_amount ) ); ?><?php esc_html_e( ' Off ', 'tourfic' ); ?>
+													<?php echo 'percent' === $min_discount_type ? esc_html( $min_discount_amount ) . '%' : wp_kses_post( wc_price( $min_discount_amount ) ); ?><?php esc_html_e( ' Off ', 'travelfic-toolkit' ); ?>
 												</span>
 											</div>
 										<?php endif; ?>

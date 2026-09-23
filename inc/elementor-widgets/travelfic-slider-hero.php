@@ -349,7 +349,7 @@ class Travelfic_Toolkit_SliderHero extends \Elementor\Widget_Base
         $social_repeater->add_control(
             'social_media_label',
             [
-				'label' => esc_html__( 'Icon', 'textdomain' ),
+				'label' => esc_html__( 'Icon', 'travelfic-toolkit' ),
 				'type' => \Elementor\Controls_Manager::ICONS,
 				'default' => [
 					'value' => 'fab fa-wordpress-simple',

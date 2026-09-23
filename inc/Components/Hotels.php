@@ -308,7 +308,7 @@ class Hotels {
 													<span class="tft-color-text">
 														<?php echo ( class_exists( "\Tourfic\App\TF_Review" ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( travelfic_toolkit_total_avg_rating( $comments ) ); ?>
 													</span>
-													<?php echo esc_html__( 'out of', 'tourfic' ); ?> <?php class_exists( "\Tourfic\App\TF_Review" ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( travelfic_toolkit_based_on_text( count( $comments ) ) ); ?>
+													<?php echo esc_html__( 'out of', 'travelfic-toolkit' ); ?> <?php class_exists( "\Tourfic\App\TF_Review" ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( travelfic_toolkit_based_on_text( count( $comments ) ) ); ?>
 												</span>
 											</div>
 										<?php } else { ?>
@@ -316,9 +316,9 @@ class Hotels {
 												<span class="tft-color-text">
 													<i class="fas fa-star"></i>
 													<span class="tft-color-text">
-														<?php echo esc_html__( '0.0', 'tourfic' ); ?>
+														<?php echo esc_html__( '0.0', 'travelfic-toolkit' ); ?>
 													</span>
-													<?php echo esc_html__( 'out of 0 review', 'tourfic' ); ?>
+													<?php echo esc_html__( 'out of 0 review', 'travelfic-toolkit' ); ?>
 												</span>
 											</div>
 										<?php } ?>
