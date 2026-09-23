@@ -61,7 +61,7 @@ class LatestNews {
 		$tft_sec_subtitle = ! empty( $settings['tft_section_subtitle'] ) ? $settings['tft_section_subtitle'] : '';
 
 		// Backdrop switcher logic via centralized helper function
-		$has_backdrop = tft_get_switcher_value( $settings, 'blog_section_design3_title_backdrop', 'yes', $builder );
+		$has_backdrop = travelfic_toolkit_get_switcher_value( $settings, 'blog_section_design3_title_backdrop', 'yes', $builder );
 		$section_title_backdrop = 'yes' !== $has_backdrop ? ' tft-no-backdrop' : '';
 
 		// View all link details

@@ -52,6 +52,62 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					403
 				);
 			}
+
+			return array(
+				'template_version' => isset( $_POST['template_version'] ) && is_string( $_POST['template_version'] )
+					? sanitize_key( wp_unslash( $_POST['template_version'] ) ) : '1',
+				'builder' => isset( $_POST['builder'] ) && is_string( $_POST['builder'] )
+					? sanitize_key( wp_unslash( $_POST['builder'] ) ) : 'elementor',
+			);
+		}
+
+		private function find_post_by_title( $title, $output = OBJECT, $post_type = 'page' ) {
+			$posts = get_posts( array(
+				'post_type'      => $post_type,
+				'post_status'    => 'any',
+				'title'          => $title,
+				'posts_per_page' => 1,
+			) );
+
+			return $posts ? $posts[0] : null;
+		}
+
+		private function import_contact_forms( $forms ) {
+			if ( ! class_exists( 'WPCF7_ContactForm' ) || ! is_array( $forms ) ) {
+				return;
+			}
+
+			foreach ( $forms as $form ) {
+				if ( ! is_array( $form ) || empty( $form['title'] ) || ! is_string( $form['title'] ) ||
+					empty( $form['properties'] ) || ! is_string( $form['properties'] ) ) {
+					continue;
+				}
+
+				$form_title      = sanitize_text_field( $form['title'] );
+				$form_properties = json_decode( $form['properties'], true );
+				if ( '' === $form_title || ! is_array( $form_properties ) ||
+					$this->find_post_by_title( $form_title, OBJECT, 'wpcf7_contact_form' ) ) {
+					continue;
+				}
+
+				$contact_form = WPCF7_ContactForm::get_template( array( 'title' => $form_title ) );
+				if ( ! is_object( $contact_form ) ) {
+					continue;
+				}
+
+				$contact_form->set_properties( $form_properties );
+				$contact_form->save();
+			}
+		}
+
+		private function decode_import_array( $value ) {
+			if ( ! is_string( $value ) || '' === trim( $value ) ) {
+				return array();
+			}
+
+			$decoded = json_decode( $value, true );
+
+			return is_array( $decoded ) ? $decoded : array();
 		}
 
 		public function switch_to_travelfic_theme() {
@@ -85,7 +141,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Deduplicates using _source_url meta to avoid re-downloading.
 		 */
 		private function sideload_bricks_image( $url ) {
-			if ( empty( $url ) ) {
+			if ( ! is_string( $url ) || ! wp_http_validate_url( $url ) ) {
 				return false;
 			}
 
@@ -126,7 +182,12 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 				return false;
 			}
 
-			$filename   = basename( parse_url( $url, PHP_URL_PATH ) );
+			$path = wp_parse_url( $url, PHP_URL_PATH );
+			$filename = is_string( $path ) ? basename( $path ) : '';
+			if ( '' === $filename ) {
+				wp_delete_file( $tmp );
+				return false;
+			}
 			$file_array = [
 				'name'     => $filename,
 				'tmp_name' => $tmp,
@@ -135,7 +196,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 			$attach_id = media_handle_sideload( $file_array, 0 );
 
 			if ( is_wp_error( $attach_id ) ) {
-				@unlink( $tmp );
+				wp_delete_file( $tmp );
 				return false;
 			}
 
@@ -220,9 +281,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * @since 1.0.0
 		 */
 		public function prepare_bricks_template_import() {
-			$this->verify_import_request();
+			$request = $this->verify_import_request();
 
-			$template_key = ! empty( $_POST['template_version'] ) ? sanitize_key( $_POST['template_version'] ) : 1;
+			$template_key = $request['template_version'];
 			$base_url     = 'https://api.themefic.com/tourfic/demos/v' . $template_key . '/';
 			$results      = [];
 
@@ -261,7 +322,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
 				$post_title = ! empty( $template_data['title'] ) ? sanitize_text_field( $template_data['title'] ) : ucwords( str_replace( [ '-', '.json' ], [ ' ', '' ], $filename ) );
 
-				// Delete any existing template with the same title
+				// Existing templates may have been customized by the site owner.
 				$existing = get_posts( [
 					'post_type'   => 'bricks_template',
 					'title'       => $post_title,
@@ -269,8 +330,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					'numberposts' => -1,
 					'fields'      => 'ids',
 				] );
-				foreach ( $existing as $existing_id ) {
-					wp_delete_post( $existing_id, true );
+				if ( $existing ) {
+					$results[ $filename ] = 'already_exists';
+					continue;
 				}
 
 				$new_id = wp_insert_post( [
@@ -309,7 +371,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						$individual_page_titles = [ 'Blog' ];
 						$individual_ids = [];
 						foreach ( $individual_page_titles as $page_title ) {
-							$page = get_page_by_title( $page_title, OBJECT, 'page' );
+							$page = $this->find_post_by_title( $page_title, OBJECT, 'page' );
 							if ( $page && ! is_wp_error( $page ) ) {
 								$individual_ids[] = $page->ID;
 							}
@@ -357,7 +419,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						$individual_page_titles = [ 'Blog' ];
 						$individual_ids = [];
 						foreach ( $individual_page_titles as $page_title ) {
-							$page = get_page_by_title( $page_title, OBJECT, 'page' );
+							$page = $this->find_post_by_title( $page_title, OBJECT, 'page' );
 							if ( $page && ! is_wp_error( $page ) ) {
 								$individual_ids[] = $page->ID;
 							}
@@ -425,7 +487,6 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 					$palette_found = false;
 					foreach ( $existing_palettes as $idx => $palette ) {
 						if ( $palette_id && ! empty( $palette['id'] ) && $palette['id'] === $palette_id ) {
-							$existing_palettes[ $idx ] = $palette_data;
 							$palette_found             = true;
 							break;
 						}
@@ -474,9 +535,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 						$theme_style_data['settings'] = $ts_settings;
 					}
 
-					$existing_styles[ $style_id ] = $theme_style_data;
-					update_option( 'bricks_theme_styles', $existing_styles );
-					$results['bricks-theme-style.json'] = 'imported';
+					if ( ! isset( $existing_styles[ $style_id ] ) ) {
+						$existing_styles[ $style_id ] = $theme_style_data;
+						update_option( 'bricks_theme_styles', $existing_styles );
+						$results['bricks-theme-style.json'] = 'imported';
+					} else {
+						$results['bricks-theme-style.json'] = 'already_exists';
+					}
 				}
 			} else {
 				$results['bricks-theme-style.json'] = 'not_found';
@@ -494,19 +559,28 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Global Settings
 		 */
 		public function prepare_travelfic_global_settings() {
-			$this->verify_import_request();
-            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+			$request = $this->verify_import_request();
+            $template_key = $request['template_version'];
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/settings-v2.json';
             $settings_files = wp_remote_get( $demo_data_url );
-            $imported_data = wp_remote_retrieve_body($settings_files);
+            if ( is_wp_error( $settings_files ) || 200 !== (int) wp_remote_retrieve_response_code( $settings_files ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Tourfic demo settings could not be downloaded.', 'travelfic-toolkit' ) ), 502 );
+            }
+            $imported_data = json_decode( wp_remote_retrieve_body( $settings_files ), true );
+            if ( ! is_array( $imported_data ) || ! $imported_data ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Tourfic demo settings are invalid.', 'travelfic-toolkit' ) ), 502 );
+            }
 
             if (!empty($imported_data)) {
-                $imported_data = json_decode( $imported_data, true );
                 $tf_search_page = get_page_by_path('tf-search');
                 if($tf_search_page && !empty($tf_search_page->ID)){
                     if(isset($imported_data['search-result-page'])){
                         $imported_data['search-result-page'] = $tf_search_page->ID;
                     }
+                }
+                $existing_settings = get_option( 'tourfic_settings', array() );
+                if ( is_array( $existing_settings ) ) {
+                    $imported_data = array_replace( $imported_data, $existing_settings );
                 }
                 update_option( 'tourfic_settings', $imported_data );
                 wp_send_json_success($imported_data);
@@ -517,36 +591,41 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         /**
 		 * Tourfic Customizer Importer Settings
 		 */
-		public function prepare_travelfic_customizer_settings() {
-			$this->verify_import_request();
-            remove_theme_mods();
+        public function prepare_travelfic_customizer_settings() {
+			$request = $this->verify_import_request();
             $prefix = 'travelfic_customizer_settings_';
-            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $template_key = $request['template_version'];
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/customizer.json';
             $customizers_files = wp_remote_get( $demo_data_url );
-            $imported_data = wp_remote_retrieve_body($customizers_files);
+            if ( is_wp_error( $customizers_files ) || 200 !== (int) wp_remote_retrieve_response_code( $customizers_files ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Customizer demo settings could not be downloaded.', 'travelfic-toolkit' ) ), 502 );
+            }
+            $imported_data = json_decode( wp_remote_retrieve_body( $customizers_files ), true );
+            if ( ! is_array( $imported_data ) || ! $imported_data ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Customizer demo settings are invalid.', 'travelfic-toolkit' ) ), 502 );
+            }
 
             if ( (int) $template_key === 6 ) {
                 $extra_css = '#tft-site-main-body .site .tft-site-navigation li.current-menu-item > a[aria-current="page"]{
                     color: var(--tf-links-color);
                 }';
                 $existing_css = wp_get_custom_css();
-                $new_css = $existing_css . "\n\n" . $extra_css;
-                wp_update_custom_css_post( $new_css );
+                if ( false === strpos( $existing_css, $extra_css ) ) {
+                    wp_update_custom_css_post( $existing_css . "\n\n" . $extra_css );
+                }
             }
             
             if (!empty($imported_data)) {
-                $imported_data = json_decode( $imported_data, true );
 
-                if (isset($imported_data['blogname']) && !empty($imported_data['blogname'])) {
+                if (isset($imported_data['blogname']) && !empty($imported_data['blogname']) && ! get_option( 'blogname' )) {
                     update_option('blogname', $imported_data['blogname']);
                 }
 
-                if (isset($imported_data['blogdescription']) && !empty($imported_data['blogdescription'])) {
+                if (isset($imported_data['blogdescription']) && !empty($imported_data['blogdescription']) && ! get_option( 'blogdescription' )) {
                     update_option('blogdescription', $imported_data['blogdescription']); 
                 }
 
-                if (isset($imported_data['site_icon_url']) && !empty($imported_data['site_icon_url'])) {
+                if (isset($imported_data['site_icon_url']) && !empty($imported_data['site_icon_url']) && ! get_option( 'site_icon' )) {
                     $icon_id = $this->travelfic_import_image($imported_data['site_icon_url']);
                     if ($icon_id) {
                         update_option('site_icon', $icon_id);
@@ -566,7 +645,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 }
 
                 foreach ($imported_data as $key => $value) {
-                    set_theme_mod($key, $value);
+                    if ( 0 === strpos( $key, $prefix ) && null === get_theme_mod( $key, null ) ) {
+                        set_theme_mod($key, $value);
+                    }
                 }
 
                 die();
@@ -581,11 +662,15 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
          * Import image from URL but prevent duplicates
          */
         function travelfic_import_image( $image_url, $post_id = 0 ) {
-            if ( empty( $image_url ) ) {
+            if ( ! is_string( $image_url ) || ! wp_http_validate_url( $image_url ) ) {
                 return false;
             }
 
-            $filename = basename( parse_url( $image_url, PHP_URL_PATH ) );
+            $path = wp_parse_url( $image_url, PHP_URL_PATH );
+            $filename = is_string( $path ) ? basename( $path ) : '';
+            if ( '' === $filename ) {
+                return false;
+            }
 
             $tmp = download_url( $image_url );
             if ( is_wp_error( $tmp ) ) {
@@ -603,7 +688,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             ) );
 
             if ( ! empty( $existing ) ) {
-                @unlink( $tmp );
+                wp_delete_file( $tmp );
                 return $existing[0];
             }
 
@@ -619,7 +704,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $attach_id = media_handle_sideload( $file_array, $post_id );
 
             if ( is_wp_error( $attach_id ) ) {
-                @unlink( $file_array['tmp_name'] );
+                wp_delete_file( $file_array['tmp_name'] );
                 return false;
             }
 
@@ -637,9 +722,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_pages_imports() {
 
-			$this->verify_import_request();
-            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
-            $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
+			$request = $this->verify_import_request();
+            $template_key = $request['template_version'];
+            $builder = $request['builder'];
 
             update_option('travelfic_template_version', $template_key);
             $demo_forms_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/forms.json';
@@ -647,17 +732,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $forms_imported_data = wp_remote_retrieve_body($forms_files);
             if (!empty($forms_imported_data)) {
                 $forms_imported_data = json_decode( $forms_imported_data, true );
-                foreach($forms_imported_data as $form){
-                    $form_title = !empty($form['title']) ? $form['title'] : '';
-                    $form_properties = !empty($form['properties']) ? json_decode($form['properties'],true) : '';
-                    if ( class_exists( 'WPCF7' ) ) {
-                        $contact_form = WPCF7_ContactForm::get_template(
-                            array( 'title' => $form_title )
-                        ); 
-                        $contact_form->set_properties($form_properties);
-                        $contact_form->save();
-                    }
-                }
+				$this->import_contact_forms( $forms_imported_data );
             }
             
             if ( 'bricks' === $builder ) {
@@ -667,43 +742,32 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             }
 
             $pages_files = wp_remote_get( $demo_data_url );
-            $imported_data = wp_remote_retrieve_body($pages_files);
+            if ( is_wp_error( $pages_files ) || 200 !== (int) wp_remote_retrieve_response_code( $pages_files ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Demo pages could not be downloaded.', 'travelfic-toolkit' ) ), 502 );
+            }
+            $imported_data = json_decode( wp_remote_retrieve_body( $pages_files ), true );
+            if ( ! is_array( $imported_data ) || ! $imported_data ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Demo page data is invalid.', 'travelfic-toolkit' ) ), 502 );
+            }
 
             if (!empty($imported_data)) {
-                $imported_data = json_decode( $imported_data, true );
-
-                // Delete existing pages first
-                foreach ($imported_data as $page) {
-                    $title = !empty($page['title']) ? $page['title'] : '';
-                    if (!empty($title)) {
-                        $existing_pages = get_posts(array(
-                            'post_type'   => 'page',
-                            'title'       => $title,
-                            'post_status' => 'any',
-                            'numberposts' => -1
-                        ));
-                        foreach ($existing_pages as $existing_page) {
-                            if (get_option('page_on_front') == $existing_page->ID) {
-                                update_option('page_on_front', 0);
-                            }
-                            if (get_option('page_for_posts') == $existing_page->ID) {
-                                update_option('page_for_posts', 0);
-                            }
-                            wp_delete_post($existing_page->ID, true);
-                        }
-                    }
-                }
 
                 foreach($imported_data as $page){
+                    if ( ! is_array( $page ) || empty( $page['title'] ) || ! is_string( $page['title'] ) ) {
+                        continue;
+                    }
                     $is_front    = !empty($page['is_front']) ? $page['is_front'] : '';
                     $is_blog     = !empty($page['is_blog']) ? $page['is_blog'] : '';
                     $title       = !empty($page['title']) ? $page['title'] : '';
+                    if ( get_posts( array( 'post_type' => 'page', 'title' => $title, 'post_status' => 'any', 'numberposts' => 1, 'fields' => 'ids' ) ) ) {
+                        continue;
+                    }
                     $content     = !empty($page['content']) ? $page['content'] : '';
                     $tft_header_bg = !empty($page['tft-pmb-background-img']) ? $page['tft-pmb-background-img'] : '';
-                    $pages_images  = $page['media_urls'];
+                    $pages_images  = isset( $page['media_urls'] ) && is_string( $page['media_urls'] ) ? $page['media_urls'] : '';
 
                     $elementor_data    = !empty($page['_elementor_data']) ? $page['_elementor_data'] : [];
-                    $elementor_content = !empty($page['_elementor_data']) ? wp_slash(wp_json_encode($page['_elementor_data'])) : '';
+                    $elementor_content = !empty($page['_elementor_data']) ? wp_json_encode( $page['_elementor_data'], JSON_UNESCAPED_SLASHES ) : '';
 
                     // Import Elementor page media
                     if(!empty($pages_images)){
@@ -711,26 +775,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         $update_media_url = [];
 
                         foreach($media_urls as $media){
-                            if(!empty($media)){
-                                $page_image_data = file_get_contents( $media );
-                                $page_filename   = basename( $media );
-                                $page_upload_dir = wp_upload_dir();
-                                $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
-                                file_put_contents( $page_image_path, $page_image_data );
-                                
-                                if (file_exists($page_image_path)) {
-                                    $page_attachment = array(
-                                        'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                        'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
-                                        'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
-                                        'post_content'   => '',
-                                        'post_status'    => 'inherit'
-                                    );
-                                    $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
-                                    require_once(ABSPATH . 'wp-admin/includes/image.php');
-                                    $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
-                                    wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
-                                    $update_media_url[wp_get_attachment_url($page_attachment_id)] = $media;
+                            if( ! empty( $media ) && wp_http_validate_url( $media ) ){
+                                $page_attachment_id = $this->travelfic_import_image( $media );
+                                if ( $page_attachment_id ) {
+                                    $update_media_url[ wp_get_attachment_url( $page_attachment_id ) ] = $media;
                                 }
                             }
                         }
@@ -745,26 +793,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         }
                     }
 
-                    if(!empty($tft_header_bg)){
-                        $page_image_data = file_get_contents( $tft_header_bg );
-                        $page_filename   = basename( $tft_header_bg );
-                        $page_upload_dir = wp_upload_dir();
-                        $page_image_path = $page_upload_dir['path'] . '/' . $page_filename;
-                        file_put_contents( $page_image_path, $page_image_data );
-                        
-                        if (file_exists($page_image_path)) {
-                            $page_attachment = array(
-                                'guid'           => $page_upload_dir['url'] . '/' . $page_filename,
-                                'post_mime_type' => mime_content_type($page_upload_dir['path'] . '/' . $page_filename),
-                                'post_title'     => preg_replace( '/\.[^.]+$/', '', $page_filename ),
-                                'post_content'   => '',
-                                'post_status'    => 'inherit'
-                            );
-                            $page_attachment_id = wp_insert_attachment( $page_attachment, $page_image_path );                       
-                            require_once(ABSPATH . 'wp-admin/includes/image.php');
-                            $page_attachment_data = wp_generate_attachment_metadata( $page_attachment_id, $page_image_path );
-                            wp_update_attachment_metadata( $page_attachment_id, $page_attachment_data );
-                            $tft_header_bg = wp_get_attachment_url($page_attachment_id);
+                    if( ! empty( $tft_header_bg ) && wp_http_validate_url( $tft_header_bg ) ){
+                        $page_attachment_id = $this->travelfic_import_image( $tft_header_bg );
+                        if ( $page_attachment_id ) {
+                            $tft_header_bg = wp_get_attachment_url( $page_attachment_id );
                         }
                     }
 
@@ -776,13 +808,16 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     );
 
                     $new_page_id = wp_insert_post($new_page);
+                    if ( is_wp_error( $new_page_id ) || ! $new_page_id ) {
+                        continue;
+                    }
 
-                    if(!empty($is_front)){
+                    if(!empty($is_front) && ! get_option( 'page_on_front' )){
                         update_option( 'page_on_front', $new_page_id );
                         update_option( 'show_on_front', 'page' );
                     }
 
-                    if(!empty($is_blog)){
+                    if(!empty($is_blog) && ! get_option( 'page_for_posts' )){
                         update_option( 'page_for_posts', $new_page_id );
                     }
 
@@ -808,15 +843,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
                         if ( 'elementor' === $builder ) {
                             update_post_meta($new_page_id, '_elementor_template_type', $page['_elementor_template_type']);
-                            update_post_meta($new_page_id, '_elementor_data', $elementor_content);
+                            update_post_meta($new_page_id, '_elementor_data', wp_slash( $elementor_content ));
                             update_post_meta($new_page_id, '_elementor_page_assets', $page['_elementor_page_assets']);
                             update_post_meta($new_page_id, '_elementor_edit_mode', $page['_elementor_edit_mode']);
                         }
                     }
                 }
                 
-                delete_option('_elementor_global_css');
-		        delete_option('elementor-custom-breakpoints-files');
             }
 
             // Update elementor global colors
@@ -842,12 +875,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             list($primary_color, $secondary_color, $text_color, $accent_color) = $color_palette[$selected];
 
+            if ( empty( $settings['system_colors'] ) ) {
             $settings['system_colors'] = [
                 ['_id' => 'primary',   'title' => 'Primary',   'color' => $primary_color],
                 ['_id' => 'secondary', 'title' => 'Secondary', 'color' => $secondary_color],
                 ['_id' => 'text',      'title' => 'Text',      'color' => $text_color],
                 ['_id' => 'accent',    'title' => 'Accent',    'color' => $accent_color],
             ];
+            }
 
             $typography_presets = [
                 'design-1' => [
@@ -898,12 +933,14 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 default: $font_selected = 'design-1';
             }
 
-            $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
+            if ( empty( $settings['system_typography'] ) ) {
+                $settings['system_typography'] = isset($typography_presets[$font_selected]) ? $typography_presets[$font_selected] : $typography_presets['design-1'];
+            }
             update_post_meta($elementor_kit_id, '_elementor_page_settings', $settings);
 
             // Update Bricks transparent header conditions after pages are imported
             if ( 'bricks' === $builder && $template_key == '1' ) {
-                $transparent_header = get_page_by_title( 'Bricks Header Transparent', OBJECT, 'bricks_template' );
+                $transparent_header = $this->find_post_by_title( 'Bricks Header Transparent', OBJECT, 'bricks_template' );
                 if ( $transparent_header ) {
                     $template_settings = get_post_meta( $transparent_header->ID, '_bricks_template_settings', true );
                     if ( ! is_array( $template_settings ) ) {
@@ -918,7 +955,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                     $individual_page_titles = [ 'About Us – Bricks', 'Contact Us – Bricks' ];
                     $individual_ids = [];
                     foreach ( $individual_page_titles as $page_title ) {
-                        $page = get_page_by_title( $page_title, OBJECT, 'page' );
+                        $page = $this->find_post_by_title( $page_title, OBJECT, 'page' );
                         if ( $page && ! is_wp_error( $page ) ) {
                             $individual_ids[] = $page->ID;
                         }
@@ -1004,25 +1041,13 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 
             if ($has_background) {
                 if (!empty($background_image)) {
-                    $this->generated_css .= sprintf(
-                        '[data-id="%s"] { background-image: url("%s"); } ',
-                        $element_id,
-                        esc_url($background_image)
-                    );
+                    $this->generated_css .= Travelfic_Toolkit_Background_CSS::rule( $element_id, $background_image );
                 }
                 if (!empty($overlay_image)) {
-                    $this->generated_css .= sprintf(
-                        '[data-id="%s"] { background-image: url("%s"); } ',
-                        $element_id,
-                        esc_url($overlay_image)
-                    );
+                    $this->generated_css .= Travelfic_Toolkit_Background_CSS::rule( $element_id, $overlay_image );
                 }
                 if (!empty($selected_icon)) {
-                    $this->generated_css .= sprintf(
-                        '[data-id="%s"] .elementor-icon { background-image: url("%s"); background-repeat: no-repeat; background-position: center center; } ',
-                        $element_id,
-                        esc_url($selected_icon)
-                    );
+                    $this->generated_css .= Travelfic_Toolkit_Background_CSS::rule( $element_id, $selected_icon, true );
                 }
             }
 
@@ -1043,9 +1068,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 * Tourfic Menu importer Settings
 		 */
 		public function prepare_travelfic_menus_imports() {
-			$this->verify_import_request();
-            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
-            $builder = !empty($_POST['builder']) ? sanitize_key( $_POST['builder'] ) : 'elementor';
+			$request = $this->verify_import_request();
+            $template_key = $request['template_version'];
+            $builder = $request['builder'];
 
             if( 'bricks' === $builder ) {
                 $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/bricks-menu.txt';
@@ -1053,17 +1078,51 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/menu.txt';
             }
 
-            $serialized_menu = wp_remote_get( $demo_data_url );
-            $serialized_menu = wp_remote_retrieve_body($serialized_menu);
-            if (!empty($serialized_menu)) {
-                $menu_items = unserialize($serialized_menu);
-                self::travelfic_toolkit_create_menu_from_imported_data($menu_items, $template_key);
+            $response = wp_remote_get( $demo_data_url );
+            if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'The demo menu could not be downloaded.', 'travelfic-toolkit' ) ), 502 );
             }
 
-            update_option('permalink_structure', '/%postname%/');
-            flush_rewrite_rules();
-            
-            die();
+            $menu_items = Travelfic_Toolkit_Menu_Data_Parser::parse( wp_remote_retrieve_body( $response ) );
+            if ( ! self::travelfic_toolkit_valid_menu_data( $menu_items ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'The demo menu data is invalid.', 'travelfic-toolkit' ) ), 502 );
+            }
+
+            $result = self::travelfic_toolkit_create_menu_from_imported_data( $menu_items, $template_key );
+            if ( is_wp_error( $result ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'The demo menu could not be created.', 'travelfic-toolkit' ) ), 500 );
+            }
+            wp_send_json_success();
+        }
+
+        private static function travelfic_toolkit_valid_menu_data( $menu_data ) {
+            if ( ! is_array( $menu_data ) || ! $menu_data || count( $menu_data ) > 100 ) {
+                return false;
+            }
+
+            foreach ( $menu_data as $menu_item ) {
+                if ( ! is_array( $menu_item ) || ! isset( $menu_item['title'], $menu_item['url'] ) ||
+                    ! is_string( $menu_item['title'] ) || ! is_string( $menu_item['url'] ) ||
+                    '' === trim( $menu_item['title'] ) || strlen( $menu_item['title'] ) > 200 ||
+                    ( '#' !== $menu_item['url'] && ! wp_http_validate_url( $menu_item['url'] ) ) ) {
+                    return false;
+                }
+                if ( isset( $menu_item['sub_menu'] ) ) {
+                    if ( ! is_array( $menu_item['sub_menu'] ) || count( $menu_item['sub_menu'] ) > 100 ) {
+                        return false;
+                    }
+                    foreach ( $menu_item['sub_menu'] as $child ) {
+                        if ( ! is_array( $child ) || ! isset( $child['title'], $child['url'] ) ||
+                            ! is_string( $child['title'] ) || ! is_string( $child['url'] ) ||
+                            '' === trim( $child['title'] ) || strlen( $child['title'] ) > 200 ||
+                            ( '#' !== $child['url'] && ! wp_http_validate_url( $child['url'] ) ) ) {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         public static function travelfic_toolkit_create_menu_from_imported_data($menu_data, $template_key) {
@@ -1073,45 +1132,49 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                 $menu_id = wp_create_nav_menu($menu_name);
             } else {
                 $menu_id = $menu_exists->term_id;
-                $existing_items = wp_get_nav_menu_items($menu_id);
-                if(!empty($existing_items)){
-                    foreach ($existing_items as $item) {
-                        wp_delete_post($item->ID, true);
-                    }
-                }
+            }
+            if ( is_wp_error( $menu_id ) || ! $menu_id ) {
+                return new WP_Error( 'travelfic_toolkit_menu_create_failed' );
             }
 
             $site_url = site_url();
+            $added_items = array();
+            foreach ( (array) wp_get_nav_menu_items( $menu_id ) as $existing_item ) {
+                $added_items[ md5( $existing_item->title . $existing_item->url ) ] = $existing_item->ID;
+            }
 
             foreach ($menu_data as $menu_item) {
                 $menu_item_url = $menu_item['url'];
                 if ($menu_item_url !== '#') {
-                    $menu_item_path = parse_url($menu_item_url, PHP_URL_PATH);
+                    $menu_item_path = wp_parse_url($menu_item_url, PHP_URL_PATH);
                     $menu_item_url  = rtrim($site_url, '/') . $menu_item_path;
                 }
 
                 $item_key = md5($menu_item['title'] . $menu_item_url);
                 if(isset($added_items[$item_key])){
+                    $menu_item_id = $added_items[$item_key];
+                } else {
+                    $menu_item_data = array(
+                        'menu-item-title'  => $menu_item['title'],
+                        'menu-item-url'    => $menu_item_url,
+                        'menu-item-object' => 'custom',
+                        'menu-item-parent' => 0,
+                        'menu-item-type'   => 'custom',
+                        'menu-item-status' => 'publish'
+                    );
+
+                    $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
+                }
+                if ( is_wp_error( $menu_item_id ) || ! $menu_item_id ) {
                     continue;
                 }
-
-                $menu_item_data = array(
-                    'menu-item-title'  => $menu_item['title'],
-                    'menu-item-url'    => $menu_item_url,
-                    'menu-item-object' => 'custom',
-                    'menu-item-parent' => 0,
-                    'menu-item-type'   => 'custom',
-                    'menu-item-status' => 'publish'
-                );
-
-                $menu_item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
                 $added_items[$item_key] = $menu_item_id;
         
                 if (!empty($menu_item['sub_menu'])) {
                     foreach ($menu_item['sub_menu'] as $sub_menu_item) {
                         $sub_menu_item_url = $sub_menu_item['url'];
                         if ($sub_menu_item_url !== '#') {
-                            $sub_menu_item_path = parse_url($sub_menu_item_url, PHP_URL_PATH);
+                            $sub_menu_item_path = wp_parse_url($sub_menu_item_url, PHP_URL_PATH);
                             $sub_menu_item_url  = rtrim($site_url, '/') . $sub_menu_item_path;
                         }
 
@@ -1129,20 +1192,26 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             'menu-item-status'    => 'publish'
                         );
 
-                        wp_update_nav_menu_item($menu_id, 0, $sub_menu_item_data);
-                        $added_items[$sub_item_key] = $menu_item_id;
+                        $sub_menu_item_id = wp_update_nav_menu_item($menu_id, 0, $sub_menu_item_data);
+                        if ( ! is_wp_error( $sub_menu_item_id ) && $sub_menu_item_id ) {
+                            $added_items[$sub_item_key] = $sub_menu_item_id;
+                        }
                     }
                 }
             }
         
-            $locations = get_theme_mod('nav_menu_locations');
-            $locations['primary_menu'] = $menu_id;
-            set_theme_mod('nav_menu_locations', $locations);
+            $locations = (array) get_theme_mod('nav_menu_locations', array());
+            if ( empty( $locations['primary_menu'] ) ) {
+                $locations['primary_menu'] = $menu_id;
+                set_theme_mod('nav_menu_locations', $locations);
+            }
+
+            return $menu_id;
         }
 
         function replace_menu_url($menu_item_url) {
-            $parsed_url = parse_url($menu_item_url);
-            $site_url   = parse_url(site_url());
+            $parsed_url = wp_parse_url($menu_item_url);
+            $site_url   = wp_parse_url(site_url());
             $parsed_url['scheme'] = $site_url['scheme'];
             $parsed_url['host']   = $site_url['host'];
             if (isset($site_url['port'])) {
@@ -1168,16 +1237,33 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         /**
 		 * Tourfic Widget importer Settings
 		 */
-		public function prepare_travelfic_widgets_imports() {
-			$this->verify_import_request();
-            
-            self::travelfic_toolkit_clear_widgets();
-            $template_key  = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+        public function prepare_travelfic_widgets_imports() {
+			$request = $this->verify_import_request();
+
+            $template_key  = $request['template_version'];
             $demo_data_url = 'https://api.themefic.com/tourfic/demos/v'.$template_key.'/widget.json';
 
             $import_file   = wp_remote_get( $demo_data_url );
             $imported_data = wp_remote_retrieve_body($import_file);
             $json_data     = json_decode( $imported_data, true );
+
+            if ( is_wp_error( $import_file ) || 200 !== (int) wp_remote_retrieve_response_code( $import_file ) ||
+                ! is_array( $json_data ) || ! isset( $json_data[0], $json_data[1] ) ||
+                ! is_array( $json_data[0] ) || ! is_array( $json_data[1] ) ) {
+                wp_send_json_error( array( 'message' => esc_html__( 'Demo widget data is invalid.', 'travelfic-toolkit' ) ), 502 );
+            }
+
+            foreach ( $json_data[0] as $sidebar_widgets ) {
+                if ( ! is_array( $sidebar_widgets ) ) {
+                    wp_send_json_error( array( 'message' => esc_html__( 'Demo widget data is invalid.', 'travelfic-toolkit' ) ), 502 );
+                }
+                foreach ( $sidebar_widgets as $widget_id ) {
+                    if ( ! is_string( $widget_id ) || ! preg_match( '/^([a-zA-Z_]+)-(\d+)$/D', $widget_id, $widget_parts ) ||
+                        ! isset( $json_data[1][ $widget_parts[1] ][ (int) $widget_parts[2] ] ) ) {
+                        wp_send_json_error( array( 'message' => esc_html__( 'Demo widget data is invalid.', 'travelfic-toolkit' ) ), 502 );
+                    }
+                }
+            }
 
             $sidebar_data = $json_data[0];
             $widget_data  = $json_data[1];
@@ -1222,48 +1308,37 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             $response->send();
         }
 
-        public static function travelfic_toolkit_clear_widgets() {
-            $sidebars = wp_get_sidebars_widgets();
-            $inactive = isset($sidebars['wp_inactive_widgets']) ? $sidebars['wp_inactive_widgets'] : array();
-            unset($sidebars['wp_inactive_widgets']);
-            foreach ( $sidebars as $sidebar => $widgets ) {
-                $inactive = array_merge($inactive, $widgets);
-                $sidebars[$sidebar] = array();
-            }
-            $sidebars['wp_inactive_widgets'] = $inactive;
-            wp_set_sidebars_widgets( $sidebars );
-        }
-
         public static function travelfic_toolkit_parse_import_data( $import_array ) {
             $sidebars_data = $import_array[0];
             $widget_data   = $import_array[1];
 
-            $sidebars_widget_data = array(
-                "tf-sidebar"                  => array(),
-                "footer_widgets"              => array(),
-                "tf_archive_booking_sidebar"  => array(),
-                "tf_search_result"            => array(),
-                "wp_inactive_widgets"         => array(),
-                "array_version"               => 3
-            );
-            update_option('sidebars_widgets', $sidebars_widget_data);
+            $sidebars_widget_data = (array) get_option( 'sidebars_widgets', array() );
+            foreach ( array( 'tf-sidebar', 'footer_widgets', 'tf_archive_booking_sidebar', 'tf_search_result', 'wp_inactive_widgets' ) as $sidebar_name ) {
+                if ( ! isset( $sidebars_widget_data[ $sidebar_name ] ) ) {
+                    $sidebars_widget_data[ $sidebar_name ] = array();
+                }
+            }
+            $sidebars_widget_data['array_version'] = 3;
             
-            $current_sidebars = get_option( 'sidebars_widgets' );
+            $current_sidebars = $sidebars_widget_data;
             $new_widgets = array( );
 
             foreach ( $sidebars_data as $import_sidebar => $import_widgets ) :
+                if ( ! empty( $current_sidebars[ $import_sidebar ] ) ) {
+                    continue;
+                }
                 foreach ( $import_widgets as $import_widget ) :
                     if ( isset( $current_sidebars[$import_sidebar] ) ) :
                         $title     = trim( substr( $import_widget, 0, strrpos( $import_widget, '-' ) ) );
                         $index     = trim( substr( $import_widget, strrpos( $import_widget, '-' ) + 1 ) );
-                        $current_widget_data = get_option( 'widget_' . $title );
+                        $current_widget_data = get_option( 'widget_' . $title, array() );
+                        $current_widget_data = is_array( $current_widget_data ) ? $current_widget_data : array();
                         $new_widget_name     = self::travelfic_toolkit_get_new_widget_name( $title, $index );
                         $new_index           = trim( substr( $new_widget_name, strrpos( $new_widget_name, '-' ) + 1 ) );
 
-                        if ( !empty( $new_widgets[ $title ] ) && is_array( $new_widgets[$title] ) ) {
-                            while ( array_key_exists( $new_index, $new_widgets[$title] ) ) {
-                                $new_index++;
-                            }
+                        while ( array_key_exists( $new_index, $current_widget_data ) ||
+                            ( isset( $new_widgets[ $title ] ) && array_key_exists( $new_index, $new_widgets[ $title ] ) ) ) {
+                            $new_index++;
                         }
                         $current_sidebars[$import_sidebar][] = $title . '-' . $new_index;
                         if ( array_key_exists( $title, $new_widgets ) ) {
@@ -1273,7 +1348,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                             $new_widgets[$title]['_multiwidget'] = $multiwidget;
                         } else {
                             $current_widget_data[$new_index] = $widget_data[$title][$index];
-                            $current_multiwidget = $current_widget_data['_multiwidget'];
+                            $current_multiwidget = isset( $current_widget_data['_multiwidget'] ) ? $current_widget_data['_multiwidget'] : 1;
                             $new_multiwidget     = isset($widget_data[$title]['_multiwidget']) ? $widget_data[$title]['_multiwidget'] : false;
                             $multiwidget         = ($current_multiwidget != $new_multiwidget) ? $current_multiwidget : 1;
                             unset( $current_widget_data['_multiwidget'] );
@@ -1285,11 +1360,11 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
             endforeach;
 
             if ( isset( $new_widgets ) && isset( $current_sidebars ) ) {
-                update_option( 'sidebars_widgets', $current_sidebars );
                 foreach ( $new_widgets as $title => $content ) {
                     $content = apply_filters( 'widget_data_import', $content, $title );
                     update_option( 'widget_' . $title, $content );
                 }
+                update_option( 'sidebars_widgets', $current_sidebars );
                 return true;
             }
 
@@ -1297,7 +1372,7 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
         }
 
         public static function travelfic_toolkit_get_new_widget_name( $widget_name, $widget_index ) {
-            $current_sidebars = get_option( 'sidebars_widgets' );
+            $current_sidebars = (array) get_option( 'sidebars_widgets', array() );
             $all_widget_array = array( );
             foreach ( $current_sidebars as $sidebar => $widgets ) {
                 if ( !empty( $widgets ) && is_array( $widgets ) && $sidebar != 'wp_inactive_widgets' ) {
@@ -1321,9 +1396,9 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
 		 */
 		public function prepare_travelfic_hotel_imports() {
 
-			$this->verify_import_request();
+			$request = $this->verify_import_request();
 
-            $template_key = !empty($_POST['template_version']) ? sanitize_key( $_POST['template_version'] ) : 1;
+            $template_key = $request['template_version'];
             $hotels_post  = array(
                 'post_type'      => 'tf_hotel',
                 'posts_per_page' => -1,
@@ -2499,8 +2574,10 @@ if ( ! class_exists( 'Travelfic_Template_Importer' ) ) {
                         if( $field == 'benefits'        && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
                         if( $field == 'badge'           && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
                         if( $field == 'extras'          && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
-                        if( $field == 'protections'     && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
-                        if( $field == 'cancellation_type' && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+						if( $field == 'protections'     && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
+						if ( 'calcellation_policy' === $field ) {
+							$post_meta['tf_carrental_opt'][ $field ] = $this->decode_import_array( $row[ $column_index ] );
+						}
                         if( $field == 'faq'             && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
                         if( $field == 'terms_conditions' && ! empty( $row[$column_index] ) ) { $post_meta['tf_carrental_opt'][$field] = json_decode( $row[$column_index], true ); }
                     }

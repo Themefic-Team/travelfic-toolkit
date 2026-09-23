@@ -5,7 +5,7 @@
  * Description: A companion plugin to the Travelfic Theme with which you can easily build your own Hotel, Accommodation, Tour & Travel Booking website on WordPress.
  * Author: Themefic
  * Version: 1.5.4
- * Tested up to: 7.0
+ * Tested up to: 7.1
  * Text Domain: travelfic-toolkit
  * Domain Path: /lang/
  * Author URI: https://themefic.com
@@ -25,10 +25,6 @@ define( 'TRAVELFIC_TOOLKIT_URL', plugin_dir_url( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TRAVELFIC_TOOLKIT_ASSETS', TRAVELFIC_TOOLKIT_URL . 'assets/' );
 define( 'TRAVELFIC_TOOLKIT_VERSION', '1.5.4' );
-
-if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-    require_once __DIR__ . '/vendor/autoload.php';
-}
 
 /**
  * Include file from plugin if it is not available in theme
@@ -68,18 +64,6 @@ if ( !function_exists( 'travelfic_get_theme_filepath' ) ) {
     }
 }
 add_filter( 'theme_file_path', 'travelfic_get_theme_filepath', 10, 2 );
-
-/**
- * Loading Text Domain
- *
-*/
-add_action( 'init', 'travelfic_toolkit_plugin_loaded_action', 10, 2 );
-
-function travelfic_toolkit_plugin_loaded_action() {
-    load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
-
-    appsero_init_tracker_travelfic_toolkit();
-}
 
 /**
  *    Customizer Settings
@@ -128,7 +112,9 @@ if ( file_exists( dirname( __FILE__ ) . '/inc/bricks-widgets.php' ) ) {
 /**
  * Plugin Functions
 */
+require_once dirname( __FILE__ ) . '/inc/class/class-background-css.php';
 require_once dirname( __FILE__ ) . '/inc/functions.php';
+require_once dirname( __FILE__ ) . '/inc/class/class-year-shortcode-migration.php';
 
 /**
  * Template Sync Class
@@ -141,6 +127,7 @@ if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-template-sync.php' ) )
  * Template List Class
  */
 if(is_admin()){
+	require_once dirname( __FILE__ ) . '/inc/class/class-menu-data-parser.php';
 	if ( file_exists( dirname( __FILE__ ) . '/inc/class/class-template-list.php' ) ) {
 		require_once dirname( __FILE__ ) . '/inc/class/class-template-list.php';
 	}
@@ -216,6 +203,7 @@ function travelfic_toolkit_front_page_script() {
     wp_localize_script( 'travelfic-toolkit-admin-js', 'travelfic_toolkit_script_params',
         array(
             'travelfic_toolkit_nonce'   => wp_create_nonce( 'updates' ),
+            'template_sync_nonce' => wp_create_nonce( 'travelfic_toolkit_template_sync' ),
             'ajax_url'       => admin_url( 'admin-ajax.php' ),
             'installing'     => __( 'Plugin Installing & Activating...', 'travelfic-toolkit' ),
             'installed'      => __( 'Installed', 'travelfic-toolkit' ),
@@ -271,25 +259,6 @@ if ( !function_exists( 'travelfic_install' ) ) {
 		</div>
 	<?php
     }
-}
-
-
-/**
- * Initialize the plugin tracker
- *
- * @return void
- */
-function appsero_init_tracker_travelfic_toolkit() {
-
-    $client = new Appsero\Client( '7929498b-c2c3-47f9-b8db-ad56e0090a98', 'Travelfic Toolkit', __FILE__ );
-
-    // Change Admin notice text
-    $notice = sprintf( $client->__trans( 'Want to help make <strong>%1$s</strong> even more awesome? Allow %1$s to collect non-sensitive diagnostic data and usage information. I agree to get Important Product Updates & Discount related information on my email from  %1$s (I can unsubscribe anytime).' ), $client->name );
-    $client->insights()->notice( $notice );
-    
-    // Active insights
-    $client->insights()->init();
-
 }
 
 

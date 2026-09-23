@@ -43,7 +43,7 @@ class AboutUs {
 		$readme_attrs = self::get_link_target_and_rel( $settings, 'readme_link' );
 
 		// Backdrop switcher logic
-		$has_backdrop = tft_get_switcher_value($settings, 'about_us_design2_title_backdrop', 'yes', $builder);
+		$has_backdrop = travelfic_toolkit_get_switcher_value($settings, 'about_us_design2_title_backdrop', 'yes', $builder);
 		$section_title_backdrop = 'yes' != $has_backdrop ? ' tft-no-backdrop' : '';
 
 		if ( 'design-1' == $tft_design ) {

@@ -120,7 +120,7 @@ class Travelfic_Toolkit_Bricks_Testimonials extends \Bricks\Element {
 		$testimonial_fields_design_4['post_date'] = [
 			'label'   => esc_html__( 'Date', 'travelfic-toolkit' ),
 			'type'    => 'text',
-			'default' => date( 'd M, Y' ),
+			'default' => wp_date( 'd M, Y' ),
 		];
 
 		$testimonial_fields_design_5 = [

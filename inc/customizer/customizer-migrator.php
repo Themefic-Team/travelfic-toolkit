@@ -1,8 +1,8 @@
 <?php
 if (! defined('ABSPATH')) exit; // Exit if accessed directly 
 
-add_action('init', 'tft_customizer_migrator');
-function tft_customizer_migrator()
+add_action('init', 'travelfic_toolkit_customizer_migrator');
+function travelfic_toolkit_customizer_migrator()
 {
 
     if (get_option('tft_customizer_options_migrated')) {

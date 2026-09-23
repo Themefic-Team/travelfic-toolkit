@@ -97,9 +97,9 @@ class PopularTours {
 											<span>
 												<i class="fas fa-star"></i>
 												<span>
-												<?php echo ( class_exists( '\Tourfic\App\TF_Review' ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( tf_total_avg_rating( $comments ) ); ?>
+												<?php echo ( class_exists( '\Tourfic\App\TF_Review' ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( travelfic_toolkit_total_avg_rating( $comments ) ); ?>
 												</span>
-												( <?php class_exists( '\Tourfic\App\TF_Review' ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( tf_based_on_text( count( $comments ) ) ); ?>)
+												( <?php class_exists( '\Tourfic\App\TF_Review' ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( travelfic_toolkit_based_on_text( count( $comments ) ) ); ?>)
 											</span>
 										</div>
 

@@ -306,9 +306,9 @@ class Hotels {
 												<span class="tft-color-text">
 													<i class="fas fa-star"></i>
 													<span class="tft-color-text">
-														<?php echo ( class_exists( "\Tourfic\App\TF_Review" ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( tf_total_avg_rating( $comments ) ); ?>
+														<?php echo ( class_exists( "\Tourfic\App\TF_Review" ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( travelfic_toolkit_total_avg_rating( $comments ) ); ?>
 													</span>
-													<?php echo esc_html__( 'out of', 'tourfic' ); ?> <?php class_exists( "\Tourfic\App\TF_Review" ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( tf_based_on_text( count( $comments ) ) ); ?>
+													<?php echo esc_html__( 'out of', 'tourfic' ); ?> <?php class_exists( "\Tourfic\App\TF_Review" ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( travelfic_toolkit_based_on_text( count( $comments ) ) ); ?>
 												</span>
 											</div>
 										<?php } else { ?>
@@ -568,9 +568,9 @@ class Hotels {
 												<span>
 													<i class="fas fa-star"></i>
 													<span>
-														<?php echo ( class_exists( "\Tourfic\App\TF_Review" ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( tf_total_avg_rating( $comments ) ); ?>
+														<?php echo ( class_exists( "\Tourfic\App\TF_Review" ) ) ? esc_html( \Tourfic\App\TF_Review::tf_total_avg_rating( $comments ) ) : esc_html( travelfic_toolkit_total_avg_rating( $comments ) ); ?>
 													</span>
-													out of <?php class_exists( "\Tourfic\App\TF_Review" ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( tf_based_on_text( count( $comments ) ) ); ?>
+													out of <?php class_exists( "\Tourfic\App\TF_Review" ) ? esc_html( \Tourfic\App\TF_Review::tf_based_on_text( count( $comments ) ) ) : esc_html( travelfic_toolkit_based_on_text( count( $comments ) ) ); ?>
 												</span>
 											</div>
 										<?php } else { ?>
@@ -867,7 +867,7 @@ class Hotels {
 											<!-- destination top info -->
 											<div class="tft-destination-top-info">
 												<!-- destination rating -->
-												<?php echo tf_review_star_rating( (float) $tf_average_rating );  ?>
+												<?php echo travelfic_toolkit_review_star_rating( (float) $tf_average_rating );  ?>
 												<!-- destination location -->
 												<?php if ( ! empty( $tf_location ) ) : ?>
 													<span class="tft-destination-location">

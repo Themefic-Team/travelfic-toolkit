@@ -2114,7 +2114,7 @@ add_action('init', function () {
         'settings'    => $prefix . 'copyright_text',
         'label'       => esc_html__('Copyright Text', 'travelfic-toolkit'),
         'section'     => 'travelfic_customizer_footer',
-        'default'     => '&copy; ' . esc_html('Copyright ', 'travelfic-toolkit') . date('Y') . ' ' . esc_html__('Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit'),
+        'default'     => '&copy; ' . esc_html('Copyright ', 'travelfic-toolkit') . wp_date('Y') . ' ' . esc_html__('Tourfic Development Site by Themefic All Rights Reserved.', 'travelfic-toolkit'),
         'priority'    => 26,
         'tab'         => 'settings',
     ));

@@ -1,0 +1,7 @@
+.DS_Store export-ignore
+**/.DS_Store export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+tests/** export-ignore
+tasks/** export-ignore
+node_modules/** export-ignore

@@ -28,10 +28,10 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 			add_filter( 'woocommerce_enable_setup_wizard', '__return_false' );
 			add_action( 'admin_init', [ $this, 'travelfic_tourfic_settings_redirect' ], 5 );
 			add_action( 'admin_init', [ $this, 'travelfic_toolkit_activation_redirect' ] );
-//			add_action( 'wp_ajax_tf_setup_wizard_submit', [ $this, 'tf_setup_wizard_submit_ajax' ] );
 			add_action( 'in_admin_header', [ $this, 'remove_notice' ], 1000 );
 
-			self::$current_step = isset( $_GET['step'] ) ? sanitize_key( $_GET['step'] ) : 'welcome';
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Wizard step selects a read-only screen.
+			self::$current_step = isset( $_GET['step'] ) && is_string( $_GET['step'] ) ? sanitize_key( wp_unslash( $_GET['step'] ) ) : 'welcome';
 		}
 
 		/**
@@ -56,7 +56,9 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 		 * Remove all notice in setup wizard page
 		 */
 		public function remove_notice() {
-			if ( isset( $_GET['page'] ) && $_GET['page'] == 'travelfic-template-list' ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Page slug only scopes admin notices.
+			$page = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
+			if ( 'travelfic-template-list' === $page ) {
 				remove_all_actions( 'admin_notices' );
 				remove_all_actions( 'all_admin_notices' );
 			}
@@ -136,6 +138,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         </svg>
                         <h3><?php esc_html_e("Before we procced...", "travelfic-toolkit"); ?></h3>
                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
+                        <p><?php esc_html_e( 'Back up your site before importing. Existing pages, menus, widgets, and settings will be kept; demo content is added where it does not already exist.', 'travelfic-toolkit' ); ?></p>
                         <div class="demo-importing-data-list">
                             <label class="form-control">
                                 <input type="checkbox" value="customizer" name="imports[]" checked />
@@ -319,9 +322,12 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                         $travelfic_sync_templates_list =  !empty(get_option('travelfic_template_sync__schudle_data')) ? get_option('travelfic_template_sync__schudle_data') : '';
                         if(!empty($travelfic_sync_templates_list)){
                         foreach($travelfic_sync_templates_list as $single_temp){
+                            if ( ! is_array( $single_temp ) ) {
+                                continue;
+                            }
                             if(empty($single_temp['coming_soon'])){
                         ?>
-                            <div class="travelfic-single-template" data-template_type="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-template_name="<?php echo !empty($single_temp['title']) ? esc_html($single_temp['title']) : '' ?>">
+                            <div class="travelfic-single-template" data-template_type="<?php echo !empty($single_temp['template_type']) ? esc_attr($single_temp['template_type']) : '' ?>" data-template_name="<?php echo !empty($single_temp['title']) ? esc_attr($single_temp['title']) : '' ?>">
                                 <div class="template-img">
                                     <?php if(!empty($single_temp['template_image_url'])){ ?>
                                     <img src="<?php echo esc_url($single_temp['template_image_url']) ?>" alt="">
@@ -343,7 +349,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                                     </g>
                                                 </svg>
                                             </a>
-                                            <div class="template-import-btn" data-template="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-design="<?php echo !empty($single_temp['demo']) ? esc_html($single_temp['demo']) : '' ?>">
+                                            <div class="template-import-btn" data-template="<?php echo !empty($single_temp['template_type']) ? esc_attr($single_temp['template_type']) : '' ?>" data-design="<?php echo !empty($single_temp['demo']) ? esc_attr($single_temp['demo']) : '' ?>">
                                                 <?php esc_html_e("Import Demo", "travelfic-toolkit"); ?>
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M12 14.5L12 4.5M12 14.5C11.2998 14.5 9.99153 12.5057 9.5 12M12 14.5C12.7002 14.5 14.0085 12.5057 14.5 12" stroke="#211D12" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -361,7 +367,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                             </div>
                             <?php }
                             if(!empty($single_temp['coming_soon'])){ ?>
-                                <div class="travelfic-single-template" data-template_type="<?php echo !empty($single_temp['template_type']) ? esc_html($single_temp['template_type']) : '' ?>" data-template_name="<?php echo !empty($single_temp['title']) ? esc_html($single_temp['title']) : '' ?>">
+                                <div class="travelfic-single-template" data-template_type="<?php echo !empty($single_temp['template_type']) ? esc_attr($single_temp['template_type']) : '' ?>" data-template_name="<?php echo !empty($single_temp['title']) ? esc_attr($single_temp['title']) : '' ?>">
                                     <div class="template-img">
                                         <?php if(!empty($single_temp['template_image_url'])){ ?>
                                         <img src="<?php echo esc_url($single_temp['template_image_url']) ?>" alt="">
@@ -374,7 +380,9 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                     <?php } ?>
                                 </div>
                             <?php } ?>
-                        <?php } } ?>
+                        <?php } } else { ?>
+                            <p><?php esc_html_e( 'No demos are loaded yet. Select Sync Library above to fetch the available templates.', 'travelfic-toolkit' ); ?></p>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

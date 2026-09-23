@@ -43,23 +43,7 @@ final class Travelfic_Toolkit_Elementor_Extensions {
      * @access public
      */
     public function __construct() {
-        add_action('init', [$this, 'i18n']);
         add_action('plugins_loaded', [$this, 'init']);
-    }
-
-    /**
-     * Load Textdomain
-     *
-     * Load plugin localization files.
-     *
-     * Fired by `init` action hook.
-     *
-     * @since 1.0.0
-     *
-     * @access public
-     */
-    public function i18n() {
-        load_plugin_textdomain( 'travelfic-toolkit', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
     }
 
     /**

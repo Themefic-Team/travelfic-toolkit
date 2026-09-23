@@ -57,15 +57,12 @@ $importer_source = file_get_contents( $importer_file );
 $list_source     = file_get_contents( $list_file );
 $handlers        = array(
 	'travelfic-global-settings-import'     => array( 'prepare_travelfic_global_settings', '$template_key' ),
-	'travelfic-customizer-settings-import' => array( 'prepare_travelfic_customizer_settings', 'remove_theme_mods' ),
+	'travelfic-customizer-settings-import' => array( 'prepare_travelfic_customizer_settings', '$prefix' ),
 	'travelfic-demo-hotel-import'          => array( 'prepare_travelfic_hotel_imports', '$template_key' ),
 	'travelfic-demo-tour-import'           => array( 'prepare_travelfic_tour_imports', '$tours_post' ),
 	'travelfic-demo-car-import'            => array( 'prepare_travelfic_car_imports', '$tours_post' ),
 	'travelfic-demo-pages-import'          => array( 'prepare_travelfic_pages_imports', '$template_key' ),
-	'travelfic-demo-widget-import'         => array(
-		'prepare_travelfic_widgets_imports',
-		'travelfic_toolkit_clear_widgets',
-	),
+	'travelfic-demo-widget-import'         => array( 'prepare_travelfic_widgets_imports', '$template_key' ),
 	'travelfic-demo-menu-import'           => array( 'prepare_travelfic_menus_imports', '$template_key' ),
 );
 
@@ -116,6 +113,13 @@ $bricks_handler = travelfic_import_security_method_body( $importer_source, 'prep
 travelfic_import_security_assert(
 	false !== strpos( $bricks_handler, '$this->verify_import_request()' ),
 	'The Bricks importer must use the same authorization boundary.'
+);
+
+travelfic_import_security_assert(
+	false === strpos( $importer_source, 'remove_theme_mods(' ) &&
+	false === strpos( $importer_source, 'travelfic_toolkit_clear_widgets(' ) &&
+	false === strpos( $importer_source, 'wp_delete_post(' ),
+	'Demo import must not erase existing site content.'
 );
 
 echo "TravelFic Toolkit importer authorization regression checks passed.\n";

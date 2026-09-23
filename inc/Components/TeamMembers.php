@@ -27,7 +27,7 @@ class TeamMembers {
 		$tft_sec_subtitle = ! empty( $settings['team_subtitle'] ) ? $settings['team_subtitle'] : '';
 
 		// Backdrop switcher logic via centralized helper function
-		$has_backdrop = tft_get_switcher_value( $settings, 'team_sec_title_backdrop', 'yes', $builder );
+		$has_backdrop = travelfic_toolkit_get_switcher_value( $settings, 'team_sec_title_backdrop', 'yes', $builder );
 		$section_title_backdrop = 'yes' !== $has_backdrop ? ' tft-no-backdrop' : '';
 
 		$members_list = ! empty( $settings['members_list'] ) ? $settings['members_list'] : [];
@@ -56,22 +56,22 @@ class TeamMembers {
 		$container_max_width = ( 'true' === $design2_slider_arrows ) ? ' tft-container-width' : '';
 
 		// autoplays/switchers
-		$autoplay_val = tft_get_switcher_value( $settings, 'team_design2_slider_autoplay', 'yes', $builder );
+		$autoplay_val = travelfic_toolkit_get_switcher_value( $settings, 'team_design2_slider_autoplay', 'yes', $builder );
 		$design2_slider_autoplay = ( 'yes' === $autoplay_val ) ? 'true' : 'false';
 
-		$loop_val = tft_get_switcher_value( $settings, 'team_design2_slider_loop', 'no', $builder );
+		$loop_val = travelfic_toolkit_get_switcher_value( $settings, 'team_design2_slider_loop', 'no', $builder );
 		$design2_slider_loop = ( 'yes' === $loop_val ) ? 'true' : 'false';
 
-		$hover_val = tft_get_switcher_value( $settings, 'team_design2_slider_pause_on_hover', 'no', $builder );
+		$hover_val = travelfic_toolkit_get_switcher_value( $settings, 'team_design2_slider_pause_on_hover', 'no', $builder );
 		$design2_slider_pause_on_hover = ( 'yes' === $hover_val ) ? 'true' : 'false';
 
-		$focus_val = tft_get_switcher_value( $settings, 'team_design2_slider_pause_on_focus', 'no', $builder );
+		$focus_val = travelfic_toolkit_get_switcher_value( $settings, 'team_design2_slider_pause_on_focus', 'no', $builder );
 		$design2_slider_pause_on_focus = ( 'yes' === $focus_val ) ? 'true' : 'false';
 
-		$rtl_val = tft_get_switcher_value( $settings, 'team_design2_slider_rtl', 'no', $builder );
+		$rtl_val = travelfic_toolkit_get_switcher_value( $settings, 'team_design2_slider_rtl', 'no', $builder );
 		$design2_slider_rtl = ( 'yes' === $rtl_val ) ? 'true' : 'false';
 
-		$drag_val = tft_get_switcher_value( $settings, 'team_design2_slider_draggable', 'yes', $builder );
+		$drag_val = travelfic_toolkit_get_switcher_value( $settings, 'team_design2_slider_draggable', 'yes', $builder );
 		$design2_slider_draggable = ( 'yes' === $drag_val ) ? 'true' : 'false';
 
 		if ( 'design-1' == $tft_design ) {

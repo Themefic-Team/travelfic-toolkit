@@ -24,6 +24,14 @@ Companion plugin for Travelfic and Ultimate Hotel Booking to build hotel, tour, 
 
 **Tourfic Toolkit** enhances the [Travelfic and Ultimate Hotel Booking WordPress theme](https://wordpress.org/themes/travelfic/) by adding functionality to the Customizer, Widgets Section, Single Tour, Single Hotel areas, and more. This toolkit boosts your travel or hotel booking website's design and performance by incorporating built-in demo templates.
 
+= External demo library =
+
+When an administrator selects Sync Library, the plugin requests the available-template list from `https://api.themefic.com/tourfic/api/`. The request identifies the plugin as `travelfic_toolkit`; it does not send booking records or customer details. When an administrator chooses a demo import, the plugin downloads that demo's settings, pages, widgets, menu, and media from `https://api.themefic.com/tourfic/demos/`. These requests are needed only for the optional demo library and import workflow. Themefic's [Privacy Policy](https://themefic.com/privacy-policy/) and [Terms and Conditions](https://themefic.com/terms-and-conditions/) apply to this service.
+
+= Human-readable source =
+
+The source for this plugin is available in the [public Travelfic Toolkit repository](https://github.com/Themefic-Team/travelfic-toolkit). The bundled `assets/app/css/style.min.css` is built from the human-readable files in `sass/app/` with the included `package.json` and `webpack.config.js` (`npm install` then `npm run build`). Bundled Select2 4.1.0-rc.0 JavaScript and CSS come from the [Select2 source release](https://github.com/select2/select2/tree/4.1.0-rc.0).
+
 Travelfic and Ultimate Hotel Booking leverages [Tourfic's integrated booking features](https://themefic.com/tourfic), enabling customers to create accounts and book hotels, apartments, and tour packages directly on your site. Tourfic offers extensive functionalities, covering basic to advanced needs, ideal for projects in the hotel, apartment, and travel industries.
 
 In short, to fully utilize this plugin, ensure the **Travelfic and Ultimate Hotel Booking Theme** and **Tourfic plugin** are both installed and activated.
@@ -122,6 +130,10 @@ Tourfic Toolkit is a companion plugin to the Travelfic and Ultimate Hotel Bookin
 * Install and activate the plugin.
 * Go through the Quick setup wizard for the basic setup.
 * Check our [Documentation](https://themefic.com/docs/tourfic/getting-started/installation/) & [YouTube videos](https://www.youtube.com/playlist?list=PLY0rtvOwg0ylCl7NTwNHUPq-eY1qwUH_N) for further instruction.
+
+= What happens to existing [year] shortcodes? =
+
+The plugin now uses `[travelfic_toolkit_year]` to avoid conflicts with other plugins. Existing simple `[year]` references in saved posts, Elementor content, and the active theme's copyright setting are upgraded in small batches with original values retained for rollback. Until migration finishes, existing post, widget, and footer output continues to render the year. Back up the site before updating any plugin that changes saved content.
 
 = Can Travelfic and Ultimate Hotel Booking be considered as a travel tour WordPress theme? =
 Certainly! Travelfic simplifies the process of setting up a travel and tour booking website, ensuring your customers can conveniently place bookings.

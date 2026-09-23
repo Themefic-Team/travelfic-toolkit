@@ -31,7 +31,7 @@ class Testimonials {
 		$tft_sec_content  = ! empty( $settings['des_content'] ) ? $settings['des_content'] : '';
 
 		// Resolve backdrop
-		$has_backdrop           = tft_get_switcher_value( $settings, 'tft_design_3_title_backdrop', 'yes', $builder );
+		$has_backdrop           = travelfic_toolkit_get_switcher_value( $settings, 'tft_design_3_title_backdrop', 'yes', $builder );
 		$section_title_backdrop = 'yes' !== $has_backdrop ? ' tft-no-backdrop' : '';
 
 		// Resolve background image
@@ -45,14 +45,14 @@ class Testimonials {
 		$design3_slider_arrows = ( 'arrows' === $design3_slider_nav ) ? 'true' : 'false';
 		$design3_slider_dots   = ( 'dots' === $design3_slider_nav ) ? 'true' : 'false';
 
-		$design3_slider_autoplay          = tft_get_switcher_value( $settings, 'testimonial_design3_slider_autoplay', 'yes', $builder ) === 'yes' ? 'true' : 'false';
+		$design3_slider_autoplay          = travelfic_toolkit_get_switcher_value( $settings, 'testimonial_design3_slider_autoplay', 'yes', $builder ) === 'yes' ? 'true' : 'false';
 		$design3_slider_autoplay_speed    = self::get_number( $settings, 'testimonial_design3_slider_autoplay_speed', 3000 );
 		$design3_slider_autoplay_interval = self::get_number( $settings, 'testimonial_design3_slider_autoplay_interval', 1500 );
-		$design3_slider_loop              = tft_get_switcher_value( $settings, 'testimonial_design3_slider_loop', 'yes', $builder ) === 'yes' ? 'true' : 'false';
-		$design3_slider_pause_on_hover    = tft_get_switcher_value( $settings, 'testimonial_design3_slider_pause_on_hover', 'no', $builder ) === 'yes' ? 'true' : 'false';
-		$design3_slider_pause_on_focus    = tft_get_switcher_value( $settings, 'testimonial_design3_slider_pause_on_focus', 'no', $builder ) === 'yes' ? 'true' : 'false';
-		$design3_slider_rtl              = tft_get_switcher_value( $settings, 'testimonial_design3_slider_rtl', 'no', $builder ) === 'yes' ? 'true' : 'false';
-		$design3_slider_draggable         = tft_get_switcher_value( $settings, 'testimonial_design3_slider_draggable', 'yes', $builder ) === 'yes' ? 'true' : 'false';
+		$design3_slider_loop              = travelfic_toolkit_get_switcher_value( $settings, 'testimonial_design3_slider_loop', 'yes', $builder ) === 'yes' ? 'true' : 'false';
+		$design3_slider_pause_on_hover    = travelfic_toolkit_get_switcher_value( $settings, 'testimonial_design3_slider_pause_on_hover', 'no', $builder ) === 'yes' ? 'true' : 'false';
+		$design3_slider_pause_on_focus    = travelfic_toolkit_get_switcher_value( $settings, 'testimonial_design3_slider_pause_on_focus', 'no', $builder ) === 'yes' ? 'true' : 'false';
+		$design3_slider_rtl              = travelfic_toolkit_get_switcher_value( $settings, 'testimonial_design3_slider_rtl', 'no', $builder ) === 'yes' ? 'true' : 'false';
+		$design3_slider_draggable         = travelfic_toolkit_get_switcher_value( $settings, 'testimonial_design3_slider_draggable', 'yes', $builder ) === 'yes' ? 'true' : 'false';
 
 		// Post counts to determine slider disable class
 		$postCount = 0;

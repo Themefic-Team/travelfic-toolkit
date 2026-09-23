@@ -9,6 +9,14 @@
     let travelfic_imports_data = '';
     let active_builder = $('.travelfic-builder-tab.active').attr('data-builder') || 'elementor';
 
+    function travelfic_show_import_error(error) {
+        const data = error && error.responseJSON ? error.responseJSON.data : null;
+        const message = data && data.message ? data.message : 'Import stopped because a required step failed. Your existing content was left in place.';
+        $('.demo-importing-loader .loader-heading .loader-label').text(message);
+        $('.header-exit-btn').show();
+        console.error('Travelfic import error:', error);
+    }
+
     let plugin_slug_length = plugin_slugs.length-1;
 
     // Dynamic Bricks theme notice handler
@@ -132,7 +140,7 @@
 
         if (plugin_slugs.length > 0) {
             plugin_slugs.forEach(function (slug, index) {
-                let travelfic_install_action = slug+"_ajax_install_plugin"
+                let travelfic_install_action = "travelfic_toolkit_" + slug + "_ajax_install_plugin"
                 var data = {
                     action: travelfic_install_action,
                     _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
@@ -170,7 +178,7 @@
     // CF7 Install
     $(document).on('click', '.plug-cf7-btn', function (e) {
         var data = {
-            action: "contact-form-7_ajax_install_plugin",
+            action: "travelfic_toolkit_contact-form-7_ajax_install_plugin",
             _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             slug: "contact-form-7",
         };
@@ -185,7 +193,7 @@
     // Tourfic Install
     $(document).on('click', '.plug-tourfic-btn', function (e) {
         var data = {
-            action: "tourfic_ajax_install_plugin",
+            action: "travelfic_toolkit_tourfic_ajax_install_plugin",
             _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             slug: "tourfic",
         };
@@ -200,7 +208,7 @@
     // woocommerce Install
     $(document).on('click', '.plug-woocommerce-btn', function (e) {
         var data = {
-            action: "woocommerce_ajax_install_plugin",
+            action: "travelfic_toolkit_woocommerce_ajax_install_plugin",
             _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             slug: "woocommerce",
         };
@@ -215,7 +223,7 @@
     // elementor Install
     $(document).on('click', '.plug-elementor-btn', function (e) {
         var data = {
-            action: "elementor_ajax_install_plugin",
+            action: "travelfic_toolkit_elementor_ajax_install_plugin",
             _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
             slug: "elementor",
         };
@@ -229,7 +237,7 @@
 
     // Activation Functions
     const Travelfic_Activation_Actions = (plugin_slug, index) => {
-        let travelfic_active_action = plugin_slug+"_ajax_active_plugin"
+        let travelfic_active_action = "travelfic_toolkit_" + plugin_slug + "_ajax_active_plugin"
         $.ajax({
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
@@ -264,7 +272,7 @@
                 }
             },
             error: function(error) {
-                console.log(error);
+                travelfic_show_import_error(error);
             }
         });
     }
@@ -275,7 +283,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'contact-form-7_ajax_active_plugin',
+                action: 'travelfic_toolkit_contact-form-7_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "contact-form-7",
             },
@@ -294,7 +302,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'tourfic_ajax_active_plugin',
+                action: 'travelfic_toolkit_tourfic_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "tourfic",
             },
@@ -313,7 +321,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'woocommerce_ajax_active_plugin',
+                action: 'travelfic_toolkit_woocommerce_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "woocommerce",
             },
@@ -332,7 +340,7 @@
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
-                action: 'elementor_ajax_active_plugin',
+                action: 'travelfic_toolkit_elementor_ajax_active_plugin',
                 _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 slug: "elementor",
             },
@@ -363,7 +371,7 @@
                     $(".customizer-import-btn").click();
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         } else {
@@ -391,7 +399,7 @@
                     $(".widget-import-btn").click();
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         }else{
@@ -420,7 +428,7 @@
                     $(".menu-import-btn").click();
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         }else{
@@ -449,7 +457,7 @@
                     $(".demo-page-import-btn").click();
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         }else{
@@ -482,7 +490,7 @@
                     }
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         }else{
@@ -513,9 +521,7 @@
                 $(".demo-hotel-import-btn").click();
             },
             error: function(error) {
-                console.log(error);
-                // Continue even on error so the rest of the import isn't blocked
-                $(".demo-hotel-import-btn").click();
+                travelfic_show_import_error(error);
             }
         });
     });
@@ -546,7 +552,7 @@
                         
                     },
                     error: function(error) {
-                        console.log(error);
+                        travelfic_show_import_error(error);
                     }
                 });
             }else{
@@ -595,7 +601,7 @@
                     $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         }else{
@@ -631,7 +637,7 @@
                     $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
                 },
                 error: function(error) {
-                    console.log(error);
+                    travelfic_show_import_error(error);
                 }
             });
         }else{
@@ -651,7 +657,9 @@
         $('.demo-importing-loader .loader-heading .loader-label').text("Tour, Hotel, Car Demo importing...");
         $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("We are almost done...");
 
-        template_all_types.forEach (function(type, index) {
+        let completedTypes = 0;
+        let importFailed = false;
+        template_all_types.forEach (function(type) {
             $.ajax({
                 type: 'post',
                 url: travelfic_toolkit_script_params.ajax_url,
@@ -660,6 +668,9 @@
                     _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
                 },
                 success: function(response) {
+                    if (importFailed || ++completedTypes !== template_all_types.length) {
+                        return;
+                    }
                     $('.demo-importing-loader .loader-heading .loader-precent').text('100%');
                     $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "100%");
                     $('.demo-importing-loader .loader-heading .loader-label').text("Hurray! ready to go...");
@@ -669,18 +680,8 @@
                     $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
                 },
                 error: function(error) {
-                    console.log(error);
-                },
-                complete: function() {
-                    if(index==template_type.length-1){
-                        $('.demo-importing-loader .loader-heading .loader-precent').text('100%');
-                        $('.demo-importing-loader .loader-bars .loader-precent-bar').css("width", "100%");
-                        $('.demo-importing-loader .loader-heading .loader-label').text("Hurray! ready to go...");
-                        $('#travelfic-template-importing-wrapper .travelfic-template-list-heading h2').text("Congratulations! your website is ready 👏");
-                        $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-img').hide();
-                        $('#travelfic-template-importing-wrapper .travelfic-template-list-heading .travelfic-exits-highlights-finished').empty();
-                        $('#travelfic-template-importing-wrapper .travelfic-template-demo-importing .importing-success').show();
-                    }
+                    importFailed = true;
+                    travelfic_show_import_error(error);
                 }
             });
         });
@@ -690,19 +691,27 @@
     $(document).on('click', '.travelfic-templte-sync-btn', function (e) {
         let current = $(this);
         current.addClass('travelfic-templte-sync-loading');
+        $('.travelfic-template-sync-error').remove();
 
         $.ajax({
             type: 'post',
             url: travelfic_toolkit_script_params.ajax_url,
             data: {
                 action: 'travelfic-template-list-sync',
-                _ajax_nonce: travelfic_toolkit_script_params.travelfic_toolkit_nonce,
+                _ajax_nonce: travelfic_toolkit_script_params.template_sync_nonce,
             },
             success: function(response) {
                 location.reload();
             },
             error: function(error) {
-                
+                current.removeClass('travelfic-templte-sync-loading');
+                const message = error.responseJSON && error.responseJSON.data
+                    ? error.responseJSON.data
+                    : 'The template library could not be synced. Please try again later.';
+                $('.travelfic-templates-list').prepend(
+                    $('<p class="travelfic-template-sync-error" role="alert"></p>').text(message)
+                );
+                console.error(error);
             }
         });
     });
@@ -753,4 +762,3 @@
     }
 
 })(jQuery);
-  

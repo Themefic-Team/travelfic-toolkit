@@ -6,7 +6,7 @@ class Travelfic_Customizer_Footer
     public static function travelfic_toolkit_footer_second_design($travelfic_footer)
     {
         $travelfic_prefix = 'travelfic_customizer_settings_';
-        $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
+        $design_2_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [travelfic_toolkit_year] Tourfic Development Site by Themefic All Rights Reserved.');
         ob_start();
 ?>
         <footer class="tft-footer-design__two tft-site-footer">
@@ -19,7 +19,7 @@ class Travelfic_Customizer_Footer
                     </div>
                 </div>
                 <div class="tft-footer-bottom__two tft-footer-bottom">
-                    <p><?php echo do_shortcode(esc_html($design_2_copyright)); ?></p>
+                    <p><?php echo do_shortcode(esc_html(Travelfic_Toolkit_Year_Shortcode_Migration::replace_legacy_tag($design_2_copyright))); ?></p>
                 </div>
                 <div class="tft-footer-shape"></div>
             </div>
@@ -34,7 +34,7 @@ class Travelfic_Customizer_Footer
         $travelfic_prefix = 'travelfic_customizer_settings_';
         $travelfic_footer_back_image = !empty(get_theme_mod($travelfic_prefix . 'footer_3_bg_image')) ? get_theme_mod($travelfic_prefix . 'footer_3_bg_image') : '';
         
-        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
+        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [travelfic_toolkit_year] Tourfic Development Site by Themefic All Rights Reserved.');
         $travelfic_menu_1_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_1', 'Privacy Policy');
         $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_1', '#');
         $travelfic_menu_2_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_2', 'View on Maps');
@@ -60,7 +60,7 @@ class Travelfic_Customizer_Footer
             <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-footer-bottom__three__inner">
                     <div class="tft-footer-bottom__three__copyright">
-                        <p class="tft-color-white"><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
+                        <p class="tft-color-white"><?php echo do_shortcode(esc_html(Travelfic_Toolkit_Year_Shortcode_Migration::replace_legacy_tag($travelfic_copyright))); ?></p>
                     </div>
                     <div class="tft-footer-bottom__three__menu">
                         <ul class="tft-footer-bottom__three__nav">
@@ -90,7 +90,7 @@ class Travelfic_Customizer_Footer
 
     public static function travelfic_toolkit_footer_fourth_design($travelfic_footer) {
         $travelfic_prefix = 'travelfic_customizer_settings_';
-        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [year] Tourfic Development Site by Themefic All Rights Reserved.');
+        $travelfic_copyright = get_theme_mod($travelfic_prefix . 'copyright_text', '© Copyright [travelfic_toolkit_year] Tourfic Development Site by Themefic All Rights Reserved.');
         $travelfic_menu_1_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_1', 'Privacy Policy');
         $travelfic_menu_1_url = get_theme_mod($travelfic_prefix . 'footer_menu_url_1', '#');
         $travelfic_menu_2_label = get_theme_mod($travelfic_prefix . 'footer_menu_label_2', 'View on Maps');
@@ -131,7 +131,7 @@ class Travelfic_Customizer_Footer
             <div class="<?php echo esc_attr( apply_filters( 'travelfic_page_tftcontainer', $travelfic_tftcontainer = '') ); ?>">
                 <div class="tft-footer-bottom__four__inner">
                     <div class="tft-footer-bottom__four__copyright">
-                        <p><?php echo do_shortcode(esc_html($travelfic_copyright)); ?></p>
+                        <p><?php echo do_shortcode(esc_html(Travelfic_Toolkit_Year_Shortcode_Migration::replace_legacy_tag($travelfic_copyright))); ?></p>
                     </div>
                     <div class="tft-footer-bottom__four__menu">
                         <ul class="tft-footer-bottom__four__nav">
