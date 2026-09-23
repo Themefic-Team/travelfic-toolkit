@@ -145,7 +145,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <?php esc_html_e("Import Customizer Settings", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
-                                    <?php echo $this->tft_label_tooltip_icon(); ?>
+                                    <?php $this->tft_label_tooltip_icon(); ?>
                                     <div class="label-tooltip-content">
                                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
@@ -156,7 +156,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <?php esc_html_e("Import Tourfic Settings", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
-                                    <?php echo $this->tft_label_tooltip_icon(); ?>
+                                    <?php $this->tft_label_tooltip_icon(); ?>
                                     <div class="label-tooltip-content">
                                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
@@ -167,7 +167,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <?php esc_html_e("Install Required Plugins", "travelfic-toolkit"); ?>
                                 <span class="checkmark disabled"></span>
                                 <div class="label-tooltip">
-                                    <?php echo $this->tft_label_tooltip_icon(); ?>
+                                    <?php $this->tft_label_tooltip_icon(); ?>
                                     <div class="label-tooltip-content">
                                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
@@ -178,7 +178,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <?php esc_html_e("Import Widgets", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
-                                    <?php echo $this->tft_label_tooltip_icon(); ?>
+                                    <?php $this->tft_label_tooltip_icon(); ?>
                                     <div class="label-tooltip-content">
                                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
@@ -189,7 +189,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <?php esc_html_e("Import Menu", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
-                                    <?php echo $this->tft_label_tooltip_icon(); ?>
+                                    <?php $this->tft_label_tooltip_icon(); ?>
                                     <div class="label-tooltip-content">
                                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
@@ -200,7 +200,7 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
                                 <?php esc_html_e("Import Content", "travelfic-toolkit"); ?>
                                 <span class="checkmark"></span>
                                 <div class="label-tooltip">
-                                    <?php echo $this->tft_label_tooltip_icon(); ?>
+                                    <?php $this->tft_label_tooltip_icon(); ?>
                                     <div class="label-tooltip-content">
                                         <p><?php esc_html_e("To ensure a perfect demo installation, please confirm the followings", "travelfic-toolkit"); ?></p>
                                     </div>
@@ -523,9 +523,9 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
 
                 $current_active_theme = !empty(get_option('stylesheet')) ? get_option('stylesheet') : 'No';
                 if ( $current_active_theme != 'travelfic' && $current_active_theme != 'travelfic-child' && $current_active_theme != 'ultimate-hotel-booking' && $current_active_theme != 'ultimate-hotel-booking-child' && $current_active_theme != 'bricks' && $current_active_theme != 'bricks-child' ) {
-                    wp_redirect( admin_url( 'themes.php' ) );
+                    wp_safe_redirect( admin_url( 'themes.php' ) );
                 }else{
-				    wp_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );
+				    wp_safe_redirect( admin_url( 'admin.php?page=travelfic-template-list' ) );
                 }
 				exit;
 			}
@@ -540,13 +540,13 @@ if ( ! class_exists( 'Travelfic_Template_List' ) ) {
             );
             $args = wp_parse_args( $args, $defaults );
 
-            ob_start(); ?>
+            ?>
                 <svg width="<?php echo esc_attr( $args['width'] ); ?>" height="<?php echo esc_attr( $args['height'] ); ?>" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="<?php echo esc_attr( $args['class'] ); ?>">
                     <path d="M1.66602 8.18148C1.66602 5.19592 1.66602 3.70313 2.59351 2.77564C3.52101 1.84814 5.01379 1.84814 7.99935 1.84814C10.9849 1.84814 12.4777 1.84814 13.4052 2.77564C14.3327 3.70313 14.3327 5.19592 14.3327 8.18148C14.3327 11.167 14.3327 12.6598 13.4052 13.5873C12.4777 14.5148 10.9849 14.5148 7.99935 14.5148C5.01379 14.5148 3.52101 14.5148 2.59351 13.5873C1.66602 12.6598 1.66602 11.167 1.66602 8.18148Z" stroke="<?php echo esc_attr( $args['stroke'] ); ?>" />
                     <path d="M8.16081 11.5149V8.18156C8.16081 7.86729 8.16081 7.71015 8.06318 7.61252C7.96555 7.51489 7.80841 7.51489 7.49414 7.51489" stroke="<?php echo esc_attr( $args['stroke'] ); ?>" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M7.99401 5.51489H8" stroke="<?php echo esc_attr( $args['stroke'] ); ?>" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-            <?php return ob_get_clean();
+            <?php
         }
 
 

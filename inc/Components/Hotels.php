@@ -867,7 +867,7 @@ class Hotels {
 											<!-- destination top info -->
 											<div class="tft-destination-top-info">
 												<!-- destination rating -->
-												<?php echo travelfic_toolkit_review_star_rating( (float) $tf_average_rating );  ?>
+												<?php echo wp_kses_post( travelfic_toolkit_review_star_rating( (float) $tf_average_rating ) ); ?>
 												<!-- destination location -->
 												<?php if ( ! empty( $tf_location ) ) : ?>
 													<span class="tft-destination-location">
@@ -896,8 +896,9 @@ class Hotels {
 													<span class="tft-destination-price-title tft-color-text">
 														<?php 
 															if ( function_exists( 'wc_price' ) ) {
-																$currency_code   = get_woocommerce_currency(); 
-																echo sprintf( esc_html__( 'From %s', 'travelfic-toolkit' ), $currency_code );
+																$currency_code = get_woocommerce_currency();
+																/* translators: %s: WooCommerce currency code. */
+																echo sprintf( esc_html__( 'From %s', 'travelfic-toolkit' ), esc_html( $currency_code ) );
 															} else {
 																echo esc_html__( 'From USD', 'travelfic-toolkit' );
 															}
@@ -905,9 +906,9 @@ class Hotels {
 													</span>
 													<span class="tft-destination-price-value tft-color-primary">
 														<?php if ( function_exists( 'wc_price' ) ) {
-																echo wc_price( $tf_total_price );
+																echo wp_kses_post( wc_price( $tf_total_price ) );
 															} else {
-																echo '$' . number_format( $tf_total_price, 2 );
+																echo esc_html( '$' . number_format( $tf_total_price, 2 ) );
 															}
 														?>
 													</span>
