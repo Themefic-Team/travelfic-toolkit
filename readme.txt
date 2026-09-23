@@ -164,7 +164,7 @@ We provide full support on the WordPress.org forums. In addition, please feel fr
 
 == Changelog ==
 
-= 1.5.4 – Sep 22, 2026 =
+= 1.5.4 – Sep 23, 2026 =
 - Improved: System stability and overall performance.
 
 = 1.5.3 – August 03, 2026 =
